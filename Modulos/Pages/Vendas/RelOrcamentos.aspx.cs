@@ -19,9 +19,7 @@ namespace SoftHabilInformatica.Pages.Vendas
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Pagina"].ToString() != Request.CurrentExecutionFilePath)
-            {
                 Session["Pagina"] = Request.CurrentExecutionFilePath;
-            }
 
             if ((Session["CodModulo"] != null) && (Session["CodPflUsuario"] != null))
             {
@@ -30,34 +28,31 @@ namespace SoftHabilInformatica.Pages.Vendas
                 lista1 = r1.ListarPerfilUsuario(Convert.ToInt32(Session["CodModulo"].ToString()),
                                                Convert.ToInt32(Session["CodPflUsuario"].ToString()),
                                                "ConOrcamento.aspx");
+
                 lista1.ForEach(delegate (Permissao x)
                 {
                     if (!x.AcessoCompleto)
                     {
-
                         if (!x.AcessoImprimir)
                         {
-                            
                             CRViewer.HasExportButton = false;
                             CRViewer.HasPrintButton = false;
                             CRViewer.HasToggleGroupTreeButton = false;
-
                         }
-
                     }
                 });
-
             }
         }
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/Vendas/ConOrcamento.aspx");
-
         }
+
         protected void btnSair_Click(object sender, EventArgs e)
         {
 
         }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -71,8 +66,8 @@ namespace SoftHabilInformatica.Pages.Vendas
                 CRViewer.ReportSource = (ReportDocument)Session["RptDoc"];
                 CRViewer.DataBind();
             }
-
         }
+
         private void MontaCrystal()
         {
             RptDoc = new ReportDocument();

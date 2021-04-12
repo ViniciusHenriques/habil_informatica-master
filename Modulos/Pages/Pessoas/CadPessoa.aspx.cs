@@ -1360,7 +1360,7 @@ namespace SoftHabilInformatica.Pages.Pessoas
                 grdRepresentantes.DataSource = listRepresentantes;
                 grdRepresentantes.DataBind();
 
-                ddlRepresentantes.SelectedValue = "*Nenhum Selecionado";
+                //ddlRepresentantes.SelectedValue = "*Nenhum Selecionado";
 
                 Session["TabFocada"] = "parameter";
                 PanelSelect = "parameter";
@@ -1369,7 +1369,6 @@ namespace SoftHabilInformatica.Pages.Pessoas
             {
                 ShowMessage(ex.Message, MessageType.Error);
             }
-        }
-        
+        }      
     }
 }

@@ -555,22 +555,22 @@
 </div>
 <!-- Exclui Produto -->
 <div class="modal fade" id="myexcpes"  tabindex="-1" role="dialog" aria-labelledby="myLargeModal">
-      <div class="modal-dialog" role="document" style ="height:100%;width:300px">
+    <div class="modal-dialog" role="document" style ="height:100%;width:300px">
         <div class="modal-content" >
-          <div class="modal-header">
+            <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="H3">Atenção</h4>
-          </div>
-          <div class="modal-body">
-              Deseja Excluir este Produto ?
-          </div>
-          <div class="modal-footer">
-            <asp:Button ID="btnCfmSim" runat="server" Text="Excluir " CssClass="btn btn-danger" TabIndex="-1" AutoPostBack="true" OnClick="btnCfmSim_Click"></asp:Button>
+            </div>
+            <div class="modal-body">
+                Deseja Excluir este Produto ?
+            </div>
+            <div class="modal-footer">
+            <asp:LinkButton ID="btnCfmSim" runat="server" Text="Excluir " CssClass="btn btn-danger"  AutoPostBack="true" OnClick="btnCfmSim_Click"></asp:LinkButton>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
+</div>
         
 <div class="modal fade" id="CodigoNCM"  tabindex="-1" role="dialog" aria-labelledby="myLargeModal">
     <div class="modal-dialog" role="document" style ="height:300px;width:720px">

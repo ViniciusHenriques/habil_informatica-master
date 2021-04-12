@@ -302,11 +302,11 @@
                                                                     <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Editar
                                                                 </asp:LinkButton>
                                                             </div>
-                                                            <div class="col-md-9">Produtos do Orçamento - 
+                                                            <div class="col-md-8">Produtos do Orçamento - 
                                                                 <asp:Label ID="lblQtPedidos" runat="server"></asp:Label>
                                                                 <asp:Label ID="lblDescQtPedidos" runat="server"></asp:Label>                                                                
                                                             </div>
-                                                            <div class="col-md-1" >
+                                                            <div class="col-md-2" >
                                                                 <asp:Label runat="server" ID="lblTotalItens" Font-Bold="true" Font-Size="Medium" ></asp:Label>    
                                                             </div>
                                                         </div>

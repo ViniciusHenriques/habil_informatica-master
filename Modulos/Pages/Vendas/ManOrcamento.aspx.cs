@@ -51,9 +51,9 @@ namespace SoftHabilInformatica.Pages.Vendas
             txtCodigo.Text = "Novo";
             DBTabelaDAL RnTab = new DBTabelaDAL();
 
-
             List<ParSistema> ListPar = new List<ParSistema>();
             ParSistemaDAL ParDAL = new ParSistemaDAL();
+
             if (Session["VW_Par_Sistema"] == null)
                 Session["VW_Par_Sistema"] = ParDAL.ListarParSistemas("CD_EMPRESA", "INT", Session["CodEmpresa"].ToString(), "");
 

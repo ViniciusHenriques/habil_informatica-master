@@ -604,7 +604,7 @@ namespace SoftHabilInformatica.Pages.Produtos {
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCfmSim;
+        protected global::System.Web.UI.WebControls.LinkButton btnCfmSim;
         
         /// <summary>
         /// Controle UpdatePanel10.

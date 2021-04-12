@@ -45,7 +45,6 @@ namespace SoftHabilInformatica.Pages.Vendas
 
                     }
                 });
-
             }
         }
         protected void btnVoltar_Click(object sender, EventArgs e)

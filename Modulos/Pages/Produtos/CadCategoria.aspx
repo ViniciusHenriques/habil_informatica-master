@@ -13,11 +13,13 @@
 
 
     <script type="text/javascript">
-        item = '<%=MaskCategoria%>';
 
-        jQuery(function ($) {
-            $("#txtCodigo").mask(item);
-        });
+        item = '<%=MaskCategoria%>';
+        if (item != "") {
+            jQuery(function ($) {
+                $("#txtCodigo").mask(item);
+            });
+        }
 
     </script>
     <link type="text/css" href="../../Content/Style.css" rel="stylesheet" />

@@ -570,33 +570,35 @@ namespace SoftHabilInformatica.Pages.Empresas
                     {
                         
                         string filePath = CaminhoSis + menu.UrlIcone.Replace("~", "");
-
-                        XElement root = XElement.Load(filePath);
-                         if (menu.UrlIcone == @"\Images\Acessar.svg" || menu.UrlIcone == @"\Images\IconePagina.svg" || menu.UrlIcone == @"\Images\Loading.svg" || menu.UrlIcone == @"\Images\ToTop.svg")
+                        if (System.IO.File.Exists(filePath))
                         {
-                            if (Luminosidade > 155)
-                                root.Attribute("fill").Value = CorFundo;
-                            else
-                                root.Attribute("fill").Value = CorPadrao;
-                        }
-                        else if (menu.UrlIcone == @"\Images\IconeBarraSuperior.svg" || menu.UrlIcone == @"\Images\Help.svg")
-                        {
-                            root.Attribute("fill").Value = CorFundo;
-                        }
-                        else
-                        {
-                            if (menu.CodigoPaiMenu != 0)
+                            XElement root = XElement.Load(filePath);
+                            if (menu.UrlIcone == @"\Images\Acessar.svg" || menu.UrlIcone == @"\Images\IconePagina.svg" || menu.UrlIcone == @"\Images\Loading.svg" || menu.UrlIcone == @"\Images\ToTop.svg")
                             {
                                 if (Luminosidade > 155)
                                     root.Attribute("fill").Value = CorFundo;
                                 else
                                     root.Attribute("fill").Value = CorPadrao;
                             }
+                            else if (menu.UrlIcone == @"\Images\IconeBarraSuperior.svg" || menu.UrlIcone == @"\Images\Help.svg")
+                            {
+                                root.Attribute("fill").Value = CorFundo;
+                            }
                             else
-                                root.Attribute("fill").Value = CorPadrao;
-                        }                            
-                        root.Save(filePath);
-                        Console.WriteLine(root);
+                            {
+                                if (menu.CodigoPaiMenu != 0)
+                                {
+                                    if (Luminosidade > 155)
+                                        root.Attribute("fill").Value = CorFundo;
+                                    else
+                                        root.Attribute("fill").Value = CorPadrao;
+                                }
+                                else
+                                    root.Attribute("fill").Value = CorPadrao;
+                            }
+                            root.Save(filePath);
+                            Console.WriteLine(root);
+                        }
                     }                   
                 }
             }

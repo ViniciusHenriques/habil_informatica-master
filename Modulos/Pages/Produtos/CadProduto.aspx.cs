@@ -117,24 +117,24 @@ namespace SoftHabilInformatica.Pages.Produtos
                 return false;
             }
 
-            if (Convert.ToDecimal(txtVolume.Text) <= 0)
-            {
-                ShowMessage("Digite um volume válido", MessageType.Info);
-                txtVolume.Focus();
-                return false;
-            }
-            if (Convert.ToDecimal(txtPeso.Text) <= 0)
-            {
-                ShowMessage("Digite um peso válido", MessageType.Info);
-                txtPeso.Focus();
-                return false;
-            }
-            if (Convert.ToDecimal(txtFatorCubagem.Text) <= 0)
-            {
-                ShowMessage("Digite um fator de cubagem válido", MessageType.Info);
-                txtFatorCubagem.Focus();
-                return false;
-            }
+            //if (Convert.ToDecimal(txtVolume.Text) <= 0)
+            //{
+            //    ShowMessage("Digite um volume válido", MessageType.Info);
+            //    txtVolume.Focus();
+            //    return false;
+            //}
+            //if (Convert.ToDecimal(txtPeso.Text) <= 0)
+            //{
+            //    ShowMessage("Digite um peso válido", MessageType.Info);
+            //    txtPeso.Focus();
+            //    return false;
+            //}
+            //if (Convert.ToDecimal(txtFatorCubagem.Text) <= 0)
+            //{
+            //    ShowMessage("Digite um fator de cubagem válido", MessageType.Info);
+            //    txtFatorCubagem.Focus();
+            //    return false;
+            //}
             if (txtQtEmb.Text == "")
             {
                 ShowMessage("Digite a quantidade da embalagem", MessageType.Info);

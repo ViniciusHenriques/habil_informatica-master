@@ -30,7 +30,7 @@ namespace SoftHabilInformatica.Pages.Produtos
         {
             Panel pnlPainel = (Panel)Master.FindControl("pnlPrincipalMasterPage");
             LinkButton cmdSair = (LinkButton)Master.FindControl("btnSair");
-
+            Session["IncProdutoUnidade"] = null;
             txtVarchar.Focus();
 
             if ((Session["UsuSis"] == null) || (Session["CodModulo"] == null))

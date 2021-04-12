@@ -129,95 +129,97 @@ namespace SoftHabilInformatica.Pages.Produtos
                 Session["MensagemTela"] = "";
             }
 
-                List<Permissao> lista = new List<Permissao>();
-                PermissaoDAL r1 = new PermissaoDAL();
-                lista = r1.ListarPerfilUsuario(Convert.ToInt32(Session["CodModulo"].ToString()),
-                                               Convert.ToInt32(Session["CodPflUsuario"].ToString()),
-                                               "ConCategoria.aspx");
+            List<Permissao> lista = new List<Permissao>();
+            PermissaoDAL r1 = new PermissaoDAL();
+            lista = r1.ListarPerfilUsuario(Convert.ToInt32(Session["CodModulo"].ToString()),
+                                            Convert.ToInt32(Session["CodPflUsuario"].ToString()),
+                                            "ConCategoria.aspx");
 
-                if (Session["Pagina"].ToString() != Request.CurrentExecutionFilePath)
+            if (Session["Pagina"].ToString() != Request.CurrentExecutionFilePath)
+            {
+                if (Session["ZoomCategoria2"] == null)
+                    Session["Pagina"] = Request.CurrentExecutionFilePath;
+
+                if (Session["ZoomCategoria"] != null)
                 {
-                    if (Session["ZoomCategoria2"] == null)
-                      Session["Pagina"] = Request.CurrentExecutionFilePath;
+                    string s = Session["ZoomCategoria"].ToString();
+                    Session["ZoomCategoria"] = null;
 
-                    if (Session["ZoomCategoria"] != null)
+                    string[] words = s.Split('³');
+                    if (s != "³")
                     {
-                        string s = Session["ZoomCategoria"].ToString();
-                        Session["ZoomCategoria"] = null;
+                        btnExcluir.Visible = true;
+                        foreach (string word in words)
+                            if (txtCodigo.Text == "")
+                            {
+                                CategoriaDAL r = new CategoriaDAL();
+                                Categoria p = new Categoria();
+                                string strCod = word;
 
-                        string[] words = s.Split('³');
-                        if (s != "³")
-                        {
-                            btnExcluir.Visible = true;
-                            foreach (string word in words)
-                                if (txtCodigo.Text == "")
+                                p = r.PesquisarCategoriaIndice(Convert.ToInt32(strCod));
+
+                                txtLancamento.Text = p.CodigoIndice.ToString();
+                                txtDescricao.Text = p.DescricaoCategoria;
+                                txtCodigo.Text = p.CodigoCategoria;
+                                CarregaDropDown();
+                                ddlDepartamento.SelectedValue = p.CodigoDepartamento.ToString();
+                                ddlGpoComissao.SelectedValue = p.CodigoGpoComissao.ToString();
+
+
+
+                            lista.ForEach(delegate(Permissao x)
                                 {
-                                    CategoriaDAL r = new CategoriaDAL();
-                                    Categoria p = new Categoria();
-                                    string strCod = word;
-
-                                    p = r.PesquisarCategoriaIndice(Convert.ToInt32(strCod));
-
-                                    txtLancamento.Text = p.CodigoIndice.ToString();
-                                    txtDescricao.Text = p.DescricaoCategoria;
-                                    txtCodigo.Text = p.CodigoCategoria;
-                                    CarregaDropDown();
-                                    ddlDepartamento.SelectedValue = p.CodigoDepartamento.ToString();
-                                    ddlGpoComissao.SelectedValue = p.CodigoGpoComissao.ToString();
-
-
-
-                                lista.ForEach(delegate(Permissao x)
+                                    if (!x.AcessoCompleto)
                                     {
-                                        if (!x.AcessoCompleto)
-                                        {
-                                            if (!x.AcessoAlterar)
-                                                btnSalvar.Visible = false;
+                                        if (!x.AcessoAlterar)
+                                            btnSalvar.Visible = false;
 
-                                            if (!x.AcessoExcluir)
-                                                btnExcluir.Visible = false;
-                                        }
-                                    });
+                                        if (!x.AcessoExcluir)
+                                            btnExcluir.Visible = false;
+                                    }
+                                });
 
-                                    return;
-                                }
-                        }
+                                return;
+                            }
+                    }
+                }
+                else
+                {
+                    CarregaDropDown();
+                    if (Session["IncProdutoCategoria"] != null)
+                    {
+                        txtLancamento.Text = "Novo";
+                        txtLancamento.Enabled = false;
+
+                        txtCodigo.Enabled = true;
+                        txtCodigo.Focus();
+                        btnExcluir.Visible = false;
+                        return;
                     }
                     else
                     {
-                        if (Session["IncProdutoCategoria"] != null)
-                        {
-                            txtLancamento.Text = "Novo";
-                            txtLancamento.Enabled = false;
+                        txtLancamento.Text = "Novo";
+                        txtLancamento.Enabled = false;
 
-                            txtCodigo.Enabled = true;
-                            txtCodigo.Focus();
-                            btnExcluir.Visible = false;
-                            return;
-                        }
-                        else
-                        {
-                            txtLancamento.Text = "Novo";
-                            txtLancamento.Enabled = false;
-
-                            txtCodigo.Text = "";
-                            txtCodigo.Enabled = true;
-                            txtCodigo.Focus();
-                            btnExcluir.Visible = false;
-                        }
-                        CarregaDropDown();
-
-                        lista.ForEach(delegate(Permissao p)
-                        {
-                            if (!p.AcessoCompleto)
-                            {
-                                if (!p.AcessoIncluir) 
-                                    btnSalvar.Visible = false;
-                            }
-                        });
-
+                        txtCodigo.Text = "";
+                        txtCodigo.Enabled = true;
+                        txtCodigo.Focus();
+                        btnExcluir.Visible = false;
                     }
+                    
+
+                    lista.ForEach(delegate(Permissao p)
+                    {
+                        if (!p.AcessoCompleto)
+                        {
+                            if (!p.AcessoIncluir) 
+                                btnSalvar.Visible = false;
+                        }
+                    });
+
                 }
+                
+            }
             if (txtLancamento.Text == "")
                 btnVoltar_Click(sender, e);
         }
@@ -257,6 +259,9 @@ namespace SoftHabilInformatica.Pages.Produtos
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Session["ZoomCategoria"] = null;
+            if(Session["IncProdutoCategoria"] != null)
+                Response.Redirect("~/Pages/Produtos/ConProduto.aspx?cad=1");
+
             Response.Redirect("~/Pages/Produtos/ConCategoria.aspx");
         }
         protected void btnSalvar_Click(object sender, EventArgs e)

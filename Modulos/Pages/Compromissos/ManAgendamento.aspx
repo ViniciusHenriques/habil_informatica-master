@@ -401,14 +401,16 @@
                                                     OnRowCommand="grdAgendamento_RowCommand">
 
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText no-print" ItemStyle-CssClass="divCorAnotacao no-print">
+                                                    <asp:TemplateField HeaderText="#" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText no-print" ItemStyle-CssClass="divCorAnotacao no-print">
                                                         <ItemTemplate>
-                                                            <div style="width:15px;height:15px;background-color:<%# Eval("CorLembrete")%>" class="arredondamento" ></div>
+                                                            <div style="width:15px;height:15px;color:white;background-color:<%# Eval("CorLembrete")%>" class="arredondamento" >
+                                                                <%# Eval("CodigoIndex")%>
+                                                            </div>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField DataField="CodigoIndex" HeaderText="#" ItemStyle-Width = "5%"/>
-                                                    <asp:BoundField DataField="DataHoraAgendamento" HeaderText="Hora" DataFormatString="{0:HH:mm}" ItemStyle-Width = "5%"/>            
-                                                    <asp:BoundField DataField="Cpl_NomeCliente" HeaderText="Cliente" ItemStyle-Width = "20%"/>
+                                                    <asp:BoundField DataField="DataHoraAgendamento" HeaderText="Hora" DataFormatString="{0:HH:mm}" ItemStyle-Width = "3%"/>            
+                                                    <asp:BoundField DataField="Cpl_NomeCliente" HeaderText="Cliente" ItemStyle-Width = "10%"/>
+                                                    <asp:BoundField DataField="Cpl_NomeUsuario" HeaderText="Usuário" ItemStyle-Width = "10%"/>
                                                     <asp:TemplateField HeaderText="Situação" ItemStyle-CssClass="centerVertical ">
                                                         <ItemTemplate>
                                                             <label class="badge <%# Eval("Cpl_DsSituacao").ToString() %> "><%# Eval("Cpl_DsSituacao").ToString() %></label>
@@ -435,7 +437,7 @@
                                                             </asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Cancelar" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText" ItemStyle-CssClass="ButtonGrid" ItemStyle-Width = "10%">
+                                                    <asp:TemplateField HeaderText="#" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText" ItemStyle-CssClass="ButtonGrid" ItemStyle-Width = "10%">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="btnCancelar" runat="server" CssClass="btn btn-link " CommandName="Cancelar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Visible='<%# Eval("BtnCancelar") %>' >
                                                                 <img runat="server" src="../../Images/excluir.png" width="20" height="20"/>

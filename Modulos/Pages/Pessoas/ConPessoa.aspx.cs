@@ -157,6 +157,7 @@ namespace SoftHabilInformatica.Pages.Pessoas
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["ListaRepresentantes"] = null;
             Panel pnlPainel = (Panel)Master.FindControl("pnlPrincipalMasterPage");
             LinkButton cmdSair = (LinkButton)Master.FindControl("btnSair");
             Session["TabFocada"] = "home";
