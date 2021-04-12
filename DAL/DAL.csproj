@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.props" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.props')" />
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.props" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{162E7E36-D4AD-4F46-A8AA-6E51606E562E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net40-client\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net40-client\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.NFSeConverterX">
+      <HintPath>..\Modulos\TecnoSpeed\NFSe\Arquivos\DLLs\Interop.NFSeConverterX.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NFSeDataSetX">
+      <HintPath>..\Modulos\TecnoSpeed\NFSe\Arquivos\DLLs\Interop.NFSeDataSetX.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.NFSeX">
+      <HintPath>..\Modulos\TecnoSpeed\NFSe\Arquivos\DLLs\Interop.NFSeX.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net-1.2.15.1.2.15\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.10.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\AcaoDoDispositivo.cs" />
+    <Compile Include="Model\AgendamentoCompromisso.cs" />
+    <Compile Include="Model\AnexoAgendamento.cs" />
+    <Compile Include="Model\AnexoDocumento.cs" />
+    <Compile Include="Model\Doc_NotaFiscal.cs" />
+    <Compile Include="Model\Doc_OrdCompra.cs" />
+    <Compile Include="Model\Doc_CotPreco.cs" />
+    <Compile Include="Model\Doc_SolCompra.cs" />
+    <Compile Include="Model\Doc_OrdProducao.cs" />
+    <Compile Include="Model\HabilAtividadeExtra.cs" />
+    <Compile Include="Model\ItemDaComposicao.cs" />
+    <Compile Include="Model\Composicao.cs" />
+    <Compile Include="Model\Pais.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\PessoaProdutoDocumento.cs" />
+    <Compile Include="Model\RegFisIPI.cs" />
+    <Compile Include="Model\UploadDocumentoEletronico.cs" />
+    <Compile Include="Model\UsuarioAgendamento.cs" />
+    <Compile Include="Model\VolumeDocumento.cs" />
+    <Compile Include="Model\EmbalagemRetornavel.cs" />
+    <Compile Include="Model\BaixaDocumento.cs" />
+    <Compile Include="Model\Banco.cs" />
+    <Compile Include="Model\BandCartaoNFE.cs" />
+    <Compile Include="Model\BICosumoClienteProduto.cs" />
+    <Compile Include="Model\BodyDocumento.cs" />
+    <Compile Include="Model\Cargo.cs" />
+    <Compile Include="Model\CEST.cs" />
+    <Compile Include="Model\CidadeRegraFrete.cs" />
+    <Compile Include="Model\COFINS.cs" />
+    <Compile Include="Model\Departamento.cs" />
+    <Compile Include="Model\DispositivoMovelDoUsuario.cs" />
+    <Compile Include="Model\Doca.cs" />
+    <Compile Include="Model\Doc_CTe.cs" />
+    <Compile Include="Model\Doc_Pedido_Estoque.cs" />
+    <Compile Include="Model\Doc_Pedido.cs" />
+    <Compile Include="Model\EstoqueProduto.cs" />
+    <Compile Include="Model\EventoEletronicoDocumento.cs" />
+    <Compile Include="Model\Fabricante.cs" />
+    <Compile Include="Model\GpoComissao.cs" />
+    <Compile Include="Model\HabilEmailAnexo.cs" />
+    <Compile Include="Model\HabilEmailCriado.cs" />
+    <Compile Include="Model\HabilEmailDestinatario.cs" />
+    <Compile Include="Model\CondPagamento.cs" />
+    <Compile Include="Model\ContaCorrente.cs" />
+    <Compile Include="Model\Doc_CtaReceber.cs" />
+    <Compile Include="Model\EventoDocumento.cs" />
+    <Compile Include="Model\FmaPagamentoNFE.cs" />
+    <Compile Include="Model\GeracaoSequencialDocumento.cs" />
+    <Compile Include="Model\GeradorSequencialDocumentoEmpresa.cs" />
+    <Compile Include="Model\GrupoPessoa.cs" />
+    <Compile Include="Model\HabilEmailUsuarioContato.cs" />
+    <Compile Include="Model\Habil_Log.cs" />
+    <Compile Include="Model\Doc_CtaPagar.cs" />
+    <Compile Include="Model\HabilTipoBloqueio.cs" />
+    <Compile Include="Model\ImpostoProdutoDocumento.cs" />
+    <Compile Include="Model\IntegracaoPedido.cs" />
+    <Compile Include="Model\IntegraDocumentoEletronico.cs" />
+    <Compile Include="Model\Inventario.cs" />
+    <Compile Include="Model\ItemDocumento.cs" />
+    <Compile Include="Model\ItemDoInventario.cs" />
+    <Compile Include="Model\LiberacaoDocumento.cs" />
+    <Compile Include="Model\Lote.cs" />
+    <Compile Include="Model\MovimentacaoInterna.cs" />
+    <Compile Include="Model\ProdutoDocumento.cs" />
+    <Compile Include="Model\ItemTipoServico.cs" />
+    <Compile Include="Model\Doc_NotaFiscalServico.cs" />
+    <Compile Include="Model\Localizacao.cs" />
+    <Compile Include="Model\Marca.cs" />
+    <Compile Include="Model\NatOperacao.cs" />
+    <Compile Include="Model\Doc_Orcamento.cs" />
+    <Compile Include="Model\Doc_OrdemServico.cs" />
+    <Compile Include="Model\ParcelaDocumento.cs" />
+    <Compile Include="Model\ParSistema.cs" />
+    <Compile Include="Model\Doc_SolicitacaoAtendimento.cs" />
+    <Compile Include="Model\PIS.cs" />
+    <Compile Include="Model\RegraFrete.cs" />
+    <Compile Include="Model\TipoDocumento.cs" />
+    <Compile Include="Model\PlanoContas.cs" />
+    <Compile Include="Model\TipoCobranca.cs" />
+    <Compile Include="Model\Habil_TipoOperacaoFiscal.cs" />
+    <Compile Include="Model\GpoTribProduto.cs" />
+    <Compile Include="Model\GpoTribPessoa.cs" />
+    <Compile Include="Model\AplicacaoUso.cs" />
+    <Compile Include="Model\RegFisIcmsAplicacaoUso.cs" />
+    <Compile Include="Model\RegFisIcmsGpoTribProduto.cs" />
+    <Compile Include="Model\RegFisIcmsTipoOperFiscal.cs" />
+    <Compile Include="Model\RegFisIcmsLocalizacao.cs" />
+    <Compile Include="Model\RegFisIcmsGpoTribPessoa.cs" />
+    <Compile Include="Model\RegFisIcms.cs" />
+    <Compile Include="Model\SitTributaria.cs" />
+    <Compile Include="Model\RegTributario.cs" />
+    <Compile Include="Model\Habil_Estacao.cs" />
+    <Compile Include="Model\TabIcms.cs" />
+    <Compile Include="Model\MovAcesso.cs" />
+    <Compile Include="Model\TipoAcesso.cs" />
+    <Compile Include="Model\CategoriaVeiculo.cs" />
+    <Compile Include="Model\TipoOperacao.cs" />
+    <Compile Include="Model\TipoServico.cs" />
+    <Compile Include="Model\Veiculo.cs" />
+    <Compile Include="Model\clsMensagem.cs" />
+    <Compile Include="Model\Bairro.cs" />
+    <Compile Include="Model\clsValidacao.cs" />
+    <Compile Include="Model\CEP.cs" />
+    <Compile Include="Model\Categoria.cs" />
+    <Compile Include="Model\Comprador.cs" />
+    <Compile Include="Model\DBTabelaCampos.cs" />
+    <Compile Include="Model\FmaPagamento.cs" />
+    <Compile Include="Model\Caixa.cs" />
+    <Compile Include="Model\ItemDaLicenca.cs" />
+    <Compile Include="Model\Licenca.cs" />
+    <Compile Include="Model\ProdutoPorCategoria.cs" />
+    <Compile Include="Model\ItemDoPedido.cs" />
+    <Compile Include="Model\Unidade.cs" />
+    <Compile Include="Model\PerfilUsuarioEmpresa.cs" />
+    <Compile Include="Model\Empresa.cs" />
+    <Compile Include="Model\Pessoa_Contato.cs" />
+    <Compile Include="Model\Pessoa_Endereco.cs" />
+    <Compile Include="Model\Pessoa_Inscricao.cs" />
+    <Compile Include="Model\Municipio.cs" />
+    <Compile Include="Model\Estado.cs" />
+    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\DBTabela.cs" />
+    <Compile Include="Model\PerfilUsuario.cs" />
+    <Compile Include="Model\MenuSistema.cs" />
+    <Compile Include="Model\ModuloSistema.cs" />
+    <Compile Include="Model\Permissao.cs" />
+    <Compile Include="Model\Pessoa.cs" />
+    <Compile Include="Model\Habil_Tipo.cs" />
+    <Compile Include="Model\Vendedor.cs" />
+    <Compile Include="Persistence\AcaoDoDispositivoDAL.cs" />
+    <Compile Include="Persistence\AgendamentoCompromissoDAL.cs" />
+    <Compile Include="Persistence\AnexoAgendamentoDAL.cs" />
+    <Compile Include="Persistence\AnexoDocumentoDAL.cs" />
+    <Compile Include="Persistence\Doc_NotaFiscalDAL.cs" />
+    <Compile Include="Persistence\Doc_OrdCompraDAL.cs" />
+    <Compile Include="Persistence\Doc_CotPrecoDAL.cs" />
+    <Compile Include="Persistence\Doc_SolCompraDAL.cs" />
+    <Compile Include="Persistence\Doc_OrdProducaoDAL.cs" />
+    <Compile Include="Persistence\HabilAtividadeExtraDAL.cs" />
+    <Compile Include="Persistence\ItemDaComposicaoDAL.cs" />
+    <Compile Include="Persistence\ComposicaoDAL.cs" />
+    <Compile Include="Persistence\PaisDAL.cs" />
+    <Compile Include="Persistence\PessoaProdutoDocumentoDAL.cs" />
+    <Compile Include="Persistence\RegFisIPIDAL.cs" />
+    <Compile Include="Persistence\EmbalagemRetornavelDAL.cs" />
+    <Compile Include="Persistence\BIConsumoClienteProdutoDAL.cs" />
+    <Compile Include="Persistence\BodyDocumentoDAL.cs" />
+    <Compile Include="Persistence\CargoDAL.cs" />
+    <Compile Include="Persistence\BaixaDocumentoDAL.cs" />
+    <Compile Include="Persistence\BancoDAL.cs" />
+    <Compile Include="Persistence\BandCartaoNFEDAL.cs" />
+    <Compile Include="Persistence\CESTDAL.cs" />
+    <Compile Include="Persistence\CidadeRegraFreteDAL.cs" />
+    <Compile Include="Persistence\COFINSDAL.cs" />
+    <Compile Include="Persistence\CondPagamentoDAL.cs" />
+    <Compile Include="Persistence\ContaCorrenteDAL.cs" />
+    <Compile Include="Persistence\CTEFuncoes.cs" />
+    <Compile Include="Persistence\DepartamentoDAL.cs" />
+    <Compile Include="Persistence\DispositivoMovelDoUsuarioDAL.cs" />
+    <Compile Include="Persistence\DocaDAL.cs" />
+    <Compile Include="Persistence\Doc_CTeDAL.cs" />
+    <Compile Include="Persistence\Doc_PedidoDAL.cs" />
+    <Compile Include="Persistence\EstoqueProdutoDAL.cs" />
+    <Compile Include="Persistence\EventoEletronicoDocumentoDAL.cs" />
+    <Compile Include="Persistence\FabricanteDAL.cs" />
+    <Compile Include="Persistence\ConferenciaFreteDAL.cs" />
+    <Compile Include="Persistence\GpoComissaoDAL.cs" />
+    <Compile Include="Persistence\HabilEmailAnexoDAL.cs" />
+    <Compile Include="Persistence\HabilEmailCriadoDAL.cs" />
+    <Compile Include="Persistence\HabilEmailDestinatarioDAL.cs" />
+    <Compile Include="Persistence\HabilEmailUsuarioContatoDAL.cs" />
+    <Compile Include="Persistence\HabilTipoBloqueioDAL.cs" />
+    <Compile Include="Persistence\Habil_Impostos.cs" />
+    <Compile Include="Persistence\ImpostoProdutoDocumentoDAL.cs" />
+    <Compile Include="Persistence\InventarioDAL.cs" />
+    <Compile Include="Persistence\LiberacaoDocumentoDAL.cs" />
+    <Compile Include="Persistence\LoteDAL.cs" />
+    <Compile Include="Persistence\MarcaDAL.cs" />
+    <Compile Include="Persistence\MovimentacaoInternaDAL.cs" />
+    <Compile Include="Persistence\PISDAL.cs" />
+    <Compile Include="Persistence\RegraFreteDAL.cs" />
+    <Compile Include="Persistence\RelatorioContratosDAL.cs" />
+    <Compile Include="Persistence\UploadDocumentoEletronicoDAL.cs" />
+    <Compile Include="Persistence\VendedorDAL.cs" />
+    <Compile Include="Persistence\Doc_CtaReceberDAL.cs" />
+    <Compile Include="Persistence\Doc_OrdemServicoDAL.cs" />
+    <Compile Include="Persistence\EventoDocumentoDAL.cs" />
+    <Compile Include="Persistence\FmaPagamentoNFEDAL.cs" />
+    <Compile Include="Persistence\GeracaoSequencialDocumentoDAL.cs" />
+    <Compile Include="Persistence\GeradorSequencialDocumentoEmpresaDAL.cs" />
+    <Compile Include="Persistence\GrupoPessoaDAL.cs" />
+    <Compile Include="Persistence\Habil_LogDAL.cs" />
+    <Compile Include="Persistence\Doc_CtaPagarDAL.cs" />
+    <Compile Include="Persistence\IntegracacaoPedidoDAL.cs" />
+    <Compile Include="Persistence\IntegraDocumentoEletronicoDAL.cs" />
+    <Compile Include="Persistence\ItemDocumentoDAL.cs" />
+    <Compile Include="Persistence\ProdutoDocumentoDAL.cs" />
+    <Compile Include="Persistence\ItemTipoServicoDAL.cs" />
+    <Compile Include="Persistence\Doc_NotaFiscalServicoDAL.cs" />
+    <Compile Include="Persistence\LocalizacaoDAL.cs" />
+    <Compile Include="Persistence\NatOperacaoDAL.cs" />
+    <Compile Include="Persistence\NFSeFuncoes.cs" />
+    <Compile Include="Persistence\Doc_OrcamentoDAL.cs" />
+    <Compile Include="Persistence\ParcelaDocumentoDAL.cs" />
+    <Compile Include="Persistence\ParSistemaDAL.cs" />
+    <Compile Include="Persistence\Doc_SolicitacaoAtendimentoDAL.cs" />
+    <Compile Include="Persistence\TipoDocumentoDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsTipoOperFiscalDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsGpoTribProdutoDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsAplicacaoUsoDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsLocalizacaoDAL.cs" />
+    <Compile Include="Persistence\RegFisIcmsGpoTribPessoaDAL.cs" />
+    <Compile Include="Persistence\PlanoContasDAL .cs" />
+    <Compile Include="Persistence\TipoCobrancaDAL.cs" />
+    <Compile Include="Persistence\Habil_TipoOperacaoFiscalDAL.cs" />
+    <Compile Include="Persistence\GpoTribProdutoDAL.cs" />
+    <Compile Include="Persistence\GpoTribPessoaDAL.cs" />
+    <Compile Include="Persistence\MovAcessoDAL.cs" />
+    <Compile Include="Persistence\AplicacaoUsoDAL.cs" />
+    <Compile Include="Persistence\Habil_SitTributariaDAL.cs" />
+    <Compile Include="Persistence\Habil_RegTributarioDAL.cs" />
+    <Compile Include="Persistence\Habil_EstacaoDAL.cs" />
+    <Compile Include="Persistence\TabIcmsDAL.cs" />
+    <Compile Include="Persistence\TipoAcessoDAL.cs" />
+    <Compile Include="Persistence\CategoriaVeiculoDAL.cs" />
+    <Compile Include="Persistence\TipoOperacaoDAL.cs" />
+    <Compile Include="Persistence\TipoServicoDAL.cs" />
+    <Compile Include="Persistence\VeiculoDAL.cs" />
+    <Compile Include="Persistence\CEPDAL.cs" />
+    <Compile Include="Persistence\clsHash.cs" />
+    <Compile Include="Persistence\Conexao.cs" />
+    <Compile Include="Persistence\BairroDAL.cs" />
+    <Compile Include="Persistence\CategoriaDAL.cs" />
+    <Compile Include="Persistence\CompradorDAL.cs" />
+    <Compile Include="Persistence\FmaPagamentoDAL.cs" />
+    <Compile Include="Persistence\CaixaDAL.cs" />
+    <Compile Include="Persistence\ItemDoPedidoDAL.cs" />
+    <Compile Include="Persistence\LicencaDAL.cs" />
+    <Compile Include="Persistence\ProdutoPorCategoriaDAL.cs" />
+    <Compile Include="Persistence\ProdutoDAL.cs" />
+    <Compile Include="Persistence\UnidadeDAL.cs" />
+    <Compile Include="Persistence\PerfilUsuarioEmpresaDAL.cs" />
+    <Compile Include="Persistence\EmpresaDAL.cs" />
+    <Compile Include="Persistence\PessoaContatoDAL.cs" />
+    <Compile Include="Persistence\PessoaEnderecoDAL.cs" />
+    <Compile Include="Persistence\PessoaInscricaoDAL.cs" />
+    <Compile Include="Persistence\MunicipioDAL.cs" />
+    <Compile Include="Persistence\EstadoDAL.cs" />
+    <Compile Include="Persistence\UsuarioDAL.cs" />
+    <Compile Include="Persistence\DBTabelaDAL.cs" />
+    <Compile Include="Persistence\PerfilUsuarioDAL.cs" />
+    <Compile Include="Persistence\MenuSistemaDAL.cs" />
+    <Compile Include="Persistence\ModuloSistemaDAL.cs" />
+    <Compile Include="Persistence\PermissaoDAL.cs" />
+    <Compile Include="Persistence\PessoaDAL.cs" />
+    <Compile Include="Persistence\Habil_TipoDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libman.json" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CTeDataSetX">
+      <Guid>{6541AD43-8791-4826-9E17-073400A64454}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CTeX">
+      <Guid>{58500EE7-F490-4D33-87D3-FE85509E3882}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets" Condition="Exists('..\packages\Microsoft.Build.Tasks.Git.1.0.0\build\Microsoft.Build.Tasks.Git.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets" Condition="Exists('..\packages\Microsoft.SourceLink.Common.1.0.0\build\Microsoft.SourceLink.Common.targets')" />
+  <Import Project="..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets" Condition="Exists('..\packages\Microsoft.SourceLink.GitHub.1.0.0\build\Microsoft.SourceLink.GitHub.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
