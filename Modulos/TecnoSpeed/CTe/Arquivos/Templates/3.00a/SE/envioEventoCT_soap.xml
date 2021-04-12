@@ -1,0 +1,1 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cter="http://www.portalfiscal.inf.br/cte/wsdl/CteRecepcaoEvento"><soap:Header><cter:cteCabecMsg><cter:cUF>%s</cter:cUF><cter:versaoDados>%s</cter:versaoDados></cter:cteCabecMsg></soap:Header><soap:Body><cter:cteDadosMsg>%s</cter:cteDadosMsg></soap:Body></soap:Envelope>

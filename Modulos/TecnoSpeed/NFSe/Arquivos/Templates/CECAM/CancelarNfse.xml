@@ -1,0 +1,9 @@
+<tem:CancelarNotaFiscalEletronica>
+  <tem:cnpjcpfprestador>%s</tem:cnpjcpfprestador>
+  <tem:xmlNotas>
+    <![CDATA[         
+         <ISSECancelaNFe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDISSECancelaNFe.xsd"><Header><Versao>004</Versao><CNPJCPFPrestador>%s</CNPJCPFPrestador><Chave>%s</Chave></Header><Filtro><NumeroNF>%s</NumeroNF><ChaveValidacao>%s</ChaveValidacao><MotivoCancelamento>%s</MotivoCancelamento></Filtro></ISSECancelaNFe>         
+         ]]>
+  </tem:xmlNotas>
+  <tem:versao>004</tem:versao>
+</tem:CancelarNotaFiscalEletronica>

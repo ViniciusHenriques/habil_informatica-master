@@ -1,0 +1,7 @@
+<ConsultarNfseNumero xmlns="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx">
+	<CodigoMunicipio>%s</CodigoMunicipio>
+	<InscricaoMunicipal>%s</InscricaoMunicipal>
+	<Login>%s</Login>
+	<Senha>%s</Senha>
+	<NumeroNF>%s</NumeroNF>
+</ConsultarNfseNumero>

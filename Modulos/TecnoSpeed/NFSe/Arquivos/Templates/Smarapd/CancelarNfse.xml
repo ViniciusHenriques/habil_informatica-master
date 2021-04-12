@@ -1,0 +1,9 @@
+<nfse:CancelarNfseRequest>
+	<nfseCabecMsg>
+		<![CDATA[<?xml version='1.0' encoding='UTF-8'?><cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"
+versao="2.04"><versaoDados>2.04</versaoDados></cabecalho>]]>
+	</nfseCabecMsg>
+	<nfseDadosMsg>
+		<![CDATA[%s]]>
+	</nfseDadosMsg>
+</nfse:CancelarNfseRequest>

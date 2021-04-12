@@ -1,0 +1,452 @@
+{
+  Variveis externas disponveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _CamposMunicipio, _CodCidades,
+  _Tx2: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _ValorCampo,_DataEmissao,_linha,_NomeCampo,
+  _Cidade, _Uf  : string;
+  _inicio, _QtdeRps: Integer;
+  _PastaTecnoNFSe: string;
+  _ListaCidades : String;
+  _registro : Integer;
+  _aux : string;
+  _Data : TDateTime;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_LOTE = 'NFSe';
+  DSCIDADE_NOTA = 'Rps';
+  
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\BuscarInfoCidade.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+
+
+  procedure ExceptionValorInvalidoCampo(const aNomeCampo: string);
+  begin
+    RaiseException('Valor inválido para o campo: ' + aNomeCampo);
+  end;
+ 
+  procedure SetarCampoValorTamanhoRemessaBauhaus(const aNomeCampoCidade, aValor: string; aTamanho: integer);
+  begin
+    if Length(aValor) > aTamanho then
+      RaiseException('O valor: "' + aValor + '" ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)');
+
+    if (Length(aValor) = aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, aValor)
+    else
+      SetarCampoValor(aNomeCampoCidade, PreencheZerosEsquerda(aValor, aTamanho));
+  end;
+
+  function FormatarMoeda(const aCampo: String): String;
+  var
+    _Valor : string;
+  begin
+    Result := aCampo;
+    if (Result <> '') and (Result <> '0') then
+    begin
+      { Formatando para casos que o StrToFloat não trata, Ex: 0.0000, 0.0 }
+      _Valor := StringReplace(Result, '.', '', [rfReplaceAll]);
+      _Valor := StringReplace(_Valor, ',', '', [rfReplaceAll]);
+      if StrToInt(_Valor) = 0 then
+        Result := '0,00';
+
+      Result := FormataCurrency(Result);
+      Result := StringReplace(Result, '.', ',', [rfReplaceAll]);
+    end
+    else
+      Result := '0,00';
+  end;
+
+  function ObterCodigoCidadeBauhaus(const aCampo : String): String;
+  begin
+    _Cidade := BuscarInfoCidade('CodIBGE', aCampo, 'NomeMunicIBGE');
+    _Uf := BuscarInfoCidade('CodIBGE', aCampo, 'UF');
+    _CodCidades.LoadFromFile(_PastaTecnoNFSe + 'ListaCidadesBauhaus.txt')
+    Result := _CodCidades.Values[_Cidade + '/' + _Uf];
+  end;
+
+begin
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+  _tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+  _CodCidades := TStringList.create;
+  try
+    Progress('Carregando contedo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando Padro TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+      // Editar dados carregados no Datasets, para fazer algumas transformaes
+
+      Progress('Usando Padro TecnoNFSe: carregando dados das notas');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+      _DsTecnoAtual.First;
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+        _DsCidadeAtual.Append;
+
+        SetarCampoValorTamanhoRemessaBauhaus('NumeroNFSe', CampoTecno('NumeroNFSe'), 15);
+
+        SetarCampoValor('SituacaoNota', '1');
+
+        _ValorCampo := CampoTecno('DataEmissao');
+        if _ValorCampo = '' then
+          _ValorCampo := CampoTecno('DataEmissaoNFSe');
+        if (_ValorCampo <> '') and ((Length(_ValorCampo) = 19) or (Length(_ValorCampo) = 10)) then
+        begin
+          _ValorCampo := FormatAnyDateTime(_ValorCampo, 'dd/mm/yyyy hh:mm:ss');
+          SetarCampoValor('DataEmissaoNFSe', _ValorCampo);
+          _ValorCampo := FormatAnyDateTime(_ValorCampo, 'dd/mm/yyyy');
+          SetarCampoValor('DataEmissao', _ValorCampo);
+        end
+        else
+          RaiseException('Para essa cidade o campo DataEmissao  obrigatorio e deve ser no seguinte formato: YYYY-MM-DDThh:mm:ss');
+
+        _ValorCampo := CampoTecno('NaturezaTributacao');
+        if AnsiMatchText(_ValorCampo, ['1', '2', '3', '4', '5', '6']) then
+          SetarCampoValorTamanhoRemessaBauhaus('NaturezaTributacao', CampoTecno('NaturezaTributacao'), 2);
+
+        case StrToIntDef(CampoTecno('TipoTributacao'), -1) of
+          1, 3, 4 : SetarCampoValor('NaturezaTributacao', '03');
+          2 : SetarCampoValor('NaturezaTributacao', '04');
+          6 : SetarCampoValor('NaturezaTributacao', '01');
+          7 : SetarCampoValor('NaturezaTributacao', '02');
+        end;
+
+        ValidaCampoVazio('NumeroRps');
+        SetarCampoValorTamanhoRemessaBauhaus('NumeroRps', CampoTecno('NumeroRps'), 15);
+        SetarCampoValorTamanhoRemessaBauhaus('SerieRps', CampoTecno('SerieRps'), 5);
+        ValidaCampoVazio('TipoRps');
+        _ValorCampo := CampoTecno('TipoRps');
+        if AnsiMatchText(_ValorCampo, ['1', '2', '3']) then
+          SetarCampoValorTamanhoRemessaBauhaus('TipoRps', CampoTecno('TipoRps'), 1)
+        else
+          ExceptionValorInvalidoCampo('TipoRps. Deve ser preenchido com os valores 1(RPS), 2(NF mista) ou 3(Cupom).');
+
+        _ValorCampo := CampoTecno('Competencia');
+        if (_ValorCampo <> '') and ((Length(_ValorCampo) = 19) or (Length(_ValorCampo) = 10)) then
+        begin
+          _ValorCampo := FormatAnyDateTime(_ValorCampo, 'yyyymm');
+          SetarCampoValor('Competencia', _ValorCampo);
+        end
+        else
+          RaiseException('Para essa cidade o campo Competencia  obrigatorio e deve ser no seguinte formato: YYYY-MM-DD');
+
+        _ValorCampo := CampoTecno('DescricaoRPS');
+        if _ValorCampo <> '' then
+        begin
+          case AnsiIndexText(_ValorCampo, ['1', 'Normal', '2', 'Cancelada']) of
+            0, 1:
+              SetarCampoValor('DescricaoRPS', '1');
+            2, 3:
+              SetarCampoValor('DescricaoRPS', '2');
+          else
+            ExceptionValorInvalidoCampo('DescricaoRPS. Valores aceitos: "1" ou "Normal" para quando o status do RPS seja Normal. E "2" ou "Cancelada" para quando o status do RPS seja cancelado.');
+          end;
+        end
+        else
+          SetarCampoValor('DescricaoRPS', '1');
+
+        SetarCampoValorTamanhoRemessaBauhaus('NumeroRpsSubstituido', CampoTecno('NumeroRpsSubstituido'), 15);
+        SetarCampoValorTamanhoRemessaBauhaus('SerieRpsSubstituido', CampoTecno('SerieRpsSubstituido'), 5);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorServicos'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorServicos', _ValorCampo, 16);
+
+        _ValorCampo := RemoveMascara(CampoTecno('CodigoCnae'));
+        if (_ValorCampo <> '') then
+        begin
+          if (Length(_ValorCampo) = 7) then
+            SetarCampoValor('CodigoCnae', _ValorCampo)
+          else
+            ExceptionValorInvalidoCampo('CodigoCnae. O campo deve ser preenchido com o código CNAE 2.0 do servio, e deve possui 7 caracteres.');
+        end
+        else
+          SetarCampoValor('CodigoCnae', '0000000');
+
+        _ValorCampo := RemoveMascara(CampoTecno('CodigoItemListaServico'));
+        SetarCampoValorTamanhoRemessaBauhaus('CodigoItemListaServico', _ValorCampo, 15);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('BaseCalculo'));
+        SetarCampoValorTamanhoRemessaBauhaus('BaseCalculo', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('AliquotaISS'));
+        if _ValorCampo <> '0,00' then
+          SetarCampoValorTamanhoRemessaBauhaus('AliquotaISS', _ValorCampo, 16)
+        else
+          ExceptionValorInvalidoCampo('AliquotaISS. O campo é obrigatório e deve ser preenchido com o valor da aliquota do serviço.');
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorIss'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorIss', _ValorCampo, 16);
+
+        ValidaCampoVazio('IssRetido');
+        _ValorCampo := CampoTecno('IssRetido');
+        if _ValorCampo <> '' then
+        begin
+          case AnsiIndexText(_ValorCampo, ['1', 'sim', 'true', '2', 'nao', 'false', 'no']) of
+            0, 1, 2:
+              SetarCampoValor('IssRetido', '1');
+            3, 4, 5, 6:
+              SetarCampoValor('IssRetido', '2');
+          else
+            ExceptionValorInvalidoCampo('IssRetido. Valores aceitos: "1", "true" ou "sim" para quando o ValorIss for Retido. E "2", "nao", "no" ou "false" para quando o ValorIss não for retido.');
+          end;
+        end;
+
+        ValidaCampoVazio('DiscriminacaoServico');
+        SetarCampoValorTamObrigRemessa('DiscriminacaoServico', 'DiscriminacaoServico', 2000);
+
+        ValidaCampoVazio('CodigoCidadePrestacao');
+        _ValorCampo := ObterCodigoCidadeBauhaus(CampoTecno('CodigoCidadePrestacao'));
+        SetarCampoValorTamanhoRemessaBauhaus('CodigoCidadePrestacao', _ValorCampo, 15);
+
+        _ValorCampo := CampoTecno('QuantidadeServicos');
+        if _ValorCampo = '' then
+          _ValorCampo := '1';
+        SetarCampoValorTamanhoRemessaBauhaus('QuantidadeServicos', _ValorCampo, 15);
+
+        _ValorCampo := CampoTecno('ValorUnitarioServico');
+        if (_ValorCampo = '') and (Campo(_DsCidadeAtual, 'QuantidadeServicos').AsString = '1') then
+          _ValorCampo := CampoTecno('ValorServicos');
+        _ValorCampo := FormatarMoeda(_ValorCampo);
+        SetarCampoValorTamanhoRemessaBauhaus('ValorUnitarioServico', _ValorCampo, 16);
+
+        ValidaCampoVazio('InscricaoMunicipalPrestador');
+        SetarCampoValorTamanhoRemessaBauhaus('CMC', CampoTecno('InscricaoMunicipalPrestador'), 15);
+
+        ValidaCampoVazio('RazaoSocialPrestador');
+        SetarCampoValorTamObrigRemessa('RazaoSocialPrestador', 'RazaoSocialPrestador', 115);
+
+        if CampoTecno('NomeFantasiaPrestador') = '' then
+          SetarCampoValorTamObrigRemessa('NomeFantasiaPrestador', 'RazaoSocialPrestador', 60)
+        else
+          SetarCampoValorTamObrigRemessa('NomeFantasiaPrestador', 'NomeFantasiaPrestador', 60);
+
+        ValidaCampoVazio('CpfCnpjPrestador');
+        _ValorCampo := CampoTecno('CpfCnpjPrestador');
+        if (Length(_ValorCampo) = 11) or (Length(_ValorCampo) = 14) then
+          SetarCampoValorTamanhoRemessaBauhaus('CpfCnpjPrestador', _ValorCampo, 14)
+        else
+          ExceptionValorInvalidoCampo('CpfCnpjPrestador. Deve possuir 11 ou 14 carácteres.');
+
+        ValidaCampoVazio('EnderecoPrestador');
+        SetarCampoValorTamObrigRemessa('EnderecoPrestador', 'EnderecoPrestador', 125);
+
+        _ValorCampo := CampoTecno('NumeroPrestador');
+        if _ValorCampo <> '' then
+          SetarCampoValorTamObrigRemessa('NumeroPrestador', 'NumeroPrestador', 10)
+        else
+          SetarCampoValor('NumeroPrestador', 'S/N');
+
+        SetarCampoValorTamanhoRemessa('ComplementoPrestador', CampoTecno('ComplementoPrestador'), 60);
+
+        ValidaCampoVazio('BairroPrestador');
+        SetarCampoValorTamObrigRemessa('BairroPrestador', 'BairroPrestador', 60);
+
+        ValidaCampoVazio('CodigoCidadePrestador');
+        _ValorCampo := ObterCodigoCidadeBauhaus(CampoTecno('CodigoCidadePrestador'));
+        SetarCampoValorTamanhoRemessaBauhaus('CodigoCidadePrestador', _ValorCampo, 15);
+        _ValorCampo := CampoTecno('CodigoCidadePrestador');
+        if _ValorCampo <> '' then
+        begin
+          _ValorCampo := BuscarInfoCidade('CodIBGE', CampoTecno('CodigoCidadePrestador'), 'UF');
+          SetarCampoValor('UfPrestador', 'SC');
+        end;
+
+        ValidaCampoVazio('CepPrestador');
+        _ValorCampo := RemoveMascara(CampoTecno('CepPrestador'));
+        if Length(_ValorCampo) = 8 then
+          SetarCampoValor('CepPrestador', _ValorCampo)
+        else
+          ExceptionValorInvalidoCampo('CepPrestador. O campo deve possuir apenas 8 digitos.');
+
+        SetarCampoValorTamanhoRemessa('EmailPrestador', CampoTecno('EmailPrestador'), 80);
+
+        ValidaCampoVazio('TelefonePrestador');
+        _ValorCampo := RemoveMascara(CampoTecno('DDDPrestador')) + RemoveMascara(CampoTecno('TelefonePrestador'));
+        if (Length(_ValorCampo) = 10) then
+        begin
+          _ValorCampo := '0' + _ValorCampo;
+          SetarCampoValor('TelefonePrestador', _ValorCampo);
+        end
+        else if (Length(_ValorCampo) = 11) or (Length(_ValorCampo) = 12)then
+          SetarCampoValor('TelefonePrestador', _ValorCampo)
+        else
+          ExceptionValorInvalidoCampo('TelefonePrestador. O campo deve ser preenchido com o campo DDDPrestador + Telefone, possuindo um total de 11 dgitos. Ex: 04412341234');
+
+        ValidaCampoVazio('CpfCnpjTomador');
+        _ValorCampo := CampoTecno('CpfCnpjTomador');
+        if (Length(_ValorCampo) = 11) or (Length(_ValorCampo) = 14) then
+          SetarCampoValorTamanhoRemessaBauhaus('CpfCnpjTomador', _ValorCampo, 14)
+        else
+          ExceptionValorInvalidoCampo('CpfCnpjTomador. Deve possuir 11 ou 14 carácteres.');
+
+        _ValorCampo := CampoTecno('TipoDocumentoTomador');
+        if _ValorCampo <> '' then
+        begin
+          case AnsiIndexText(_ValorCampo, ['1', '2', '3']) of
+            0:
+              SetarCampoValor('TipoDocumentoTomador', '01');
+            1:
+              SetarCampoValor('TipoDocumentoTomador', '02');
+            2:
+              SetarCampoValor('TipoDocumentoTomador', '03');
+          else
+            ExceptionValorInvalidoCampo('TipoDocumentoTomador. Valores aceitos: "1" para Tomador Fisico, "2" para Tomador Juridico e "3" para Tomador Estrangeiro/No informado.');
+          end;
+        end
+        else
+        begin
+          _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+          case length(_ValorCampo) of
+            14:
+              SetarCampoValor('TipoDocumentoTomador', '02');
+            11:
+              SetarCampoValor('TipoDocumentoTomador', '01');
+          end;
+        end;
+
+        ValidaCampoVazio('RazaoSocialTomador');
+        SetarCampoValorTamObrigRemessa('RazaoSocialTomador', 'RazaoSocialTomador', 115);
+
+        ValidaCampoVazio('EnderecoTomador');
+        SetarCampoValorTamObrigRemessa('EnderecoTomador', 'EnderecoTomador', 125);
+
+        _ValorCampo := CampoTecno('NumeroTomador');
+        if _ValorCampo <> '' then
+          SetarCampoValorTamObrigRemessa('NumeroTomador', 'NumeroTomador', 10)
+        else
+          SetarCampoValor('NumeroTomador', 'S/N');
+
+        SetarCampoValorTamanhoRemessa('ComplementoTomador', CampoTecno('ComplementoTomador'), 60);
+
+        ValidaCampoVazio('BairroTomador');
+        SetarCampoValorTamObrigRemessa('BairroTomador', 'BairroTomador', 60);
+
+        ValidaCampoVazio('CodigoCidadeTomador');
+        _ValorCampo := ObterCodigoCidadeBauhaus(CampoTecno('CodigoCidadeTomador'));
+        SetarCampoValorTamanhoRemessaBauhaus('CodigoCidadeTomador', _ValorCampo, 15);
+
+        _ValorCampo := CampoTecno('UfTomador');
+        if (_ValorCampo <> '') and (Length(_ValorCampo) = 2) then
+          SetarCampoValor('UfTomador', _ValorCampo)
+        else
+        begin
+          _ValorCampo := CampoTecno('CodigoCidadeTomador');
+          if _ValorCampo <> '' then
+          begin
+            _ValorCampo := BuscarInfoCidade('CodIBGE', CampoTecno('CodigoCidadeTomador'), 'UF');
+            SetarCampoValor('UfTomador', CampoTecno('UfTomador'));
+          end;
+        end;
+
+        ValidaCampoVazio('CepTomador');
+        _ValorCampo := RemoveMascara(CampoTecno('CepTomador'));
+        if Length(_ValorCampo) = 8 then
+          SetarCampoValor('CepTomador', _ValorCampo)
+        else
+          ExceptionValorInvalidoCampo('CepTomador. O campo deve possuir apenas 8 digitos.');
+
+        SetarCampoValorTamanhoRemessa('EmailTomador', CampoTecno('EmailTomador'), 80);
+
+        ValidaCampoVazio('TelefoneTomador');
+        _ValorCampo := RemoveMascara(CampoTecno('DDDTomador')) + RemoveMascara(CampoTecno('TelefoneTomador'));
+        if (Length(_ValorCampo) = 10) then
+        begin
+          _ValorCampo := '0' + _ValorCampo;
+          SetarCampoValor('TelefoneTomador', _ValorCampo);
+        end
+        else if (Length(_ValorCampo) = 11) or (Length(_ValorCampo) = 12) then
+          SetarCampoValor('TelefoneTomador', _ValorCampo)
+        else
+          ExceptionValorInvalidoCampo('TelefoneTomador. O campo deve ser preenchido com o DDD + Telefone, possuindo um total de 11 dgitos. Ex: 04412341234');
+
+        _ValorCampo := CampoTecno('DataEmissaoNFSeCancelada');
+        if (_ValorCampo <> '') and (Length(_ValorCampo) = 10) then
+          SetarCampoValor('DataCancelamento', _ValorCampo)
+        else if (_ValorCampo = '') then
+          SetarCampoValorTamanhoRemessa('DataCancelamento', CampoTecno('DataEmissaoNFSeCancelada'), 10)
+        else
+          ExceptionValorInvalidoCampo('DataEmissaoNFSeCancelada. O campo deve ser preenchido no seguinte formato: DD/MM/AAAA.');
+
+        // Status de Sincronizacao com o servidor municipal
+        if (CampoTecno('NumeroNfseSubstituida') <> '') or (CampoTecno('NumeroNFSeCancelada') <> '') then
+        begin
+          SetarCampoValor('StatusSincronizacao', '5'); // Cancelamento c/ Substituicao NFSe
+          if CampoTecno('NumeroNFSe') <> '' then
+            SetarCampoValorTamanhoRemessaBauhaus('NumeroNfseSubstituta', CampoTecno('NumeroNFSe'), 15)
+          else
+            ExceptionValorInvalidoCampo('NumeroNFSe, deve ser preenchido em caso de cancelamento com substituição de nota.');
+
+          if CampoTecno('NumeroNfseSubstituida') <> '' then
+            SetarCampoValorTamanhoRemessaBauhaus('NumeroNFSe', CampoTecno('NumeroNfseSubstituida'), 15)
+          else
+            SetarCampoValorTamanhoRemessaBauhaus('NumeroNFSe', CampoTecno('NumeroNFSeCancelada'), 15);
+        end
+        else
+        begin
+          SetarCampoValor('StatusSincronizacao', '1');
+          SetarCampoValorTamanhoRemessaBauhaus('NumeroNfseSubstituta', CampoTecno('NumeroNfseSubstituida'), 15);
+        end;
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorPis'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorPis', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorCofins'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorCofins', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorInss'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorInss', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorIr'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorIr', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorCsll'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorCsll', _ValorCampo, 16);
+
+        _ValorCampo := FormatarMoeda(CampoTecno('ValorDeducoes'));
+        SetarCampoValorTamanhoRemessaBauhaus('ValorDeducoes', _ValorCampo, 16);
+
+        SetarCampoValorTamanhoRemessaBauhaus('ValorTotalDeducoes', '0000000000000,00', 16);
+
+        _DsCidadeAtual.Post;
+        _DsTecnoAtual.Next;
+      end;
+      SetarCamposMunicipio(true);
+    end
+    else
+      RaiseException('Utilize o Tx2 padro TecnoNFSe para gerar o contedo da remessa');
+  finally
+    _tx2.free;
+    _CamposMunicipio.free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

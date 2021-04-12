@@ -1,0 +1,313 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _NomeCampo, _ValorCampo, _linha, _PastaTecnoNFSe: string;
+  _inicio, _QtdeRps : Integer;
+  _Data: TDateTime;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_LOTE = 'IDENTIFICACAO';
+  DSCIDADE_NOTA = 'RPS';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\FormataFloat.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+
+
+  procedure SetarCampoValorTamObrigatorioRemessa(const aNomeCampoCidade, aCampoTecno: string; aTamanho: integer);//Arrumar para NomeRemessa
+  begin
+    if Length(CampoTecno(aCampoTecno)) > aTamanho then 
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" não deve conter mais de ' + inttostr(aTamanho) + ' Caractere(s)');
+    if (CampoTecno(aCampoTecno) = '') then
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" é obrigatório e deve conter até ' + inttostr(aTamanho) + ' Caractere(s)')
+    else if (Length(CampoTecno(aCampoTecno)) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, CampoTecno(aCampoTecno));
+  end;
+
+  procedure SetarCampoValorTamRemessa(const aNomeCampoCidade, aValor: string; aTamanho: integer);
+  begin
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s) do campo ' + aNomeCampoCidade);
+      
+    if (Length(aValor) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, aValor);
+  end;
+  
+  procedure SetarCampoValorTamFixo(const aNomeCampoCidade, aValor, aCampoTecno: string; aTamanho: integer);
+  begin  
+    if (Length(aValor) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, aValor)
+    else
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" é obrigatório e deve conter: ' + inttostr(aTamanho) + ' caractere(s)');
+  end; 
+
+  function FormataMoeda(const aValor: String) : String;
+  begin
+    Result := StringReplace(aValor, '.', '', [RfReplaceAll]);
+    Result := StringReplace(Result, ',', '', [RfReplaceAll]);
+  end;
+
+begin
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+
+  _Tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando Padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+
+      // Editar dados carregados no Datasets, para fazer algumas transformações
+      Progress('Usando Padrão TecnoNFSe: carregando dados das notas');
+
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);      
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _DsTecnoAtual.First;
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+      
+      if _QtdeRps > 50 then
+        RaiseException('Só é possível enviar 50 rps por lote.');  
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+        
+        SetarCampoValorTamRemessa('IdentificacaoServico', 'R', 1);
+        SetarCampoValorTamObrigatorioRemessa('NumeroRps', 'NumeroRps', 10);
+        SetarCampoValorTamRemessa('SerieRps', 'RPS' , 5);
+
+        if CampoTecno('DataEmissao') <> '' then
+        begin
+          _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'DD/MM/YYYY');
+          SetarCampoObrigatorioValorTamanho('DataPrestacao', 'DataPrestacao', _ValorCampo, 10);
+          SetarCampoObrigatorioValorTamanho('DataEmissao', 'DataEmissao', _ValorCampo, 10);
+        end
+        else
+          RaiseException('Campo DataEmissao incorreta, informe a data no formato: YYYY-MM-DD'); 
+    
+        SetarCampoValorTamRemessa('NumeroRpsSubstituido', CampoTecno('NumeroRpsSubstituido'), 1);
+        
+        _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+        VerificaSeEhNumero('CpfCnpjTomador', _ValorCampo);
+        case Length(_ValorCampo) of
+          0 : { Campo vazio, ignorar };
+          11: SetarCampoObrigatorioValorTamanho('CpfCnpjTomador', 'CpfCnpjTomador', _ValorCampo, 11);
+          14: SetarCampoObrigatorioValorTamanho('CpfCnpjTomador', 'CpfCnpjTomador', _ValorCampo, 14);
+        else
+          RaiseException('Valor inválido para o campo CpfCnpjTomador, CPF: 11 Caracteres; CNPJ: 14 Caracteres.');
+        end;
+        
+        SetarCampoValorTamRemessa('InscricaoMunicipalTomador', CampoTecno('InscricaoMunicipalTomador'), 20);
+        SetarCampoValorTamRemessa('RazaoSocialTomador', '"' + CampoTecno('RazaoSocialTomador') + '"', 150);
+        SetarCampoValorTamRemessa('EnderecoTomador', '"' + CampoTecno('EnderecoTomador') + '"', 125);
+        SetarCampoValorTamRemessa('NumeroTomador', CampoTecno('NumeroTomador'), 10);
+        SetarCampoValorTamRemessa('ComplementoTomador', '"' + CampoTecno('ComplementoTomador') + '"', 60);
+        SetarCampoValorTamRemessa('BairroTomador', '"' + CampoTecno('BairroTomador') + '"', 60);
+        
+        if not AnsiMatchText(UpperCase(CampoTecno('PaisTomador')), ['1058', '01058', 'BRASIL', '']) then        
+          SetarCampoValorTamRemessa('PaisTomador', CampoTecno('PaisTomador'), 5)
+        else
+          SetarCampoValorTamRemessa('PaisTomador', ' ', 5);
+        
+        SetarCampoValorTamRemessa('CodigoCidadeTomador', CampoTecno('CodigoCidadeTomador'), 10);
+        SetarCampoValorTamRemessa('CepTomador', CampoTecno('CepTomador') , 8);
+        SetarCampoValorTamRemessa('TelefoneTomador', CampoTecno('TelefoneTomador') , 20);
+        SetarCampoValorTamRemessa('EmailTomador', CampoTecno('EmailTomador'), 80);
+        
+        _ValorCampo := Trim(CampoTecno('IssRetido'));
+        case _ValorCampo of
+          '': RaiseException('Para essa cidade o campo "IssRetido" é obrigatório e deve ser informado da seguinte forma: 1 - Sim ou 2 - Não.');  
+          '1': SetarCampoValorTamRemessa('IssRetido', 'S', 1);
+          '2': SetarCampoValorTamRemessa('IssRetido', 'N', 1);
+        else
+          RaiseException('Valor inválido para o campo "IssRetido" deve ser informado da seguinte forma: 1 - Sim ou 2 - Não.');
+        end;
+          
+        SetarCampoValorTamObrigatorioRemessa('CodigoCidadePrestacao', 'CodigoCidadePrestacao', 10);
+        
+        SetarCampoValorTamObrigatorioRemessa('CodigoCnae', 'CodigoCnae', 8);
+        
+        _ValorCampo := CampoTecno('CodigoItemListaServico');
+        _ValorCampo := FormatarCodigoItemListaServico(_ValorCampo, true);
+        SetarCampoObrigatorioValorTamanho('CodigoItemListaServico', 'CodigoItemListaServico', _ValorCampo, 8);
+        
+        _ValorCampo := CampoTecno('DiscriminacaoServico');
+        if Length(_ValorCampo) <= 2000 then
+          SetarCampoValorTamRemessa('DiscriminacaoServico', '"' + _ValorCampo + '"', 2000)
+        else
+          RaiseException('O valor do campo DiscriminacaoServico ultrapassou o limite de 2000 Caractere(s)');
+        
+        _ValorCampo := FormataCurrency(CampoTecno('ValorServicos'));
+        _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+        SetarCampoObrigatorioValorTamanho('ValorServicos', 'ValorServicos', _ValorCampo, 12);
+        
+        _ValorCampo := FormataMoeda(CampoTecno('ValorDeducoes'));
+        if StrToFloat(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorDeducoes'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorDeducoes', _ValorCampo, 12);
+        end
+        else
+          SetarCampoValorTamFixo('ValorDeducoes', '0', 'ValorDeducoes', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('DescontoCondicionado'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('DescontoCondicionado'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('DescontoCondicionado', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('DescontoCondicionado', '0', 'DescontoCondicionado', 1);
+        
+        _ValorCampo := FormataMoeda(CampoTecno('DescontoIncondicionado'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('DescontoIncondicionado'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('DescontoIncondicionado', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('DescontoIncondicionado', '0', 'DescontoIncondicionado', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('ValorInss'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorInss'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorInss', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorInss', '0', 'ValorInss', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('ValorCsll'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorCsll'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorCsll', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorCsll', '0', 'ValorCsll', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('OutrasRetencoes'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('OutrasRetencoes'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('OutrasRetencoes', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('OutrasRetencoes', '0', 'OutrasRetencoes', 1);
+          
+         _ValorCampo := FormataMoeda(CampoTecno('ValorPis'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorPis'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorPis', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorPis', '0', 'ValorPis', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('ValorCofins'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorCofins'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorCofins', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorCofins', '0', 'ValorCofins', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('ValorIr'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorIr'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoValorTamRemessa('ValorIr', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorIr', '0', 'ValorIr', 1);
+          
+        _ValorCampo := FormataMoeda(CampoTecno('ValorIss'));
+        if (_ValorCampo <> '') and (StrToFloat(_ValorCampo) > 0) then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorIss'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorIss', 'ValorIss', _ValorCampo, 12);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorIss', '0', 'ValorIss', 1);
+          
+        _ValorCampo := Trim(CampoTecno('OptanteSimplesNacional'));
+        case _ValorCampo of
+          '': RaiseException('Para essa cidade o campo "OptanteSimplesNacional´" é obrigatório e deve ser informado da seguinte forma: 1 - Sim ou 2 - Não.');  
+          '1': SetarCampoValorTamRemessa('OptanteSimplesNacional', 'S', 1);
+          '2': SetarCampoValorTamRemessa('OptanteSimplesNacional', 'N', 1);
+        else
+          RaiseException('Valor inválido para o campo "OptanteSimplesNacional" deve ser informado da seguinte forma: 1 - Sim ou 2 - Não.');
+        end;     
+       
+        _ValorCampo := FormataMoeda(FormataFloat(AnyCurrencyToCurrency(StringReplace(CampoTecno('AliquotaISS'),',','.',[rfReplaceAll])),5,4));
+        if Length(_ValorCampo) > 3 then
+          RaiseException('O valor: "' + CampoTecno('AliquotaISS') + '" do campo Aliquota ultrapassou o limite de 4 Caractere(s)');
+
+        if StrToInt(_ValorCampo) > 0 then
+        begin       
+          _ValorCampo := FormataCurrency(CampoTecno('AliquotaISS'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', '', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('AliquotaISS', 'AliquotaISS', _ValorCampo, 3);
+        end
+        else
+          RaiseException('Para essa cidade o campo "Aliquota" é obrigatório e deve conter até 4 caractere(s)');
+        
+        SetarCampoValorTamRemessa('CodigoObra', CampoTecno('CodigoObra'), 15);
+        SetarCampoValorTamRemessa('Art', CampoTecno('Art'), 15);
+        
+        SetarCampoValorTamObrigatorioRemessa('InscricaoMunicipalPrestador', 'InscricaoMunicipalPrestador' , 20);
+        
+        SetarCampoValorTamRemessa('CodigoBeneficio', '', 5);
+
+        _DsCidadeAtual.Post;
+        _DsTecnoAtual.Next;
+      end;
+    end
+    else
+      Datasets.LoadFromTx2Content(_Tx2.Text);
+  finally
+    _Tx2.free;
+    _CamposMunicipio.free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

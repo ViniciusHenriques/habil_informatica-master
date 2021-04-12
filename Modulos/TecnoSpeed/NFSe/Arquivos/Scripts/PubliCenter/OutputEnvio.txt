@@ -1,0 +1,78 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+{$I ..\Comuns\Utils.txt}
+  
+  function MontarRemessa: String;
+  var
+    _Xml, _Remessa, _Data, _NodeServico, _NodeCancelamento : string;
+    _QtNotas, _QtCampos, _i, _j : Integer;
+  begin
+    _Xml := Datasets.AsXML;
+    _QtNotas := XmlSelectCountNode(_Xml,'//*[local-name()="Rps"]');
+    _Remessa := '';
+    
+    _QtCampos := XmlSelectCountNode(_Xml,'//*[local-name()="Lote"]/*[local-name()="Empresa"]/*');
+    for _i := 1 to _QtCampos do
+    begin
+      xmlSelectNodeValue(_Xml, '//*[local-name()="Lote"]/*[local-name()="Empresa"]/*['+ IntToStr(_i) + ']', _Data);
+      _Remessa := _Remessa + StringReplace(_Data, '§', ' ', [rfReplaceAll]); 
+    end;
+    _Remessa := _Remessa + #13#10;
+    
+    for _i := 1 to _QtNotas do
+    begin
+      _QtCampos := XmlSelectCountNode(_Xml,'//*[local-name()="Rps"][' + IntToStr(_i) + ']/*');
+      
+      //Campos RPS
+      for _j := 1 to (_QtCampos - 1) do
+      begin
+        xmlSelectNodeValue(_Xml, '//*[local-name()="Rps"][' + IntToStr(_i) + ']/*[' + IntToStr(_j) + ']', _Data);
+        _Remessa := _Remessa + StringReplace(_Data, '§', ' ', [rfReplaceAll]); 
+      end;
+      _Remessa := _Remessa + #13#10;
+      
+      //Campos Servico
+      _NodeServico := '//*[local-name()="Rps"][' + IntToStr(_i) + ']/*[local-name()="Servico"]/*';
+      for _j := 1 to XmlSelectCountNode(_Xml, _NodeServico) do
+      begin
+        xmlSelectNodeValue(_Xml, _NodeServico + '[' + IntToStr(_j) + ']', _Data);
+        _Remessa := _Remessa + StringReplace(_Data, '§', ' ', [rfReplaceAll]); 
+      end;
+      _Remessa := _Remessa + #13#10;
+      
+      //Campos Cancelamento
+      _NodeCancelamento := '//*[local-name()="Rps"][' + IntToStr(_i) + ']/*[local-name()="InformacoesCancelamento"]/*';
+      if XmlSelect(_Xml, _NodeCancelamento) <> '' then
+      begin
+        for _j := 1 to XmlSelectCountNode(_Xml, _NodeCancelamento) do
+        begin
+          xmlSelectNodeValue(_Xml, _NodeCancelamento + '[' + IntToStr(_j) + ']', _Data);
+          _Remessa := _Remessa + StringReplace(_Data, '§', ' ', [rfReplaceAll]); 
+        end;
+        _Remessa := _Remessa + #13#10;
+      end;
+      
+    end;
+    
+    _QtCampos := XmlSelectCountNode(_Xml,'//*[local-name()="Xml"]/*[local-name()="TotalizacaoArquivo"]/*');
+    for _i := 1 to _QtCampos do
+    begin
+      xmlSelectNodeValue(_Xml, '//*[local-name()="Xml"]/*[local-name()="TotalizacaoArquivo"]/*['+ IntToStr(_i) + ']', _Data);
+      _Remessa := _Remessa + StringReplace(_Data, '§', ' ', [rfReplaceAll]); 
+    end;
+    _Remessa := _Remessa + #13#10;
+    
+    Result := _Remessa;
+  
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := MontarRemessa;
+  Progress('Arquivo XML gerado com sucesso.');
+end.

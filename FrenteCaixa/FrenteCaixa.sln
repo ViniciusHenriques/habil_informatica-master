@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrenteCaixa", "FrenteCaixa.csproj", "{59F6815B-D575-46B8-81B2-7C6BBBDEEF4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{162E7E36-D4AD-4F46-A8AA-6E51606E562E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59F6815B-D575-46B8-81B2-7C6BBBDEEF4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59F6815B-D575-46B8-81B2-7C6BBBDEEF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59F6815B-D575-46B8-81B2-7C6BBBDEEF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59F6815B-D575-46B8-81B2-7C6BBBDEEF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59952866-B567-46C1-B760-41B27BEDA8A8}
+	EndGlobalSection
+EndGlobal

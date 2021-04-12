@@ -1,0 +1,33 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+
+  function RealizarDelimitacaoLoteRps(const aXML: string): string;
+  var
+    _DelimitadorRPS: String;
+  begin
+    _DelimitadorRPS := Params.Values['DelimitadorRPS'];
+    if _DelimitadorRPS = '' then
+      _DelimitadorRPS := Params.Values['Delimitador'];
+
+    if _DelimitadorRPS <> '' then
+    begin
+      Result := StringReplace(aXML, '<Reg20Item>', _DelimitadorRPS +  '<Reg20Item>', [rfReplaceAll]);
+      Result := StringReplace(Result, '</Reg20Item>', '</Reg20Item>' + _DelimitadorRPS, [rfReplaceAll]);
+      Result := StringReplace(Result, _DelimitadorRPS + _DelimitadorRPS, _DelimitadorRPS, [rfReplaceAll]);
+    end
+    else
+      Result := aXML;
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXml;
+  Output := RealizarDelimitacaoLoteRps(Output);
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_CONAM);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

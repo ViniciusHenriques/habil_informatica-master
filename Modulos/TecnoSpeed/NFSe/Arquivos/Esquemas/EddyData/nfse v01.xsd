@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Rps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="tomador_nome"/>
+        <xs:element ref="tomador_cnpjcpf"/>
+        <xs:element ref="tomador_inscrmunicipal"/>
+        <xs:element ref="tomador_cep"/>
+        <xs:element ref="tomador_logradouro"/>
+        <xs:element ref="tomador_numero"/>
+        <xs:element ref="tomador_complemento"/>
+        <xs:element ref="tomador_bairro"/>
+        <xs:element ref="tomador_municipio"/>
+        <xs:element ref="tomador_uf"/>
+        <xs:element ref="tomador_email"/>
+        <xs:element ref="local_prestacao"/>
+        <xs:element ref="natureza_operacao"/>
+        <xs:element ref="token"/>
+        <xs:element ref="datahoraemissao"/>
+        <xs:element ref="rps_numero"/>
+        <xs:element ref="rps_data"/>
+        <xs:element ref="discriminacao"/>
+        <xs:element ref="observacao"/>
+        <xs:element ref="valor_deducoes"/>
+        <xs:element ref="base_calculo"/>
+        <xs:element ref="valor_iss"/>
+        <xs:element ref="valor_retencao_iss"/>
+        <xs:element ref="aliq_inss"/>
+        <xs:element ref="valor_inss"/>
+        <xs:element ref="aliq_irrf"/>
+        <xs:element ref="valor_irrf"/>
+        <xs:element ref="aliq_csll"/>
+        <xs:element ref="valor_csll"/>
+        <xs:element ref="aliq_cofins"/>
+        <xs:element ref="valor_cofins"/>
+        <xs:element ref="aliq_pis"/>
+        <xs:element ref="valor_pis"/>
+        <xs:element ref="prestador_nome"/>
+        <xs:element ref="prestador_razao"/>
+        <xs:element ref="prestador_cnpjcpf"/>
+        <xs:element ref="prestador_inscrmunicipal"/>
+        <xs:element ref="prestador_endereco"/>
+        <xs:element ref="prestador_logradouro"/>
+        <xs:element ref="prestador_numero"/>
+        <xs:element ref="prestador_complemento"/>
+        <xs:element ref="prestador_bairro"/>
+        <xs:element ref="prestador_cep"/>
+        <xs:element ref="codigo_municipio_prestador"/>
+        <xs:element ref="prestador_municipio"/>
+        <xs:element ref="prestador_uf"/>
+        <xs:element ref="prestador_email"/>
+        <xs:element ref="estado_documento"/>
+        <xs:element ref="motivo_cancelamento"/>
+        <xs:element ref="codigo_atividade"/>
+        <xs:element ref="desc_servico"/>
+        <xs:element ref="valor_aliquota"/>
+        <xs:element ref="vl_ded_obra"/>
+        <xs:element ref="numero_obra"/>
+        <xs:element ref="itens_materiais"/>
+        <xs:element ref="itens_servico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tomador_nome" type="xs:string"/>
+  <xs:element name="tomador_cnpjcpf" type="xs:string"/>
+  <xs:element name="tomador_inscrmunicipal" type="xs:integer"/>
+  <xs:element name="tomador_cep" type="xs:integer"/>
+  <xs:element name="tomador_logradouro" type="xs:string"/>
+  <xs:element name="tomador_numero" type="xs:integer"/>
+  <xs:element name="tomador_complemento" type="xs:string"/>
+  <xs:element name="tomador_bairro" type="xs:NCName"/>
+  <xs:element name="tomador_municipio" type="xs:integer"/>
+  <xs:element name="tomador_uf" type="xs:NCName"/>
+  <xs:element name="tomador_email" type="xs:string"/>
+  <xs:element name="local_prestacao" type="xs:integer"/>
+  <xs:element name="natureza_operacao" type="xs:NCName"/>
+  <xs:element name="token" type="xs:string"/>
+  <xs:element name="datahoraemissao" type="xs:string"/>
+  <xs:element name="rps_numero" type="xs:integer"/>
+  <xs:element name="rps_data" type="xs:string"/>
+  <xs:element name="discriminacao" type="xs:string"/>
+  <xs:element name="observacao" type="xs:NCName"/>
+  <xs:element name="valor_deducoes" type="xs:decimal"/>
+  <xs:element name="base_calculo" type="xs:decimal"/>
+  <xs:element name="valor_iss" type="xs:decimal"/>
+  <xs:element name="valor_retencao_iss" type="xs:decimal"/>
+  <xs:element name="aliq_inss" type="xs:decimal"/>
+  <xs:element name="valor_inss" type="xs:decimal"/>
+  <xs:element name="aliq_irrf" type="xs:decimal"/>
+  <xs:element name="valor_irrf" type="xs:decimal"/>
+  <xs:element name="aliq_csll" type="xs:decimal"/>
+  <xs:element name="valor_csll" type="xs:decimal"/>
+  <xs:element name="aliq_cofins" type="xs:decimal"/>
+  <xs:element name="valor_cofins" type="xs:decimal"/>
+  <xs:element name="aliq_pis" type="xs:decimal"/>
+  <xs:element name="valor_pis" type="xs:decimal"/>
+  <xs:element name="prestador_nome" type="xs:string"/>
+  <xs:element name="prestador_razao" type="xs:string"/>
+  <xs:element name="prestador_cnpjcpf" type="xs:string"/>
+  <xs:element name="prestador_inscrmunicipal" type="xs:integer"/>
+  <xs:element name="prestador_endereco" type="xs:string"/>
+  <xs:element name="prestador_logradouro" type="xs:string"/>
+  <xs:element name="prestador_numero" type="xs:NCName"/>
+  <xs:element name="prestador_complemento" type="xs:NCName"/>
+  <xs:element name="prestador_bairro" type="xs:NCName"/>
+  <xs:element name="prestador_cep" type="xs:NCName"/>
+  <xs:element name="codigo_municipio_prestador" type="xs:integer"/>
+  <xs:element name="prestador_municipio" type="xs:string"/>
+  <xs:element name="prestador_uf" type="xs:NCName"/>
+  <xs:element name="prestador_email" type="xs:string"/>
+  <xs:element name="estado_documento" type="xs:NCName"/>
+  <xs:element name="motivo_cancelamento" type="xs:string"/>
+  <xs:element name="codigo_atividade" type="xs:NCName"/>
+  <xs:element name="desc_servico" type="xs:NCName"/>
+  <xs:element name="valor_aliquota" type="xs:decimal"/>
+  <xs:element name="vl_ded_obra" type="xs:decimal"/>
+  <xs:element name="numero_obra" type="xs:decimal"/>
+  <xs:element name="itens_materiais" type="xs:NCName"/>
+  <xs:element name="itens_servico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="servico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="servico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CodigoItemListaServico"/>
+        <xs:element ref="DiscriminacaoServico"/>
+        <xs:element ref="BaseCalculo"/>
+        <xs:element ref="AliquotaServico"/>
+        <xs:element ref="ValorIss"/>
+        <xs:element ref="AliquotaRetencao"/>
+        <xs:element ref="ValorAliquotaRetencao"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CodigoItemListaServico" type="xs:decimal"/>
+  <xs:element name="DiscriminacaoServico" type="xs:string"/>
+  <xs:element name="BaseCalculo" type="xs:decimal"/>
+  <xs:element name="AliquotaServico" type="xs:decimal"/>
+  <xs:element name="ValorIss" type="xs:decimal"/>
+  <xs:element name="AliquotaRetencao" type="xs:decimal"/>
+  <xs:element name="ValorAliquotaRetencao" type="xs:decimal"/>
+</xs:schema>

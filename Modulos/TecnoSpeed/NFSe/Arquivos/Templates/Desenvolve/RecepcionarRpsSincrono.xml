@@ -1,0 +1,5 @@
+<ws:enviarLoteRpsSincronoEnvio>
+  <xml>
+    <![CDATA[%s]]>
+  </xml>
+</ws:enviarLoteRpsSincronoEnvio>

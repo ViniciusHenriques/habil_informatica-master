@@ -1,0 +1,5 @@
+<tem:CancelarNfseEnvio>	
+	<tem:param>
+		<![CDATA[<CancelarNfseEnvio xmlns="https://ws.imap.org.br/siam/nfse.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Pedido><InfPedidoCancelamento><IdentificacaoNfse><Numero>%s</Numero><CpfCnpj>%s</CpfCnpj><InscricaoMunicipal>%s</InscricaoMunicipal><CodigoMunicipio>%s</CodigoMunicipio></IdentificacaoNfse><CodigoCancelamento>%s</CodigoCancelamento><MotivoCancelamento>%s</MotivoCancelamento></InfPedidoCancelamento></Pedido></CancelarNfseEnvio>]]>
+	</tem:param>
+</tem:CancelarNfseEnvio>   

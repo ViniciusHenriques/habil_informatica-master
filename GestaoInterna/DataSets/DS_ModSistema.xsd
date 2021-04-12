@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_ModSistema" targetNamespace="http://tempuri.org/DS_ModSistema.xsd" xmlns:mstns="http://tempuri.org/DS_ModSistema.xsd" xmlns="http://tempuri.org/DS_ModSistema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_ModSistema" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_ModSistema" msprop:Generator_UserDSName="DS_ModSistema">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DT_ModSistema" msprop:Generator_TableClassName="DT_ModSistemaDataTable" msprop:Generator_TableVarName="tableDT_ModSistema" msprop:Generator_RowChangedName="DT_ModSistemaRowChanged" msprop:Generator_TablePropName="DT_ModSistema" msprop:Generator_RowDeletingName="DT_ModSistemaRowDeleting" msprop:Generator_RowChangingName="DT_ModSistemaRowChanging" msprop:Generator_RowEvHandlerName="DT_ModSistemaRowChangeEventHandler" msprop:Generator_RowDeletedName="DT_ModSistemaRowDeleted" msprop:Generator_RowClassName="DT_ModSistemaRow" msprop:Generator_UserTableName="DT_ModSistema" msprop:Generator_RowEvArgName="DT_ModSistemaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoModulo" msprop:Generator_ColumnVarNameInTable="columnCodigoModulo" msprop:Generator_ColumnPropNameInRow="CodigoModulo" msprop:Generator_ColumnPropNameInTable="CodigoModuloColumn" msprop:Generator_UserColumnName="CodigoModulo" type="xs:int" minOccurs="0" />
+              <xs:element name="DescricaoModulo" msprop:Generator_ColumnVarNameInTable="columnDescricaoModulo" msprop:Generator_ColumnPropNameInRow="DescricaoModulo" msprop:Generator_ColumnPropNameInTable="DescricaoModuloColumn" msprop:Generator_UserColumnName="DescricaoModulo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

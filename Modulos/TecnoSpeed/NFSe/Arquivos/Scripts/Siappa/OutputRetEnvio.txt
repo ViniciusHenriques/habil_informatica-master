@@ -1,0 +1,131 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo, _Xml: string;
+  _count, i: integer;
+
+{$I ..\Comuns\Utils.txt}
+{$I ..\Comuns\Comuns.txt}
+
+  function GetRetorno : string;
+  var
+    _Retorno: String;
+  begin
+  if xmlSelectNodeValue(Params.Values['XML'],  '//*[local-name()="ws_001_out_status_retorno"]', _Retorno) then
+    result := _Retorno
+  else
+    result := '';
+  end;
+  
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := FormatLineResult(aListFieldsResult) +
+        Params.Values['DelimitadorDaLinha'];
+  end;
+  
+  function GetNumeroCodValidacao : string;
+  var
+    _CodValidacao: String;
+  begin
+  if xmlSelectNodeValue(Params.Values['XML'],  '//*[local-name()="ws_001_out_nfse_codigo_validacao"]', _CodValidacao) then
+    result := _CodValidacao
+  else
+    result := '';
+  end;
+  
+  function GetMotivoNota : string;
+  var
+    _Motivo: String;
+  begin
+  if xmlSelectNodeValue(Params.Values['XML'],  '//*[local-name()="ws_001_out_msg_retorno"]', _Motivo) then
+    result := _Motivo
+  else
+    result := '';
+  end;
+
+  function GetStatusSiappa : string;
+  begin
+    if GetRetorno = 'N' then
+      result := 'ERRO'
+    else 
+      result := 'SUCESSO';
+  end;
+
+  //Função para Capturar a Ordem dos Campos do Params
+  function CreateFieldsResponse : TStringList;
+  var
+    _i: Integer;
+  begin
+    result := TStringList.Create;
+    result.Text := StringReplace(Params.Values['ListaCampos'], ',',#13#10,[rfReplaceAll]);    
+    // Checar se os campos da ListaCampos são suportados
+    for _i := 0 to Result.Count - 1 do
+    begin
+      if not AnsiMatchText(Trim(Result[_i]), ['Status','Motivo','Cnpj','InscMunicipal',
+        'SerieRps','NumeroRps','NumeroNFSe','DataEmissaoNFSe','DataAutorizacao',
+        'CodVerificacao','Situacao','DataCancelamento','ChaveCancelamento','Xml'
+        ,'Tipo']) then
+        RaiseException('Campo "' + Result[_i] + '" não suportado')
+      else
+        Result[_i] := Trim(Result[_i]);
+    end;
+  end;
+
+
+begin
+  _Status := GetStatusSiappa;  
+  _Motivo := GetMotivoNota;
+  if _Status = 'SUCESSO' then
+  begin    
+      _ListFields := CreateFieldsResponseNota;
+      if _ListFields <> nil then
+      begin
+        try
+          _Xml := UnindentXml(XmlSelect(Params.Values['XML'], '//*[local-name()="ws_gera_nfse_x_pnfse.ExecuteResponse"]'));          
+          Progress('Adicionando valores aos campos.');
+          AddValueListFields('Status', 'SUCESSO', _ListFields);
+          AddValueListFields('Motivo', '', _ListFields);
+          AddValueListFields('Cnpj', '', _ListFields);
+          AddValueListFields('InscMunicipal', '', _ListFields);
+          AddValueListFields('SerieRps', '', _ListFields);
+          AddValueListFields('NumeroRps', '', _ListFields);
+          AddValueListFields('NumeroNFSe', GetValueTag('ws_001_out_nfse_numero', _Xml), _ListFields);
+          AddValueListFields('DataEmissaoNFSe', GetValueTag('ws_001_out_nfse_data_hora', _Xml), _ListFields);
+          AddValueListFields('DataAutorizacao', GetValueTag('ws_001_out_nfse_data_hora', _Xml), _ListFields);
+          AddValueListFields('CodVerificacao', GetValueTag('ws_001_out_nfse_codigo_validacao', _Xml), _ListFields);
+          AddValueListFields('Situacao', 'AUTORIZADA', _ListFields);
+          AddValueListFields('DataCancelamento', '', _ListFields);
+          AddValueListFields('ChaveCancelamento','', _ListFields);
+          AddValueListFields('Tipo', '', _ListFields);
+          AddValueListFields('Xml', _Xml, _ListFields);
+          Output := Output + GetResult(_ListFields);          
+        finally
+          _ListFields.Free;
+        end;
+      end;    
+  end
+  else
+  begin
+    _ListFields := CreateFieldsResponseFalha;
+    if _ListFields <> nil then
+    begin
+      try
+        AddValueListFields('Status', 'ERRO', _ListFields);
+        AddValueListFields('Motivo', _Motivo, _ListFields);
+        Output := FormatLineResult(_ListFields);
+      finally
+        _ListFields.Free;
+      end;
+    end;
+  end;
+end.

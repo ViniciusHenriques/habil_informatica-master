@@ -1,0 +1,72 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I Utils.txt}
+
+Var
+  _DSSucesso, _DSFalha, _NFSE,_DSFalhaLote,_DSAlerta, _DSFalhaDefault : TSpdXSDClientDataSet;
+  _ListFields, _ListDsNamesFalha : TStringList;
+
+const
+  MSG_RPSJAINFORMADO = 'E10-RPS já informado. (Para essa Inscricao Municipal/CNPJ ja existe um RPS informado com o mesmo número, série e tipo.)';
+  MSG_ERROINTERNOWS = 'Erro interno no servidor da prefeitura. Verifique os dados enviados.';
+  
+  function GetNumeroProtocolo : string;
+  begin
+    if (GetMotivo(_DSFalha) = '') then
+      Result := _DSSucesso.FieldByName('Protocolo').AsString
+    else
+      Result := '';
+  end;
+
+  function GetStatusEnvio : string;
+  begin
+    if (GetMotivo(_DSFalha) <> '') then
+      Result := 'ERRO'
+    else
+      Result := 'SUCESSO';
+  end;
+
+begin
+  if Params.Values['faultstring'] <> '' then
+    Output := GetListFieldsFaulstring(_ListFields, Input)
+  else
+  begin
+    Progress('Adicionando valores aos campos.');
+    
+    GetPonteirosDataSets('EnviarLoteRpsResposta', 'MensagemRetorno', _DSSucesso, _DSFalha);
+    _ListFields := CreateFieldsResponseEnvioAssincrono;
+    if _ListFields <> nil then
+    Try
+      if Params.Values['XmlErro'] <> '' then
+      begin
+        Progress('Adicionando valores aos campos.');
+        if pos('<InternalServerError', Params.Values['XmlErro']) > 0 then
+          AddValueListFields('Motivo', MSG_ERROINTERNOWS, _ListFields)
+        else if pos('ConsultarNfseRpsResposta', Params.Values['XmlErro']) > 0 then
+          AddValueListFields('Motivo', MSG_RPSJAINFORMADO, _ListFields)
+        else
+          AddValueListFields('Motivo', 'Erro desconhecido. Por favor, entre em contato com o suporte tecnico.', _ListFields);
+        AddValueListFields('Status', 'ERRO', _ListFields);
+        AddValueListFields('NumeroProtocolo', '', _ListFields);
+        Output := FormatLineResult(_ListFields);
+      end
+      else
+      begin
+        Progress('Adicionando valores aos campos.');
+        AddValueListFields('Motivo', GetMotivo(_DSFalha), _ListFields);
+        AddValueListFields('Status', GetStatusEnvio, _ListFields);
+        AddValueListFields('NumeroProtocolo', GetNumeroProtocolo, _ListFields);
+        Output := FormatLineResult(_ListFields);
+      end;
+    Finally
+      _ListFields.Free;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.

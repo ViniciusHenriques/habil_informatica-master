@@ -1,0 +1,95 @@
+{
+  Variáveis externas disponíveis:
+    MappingXsdFileName: string;
+    Input: string;
+}
+{$I ..\Comuns\Utils.txt}
+{$I ..\Comuns\Comuns.txt}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo, _Xml: string;
+  _count, i: integer;
+
+const
+  XPATH_SUCESSO = '//*[local-name()="Table"]';
+
+  function GetStatusNota : string;
+  begin
+    if (Pos('<Status>EMITIDA</Status>', Params.Values['XML']) = 0) or (Params.Values['faultstring'] <> '')  then
+      Result := 'ERRO'
+    else
+      Result := 'SUCESSO';
+  end;
+
+  function GetMotivoNota : string;
+  begin
+    if (pos('<faultstring>', params.values['ERRO']) > 0) then
+    begin
+      Result := XmlSelect(params.values['ERRO'], '//*[local-name()="faultstring"]')
+    end
+  else
+    Result := Params.Values['Erro'];
+  end;
+  
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := FormatLineResult(aListFieldsResult) +
+        Params.Values['DelimitadorDaLinha'];
+  end;
+
+begin
+  _Status := GetStatusNota;
+  _Motivo := GetMotivoNota;
+  if _Status = 'SUCESSO' then
+  begin
+    _count := XmlSelectCountNode(Params.Values['XML'], XPATH_SUCESSO);
+    for i := 1 to _count do
+    begin
+      _ListFields := CreateFieldsResponseNota;
+      if _ListFields <> nil then
+      begin
+        try
+          _Xml := XmlSelect(Params.Values['XML'], '//*[local-name()="Table"]' + '['+ IntToStr(i) +']');
+          Progress('Adicionando valores aos campos.');
+          AddValueListFields('Status', 'SUCESSO', _ListFields);
+          AddValueListFields('Motivo', '', _ListFields);
+          AddValueListFields('Cnpj', GetValueTag('CNPJCPF', _Xml), _ListFields);
+          AddValueListFields('InscMunicipal', GetValueTag('InscricaoMunicipal', _Xml), _ListFields);
+          AddValueListFields('SerieRps', '', _ListFields);
+          AddValueListFields('NumeroRps', '', _ListFields);
+          AddValueListFields('NumeroNFSe', GetValueTag('NumeroNF', _Xml), _ListFields);
+          AddValueListFields('DataEmissaoNFSe', GetValueTag('DataEmissao', _Xml), _ListFields);
+          AddValueListFields('DataAutorizacao', GetValueTag('DataEmissao', _Xml), _ListFields);
+          AddValueListFields('CodVerificacao', '', _ListFields);
+          AddValueListFields('Situacao', 'AUTORIZADA', _ListFields);
+          AddValueListFields('DataCancelamento', '', _ListFields);
+          AddValueListFields('ChaveCancelamento', GetValueTag('NumeroNF', _Xml), _ListFields);
+          AddValueListFields('Tipo', '', _ListFields);
+          AddValueListFields('Xml', _Xml, _ListFields);
+          Output := Output + GetResult(_ListFields);
+        finally
+          _ListFields.Free;
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+    _ListFields := CreateFieldsResponseFalha;
+    if _ListFields <> nil then
+    begin
+      try
+        AddValueListFields('Status', 'ERRO', _ListFields);
+        AddValueListFields('Motivo', _Motivo, _ListFields);
+        Output := FormatLineResult(_ListFields);
+      finally
+        _ListFields.Free;
+      end;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.

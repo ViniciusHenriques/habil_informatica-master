@@ -1,0 +1,11 @@
+<p:ConsultarNfseRpsEnvio xmlns:p="http://nfe.sjp.pr.gov.br/servico_consultar_nfse_rps_envio_v03.xsd" xmlns:p1="http://nfe.sjp.pr.gov.br/tipos_v03.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="C1">
+  <p:IdentificacaoRps>
+    <p1:Numero>%s</p1:Numero>
+    <p1:Serie>%s</p1:Serie>
+    <p1:Tipo>%s</p1:Tipo>
+  </p:IdentificacaoRps>
+  <p:Prestador>
+    <p1:Cnpj>%s</p1:Cnpj>
+    <p1:InscricaoMunicipal>%s</p1:InscricaoMunicipal>
+  </p:Prestador>
+</p:ConsultarNfseRpsEnvio>

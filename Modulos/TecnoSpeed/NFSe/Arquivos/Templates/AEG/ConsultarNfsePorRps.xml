@@ -1,0 +1,27 @@
+<urn:ConsultarNfsePorRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <nfseDadosMsg xsi:type="xsd:string">
+
+    <ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+      <IdentificacaoRps>
+        <Numero>%s</Numero>
+        <Serie>%s</Serie>
+        <Tipo>%s</Tipo>
+      </IdentificacaoRps>
+      <Prestador>
+        <CpfCnpj>%s</CpfCnpj>
+        <InscricaoMunicipal>%s</InscricaoMunicipal>
+      </Prestador>
+      <MetodoInfo>
+        <Seguranca>
+          <ChaveAcesso>%s</ChaveAcesso>
+          <ChaveAutorizacao>%s</ChaveAutorizacao>
+        </Seguranca>
+        <Versao>
+          <VersaoNumero>2.02</VersaoNumero>
+          <VersaoMetodo>ConsultarNfseRpsEnvio</VersaoMetodo>
+        </Versao>
+      </MetodoInfo>
+    </ConsultarNfseRpsEnvio>
+
+  </nfseDadosMsg>
+</urn:ConsultarNfsePorRps>

@@ -1,0 +1,86 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+{$I ..\Comuns\Utils.txt}
+
+  function MontarRemessa: String;
+  var
+    _Xml, _XmlNota, _Identificacao, _Cabecalho, _Tomador, _Servico,
+    _IdentificacaoRemessa, _CabecalhoRemessa, _TomadorRemessa, _ServicoRemessa, 
+    _Data : string;
+    _QtNotas, _QtCampos, _i, _y : Integer;
+  begin
+    _Xml := Datasets.AsXML;
+    _QtNotas := XmlSelectCountNode(_Xml,'//*[local-name()="Rps"]');
+
+    for _i := 1 to _QtNotas do
+    begin
+      _XmlNota := XmlSelect(_Xml, '//*[local-name()="Rps"]['+ IntToStr(_i) + ']');
+
+      _Identificacao := XmlSelect(_XmlNota, '//*[local-name()="Identificacao"]');
+      _QtCampos := XmlSelectCountNode(_Identificacao,'//*[local-name()="Identificacao"]/*');
+
+      for _y := 1 to _QtCampos do
+      begin
+        xmlSelectNodeValue(_Identificacao, '//*[local-name()="Identificacao"]/*['+ IntToStr(_y) + ']', _Data);
+        _IdentificacaoRemessa := _IdentificacaoRemessa + _Data
+      end;
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+      _Cabecalho := XmlSelect(_XmlNota, '//*[local-name()="Cabecalho"]');
+      _QtCampos := XmlSelectCountNode(_Cabecalho,'//*[local-name()="Cabecalho"]/*');
+
+      for _y := 1 to _QtCampos do
+      begin
+        xmlSelectNodeValue(_Cabecalho, '//*[local-name()="Cabecalho"]/*['+ IntToStr(_y) + ']', _Data);
+        _CabecalhoRemessa := _CabecalhoRemessa + _Data
+      end;
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+      _Tomador := XmlSelect(_XmlNota, '//*[local-name()="Tomador"]');
+      _QtCampos := XmlSelectCountNode(_Tomador,'//*[local-name()="Tomador"]/*');
+
+      for _y := 1 to _QtCampos do
+      begin
+        xmlSelectNodeValue(_Tomador, '//*[local-name()="Tomador"]/*['+ IntToStr(_y) + ']', _Data);
+        _TomadorRemessa := _TomadorRemessa + _Data
+      end;
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+      _Servico := XmlSelect(_XmlNota, '//*[local-name()="Servico"]');
+      _QtCampos := XmlSelectCountNode(_Servico,'//*[local-name()="Servico"]/*');
+
+      for _y := 1 to _QtCampos do
+      begin
+        xmlSelectNodeValue(_Servico, '//*[local-name()="Servico"]/*['+ IntToStr(_y) + ']', _Data);
+        _ServicoRemessa := _ServicoRemessa + _Data
+      end;
+
+       
+      if _QtNotas = _i then
+        Result := Result + _IdentificacaoRemessa + #13#10 + StringReplace(_CabecalhoRemessa, '§', ' ', [rfReplaceAll]) + #13#10 +
+          StringReplace(_TomadorRemessa, '§', ' ', [rfReplaceAll]) + #13#10 + StringReplace(_ServicoRemessa, '§', ' ', [rfReplaceAll])
+      else
+        Result := Result + _IdentificacaoRemessa + #13#10 + StringReplace(_CabecalhoRemessa, '§', ' ', [rfReplaceAll]) + #13#10 +
+          StringReplace(_TomadorRemessa, '§', ' ', [rfReplaceAll]) + #13#10 + StringReplace(_ServicoRemessa, '§', ' ', [rfReplaceAll]) + #13#10;
+      
+      _IdentificacaoRemessa := '';
+      _CabecalhoRemessa := '';
+      _TomadorRemessa := '';
+      _ServicoRemessa := '';
+
+    end;
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := MontarRemessa;
+  Progress('Arquivo XML gerado com sucesso.');
+end.

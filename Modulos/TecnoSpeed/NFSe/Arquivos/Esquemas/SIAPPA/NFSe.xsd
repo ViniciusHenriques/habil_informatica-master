@@ -1,0 +1,41 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ws_gera_nfse_x_pnfse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sdt_ws_001_in_gera_nfse_x_pnfse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:short" name="ws_001_in_prest_insc_seq"/>
+              <xs:element type="xs:long" name="ws_001_in_prest_cnpj"/>
+              <xs:element type="xs:string" name="ws_001_in_pnfse_senha"/>
+              <xs:element type="xs:string" name="ws_001_in_pnfse_bloco_seq"/>
+              <xs:element type="xs:string" name="ws_001_in_pnfse_det_seq"/>
+              <xs:element type="xs:string" name="ws_001_in_pnfse_det_cod_val"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_nat"/>
+              <xs:element type="xs:long" name="ws_001_in_tom_cpf_cnpj"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_nome_rso"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_end_log_tip"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_end_log_des"/>
+              <xs:element type="xs:short" name="ws_001_in_tom_end_nro"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_end_compl"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_end_bairro"/>
+              <xs:element type="xs:int" name="ws_001_in_tom_end_cidade"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_end_uf"/>
+              <xs:element type="xs:int" name="ws_001_in_tom_end_cep"/>
+              <xs:element type="xs:string" name="ws_001_in_tom_e_mail"/>
+              <xs:element type="xs:short" name="ws_001_in_nfse_cod_atividade"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_desc_resumida"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_desc_detalhada"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_valor_bruto"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_valor_deducoes"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_local_retencao"/>
+              <xs:element type="xs:short" name="ws_001_in_nfse_aliquota_aplicada"/>
+              <xs:element type="xs:string" name="ws_001_in_nfse_opcao_envio_e_mail"/>
+              <xs:element type="xs:string" name="ws_001_in_opcao_execucao"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

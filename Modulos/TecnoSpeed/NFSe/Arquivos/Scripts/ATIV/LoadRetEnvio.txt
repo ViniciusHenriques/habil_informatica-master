@@ -1,0 +1,28 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\Comuns.txt}
+
+Var
+  _Xml : string;
+begin
+  Progress('Carregando XML de Retorno de Envio');
+  
+  _Xml := Input;
+  _Xml := StringReplace(input, '&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', [rfreplaceall]);
+  _Xml := StringReplace(input, '<!--CRLF-->', '', [rfreplaceall]);  
+
+  if Pos('<faultstring',input) > 0 then
+    Params.Add('faultstring='+input)
+  else
+  begin    
+    Params.Add('XML=' + ExtractEscapedContent(_Xml));
+
+    Progress('XML carregado com sucesso');
+  end;
+end.

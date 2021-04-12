@@ -1,0 +1,1 @@
+<urn:EnviarLoteRpsSincronoEnvio soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><xml xsi:type="xsd:string"><![CDATA[%s]]></xml></urn:EnviarLoteRpsSincronoEnvio>

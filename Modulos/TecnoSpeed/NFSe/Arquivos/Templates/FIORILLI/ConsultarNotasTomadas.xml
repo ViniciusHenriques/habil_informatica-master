@@ -1,0 +1,20 @@
+<ws:consultarNfseServicoPrestado>
+  <nfse:ConsultarNfseServicoPrestadoEnvio>
+    <nfse:Prestador>
+      <nfse:CpfCnpj>
+        %s
+      </nfse:CpfCnpj>
+      %s
+    </nfse:Prestador>
+    %s
+    <nfse:Tomador>
+      <nfse:CpfCnpj>
+        %s
+      </nfse:CpfCnpj>
+      %s
+    </nfse:Tomador>
+    <nfse:Pagina>%s</nfse:Pagina>
+  </nfse:ConsultarNfseServicoPrestadoEnvio>
+  <username>%s</username>
+  <password>%s</password>
+</ws:consultarNfseServicoPrestado>

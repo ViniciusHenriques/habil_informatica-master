@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_VW_COMPOSICAO" targetNamespace="http://tempuri.org/DS_VW_INVENTARIO.xsd" xmlns:mstns="http://tempuri.org/DS_VW_INVENTARIO.xsd" xmlns="http://tempuri.org/DS_VW_INVENTARIO.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_VW_COMPOSICAO" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="_DS_VW_COMPOSICAO" msprop:Generator_UserDSName="DS_VW_COMPOSICAO">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DS_VW_COMPOSICAO" msprop:Generator_TableClassName="DS_VW_COMPOSICAODataTable" msprop:Generator_TableVarName="tableDS_VW_COMPOSICAO" msprop:Generator_RowChangedName="DS_VW_COMPOSICAORowChanged" msprop:Generator_TablePropName="DS_VW_COMPOSICAO" msprop:Generator_RowDeletingName="DS_VW_COMPOSICAORowDeleting" msprop:Generator_RowChangingName="DS_VW_COMPOSICAORowChanging" msprop:Generator_RowEvHandlerName="DS_VW_COMPOSICAORowChangeEventHandler" msprop:Generator_RowDeletedName="DS_VW_COMPOSICAORowDeleted" msprop:Generator_RowClassName="DS_VW_COMPOSICAORow" msprop:Generator_UserTableName="DS_VW_COMPOSICAO" msprop:Generator_RowEvArgName="DS_VW_COMPOSICAORowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_COMPOSTO" msprop:Generator_ColumnVarNameInTable="columnCD_COMPOSTO" msprop:Generator_ColumnPropNameInRow="CD_COMPOSTO" msprop:Generator_ColumnPropNameInTable="CD_COMPOSTOColumn" msprop:Generator_UserColumnName="CD_COMPOSTO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_SITUACAO" msprop:Generator_ColumnVarNameInTable="columnCD_SITUACAO" msprop:Generator_ColumnPropNameInRow="CD_SITUACAO" msprop:Generator_ColumnPropNameInTable="CD_SITUACAOColumn" msprop:Generator_UserColumnName="CD_SITUACAO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_TIPO" msprop:Generator_ColumnVarNameInTable="columnCD_TIPO" msprop:Generator_ColumnPropNameInRow="CD_TIPO" msprop:Generator_ColumnPropNameInTable="CD_TIPOColumn" msprop:Generator_UserColumnName="CD_TIPO" type="xs:int" minOccurs="0" />
+              <xs:element name="VL_CUSTO_PRODUTO" msprop:Generator_ColumnVarNameInTable="columnVL_CUSTO_PRODUTO" msprop:Generator_ColumnPropNameInRow="VL_CUSTO_PRODUTO" msprop:Generator_ColumnPropNameInTable="VL_CUSTO_PRODUTOColumn" msprop:Generator_UserColumnName="VL_CUSTO_PRODUTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_RENDIMENTO" msprop:Generator_ColumnVarNameInTable="columnVL_RENDIMENTO" msprop:Generator_ColumnPropNameInRow="VL_RENDIMENTO" msprop:Generator_ColumnPropNameInTable="VL_RENDIMENTOColumn" msprop:Generator_UserColumnName="VL_RENDIMENTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_PCT_UMIDADE" msprop:Generator_ColumnVarNameInTable="columnVL_PCT_UMIDADE" msprop:Generator_ColumnPropNameInRow="VL_PCT_UMIDADE" msprop:Generator_ColumnPropNameInTable="VL_PCT_UMIDADEColumn" msprop:Generator_UserColumnName="VL_PCT_UMIDADE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_PCT_QUEBRA" msprop:Generator_ColumnVarNameInTable="columnVL_PCT_QUEBRA" msprop:Generator_ColumnPropNameInRow="VL_PCT_QUEBRA" msprop:Generator_ColumnPropNameInTable="VL_PCT_QUEBRAColumn" msprop:Generator_UserColumnName="VL_PCT_QUEBRA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TX_OBS" msprop:Generator_ColumnVarNameInTable="columnTX_OBS" msprop:Generator_ColumnPropNameInRow="TX_OBS" msprop:Generator_ColumnPropNameInTable="TX_OBSColumn" msprop:Generator_UserColumnName="TX_OBS" type="xs:string" minOccurs="0" />
+              <xs:element name="DT_ATUALIZACAO" msprop:Generator_ColumnVarNameInTable="columnDT_ATUALIZACAO" msprop:Generator_ColumnPropNameInRow="DT_ATUALIZACAO" msprop:Generator_ColumnPropNameInTable="DT_ATUALIZACAOColumn" msprop:Generator_UserColumnName="DT_ATUALIZACAO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CD_SITUACAO_TIPO" msprop:Generator_ColumnVarNameInTable="columnCD_SITUACAO_TIPO" msprop:Generator_ColumnPropNameInRow="CD_SITUACAO_TIPO" msprop:Generator_ColumnPropNameInTable="CD_SITUACAO_TIPOColumn" msprop:Generator_UserColumnName="CD_SITUACAO_TIPO" type="xs:int" minOccurs="0" />
+              <xs:element name="DS_TIPO" msprop:Generator_ColumnVarNameInTable="columnDS_TIPO" msprop:Generator_ColumnPropNameInRow="DS_TIPO" msprop:Generator_ColumnPropNameInTable="DS_TIPOColumn" msprop:Generator_UserColumnName="DS_TIPO" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_SITUACAO" msprop:Generator_ColumnVarNameInTable="columnDS_SITUACAO" msprop:Generator_ColumnPropNameInRow="DS_SITUACAO" msprop:Generator_ColumnPropNameInTable="DS_SITUACAOColumn" msprop:Generator_UserColumnName="DS_SITUACAO" type="xs:string" minOccurs="0" />
+              <xs:element name="NM_COMPOSTO" msprop:Generator_ColumnVarNameInTable="columnNM_COMPOSTO" msprop:Generator_ColumnPropNameInRow="NM_COMPOSTO" msprop:Generator_ColumnPropNameInTable="NM_COMPOSTOColumn" msprop:Generator_UserColumnName="NM_COMPOSTO" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_EMBALAGEM" msprop:Generator_ColumnVarNameInTable="columnDS_EMBALAGEM" msprop:Generator_ColumnPropNameInRow="DS_EMBALAGEM" msprop:Generator_ColumnPropNameInTable="DS_EMBALAGEMColumn" msprop:Generator_UserColumnName="DS_EMBALAGEM" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_COMPONENTE" msprop:Generator_ColumnVarNameInTable="columnCD_COMPONENTE" msprop:Generator_ColumnPropNameInRow="CD_COMPONENTE" msprop:Generator_ColumnPropNameInTable="CD_COMPONENTEColumn" msprop:Generator_UserColumnName="CD_COMPONENTE" type="xs:int" minOccurs="0" />
+              <xs:element name="VL_CUSTO_COMPONENTE" msprop:Generator_ColumnVarNameInTable="columnVL_CUSTO_COMPONENTE" msprop:Generator_ColumnPropNameInRow="VL_CUSTO_COMPONENTE" msprop:Generator_ColumnPropNameInTable="VL_CUSTO_COMPONENTEColumn" msprop:Generator_UserColumnName="VL_CUSTO_COMPONENTE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="QT_COMPONENTE" msprop:Generator_ColumnVarNameInTable="columnQT_COMPONENTE" msprop:Generator_ColumnPropNameInRow="QT_COMPONENTE" msprop:Generator_ColumnPropNameInTable="QT_COMPONENTEColumn" msprop:Generator_UserColumnName="QT_COMPONENTE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_PCT_QUEBRA_ITEM" msprop:Generator_ColumnVarNameInTable="columnVL_PCT_QUEBRA_ITEM" msprop:Generator_ColumnPropNameInRow="VL_PCT_QUEBRA_ITEM" msprop:Generator_ColumnPropNameInTable="VL_PCT_QUEBRA_ITEMColumn" msprop:Generator_UserColumnName="VL_PCT_QUEBRA_ITEM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TX_OBS_ITEM" msprop:Generator_ColumnVarNameInTable="columnTX_OBS_ITEM" msprop:Generator_ColumnPropNameInRow="TX_OBS_ITEM" msprop:Generator_ColumnPropNameInTable="TX_OBS_ITEMColumn" msprop:Generator_UserColumnName="TX_OBS_ITEM" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_ROTEIRO" msprop:Generator_ColumnVarNameInTable="columnCD_ROTEIRO" msprop:Generator_ColumnPropNameInRow="CD_ROTEIRO" msprop:Generator_ColumnPropNameInTable="CD_ROTEIROColumn" msprop:Generator_UserColumnName="CD_ROTEIRO" type="xs:short" minOccurs="0" />
+              <xs:element name="DS_ROTEIRO" msprop:Generator_ColumnVarNameInTable="columnDS_ROTEIRO" msprop:Generator_ColumnPropNameInRow="DS_ROTEIRO" msprop:Generator_ColumnPropNameInTable="DS_ROTEIROColumn" msprop:Generator_UserColumnName="DS_ROTEIRO" type="xs:string" minOccurs="0" />
+              <xs:element name="NM_COMPONENTE" msprop:Generator_ColumnVarNameInTable="columnNM_COMPONENTE" msprop:Generator_ColumnPropNameInRow="NM_COMPONENTE" msprop:Generator_ColumnPropNameInTable="NM_COMPONENTEColumn" msprop:Generator_UserColumnName="NM_COMPONENTE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

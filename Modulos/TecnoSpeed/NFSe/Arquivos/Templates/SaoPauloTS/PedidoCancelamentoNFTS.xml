@@ -1,0 +1,16 @@
+<PedidoCancelamentoNFTS xmlns="http://www.prefeitura.sp.gov.br/nfts">
+	<Cabecalho xmlns="" Versao="1">
+		<Remetente>
+			<CPFCNPJ>%S</CPFCNPJ>
+		</Remetente>
+		<transacao>true</transacao>
+	</Cabecalho>
+	<DetalheNFTS xmlns="">
+		<ChaveNFTS>
+			<InscricaoMunicipal>%s</InscricaoMunicipal>
+			<NumeroNFTS>%s</NumeroNFTS>
+			<CodigoVerificacao>%s</CodigoVerificacao>
+		</ChaveNFTS>
+		%s
+	</DetalheNFTS>
+</PedidoCancelamentoNFTS>

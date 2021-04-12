@@ -1,0 +1,23 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I Utils.txt}
+
+Var
+  _DSSucesso, _DSFalha, _DSLote : TSpdXSDClientDataSet;
+  _ListFields : TStringList;
+begin
+  if Params.Values['faultstring'] <> '' then
+    Output :=  GetListFieldsFaulstring(_ListFields, Input)  
+  else
+  begin    
+    GetPonteirosDataSetsCecam('DadosNotaFiscal', 'ISSEConsultaNotaRetorno', 'Erro',
+      _DSSucesso, _DSLote, _DSFalha);    
+    Output := GetListFieldsNota(_DSSucesso, _DSLote, _DSFalha, _ListFields,'','XmlNFSe');    
+  end;
+end.

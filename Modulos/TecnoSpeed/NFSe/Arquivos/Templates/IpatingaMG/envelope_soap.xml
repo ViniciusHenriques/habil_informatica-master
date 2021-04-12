@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfse="http://nfeleopoldina.portalfacil.com.br/homologacao/webservice/nfse.wsdl">
+   <soapenv:Header/>
+   <soapenv:Body>
+%s
+</soapenv:Body>
+</soapenv:Envelope>

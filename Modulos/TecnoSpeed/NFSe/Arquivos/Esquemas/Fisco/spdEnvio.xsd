@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx">
+  <xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="nfse.xsd"/>
+  <xs:element name="GerarNfse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="s:CodigoMunicipio"/>
+        <xs:element ref="s:InscricaoMunicipal"/>
+        <xs:element ref="s:Login"/>
+        <xs:element ref="s:Senha"/>
+        <xs:element ref="s:NomeTomador"/>
+        <xs:element ref="s:InscMunicipalTomador"/>
+        <xs:element ref="s:EmailTomador"/>
+        <xs:element ref="s:CNPJCPFTomador"/>
+        <xs:element ref="s:InscEstadualRGTomador"/>
+        <xs:element ref="s:LogradouroTomador"/>
+        <xs:element ref="s:BairroTomador"/>
+        <xs:element ref="s:MunicipioTomador"/>
+        <xs:element ref="s:UFTomador"/>
+        <xs:element ref="s:CEPTomador"/>
+        <xs:element ref="s:FoneTomador"/>
+        <xs:element ref="s:DtEmissao"/>
+        <xs:element ref="s:LocalPrestacao"/>
+        <xs:element ref="s:FormaPgto"/>
+        <xs:element ref="s:ValorTotal"/>
+        <xs:element ref="s:ValorDeducao"/>
+        <xs:element ref="s:DescontoIncondicional"/>
+        <xs:element ref="s:IRRF"/>
+        <xs:element ref="s:PIS"/>
+        <xs:element ref="s:COFINS"/>
+        <xs:element ref="s:CSLL"/>
+        <xs:element ref="s:INSS"/>
+        <xs:element ref="s:CasasDecimais"/>
+        <xs:element ref="s:DtVencimento"/>
+        <xs:element ref="s:CodigoServico"/>
+        <xs:element ref="s:Aliquota"/>
+        <xs:element ref="s:DescricaoServico"/>
+        <xs:element ref="s:RPS"/>
+        <xs:element ref="s:CodigoObra"/>
+        <xs:element ref="s:Art"/>
+        <xs:element ref="s:Observacao"/>
+        <xs:element ref="s:PaisIncidencia"/>
+        <xs:element ref="s:UFIncidencia"/>
+        <xs:element ref="s:MunicipioIncidencia"/>        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CodigoMunicipio" type="xs:integer"/>
+  <xs:element name="InscricaoMunicipal" type="xs:string"/>
+  <xs:element name="Login" type="xs:integer"/>
+  <xs:element name="Senha" type="xs:NCName"/>
+  <xs:element name="NomeTomador" type="xs:string"/>
+  <xs:element name="InscMunicipalTomador" type="xs:NMTOKEN"/>
+  <xs:element name="EmailTomador" type="xs:string"/>
+  <xs:element name="CNPJCPFTomador" type="xs:NMTOKEN"/>
+  <xs:element name="InscEstadualRGTomador" type="xs:integer"/>
+  <xs:element name="LogradouroTomador" type="xs:string"/>
+  <xs:element name="BairroTomador" type="xs:NCName"/>
+  <xs:element name="MunicipioTomador" type="xs:NCName"/>
+  <xs:element name="UFTomador" type="xs:NCName"/>
+  <xs:element name="CEPTomador" type="xs:integer"/>
+  <xs:element name="FoneTomador" type="xs:NMTOKEN"/>
+  <xs:element name="DtEmissao" type="xs:string"/>
+  <xs:element name="LocalPrestacao" type="xs:integer"/>
+  <xs:element name="FormaPgto" type="xs:integer"/>
+  <xs:element name="ValorTotal" type="xs:decimal"/>
+  <xs:element name="ValorDeducao" type="xs:decimal"/>
+  <xs:element name="DescontoIncondicional" type="xs:decimal"/>
+  <xs:element name="IRRF" type="xs:decimal"/>
+  <xs:element name="PIS" type="xs:decimal"/>
+  <xs:element name="COFINS" type="xs:decimal"/>
+  <xs:element name="CSLL" type="xs:decimal"/>
+  <xs:element name="INSS" type="xs:decimal"/>
+  <xs:element name="CasasDecimais" type="xs:integer"/>
+  <xs:element name="DtVencimento" type="xs:string"/>
+  <xs:element name="CodigoServico" type="xs:decimal"/>
+  <xs:element name="Aliquota" type="xs:integer"/>
+  <xs:element name="DescricaoServico" type="xs:string"/>
+  <xs:element name="RPS" type="xs:integer"/>
+  <xs:element name="CodigoObra" type="xs:string"/>
+  <xs:element name="Art" type="xs:string"/>
+  <xs:element name="Observacao" type="xs:string"/>
+  <xs:element name="PaisIncidencia" type="xs:NCName"/>
+  <xs:element name="UFIncidencia" type="xs:NCName"/>  
+  <xs:element name="MunicipioIncidencia" type="xs:NCName"/>  
+</xs:schema>

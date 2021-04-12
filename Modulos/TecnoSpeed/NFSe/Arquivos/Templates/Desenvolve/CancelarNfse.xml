@@ -1,0 +1,5 @@
+<ws:cancelarNfseEnvio>
+  <xml>
+    <![CDATA[%s]]>
+  </xml>
+</ws:cancelarNfseEnvio>

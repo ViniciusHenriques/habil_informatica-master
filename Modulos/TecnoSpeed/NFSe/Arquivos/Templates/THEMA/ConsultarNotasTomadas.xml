@@ -1,0 +1,1 @@
+<ser:consultarNfse><ser:xml><![CDATA[<ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><Prestador>%s %s</Prestador>%s<Tomador><CpfCnpj>%s</CpfCnpj>%s</Tomador></ConsultarNfseEnvio>]]></ser:xml></ser:consultarNfse>

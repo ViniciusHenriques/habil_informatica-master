@@ -1,0 +1,16 @@
+<CancelarNfseEnvio xmlns="http://shad.elotech.com.br/schemas/iss/nfse_v2_03.xsd">%s<Pedido>
+        <InfPedidoCancelamento>
+            <IdentificacaoNfse>
+                <Numero>%s</Numero>
+                <CpfCnpj>
+                            %s
+    </CpfCnpj>
+
+%s
+                <CodigoMunicipio>%s</CodigoMunicipio>
+            </IdentificacaoNfse>
+            <ChaveAcesso>%s</ChaveAcesso>
+%s
+        </InfPedidoCancelamento>           
+    </Pedido>
+</CancelarNfseEnvio>

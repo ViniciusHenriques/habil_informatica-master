@@ -1,0 +1,15 @@
+:root {--CorEscolhidaPadrao: #7c7979;--CorEscolhidaFundo:#ffffff;}
+.CorPadraoEscolhida{background-color: var(--CorEscolhidaPadrao)!important;border-color:var(--CorEscolhidaPadrao)!important;}
+.CorPadraoEscolhidaItemMenu{color:var(--CorEscolhidaPadrao)!important;border-color:var(--CorEscolhidaPadrao)!important;}
+.CorPadraoEscolhidaBorder{border-bottom:2px solid var(--CorEscolhidaPadrao)}
+.CorPadraoEscolhidaTexto{color:var(--CorEscolhidaFundo)!important;}
+.CorPadraoFundo{background-color:var(--CorEscolhidaFundo)!important}
+.CorPadraoItemHover:hover{opacity:0.8!important}
+.LogoDaEmpresa{background-image: url('../Images/LogoDaEmpresa.png');background-size:65px 49px}
+.PapelDeParedePadrao{background-image: url('../Images/PapelDeParede.jpg');background-size:100%}
+.panel-heading-padrao{background-color:var(--CorEscolhidaPadrao)!important;color:var(--CorEscolhidaFundo)!important;border-color:var(--CorEscolhidaPadrao)!important}
+.btn-primary{background-color:var(--CorEscolhidaPadrao)!important;opacity:0.5;border:1px solid var(--CorEscolhidaPadrao)!important;color:var(--CorEscolhidaFundo)!important;}
+.panel-primary > .panel-heading{background:var(--CorEscolhidaPadrao)!important;border-color:var(--CorEscolhidaPadrao)!important;color:var(--CorEscolhidaFundo)!important}
+.panel-primary{border-color:var(--CorEscolhidaPadrao)!important}
+.btn-primary:hover{background-color:var(--CorEscolhidaPadrao)!important;opacity:0.7!important;}
+.CorPadraoEscolhidaBorderRight{border-right:2px solid var(--CorEscolhidaPadrao)}

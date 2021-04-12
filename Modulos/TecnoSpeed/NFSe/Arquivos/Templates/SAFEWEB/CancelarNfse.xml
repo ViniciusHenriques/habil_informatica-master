@@ -1,0 +1,1 @@
+<CancelarNfse xmlns="http://tempuri.org/"><cabecalho><![CDATA[<CabecalhoEnvio Versao="0" xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd"><CodigoIbge>%s</CodigoIbge><versaoDados>0</versaoDados><TpAmb>%s</TpAmb>%s</CabecalhoEnvio>]]></cabecalho><cancelarNfseEnvio><![CDATA[%s]]></cancelarNfseEnvio></CancelarNfse>

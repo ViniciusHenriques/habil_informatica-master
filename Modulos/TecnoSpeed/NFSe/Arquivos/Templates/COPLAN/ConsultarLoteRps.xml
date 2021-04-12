@@ -1,0 +1,10 @@
+<trib:nfse_web_service.CONSULTARLOTERPS>
+	<trib:Consultarloterpsrequest>
+		<trib:nfseCabecMsg>
+			<![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]>
+		</trib:nfseCabecMsg>
+		<trib:nfseDadosMsg>
+			<![CDATA[<ConsultarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">%s<Protocolo>%s</Protocolo></ConsultarLoteRpsEnvio>]]>
+		</trib:nfseDadosMsg>
+	</trib:Consultarloterpsrequest>
+</trib:nfse_web_service.CONSULTARLOTERPS>

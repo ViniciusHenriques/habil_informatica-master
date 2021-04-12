@@ -1,0 +1,3 @@
+[ENVIAR]
+XSDElementName=EnviarLoteRpsEnvio
+XSDFile=nfse_v2010.xsd

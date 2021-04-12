@@ -1,0 +1,205 @@
+  {$I ..\Comuns\Comuns.TXT}
+
+  function UnEscapeXml(const aXML: string): string;
+  begin
+    // "Desescapar" o XML
+    Result:= aXML;
+    Result:= StringReplace(Result, '&apos;', '''', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&quot;', '"',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&gt;',  '>', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&lt;',  '<', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;', '&', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&#xD;', #13, [rfReplaceAll]);
+  end;
+  
+  function RemoveCaracteresInvalidosRespostaCecam(const aValue : string) : string;
+  begin
+    Result := StringReplace(aValue, '&amp;', '@@@@@',[rfReplaceAll]);
+    Result := StringReplace(Result, ';', '\delimiter',[rfReplaceAll]);
+    Result := StringReplace(Result, Params.Values['DelimitadorDoCampo'],'',[rfReplaceAll]);
+    Result := StringReplace(Result, Params.Values['DelimitadorDaLinha'],'',[rfReplaceAll]);
+    Result := StringReplace(Result, #13#10, '|', [rfReplaceAll]);
+    Result := StringReplace(Result, #13, '|', [rfReplaceAll]);
+    Result := StringReplace(Result, #10, '|', [rfReplaceAll]);
+    Result := StringReplace(Result,'@@@@@','&amp;',[rfReplaceAll]);
+  end;
+
+  function GetMotivoCecam(const aDSFalha : TSpdXSDClientDataSet) : string;  
+  begin
+    if Params.Values['faultstring'] <> '' then    
+      Result := 'Falha na comunicação com WebService-' + RemoveCaracteresInvalidosResposta(Input)    
+    else if (aDSFalha <> nil) then
+    begin
+      aDSFalha.First;
+      while Not aDSFalha.Eof do
+      begin      
+        if (Result = '') then
+          Result := Format2('%s-%s', aDSFalha.FieldByName('ID').AsString,
+            Trim(aDSFalha.FieldByName('Erro').AsString))
+        else
+          Result := Format3('%s: %s-%s', Result, aDSFalha.FieldByName('ID').AsString,
+            Trim(aDSFalha.FieldByName('Erro').AsString));
+
+        aDSFalha.Next;
+      end;
+      Result := RemoveCaracteresInvalidosResposta(Result);
+    end
+    else
+      Result := '';
+  end;
+
+  function GetXmlNFSe(const aXpath, aParamName : string) : string;
+  begin
+    if aXpath = '' then
+      Result := XmlSelect(Params.Values[aParamName], '//*[local-name()="DadosNotaFiscal"]')
+    else
+      Result := XmlSelect(Params.Values[aParamName], aXpath);
+
+    Result := StringReplace(Result, '&lt;br /&gt;', '|', [rfReplaceAll]);
+    Result := RemoveCaracteresInvalidosRespostaCecam(Result);
+  end;
+
+
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := FormatLineResult(aListFieldsResult) +
+        Params.Values['DelimitadorDaLinha'];
+  end;
+
+  function RetornouNota(aXmlLote: string): Boolean;
+  var
+    _str: string;
+  begin
+    Result :=
+      ((XmlSelectNodeValue(aXmlLote,'//*[local-name()="DadosNotaFiscal"]', _str)) or
+       (XmlSelectNodeValue(aXmlLote,'//*[local-name()="NotaFiscal"]', _str)));
+  end;
+
+  procedure GetPonteirosDataSetsCecam(const aDataSetNameSucesso,
+    aDataSetNameLote, aDatasetNameFalha : string; var aDSSucesso,
+    aDSLote, aDSFalha : TSpdXSDClientDataSet);
+  begin
+    aDSSucesso := Datasets.GetDataSetByName(aDataSetNameSucesso);
+    aDSLote := Datasets.GetDataSetByName(aDataSetNameLote);
+    aDSFalha := Datasets.GetDataSetByName(aDatasetNameFalha);
+    if (aDSSucesso = nil) then
+      RaiseException('DataSet ' + aDataSetNameSucesso + ' não foi carregado corretamente.');
+    if (aDSLote = nil) then
+      RaiseException('DataSet ' + aDataSetNameLote + ' não foi carregado corretamente.');
+    if (aDSFalha = nil) then
+      RaiseException('DataSet ' + aDatasetNameFalha + ' não foi carregado corretamente.');
+  end;
+
+
+  function GetListFieldsNota(var aDSSucesso, aDSLote, aDSFalha : TSpdXSDClientDataSet;
+    var aListFields : TStringList; const aXpathNFSe, aParamName : string): String;
+  var
+    _Motivo, _ValorCampo, _XmlNota: string;
+  begin
+    _Motivo := GetMotivoCecam(aDSFalha);
+    if RetornouNota(Params.Values[aParamName]) then
+    begin
+      aDSSucesso.First;      
+      while not aDSSucesso.Eof do
+      begin
+        aListFields := CreateFieldsResponseNota;
+        try          
+          AddValueListFields('Status', 'SUCESSO', aListFields);
+
+          { Dataset de retorno do Envio = Retorno }
+          if aDSLote.Name = 'Retorno' then
+          begin
+            AddValueListFields('Cnpj', '', aListFields);
+            AddValueListFields('InscMunicipal', '', aListFields);
+            AddValueListFields('DataEmissaoNFSe', '', aListFields);
+            AddValueListFields('DataAutorizacao', '', aListFields);            
+            AddValueListFields('NumeroRps', 
+              aDSSucesso.FieldByName('ID').AsString, aListFields);
+            AddValueListFields('Situacao', 'AUTORIZADA', aListFields);
+
+            _XmlNota := GetXmlNFSe('//*[local-name()="NotaFiscal"]' + 
+              '//*[local-name()="NumeroNF" and text()="'+
+              aDSSucesso.FieldByName('NumeroNF').AsString + '"]/..', aParamName);
+          end
+          else
+          begin            
+            AddValueListFields('Cnpj',
+              aDSLote.FieldByName('CNPJCPFPrestador').AsString, aListFields);
+            AddValueListFields('InscMunicipal',
+              aDSSucesso.FieldByName('InscricaoMunicipalPrestador').AsString, aListFields);
+            AddValueListFields('DataEmissaoNFSe',
+              aDSSucesso.FieldByName('Emissao').AsString, aListFields);
+            AddValueListFields('DataAutorizacao',
+              aDSSucesso.FieldByName('Emissao').AsString, aListFields);
+            AddValueListFields('NumeroRps', '', aListFields);
+
+            _ValorCampo := aDSSucesso.FieldByName('SituacaoNF').AsString;
+            if (_ValorCampo = 'C') then
+              AddValueListFields('Situacao', 'CANCELADA', aListFields)
+            else
+              AddValueListFields('Situacao', 'AUTORIZADA', aListFields);
+
+            _XmlNota := GetXmlNFSe('', aParamName);
+          end;          
+          
+          AddValueListFields('NumeroNFSe',
+            aDSSucesso.FieldByName('NumeroNF').AsString, aListFields);
+          
+          AddValueListFields('CodVerificacao',
+            aDSSucesso.FieldByName('ChaveValidacao').AsString, aListFields);         
+
+          { ChaveCancelamento }
+          _ValorCampo := aDSSucesso.FieldByName('NumeroNF').AsString +
+            '_' + aDSSucesso.FieldByName('ChaveValidacao').AsString;
+          AddValueListFields('ChaveCancelamento', _ValorCampo, aListFields);
+
+          { XML Nota }          
+          AddValueListFields('Xml', _XmlNota, aListFields);
+
+          { Campos não retornados }
+          AddValueListFields('Motivo', '', aListFields);
+          AddValueListFields('SerieRps',  '', aListFields);          
+          AddValueListFields('Tipo', '', aListFields);
+          AddValueListFields('DataCancelamento', '', aListFields)          
+
+          Result := Result + GetResult(aListFields);
+        Finally
+          aListFields.Free;
+        end;
+        aDSSucesso.Next;
+      end;
+    end
+    else
+    begin
+      aListFields := CreateFieldsResponseFalha;
+      try
+        if _Motivo <> '' then
+          AddValueListFields('Motivo', _Motivo, aListFields)
+        else
+          AddValueListFields('Motivo', 'NFSe não encontrada na base de dados.', aListFields);
+
+        AddValueListFields('Status', 'ERRO', aListFields);
+        Result := Result + GetResult(aListFields);
+      Finally
+        aListFields.Free;
+      end;
+    end;
+  end;
+
+  function GetListFieldsFaulstring(var aListFields : TStringList; const aInput: string): String;
+  var
+    _Motivo: string;
+  begin
+    aListFields := CreateFieldsResponseFalha;
+    try
+      _Motivo := 'Falha na comunicação com WebService-' + GetFaultString(aInput);
+      AddValueListFields('Status', 'ERRO', aListFields);
+      AddValueListFields('Motivo',_Motivo, aListFields);
+      Result := Output + FormatLineResult(aListFields) + Params.Values['DelimitadorDaLinha'];
+    Finally
+      aListFields.Free;
+    end;
+  end;  

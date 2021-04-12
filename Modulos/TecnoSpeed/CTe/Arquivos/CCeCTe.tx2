@@ -1,0 +1,35 @@
+formato=tx2
+
+INCLUIR
+descEvento_1=Carta de Correcao
+xCondUso_2=A  Carta  de  Correcao  e  disciplinada  pelo Art. 58-B do CONVENIO/SINIEF 06/89: Fica permitida  a  utilizacao  de carta  de  correcao, para  regularizacao  de  erro  ocorrido  na emissao  de  documentos  fiscais  relativos  a prestacao  de servico  de  transporte,  desde que o erro nao esteja relacionado com: I - as variaveis que determinam o valor do imposto tais como:  base  de  calculo,  aliquota, diferenca  de  preco,  quantidade,  valor  da prestacao;II  -  a  correcao  de  dados cadastrais  que  implique  mudanca  do emitente,  tomador,  remetente  ou  do destinatario;III  -  a  data  de  emissao  ou  de saida.
+
+INCLUIRINFCORRECAO
+grupoAlterado_3=grupo
+campoAlterado_4=campo
+valorAlterado_5=1.00
+nroItemAlterado_6=1
+SALVARINFCORRECAO
+
+INCLUIRINFCORRECAO
+grupoAlterado_3=grupo2
+campoAlterado_4=campo2
+valorAlterado_5=2.00
+nroItemAlterado_6=2
+SALVARINFCORRECAO
+
+INCLUIRINFCORRECAO
+grupoAlterado_3=grupo3
+campoAlterado_4=campo3
+valorAlterado_5=33.12
+nroItemAlterado_6=4
+SALVARINFCORRECAO
+
+INCLUIRINFCORRECAO
+grupoAlterado_3=grupo5
+campoAlterado_4=campo5
+valorAlterado_5=1544.00
+nroItemAlterado_6=12
+SALVARINFCORRECAO
+
+SALVAR

@@ -1,0 +1,108 @@
+ {
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+Var
+  _Xml, _SituacaoLote, _XmlSit, _Input : string;
+const
+  PATH = '//*[local-name()="ConsultarLoteRpsResposta"]';
+  
+  {$I ..\Comuns\Utils.txt}
+begin
+  Progress('Carregando configurações do XSDDataset');
+  _Input := StringReplace(Input, '&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;', '', [rfReplaceAll]);
+  if pos('ConsultarSituacaoLoteRpsResposta', _Input) > 0 then
+  begin
+    Datasets.XsdFile := PathXsd + 'nfse.xsd';
+    Datasets.XsdElementName := 'ConsultarSituacaoLoteRpsResposta';
+    Datasets.ConfigSection := 'RETORNO_CONSULTARSITUACAOLOTE';
+  end
+  else
+  begin
+    Datasets.XsdFile := PathXsd + 'nfse.xsd';
+    Datasets.XsdElementName := 'ConsultarLoteRpsResposta';
+    Datasets.ConfigSection := 'RETORNO_CONSULTARLOTE';
+  end;
+
+  if Trim(MappingXsdFileName) <> '' then
+    Datasets.MappingFileName := MappingXsdFileName;
+
+  Progress('Criando XSDDataset.');
+
+  Datasets.CreateXSDDataset;
+
+  //Capturando o xml da consulta de situação do lote.
+  if pos('ConsultarSituacaoLoteRpsResposta', _Input) > 0 then
+  begin
+    _XmlSit := UnEscapeXml(_Input);
+    _XmlSit :=  XmlDeepNodeSearch(_XmlSit,'ConsultarSituacaoLoteRpsResposta','//*[local-name()="ConsultarSituacaoLoteRpsResposta"]');
+  end;
+
+  if _XmlSit <> '' then
+  begin
+    if xmlSelectNodeValue(_XmlSit, '//*[local-name()="Situacao"]', _SituacaoLote) then
+    begin
+      Params.Add('SituacaoLote=' + _SituacaoLote);
+      Params.Add('XmlLote='+_XmlSit);
+      Datasets.LoadFromXMLContent(_XmlSit);
+    end
+    else if trim(_XmlSit) <> '' then
+    begin
+      Params.Add('SituacaoLote=3');
+      Datasets.LoadFromXMLContent(_XmlSit);
+      Params.Add('XmlLote='+_XmlSit);
+    end
+    else
+    begin
+      if pos('Codigo>A01', _XmlSit) > 0 then
+      begin
+        _Xml := StringReplace(_XmlSit, 'http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_resposta_v03.xsd',
+          'http://www.ginfes.com.br/servico_consultar_lote_rps_resposta_v03.xsd', [rfReplaceAll]);
+        _Xml := StringReplace(_Xml, 'ConsultarSituacaoLoteRpsResposta',     'ConsultarLoteRpsResposta', [rfReplaceAll]);
+        _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, PATH);
+        // Header quando o parâmetro Cabecalho=true.
+        if xmlSelectNodeValue(_Xml,'//*[namespace-uri()="" and local-name()="Header"]//*[local-name()="SituacaoLote"]',_SituacaoLote) then
+          Params.Add('SituacaoLote=' + _SituacaoLote)
+        else
+          Params.Add('SituacaoLote=');
+
+        Datasets.LoadFromXMLContent(_Xml);
+        Params.Add('XmlLote='+_Xml);
+        Progress('XML carregado com sucesso');  
+      end
+      else
+        Params.Add('SituacaoLote='+_XmlSit);
+    end;
+  end
+  else
+  begin
+    if (Pos('<faultstring', _Input) > 0) or (Pos('<title>500 Internal Server Error</title>', _Input) > 0) then
+      Params.Add('faultstring='+ _Input)
+    else
+    begin
+      if Pos('<!--CRLF-->', _Input) > 0 then
+      begin
+        _Xml := StringReplace(_Input, '<!--CRLF-->', #13#10, [rfReplaceAll]);
+        _Xml := Trim(_Xml);
+        _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, PATH);
+        _Xml := StringReplace(_Xml, #13#10, '<!--CRLF-->', [rfReplaceAll]);
+      end
+      else
+        _Xml := XmlDeepNodeSearch(_Input, Datasets.XsdElementName, PATH);      
+
+      // Header quando o parâmetro Cabecalho=true.
+      if xmlSelectNodeValue(_Xml,'//*[namespace-uri()="" and local-name()="Header"]//*[local-name()="SituacaoLote"]',_SituacaoLote) then
+        Params.Add('SituacaoLote=' + _SituacaoLote)
+      else
+        Params.Add('SituacaoLote=');      
+
+      Datasets.LoadFromXMLContent(_Xml);
+      Params.Add('XmlLote='+_Xml);
+      Progress('XML carregado com sucesso');
+    end;
+  end;
+end.

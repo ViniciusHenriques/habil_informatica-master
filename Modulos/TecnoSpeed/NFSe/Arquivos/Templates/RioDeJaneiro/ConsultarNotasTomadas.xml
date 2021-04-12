@@ -1,0 +1,15 @@
+<ConsultarNfseRequest xmlns="http://notacarioca.rio.gov.br/">
+			<inputXML><![CDATA[<ConsultarNfseEnvio xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd">
+  <Prestador>
+    <Cnpj>%s</Cnpj>
+    %s
+  </Prestador>
+  %s
+  <Tomador>
+    <CpfCnpj>
+      %s
+    </CpfCnpj>
+    %s
+  </Tomador>
+</ConsultarNfseEnvio>]]></inputXML>
+		</ConsultarNfseRequest>

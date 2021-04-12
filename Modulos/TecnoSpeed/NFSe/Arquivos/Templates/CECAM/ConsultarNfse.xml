@@ -1,0 +1,20 @@
+<tem:ConsultarNotaFiscal>
+  <tem:cnpjcpfprestador>%s</tem:cnpjcpfprestador>
+  <tem:xmlNotas>
+    <![CDATA[<ISSEConsultaNota xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSDISSEConsultaNota.xsd">
+  <Header>
+    <Versao>003</Versao>
+    <CNPJCPFPrestador>%s</CNPJCPFPrestador>
+    <Chave>%s</Chave>
+  </Header>
+  <Filtro>
+    <NumeroNFInicial>%s</NumeroNFInicial>
+    <NumeroNFFinal>%s</NumeroNFFinal>
+    <Referencia>000000</Referencia>
+    <Lote>0</Lote>
+    <TipoDocumento>000</TipoDocumento>
+  </Filtro>
+</ISSEConsultaNota>]]>
+  </tem:xmlNotas>
+  <tem:versao>003</tem:versao>
+</tem:ConsultarNotaFiscal>

@@ -1,0 +1,7 @@
+<tem:EnviarLoteNotaFiscal>
+  <tem:cnpjcpfprestador>%s</tem:cnpjcpfprestador>
+  <tem:xmlNotas>
+    <![CDATA[%s]]>
+  </tem:xmlNotas>
+  <tem:versao>002</tem:versao>
+</tem:EnviarLoteNotaFiscal>

@@ -1,0 +1,42 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+const
+  CABECALHO = '"Indicador de Tipo de Serviço","Número RPS","Serie RPS","Data Prestação de Serviço","Data Emissão do RPS","RPS Substitutivo","Documento CPF/CNPJ","Inscrição Mobiliária","Razão Social",Endereço,Número,Complemento,Bairro,"Código do Município","Código do País",Cep,Telefone,Email,"ISS Retido no Tomador","Código do Município onde o Serviço foi Prestado","Código da Atividade","Código da Lista de Serviços",Discriminação,"Valor NF","Valor Deduções","Valor Desconto Condicionado","Valor Desconto Incondicionado","Valor INSS","Valor Csll","Valor Outras Retenções","Valor Pis","Valor Cofins","Valor Ir","Valor Iss","Prestador Optante Simples Nacional",Alíquota,"Código da Obra","Código ART","Inscrição Própria","Código do Benefício"';
+
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+
+  function MontarRemessa: String;
+  var
+    _i: integer;
+    _ds: TSpdXSDClientDataSet;
+  begin
+    Result := CABECALHO + chr(13) + chr(10);
+    _ds := Datasets.GetDataSetByName('Rps');
+    _ds.First;
+    while not _ds.Eof do
+    begin
+      if _ds <> nil then
+      begin
+        for _i := 2 to _ds.Fields.Count - 1 do
+        begin
+          Result := Result + _ds.Fields[_i].AsString;
+          
+          if _ds.Fields[_i] <> _ds.Fields[_ds.Fields.Count - 1] then
+            Result := Result + ',';
+        end;
+      end;
+      Result := Result + chr(13) + chr(10);
+      _ds.Next;
+    end;
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := MontarRemessa;
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_EMBRASUP);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

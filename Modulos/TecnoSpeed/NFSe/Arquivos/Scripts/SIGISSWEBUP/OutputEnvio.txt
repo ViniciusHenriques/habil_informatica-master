@@ -1,0 +1,82 @@
+{
+  Vari?veis externas dispon?veis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+  function MontarXml: String;
+  var
+    _i, _j, _k: integer;
+    _ds: TSpdXSDClientDataSet;
+    _delimitadorCampo: string;
+  begin
+    _delimitadorCampo := '';
+    Result := '';
+
+    _ds := Datasets.GetDataSetByName('REGISTRO0');
+    _ds.First;
+    if _ds <> nil then
+    begin
+      for _i := 2 to _ds.Fields.Count - 1 do
+      begin
+        Result := Result + StringReplace(_ds.Fields[_i].AsString, '§', ' ', [rfReplaceAll]) + _delimitadorCampo;
+      end;
+    end;
+    Result := Result + chr(13) + chr(10);
+  
+    _ds := Datasets.GetDataSetByName('REGISTRO1');
+    _ds.First;
+    if _ds <> nil then
+    begin
+      for _i := 2 to _ds.Fields.Count - 1 do
+      begin
+        Result := Result + StringReplace(_ds.Fields[_i].AsString, '§', ' ', [rfReplaceAll]) + _delimitadorCampo;
+      end;
+    end;
+    Result := Result + chr(13) + chr(10);
+  
+    _ds := Datasets.GetDataSetByName('REGISTRO2');
+    _ds.First;
+    while not _ds.Eof do
+    begin
+      if _ds <> nil then
+      begin
+        for _i := 2 to _ds.Fields.Count - 1 do
+        begin
+          Result := Result + StringReplace(_ds.Fields[_i].AsString, '§', ' ', [rfReplaceAll]) + _delimitadorCampo;
+        end;
+      end;
+      Result := Result + chr(13) + chr(10);
+      _ds.next;
+    end;
+  
+    _ds := Datasets.GetDataSetByName('REGISTRO3');
+    _ds.First;
+    while not _ds.Eof do
+    begin
+      if _ds <> nil then
+      begin
+        for _i := 2 to _ds.Fields.Count - 1 do
+        begin
+          Result := Result + StringReplace(_ds.Fields[_i].AsString, '§', ' ', [rfReplaceAll]) + _delimitadorCampo;
+        end;
+      end;
+      Result := Result + chr(13) + chr(10);
+      _ds.next;
+    end;
+  
+    _ds := Datasets.GetDataSetByName('REGISTRO9');
+    _ds.First;
+    if _ds <> nil then
+    begin
+      for _i := 2 to _ds.Fields.Count - 1 do
+      begin
+        Result := Result + StringReplace(_ds.Fields[_i].AsString, '§', ' ', [rfReplaceAll]) + _delimitadorCampo;
+      end;
+    end;
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := MontarXml;
+  Progress('Arquivo XML gerado com sucesso.');
+end.

@@ -1,0 +1,1 @@
+<nfs:RecepcionarLoteRps><nfs:nfseCabecMsg><![CDATA[<cabecalho xmlns="http://nfse.abase.com.br/NFSeWS" versao="2.01"><versaoDados>2.01</versaoDados></cabecalho>]]></nfs:nfseCabecMsg><nfs:nfseDadosMsg><![CDATA[%s]]></nfs:nfseDadosMsg></nfs:RecepcionarLoteRps>

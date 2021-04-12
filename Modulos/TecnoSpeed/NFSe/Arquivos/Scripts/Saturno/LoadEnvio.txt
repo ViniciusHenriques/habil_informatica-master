@@ -1,0 +1,167 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _inicio: Integer;
+  _PadraoTecnoNFSe: Boolean;
+  _linha: string;
+  _NomeCampo: string;
+  _ValorCampo: string;
+  _PastaTecnoNFSe: string;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _Vlr: Double;
+  _QtdeRps: Integer;
+  _ValorAliquota: String;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_NOTA = 'nota';
+  DSCIDADE_ITEM = 'servico';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\BuscarInfoCidade.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\ConverterCodigoMunicipio.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\FormataFloat.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+
+procedure SetarCampoCurrencySaturno(const aValorCampoTecno, aCampo: string; const SetarSeZero: boolean);
+  var _Valor: Currency;
+  begin
+    _Valor := AnyCurrencyToCurrency(aValorCampoTecno);
+    if (_Valor <> 0) or SetarSeZero then
+      Campo(_DsCidadeAtual, aCampo).AsString := CurrencyToXsdCurrency(_Valor);
+
+
+  end;
+
+begin
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+
+  _Tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando Padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+
+      // Passar dados para o Datasets, convertendo do padrão TecnoNFSe para o padrão da Cidade
+
+      // Começar com as notas
+      Progress('Usando Padrão TecnoNFSe: carregando dados das notas');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+
+      _DsTecnoAtual.First;
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+        
+        _ValorCampo := AdicionarZerosEsquerda(CampoTecno('CpfCnpjPrestador'), 14);
+        SetarCampoValor('cpfcnpj', _ValorCampo);
+
+        SetarCampoValorTamanho('serie', CampoTecno('SerieRps'), 10);
+
+        SetarCampoValor('tipo', CampoTecno('TipoRps'));
+
+        SetarCampoCpfCnpj('cpfcnpjTomador', 'cpfcnpjTomador', RemoveMascara(CampoTecno('CpfCnpjTomador')));
+
+        SetarCampoValorTamanho('inscricao', CampoTecno('InscricaoMunicipalPrestador'), 20);
+        SetarCampoValorTamanho('cep', CampoTecno('CepPrestador'), 9);
+        SetarCampoCurrencySaturno(CampoTecno('AliquotaPIS'), 'pis', false);
+        SetarCampoCurrencySaturno(CampoTecno('AliquotaCSLL'), 'csll', True);
+        SetarCampoCurrencySaturno(CampoTecno('AliquotaCOFINS'), 'cofins', True);
+        SetarCampoCurrencySaturno(CampoTecno('AliquotaIR'), 'irff', True);
+        SetarCampoValorTamanho('situacao', CampoTecno('SituacaoNota'), 1);
+        SetarCampoValorTamanho('optante', CampoTecno('OptanteSimplesNacional'), 1);
+        
+        if DivideCampoPorcentagem(CampoTecno('AliquotaISS')) then
+        begin
+          _Vlr := AnyCurrencyToCurrency(StringReplace(CampoTecno('AliquotaISS'),',','.',[rfReplaceAll]));
+          _ValorAliquota := FormataFloat( _Vlr, 6, 4);
+          SetarCampoValor('aliquota', _ValorAliquota);
+        end
+        else
+          RaiseException('Valor inválido para o campo AliquotaISS.');
+
+        SetarCampoValorTamanho('texto', CampoTecno('DescricaoRPS'), 3200);
+        SetarCampoValorTamanho('EnderecoTomador', CampoTecno('EnderecoTomador'), 40);
+        SetarCampoValorTamanho('NumeroTomador', CampoTecno('NumeroTomador'), 5);
+        SetarCampoValorTamanho('ComplementoTomador', CampoTecno('ComplementoTomador'), 20);
+        SetarCampoValorTamanho('BairroTomador', CampoTecno('BairroTomador'), 40);
+        SetarCampoValorTamanho('CepTomador', CampoTecno('CepTomador'), 9);
+        
+        _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), XSDDATEFORMAT);
+        SetarCampoValor('data', _ValorCampo);
+        
+        SetarCampoValor('Modelo', 'Eletronica');
+        SetarCampoValorTamanho('UfTomador', CampoTecno('UfTomador'), 2);
+        SetarCampoValorTamanho('cidadeTomador', CampoTecno('DescricaoCidadeTomador'), 40);
+        
+        if AnsiMatchText(UpperCase(CampoTecno('PaisTomador')), ['01058', '1058', 'BRASIL', '']) then
+          SetarCampoValor('PaisTomador', 'BRA')
+        else
+          SetarCampo('PaisTomador');
+          
+        SetarCampoValorTamanho('nomeTomador', CampoTecno('RazaoSocialTomador'), 80);
+        SetarCampoValorTamanho('inscricaoTomador', CampoTecno('InscricaoMunicipalTomador'), 20);
+        SetarCampoValorTamanho('EmailTomador', CampoTecno('EmailTomador'), 40);
+        SetarCampoValorTamanho('DDDTomador', CampoTecno('DDDTomador'), 2);
+        SetarCampoValorTamanho('foneTomador', CampoTecno('TelefoneTomador'), 8);
+
+        _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_ITEM);
+        _DsCidadeAtual.Append;
+
+        SetarCampoCurrencySaturno(CampoTecno('ValorServicos'), 'valor', True);
+        SetarCampoValor('Quantidade', '1');
+        SetarCampoValorTamanho('atividade', CampoTecno('DiscriminacaoServico'), 320);
+        SetarCampoCurrencySaturno(CampoTecno('ValorDeducoes'), 'Deducao', False);
+        SetarCampoValorTamanho('codigoservico', CampoTecno('CodigoItemListaServico'), 5);
+        SetarCampoValor('aliquotaServico', _ValorAliquota);
+        SetarCampoCurrencySaturno(CampoTecno('AliquotaINSS'), 'inss', False);
+        SetarCampoCurrencySaturno(CampoTecno('ValorServicos'), 'total', false);
+
+        _DsCidadeAtual.Post;
+
+        _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+
+        _DsCidadeAtual.Post;
+
+        _DsTecnoAtual.Next;
+      end;
+      SetarCamposMunicipio(false);
+    end
+    else
+    begin
+      Datasets.LoadFromTx2Content(_Tx2.Text);
+    end;
+  finally
+    _Tx2.Free;
+    _CamposMunicipio.Free;
+    Progress('Arquivo TX2 carregado com Sucesso');
+  end;
+end.

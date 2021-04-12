@@ -1,0 +1,8 @@
+<tem:ConsultarNfseRps>
+	<!--Optional:-->
+	<tem:aXml>&lt;ConsultarNfseRpsEnvio xmlns=&quot;http://www.centi.com.br/files/nfse.xsd&quot;&gt;	&lt;IdentificacaoRps&gt;	&lt;Numero&gt;%s&lt;/Numero&gt;	&lt;Serie&gt;%s&lt;/Serie&gt;	&lt;Tipo&gt;%s&lt;/Tipo&gt;	&lt;/IdentificacaoRps&gt;	&lt;Prestador&gt;	&lt;CpfCnpj&gt;	%s	&lt;/CpfCnpj&gt;	&lt;InscricaoMunicipal&gt;%s&lt;/InscricaoMunicipal&gt;	&lt;/Prestador&gt;	&lt;/ConsultarNfseRpsEnvio&gt;</tem:aXml>
+	<!--Optional:-->
+	<tem:aUsuario>%s</tem:aUsuario>
+	<!--Optional:-->
+	<tem:aSenha>%s</tem:aSenha>
+</tem:ConsultarNfseRps>

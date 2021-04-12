@@ -1,0 +1,10 @@
+<trib:nfse_web_service.RECEPCIONARLOTERPSSINCRONO>
+	<trib:Recepcionarloterpssincronorequest>
+		<trib:nfseCabecMsg>
+			<![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]>
+		</trib:nfseCabecMsg>
+		<trib:nfseDadosMsg>
+			<![CDATA[%s]]>
+		</trib:nfseDadosMsg>
+	</trib:Recepcionarloterpssincronorequest>
+</trib:nfse_web_service.RECEPCIONARLOTERPSSINCRONO>

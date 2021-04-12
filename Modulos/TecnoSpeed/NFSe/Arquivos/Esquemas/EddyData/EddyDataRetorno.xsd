@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Resposta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Status"/>
+        <xs:element ref="Mensagem"/>
+        <xs:element ref="Dados"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Status" type="xs:boolean"/>
+  <xs:element name="Mensagem" type="xs:string"/>
+  <xs:element name="Dados" type="xs:NCName"/>
+</xs:schema>

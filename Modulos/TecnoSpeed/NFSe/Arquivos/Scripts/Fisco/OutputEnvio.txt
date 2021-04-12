@@ -1,0 +1,44 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+  function RealizarDelimitacaoLoteRps(const aXML, aTagRps, aTagNodeAcimaRps: string): string;
+  var
+    _DelimitadorRPS: string;
+  begin
+    Result := aXML;
+    _DelimitadorRPS := Params.Values['DelimitadorRPS'];
+
+    if _DelimitadorRPS = '' then
+      _DelimitadorRPS := Params.Values['Delimitador'];         
+    Result := StringReplace(Result, aTagRps, _DelimitadorRps + aTagRps, [rfReplaceAll]);
+    Result := StringReplace(Result, aTagNodeAcimaRps,  aTagNodeAcimaRps + _DelimitadorRps, [rfReplaceAll]);
+  end;
+
+  function InserirQuebrasDeLinha(const aXML, aLineBreak: string): string;
+  var 
+    _discriminacao,
+    _obs, _Xml : String;
+  begin
+    _discriminacao := XmlSelect(aXML, '//*[local-name()="DescricaoServico"]');
+    _obs           := XmlSelect(aXML, '//*[local-name()="Observacao"]');
+    _discriminacao := StringReplace(_discriminacao, ' xmlns="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx"', '', [rfReplaceAll, rfIgnoreCase]);
+    _obs           := StringReplace(_obs, ' xmlns="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx"', '', [rfReplaceAll, rfIgnoreCase]);
+    _Xml           := StringReplace(aXML, _discriminacao, '###DescricaoServico###', [rfReplaceAll, rfIgnoreCase]);
+    _Xml           := StringReplace(_Xml, _obs, '###Observacao###', [rfReplaceAll, rfIgnoreCase]);
+    _discriminacao := StringReplace(_discriminacao, '|', '&lt;br /&gt;', [rfReplaceAll, rfIgnoreCase]);
+    _obs           := StringReplace(_obs, '|', '&#xD;', [rfReplaceAll, rfIgnoreCase]);
+    Result         := StringReplace(_Xml, '###DescricaoServico###', _discriminacao, [rfReplaceAll, rfIgnoreCase]);
+    Result         := StringReplace(Result, '###Observacao###', _obs, [rfReplaceAll, rfIgnoreCase]);
+  end;
+  
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXML;
+  Output := RealizarDelimitacaoLoteRps(Output, '<GerarNfse xmlns="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx">', '</GerarNfse>');
+  Output := InserirQuebrasDeLinha(Output, '');
+  Progress('Arquivo XML gerado com sucesso.');
+end.

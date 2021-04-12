@@ -1,0 +1,484 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _inicio: Integer;
+  _PadraoTecnoNFSe: Boolean;
+  _linha: string;
+  _NomeCampo, _ValorCst : string;
+  _ValorCampo: string;
+  _PastaTecnoNFSe: string;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _DsServicoAtual: TSpdXSDClientDataSet;
+  _Vlr: Double;
+  _QtdeRps: Integer;
+  DSCIDADE_LOTE : string;
+  _ValorCurrency : Currency;
+  _CidadeConfigurada: string;
+  _IndexCidadeConfig: Integer;
+  _CodigoCidadeConfig: string;
+  i : Integer;
+  CODIGOS_CIDADES : array[0..1] of string;
+  NOMES_CIDADES : array[0..1] of string;
+
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSTECNO_SERVICO = 'Servico';
+  DSCIDADE_NOTA = 'xmlProcessamentoNfpse';
+  DSCIDADE_SERV = 'itemServico';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\BuscarInfoCidade.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\ConverterCodigoMunicipio.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasetsItens.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\SetarCamposMunicipioDS.txt}
+{$I ..\Comuns\FormataFloat.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.txt}
+
+  function ZerarBaseCalculoSoftplan(const aValorCst, aValorCfps: String): Boolean;
+  begin
+    case aValorCst of
+    '0': if AnsiMatchText(aValorCfps, ['9205','9206','9207']) then Result:= True else Result:= False;
+    '1': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9205','9206','9207','9208','9209','9210','9211']) then Result:= True else Result:= False;
+    '5': if AnsiMatchText(aValorCfps, ['9202','9203','9204']) then Result:= True else Result:= False;
+    '12': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '13': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '14': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9205','9206','9207','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;    
+    '15': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '16': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211']) then Result:= True else Result:= False;    
+    else
+      Result := False;
+    end;
+  end;
+
+  function ZerarAliquotaSoftplan(const aValorCst, aValorCfps: String): Boolean;
+  begin
+    case aValorCst of
+    '0': if AnsiMatchText(aValorCfps, ['9205','9206','9207']) then Result:= True else Result:= False;
+    '1': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9205','9206','9207','9208','9209','9210','9211']) then Result:= True else Result:= False;
+    '12': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '13': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '14': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9205','9206','9207','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;    
+    '15': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211','9302','9303','9304']) then Result:= True else Result:= False;
+    '16': if AnsiMatchText(aValorCfps, ['9201','9202','9203','9204','9208','9209','9210','9211']) then Result:= True else Result:= False;    
+    else
+      Result := False;
+    end;
+  end;  
+  
+  function FormataCurrencySoftPlan(const aValor: String): String;
+  var
+    _VlCurrency : Currency;
+  begin
+    _VlCurrency := AnyCurrencyToCurrency(aValor);
+    Result:= StringReplace(CurrencyToXsdCurrency(_VlCurrency), ',', '.', [rfReplaceAll]);
+  end;
+
+  procedure SetarCampoValorServicoSOFTPLAN(const aCampo, aValor: string);
+  begin
+    Campo(_DsServicoAtual, aCampo).AsString := aValor;
+  end;
+
+  procedure SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN(const aCampo, aValor: string; Max: Integer);
+  begin
+    if (Length(aValor) <= Max) and (Trim(aValor) <> '') then
+      Campo(_DsServicoAtual, aCampo).AsString := aValor
+    else if aCampo = 'idCNAE' then
+      RaiseException('Para Florianópolis o campo referente a tag idCNAE é obrigatório' +
+        ' e deve possuir até 5 caractéres. Acesse a documentação do padrão SOFTPLAN' +
+        ' e verifique a lista de CNAE disponibilizada ou entre em contato com a prefeitura.')
+    else
+      RaiseException('Para essa cidade o campo referente a tag "' + aCampo + '" é obrigatório e não deve ser Maior que ' + IntToStr(Max) + ' Caracteres');
+  end;
+
+  procedure SetarCampoCurrencySoftplan(const aCampoTecno, aCampoSoftplan: string; aDataSet : TSpdXSDClientDataSet);
+  var
+    _ValorCur: Currency;
+    _ValorStr: string;
+  begin
+    if CampoTecno(aCampoTecno) <> '' then
+    begin
+      try
+        _ValorCur := AnyCurrencyToCurrency(CampoTecno(aCampoTecno));
+        _ValorStr:= StringReplace(CurrencyToXsdCurrency(_ValorCur), ',', '.', [rfReplaceAll]); // Separador de decimal é o ponto
+      except
+        RaiseException('Não foi possível realizar a conversão do campo: ' + aCampoTecno);
+      end;
+
+      Campo(aDataSet, aCampoSoftplan).AsString := _ValorStr;
+    end;
+  end;
+
+  function ReterIss: Boolean;
+  begin
+    case AnsiIndexText(CampoTecno('IssRetido'), ['1', 'sim', 'true', '2', 'nao', 'não', 'false']) of
+        0,1,2: Result := True;
+        3,4,5,6: Result := False;
+    end;
+  end;
+
+  function SubstituicaoTributaria: Boolean;
+  var
+    _ValorCampo : String;
+  begin
+    _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador')) ;
+    if (Length(_ValorCampo) = 14) and (CampoTecno('TipoTributacao') = '7') and (ReterIss) then
+    begin
+      case CampoTecno('ResponsavelRetencao') of
+      '1','2': Result := True;
+      else
+        Result := False;
+      end;
+    end
+    else
+      Result := False;
+  end;
+
+begin
+
+  CODIGOS_CIDADES[0] := '4205407';
+  NOMES_CIDADES[0] := 'FLORIANOPOLISSC';
+
+  Progress('Criando XSDDataset');
+
+  CriarDatasets;
+
+  _Tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+    _DsTecnoAtual := nil;
+
+    if _PadraoTecnoNFSe then
+    begin
+      DSCIDADE_LOTE := 'xmlProcessamentoNfpse';
+      Progress('Usando Padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasetsItens;
+
+      // Passar dados para o Datasets, convertendo do padrão TecnoNFSe para o padrão da Cidade
+      Datasets.GetDataSetByName(DSCIDADE_LOTE).Insert;
+
+      // Começar com as notas
+      Progress('Usando Padrão TecnoNFSe: carregando dados das notas');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _DsServicoAtual := Datasets.GetDataSetByName(DSCIDADE_SERV);
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+
+      _DsTecnoAtual.First;
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+
+        _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'yyyy-mm-dd');
+        SetarCampoValorTamanhoObrigatorio('DataEmissao', _ValorCampo, 10);
+
+        _ValorCampo := TecnoNFSeDS.GetDataSetByName(DSTECNO_LOTE).FieldByName('ValorTotalServicos').AsString;
+        if _ValorCampo <> '' then
+          Campo(_DsCidadeAtual, 'valorTotalServicos').AsString := FormataCurrencySoftPlan(_ValorCampo)
+        else if CampoTecno('ValorServicos') <> '' then
+          SetarCampoCurrencySoftplan('ValorServicos', 'valorTotalServicos', _DsCidadeAtual)
+        else
+          RaiseException('O campo ValorTotalServicos nao pode ser vazio.');
+
+        SetarCampoValorTamanhoObrigatorio('BairroTomador', CampoTecno('BairroTomador'), 60);
+
+        _ValorCampo := TecnoNFSeDS.GetDataSetByName(DSTECNO_LOTE).FieldByName('ValorTotalBaseCalculo').AsString;
+        if _ValorCampo <> '' then
+          Campo(_DsCidadeAtual, 'BaseCalculo').AsString := FormataCurrencySoftPlan(_ValorCampo)
+        else
+          RaiseException('O campo ValorTotalBaseCalculo não pode ser vazio. (Obrigatório informar ValorTotalBaseCalculo à partir de 23/07/2018)');
+
+        if CampoTecno('CodigoCidadePrestador') <> '' then
+          _CodigoCidadeConfig := CampoTecno('CodigoCidadePrestador')
+        else
+        begin
+          _CidadeConfigurada := Params.Values['Cidade'];
+          for i := 0 to 1 do
+          begin
+            if SameText(_CidadeConfigurada, NOMES_CIDADES[i]) then
+            begin
+              _IndexCidadeConfig := i;
+              _CodigoCidadeConfig := CODIGOS_CIDADES[i];
+            end;
+          end;
+        end;
+
+        // preenchimento do CFPS
+
+        _ValorCampo := CampoTecno('CodigoCidadePrestacao');
+        if (_ValorCampo <> '') then
+        begin
+          if _ValorCampo = _CodigoCidadeConfig then
+          begin
+            if _ValorCampo = CampoTecno('CodigoCidadeTomador') then
+              SetarCampoValor('cfps', '9201')  // No municipio para Tomador ou Destinatario estabelecido ou domiciliado no município
+            else if Copy(_ValorCampo,1,2) = Copy(CampoTecno('CodigoCidadeTomador'),1,2) then
+              SetarCampoValor('cfps', '9202')  // No municipio para Tomador ou Destinatario estabelecido ou domiciliado fora do município
+            else if AnsiMatchText(UpperCase(CampoTecno('PaisTomador')), ['01058', '1058', 'BRASIL', '']) then
+              SetarCampoValor('cfps', '9203')  // No municipio para Tomador ou Destinatario estabelecido ou domiciliado em outro estado da federacao
+            else
+              SetarCampoValor('cfps', '9204');  // No municipio para Tomador ou Destinatario estabelecido ou domiciliado no exterior
+          end
+          else
+          begin
+            if Copy(_CodigoCidadeConfig,1,2) = Copy(CampoTecno('CodigoCidadeTomador'),1,2) then
+              SetarCampoValor('cfps', '9205')  // Fora do municipio para tomador ou destinatario estabelecido ou domiciliado no estado
+            else if AnsiMatchText(UpperCase(CampoTecno('PaisTomador')), ['01058', '1058', 'BRASIL', '']) then
+              SetarCampoValor('cfps', '9206')  // Fora do municipio para tomador ou destinatario estabelecido ou domiciliado fora do estado da federacao
+            else
+              SetarCampoValor('cfps', '9207');  // Fora do municipio para tomador ou destinatario estabelecido ou domiciliado no exterior
+          end;
+        end
+        else
+        begin
+          RaiseException('O campo CodigoCidadePrestacao não pode ser vazio. (Obrigatório informar CodigoCidadePrestacao)');
+        end;
+
+        // preenchimento do CST
+
+        if (CampoTecno('NaturezaTributacao') = '1') or (CampoTecno('OptanteSimplesNacional') = '1') then
+        begin
+          if SubstituicaoTributaria then
+            _ValorCst :=  '6'   // tributada integralmente sujeita ao regime do simples nacional e da substituicao tributaria
+          else if ReterIss then
+            _ValorCst :=  '3'   // tributada integralmente e sujeita ao regime do simples nacional e com o Iss retido na fonte
+          else
+            _ValorCst :=  '1';  // tributada integralmente e sujeita ao regime do simples nacional
+        end
+        else
+        begin
+          if SubstituicaoTributaria then
+          begin
+            if CampoTecno('NaturezaTributacao') = '6' then
+              _ValorCst :=  '10'  // tributada com reducao da base de calculo ou aliquota e sujeita ao regime da substituicao tributaria
+            else
+            begin
+              case CampoTecno('ResponsavelRetencao') of
+                '1': _ValorCst :=  '4';  // tributada integralmente e sujeita ao regime da substituicao tributaria
+                '2': _ValorCst :=  '5';  // tributada integralmente e sujeita ao regime da substituicao tributaria pelo agenciador ou intemediário
+              else
+                RaiseException('Para operações com substituição tributária, informar o campo ResponsavelRetencao. (1 - Para Tomador ou 2 - Para Intermediário)');
+              end;
+            end;
+          end
+          else if ReterIss then
+          begin
+            if CampoTecno('NaturezaTributacao') = '6' then
+              _ValorCst :=  '9'  // tributada com reducao da base de calculo ou aliquota e com o Iss retido na fonte
+            else
+              _ValorCst :=  '2'  // tributada integralmente e com o Iss retido na fonte
+          end
+          else
+          begin
+            if CampoTecno('NaturezaTributacao') = '6' then
+              _ValorCst := '8'  // tributada com reducao da base de calculo ou aliquota
+            else
+              _ValorCst := '0'; // tributada integralmente
+          end;
+
+          case CampoTecno('TipoTributacao') of
+            '1', '2': _ValorCst := '12';  // isenta ou imune
+            '4': _ValorCst := '13';  // Nao tributada
+          else
+            if (CampoTecno('NaturezaTributacao') = '2') then
+              _ValorCst := '14';  // tributada por meio do imposto fixo
+          end;
+
+        end;
+
+        // validacao CFPS X CST
+
+        _ValorCampo := CampoCidade('cfps');
+        case _ValorCampo of
+          '9202','9203','9204':
+            if AnsiMatchText(_ValorCst, ['2','3','4','6','7','9','10','11']) then
+            begin
+              RaiseException('Valor de CST ''' + _ValorCst + ''' invalido para o CFPS ''' + _ValorCampo + '''. Valores disponíveis: [0,1,5,8,12,13,14,15,16]' );
+            end;
+          '9205','9206','9207':
+            if AnsiMatchText(_ValorCst, ['2','3','4','5','6','7','8','9','10','11','12','13','15','16']) then
+            begin
+              RaiseException('Valor de CST ''' + _ValorCst + ''' invalido para o CFPS ''' + _ValorCampo + '''. Valores disponíveis: [0,1,14]' );
+            end;
+        end;
+
+        if AnsiMatchText(UpperCase(CampoTecno('PaisTomador')), ['01058', '1058', 'BRASIL', '']) then
+        begin
+          SetarCampoValor('PaisTomador', '1058');
+          SetarCampoValorTamanho('CodigoMunicipioTomador', RemoveMascara(CampoTecno('CodigoCidadeTomador')), 7);
+          if CampoTecno('UfTomador') <> '' then
+            SetarCampoValorTamanho('UfTomador', CampoTecno('UfTomador'), 2)
+          else
+          begin
+            _ValorCampo := BuscarInfoCidade('CodIBGE', CampoTecno('CodigoCidadeTomador'), 'UF');
+            SetarCampoValor('UfTomador', _ValorCampo);
+          end;
+        end
+        else
+        begin
+          SetarCampoValorTamanho('PaisTomador', CampoTecno('PaisTomador'), 5);
+          SetarCampoObrigatorioValorTamanho('nomeMunicipioTomador', 'DescricaoCidadeTomador', CampoTecno('DescricaoCidadeTomador'), 60);
+        end;
+
+        _ValorCampo := RemoverAcentos(CampoTecno('OutrasInformacoes'));
+        SetarCampoValorTamanho('dadosAdicionais',_ValorCampo , 600);
+
+        SetarCampoValorTamanhoObrigatorio('codigoPostalTomador', RemoveMascara(CampoTecno('CepTomador')), 8);
+        SetarCampoValorTamanho('complementoEnderecoTomador', RemoveMascara(CampoTecno('ComplementoTomador')), 30);
+        SetarCampoValorTamanhoObrigatorio('EmailTomador', CampoTecno('EmailTomador'), 80);
+
+        SetarCampoValor('identificacao', CampoTecno('NumeroRps') + '_' + CampoTecno('SerieRps'));
+
+        _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+        case Length(_ValorCampo) of
+          11, 14: SetarCampoValor('identificacaoTomador', _ValorCampo);
+        else
+          RaiseException('Valor inválido para o campo CpfCnpjTomador');
+        end;
+
+        SetarCampoValorTamanho('InscricaoMunicipalTomador', RemoveMascara(CampoTecno('InscricaoMunicipalTomador')), 7);
+
+        SetarCampoValorTamanho('logradouroTomador', CampoTecno('EnderecoTomador'), 80);
+
+        SetarCampoValorTamanho('numeroAEDF', copy(CampoTecno('InscricaoMunicipalPrestador'), 1, Length(CampoTecno('InscricaoMunicipalPrestador'))-1), 7);
+
+        SetarCampoValorTamanho('numeroEnderecoTomador', CampoTecno('NumeroTomador'), 9);
+
+        SetarCampoValorTamanhoObrigatorio('RazaoSocialTomador', CampoTecno('RazaoSocialTomador'), 80);
+
+        VerificaDDD('TelefoneTomador', 'TelefoneTomador', 'DDDTomador');
+
+        SetarCampoCurrencySoftplan('valorISS', 'valorISSQN', _DsCidadeAtual);
+
+        SetarCampoValor('valorISSQNSubstituicao', '0');
+
+        _DsServicoAtual.Edit;
+
+        SetarCampoValorServicoSOFTPLAN('cst', _ValorCst);
+
+        if DivideCampoPorcentagem(CampoTecno('AliquotaISS')) then
+        begin
+          _Vlr := StrToFloat(StringReplace(CampoTecno('AliquotaISS'),',','.',[rfReplaceAll])) / 100;  // 5 --> 0,05
+          _ValorCampo := FormataFloat(_Vlr, 5, 4);
+          SetarCampoValorServicoSOFTPLAN('Aliquota', _ValorCampo);
+        end
+        else
+          RaiseException('Valor inválido para o campo AliquotaISS.');
+
+        SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('descricaoServico', CampoTecno('DiscriminacaoServico'), 1000);
+        SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('idCNAE', CampoTecno('CodigoCnae'), 5);
+
+        if CampoTecno('QuantidadeServicos') <> '' then
+          SetarCampoValorServicoSOFTPLAN('quantidade', CampoTecno('QuantidadeServicos'))
+        else
+          SetarCampoValorServicoSOFTPLAN('quantidade', '1');
+
+        _ValorCampo:= FormataCurrencySoftPlan(campoTecno('BaseCalculo'));
+        SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('baseCalculoServico', _ValorCampo, 15);
+
+        if CampoTecno('ValorUnitarioServico') <> '' then
+          SetarCampoCurrencySoftplan('ValorUnitarioServico', 'valorUnitario', _DsServicoAtual)
+        else
+          SetarCampoCurrencySoftplan('ValorServicos', 'valorUnitario', _DsServicoAtual);
+
+        SetarCampoCurrencySoftplan('ValorServicos', 'valorTotal', _DsServicoAtual);
+                
+        // zerando base de calculo e aliquota de acordo com cst e cfps informado
+        _ValorCampo := CampoCidade('cfps');
+        if ZerarBaseCalculoSoftplan(_ValorCst, _ValorCampo) then
+        begin
+          Campo(_DsCidadeAtual, 'BaseCalculo').AsString := FormataCurrencySoftPlan('0.00');
+          SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('baseCalculoServico', '0.00', 15);
+        end;
+        if ZerarAliquotaSoftplan(_ValorCst, _ValorCampo) then
+        begin
+          SetarCampoValorServicoSOFTPLAN('Aliquota', '0.00');
+        end;        
+
+
+        _DsServicoAtual.Post;
+
+        _DsCidadeAtual.Post;
+
+        _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_SERVICO);
+        _DsTecnoAtual.First;
+
+        while not _DsTecnoAtual.Eof do
+        begin
+          _DsServicoAtual.Append;
+
+          SetarCampoValorServicoSOFTPLAN('cst', _ValorCst);
+
+          if DivideCampoPorcentagem(CampoTecno('AliquotaServico')) then
+          begin
+            _Vlr := StrToFloat(StringReplace(CampoTecno('AliquotaServico'),',','.',[rfReplaceAll])) / 100;  // 5 --> 0,05
+            _ValorCampo := FormataFloat(_Vlr, 5, 4);
+            SetarCampoValorServicoSOFTPLAN('Aliquota', _ValorCampo);
+          end
+          else
+            RaiseException('Valor inválido para o campo AliquotaServico.');
+
+          _ValorCampo:= FormataCurrencySoftPlan(campoTecno('BaseCalculo'));
+          SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('baseCalculoServico', _ValorCampo, 15);
+
+          SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('descricaoServico', CampoTecno('DiscriminacaoServico'), 1000);
+          SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('idCNAE', CampoTecno('CodigoCnae'), 5);
+
+          if CampoTecno('QuantidadeServicos') <> '' then
+            SetarCampoValorServicoSOFTPLAN('quantidade', CampoTecno('QuantidadeServicos'))
+          else
+            SetarCampoValorServicoSOFTPLAN('quantidade', '1');
+
+          SetarCampoCurrencySoftplan('ValorUnitarioServico', 'valorUnitario', _DsServicoAtual);
+
+          SetarCampoCurrencySoftplan('ValorServicos', 'valorTotal', _DsServicoAtual);
+          
+          // zerando base de calculo e aliquota de acordo com cst e cfps informado
+          _ValorCampo := CampoCidade('cfps');
+          if ZerarBaseCalculoSoftplan(_ValorCst, _ValorCampo) then
+          begin
+            SetarCampoValorTamanhoObrigatorioServicoSOFTPLAN('baseCalculoServico', '0.00', 15);
+          end;
+          if ZerarAliquotaSoftplan(_ValorCst, _ValorCampo) then
+          begin
+            SetarCampoValorServicoSOFTPLAN('Aliquota', '0.00');
+          end;
+
+          _DsServicoAtual.Post;
+          _DsTecnoAtual.Next;
+        end;
+        _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+        _DsTecnoAtual.Next;
+      end;
+
+      SetarCamposMunicipioDS([DSCIDADE_NOTA, DSCIDADE_SERV]);
+    end
+    else
+    begin
+      Datasets.LoadFromTx2Content(_Tx2.Text);
+    end;
+  finally
+    _Tx2.Free;
+    _CamposMunicipio.Free;
+    Progress('Arquivo TX2 carregado com Sucesso');
+  end;
+end.

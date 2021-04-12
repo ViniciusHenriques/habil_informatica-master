@@ -1,0 +1,7 @@
+<ConsultarSituacaoLoteRpsEnvio xmlns="http://nfe.sjp.pr.gov.br/servico_consultar_situacao_lote_rps_envio_v03.xsd" Id="C1">
+<Prestador xmlns:tipos="http://nfe.sjp.pr.gov.br/tipos_v03.xsd">
+<tipos:Cnpj>%s</tipos:Cnpj>
+<tipos:InscricaoMunicipal>%s</tipos:InscricaoMunicipal>
+</Prestador>
+<Protocolo>%s</Protocolo>
+</ConsultarSituacaoLoteRpsEnvio>

@@ -1,0 +1,533 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _ValorCampo, _ValorDecimal : string;
+  _ValorCampoVal, _ValorCampoValtrib : string;
+  _NomeCampo: string;
+  _inicio, _QtdeRps : Integer;
+  _linha: string;
+  _PastaTecnoNFSe: string;
+  _Data, _DataIni, _DataFim : TDateTime;
+  _ValorDeducoes, _ValorServico, _ValorCSLL, _ValorCofins, 
+  _ValorIRPJ, _ValorInss, _ValorPis, _ValorIssRetido : Currency;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_LOTE = 'IDENTIFICACAO';
+  DSCIDADE_NOTA = 'RPS';
+  DSCIDADE_VALIDACAO = 'VALIDACAO';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\FormataFloat.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+
+
+ procedure SetarCampoValorTamObrigatorioRemessa(const aNomeCampoCidade, aCampoTecno: string; aTamanho: integer);//Arrumar para NomeRemessa
+  begin
+    if Length(CampoTecno(aCampoTecno)) > aTamanho then 
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" não deve conter mais de ' + inttostr(aTamanho) + ' Caractere(s)');
+    if (CampoTecno(aCampoTecno) = '') then
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" é obrigatório e deve conter até ' + inttostr(aTamanho) + ' Caractere(s)')
+    else if (Length(CampoTecno(aCampoTecno)) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, CampoTecno(aCampoTecno));
+  end;
+
+  procedure SetarCampoValorTamRemessa(const aNomeCampoCidade, aValor: string; aTamanho: integer);
+  begin
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)');
+      if (Length(aValor) <= aTamanho) then
+        SetarCampoValor(aNomeCampoCidade, aValor);
+  end;
+  
+procedure SetarCampoValorTamFixo(const aNomeCampoCidade, aValor, aCampoTecno: string; aTamanho: integer);
+begin  
+    if (Length(aValor) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, aValor)
+    else
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" é obrigatório e deve conter: ' + inttostr(aTamanho) + ' caractere(s)');
+end; 
+
+function Ocorrencias(const aItem, aTexto: String): Integer;
+var
+  _i, _count: Integer;
+begin
+
+  for _i := 0 to Length(aTexto)-1 do
+  begin
+    if copy(aTexto, _i, 1) = aItem then
+      _count := _count + 1;
+  end;
+  Result := _Count;
+end;
+
+procedure AdicionaPipeDiscriminacao(var aDiscriminacao: String);
+var
+  _parteDiscri, _DiscriminacaoFinal : WideString;
+  I, y, _posicaoUltimoEspaco, _inicio : Integer;
+  TDiscri : TStringList;
+
+begin
+  if (Length(aDiscriminacao) >= 101) and (pos(' ', aDiscriminacao) = 0) then
+    RaiseException('O campo DiscriminacaoServico deve conter a cada 100 caracteres um pipe "|" separando um bloco de 100 caracteres do outro e não pode conter mais que 13 "|" ao todo.');
+
+  if RightStr(aDiscriminacao, 1) <> ' ' then
+    aDiscriminacao := aDiscriminacao + ' ';
+
+  I := 0;
+  TDiscri := TStringList.Create;
+  try
+    //for para adicionar em uma array as string que são separadas por pipe. Ex: TDiscri[0] := teste 1| TDiscri[1] := teste 2| TDiscri[2] := teste 3|
+    for I := 1 to Length(aDiscriminacao) do
+    begin
+      if Copy(aDiscriminacao, I, 1) <> '|' then
+        _parteDiscri := _parteDiscri + Copy(aDiscriminacao, I, 1)
+      else
+      begin
+        TDiscri.Add(_parteDiscri + Copy(aDiscriminacao, I, 1));
+        _parteDiscri := '';
+      end;
+    end;
+    //Adiciona a ultima string contada caso o final não for |
+    if RightStr(aDiscriminacao, 1) <> '|' then
+      TDiscri.Add(_parteDiscri);                             
+    //For para pegar posição a posição do array e verificar se possui mais de 100 caracteres entre um pipe e outro
+    for I := 0 to TDiscri.Count-1 do
+    begin
+      _parteDiscri := '';
+      if (Length(TDiscri[I]) > 100) and (pos(' ', TDiscri[I]) > 0) then
+      begin
+        //nesse bloco todo, será contado da primeira posição até o ultimo espaço antes de dar 100 caracteres, para adicionar um pipe e continuar contando até o próximo espaço antes de dar 100 caracteres novamente e assim até terminar a string.
+        while _inicio <= Length(TDiscri[I]) do
+        begin
+          for y := 100 downto 0 do
+          begin
+            if Copy(TDiscri[I], y, 1) = ' ' then
+            begin            
+              _posicaoUltimoEspaco := y;
+              break;
+            end;            
+          end;
+          _parteDiscri := _parteDiscri + Copy(TDiscri[I], 0, _posicaoUltimoEspaco) + '|';
+          _inicio := _posicaoUltimoEspaco;
+          TDiscri[I] := Copy(TDiscri[I], _inicio, length(TDiscri[I])); 
+        end;
+        TDiscri[I] := _parteDiscri + TDiscri[I]
+      end
+      else if (Length(TDiscri[I]) > 100) and not (pos(' ', TDiscri[I]) > 0) then
+        RaiseException('Valor inválido: ' + TDiscri[I] + ' Não é permitido informar uma palavra maior do que 100 caracteres.');
+    end;
+    //Se a contagem final tiver mais de 13 pipes, deve dar uma exception pois o padrão não suporta.
+    if Ocorrencias('|', TDiscri.Text) > 13 then
+      RaiseException('O campo DiscriminacaoServico deve conter a cada 100 caracteres um pipe "|" separando um bloco de 100 caracteres do outro e não pode conter mais que 13 "|" ao todo.');
+    //Monta toda a discriminação com todos os pipes e preenche com espaços o que sobrou
+    _DiscriminacaoFinal := StringReplace(TDiscri.Text, #13#10, '', [rfReplaceAll]) ;
+    SetarCampoValorTamRemessa('DiscriminacaoServico', PreencheComEspacos(_DiscriminacaoFinal, 1000), 1000);
+  finally
+    TDiscri.free;
+  end;
+end;
+
+function PreencheComZerosEsquerda(const aValor : String; const aQuantidade : Integer): String;
+var
+  _Quantidade, _i : Integer;
+  _ValorServico : String;
+begin
+  _Quantidade := (aQuantidade - Length(aValor));
+  for _i := 0 to _Quantidade -1 do
+    _ValorServico := _ValorServico + '0';
+  Result := _ValorServico + aValor;
+end;
+
+function FormataMoeda(const aValor: String) : String;
+begin
+  Result := StringReplace(aValor, '.', '', [RfReplaceAll]);
+  Result := StringReplace(Result, ',', '', [RfReplaceAll]);
+end;
+
+function FormatarData(const aData : String): String;
+begin
+  Result := StringReplace(aData, '-', '', [RfReplaceAll]);
+  Result := StringReplace(Result, 'T', '', [RfReplaceAll]);
+  Result := StringReplace(Result, ':', '', [RfReplaceAll]);
+end;
+
+ procedure SetarCampoValorTamObrigatorioRemessaTexto(const aNomeCampoCidade, aCampoTecno: string; aTamanho: integer);
+  begin
+    if Length(CampoTecno(aCampoTecno)) > aTamanho then 
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" não deve conter mais de ' + inttostr(aTamanho) + ' Caractere(s)');
+    if (CampoTecno(aCampoTecno) = '') then
+      RaiseException('Para essa cidade o campo "' + aCampoTecno + '" é obrigatório e deve conter até ' + inttostr(aTamanho) + ' Caractere(s)')
+    else if (Length(CampoTecno(aCampoTecno)) <= aTamanho) then
+      SetarCampoValor(aNomeCampoCidade, '"' + CampoTecno(aCampoTecno) + '"');
+  end;
+
+begin
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+
+  _Tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando Padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+
+      // Editar dados carregados no Datasets, para fazer algumas transformações
+      Progress('Usando Padrão TecnoNFSe: carregando dados das notas');
+
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);      
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _DsTecnoAtual.First;
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+        
+
+        _Data := AnyDateTimeToDateTime(CampoTecno('DataEmissao'));
+        _DataIni := MinDouble(_DataIni, _Data);
+        _DataFim := MaxDouble(_DataFim, _Data);
+
+        SetarCampoValorTamFixo('FormatoRps', '"' + 'R' + '"', '', 3);
+        
+        if (CampoTecno('TipoRps') = '') or (CampoTecno('TipoRps') = '1') then
+          SetarCampoValor('TipoRps', '0')
+        else if CampoTecno('TipoRps') = '2' then
+          SetarCampoValor('TipoRps', '1')
+        else
+          RaiseException('Para essa cidade o campo TipoRps deve ser informado da seguinte forma: 1 - RPS; 2 - Nota Fiscal Conjugada (Mista); ');
+
+        if CampoTecno('SerieRps') <> '' then
+          SetarCampoValorTamRemessa('SerieRps', '"' + CampoTecno('SerieRps') + '"', 7)
+        else
+          SetarCampoValorTamRemessa('SerieRps', '"' + '' + '"' , 5);
+
+        SetarCampoValorTamObrigatorioRemessa('NumeroRps', 'NumeroRps', 15);
+
+        if CampoTecno('DataEmissao') <> '' then
+        begin
+          _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'YYYY/MM/DD');
+          SetarCampoValorTamRemessa('DataEmissao', '"' + _ValorCampo + '"', 19);
+        end
+        else
+          RaiseException('Campo DataEmissao incorreta, informe a data no formato: YYYY-MM-DD'); 
+        
+        if CampoTecno('SituacaoNota') = '1' then
+          SetarCampoValorTamFixo('SituacaoRps', '"' + 'T' + '"', 'SituacaoNota', 3)
+        else if CampoTecno('SituacaoNota') = '2' then
+          SetarCampoValorTamFixo('SituacaoRps', '"' + 'C' + '"', 'SituacaoNota', 3)
+        else
+          RaiseException('Valor inválido para o campo SituacaoRps, valores aceitos: 1 - Normal ou 2 - Cancelada');
+    
+        SetarCampoValorTamObrigatorioRemessa('CodigoAtividade', 'CodigoCnae', 8);
+        
+        _ValorCampo := FormataMoeda(CampoTecno('AliquotaISS'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('AliquotaISS'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          _ValorDecimal := Copy(_ValorCampo, Pos(',', _ValorCampo) + 1, Length(_ValorCampo));
+          _ValorDecimal := Copy(_ValorDecimal, 0, 2);
+          if RightStr(_ValorDecimal, 1) <> '0' then
+            _ValorCampo := Copy(_ValorCampo, 0, Pos(',', _ValorCampo) + 2)
+          else 
+            _ValorCampo := Copy(_ValorCampo, 0, Pos(',', _ValorCampo) + 1);
+            
+          SetarCampoObrigatorioValorTamanho('Aliquota', 'AliquotaISS', _ValorCampo, 5);
+        end
+        else
+          SetarCampoValorTamFixo('Aliquota', '0,00', 'AliquotaISS', 5);
+        
+ 
+        _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+        VerificaSeEhNumero('CpfCnpjTomador', _ValorCampo);
+        case Length(_ValorCampo) of
+          0 : { Campo vazio, ignorar };
+          11: SetarCampoObrigatorioValorTamanho('CpfCnpjTomador', 'CpfCnpjTomador', _ValorCampo, 11);
+          14: SetarCampoObrigatorioValorTamanho('CpfCnpjTomador', 'CpfCnpjTomador', _ValorCampo, 14);
+        else
+          RaiseException('Valor inválido para o campo CpfCnpjTomador, CPF: 11 Caracteres; CNPJ: 14 Caracteres.');
+        end;
+ 
+        if Length(RemoveMascara(CampoTecno('CpfCnpjTomador'))) = 11 then
+          SetarCampoValorTamRemessa('IndicadorTomador', '"' + 'C' + '"', 3)
+        else if Length(RemoveMascara(CampoTecno('CpfCnpjTomador'))) = 0 then
+          SetarCampoValorTamRemessa('IndicadorTomador', '"' + 'N' + '"', 3);
+  
+        if Length(RemoveMascara(CampoTecno('CPFCNPJTomador'))) = 14 then
+        begin
+          SetarCampoValorTamRemessa('IndicadorTomador', '"' + 'J' + '"', 3);
+          SetarCampoValorTamRemessa('InscricaoMunicipalTomador', CampoTecno('InscricaoMunicipalTomador'), 15);
+          SetarCampoValorTamRemessa('InscricaoEstadualTomador', CampoTecno('InscricaoEstadualTomador'), 15);
+          SetarCampoValorTamObrigatorioRemessaTexto('RazaoSocialTomador', 'RazaoSocialTomador', 120);
+          SetarCampoValorTamObrigatorioRemessaTexto('TipoEnderecoTomador', 'TipoLogradouroTomador', 5);
+          SetarCampoValorTamObrigatorioRemessaTexto('EnderecoTomador', 'EnderecoTomador', 100);
+          SetarCampoValorTamRemessa('NumeroTomador', + CampoTecno('NumeroTomador'), 10);
+          SetarCampoValorTamRemessa('ComplementoTomador', '"' + CampoTecno('ComplementoTomador') + '"', 60);
+          SetarCampoValorTamObrigatorioRemessaTexto('DescricaoCidadeTomador', 'DescricaoCidadeTomador', 50);
+          SetarCampoValorTamObrigatorioRemessaTexto('BairroTomador', 'BairroTomador', 75);
+          SetarCampoValorTamObrigatorioRemessaTexto('UfTomador', 'UFTomador', 4);
+          SetarCampoValorTamObrigatorioRemessaTexto('CepTomador', 'CepTomador' , 10);
+          SetarCampoValorTamRemessa('EmailTomador', '"' + CampoTecno('EmailTomador') + '"', 80);
+        end
+        else
+        begin
+          SetarCampoValorTamRemessa('InscricaoMunicipalTomador', CampoTecno('InscricaoMunicipalTomador'), 15);
+          SetarCampoValorTamRemessa('InscricaoEstadualTomador', CampoTecno('InscricaoEstadualTomador'), 15);
+          SetarCampoValorTamRemessa('RazaoSocialTomador', '"' + CampoTecno('RazaoSocialTomador') + '"', 120);          
+          SetarCampoValorTamRemessa('TipoEnderecoTomador', '"' +CampoTecno('TipoLogradouroTomador') + '"', 5);
+          SetarCampoValorTamRemessa('EnderecoTomador', '"' + CampoTecno('EnderecoTomador') + '"', 100);
+          SetarCampoValorTamRemessa('NumeroTomador', + CampoTecno('NumeroTomador'), 10);
+          SetarCampoValorTamRemessa('ComplementoTomador', '"' + CampoTecno('ComplementoTomador') + '"', 60);
+          SetarCampoValorTamRemessa('BairroTomador', '"' + CampoTecno('BairroTomador') + '"', 75);
+          SetarCampoValorTamRemessa('DescricaoCidadeTomador', '"' + CampoTecno('DescricaoCidadeTomador') + '"', 50);
+          SetarCampoValorTamRemessa('UfTomador', '"' + CampoTecno('UFTomador') + '"', 4);
+          SetarCampoValorTamRemessa('CepTomador', '"' + RemoveMascara(CampoTecno('CepTomador')) + '"', 10);
+          SetarCampoValorTamRemessa('EmailTomador', '"' + CampoTecno('EmailTomador') + '"', 80);
+        end;
+        
+        _ValorCampo := FormataCurrency(CampoTecno('ValorServicos'));
+        _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+        SetarCampoObrigatorioValorTamanho('ValorServicos', 'ValorServicos', _ValorCampo, 15);
+
+        SetarCampoValorTamObrigatorioRemessa('IssRetido', 'IssRetido', 1); 
+        if CampoTecno('IssRetido') = '1' then
+        begin
+          SetarCampoValorTamRemessa('IssRetido', '"' + 'S' + '"' , 3);
+          _ValorCampo := FormataCurrency(CampoTecno('ValorIssRetido'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorIssRetido', 'ValorIssRetido', _ValorCampo, 15);
+        end
+        else
+        begin
+          SetarCampoValorTamRemessa('IssRetido', '"' + 'N' + '"', 3);
+          _ValorCampo := FormataCurrency(CampoTecno('ValorIssRetido'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorIssRetido', 'ValorIssRetido', _ValorCampo, 15);
+        end;
+    
+        _ValorCampo := FormataMoeda(CampoTecno('ValorDeducoes'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorDeducoes'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorDeducoes', 'ValorDeducoes', _ValorCampo, 15);
+        end
+        else
+          SetarCampoObrigatorioValorTamanho('ValorDeducoes', 'ValorDeducoes', '0,00', 15);
+  
+        _ValorCampo := FormataMoeda(CampoTecno('ValorCofins'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorCofins'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorCofins', 'ValorCofins', _ValorCampo, 15);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorCofins', '0', 'ValorCofins', 1);
+
+        _ValorCampo := FormataMoeda(CampoTecno('ValorCsll'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorCsll'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorCsll', 'ValorCsll', _ValorCampo, 15);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorCsll', '0', 'ValorCsll', 1);
+        
+        _ValorCampo := FormataMoeda(CampoTecno('ValorInss'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorInss'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorInss', 'ValorInss', _ValorCampo, 15);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorInss', '0', 'ValorInss', 1);
+
+        _ValorCampo := FormataMoeda(CampoTecno('ValorIR'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          SetarCampoValorTamRemessa('ValorIRPJ', FormataCurrency(CampoTecno('ValorIR')), 15);
+        end;
+        
+        _ValorCampo := FormataMoeda(CampoTecno('ValorIR'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorIR'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorIRPJ', 'ValorIR', _ValorCampo, 15);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorIRPJ', '0', 'ValorIR', 1);
+        
+        _ValorCampo := FormataMoeda(CampoTecno('ValorPis'));
+        if StrToInt(_ValorCampo) > 0 then
+        begin
+          _ValorCampo := FormataCurrency(CampoTecno('ValorPis'));
+          _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+          SetarCampoObrigatorioValorTamanho('ValorPis', 'ValorPis', _ValorCampo, 15);         
+        end
+        else
+          SetarCampoValorTamFixo('ValorPis', '0', 'ValorPis', 1);
+  
+        SetarCampoValorTamObrigatorioRemessaTexto('DiscriminacaoServico', 'DiscriminacaoServico', 1000);
+
+        _DsCidadeAtual.Post;
+        _DsTecnoAtual.Next;
+      end;
+  
+      Progress('Usando Padrão TecnoNFSe: carregando dados do lote');
+
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_LOTE);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_LOTE);
+      _DsCidadeAtual.Append;
+            
+      SetarCampoValor('FormatoIdentificacao', '"' + 'I' + '"');
+      SetarCampoValor('Versao', '001');
+  
+      _ValorCampo := CampoTecno('InscricaoMunicipalRemetente');
+      if _ValorCampo = '' then
+        _ValorCampo := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA).FieldByName('InscricaoMunicipalPrestador').AsString;
+        _ValorCampo := RemoveMascara(_ValorCampo);
+        
+      VerificaSeEhNumero('InscricaoMunicipalRemetente', _ValorCampo);
+      if _ValorCampo <> '' then
+        SetarCampoValorTamRemessa('InscricaoMunicipal', _ValorCampo, 15)
+      else
+        RaiseException('Para essa cidade o campo InscricaoMunicipalRemetente é obrigatório e deve conter até 15 Caractere(s).');
+      
+      if CampoTecno('DataInicio') = '' then
+      begin
+        _ValorCampo := FormatDateTime(XSDDATEFORMAT, _DataIni);
+        SetarCampoValorTamRemessa('DataInicio', '"' + _ValorCampo + '"', 12);
+      end
+      else
+        _ValorCampo := FormatAnyDateTime(CampoTecno('DataInicio'), 'YYYY/MM/DD');
+        SetarCampoValorTamRemessa('DataInicio', '"' + _ValorCampo + '"', 12);
+      
+      if CampoTecno('DataFim') = '' then
+      begin
+        _ValorCampo := FormatDateTime(XSDDATEFORMAT, _DataFim);
+        SetarCampoValorTamRemessa('DataFim', '"' + _ValorCampo + '"', 12);
+      end
+      else
+        _ValorCampo := FormatAnyDateTime(CampoTecno('DataFim'), 'YYYY/MM/DD');
+      SetarCampoValorTamRemessa('DataFim', '"' + _ValorCampo + '"', 12);
+
+      SetarCamposMunicipio(true);
+            
+      _DsCidadeAtual.Post;
+   
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _DsCidadeAtual.First;
+
+      _ValorServico := 0.00;
+      _ValorIssRetido := 0.00;
+      _ValorDeducoes := 0.00;
+      _ValorCofins := 0.00;
+      _ValorCSLL := 0.00;
+      _ValorInss := 0.00;
+      _ValorIRPJ := 0.00;
+      _ValorPis := 0.00;
+
+      while not _DsCidadeAtual.Eof do
+      begin
+        _ValorServico := _ValorServico + (AnyCurrencyToCurrency(CampoCidade('ValorServicos')));
+
+        if CampoTecno('IssRetido') = '1' then
+          _ValorIssRetido := _ValorIssRetido + (AnyCurrencyToCurrency(CampoCidade('ValorIssRetido')));
+
+        _ValorDeducoes := _ValorDeducoes + (AnyCurrencyToCurrency(CampoCidade('ValorDeducoes')));
+        _ValorCofins := _ValorCofins + (AnyCurrencyToCurrency(CampoCidade('ValorCofins')));
+        _ValorCSLL := _ValorCSLL + (AnyCurrencyToCurrency(CampoCidade('ValorCSLL')));
+        _ValorInss := _ValorInss + (AnyCurrencyToCurrency(CampoCidade('ValorInss')));
+        _ValorIRPJ := _ValorIRPJ + (AnyCurrencyToCurrency(CampoCidade('ValorIRPJ')));
+        _ValorPis := _ValorPis + (AnyCurrencyToCurrency(CampoCidade('ValorPis')));
+
+        _DsCidadeAtual.Next;
+      end;
+  
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_VALIDACAO);
+      _DsCidadeAtual.Append;
+
+      SetarCampoValor('FormatoValidacao', '"' + 'V' + '"');
+   
+      if _QtdeRps <= 50 then 
+        SetarCampoValorTamFixo('Quantidadelinhas', IntToStr(_QtdeRps), 'Quantidadelinhas', 8)
+      else
+        RaiseException('Só é possível enviar 50 rps por lote.');
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorServico);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalServicos', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorIssRetido);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalISSRetido', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorDeducoes);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalDeducoes', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorCofins);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalCOFINS', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorCSLL);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalCSLL', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorInss);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalINSS', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorIRPJ);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalIRPJ', _ValorCampo, 15);
+
+      _ValorCampo := CurrencyToXsdCurrency(_ValorPis);
+      _ValorCampo := StringReplace(_ValorCampo, '.', ',', [rfReplaceAll]);
+      SetarCampoValorTamanho('ValorTotalPIS', _ValorCampo, 15);
+
+      _DsCidadeAtual.Post;
+      _DsTecnoAtual.Next;
+    end
+    else
+      Datasets.LoadFromTx2Content(_Tx2.Text);
+  finally
+    _Tx2.free;
+    _CamposMunicipio.free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

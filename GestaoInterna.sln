@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoInterna", "GestaoInterna\GestaoInterna.csproj", "{82947AD3-8D5A-4EDF-9A57-C7A81E74275B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{162E7E36-D4AD-4F46-A8AA-6E51606E562E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82947AD3-8D5A-4EDF-9A57-C7A81E74275B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82947AD3-8D5A-4EDF-9A57-C7A81E74275B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82947AD3-8D5A-4EDF-9A57-C7A81E74275B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82947AD3-8D5A-4EDF-9A57-C7A81E74275B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{162E7E36-D4AD-4F46-A8AA-6E51606E562E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {283B3B03-368C-4380-8A4E-ED29C3BA9D43}
+	EndGlobalSection
+EndGlobal

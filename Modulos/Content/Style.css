@@ -1,0 +1,254 @@
+﻿/*
+ * style.css 
+ */
+
+/*
+    [class*="col-"], nav, aside, section, div[role="main"] {
+
+    */
+.button-glyphicon {
+    background-color: transparent;
+    color:white;
+    border:0!important;
+    margin-left:0!important;
+}
+.link-button-glyphicon {
+    padding: 5px!important;
+    padding-left: 10px!important
+}
+.input-group {
+    margin-bottom: 10px !important;
+}
+
+.ColunaGridCentralizada{
+    text-align:center;
+}
+.ColunaGridAlinhadoDireita{
+    text-align:right;
+}
+
+.select2-selection--single {
+    height: 33px !important;
+    font-size: 12px;
+    padding: 2px;
+    border: 1px solid #ccc !important;
+}
+
+.select2-selection__arrow {
+    height: 30px !important;
+}
+
+
+.form-control {
+    z-index: 0 !important;
+}
+
+.tab-select {
+    color: dimgray;
+}
+
+
+/*---------------------------------BADGES DE SITUAÇÕES OU CLASSIFICAÇÕES-------------------------------*/
+
+.badge {
+    border-radius: 5px;
+}
+
+
+.APROVADO, .APROVADA {
+    background-color: #d1c322;
+}
+
+
+.AUTORIZADO {
+    background-color: #228B22;
+}
+
+.LIBERADO {
+    background-color: #228B22;
+}
+
+.CANCELADO, .CANCELADA {
+    background-color: #B22222;
+}
+
+.REJEITADO {
+    background-color: orangered!important;
+}
+
+.DIGITAÇÃO {
+    background-color: dimgray;
+}
+.PROCESSANDO {
+    background-color: dimgray;
+}
+
+.FATURA, .ANALISE {
+    background-color: rgb(147, 116, 15);
+}
+
+.SERVIÇO, .COTANDO {
+    background-color: rgb(51, 50, 50);
+}
+
+.DESENVOLVIMENTO {
+    background-color: rgb(160, 158, 158);
+}
+
+.REGISTRADO {
+    background-color: #228B22;
+}
+
+
+.FINALIZADO, .ENCERRADO, .ENCERRADA {
+    background-color: rgb(55, 92, 6);
+}
+
+.ABERTO, .ABERTA {
+    background-color: #778899;
+}
+
+.BAIXADO {
+    background-color: #228B22;
+}
+.BAIXADO-SV {
+    background-color: rgb(55, 92, 6)!important;
+}
+.INCLUÍDO {
+    background-color: #778899;
+}
+.ATENDIDO-TOTAL {
+    background-color: #228B22!important;
+}
+.ATENDIDO-PARCIAL {
+    background-color: goldenrod!important;
+}
+.BAIXADO-PARCIAL {
+    background-color:darkolivegreen!important;
+}
+.BLOQUEADO {
+    background-color: #B22222;
+}
+.LIBERADO {
+    background-color: #228B22;
+}
+.EMESPERA {
+    color: red!important;
+}
+.NÃO-LISTADO {
+    background-color: #BDB76B !important;
+}
+.ESTOQUE {
+    background-color: #B8860B !important;
+}
+.LISTADO {
+    background-color: skyblue !important;
+}
+.AGENDADO {
+    background-color: #228B22;
+}
+.FATURADO {
+    background-color: #228B22;
+}
+/*------------------------------------------------------------------------------------------------------*/
+
+
+
+.centerHeaderText {
+    text-align: center !important;
+}
+
+.centerVertical {
+    padding-top: 12px !important;
+}
+
+.Teste {
+    color: #FF4500 !important;
+}
+
+.checkbox label:after,
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox {
+    padding: 0 !important;
+    margin: 5px !important
+}
+
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 3em;
+        height: 3em;
+    }
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: 1.5em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
+
+
+.checkbox-dia-semana {
+    width: 12% !important;
+    float: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center;
+    margin-right: 2% !important;
+    margin-top:2px!important;
+}
+
+@media screen and (max-width: 600px) {
+    .checkbox-dia-semana {
+        width: 20% !important;
+    }
+}
+
+.TextBoxFormatado {
+    background-color: white;
+    border: none;
+    text-align: left;
+    font-size: x-small;
+    margin-top: 3px;
+}

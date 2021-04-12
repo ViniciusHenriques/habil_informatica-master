@@ -1,0 +1,5 @@
+    <el:EnviarLoteRpsEnvio>
+      <identificacaoPrestador xmlns="">%s</identificacaoPrestador>
+      <hashIdentificador xmlns="">%s</hashIdentificador>
+      <arquivo xmlns="">%s</arquivo>
+    </el:EnviarLoteRpsEnvio>

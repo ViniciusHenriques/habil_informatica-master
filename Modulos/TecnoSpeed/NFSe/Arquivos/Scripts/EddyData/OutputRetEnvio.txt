@@ -1,0 +1,128 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\Comuns.TXT}
+
+Var
+  _ListFields : TStringList;
+  _Motivo, _Status, _Xml : string;
+  _count, _i : integer;
+
+const
+  XPATH_SUCESSO = '//*[local-name()="Resposta"]/*[local-name()="Status"]';
+
+  function GetMotivoEddyData: string;
+  var
+    _Mensagem: string;
+    _count : integer;
+  begin
+    if XmlSelectNodeValue(Params.Values['XML'], '//*[local-name()="Mensagem"]', _Mensagem) then
+      Result := _Mensagem
+    else
+      Result := 'Não foi possível obter a mensagem da resposta do envio.';
+
+  end;
+
+  function GetStatusEddyData : string;
+  var
+    _Status: string;
+  begin
+    if XmlSelectNodeValue(Params.Values['XML'], '//*[local-name()="Status"]', _Status) then
+    begin
+      if _Status = 'true' then
+        Result := 'SUCESSO'
+      else
+        Result := 'ERRO';
+    end;
+  end;
+
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := Output + FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := Output + FormatLineResult(aListFieldsResult) +
+                       Params.Values['DelimitadorDaLinha'];  
+  end;
+
+  function GetNumNfse(const aXML: string) : string;
+  var
+    _PosIni, _PosFim : integer;
+  begin
+    _PosIni := Pos('NF:', aXML)+4;
+    _PosFim := Pos('</Mensagem>', aXML);
+    _PosFim := _PosFim - _PosIni;
+    
+    if _PosIni > 4 then
+      Result := copy(aXML, _PosIni, _PosFim);
+    Result := StringReplace(Result, ':', '', [rfReplaceAll]);
+  end;
+
+  function TratarCaracteresInvalidos(const aXml: string): String;
+  begin    
+    Result := StringReplace(aXml, ';', '\delimiter', [rfReplaceAll]);
+  end;
+
+  function GetValueMensagem(const aXML: string) : string;
+  var
+    _PosIni: integer;
+  begin
+    _PosIni := Pos('-', aXML);
+
+    Result := copy(aXML, _PosIni-4, 9);
+  end;
+
+begin
+  _Status := GetStatusEddyData;  
+  _Motivo := GetMotivoEddyData;  
+
+  if (_Status = 'SUCESSO') then
+  begin
+    _ListFields := CreateFieldsResponseNota;
+    if _ListFields <> nil then
+    begin
+      try
+        _Xml := Params.Values['XML'];
+        Progress('Adicionando valores aos campos.');        
+        AddValueListFields('Motivo', '', _ListFields);    
+        AddValueListFields('CNPJ', '', _ListFields);    
+        AddValueListFields('NumeroNFSe', GetNumNfse(_Xml), _ListFields);
+        AddValueListFields('Status', GetStatusEddyData, _ListFields);
+        AddValueListFields('InscMunicipal', '', _ListFields);
+        AddValueListFields('SerieRps', '', _ListFields);
+        AddValueListFields('NumeroRps', '', _ListFields);    
+        AddValueListFields('DataEmissaoNFSe', DateTimeToStr(Now), _ListFields);
+        AddValueListFields('DataAutorizacao', DateTimeToStr(Now), _ListFields);
+        AddValueListFields('CodVerificacao', GetValueMensagem(_Xml), _ListFields);
+        AddValueListFields('Situacao', 'AUTORIZADA', _ListFields);
+        AddValueListFields('DataCancelamento', '', _ListFields);
+        AddValueListFields('ChaveCancelamento', '', _ListFields);
+        AddValueListFields('Xml', TratarCaracteresInvalidos(_Xml), _ListFields);
+        AddValueListFields('Tipo', ' ', _ListFields);
+        Output := GetResult(_ListFields);
+      Finally
+        _ListFields.Free;
+      end;
+    end;
+  end
+  else
+  begin
+   _ListFields := CreateFieldsResponseFalha;
+      if _ListFields <> nil then
+      begin
+        try                             
+          AddValueListFields('Status', 'ERRO', _ListFields);
+          AddValueListFields('Motivo', _Motivo, _ListFields);
+          Output := FormatLineResult(_ListFields);
+        finally
+          _ListFields.Free;
+        end;
+      end;
+    end;  
+  Progress('Valores adicionados com sucesso.');  
+end.

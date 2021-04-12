@@ -1,0 +1,123 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\Comuns.TXT}
+
+Var
+  _ListFields : TStringList;
+  _Motivo, _Status, _Xml : string;
+  _count, _i : integer;
+
+const
+  XPATH_SUCESSO = '//*[local-name()="NFSE"]/*[local-name()="NOTA"]';
+
+  function GetMotivoAtiv: string;
+  var
+    _Mensagem: string;
+    _count : integer;
+  begin
+    _count := XmlSelectCountNode(Params.Values['XML'], XPATH_SUCESSO);    
+    for _i := 1 to _count do
+    begin
+      if XmlSelectNodeValue(Params.Values['XML'], '//*[local-name()="NOTA"]' + '['+ IntToStr(_i) +']', _Mensagem) then
+      begin
+        if Result = '' then
+          Result := _Mensagem
+        else 
+          Result := Result + ': ' + _Mensagem;
+      end;
+    end;
+  end;
+
+  function GetStatusAtiv : string;
+  var
+    _Sucesso, _Erro, _Xml: string;
+  begin
+    _Xml := Params.Values['XML'];    
+    
+    if AnsiPos('Registrada nota com número: ', _Xml) > 0 then 
+      Result := 'SUCESSO'
+    else
+      Result := 'ERRO';      
+  end;
+
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := Output + FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := Output + FormatLineResult(aListFieldsResult) +
+                       Params.Values['DelimitadorDaLinha'];  
+  end;
+
+  function GetNumNfse(const aXML: string) : string;
+  var
+    _PosIni, _PosFim : integer;
+  begin
+    _PosIni := Pos(':', aXML);
+    _PosFim := Pos('</NOTA>', aXML);
+    _PosFim := _PosFim - _PosIni;
+
+    Result := copy(aXML, _PosIni, _PosFim);
+    Result := StringReplace(Result, ':', '', [rfReplaceAll]);
+  end;
+
+begin  
+  _Status := GetStatusAtiv;  
+  _Motivo := GetMotivoAtiv;  
+
+  if (_Status = 'SUCESSO') or
+    (Pos('Registrada nota com',_Motivo) > 0) then
+  begin
+    _count := XmlSelectCountNode(Params.Values['XML'], XPATH_SUCESSO);     
+    for _i := 1 to _count do
+    begin
+      _ListFields := CreateFieldsResponseNota;
+      if _ListFields <> nil then
+      begin
+        try
+          _Xml := XmlSelect(Params.Values['XML'], '//*[local-name()="NOTA"]' + '['+ IntToStr(_i) +']');
+          Progress('Adicionando valores aos campos.');        
+          AddValueListFields('Motivo', '', _ListFields);    
+          AddValueListFields('CNPJ', '', _ListFields);    
+          AddValueListFields('NumeroNFSe', GetNumNfse(_Xml), _ListFields);
+          AddValueListFields('Status', GetStatusAtiv, _ListFields);
+          AddValueListFields('InscMunicipal', '', _ListFields);
+          AddValueListFields('SerieRps', '', _ListFields);
+          AddValueListFields('NumeroRps', '', _ListFields);    
+          AddValueListFields('DataEmissaoNFSe', DateTimeToStr(Now), _ListFields);
+          AddValueListFields('DataAutorizacao', DateTimeToStr(Now), _ListFields);
+          AddValueListFields('CodVerificacao', '', _ListFields);
+          AddValueListFields('Situacao', 'AUTORIZADA', _ListFields);
+          AddValueListFields('DataCancelamento', '', _ListFields);
+          AddValueListFields('ChaveCancelamento', '', _ListFields);
+          AddValueListFields('Xml', Params.Values['XML'], _ListFields);
+          AddValueListFields('Tipo', ' ', _ListFields);
+          Output := GetResult(_ListFields);
+        Finally
+          _ListFields.Free;
+        end;
+      end;
+    end;
+  end
+  else
+  begin
+   _ListFields := CreateFieldsResponseFalha;
+      if _ListFields <> nil then
+      begin
+        try                             
+          AddValueListFields('Status', 'ERRO', _ListFields);
+          AddValueListFields('Motivo', _Motivo, _ListFields);
+          Output := FormatLineResult(_ListFields);
+        finally
+          _ListFields.Free;
+        end;
+      end;
+    end;  
+  Progress('Valores adicionados com sucesso.');  
+end.

@@ -1,0 +1,14 @@
+Colocar a propriedades "fill='black'", Width="24px" e Height="24px" na tag SVG 
+e retirar a Fill das tags de dentro
+
+<SVG fill="black" width="24px" height="24px"></SVG> 
+------> manter um "fill" no arquivo para não ter conflito na hora de geração do ícones
+
+
+
+
+Icones Filhos = width:24px
+		height:24px
+
+Icones Pais   = width:32px
+		height:32px

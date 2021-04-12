@@ -1,0 +1,4 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.supernova.com.br/">
+	<soapenv:Header/>
+	<soapenv:Body><ws:CancelarNfse><xml>%s</xml></ws:CancelarNfse></soapenv:Body>
+</soapenv:Envelope>

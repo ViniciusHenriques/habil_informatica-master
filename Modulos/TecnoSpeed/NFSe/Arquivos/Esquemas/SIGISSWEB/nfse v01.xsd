@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="notafiscal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cnpj_cpf_prestador"/>
+        <xs:element ref="exterior_dest"/>
+        <xs:element ref="cnpj_cpf_destinatario"/>
+        <xs:element ref="pessoa_destinatario"/>
+        <xs:element ref="ie_destinatario"/>
+        <xs:element ref="im_destinatario"/>
+        <xs:element ref="razao_social_destinatario"/>
+        <xs:element ref="endereco_destinatario"/>
+        <xs:element ref="numero_ende_destinatario"/>
+        <xs:element ref="complemento_ende_destinatario"/>
+        <xs:element ref="bairro_destinatario"/>
+        <xs:element ref="cep_destinatario"/>
+        <xs:element ref="cidade_destinatario"/>
+        <xs:element ref="uf_destinatario"/>
+        <xs:element ref="pais_destinatario"/>
+        <xs:element ref="fone_destinatario"/>
+        <xs:element ref="email_destinatario"/>
+        <xs:element ref="valor_nf"/>
+        <xs:element ref="deducao"/>
+        <xs:element ref="valor_servico"/>
+        <xs:element ref="data_emissao"/>
+        <xs:element ref="forma_de_pagamento"/>
+        <xs:element ref="descricao"/>
+        <xs:element ref="id_codigo_servico"/>
+        <xs:element ref="cancelada"/>
+        <xs:element ref="iss_retido"/>
+        <xs:element ref="aliq_iss"/>
+        <xs:element ref="valor_iss"/>
+        <xs:element ref="bc_pis"/>
+        <xs:element ref="aliq_pis"/>
+        <xs:element ref="valor_pis"/>
+        <xs:element ref="bc_cofins"/>
+        <xs:element ref="aliq_cofins"/>
+        <xs:element ref="valor_cofins"/>
+        <xs:element ref="bc_csll"/>
+        <xs:element ref="aliq_csll"/>
+        <xs:element ref="valor_csll"/>
+        <xs:element ref="bc_irrf"/>
+        <xs:element ref="aliq_irrf"/>
+        <xs:element ref="valor_irrf"/>
+        <xs:element ref="bc_inss"/>
+        <xs:element ref="aliq_inss"/>
+        <xs:element ref="valor_inss"/>
+        <xs:element ref="sistema_gerador"/>
+        <xs:element ref="serie_rps"/>
+        <xs:element ref="rps"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cnpj_cpf_prestador" type="xs:integer"/>
+  <xs:element name="exterior_dest" type="xs:integer"/>
+  <xs:element name="cnpj_cpf_destinatario" type="xs:integer"/>
+  <xs:element name="pessoa_destinatario" type="xs:NCName"/>
+  <xs:element name="ie_destinatario" type="xs:NCName"/>
+  <xs:element name="im_destinatario" type="xs:integer"/>
+  <xs:element name="razao_social_destinatario" type="xs:NCName"/>
+  <xs:element name="endereco_destinatario" type="xs:string"/>
+  <xs:element name="numero_ende_destinatario" type="xs:integer"/>
+  <xs:element name="complemento_ende_destinatario" type="xs:string"/>
+  <xs:element name="bairro_destinatario" type="xs:NCName"/>
+  <xs:element name="cep_destinatario" type="xs:integer"/>
+  <xs:element name="cidade_destinatario" type="xs:NCName"/>
+  <xs:element name="uf_destinatario" type="xs:NCName"/>
+  <xs:element name="pais_destinatario" type="xs:NCName"/>
+  <xs:element name="fone_destinatario" type="xs:string"/>
+  <xs:element name="email_destinatario" type="xs:string"/>
+  <xs:element name="valor_nf" type="xs:string"/>
+  <xs:element name="deducao" type="xs:string"/>
+  <xs:element name="valor_servico" type="xs:string"/>
+  <xs:element name="data_emissao" type="xs:string"/>
+  <xs:element name="forma_de_pagamento" type="xs:string"/>
+  <xs:element name="descricao" type="xs:string"/>
+  <xs:element name="id_codigo_servico" type="xs:decimal"/>
+  <xs:element name="cancelada" type="xs:NCName"/>
+  <xs:element name="iss_retido" type="xs:NCName"/>
+  <xs:element name="aliq_iss" type="xs:string"/>
+  <xs:element name="valor_iss" type="xs:string"/>
+  <xs:element name="bc_pis" type="xs:string"/>
+  <xs:element name="aliq_pis" type="xs:string"/>
+  <xs:element name="valor_pis" type="xs:string"/>
+  <xs:element name="bc_cofins" type="xs:string"/>
+  <xs:element name="aliq_cofins" type="xs:string"/>
+  <xs:element name="valor_cofins" type="xs:string"/>
+  <xs:element name="bc_csll" type="xs:string"/>
+  <xs:element name="aliq_csll" type="xs:string"/>
+  <xs:element name="valor_csll" type="xs:string"/>
+  <xs:element name="bc_irrf" type="xs:string"/>
+  <xs:element name="aliq_irrf" type="xs:string"/>
+  <xs:element name="valor_irrf" type="xs:string"/>
+  <xs:element name="bc_inss" type="xs:string"/>
+  <xs:element name="aliq_inss" type="xs:string"/>
+  <xs:element name="valor_inss" type="xs:string"/>
+  <xs:element name="sistema_gerador" type="xs:NCName"/>
+  <xs:element name="serie_rps" type="xs:NCName"/>
+  <xs:element name="rps" type="xs:integer"/>
+</xs:schema>

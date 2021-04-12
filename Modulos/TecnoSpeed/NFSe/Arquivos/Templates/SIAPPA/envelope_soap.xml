@@ -1,0 +1,5 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="issqnwebev3v2">
+	<soapenv:Header/>
+	<soapenv:Body>%s		
+	</soapenv:Body>
+</soapenv:Envelope>

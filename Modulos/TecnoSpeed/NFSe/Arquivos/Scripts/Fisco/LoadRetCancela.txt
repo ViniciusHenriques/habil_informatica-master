@@ -1,0 +1,29 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+{$I ..\Comuns\Utils.txt}
+Var
+  _Result, _Xml : string;
+
+begin
+  _Xml := StringReplace(Input, '<!--CRLF-->', '', [rfReplaceAll]);
+  Progress('Carregando XML de Retorno de Cancelamento');
+  if Pos('<faultstring>',_Xml) > 0 then
+  begin
+    _Xml := StringReplace(_Xml, '&gt;', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<!--CRLF-->', '', [rfReplaceAll]);
+    Params.Add('erro=' + _Xml);
+  end
+  else
+  begin
+    if xmlSelectNodeValue(_Xml, '//*[local-name()="CancelarNfseEnvioResponse"]', _Result) then
+    begin
+      Params.Add('XML='+ _Result);
+      Progress('Retorno carregado com sucesso');
+    end;
+  end;
+end.

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="NFSe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Rps"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="NumeroNfse"/>
+        <xs:element ref="SituacaoNota"/>
+        <xs:element ref="DataEmissaoNFSe"/>
+        <xs:element ref="Competencia"/>
+        <xs:element ref="NumeroNfseSubstituta"/>
+        <xs:element ref="NaturezaTributacao"/>
+        <xs:element ref="NumeroRps"/>
+        <xs:element ref="SerieRps"/>
+        <xs:element ref="TipoRps"/>
+        <xs:element ref="DataEmissao"/>
+        <xs:element ref="DescricaoRPS"/>
+        <xs:element ref="NumeroRpsSubstituido"/>
+        <xs:element ref="SerieRpsSubstituido"/>
+        <xs:element ref="TipoRpsSubstituido"/>
+        <xs:element ref="ValorServicos"/>
+        <xs:element ref="CodigoCnae"/>
+        <xs:element ref="CodigoItemListaServico"/>
+        <xs:element ref="BaseCalculo"/>
+        <xs:element ref="AliquotaISS"/>
+        <xs:element ref="ValorIss"/>
+        <xs:element ref="IssRetido"/>
+        <xs:element ref="DiscriminacaoServico"/>
+        <xs:element ref="CodigoCidadePrestacao"/>
+        <xs:element ref="QuantidadeServicos"/>
+        <xs:element ref="ValorUnitarioServico"/>
+        <xs:element ref="CMC"/>
+        <xs:element ref="RazaoSocialPrestador"/>
+        <xs:element ref="NomeFantasiaPrestador"/>
+        <xs:element ref="CpfCnpjPrestador"/>
+        <xs:element ref="EnderecoPrestador"/>
+        <xs:element ref="NumeroPrestador"/>
+        <xs:element ref="ComplementoPrestador"/>
+        <xs:element ref="BairroPrestador"/>
+        <xs:element ref="CodigoCidadePrestador"/>
+        <xs:element ref="UfPrestador"/>
+        <xs:element ref="CepPrestador"/>
+        <xs:element ref="EmailPrestador"/>
+        <xs:element ref="TelefonePrestador"/>
+        <xs:element ref="CpfCnpjTomador"/>
+        <xs:element ref="TipoDocumentoTomador"/>
+        <xs:element ref="RazaoSocialTomador"/>
+        <xs:element ref="EnderecoTomador"/>
+        <xs:element ref="NumeroTomador"/>
+        <xs:element ref="ComplementoTomador"/>
+        <xs:element ref="BairroTomador"/>
+        <xs:element ref="CodigoCidadeTomador"/>
+        <xs:element ref="UfTomador"/>
+        <xs:element ref="CepTomador"/>
+        <xs:element ref="EmailTomador"/>
+        <xs:element ref="TelefoneTomador"/>
+        <xs:element ref="DataCancelamento"/>
+        <xs:element ref="StatusSincronizacao"/>
+        <xs:element ref="ValorTotalDeducoes"/>
+        <xs:element ref="ValorPis"/>
+        <xs:element ref="ValorCofins"/>
+        <xs:element ref="ValorInss"/>
+        <xs:element ref="ValorIr"/>
+        <xs:element ref="ValorCsll"/>
+        <xs:element ref="ValorDeducoes"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumeroNfse"/>
+  <xs:element name="SituacaoNota"/>
+  <xs:element name="DataEmissaoNFSe"/>
+  <xs:element name="Competencia"/>
+  <xs:element name="NumeroNfseSubstituta"/>
+  <xs:element name="NaturezaTributacao"/>
+  <xs:element name="NumeroRps"/>
+  <xs:element name="SerieRps"/>
+  <xs:element name="TipoRps"/>
+  <xs:element name="DataEmissao"/>
+  <xs:element name="DescricaoRPS"/>
+  <xs:element name="NumeroRpsSubstituido"/>
+  <xs:element name="SerieRpsSubstituido"/>
+  <xs:element name="TipoRpsSubstituido"/>
+  <xs:element name="ValorServicos"/>
+  <xs:element name="CodigoCnae"/>
+  <xs:element name="CodigoItemListaServico"/>
+  <xs:element name="BaseCalculo"/>
+  <xs:element name="AliquotaISS"/>
+  <xs:element name="ValorIss"/>
+  <xs:element name="IssRetido"/>
+  <xs:element name="DiscriminacaoServico"/>
+  <xs:element name="CodigoCidadePrestacao"/>
+  <xs:element name="QuantidadeServicos"/>
+  <xs:element name="ValorUnitarioServico"/>
+  <xs:element name="CMC"/>
+  <xs:element name="RazaoSocialPrestador"/>
+  <xs:element name="NomeFantasiaPrestador"/>
+  <xs:element name="CpfCnpjPrestador"/>
+  <xs:element name="EnderecoPrestador"/>
+  <xs:element name="NumeroPrestador"/>
+  <xs:element name="ComplementoPrestador"/>
+  <xs:element name="BairroPrestador"/>
+  <xs:element name="CodigoCidadePrestador"/>
+  <xs:element name="UfPrestador"/>
+  <xs:element name="CepPrestador"/>
+  <xs:element name="EmailPrestador"/>
+  <xs:element name="TelefonePrestador"/>
+  <xs:element name="CpfCnpjTomador"/>
+  <xs:element name="TipoDocumentoTomador"/>
+  <xs:element name="RazaoSocialTomador"/>
+  <xs:element name="EnderecoTomador"/>
+  <xs:element name="NumeroTomador"/>
+  <xs:element name="ComplementoTomador"/>
+  <xs:element name="BairroTomador"/>
+  <xs:element name="CodigoCidadeTomador"/>
+  <xs:element name="UfTomador"/>
+  <xs:element name="CepTomador"/>
+  <xs:element name="EmailTomador"/>
+  <xs:element name="TelefoneTomador"/>
+  <xs:element name="DataCancelamento"/>
+  <xs:element name="StatusSincronizacao"/>
+  <xs:element name="ValorTotalDeducoes"/>
+  <xs:element name="ValorPis"/>
+  <xs:element name="ValorCofins"/>
+  <xs:element name="ValorInss"/>
+  <xs:element name="ValorIr"/>
+  <xs:element name="ValorCsll"/>
+  <xs:element name="ValorDeducoes"/>
+</xs:schema>

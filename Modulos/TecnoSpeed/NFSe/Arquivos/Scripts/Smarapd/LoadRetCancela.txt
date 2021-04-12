@@ -1,0 +1,60 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+  {$I Utils.txt}
+
+Var
+  _Xml, _erro : string;
+  
+const
+  xml1 = '<outputXML xmlns=""><?xml version="1.0" encoding="UTF-8" standalone="yes"?><CancelarNfseResposta xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.abrasf.org.br/nfse.xsd"><ListaMensagemRetorno><MensagemRetorno><Codigo></Codigo><Mensagem>';
+  xml2 = '</Mensagem><Correcao></Correcao></MensagemRetorno></ListaMensagemRetorno></CancelarNfseResposta></outputXML>';
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CANCELARNFSE';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+
+    _Xml := UnEscapeXml(Input);
+    //As operações abaixo são necessárias para adequar o Xml retornado pelo WS ao schema.
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="utf-8"?>', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="UTF-8"?>', '', [rfReplaceAll]);
+    _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+   
+    if trim(_Xml) = '' then
+    begin
+      _Xml := UnEscapeXml(Input);
+      
+      //As operações abaixo são necessárias para adequar o Xml retornado pelo WS ao schema.
+      _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="utf-8"?>', '', [rfReplaceAll]);
+      
+      
+      _Xml := XmlSelect(_Xml, '//*[local-name()="CancelarNfseResponse"]');
+      
+      _Xml := StringReplace(_Xml, '<outputXML xmlns="">', xml1, [rfReplaceAll]);
+      
+      _Xml := StringReplace(_Xml, '</outputXML>', xml2, [rfReplaceAll]);
+      _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>', '', [rfReplaceAll]);
+      _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+    end;
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

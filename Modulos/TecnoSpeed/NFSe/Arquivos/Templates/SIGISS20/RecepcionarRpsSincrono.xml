@@ -1,0 +1,8 @@
+<tem:RecepcionarLoteRpsSincrono>
+  <tem:nfseCabecMsg>
+    <![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.03"><versaoDados>2.03</versaoDados></cabecalho>]]>
+  </tem:nfseCabecMsg>
+  <tem:nfseDadosMsg>
+    <![CDATA[%s]]>
+  </tem:nfseDadosMsg>
+</tem:RecepcionarLoteRpsSincrono>

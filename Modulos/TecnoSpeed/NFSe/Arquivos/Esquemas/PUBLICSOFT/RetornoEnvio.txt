@@ -1,0 +1,61 @@
+;***************************************************************************************************
+;        ARQUIVO DE MAPEAMENTO PARA O PADRÃO PUBLICSOFT
+;***************************************************************************************************
+
+;***************************************************************************************************
+;Configuração do NFSeDataset para Envio de Lote de RPS (Proxy)
+;***************************************************************************************************
+[ENVIAR]
+XSDElementName=EnviarLoteRpsResposta
+XSDFile=nfse.xsd
+XSDStartNode=
+IgnoredXPaths=EnviarLoteRpsSincronoEnvio/LoteRps/ListaRps/Rps/Signature;EnviarLoteRpsSincronoEnvio/Signature;EnviarLoteRpsSincronoResposta/ListaNfse/CompNfse/Nfse/InfNfse/DeclaracaoPrestacaoServico/Signature;EnviarLoteRpsSincronoResposta/ListaNfse/CompNfse/Nfse/Signature;EnviarLoteRpsSincronoResposta/ListaNfse/CompNfse/NfseCancelamento/Confirmacao/Pedido/Signature;EnviarLoteRpsSincronoResposta/ListaNfse/CompNfse/NfseCancelamento/Signature;EnviarLoteRpsSincronoResposta/ListaNfse/CompNfse/NfseSubstituicao/Signature
+UseNamespacePrefixes=0
+XMLHeader=
+RootAttributes=
+
+;***************************************************************************************************
+;Nomes dos comandos para os respectivos datasets (para uso nos arquivos TX2)
+;***************************************************************************************************
+[comandos]
+EnviarLoteRpsResposta.Insert=INCLUIR
+EnviarLoteRpsResposta.Post=SALVAR
+MensagemRetorno.Insert=INCLUIRMENSAGEMRETORNO
+MensagemRetorno.Post=SALVARMENSAGEMRETORNO
+
+;***************************************************************************************************
+;Nomes dos Campos: Envio de Lote de RPS (Proxy)
+;***************************************************************************************************
+[EnviarLoteRpsResposta]
+NumeroLote=EnviarLoteRpsResposta/NumeroLote
+DataRecebimento=EnviarLoteRpsResposta/DataRecebimento
+Protocolo=EnviarLoteRpsResposta/Protocolo
+Codigo=EnviarLoteRpsResposta/ListaMensagemRetorno/MensagemRetorno/Codigo
+Mensagem=EnviarLoteRpsResposta/ListaMensagemRetorno/MensagemRetorno/Mensagem
+Correcao=EnviarLoteRpsResposta/ListaMensagemRetorno/MensagemRetorno/Correcao
+
+;***************************************************************************************************
+;Definições dos Campos: Impressão de NFSe (Impressão Nova)
+;***************************************************************************************************
+[PrintXml_DadosNFSe]
+FILE=MappingImpressaoNFSe.txt
+
+;***************************************************************************************************
+;Definições dos Campos: Impressão de RPS (Impressão Nova)
+;***************************************************************************************************
+[PrintXml_DadosRPS]
+FILE=MappingImpressaoRPS.txt
+
+;***************************************************************************************************
+;Campos de Configuração da Impressão Nova
+;***************************************************************************************************
+[PrintXml_Config]
+ModoImpressao=String[4]
+DiretorioTemplates=String[255]
+Titulo=String[80]
+BrasaoMunicipio=String[255]
+LogotipoEmitente=String[255]
+ArquivoMunicipios=String[255]
+DebugMode=String[5]
+NomeCidade=String[80]
+NomePadrao=String[80]

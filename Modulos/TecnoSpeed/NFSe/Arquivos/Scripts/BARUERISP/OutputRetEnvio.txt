@@ -1,0 +1,231 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\Comuns.txt}
+
+Var
+  _ListFields : TStringList;
+  _Regs : TStringList;
+  _Motivo, _Reg, _DtAut, _DtCanc, _Sit: string;
+  i: Integer;
+
+  function CodErroMensagem(aCod: integer): string;
+  begin
+    case aCod of
+      100: Result := 'Tipo de Registro Inválido';
+      101: Result := 'Inscrição do Prestador de Serviços não encontrada na base de dados da PMB';
+      102: Result := 'Identificação da Remessa do Contribuinte inválida ou já informada em outro arquivo de remessa';
+      200: Result := 'Tipo de Registro Inválido';
+      201: Result := 'Tipo de RPS Inválido';
+      202: Result := 'Número de Série do RPS Inválida';
+      203: Result := 'Número de Série da Nf-e Inválida';
+      204: Result := 'Número de RPS não Informado ou inválido. Numeração máxima permitida 0009999999';
+      205: Result := 'Número de RPS já enviado';
+      206: Result := 'Numero do RPS enviado em Duplicidade no Arquivo';
+      207: Result := 'NF-e não consta na base de dados da PMB, não pode ser cancelada/substituida';
+      208: Result := 'Data Inválida';
+      209: Result := 'Data de Emissão não poderá ser inferior a 09/09/2008';
+      210: Result := 'Data de Emissão do RPS não pode ser superior a Data de Hoje';
+      211: Result := 'Hora de Emissão do RPS Inválida';
+      212: Result := 'Situação do RPS Inválida';
+      213: Result := 'Código do Motivo de Cancelamento Inválido';
+      214: Result := 'Campo Descrição do Cancelamento não informado';
+      215: Result := 'NFe não pode ser cancelada, guia em aberto para nota fiscal correspondente';
+      216: Result := 'Código de Atividade não encontrada na base da PMB';
+      217: Result := 'Local da Prestação do Serviço Inválido';
+      218: Result := 'Serviço Prestado em Vias Públicas Inválido';
+      219: Result := 'Campo Endereco do Serviço Prestado é obrigatório';
+      220: Result := 'Campo Número do Logradouro do Serviço Prestado é obrigatório';
+      221: Result := 'Campo Bairro do Serviço Prestado é obrigatório';
+      222: Result := 'Campo Cidade do Serviço Prestado é obrigatório';
+      223: Result := 'Campo UF do Serviço Prestado é obrigatório';
+      224: Result := 'Campo UF do Serviço Prestado invalido';
+      225: Result := 'Campo CEP do Serviço Prestado invalido';
+      226: Result := 'Quantidade de Serviço não deverá ser inferior a zero e/ou Quantidade de Serviço deverá ser numérico';
+      227: Result := 'Valor do Serviço não pode ser menor que zero e/ou Valor do Serviço deverá ser numérico';
+      228: Result := 'Reservado';
+      229: Result := 'Reservado';
+      230: Result := 'Valor Total das Retenções não deverá ser inferior a zero e/ou Valor Total das Retenções deverá ser numérico';
+      231: Result := 'Valor Total das Retenções não poderá ser superior ao Valor Total do serviço prestado';
+      232: Result := 'Valor Total dos Retenções não confere com os valores deduçoes informadas para este RPS';
+      233: Result := 'Identificador de tomador estrangeiro inválido';
+      234: Result := 'Código do Pais de Nacionalidade do Tomador Estrangeiro inválido';
+      235: Result := 'Identificador se Serviço Prestado é exportação inválido';
+      236: Result := 'Indicador CPF/CNPJ Inválido';
+      237: Result := 'CPNJ do Tomador Inválido';
+      238: Result := 'Campo Nome ou Razão Social do Tomador de Serviços é Obrigatório';
+      239: Result := 'Campo Endereço do Tomador de Serviços é Obrigatório';
+      240: Result := 'Campo Número do Logradouro do Tomador de Serviços';
+      241: Result := 'Campo Bairro do Tomador de Serviços é Obrigatório';
+      242: Result := 'Campo Cidade do Tomador de Serviços é Obrigatório';
+      243: Result := 'Campo UF do Tomador de Serviços é Obrigatório';
+      244: Result := 'Campo UF do Tomador de Serviços Inválido';
+      245: Result := 'Campo CEP do Tomador de Serviços Inválido';
+      246: Result := 'Email do Tomador de Serviços Inválido';
+      247: Result := 'Campo Fatura deverá ser numérico';
+      248: Result := 'Valor da Fatura não deverá ser inferior a zero e/ou Valor da Fatura deverá ser numérico';
+      249: Result := 'Campo Forma de Pagamento não informado';
+      250: Result := 'Campo Discriminação de Serviço não informado e/ou fora dos padrões estabelecidos no layout';
+      251: Result := 'Valor Total do Serviço superior ao permitido (campo valor do serviço multiplicado pelo campo quantidade)';
+      252: Result := 'Data Inválida';
+      253: Result := 'NFe não pode ser cancelada, data de emissão superior a 90 dias';
+      254: Result := 'Nota Fiscal Já Cancelada';
+      255: Result := 'Nota Fiscal com valores zerados';
+      256: Result := 'Contribuinte com condição diferente de ativo';
+      257: Result := 'Nota Fiscal enviada em Duplicidade no Arquivo';
+      258: Result := 'NFe não pode ser cancelada ou substituida competência já encerrada';
+      259: Result := 'Data de Emissão do RPS refere-se a competência já encerrada';
+      260: Result := 'Código de Atividade não permitido';
+      261: Result := 'Código de Atividade Bloqueado';
+      300: Result := 'Tipo de Registro Inválido';
+      301: Result := 'Código de Outros Valores Inválido';
+      302: Result := 'Caso seja retenção: Valor da Retenção não poderá ser menor/igual a zero, Caso seja ''VN'': Valor deve ser diferente de zero';
+      303: Result := 'Soma do serviço prestado e valor ''VN'' não poderá ser inferior a zero.';
+      304: Result := 'Código de Outros Valores enviado';
+      305: Result := 'Conforme Lei Complementar 419 / 2017, ficam revogados, a partir de 30 de dezembro de 2017, todos os regimes especiais e soluções de consulta cujo resultado ermitiu redução do preço do serviço ou da base de cálculo do Imposto Sobre Serviço de Qualquer Natureza.';
+      400: Result := 'Tipo de Registro Inválido';
+      401: Result := 'Número de Linhas não confere com número de linhas do tipo 1,2,3 e 9 enviadas no arquivo';
+      402: Result := 'Valor Total dos Serviços não confere os valores de serviços enviados no arquivo';
+      403: Result := 'Valor Total das Retenções e Total de outros valores informados no registro 3 não confere com total informado';
+      0:   Result := 'Lay-Out do arquivo fora dos padrões';
+      500: Result := 'Lay-Out do arquivo fora dos padrões';
+      600: Result := 'Lay-Out do arquivo fora dos padrões';
+      700: Result := 'Quantidade de RPS superior ao padrão';
+      900: Result := 'Tamanho do Registro diferente da especificação do layout';
+      901: Result := 'Arquivo com ausência de um dos Registros: 1, 2 ou 9';
+    else
+      Result := 'Código de erro desconhecido';
+    end;
+  end;
+
+  function ObterMotivo: string;
+  Var
+    i: Integer;
+    _Aux, _MsgErro: string;
+  begin
+    Result := '';
+    // Checar a estrutura do retorno
+    if _Regs.Count < 3 then
+      Result := 'Retorno devia ter ao menos 3 linhas'
+    else
+    begin
+      for i := 0 to _Regs.Count-1 do
+      begin
+        _Aux := Copy(_Regs[i], 1, 1);
+        if i = 0 then
+        begin
+          if _Aux <> '1' then
+            Result := 'Primeira linha do retorno devia iniciar com "1"';
+        end
+        else if i = _Regs.Count-1 then
+        begin
+          if _Aux <> '9' then
+            Result := 'Última linha do retorno devia iniciar com "9"';
+        end
+        else
+        begin
+          if (_Aux <> '2') and (_Aux <> '3') then
+            Result := 'As linhas intermediárias do retorno deviam iniciar com "2" ou "3"';
+        end;
+
+        if RightStr(_Regs[i], 1) = ';' then
+        begin
+          _Aux := RightStr(_Regs[i], 4);
+          _Aux := LeftStr(_Aux, 3);
+          if _Aux <> '' then
+          begin
+            _MsgErro := CodErroMensagem(StrToIntDef(_Aux, -1));
+            if Result = '' then
+              Result := Format2('%s-%s', _Aux, _MsgErro)
+            else
+              Result := Format3('%s, %s-%s', Result, _Aux, _MsgErro);
+          end;
+        end;
+      end;
+    end;
+  end;
+
+  function FormataData(const aData: string): string;
+  begin
+    Result := Copy(aData, 1, 4) + '-' + Copy(aData, 5, 2) + '-' + Copy(aData, 7, 2);
+  end;
+
+begin
+  Output := '';
+  Progress('Adicionando valores aos campos');
+
+  _Regs := TStringList.Create;
+  try
+    _Regs.Text := StringReplace(Input, '<!--CRLF-->', #13#10, [rfReplaceAll]);
+    _Motivo := ObterMotivo;
+
+    if _Motivo <> '' then
+    begin
+      Try
+        _ListFields := CreateFieldsResponseFalha;
+        AddValueListFields('Status', 'ERRO', _ListFields);
+        AddValueListFields('Motivo', _Motivo, _ListFields);
+        Output := Output + FormatLineResult(_ListFields) + Params.Values['DelimitadorDaLinha'];
+      Finally
+        _ListFields.Free;
+      end;
+    end
+    else
+    begin
+      for i := 1 to _Regs.Count-1 do
+      begin
+        _Reg := _Regs[i];
+        if (_Reg[1] = '2') then
+        begin
+          _ListFields := CreateFieldsResponseNota;
+          try
+            if ((_ListFields <> nil) and (_ListFields.Text <> '')) then
+            begin
+              AddValueListFields('Motivo', '', _ListFields);
+              AddValueListFields('Status', 'SUCESSO', _ListFields);
+              AddValueListFields('Cnpj', '', _ListFields);
+              AddValueListFields('InscMunicipal', Copy(_Regs[0], 2, 7), _ListFields);
+              AddValueListFields('SerieRps', Trim(Copy(_Reg, 51, 4)), _ListFields);
+              AddValueListFields('NumeroRps', Trim(Copy(_Reg, 55, 10)), _ListFields);
+              AddValueListFields('NumeroNFSe', Trim(Copy(_Reg, 7, 6)), _ListFields);
+              _DtAut := FormataData(Copy(_Reg, 13, 8));
+              AddValueListFields('DataEmissaoNFSe', _DtAut, _ListFields);
+              AddValueListFields('DataAutorizacao', _DtAut, _ListFields);
+              AddValueListFields('CodVerificacao', Trim(Copy(_Reg, 27, 24)), _ListFields);
+              _Sit := Copy(_Reg, 67, 1);
+              if _Sit = 'A' then
+                _Sit := 'AUTORIZADA'
+              else if _Sit = 'C' then
+                _Sit := 'CANCELADA'
+              else
+                _Sit := '';
+              AddValueListFields('Situacao', _Sit, _ListFields);
+              _DtCanc := Trim(Copy(_Reg, 68, 8));
+              if _DtCanc <> '' then
+                _DtCanc := FormataData(_DtCanc);
+              AddValueListFields('DataCancelamento', _DtCanc, _ListFields);
+              AddValueListFields('ChaveCancelamento', '', _ListFields);
+              AddValueListFields('Xml', _Reg, _ListFields);
+              AddValueListFields('Tipo', '', _ListFields);
+
+              if (Params.Values['DelimitadorDaLinha'] = '') then
+                Output := Output + FormatLineResult(_ListFields) + #13#10
+              else
+                Output := Output + FormatLineResult(_ListFields) + Params.Values['DelimitadorDaLinha'];
+            end;
+          Finally
+            _ListFields.Free;
+          end;
+        end;
+      end;
+    end;
+    Progress('Valores adicionados com sucesso.');
+  finally
+    _Regs.Free;
+  end;
+end.

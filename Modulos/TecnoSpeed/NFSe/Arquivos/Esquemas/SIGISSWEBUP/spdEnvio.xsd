@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="XML">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="REGISTRO0"/>
+				<xs:element maxOccurs="unbounded" ref="REGISTRO1"/>
+				<xs:element maxOccurs="unbounded" ref="REGISTRO2"/>
+				<xs:element maxOccurs="unbounded" ref="REGISTRO3"/>
+				<xs:element maxOccurs="unbounded" ref="REGISTRO9"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="REGISTRO0">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Tipo"/>
+				<xs:element ref="SistemaDestino"/>
+				<xs:element ref="NomePrefeitura"/>
+				<xs:element ref="CNPJPrefeitura"/>
+				<xs:element ref="DataGeracaoArquivo"/>
+				<xs:element ref="AnoMesEmissao"/>
+				<xs:element ref="NomeSistemaEmissor"/>
+				<xs:element ref="VerificadorVersao"/>
+				<xs:element ref="IdentificadorLayout"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SistemaDestino"/>
+	<xs:element name="NomePrefeitura"/>
+	<xs:element name="CNPJPrefeitura"/>
+	<xs:element name="DataGeracaoArquivo"/>
+	<xs:element name="AnoMesEmissao"/>
+	<xs:element name="NomeSistemaEmissor"/>
+	<xs:element name="VerificadorVersao"/>
+	<xs:element name="IdentificadorLayout"/>
+	<xs:element name="REGISTRO1">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Tipo"/>
+				<xs:element ref="CNPJEmpresa"/>
+				<xs:element ref="Identificador"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CNPJEmpresa"/>
+	<xs:element name="REGISTRO2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Tipo"/>
+				<xs:element ref="SerieRPS"/>
+				<xs:element ref="NumeroRPS"/>
+				<xs:element ref="CodigoServico"/>
+				<xs:element ref="DataEmissao"/>
+				<xs:element ref="DestinatarioEstrangeiro"/>
+				<xs:element ref="TipoDestinatario"/>
+				<xs:element ref="CPFCNPJDestinatario"/>
+				<xs:element ref="RazaoSocialDestinatario"/>
+				<xs:element ref="InscricaoMunicipalDestinatario"/>
+				<xs:element ref="InscricaoEstadualDestinatario"/>
+				<xs:element ref="EnderecoDestinatario"/>
+				<xs:element ref="NumeroEnderecoDestinatario"/>
+				<xs:element ref="ComplementoEnderecoDestinatario"/>
+				<xs:element ref="CEPEnderecoDestinatario"/>
+				<xs:element ref="BairroEnderecoDestinatario"/>
+				<xs:element ref="CidadeEnderecoDestinatario"/>
+				<xs:element ref="UFEnderecoDestinatario"/>
+				<xs:element ref="PaisEnderecoDestinatario"/>
+				<xs:element ref="TelefoneDestinatario"/>
+				<xs:element ref="EmailDestinatario"/>
+				<xs:element ref="ValorTotal"/>
+				<xs:element ref="ValorDeducao"/>
+				<xs:element ref="ValorServico"/>
+				<xs:element ref="AliquotaISS"/>
+				<xs:element ref="ValorISS"/>
+				<xs:element ref="BaseCalculoPIS"/>
+				<xs:element ref="AliquotaPIS"/>
+				<xs:element ref="ValorPIS"/>
+				<xs:element ref="BaseCalculoCOFINS"/>
+				<xs:element ref="AliquotaCOFINS"/>
+				<xs:element ref="ValorCOFINS"/>
+				<xs:element ref="BaseCalculoCSLL"/>
+				<xs:element ref="AliquotaCSLL"/>
+				<xs:element ref="ValorCSLL"/>
+				<xs:element ref="BaseCalculoIRRF"/>
+				<xs:element ref="AliquotaIRRF"/>
+				<xs:element ref="ValorIRRF"/>
+				<xs:element ref="BaseCalculoINSS"/>
+				<xs:element ref="AliquotaINSS"/>
+				<xs:element ref="ValorINSS"/>
+				<xs:element ref="Regime"/>
+				<xs:element ref="RetencaoISS"/>
+				<xs:element ref="NFCancelada"/>
+				<xs:element ref="FormaPagamento"/>
+				<xs:element ref="Identificador"/>
+				<xs:element ref="Descricao"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NumeroRPS"/>
+	<xs:element name="CodigoServico"/>
+	<xs:element name="DataEmissao"/>
+	<xs:element name="DestinatarioEstrangeiro"/>
+	<xs:element name="TipoDestinatario"/>
+	<xs:element name="CPFCNPJDestinatario"/>
+	<xs:element name="RazaoSocialDestinatario"/>
+	<xs:element name="InscricaoMunicipalDestinatario"/>
+	<xs:element name="InscricaoEstadualDestinatario"/>
+	<xs:element name="EnderecoDestinatario"/>
+	<xs:element name="NumeroEnderecoDestinatario"/>
+	<xs:element name="ComplementoEnderecoDestinatario"/>
+	<xs:element name="CEPEnderecoDestinatario"/>
+	<xs:element name="BairroEnderecoDestinatario"/>
+	<xs:element name="CidadeEnderecoDestinatario"/>
+	<xs:element name="UFEnderecoDestinatario"/>
+	<xs:element name="PaisEnderecoDestinatario"/>
+	<xs:element name="TelefoneDestinatario"/>
+	<xs:element name="EmailDestinatario"/>
+	<xs:element name="ValorTotal"/>
+	<xs:element name="ValorDeducao"/>
+	<xs:element name="ValorServico"/>
+	<xs:element name="AliquotaISS"/>
+	<xs:element name="ValorISS"/>
+	<xs:element name="BaseCalculoPIS"/>
+	<xs:element name="AliquotaPIS"/>
+	<xs:element name="ValorPIS"/>
+	<xs:element name="BaseCalculoCOFINS"/>
+	<xs:element name="AliquotaCOFINS"/>
+	<xs:element name="ValorCOFINS"/>
+	<xs:element name="BaseCalculoCSLL"/>
+	<xs:element name="AliquotaCSLL"/>
+	<xs:element name="ValorCSLL"/>
+	<xs:element name="BaseCalculoIRRF"/>
+	<xs:element name="AliquotaIRRF"/>
+	<xs:element name="ValorIRRF"/>
+	<xs:element name="BaseCalculoINSS"/>
+	<xs:element name="AliquotaINSS"/>
+	<xs:element name="ValorINSS"/>
+	<xs:element name="Regime"/>
+	<xs:element name="RetencaoISS"/>
+	<xs:element name="NFCancelada"/>
+	<xs:element name="FormaPagamento"/>
+	<xs:element name="Descricao"/>
+	<xs:element name="REGISTRO3">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Tipo"/>
+				<xs:element ref="NumeroRPSGerouNF"/>
+				<xs:element ref="SerieRPS"/>
+				<xs:element ref="DataCancelamento"/>
+				<xs:element ref="MotivoCancelamento"/>
+				<xs:element ref="Identificador"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NumeroRPSGerouNF"/>
+	<xs:element name="DataCancelamento"/>
+	<xs:element name="MotivoCancelamento"/>
+	<xs:element name="REGISTRO9">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Tipo"/>
+				<xs:element ref="QuantidadeNFOuCancelamentos"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QuantidadeNFOuCancelamentos"/>
+	<xs:element name="Tipo"/>
+	<xs:element name="Identificador"/>
+	<xs:element name="SerieRPS"/>
+</xs:schema>

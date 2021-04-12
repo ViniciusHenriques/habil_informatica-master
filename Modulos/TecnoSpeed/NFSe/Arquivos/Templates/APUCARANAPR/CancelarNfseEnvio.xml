@@ -1,0 +1,1 @@
+<CancelarNfseEnvio><Pedido><InfPedidoCancelamento Id="%s"><IdentificacaoNfse><Numero>%s</Numero>%s<InscricaoMunicipal>%s</InscricaoMunicipal><CodigoMunicipio>%s</CodigoMunicipio></IdentificacaoNfse><CodigoCancelamento>%s</CodigoCancelamento></InfPedidoCancelamento></Pedido></CancelarNfseEnvio>

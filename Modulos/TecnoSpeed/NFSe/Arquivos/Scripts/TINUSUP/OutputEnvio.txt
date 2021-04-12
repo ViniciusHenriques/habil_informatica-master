@@ -1,0 +1,25 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\RealizarDelimitacaoLoteRps.txt}
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+
+procedure PrepararXmlEnvioTinus(var aXML: String);
+begin
+  aXML := StringReplace(aXML, ' id="', ' Id="', [rfReplaceAll]);
+  aXML := StringReplace(aXML, ' xmlns="http://tempuri.org"', '', [rfReplaceAll]);
+end;
+
+var
+  saida: string;
+begin
+  Progress('Gerando arquivo XML.');
+  saida := Datasets.AsXML;
+  PrepararXmlEnvioTinus(saida);
+  Output := RealizarDelimitacaoLoteRps(saida, 'Rps', 'ListaRps');
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_TINUSUP);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

@@ -1,0 +1,433 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _ValorCampo,_DataEmissao,_linha,_NomeCampo : string;
+  _inicio, _QtdeRps: Integer;
+  _PastaTecnoNFSe: string;
+  _i, _registro : Integer;
+  _CampoPers, _aux : string;
+  _CidadeConfigurada: string;
+  _IndexCidadeConfig: Integer;
+  _CodigoCidadeConfig: string;
+  i : Integer;
+  CODIGOS_CIDADES : array[0..8] of string;
+  NOMES_CIDADES : array[0..8] of string;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_PREFEITURA = 'REGISTRO0';
+  DSCIDADE_EMPRESA = 'REGISTRO1';
+  DSCIDADE_NOTA = 'REGISTRO2';
+  DSCIDADE_CANCELAMENTO = 'REGISTRO3';
+  DSCIDADE_QTDERPS = 'REGISTRO9';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+
+  function IssRetido: boolean;
+  begin
+    Result := AnsiIndexText(CampoTecno('IssRetido'), ['1', 'sim', 'true', 'Sim']) <> -1;
+  end;
+
+begin
+  CODIGOS_CIDADES[0] := '3552403';
+  CODIGOS_CIDADES[1] := '3556206';
+  CODIGOS_CIDADES[2] := '3526704';
+  CODIGOS_CIDADES[3] := '3545803';
+  CODIGOS_CIDADES[4] := '3512209';
+  CODIGOS_CIDADES[5] := '3546702';
+  CODIGOS_CIDADES[6] := '3515152';
+  CODIGOS_CIDADES[7] := '3512407';
+  CODIGOS_CIDADES[8] := '3503307';
+  NOMES_CIDADES[0] := 'SUMAREUP';
+  NOMES_CIDADES[1] := 'VALINHOSUP';
+  NOMES_CIDADES[2] := 'LEMEUP';
+  NOMES_CIDADES[3] := 'SANTABARBARADOESTEUP';
+  NOMES_CIDADES[4] := 'CONCHALSP';
+  NOMES_CIDADES[5] := 'SANTAGERTRUDESSP';
+  NOMES_CIDADES[6] := 'ENGENHEIROCOELHOSP';
+  NOMES_CIDADES[7] := 'CORDEIROPOLISSP';
+  NOMES_CIDADES[8] := 'ARARASUP';
+
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+  _tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando Padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+      // Editar dados carregados no Datasets, para fazer algumas transformações
+
+      Progress('Usando Padrão TecnoNFSe: carregando dados das notas');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+      _DsTecnoAtual.First;
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        if CampoTecno('SituacaoNota') = '2' then
+        begin
+          _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_CANCELAMENTO);
+          _DsCidadeAtual.Append;
+
+          _ValorCampo := RemoveMascara(CampoTecno('NumeroRps'));
+          VerificaSeEhNumero('NumeroRps', _ValorCampo);
+          if _ValorCampo <> '' then
+            SetarCampoValorTamanhoRemessa('NumeroRPSGerouNF', _ValorCampo, 10)
+          else
+            RaiseException('Para essa cidade o campo "NumeroRps" é obrigatório e deve conter até 10 Caractere(s).');
+
+          _ValorCampo := RemoveMascara(CampoTecno('DataEmissaoNFSeCancelada'));
+          if (_ValorCampo <> '') and ((Length(_ValorCampo) = 17) or (Length(_ValorCampo) = 8) or (Length(_ValorCampo) = 15)) then
+          begin
+            _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissaoNFSeCancelada'), 'DDMMYYYY');
+            SetarCampoValor('DataCancelamento', _ValorCampo);
+          end
+          else
+          begin
+            _ValorCampo := RemoveMascara(CampoTecno('DataEmissao'));
+            if (_ValorCampo <> '') and ((Length(_ValorCampo) = 17) or (Length(_ValorCampo) = 8) or (Length(_ValorCampo) = 15)) then
+            begin
+              _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'DDMMYYYY');
+              SetarCampoValor('DataCancelamento', _ValorCampo);
+            end
+            else
+              RaiseException('Para essa cidade o campo DataEmissao ou DataEmissaoNFSeCancelada é obrigatorio e deve ser no seguinte formato: YYYY-MM-DDThh:mm:ss');
+          end;
+
+          SetarCampoValorTamObrigRemessa('SerieRps', 'SerieRps', 3);
+          SetarCampoValorTamObrigRemessa('MotivoCancelamento', 'MotCancelamento', 150);
+          SetarCampoValor('Identificador', '3');
+          SetarCampoValor('Tipo', '3');
+          _DsCidadeAtual.Post;
+        end
+        else
+        begin
+          _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+          _DsCidadeAtual.Append;
+
+          SetarCampoValor('Tipo', '2');
+          SetarCampoValorTamObrigRemessa('SerieRps', 'SerieRps', 3);
+
+          _ValorCampo := RemoveMascara(CampoTecno('NumeroRps'));
+          VerificaSeEhNumero('NumeroRps', _ValorCampo);
+          if _ValorCampo <> '' then
+            SetarCampoValorTamanhoRemessa('NumeroRps', _ValorCampo, 10)
+          else
+            RaiseException('Para essa cidade o campo "NumeroRps" é obrigatório e deve conter até 10 Caractere(s).');
+
+          _ValorCampo := CampoTecno('CodigoItemListaServico');
+          _ValorCampo := FormatarCodigoItemListaServico(_ValorCampo, True);  // Sumare: Com ponto no ItemListaServico
+          if _ValorCampo <> '' then
+            SetarCampoValorTamanhoRemessa('CodigoServico', _ValorCampo, 6)
+          else
+            RaiseException('Para essa cidade o campo CodigoItemListaServico é obrigatorio.');
+
+          _ValorCampo := RemoveMascara(CampoTecno('DataEmissao'));
+          if (_ValorCampo <> '') and ((Length(_ValorCampo) = 17) or (Length(_ValorCampo) = 8) or (Length(_ValorCampo) = 15)) then
+          begin
+            _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'DDMMYYYY');
+            SetarCampoValor('DataEmissao', _ValorCampo);
+          end
+          else
+            RaiseException('Para essa cidade o campo DataEmissao é obrigatorio e deve ser no seguinte formato: YYYY-MM-DDThh:mm:ss.');
+
+          _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+          VerificaSeEhNumero('CpfCnpjTomador', _ValorCampo);
+          case Length(_ValorCampo) of
+            0:
+              SetarCampoValorTamanhoRemessa('CPFCNPJDestinatario', '', 14);
+            11:
+              begin
+                SetarCampoValorTamanhoRemessa('CPFCNPJDestinatario', _ValorCampo, 14);
+                SetarCampoValorTamanhoRemessa('TipoDestinatario', 'F', 2);
+              end;
+            14:
+              begin
+                SetarCampoValorTamanhoRemessa('CPFCNPJDestinatario', _ValorCampo, 14);
+                SetarCampoValorTamanhoRemessa('TipoDestinatario', 'J', 2);
+              end;
+          else
+            RaiseException('Valor inválido para o campo CpfCnpjTomador, CPF: 11 Caracteres; CNPJ: 14 Caracteres.');
+          end;
+
+          if CampoCidade('TipoDestinatario') = '' then
+            SetarCampoValorTamanhoRemessa('TipoDestinatario', '', 2);
+
+          if (CampoTecno('DocTomadorEstrangeiro') <> '') or (CampoTecno('TipoDocumentoTomador') = '3') then
+            SetarCampoValor('DestinatarioEstrangeiro', 'S')
+          else
+            SetarCampoValor('DestinatarioEstrangeiro', 'N');
+
+          SetarCampoValorTamanhoRemessa('RazaoSocialDestinatario', CampoTecno('RazaoSocialTomador'), 100);
+          SetarCampoValorTamanhoRemessa('InscricaoMunicipalDestinatario', CampoTecno('InscricaoMunicipalTomador'), 15);
+          SetarCampoValorTamanhoRemessa('InscricaoEstadualDestinatario', CampoTecno('InscricaoEstadualTomador'), 15);
+          SetarCampoValorTamanhoRemessa('EnderecoDestinatario', CampoTecno('EnderecoTomador'), 60);
+          SetarCampoValorTamanhoRemessa('ComplementoEnderecoDestinatario', CampoTecno('ComplementoTomador'), 40);
+          SetarCampoValorTamanhoRemessa('BairroEnderecoDestinatario', CampoTecno('BairroTomador'), 100);
+          SetarCampoValorTamanhoRemessa('CidadeEnderecoDestinatario', CampoTecno('DescricaoCidadeTomador'), 100);
+          SetarCampoValorTamanhoRemessa('UFEnderecoDestinatario', CampoTecno('UfTomador'), 2);
+          SetarCampoValorTamanhoRemessa('PaisEnderecoDestinatario', CampoTecno('PaisTomador'), 50);
+          SetarCampoValorTamanhoRemessa('EmailDestinatario', CampoTecno('EmailTomador'), 120);
+
+          _ValorCampo := RemoveMascara(CampoTecno('NumeroTomador'));
+          VerificaSeEhNumero('NumeroTomador', _ValorCampo);
+          SetarCampoValorTamanhoRemessa('NumeroEnderecoDestinatario', _ValorCampo, 10);
+
+          _ValorCampo := RemoveMascara(CampoTecno('CepTomador'));
+          VerificaSeEhNumero('CepTomador', _ValorCampo);
+          SetarCampoValorTamanhoRemessa('CEPEnderecoDestinatario', _ValorCampo, 8);
+
+          if CampoTecno('DDDTomador') = '' then
+            SetarCampoValorTamanhoRemessa('TelefoneDestinatario', CampoTecno('TelefoneTomador'), 30)
+          else
+          begin
+            _ValorCampo := CampoTecno('DDDTomador') + CampoTecno('TelefoneTomador');
+            SetarCampoValorTamanhoRemessa('TelefoneDestinatario', _ValorCampo, 30);
+          end;
+
+          if (CampoTecno('OptanteSimplesNacional') = '1') and not IssRetido then
+            SetarCampoValor('AliquotaISS', '00,00')
+          else
+          begin
+            if DivideCampoPorcentagem(CampoTecno('AliquotaISS')) then
+              SetarCurValorTamVirgRemessa('AliquotaISS', 'AliquotaISS', 2, true)
+            else
+              RaiseException('Valor inválido para o campo AliquotaISS.');
+          end;
+          SetarCurValorTamVirgRemessa('ValorServicos', 'ValorTotal', 11, true);
+          SetarCurValorTamVirgRemessa('ValorDeducoes', 'ValorDeducao', 11, true);
+          SetarCurValorTamVirgRemessa('ValorServicos', 'ValorServico', 11, true);
+          SetarCurValorTamVirgRemessa('ValorISS', 'ValorISS', 11, true);
+          SetarCurValorTamVirgRemessa('BaseCalculo', 'BaseCalculoPIS', 11, true);
+          SetarCurValorTamVirgRemessa('AliquotaPIS', 'AliquotaPIS', 2, true);
+          SetarCurValorTamVirgRemessa('ValorPIS', 'ValorPIS', 11, true);
+          SetarCurValorTamVirgRemessa('BaseCalculo', 'BaseCalculoCOFINS', 11, true);
+          SetarCurValorTamVirgRemessa('AliquotaCOFINS', 'AliquotaCOFINS', 2, true);
+          SetarCurValorTamVirgRemessa('ValorCOFINS', 'ValorCOFINS', 11, true);
+          SetarCurValorTamVirgRemessa('BaseCalculo', 'BaseCalculoCSLL', 11, true);
+          SetarCurValorTamVirgRemessa('AliquotaCSLL', 'AliquotaCSLL', 2, true);
+          SetarCurValorTamVirgRemessa('ValorCSLL', 'ValorCSLL', 11, true);
+          SetarCurValorTamVirgRemessa('BaseCalculo', 'BaseCalculoIRRF', 11, true);
+          SetarCurValorTamVirgRemessa('AliquotaIR', 'AliquotaIRRF', 2, true);
+          SetarCurValorTamVirgRemessa('ValorIR', 'ValorIRRF', 11, true);
+          SetarCurValorTamVirgRemessa('BaseCalculo', 'BaseCalculoINSS', 11, true);
+          SetarCurValorTamVirgRemessa('AliquotaINSS', 'AliquotaINSS', 2, true);
+          SetarCurValorTamVirgRemessa('ValorINSS', 'ValorINSS', 11, true);
+
+          SetarCampoValor('Regime', 'V');
+          if (CampoTecno('RegimeEspecialTributacao') = '5') then
+            SetarCampoValor('Regime', 'M');
+
+          if (CampoTecno('TipoTributacao') = '1') or (CampoTecno('TipoTributacao') = '2') then
+            SetarCampoValor('Regime', 'L');
+
+          if (CampoTecno('OptanteSimplesNacional') = '1') or (CampoTecno('NaturezaTributacao') = '1') then
+            SetarCampoValor('Regime', 'S');
+
+          case StrToIntDef(CampoTecno('TipoTributacao'), -1) of
+            1, 2, 4:
+              SetarCampoValor('RetencaoISS', 'N');
+            3:
+              SetarCampoValor('RetencaoISS', 'I');
+            6:
+              begin
+                case AnsiIndexText(CampoTecno('IssRetido'), ['1', 'sim', 'true', '2', 'nao', 'não', 'false']) of
+                  0, 1, 2:
+                    SetarCampoValor('RetencaoISS', 'S');
+                  3, 4, 5, 6:
+                    SetarCampoValor('RetencaoISS', 'N');
+                else
+                  RaiseException('Valor inválido para o campo IssRetido. Valores aceitos: 1, sim, true, 2, nao, não, false.');
+                end;
+              end;
+            7:
+              begin
+                case AnsiIndexText(CampoTecno('IssRetido'), ['1', 'sim', 'true', '2', 'nao', 'não', 'false']) of
+                  0, 1, 2:
+                    SetarCampoValor('RetencaoISS', 'F');
+                  3, 4, 5, 6:
+                    SetarCampoValor('RetencaoISS', 'D');
+                else
+                  RaiseException('Valor inválido para o campo IssRetido. Valores aceitos: 1, sim, true, 2, nao, não, false.');
+                end;
+              end;
+          else
+            RaiseException('Valor inválido para o campo TipoTributacao. Valores aceitos: 1, 2, 3, 4, 6, 7.');
+          end;
+
+          if CampoTecno('SituacaoNota') = '1' then
+            SetarCampoValor('NFCancelada', 'N')
+          else
+            RaiseException('Para essa cidade o campo SituacaoNota é obrigatorio e deve ser 1 - Normal, ou 2 - Cancelada');
+
+          SetarCampoValorTamanhoRemessa('FormaPagamento', '', 40);
+          SetarCampoValor('Identificador', '2');
+
+          SetarCampoValorTamObrigRemessa('DiscriminacaoServico', 'DiscriminacaoServico', 2000);
+          _DsCidadeAtual.Post;
+        end;
+
+        _DataEmissao := CampoTecno('DataEmissao');
+        if _DataEmissao = '' then
+          _DataEmissao := CampoTecno('DataEmissaoNFSeCancelada');
+        _DsTecnoAtual.Next;
+      end;
+      // Atribuir os campos do lote
+      Progress('Usando Padrão TecnoNFSe: carregando dados do lote');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_LOTE);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_PREFEITURA);
+      _DsCidadeAtual.Append;
+
+      if Params.Values['Ambiente'] = '2' then
+        SetarCampoValor('Tipo', 'X')
+      else
+        SetarCampoValor('Tipo', '0');
+
+      _CidadeConfigurada := Params.Values['Cidade'];
+
+      for i := 0 to 8 do
+      begin
+        if SameText(_CidadeConfigurada, NOMES_CIDADES[i]) then
+          _IndexCidadeConfig := i;
+      end;
+
+      if _IndexCidadeConfig >= 0 then
+        _CodigoCidadeConfig := CODIGOS_CIDADES[_IndexCidadeConfig];
+
+      case _IndexCidadeConfig of
+        0:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município de Sumaré', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '45787660000100', 14);
+          end;
+
+        1:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município de Valinhos', 49);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '45787678000102', 14);
+          end;
+
+        2:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '00000000000000', 14);
+          end;
+
+        3:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura Municipal de Santa Barbara d' + '''' + 'Oeste', 50);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '46422408000152', 14);
+          end;
+
+        4:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '00000000000000', 14);
+          end;
+
+        5:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '00000000000000', 14);
+          end;
+
+        6:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '00000000000000', 14);
+          end;
+
+        7:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município', 48);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '00000000000000', 14);
+          end;
+          
+        8:
+          begin
+            SetarCampoValorTamanhoRemessa('SistemaDestino', 'SIGISSWEB', 10);
+            SetarCampoValorTamanhoRemessa('NomePrefeitura', 'Prefeitura do Município de Araras', 49);
+            SetarCampoValorTamanhoRemessa('CNPJPrefeitura', '44215846000114', 14);
+          end;
+
+      end;
+
+      _ValorCampo := FormatAnyDateTime(_DataEmissao, 'DDMMYYYY');
+      SetarCampoValor('DataGeracaoArquivo', _ValorCampo);
+      _ValorCampo := FormatAnyDateTime(_DataEmissao, 'MMYYYY');
+      SetarCampoValor('AnoMesEmissao', _ValorCampo);
+
+      SetarCampoValorTamanhoRemessa('NomeSistemaEmissor', 'Tecnospeed', 15);
+      SetarCampoValorTamanhoRemessa('VerificadorVersao', '20', 45); //Campo com o tamanho de 45 caracteres para o campo IdentificadorLayout iniciar na posição 150 do arquivo conforme Manual
+      SetarCampoValor('IdentificadorLayout', '0');
+      _DsCidadeAtual.Post;
+
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_EMPRESA);
+      _DsCidadeAtual.Append;
+
+      SetarCampoValor('Tipo', '1');
+      if (CampoTecno('CpfCnpjRemetente') <> '') then
+        SetarCampoValorTamanhoRemessa('CNPJEmpresa', RemoveMascara(CampoTecno('CpfCnpjRemetente')), 98)//Campo com o tamanho de 98 caracteres para o campo Identificador iniciar na posição 100 do arquivo conforme Manual
+      else
+        SetarCampoValorTamanhoRemessa('CNPJEmpresa', RemoveMascara(TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA).FieldByName('CpfCnpjPrestador').AsString), 98);
+        //Campo com o tamanho de 98 caracteres para o campo Identificador iniciar na posição 100 do arquivo conforme Manual
+      SetarCampoValor('Identificador', '1');
+      _DsCidadeAtual.Post;
+
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_QTDERPS);
+      _DsCidadeAtual.Append;
+
+      SetarCampoValor('Tipo', '9');
+      if CampoTecno('QuantidadeRps') <> '' then
+        SetarCampoValorTamanhoRemessa('QuantidadeNFOuCancelamentos', CampoTecno('QuantidadeRps'), 6)
+      else
+        SetarCampoValorTamanhoRemessa('QuantidadeNFOuCancelamentos', IntToStr(_QtdeRps), 6);
+
+      _DsCidadeAtual.Post;
+
+      SetarCamposMunicipio(true);
+    end
+    else
+      RaiseException('Utilize o Tx2 padrão TecnoNFSe para gerar o conteúdo da remessa');
+  finally
+    _tx2.free;
+    _CamposMunicipio.free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

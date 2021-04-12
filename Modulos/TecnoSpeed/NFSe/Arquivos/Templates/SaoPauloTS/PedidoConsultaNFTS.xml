@@ -1,0 +1,1 @@
+<PedidoConsultaNFTS xmlns="http://www.prefeitura.sp.gov.br/nfts"><Cabecalho xmlns="" Versao="1"><Remetente><CPFCNPJ><CNPJ>%s</CNPJ></CPFCNPJ></Remetente></Cabecalho><DetalheNFTS xmlns=""><ChaveNFTS><InscricaoMunicipal>%s</InscricaoMunicipal><NumeroNFTS>%s</NumeroNFTS><CodigoVerificacao>%s</CodigoVerificacao></ChaveNFTS></DetalheNFTS></PedidoConsultaNFTS>

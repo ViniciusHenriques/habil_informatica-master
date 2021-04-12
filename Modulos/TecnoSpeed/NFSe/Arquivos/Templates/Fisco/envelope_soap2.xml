@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx">
+	<soapenv:Header/>
+	<soapenv:Body>
+		%s
+	</soapenv:Body>
+</soapenv:Envelope>

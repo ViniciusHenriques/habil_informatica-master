@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRegFisIPI" targetNamespace="http://tempuri.org/dsRegFisIPI.xsd" xmlns:mstns="http://tempuri.org/dsRegFisIPI.xsd" xmlns="http://tempuri.org/dsRegFisIPI.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRegFisIPI" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRegFisIPI" msprop:Generator_UserDSName="dsRegFisIPI">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="REGRA_FISCAL_IPI" msprop:Generator_TableClassName="REGRA_FISCAL_IPIDataTable" msprop:Generator_TableVarName="tableREGRA_FISCAL_IPI" msprop:Generator_RowChangedName="REGRA_FISCAL_IPIRowChanged" msprop:Generator_TablePropName="REGRA_FISCAL_IPI" msprop:Generator_RowDeletingName="REGRA_FISCAL_IPIRowDeleting" msprop:Generator_RowChangingName="REGRA_FISCAL_IPIRowChanging" msprop:Generator_RowEvHandlerName="REGRA_FISCAL_IPIRowChangeEventHandler" msprop:Generator_RowDeletedName="REGRA_FISCAL_IPIRowDeleted" msprop:Generator_RowClassName="REGRA_FISCAL_IPIRow" msprop:Generator_UserTableName="REGRA_FISCAL_IPI" msprop:Generator_RowEvArgName="REGRA_FISCAL_IPIRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_REGRA_FISCAL_IPI" msprop:Generator_ColumnVarNameInTable="columnCD_REGRA_FISCAL_IPI" msprop:Generator_ColumnPropNameInRow="CD_REGRA_FISCAL_IPI" msprop:Generator_ColumnPropNameInTable="CD_REGRA_FISCAL_IPIColumn" msprop:Generator_UserColumnName="CD_REGRA_FISCAL_IPI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_NCM" msprop:Generator_ColumnVarNameInTable="columnCD_NCM" msprop:Generator_ColumnPropNameInRow="CD_NCM" msprop:Generator_ColumnPropNameInTable="CD_NCMColumn" msprop:Generator_UserColumnName="CD_NCM" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_NCM" msprop:Generator_ColumnVarNameInTable="columnDS_NCM" msprop:Generator_ColumnPropNameInRow="DS_NCM" msprop:Generator_ColumnPropNameInTable="DS_NCMColumn" msprop:Generator_UserColumnName="DS_NCM" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_SITUACAO" msprop:Generator_ColumnVarNameInTable="columnCD_SITUACAO" msprop:Generator_ColumnPropNameInRow="CD_SITUACAO" msprop:Generator_ColumnPropNameInTable="CD_SITUACAOColumn" msprop:Generator_UserColumnName="CD_SITUACAO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_TIPO" msprop:Generator_ColumnVarNameInTable="columnCD_TIPO" msprop:Generator_ColumnPropNameInRow="CD_TIPO" msprop:Generator_ColumnPropNameInTable="CD_TIPOColumn" msprop:Generator_UserColumnName="CD_TIPO" type="xs:int" minOccurs="0" />
+              <xs:element name="VL_PCT_IPI" msprop:Generator_ColumnVarNameInTable="columnVL_PCT_IPI" msprop:Generator_ColumnPropNameInRow="VL_PCT_IPI" msprop:Generator_ColumnPropNameInTable="VL_PCT_IPIColumn" msprop:Generator_UserColumnName="VL_PCT_IPI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_ENQUADRAMENTO" msprop:Generator_ColumnVarNameInTable="columnCD_ENQUADRAMENTO" msprop:Generator_ColumnPropNameInRow="CD_ENQUADRAMENTO" msprop:Generator_ColumnPropNameInTable="CD_ENQUADRAMENTOColumn" msprop:Generator_UserColumnName="CD_ENQUADRAMENTO" type="xs:short" minOccurs="0" />
+              <xs:element name="DT_ATUALIZACAO" msprop:Generator_ColumnVarNameInTable="columnDT_ATUALIZACAO" msprop:Generator_ColumnPropNameInRow="DT_ATUALIZACAO" msprop:Generator_ColumnPropNameInTable="DT_ATUALIZACAOColumn" msprop:Generator_UserColumnName="DT_ATUALIZACAO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DT_VIGENCIA" msprop:Generator_ColumnVarNameInTable="columnDT_VIGENCIA" msprop:Generator_ColumnPropNameInRow="DT_VIGENCIA" msprop:Generator_ColumnPropNameInTable="DT_VIGENCIAColumn" msprop:Generator_UserColumnName="DT_VIGENCIA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CD_EX" msprop:Generator_ColumnVarNameInTable="columnCD_EX" msprop:Generator_ColumnPropNameInRow="CD_EX" msprop:Generator_ColumnPropNameInTable="CD_EXColumn" msprop:Generator_UserColumnName="CD_EX" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_TIPO_TRIBUTACAO" msprop:Generator_ColumnVarNameInTable="columnDS_TIPO_TRIBUTACAO" msprop:Generator_ColumnPropNameInRow="DS_TIPO_TRIBUTACAO" msprop:Generator_ColumnPropNameInTable="DS_TIPO_TRIBUTACAOColumn" msprop:Generator_UserColumnName="DS_TIPO_TRIBUTACAO" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_TIPO_SITUACAO" msprop:Generator_ColumnVarNameInTable="columnDS_TIPO_SITUACAO" msprop:Generator_ColumnPropNameInRow="DS_TIPO_SITUACAO" msprop:Generator_ColumnPropNameInTable="DS_TIPO_SITUACAOColumn" msprop:Generator_UserColumnName="DS_TIPO_SITUACAO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_CST_IPI" msprop:Generator_ColumnVarNameInTable="columnCD_CST_IPI" msprop:Generator_ColumnPropNameInRow="CD_CST_IPI" msprop:Generator_ColumnPropNameInTable="CD_CST_IPIColumn" msprop:Generator_UserColumnName="CD_CST_IPI" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,6 @@
+<ws:ConsultarNfseFaixa>
+	<!--Optional:-->
+	<xml>
+		<![CDATA[<ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/nfse.xsd"><Prestador><CpfCnpj>%s</CpfCnpj><InscricaoMunicipal>%s</InscricaoMunicipal></Prestador><Faixa><NumeroNfseInicial>%s</NumeroNfseInicial><NumeroNfseFinal>%s</NumeroNfseFinal></Faixa><Pagina>1</Pagina></ConsultarNfseFaixaEnvio>]]>
+	</xml>
+</ws:ConsultarNfseFaixa>

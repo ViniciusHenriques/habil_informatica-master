@@ -1,0 +1,52 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+Var
+  _Xml : string;
+
+  function UnEscapeXml(const aXML: string): string;
+  begin
+    // "Desescapar" o XML
+    Result:= aXML;
+    Result:= StringReplace(Result, '&apos;', '''', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&quot;', '"',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&gt;',  '>', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&lt;',  '<', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;', '&', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&#xD;', #13, [rfReplaceAll]);
+  end;
+
+begin
+  Progress('Carregando configurações do XSDDataset');
+  Datasets.XsdFile := PathXsd + 'nfse.xsd';
+  Datasets.XsdElementName := 'EnviarLoteRpsResposta';
+  Datasets.ConfigSection := 'RETORNO_ENVIAR';
+  if Trim(MappingXsdFileName) <> '' then
+    Datasets.MappingFileName := MappingXsdFileName;
+  Progress('Criando XSDDataset.');
+  Datasets.CreateXSDDataset;  
+  _Xml := XmlDeepNodeSearch(Input, Datasets.XsdElementName, '//*[local-name()="EnviarLoteRpsResposta"]');
+
+  if _Xml = '' then
+  begin
+    _Xml := UnEscapeXml(Input);
+    _Xml := StringReplace(_Xml, '<result>', '<EnviarLoteRpsResposta>', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '</result>', '</EnviarLoteRpsResposta>', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<![CDATA[', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, ']]>', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="UTF-8"?>', '', [rfReplaceAll]);    
+    _Xml := XmlSelect(_Xml, '//*[local-name()="EnviarLoteRpsResposta"]');
+  end;   
+  
+  if (Pos('<faultstring',input) > 0) then
+    Params.Add('faultstring='+input)
+  else
+  begin    
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com Sucesso.');
+  end;
+end.

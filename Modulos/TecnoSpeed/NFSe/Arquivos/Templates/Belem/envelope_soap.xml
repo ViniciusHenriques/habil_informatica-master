@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:lot="http://siat.nota.belem.pa.gov.br/WsNFe/LoteRps" xmlns:wsn="%s">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <lot:%s>
+      <mensagemXml>%s</mensagemXml>
+    </lot:%s>
+  </soapenv:Body>
+</soapenv:Envelope>

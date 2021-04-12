@@ -1,0 +1,6 @@
+<nfse:ExecuteRequest>
+  <nfse:Operacao>%s</nfse:Operacao>
+  <nfse:Usuario>%s</nfse:Usuario>
+  <nfse:Senha>%s</nfse:Senha>
+  <nfse:Webxml><![CDATA[%s]]></nfse:Webxml>
+</nfse:ExecuteRequest>

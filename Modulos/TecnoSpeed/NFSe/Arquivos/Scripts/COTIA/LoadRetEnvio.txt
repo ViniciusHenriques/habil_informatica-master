@@ -1,0 +1,42 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I Utils.txt}
+Var
+  _Xml, _Fault, _Erro, _Status : string;
+begin
+  Progress('Carregando XML de Retorno de Envio');
+
+  _Xml := Input
+  _Status := XmlSelect(_Xml, '//*[local-name()="statusEmissao"]')
+
+  if Pos('200', _Status) > 0 then
+    _Xml := XmlSelect(_Xml, '//*[local-name()="nfeResposta"]')
+  else
+  begin
+    if (Pos('Internal Server Error', Input) > 0) or (Pos('<nfeResposta/>', Input) > 0) or
+      (Pos('503 Service Unavailable', Input) > 0) then
+    begin
+      _Xml := 'Erro interno no servidor da prefeitura,' + 
+        ' verifique os dados do xml de envio e tente novamente.';
+       Params.Add('Erro='+ _Xml);
+    end
+    else if ((_Status = '') and (_Xml <> '')) then
+    begin
+      { Para o padrão COTIA, quando existe algum erro na comunicação com a API
+        o retorno é em formato texto e não XML }
+      _Xml := 'Ocorreu um erro durante a comunicação com o servidor:' +
+        ' Verifique o token(senha) e envie novamente. Caso o erro esteja' +
+        ' persistindo, gere um novo token no portal da prefeitura e tente novamente.';
+      Params.Add('Erro='+ _Xml);
+    end;
+  end;
+  Params.Add('XML='+ _Xml);
+  Progress('XML carregado com sucesso.');
+  
+end.

@@ -1,0 +1,5 @@
+<tem:EnviarLoteRpsSincronoEnvio>	
+	<tem:param>
+		<![CDATA[%s]]>
+	</tem:param>
+</tem:EnviarLoteRpsSincronoEnvio>

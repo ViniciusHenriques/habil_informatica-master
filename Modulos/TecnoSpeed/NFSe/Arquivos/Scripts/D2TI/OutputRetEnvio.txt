@@ -1,0 +1,120 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I Utils.txt}
+
+  function GetStatusNota(const aXml: String): String;
+  var
+    _Aux: String;
+  begin
+    if (xmlSelectNodeValue(aXml, '//*[local-name()="codigoStatus"]', _Aux)) and (_Aux = '100') then
+      Result := 'SUCESSO'
+    else
+      Result := 'ERRO';
+  end;
+
+  function GetMotivoNota(const aXml: String): String;
+  var
+    _Aux, _Codigo: String;
+    _QtdErros, i : Integer;
+  begin
+    _QtdErros := XmlSelectCountNode(aXML, '//*[local-name()="erro"]');
+    
+    for i := 0 to _QtdErros -1 do
+    begin
+      _Aux := XmlSelectItemIndexNode(aXML, '//*[local-name()="descricao"]', i);
+      _Codigo := XmlSelectItemIndexNode(aXML, '//*[local-name()="codigo"]', i);
+
+      xmlSelectNodeValue(_Aux, '//*[local-name()="descricao"]', _Aux);
+      xmlSelectNodeValue(_Codigo, '//*[local-name()="codigo"]', _Codigo);
+
+      if Result = '' then
+        Result := Format2('%s %s.', _Codigo + '-', _Aux)
+      else
+        Result := Format3('%s : %s %s', Result, _Codigo + '-', _Aux);
+    end;
+  end;
+
+  function GetValueTag(aTag: String): String;
+  Var
+    _PINI, _PFIN: integer;
+  begin
+    _PINI := Pos('<' + aTag + '>', Params.Values['XML']) + (Length(aTag) + 2);
+    _PFIN := Pos('</' + aTag + '>', Params.Values['XML']);
+    Result := Copy(Params.Values['XML'], _PINI, _PFIN - _PINI);
+  end;
+
+  function GetSituacaoNota(const aXml: string): string;
+  Var
+    _Situacao: string;
+  begin
+    xmlSelectNodeValue(aXml, '//*[local-name()="codigoStatus"]', _Situacao);
+    if _Situacao = '100' then
+      Result := 'AUTORIZADA'
+    else
+      Result := '';
+  end;
+
+Var
+  _DSSucesso, _DSFalha: TSpdXSDClientDataSet;
+  _ListFields: TStringList;
+  _Xml, _Status, _Motivo : String;
+begin
+  Output := '';
+  Progress('Adicionando valores aos campos');
+
+  _Xml := Params.Values['XML'];
+  _Status := GetStatusNota(_Xml);
+  _Motivo := GetMotivoNota(_Xml);
+
+  if _Status = 'ERRO' then
+  begin
+    Try
+      _ListFields := CreateFieldsResponseFalha;
+      AddValueListFields('Status', 'ERRO', _ListFields);
+      AddValueListFields('Motivo', _Motivo, _ListFields);
+      Output := FormatLineResult(_ListFields) + Params.Values['DelimitadorDaLinha'];
+    Finally
+      _ListFields.Free;
+    end;
+  end
+  else
+  begin
+    _ListFields := CreateFieldsResponseNota;
+    if ((_ListFields <> nil) and (_ListFields.Text <> '')) then
+    begin
+      try
+          AddValueListFields('Motivo', _Motivo, _ListFields);
+          AddValueListFields('Status', _Status, _ListFields);
+          AddValueListFields('Cnpj', '', _ListFields);
+          AddValueListFields('InscMunicipal', '', _ListFields);
+          AddValueListFields('SerieRps', '', _ListFields);
+          AddValueListFields('NumeroRps', '', _ListFields);
+          AddValueListFields('NumeroNFSe', GetValueTag('numeroNota'), _ListFields);
+          AddValueListFields('DataEmissaoNFSe', '', _ListFields);
+          AddValueListFields('DataAutorizacao', '', _ListFields);
+          AddValueListFields('CodVerificacao', GetValueTag('chaveSeguranca'), _ListFields);
+          AddValueListFields('Situacao', GetSituacaoNota(_Xml), _ListFields);
+          AddValueListFields('DataCancelamento', '', _ListFields);
+          AddValueListFields('ChaveCancelamento', GetValueTag('numeroNota') + '_' + GetValueTag('chaveSeguranca'), _ListFields);
+          AddValueListFields('Xml', UnIndentXml(_Xml), _ListFields);
+          AddValueListFields('Tipo', '', _ListFields);
+
+
+        if (Params.Values['DelimitadorDaLinha'] = '') then
+          Output := FormatLineResult(_ListFields) + #13#10
+        else
+          Output := FormatLineResult(_ListFields) + Params.Values['DelimitadorDaLinha'];
+      Finally
+        _ListFields.Free;
+      end;
+    end;
+  end;
+
+  Progress('Valores adicionados com sucesso.');
+end.

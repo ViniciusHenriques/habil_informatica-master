@@ -1,0 +1,38 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _Xml : string;
+  _PosTag: integer;
+begin
+  Progress('Carregando XML de Retorno de Envio');
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, '<!--CRLF-->', '', [rfReplaceAll]);
+    Params.Add('faultstring=' + Input);
+  end
+  else
+  begin
+    _Xml := XmlSelect(Input, '//*[local-name()="EnvNfeResponse"]');
+    if _Xml = '' then
+    begin
+      { Para algumas cidades o retorno possui tags de HTML
+        no começo do arquivo, invalidando o XML }
+      _PosTag := Pos('<?xml version="1.0" encoding="UTF-8"?>', Input);
+      if _PosTag = 0 then
+        _PosTag := Pos('<?xml version="1.0" encoding="ISO-8859-1"?>', Input);
+
+      _Xml := Copy(Input, _PosTag, Length(Input));
+      _Xml := XmlSelect(_Xml, '//*[local-name()="EnvNfeResponse"]');
+    end;
+    Params.Add('XML=' + _Xml);
+    Progress('XML carregado com sucesso');
+  end;
+
+
+end.

@@ -1,0 +1,91 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+
+Var
+  _Xml, _Discriminacao: string;
+
+ function TratarDiscriminacao(const aXml: String): String;
+  var
+    _discrIni, _discrFim : Integer;
+
+  begin
+    _discrIni := Pos('<Discriminacao>', aXml) + 15;
+    _discrFim := Pos('</Discriminacao>', aXml);
+    _discrFim := _discrFim - _discrIni;    
+    _Discriminacao := Copy(aXml, _discrIni, _discrFim);
+    Result := StringReplace(aXml, _Discriminacao, '####DISCRIMINACAO####', [rfReplaceAll]);
+  end;
+
+  function UnindentXml(const aXml: string): string;
+  var
+    _sl: TStringList;
+    i: integer;
+  begin
+    _sl := TStringList.Create;
+    _sl.Text := aXml;
+    for i:= 0 to _sl.Count-1 do
+      _sl[i] := Trim(_sl[i]);
+    Result := StringReplace(_sl.Text, #13#10, '', [rfReplaceAll]);
+    Result := StringReplace(_sl.Text, #13, '', [rfReplaceAll]);
+    Result := StringReplace(_sl.Text, #10, '', [rfReplaceAll]);
+    _sl.Free;
+  end;
+
+  function UnEscapeXml(const aXML: string): string;
+  begin
+    // "Desescapar" o XML
+    Result:= aXML;
+    Result:= StringReplace(Result, '&amp;lt;br&amp;gt;',   '<br>',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&gt;',   '>',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&lt;',   '<',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;', '&', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&apos;', '''', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&quot;', '"',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&#xD;', #13,  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&', '&amp;', [rfReplaceAll]);
+    
+    //corrigeXML
+    Result:= StringReplace(Result, '&amp;apos;', '&apos;', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;quot;', '&quot;',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;#39', '&#39',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;lt;', '&lt;',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;gt;', '&gt;',  [rfReplaceAll]);
+    //WebIss retorna a quebra de linha da forma abaixo.
+    Result:= StringReplace(Result, '&amp;#xD;', '&#xD;',  [rfReplaceAll]);    
+  end;
+
+begin
+  _Xml := TratarDiscriminacao(Input);
+  _Xml := UnEscapeXml(_Xml);
+  _Xml := StringReplace(_Xml, '<?xml version="1.0"?>', '', [rfReplaceAll]);
+  _Xml := StringReplace(_Xml, '####DISCRIMINACAO####', _Discriminacao, [rfReplaceAll]);    
+  
+  if Pos('<faultstring',_Xml) > 0 then
+  begin
+    _Xml := StringReplace(_Xml, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+_Xml);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CONSULTARNFSEPORRPS';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+
+    _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="ConsultarNfseRpsResposta"]');
+
+    Params.Add('XmlNFSe='+_Xml);
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

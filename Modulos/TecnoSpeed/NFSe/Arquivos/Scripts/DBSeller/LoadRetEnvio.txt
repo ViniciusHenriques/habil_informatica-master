@@ -1,0 +1,45 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\Utils.txt}
+
+var
+  _Xml: string;
+begin
+  Progress('Carregando configurações de XSDDataset.');
+  Datasets.XsdFile := PathXsd + 'nfse.xsd';
+  Datasets.XsdElementName := 'EnviarLoteRpsResposta';
+  Datasets.ConfigSection := 'RETORNO_ENVIAR';
+  if Trim(MappingXsdFileName) <> '' then
+    Datasets.MappingFileName := MappingXsdFileName;
+
+  Progress('Criando XSDDataset.');
+  Datasets.CreateXSDDataset;
+
+  if pos('ii:ErroWebServiceResposta', Input) > 0 then
+  begin
+    _Xml := StringReplace(Input, 'ErroWebServiceResposta', 'EnviarLoteRpsResposta', [rfReplaceAll]);
+_Xml := StringReplace(_Xml, '&lt;ii:CodigoErro&gt;', '&lt;ii:ListaMensagemRetorno&gt;&lt;ii:MensagemRetorno&gt;&lt;ii:Codigo&gt;', [rfReplaceAll]);
+_Xml := StringReplace(_Xml, '&lt;/ii:CodigoErro&gt;', '&lt;/ii:Codigo&gt;', [rfReplaceAll]);
+_Xml := StringReplace(_Xml, '&lt;ii:MensagemErro&gt;', '&lt;ii:Mensagem&gt;', [rfReplaceAll]);
+_Xml := StringReplace(_Xml, '&lt;/ii:MensagemErro&gt;', '&lt;/ii:Mensagem&gt;', [rfReplaceAll]);
+_Xml := StringReplace(_Xml, '&lt;ii:ListaMensagemRetorno/&gt;', '&lt;/ii:MensagemRetorno&gt;&lt;/ii:ListaMensagemRetorno&gt;', [rfReplaceAll]);
+  end
+  else
+    _Xml := Input;
+
+  _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[namespace-uri()="urn:DBSeller" and local-name()="EnviarLoteRpsResposta"]');
+
+  if Pos('<faultstring', Input) > 0 then
+    Params.Add('faultstring=' + Input)
+  else
+  begin
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

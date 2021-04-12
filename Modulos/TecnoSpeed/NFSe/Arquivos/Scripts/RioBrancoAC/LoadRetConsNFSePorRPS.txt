@@ -1,0 +1,60 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+
+{$I ..\Comuns\Utils.txt}
+
+Var
+  _Xml : string;
+  
+  function UnindentXml(const aXml: string): string;
+  var
+    _sl: TStringList;
+    i: integer;
+  begin
+    _sl := TStringList.Create;
+    _sl.Text := aXml;
+    for i:= 0 to _sl.Count-1 do
+      _sl[i] := Trim(_sl[i]);
+    Result := StringReplace(_sl.Text, #13#10, '', [rfReplaceAll]);
+    Result := StringReplace(_sl.Text, #13, '', [rfReplaceAll]);
+    Result := StringReplace(_sl.Text, #10, '', [rfReplaceAll]);
+    _sl.Free;
+  end;  
+  
+begin
+  Progress('Carregando configurações de XSDDataset.');
+  Datasets.XsdFile := PathXsd + 'nfse_v2010.xsd';
+  Datasets.XsdElementName := 'ConsultarNfseRpsResposta';
+  Datasets.ConfigSection := 'RETORNO_CONSULTARNFSEPORRPS';
+  if Trim(MappingXsdFileName) <> '' then
+    Datasets.MappingFileName := MappingXsdFileName;
+
+  Progress('Criando XSDDataset.');
+  Datasets.CreateXSDDataset;
+  if pos('&lt;CompNfse', input) > 0 then
+    _Xml := UnEscapeXml(Input)
+  else
+    _Xml := Input;
+    
+  _Xml := StringReplace(_Xml,'ConsultarLoteRpsResposta','ConsultarNfseRpsResposta', [rfReplaceAll]);
+  
+  _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="ConsultarNfseRpsResposta"]');
+  if Pos('<faultstring',input) > 0 then
+    Params.Add('faultstring='+input)
+  else
+  begin    
+    _Xml := StringReplace(_Xml,';','\delimiter', [rfReplaceAll]);
+_Xml := StringReplace(_Xml,'&','&amp;', [rfReplaceAll]);
+    
+    Datasets.LoadFromXMLContent(_Xml);
+    _Xml := XmlSelect(_Xml, '//*[local-name()="ConsultarNfseRpsResposta"]');
+    Params.Add('XmlNFSe='+UnindentXml(_Xml));
+    Progress('XML carregado com sucesso.');
+  end;
+end.

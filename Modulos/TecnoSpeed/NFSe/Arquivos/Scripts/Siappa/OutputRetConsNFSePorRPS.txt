@@ -1,0 +1,152 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo, _Xml, _XmlNota: string;
+  
+{$I ..\Comuns\Utils.txt}
+{$I ..\Comuns\Comuns.txt}
+
+  function RetornouDadosNota(const aXML:string): Boolean;
+  Var
+    _Value : string;
+  begin
+    Result := (xmlSelectNodeValue(aXml, '//*[local-name()="ws_003_out_status_retorno"]', _Value)) and
+      (_Value <> '');
+  end;
+  
+  function CreateFieldsResponseNotaSiappa: TStringList;
+  var
+    _i: Integer;
+  begin
+    result := TStringList.Create;    
+    result.Text := StringReplace(Params.Values['ListaCampos'], ',',#13#10,[rfReplaceAll]);    
+    // Checar se os campos da ListaCampos são suportados
+    for _i := 0 to Result.Count - 1 do
+    begin
+      if not AnsiMatchText(Trim(Result[_i]), ['Status','Motivo','Cnpj','InscMunicipal',
+        'SerieRps','NumeroRps','NumeroNFSe','DataEmissaoNFSe','DataAutorizacao',
+        'CodVerificacao','Situacao','DataCancelamento','ChaveCancelamento','Xml'
+        ,'Tipo']) then
+        RaiseException('Campo "' + Result[_i] + '" não suportado')
+      else
+        Result[_i] := Trim(Result[_i]);
+    end;
+  end;
+  
+  function GetChaveCancelamento(const aXML: string): String;
+  begin
+    // No caso do padrão SIAPPA é uma concatenação separada por underline dos dados NUMERONOTA_CODIGOESPECIE_ITEMLISTA_CODVALIDACAO_MES_ANO            
+    Result := GetValueTag('ws_003_out_nfse_numero', aXML) + '_' + GetValueTag('ws_003_out_nfse_cod_atividade', aXML) + '_' + GetValueTag('ws_003_out_nfse_codigo_validacao', aXML) + '_' + GetValueTag('ws_003_out_nfse_mes_p_a', aXML) + '_' + GetValueTag('ws_003_out_nfse_ano_p_a', aXML);
+  end;
+  
+  function GetStatusNota : string;
+  var
+    _Value : string;
+  begin    
+     if (xmlSelectNodeValue(_Xml, '//*[local-name()="ws_003_out_status_retorno"]',  _Value)) and (_Value = 'S') then
+        Result := 'SUCESSO'
+      else
+        Result := 'ERRO';
+  end;
+  
+  function RetirarCaracteresXML(const aXML: string) : String;
+  begin
+    Result := StringReplace(aXML, '#xD;', '#xD', [RfReplaceAll]);    
+    Result := StringReplace(Result, '#xd;', '#xd', [RfReplaceAll]);    
+    Result := StringReplace(Result, '#xac;', '#xac', [RfReplaceAll]);
+    Result := StringReplace(Result, ';', '\delimiter', [rfReplaceAll]);    
+  end;
+  
+  function GetCodigo(const aXML: string): String;
+  begin    
+      Result := GetValueTag('ws_003_out_codigo_retorno', aXml)
+  end;
+
+  function GetMotivoNota(const aXML: string): String;
+  begin
+    if (pos('<faultstring>', params.values['ERRO']) > 0) then    
+      Result := XmlSelect(params.values['ERRO'], '//*[local-name()="faultstring"]')    
+    else
+      Result := GetCodigo(aXml) + '-' + GetValueTag('ws_003_out_msg_retorno', aXml)
+  end;
+  
+  function GetSituacaoNota(const aXml: string): string;
+  Var
+    _Situacao: string;
+  begin
+    _Situacao := GetValueTag('ws_003_out_msg_retorno', aXml);    
+    if _Situacao = 'Consulta realizada com sucesso, nfs-e está lançada.' then
+      Result := 'AUTORIZADA'
+    else
+      Result := 'CANCELADA';
+  end;
+
+begin
+  Output := '';
+  Progress('Adicionando valores aos campos');  
+  _Xml := Params.Values['XML'];  
+  if _Xml = '' then
+    _Xml := Params.Values['ERRO'];
+
+  _Status := GetStatusNota;
+  _Motivo := GetMotivoNota(_Xml);
+
+  if _Status = 'ERRO' then
+  begin
+    Try
+      _ListFields := CreateFieldsResponseFalha;
+      AddValueListFields('Status', 'ERRO', _ListFields);
+      if _Motivo = '' then
+        AddValueListFields('Motivo', 'Consulta de NFSe não retornou nota, verifique os dados.', _ListFields)
+      else
+        AddValueListFields('Motivo', _Motivo, _ListFields);
+      Output := FormatLineResult(_ListFields);
+    Finally
+      _ListFields.Free;
+    end;
+  end
+  else
+  begin
+    _ListFields := CreateFieldsResponseNotaSiappa;
+    if _ListFields <> nil then
+         
+    if ((_ListFields <> nil) and (_ListFields.Text <> '')) then
+    begin
+      try        
+        if GetStatusNota = 'SUCESSO' then
+        begin    
+          AddValueListFields('Motivo', '', _ListFields);
+          AddValueListFields('Status', _Status, _ListFields);
+          AddValueListFields('Cnpj', '', _ListFields);
+          AddValueListFields('InscMunicipal', '', _ListFields);
+          AddValueListFields('SerieRps', '', _ListFields);
+          AddValueListFields('NumeroRps', '', _ListFields);
+          AddValueListFields('NumeroNFSe', GetValueTag('ws_003_out_nfse_numero', _Xml), _ListFields);
+          AddValueListFields('DataEmissaoNFSe', GetValueTag('ws_003_out_nfse_data_hora', _Xml), _ListFields);
+          AddValueListFields('DataAutorizacao', GetValueTag('ws_003_out_nfse_data_hora', _Xml), _ListFields);
+          AddValueListFields('CodVerificacao', GetValueTag('ws_003_out_nfse_codigo_validacao', _Xml), _ListFields);
+          AddValueListFields('Situacao', GetSituacaoNota(_Xml), _ListFields);
+          AddValueListFields('DataCancelamento', GetValueTag('ws_003_out_nfse_dth_cancelamento', _Xml), _ListFields);
+          AddValueListFields('ChaveCancelamento', GetChaveCancelamento(_Xml), _ListFields);          
+          AddValueListFields('Xml', RetirarCaracteresXML(_Xml), _ListFields);
+          AddValueListFields('Tipo', '', _ListFields);
+        end;        
+        if (Params.Values['DelimitadorDaLinha'] = '') then          
+          Output := FormatLineResult(_ListFields) + #13#10
+        else
+          Output := FormatLineResult(_ListFields) + Params.Values['DelimitadorDaLinha'];
+          
+      Finally
+        _ListFields.Free;
+      end;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.

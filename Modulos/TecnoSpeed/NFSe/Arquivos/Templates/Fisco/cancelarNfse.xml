@@ -1,0 +1,8 @@
+<ser:CancelarNfseEnvio xmlns="https://www.fisco.net.br/wsnfse/ServicosNFSE.asmx">
+<ser:CodigoMunicipio>%s</ser:CodigoMunicipio>
+<ser:InscricaoMunicipal>%s</ser:InscricaoMunicipal>
+<ser:Login>%s</ser:Login>
+<ser:Senha>%s</ser:Senha>
+<ser:NumeroNF>%s</ser:NumeroNF>
+<ser:IDMotivo>%s</ser:IDMotivo>
+</ser:CancelarNfseEnvio>

@@ -1,0 +1,30 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+var
+  _Xml: string;
+  
+{$I ..\Comuns\Comuns.txt}
+
+begin
+  Progress('Carregando XML de Retorno da Consulta de NFSe por RPS');
+  if (Pos('<faultstring>', Input) > 0) then
+  begin
+    _Xml := StringReplace(Input, '&gt;', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<!--CRLF-->', '', [rfReplaceAll]);
+    Params.Add('Erro=' + _Xml);
+  end
+  else
+  begin    
+    _Xml := UnindentXml(XmlSelect(Input, '//*[local-name()="ws_consulta_nfse_x_pnfse.ExecuteResponse"]'));
+    _Xml := StringReplace(_Xml,'&amp;lt;','&lt;',[rfReplaceAll]);
+    _Xml := StringReplace(_Xml,'&amp;gt;','&gt;',[rfReplaceAll]);
+    Params.Add('XML=' + _Xml);    
+    Progress('XML carregado com sucesso');
+  end;
+end.

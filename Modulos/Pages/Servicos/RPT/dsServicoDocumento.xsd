@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsServicoDocumento" targetNamespace="http://tempuri.org/dsMovAcesso.xsd" xmlns:mstns="http://tempuri.org/dsMovAcesso.xsd" xmlns="http://tempuri.org/dsMovAcesso.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsServicoDocumento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsServicoDocumento" msprop:Generator_UserDSName="dsServicoDocumento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DS_VW_SERV_DOCUMENTO" msprop:Generator_TableClassName="DS_VW_SERV_DOCUMENTODataTable" msprop:Generator_TableVarName="tableDS_VW_SERV_DOCUMENTO" msprop:Generator_TablePropName="DS_VW_SERV_DOCUMENTO" msprop:Generator_RowDeletingName="DS_VW_SERV_DOCUMENTORowDeleting" msprop:Generator_RowChangingName="DS_VW_SERV_DOCUMENTORowChanging" msprop:Generator_RowEvHandlerName="DS_VW_SERV_DOCUMENTORowChangeEventHandler" msprop:Generator_RowDeletedName="DS_VW_SERV_DOCUMENTORowDeleted" msprop:Generator_UserTableName="DS_VW_SERV_DOCUMENTO" msprop:Generator_RowChangedName="DS_VW_SERV_DOCUMENTORowChanged" msprop:Generator_RowEvArgName="DS_VW_SERV_DOCUMENTORowChangeEvent" msprop:Generator_RowClassName="DS_VW_SERV_DOCUMENTORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_DOCUMENTO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="CD_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="CD_DOCUMENTOColumn" msprop:Generator_UserColumnName="CD_DOCUMENTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_SERV_DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnCD_SERV_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="CD_SERV_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="CD_SERV_DOCUMENTOColumn" msprop:Generator_UserColumnName="CD_SERV_DOCUMENTO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_TIPO_SERVICO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_TIPO_SERVICO" msprop:Generator_ColumnPropNameInRow="CD_TIPO_SERVICO" msprop:Generator_ColumnPropNameInTable="CD_TIPO_SERVICOColumn" msprop:Generator_UserColumnName="CD_TIPO_SERVICO" type="xs:int" minOccurs="0" />
+              <xs:element name="DS_TIPO_SERVICO" msprop:Generator_ColumnVarNameInTable="columnDS_TIPO_SERVICO" msprop:Generator_ColumnPropNameInRow="DS_TIPO_SERVICO" msprop:Generator_ColumnPropNameInTable="DS_TIPO_SERVICOColumn" msprop:Generator_UserColumnName="DS_TIPO_SERVICO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_CNAE" msprop:Generator_ColumnVarNameInTable="columnCD_CNAE" msprop:Generator_ColumnPropNameInRow="CD_CNAE" msprop:Generator_ColumnPropNameInTable="CD_CNAEColumn" msprop:Generator_UserColumnName="CD_CNAE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DS_VW_PROD_DOCUMENTO" msprop:Generator_TableClassName="DS_VW_PROD_DOCUMENTODataTable" msprop:Generator_TableVarName="tableDS_VW_PROD_DOCUMENTO" msprop:Generator_TablePropName="DS_VW_PROD_DOCUMENTO" msprop:Generator_RowDeletingName="DS_VW_PROD_DOCUMENTORowDeleting" msprop:Generator_RowChangingName="DS_VW_PROD_DOCUMENTORowChanging" msprop:Generator_RowEvHandlerName="DS_VW_PROD_DOCUMENTORowChangeEventHandler" msprop:Generator_RowDeletedName="DS_VW_PROD_DOCUMENTORowDeleted" msprop:Generator_UserTableName="DS_VW_PROD_DOCUMENTO" msprop:Generator_RowChangedName="DS_VW_PROD_DOCUMENTORowChanged" msprop:Generator_RowEvArgName="DS_VW_PROD_DOCUMENTORowChangeEvent" msprop:Generator_RowClassName="DS_VW_PROD_DOCUMENTORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnCD_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="CD_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="CD_DOCUMENTOColumn" msprop:Generator_UserColumnName="CD_DOCUMENTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_PROD_DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnCD_PROD_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="CD_PROD_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="CD_PROD_DOCUMENTOColumn" msprop:Generator_UserColumnName="CD_PROD_DOCUMENTO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_PRODUTO" msprop:Generator_ColumnVarNameInTable="columnCD_PRODUTO" msprop:Generator_ColumnPropNameInRow="CD_PRODUTO" msprop:Generator_ColumnPropNameInTable="CD_PRODUTOColumn" msprop:Generator_UserColumnName="CD_PRODUTO" type="xs:int" minOccurs="0" />
+              <xs:element name="DS_PRODUTO" msprop:Generator_ColumnVarNameInTable="columnDS_PRODUTO" msprop:Generator_ColumnPropNameInRow="DS_PRODUTO" msprop:Generator_ColumnPropNameInTable="DS_PRODUTOColumn" msprop:Generator_UserColumnName="DS_PRODUTO" type="xs:string" minOccurs="0" />
+              <xs:element name="QT_SOLICITADA" msprop:Generator_ColumnVarNameInTable="columnQT_SOLICITADA" msprop:Generator_ColumnPropNameInRow="QT_SOLICITADA" msprop:Generator_ColumnPropNameInTable="QT_SOLICITADAColumn" msprop:Generator_UserColumnName="QT_SOLICITADA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_ITEM" msprop:Generator_ColumnVarNameInTable="columnVL_ITEM" msprop:Generator_ColumnPropNameInRow="VL_ITEM" msprop:Generator_ColumnPropNameInTable="VL_ITEMColumn" msprop:Generator_UserColumnName="VL_ITEM" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VL_TOTAL" msprop:Generator_ColumnVarNameInTable="columnVL_TOTAL" msprop:Generator_ColumnPropNameInRow="VL_TOTAL" msprop:Generator_ColumnPropNameInTable="VL_TOTALColumn" msprop:Generator_UserColumnName="VL_TOTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OB_PROD_DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnOB_PROD_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="OB_PROD_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="OB_PROD_DOCUMENTOColumn" msprop:Generator_UserColumnName="OB_PROD_DOCUMENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_SERVICO" msprop:Generator_ColumnVarNameInTable="columnCD_SERVICO" msprop:Generator_ColumnPropNameInRow="CD_SERVICO" msprop:Generator_ColumnPropNameInTable="CD_SERVICOColumn" msprop:Generator_UserColumnName="CD_SERVICO" type="xs:int" minOccurs="0" />
+              <xs:element name="QT_UNIDADE" msprop:Generator_ColumnVarNameInTable="columnQT_UNIDADE" msprop:Generator_ColumnPropNameInRow="QT_UNIDADE" msprop:Generator_ColumnPropNameInTable="QT_UNIDADEColumn" msprop:Generator_UserColumnName="QT_UNIDADE" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="DS_VW_SERV_DOCUMENTO_DS_VW_PROD_DOCUMENTO" msdata:parent="DS_VW_SERV_DOCUMENTO" msdata:child="DS_VW_PROD_DOCUMENTO" msdata:parentkey="CD_SERV_DOCUMENTO" msdata:childkey="CD_SERVICO" msprop:Generator_UserChildTable="DS_VW_PROD_DOCUMENTO" msprop:Generator_ChildPropName="GetDS_VW_PROD_DOCUMENTORows" msprop:Generator_UserRelationName="DS_VW_SERV_DOCUMENTO_DS_VW_PROD_DOCUMENTO" msprop:Generator_ParentPropName="DS_VW_SERV_DOCUMENTORow" msprop:Generator_RelationVarName="relationDS_VW_SERV_DOCUMENTO_DS_VW_PROD_DOCUMENTO" msprop:Generator_UserParentTable="DS_VW_SERV_DOCUMENTO" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

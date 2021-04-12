@@ -1,0 +1,47 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+  {$I Utils.txt}
+
+Var
+  _Xml : string;
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CANCELARNFSE';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+
+    _Xml := UnEscapeXml(Input);
+
+    if not (Pos('</CancelarNfseResposta>', _Xml) > 0) then
+    begin
+      _Xml := StringReplace(_Xml, '<ListaMensagemRetorno xmlns="http://www.abrasf.org.br/nfse.xsd">',
+                                  '<CancelarNfseResposta xmlns="http://www.abrasf.org.br/nfse.xsd">' +
+                                  '<ListaMensagemRetorno>',[rfReplaceAll]);
+
+      _Xml := StringReplace(_Xml, '</ListaMensagemRetorno>', '</ListaMensagemRetorno></CancelarNfseResposta>',
+                            [rfReplaceAll]);
+    end;    
+
+    _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

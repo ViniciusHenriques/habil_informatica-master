@@ -1,0 +1,15 @@
+<sis:CancelarNfse>
+  <sis:CancelarNfseEnvio xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <Pedido>
+      <InfPedidoCancelamento Id="%s">
+        <IdentificacaoNfse>
+          <Numero>%s</Numero>
+          <CpfCnpj>%s</CpfCnpj>
+          <InscricaoMunicipal>%s</InscricaoMunicipal>
+          <CodigoMunicipio>%s</CodigoMunicipio>
+        </IdentificacaoNfse>
+        <CodigoCancelamento>%s</CodigoCancelamento>
+      </InfPedidoCancelamento>
+    </Pedido>
+  </sis:CancelarNfseEnvio>
+</sis:CancelarNfse>

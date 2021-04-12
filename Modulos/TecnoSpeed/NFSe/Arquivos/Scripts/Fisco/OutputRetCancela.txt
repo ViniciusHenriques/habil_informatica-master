@@ -1,0 +1,53 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo : string;
+
+{$I ..\Comuns\Utils.TXT}
+{$I ..\Comuns\Comuns.txt}
+
+  function GetStatusNota : string;
+  begin
+    if (Pos('000', Params.Values['XML']) = 0) then
+      Result := 'ERRO'
+    else
+      Result := 'SUCESSO';
+  end;
+
+  function GetMotivoNota : string;
+  var
+    _CodigoCancelamento : String;
+  begin
+    case AnsiIndexText(params.values['XML'], ['000','001','002','003']) of
+      0: Result := '000-Nota Fiscal de Serviço Cancelada com Sucesso.';
+      1: Result := '001-Nota Fiscal de Serviço não localizada.';
+      2: Result := '002-Nota Fiscal de Serviço já com status Cancelada.';
+      3: Result := '003-Nota Fiscal de Serviço vinculada com Guia de Recolhimento (necessário primeiro cancelar guia de recolhimento).';
+    else
+      Result := GetValueTag('faultstring', params.values['ERRO']);
+    end;
+  end;
+
+begin
+  _Status := GetStatusNota;
+  _Motivo := GetMotivoNota;
+  Progress('Adicionando valores aos campos.');
+  _ListFields := CreateFieldsResponseCancelamento;
+  if _ListFields <> nil then
+  Try
+    AddValueListFields('Status', _Status, _ListFields);
+    AddValueListFields('Motivo', _Motivo, _ListFields);
+    AddValueListFields('DataCancelamento', '', _ListFields);
+    Output := FormatLineResult(_ListFields);
+  Finally
+    _ListFields.Free;
+    Progress('Valores adicionados com sucesso.');
+  end;
+end.

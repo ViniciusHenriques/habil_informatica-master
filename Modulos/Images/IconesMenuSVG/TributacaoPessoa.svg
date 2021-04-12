@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 64 64" width="24px" fill="#7c7979">
+  <g>
+    <g id="partnership">
+      <path d="m19 15h.636c.109-.336.229-.668.364-.992v-.008h-1z" data-original="#000000" class="active-path" />
+      <path d="m45 14h-.99c.136.327.251.662.359 1h.631z" data-original="#000000" class="active-path" />
+      <path d="m52 30.849 5.183-2.962-2.783-2.087a1 1 0 0 1 -.4-.8v-2.3a6.927 6.927 0 0 1 -4 0v2.3a1 1 0 0 1 -.4.8l-2.783 2.087z" data-original="#000000" class="active-path" />
+      <path d="m59 14h1v1h-1z" data-original="#000000" class="active-path" />
+      <path d="m57 16v-5.219l-6.884-1.721-3.116 1.558v5.382a5 5 0 0 0 10 0z" data-original="#000000" class="active-path" />
+      <path d="m55 4h-6a5.006 5.006 0 0 0 -5 5v.586l1 1v-.586a1 1 0 0 1 .553-.895l4-2a.991.991 0 0 1 .689-.075l8 2a1 1 0 0 1 .758.97v.586l1-1v-.586a5.006 5.006 0 0 0 -5-5z" data-original="#000000" class="active-path" />
+      <path d="m25.08 21h-1.08a2 2 0 0 1 -2-2v-1a2 2 0 0 1 2-2h1v-2a1 1 0 0 1 .553-.895l4-2a1 1 0 0 1 .689-.075l8 2a1 1 0 0 1 .758.97v2h1a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-1.08a6.915 6.915 0 0 1 -.215 1h4.905l-.459-1.373a3.037 3.037 0 0 1 -.151-.947v-.68a11 11 0 0 0 -22 0v.68a3.021 3.021 0 0 1 -.15.943l-.46 1.377h4.91a6.915 6.915 0 0 1 -.22-1z" data-original="#000000" class="active-path" />
+      <path d="m32 34.849 5.183-2.962-2.783-2.087a1 1 0 0 1 -.4-.8v-2.3a6.927 6.927 0 0 1 -4 0v2.3a1 1 0 0 1 -.4.8l-2.783 2.087z" data-original="#000000" class="active-path" />
+      <path d="m37 20v-5.219l-6.884-1.721-3.116 1.558v5.382a5 5 0 0 0 10 0z" data-original="#000000" class="active-path" />
+      <path d="m24 18h1v1h-1z" data-original="#000000" class="active-path" />
+      <path d="m39 18h1v1h-1z" data-original="#000000" class="active-path" />
+      <path d="m58.241 38.067c-.8.3-13.106 5.639-21.32 9.218a2.97 2.97 0 0 1 -1.921.715h-13v-2h13a1 1 0 0 0 1-1v-1.4l-14.04-7.488-7.96 3.538v12.686l17.883 7.53 27.43-18.92a1.594 1.594 0 0 0 .687-1.296 1.544 1.544 0 0 0 -.562-1.216 1.571 1.571 0 0 0 -1.197-.367z" data-original="#000000" class="active-path" />
+      <path d="m4 40h4v12h-4z" data-original="#000000" class="active-path" />
+      <path d="m10 38h2v16h-2z" data-original="#000000" class="active-path" />
+      <path d="m5 10a1 1 0 0 1 .758-.97l8-2a.992.992 0 0 1 .689.075l4 2a1 1 0 0 1 .553.895v.586l1-1v-.586a5.006 5.006 0 0 0 -5-5h-6a5.006 5.006 0 0 0 -5 5v.586l1 1z" data-original="#000000" class="active-path" />
+      <path d="m14.4 25.8a1 1 0 0 1 -.4-.8v-2.3a6.927 6.927 0 0 1 -4 0v2.3a1 1 0 0 1 -.4.8l-2.783 2.087 5.183 2.962 5.183-2.962z" data-original="#000000" class="active-path" />
+      <path d="m4 14h1v1h-1z" data-original="#000000" class="active-path" />
+      <path d="m7 10.781v5.219a5 5 0 0 0 10 0v-5.382l-3.116-1.558z" data-original="#000000" class="active-path" />
+    </g>
+  </g>
+</svg>

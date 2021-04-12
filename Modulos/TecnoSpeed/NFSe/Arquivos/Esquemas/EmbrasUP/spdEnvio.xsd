@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Xml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Rps"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="IdentificacaoServico"/>
+        <xs:element ref="NumeroRps"/>
+        <xs:element ref="SerieRps"/>
+        <xs:element ref="DataPrestacao"/>
+        <xs:element ref="DataEmissao"/>
+        <xs:element ref="NumeroRpsSubstituido"/>
+        <xs:element ref="CpfCnpjTomador"/>
+        <xs:element ref="InscricaoMunicipalTomador"/>
+        <xs:element ref="RazaoSocialTomador"/>
+        <xs:element ref="EnderecoTomador"/>
+        <xs:element ref="NumeroTomador"/>
+        <xs:element ref="ComplementoTomador"/>
+        <xs:element ref="BairroTomador"/>
+        <xs:element ref="CodigoCidadeTomador"/>
+        <xs:element ref="PaisTomador"/>
+        <xs:element ref="CepTomador"/>
+        <xs:element ref="TelefoneTomador"/>
+        <xs:element ref="EmailTomador"/>
+        <xs:element ref="IssRetido"/>
+        <xs:element ref="CodigoCidadePrestacao"/>
+        <xs:element ref="CodigoCnae"/>
+        <xs:element ref="CodigoItemListaServico"/>
+        <xs:element ref="DiscriminacaoServico"/>
+        <xs:element ref="ValorServicos"/>
+        <xs:element ref="ValorDeducoes"/>
+        <xs:element ref="DescontoCondicionado"/>
+        <xs:element ref="DescontoIncondicionado"/>
+        <xs:element ref="ValorInss"/>
+        <xs:element ref="ValorCsll"/>
+        <xs:element ref="OutrasRetencoes"/>
+        <xs:element ref="ValorPis"/>
+        <xs:element ref="ValorCofins"/>
+        <xs:element ref="ValorIr"/>
+        <xs:element ref="ValorIss"/>
+        <xs:element ref="OptanteSimplesNacional"/>
+        <xs:element ref="AliquotaISS"/>
+        <xs:element ref="CodigoObra"/>
+        <xs:element ref="Art"/>
+        <xs:element ref="InscricaoMunicipalPrestador"/>
+        <xs:element ref="CodigoBeneficio"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IdentificacaoServico" type="xs:NCName"/>
+  <xs:element name="NumeroRps" type="xs:integer"/>
+  <xs:element name="SerieRps" type="xs:NCName"/>
+  <xs:element name="DataPrestacao" type="xs:string"/>
+  <xs:element name="DataEmissao" type="xs:string"/>
+  <xs:element name="NumeroRpsSubstituido" type="xs:integer"/>
+  <xs:element name="CpfCnpjTomador" type="xs:integer"/>
+  <xs:element name="InscricaoMunicipalTomador" type="xs:NMTOKEN"/>
+  <xs:element name="RazaoSocialTomador" type="xs:string"/>
+  <xs:element name="EnderecoTomador" type="xs:string"/>
+  <xs:element name="NumeroTomador" type="xs:integer"/>
+  <xs:element name="ComplementoTomador" type="xs:string"/>
+  <xs:element name="BairroTomador" type="xs:string"/>
+  <xs:element name="CodigoCidadeTomador" type="xs:integer"/>
+  <xs:element name="PaisTomador" type="xs:integer"/>
+  <xs:element name="CepTomador" type="xs:integer"/>
+  <xs:element name="TelefoneTomador" type="xs:integer"/>
+  <xs:element name="EmailTomador" type="xs:string"/>
+  <xs:element name="IssRetido" type="xs:NCName"/>
+  <xs:element name="CodigoCidadePrestacao" type="xs:integer"/>
+  <xs:element name="CodigoCnae" type="xs:integer"/>
+  <xs:element name="CodigoItemListaServico" type="xs:decimal"/>
+  <xs:element name="DiscriminacaoServico" type="xs:string"/>
+  <xs:element name="ValorServicos" type="xs:integer"/>
+  <xs:element name="ValorDeducoes" type="xs:integer"/>
+  <xs:element name="DescontoCondicionado" type="xs:integer"/>
+  <xs:element name="DescontoIncondicionado" type="xs:integer"/>
+  <xs:element name="ValorInss" type="xs:integer"/>
+  <xs:element name="ValorCsll" type="xs:integer"/>
+  <xs:element name="OutrasRetencoes" type="xs:integer"/>
+  <xs:element name="ValorPis" type="xs:integer"/>
+  <xs:element name="ValorCofins" type="xs:integer"/>
+  <xs:element name="ValorIr" type="xs:integer"/>
+  <xs:element name="ValorIss" type="xs:integer"/>
+  <xs:element name="OptanteSimplesNacional" type="xs:NCName"/>
+  <xs:element name="AliquotaISS" type="xs:integer"/>
+  <xs:element name="CodigoObra" type="xs:NMTOKEN"/>
+  <xs:element name="Art" type="xs:NMTOKEN"/>
+  <xs:element name="InscricaoMunicipalPrestador" type="xs:NMTOKEN"/>
+  <xs:element name="CodigoBeneficio" type="xs:NMTOKEN"/>
+</xs:schema>

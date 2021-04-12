@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterRelacional.Master.cs" Inherits="GestaoInterna.MasterRelacional" %>
+
+<%--<!DOCTYPE html>--%>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Sistema em Módulos</title>
+    <link type="text/css" href="Content/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/funcoes.js"></script>
+
+    <style type="text/css">
+        .auto-style1 {
+            width: 129px;
+        }
+    </style>
+
+    
+</head>
+
+<script src="Scripts/jquery-2.1.4.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+        function alertBootstrap() {
+            $("#divAlertBootstrap").slideDown(500).delay(2000).slideUp(500);
+        };
+</script>
+
+
+
+<body>
+
+    <form id="frmMasterPage" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <header class="header">
+
+                            <link rel="stylesheet" href='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+                            <script type="text/javascript" src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+                            <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+
+
+                            <table width="100%">
+                                <tr>
+                                    <td class="auto-style1">
+                                        <asp:Panel ID="pnlLogo" runat="server">
+                                            <img src="/Images/Logo.png" alt="MSoftGate" title="MSoftGate" height="40" width="120" />
+
+                                        </asp:Panel>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblEmpresa" Text="Empresa: Hábil Informática " Font-Size="9pt" Font-Bold="true" ForeColor ="White" runat="server" />
+                                        <br/>
+                                        <asp:Label ID="lblModulo" Text="Pagina: Inicial" Font-Size="9pt" Font-Bold="true" ForeColor ="White" runat="server" />
+                                    </td>
+                                    <td>
+
+                                        <table id="tblAutenticacao" align="right">
+                                            <tr>
+                                                <td>
+                                                    <asp:Panel ID="pnlAuttenticado" runat="server" Visible="true">
+                                                        <img src="/Images/images.jpg" alt="Usuário" title="Usuário" height="40" width="40" />
+                                                        <asp:Label ID="Label3" Text="   Bem Vindo : " Font-Size="9pt" Font-Bold="true" ForeColor ="White"  runat="server" />
+                                                        <asp:Label ID="lblUsuario" Text="" Font-Size="9pt" Font-Bold="true" ForeColor ="White"  runat="server" />
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </asp:Panel>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </header>
+
+                    <asp:ContentPlaceHolder ID="cttCorpo" runat="server">
+                    </asp:ContentPlaceHolder>
+
+
+                    <asp:ContentPlaceHolder ID="cttRodape" runat="server">
+                        <div class="footer">
+                        </div>
+                    </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+     
+
+</body>
+</html>

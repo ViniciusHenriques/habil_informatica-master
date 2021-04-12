@@ -1,0 +1,85 @@
+;***************************************************************************************************
+;Definições dos Campos: Impressão de NFSe (Impressão Nova)
+;***************************************************************************************************
+[PrintXml_DadosNFSe]
+
+; Campos Nota
+NumeroRps=/Rps/NFEEletronica/DadosNotaFiscal/ID
+NumeroNfse=/Nfse/DadosNotaFiscal/NumeroNF
+ChaveValidacao=/Nfse/DadosNotaFiscal/ChaveValidacao
+NumeroLote=/Nfse/DadosNotaFiscal/Lote
+SituacaoNota=/Nfse/DadosNotaFiscal/SituacaoNF
+TipoNF=/Nfse/DadosNotaFiscal/TipoNF
+DataEmissao=/Nfse/DadosNotaFiscal/Emissao
+OutrasInformacoes=/Nfse/DadosNotaFiscal/Observacao
+NumeroNfseSubstituida=/Nfse/DadosNotaFiscal/NFSubstituta
+InscricaoImovel=/Nfse/DadosNotaFiscal/InscricaoImovel
+MotivoCancelamento=/Nfse/DadosNotaFiscal/MotivoCancelamento
+TipoDocumento=/Nfse/DadosNotaFiscal/TipoDocumento
+
+; Campos Tomador
+CpfCnpjTomador=/Nfse/DadosNotaFiscal/CNPJCPFTomador
+RazaoSocialTomador=/Nfse/DadosNotaFiscal/NomeTomador
+InscricaoMunicipalTomador=/Nfse/DadosNotaFiscal/InscricaoMunicipalTomador
+InscricaoEstadualTomador=/Nfse/DadosNotaFiscal/InscricaoEstadualTomador
+UfTomador=/Nfse/DadosNotaFiscal/UFTomador
+CodigoCidadeTomador=/Nfse/DadosNotaFiscal/CidadeTomador
+EnderecoTomador=/Nfse/DadosNotaFiscal/EnderecoTomador
+NumeroTomador=/Nfse/DadosNotaFiscal/NumeroTomador
+ComplementoTomador=/Nfse/DadosNotaFiscal/ComplementoTomador
+BairroTomador=/Nfse/DadosNotaFiscal/BairroTomador
+CepTomador=/Nfse/DadosNotaFiscal/CEPTomador
+EmailTomador=/Nfse/DadosNotaFiscal/EmailTomador
+
+; Campos Prestador
+CpfCnpjPrestador=/Rps/NFEEletronica/Header/CNPJCPFPrestador
+InscricaoMunicipalPrestador=/Nfse/DadosNotaFiscal/InscriçãoMunicipalPrestador
+InscricaoEstadualPrestador=/Nfse/DadosNotaFiscal/InscriçãoEstadualPrestador
+EmailPrestador=/Nfse/DadosNotaFiscal/EmailPrestador
+cepPrestador=/Nfse/DadosNotaFiscal/cepPrestador
+
+; Campos Local Prestação
+UFLocalPrestacao=/Nfse/DadosNotaFiscal/UFLocalPrestacao
+CodigoCidadePrestacao=/Nfse/DadosNotaFiscal/CidadeLocalPrestacao
+EnderecoLocalPrestacao=/Nfse/DadosNotaFiscal/EnderecoLocalPrestacao
+NumeroLocalPrestacao=/Nfse/DadosNotaFiscal/NumeroLocalPrestacao
+ComplementoLocalPrestacao=/Nfse/DadosNotaFiscal/ComplementoLocalPrestacao
+BairroLocalPrestacao=/Nfse/DadosNotaFiscal/BairroLocalPrestacao
+CEPLocalPrestacao=/Nfse/DadosNotaFiscal/CEPLocalPrestacao
+LocalPrestacao=/Nfse/DadosNotaFiscal/LocalPrestacao
+DescricaoLocalPrestacao=/Nfse/DadosNotaFiscal/DescricaoLocalPrestacao
+DescricaoLocalPrestacaoComp=/Nfse/DadosNotaFiscal/DescricaoLocalPrestacaoComplementar
+
+; Campos Serviço
+ValorTotalNota=/Nfse/DadosNotaFiscal/ValorTotalNota
+ValorLiquidoNFSe=/Nfse/DadosNotaFiscal/ValorLiquidoNota
+CodigoItemListaServico=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/ItemAtividade
+DiscriminacaoServico=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/TextoItem
+ValorServicos=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/ValorItem
+ValorDeducoes=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/ValorDeducao
+IssRetido=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/Retido
+CodigoPais=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/Pais
+CodigoServico=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/CodigoServico
+ValorBaseCalculo=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/ValorBaseCalculo
+ValorISS=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/ValorISS
+Aliquota=/Nfse/DadosNotaFiscal/DadosItensNotaFiscal/Aliquota
+Informacao=/Nfse/DadosNotaFiscal/OutrasInformacoes/Informacao
+
+
+;Campos Customizados
+NomeFantasiaPrestador=String[80]
+RazaoSocialPrestador=String[80]
+EnderecoPrestador=String[80]
+ComplementoPrestador=String[80]
+NumeroPrestador=String[7]
+CodigoCidadePrestador=String[10]
+UfPrestador=String[2]
+BairroPrestador=String[40]
+DataHoraCancelamento=String[20]
+ValorISSRetido=String[30]
+AliquotaISS=String[30]
+
+[PrintXml_DadosImpostosNotaFiscal]
+Imposto=/Nfse/DadosNotaFiscal/DadosImpostosNotaFiscal/Imposto
+ValorImposto=/Nfse/DadosNotaFiscal/DadosImpostosNotaFiscal/ValorImposto
+

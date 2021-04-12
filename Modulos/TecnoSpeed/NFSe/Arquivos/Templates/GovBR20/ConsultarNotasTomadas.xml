@@ -1,0 +1,1 @@
+<tem:ConsultarNfseServicoTomado><tem:xmlEnvio><![CDATA[<ConsultarNfseServicoTomadoEnvio><Consulente><CpfCnpj>%s</CpfCnpj>%s</Consulente>%s<Prestador><CpfCnpj>%s</CpfCnpj>%s</Prestador><Tomador><CpfCnpj>%s</CpfCnpj>%s</Tomador><Pagina>%s</Pagina></ConsultarNfseServicoTomadoEnvio>]]></tem:xmlEnvio></tem:ConsultarNfseServicoTomado>

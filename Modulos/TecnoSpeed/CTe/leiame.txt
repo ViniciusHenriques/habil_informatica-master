@@ -1,0 +1,865 @@
+﻿Guia de Primeiros Passos:
+   https://atendimento.tecnospeed.com.br/hc/pt-br/categories/360000571814
+
+Dicionário de Dados:
+   https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360017433574
+
+Demonstrações de Uso:
+   https://github.com/tecnospeed/Componente-CTe
+
+====================================  LEIAME VS 11.1.54.5138 ============================================
+* Correções
+  DC-125 - Corrigido problema com método EnviarConhecimentoTomador utilizando rtm personalizado.
+ 
+====================================  LEIAME VS 11.1.54.5138 ============================================
+
+* Correções
+  INDK-10 - Corrigido a impressão do nome fantasia e alteração na cor do layout DACTE Paisagem 3.00a.
+  INDK-13 - Correção no Build para o Delphi 2009/2010.
+
+====================================  LEIAME VS 11.1.52.5127 ============================================
+* Novidades:
+  IND-170 - Disponibilizado os campos PesoDeclaradoInfQ, PesoAforadoInfQ, LitragemInfQ e MMBTUInfQ no dataset infQCalc.
+  IND-75 - Implementado DACTE Retrato/Paisagem do layout 3.00a para sejam impressos corretamente todos os valores dos grupos de ferrovias e componentes do valor da prestação de serviço.
+  INDK-14 - Disponibilizado no método GerarXMLPorTX2 a possibilidade de também ser passado diretamente o conteúdo do arquivo TX2.
+  #24713 - Atualização para exibir número da versão no painel de controle do Windows.  
+  INDK-11 - Alteração para imprimir o QrCode mesmo quando o xml não estiver autorizado.
+  INDK-16 - Criação do método EnviarCTSincrono, que permite o envio síncrono de CT-e.
+            Documentação: https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360039639973
+  DC-24 - Implementado novo método ImprimirDacteXmlDiretorio no componente spdCTe. Permite a impressão dos XML´s contidos em uma determinada pasta.
+          Para mais informações acesse: https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360041073513
+  DC-125 - Alteração no método EnviarConhecimentoTomador para utilizar o rtm configurado no ModeloRetrato do arquivo cteConfig.ini.
+
+* Correções
+  IND-172 - Correção no método ConsultaCT relacionada ao QR Code.
+  INDK-10 - Corrigido a impressão do nome fantasia e alteração na cor do layout DACTE Paisagem 3.00a.
+  INDK-13 - Correção no Build para o Delphi 2009/2010.
+  DC-82 - Corrigido o layout da impressão da chave CTe complementar.
+
+====================================  LEIAME VS 11.1.51.5125 ============================================
+* Novidades:
+  IND-41 - O método de Inutilização de CT-e agora gera um Xml Destinatário de Inutilização.
+  #24551 - Atualizar os eventos Comprovante de Entrega do CT-e e Cancelamento do Comprovante de Entrega do CT-e
+           com novas versões de esquemas.
+  #24362 - Foi implementada a impressão do DACTE Retrato com o layout 3.00a
+  IND-22 - Foi implementada a impressão do DACTE Paisagem com o layout 3.00a
+
+====================================  LEIAME VS 10.1.50.5106 ============================================
+* Correções:
+  IND-32 - Corrigido o instalador do componente para o Delphi 2006.
+  IND-109 - Corrigido DACTE Retrato/Paisagem 3.00a o código de barra da contingência não estava sendo impresso.
+
+====================================  LEIAME VS 10.1.49.5093 ============================================
+* Novidades:
+  #24238 - Compatibilizado o componente com a versão manual 3.00a.
+           Para mais informações acesse: https://blog.tecnospeed.com.br/ct-e-3-00a/
+  #24365 - Implementado o Evento Comprovante de Entrega do CT-e.
+           Para mais informações acesse: https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360025989534
+  #24363 - Implementado o Cancelamento do Comprovante de Entrega do CT-e.
+           Para mais informações acesse: https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360026014994
+
+====================================  LEIAME VS 10.1.48.5081 ============================================
+* Novidades:
+  #23929 - Disponibilizados os links para Guia de Primeiros Passos, Dicionário de Dados e Demonstrações de Uso, veja no início deste documento.
+           Removidas as Demonstrações de Uso do instalador, sendo possível acessar pelo link https://github.com/tecnospeed/Componente-CTe
+           Atualizado os termos de uso do componente (EULA), sendo possível acessar pelo link http://eula.tecnospeed.com.br
+           Adicionada opção para configurar o path dos fontes do componente no Library Path do Delphi.
+* Correções
+  #23609 - Correção na impressão do DACTE Retrato, para conseguir imprimir CT-e com mais de 1000 documentos originários.
+  #23858 - Corrigido problema com componente CTe no Delphi 7.
+
+====================================  LEIAME VS 10.1.47.5078 ============================================
+* Novidades
+  #22712 - Compatibilizado o componente spdCTe com o Delphi 10.3 Rio.
+  #23476 - Ajustada a impressão do campo Tipo do CT-e na DACTE.
+
+====================================  LEIAME VS 10.1.46.5072 ============================================
+* Correções
+  #21947 - Correção na rotina de impressão de Múltiplos CTes.
+  
+* Novidades
+  #21955 - Disponibilizada a propriedade AtualizarArquivoServidores, para indicar se o componente deve 
+           atualizar os arquivos cteServidoresHom.ini e cteServidoresProd.ini automaticamente.
+
+====================================  LEIAME VS 10.1.45.4360 ============================================
+* Novidades
+  #21864 - Inclusão dos campos referentes as chaves dos CTe-s de Anulação e de Substituição na impressão dos Documentos Originários.
+  #21274 - Criado a validação de schema do XML dos modais (Rodoviário, Aéreo, Ferroviário, Aquaviário), 
+           sequenciamente a validação do XML do schema genérico, obedecendo a propriedade de ValidarEsquemaAntesEnvio.
+  #21614 - Incluido o registro do infRespTec conforme NT 2018.002.
+           Para mais informações acesse: https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360009691953-NT-2018-002
+
+====================================  LEIAME VS 10.1.44.3548 ============================================
+* Correções
+  #21391 - Corrigido problema de impressão no DACTE com XML que possui vários documentos originários.
+
+====================================  LEIAME VS 9.7.43.2849 ============================================
+* Correções
+  #21224 - Corrigido problema ao utilizar o método de cancelamento por evento. Era gerada uma exceção dizendo para configurar o CNPJ da software house,
+           mesmo com a propriedade preenchida.
+
+====================================  LEIAME VS 9.7.42.2076 ===========================================
+* Novidades
+  #20833 - Publicado método EmptyDataSets no CTeDataSetX.ocx, para limpar o conteúdo do DataSet.
+  #21052 - Adicionado o método ConfigurarSoftwareHouse ao OCX CTeX, este método deve ser utilizado logo após instanciar o componente spdCTe, 
+           afim de informar os dados da SoftwareHouse.
+
+====================================  LEIAME VS 9.7.41.600 ============================================
+* Novidades
+  #20380 - Implementado método ConfigurarSoftwareHouse, este método deve ser utilizado logo após instanciar o componente spdCTe, 
+           afim de informar os dados da SoftwareHouse.
+
+====================================  LEIAME VS 9.7.40.65114 ============================================
+* Novidades
+  #20172 - Inclusão do campo chCTeMultimodal na Impressão dos Documentos originarios
+   
+====================================  LEIAME VS 9.7.39.64366 ============================================
+* Correções
+  #20009 - Correção de duplicidade na geração do arquivo cte_exception.log quando utilizando DLL/OCX do componente, 
+           gerando arquivo no diretorio da aplicação, e no diretorio de Log configurado.
+            
+* Novidades
+  #18187 - Adicionado mensagem do erro no retorno de qualquer problema ao enviar Xml Tomador de Serviço por email.
+  #20047 - Componente CTe - Agora é permitido enviar segundo parametro ao método TratarXMLRetornoDFe sendo o caminho do diretório opcional, para salvar os DFes
+           gerados na consulta.
+  
+====================================  LEIAME VS 9.7.38.63755 ============================================
+* Correções
+  #19416 - Implementada a correção no DACTE
+           Ponto Corrigido:
+           Tipo de medida dos campos referente à tag infCarga
+
+* Novidades
+  #19561 - Implementada Consulta DFe conforme NT 2015.002
+           Para mais informações acesse: http://tsdn.tecnospeed.com.br/base-de-conhecimento/post/utilizando-distribuicao-dfe-cte-delphi
+
+  #19654 - Implementado Evento Prestação de Serviço em Desacordo
+           Para mais informações acesse: http://tsdn.tecnospeed.com.br/base-de-conhecimento/post/cte-prestacao-de-servico-em-desacordo
+
+  #19874 - Implementada as propriedades de gravação do caminho dos ultimos logs de envio e retorno.
+
+====================================  LEIAME VS 9.7.37.62371 ============================================
+* Correções
+  #19254 - Correção de Impressão para valores de ICMS60 - vICMSSTRet quando possuir valor.
+
+* Novidades
+  #19328 - Compatibilizando Demo para versão CTe 3.00
+
+  #19367 - Implementada a correção no DACTE
+            Ponto Corrigido:
+              Adicionada a tarja "PREVISÃO DACTE" quando utilizado o método PreverDACTE
+
+====================================  LEIAME VS 9.7.36.59726 ==========================================
+* Correções
+  #18872 - Corrigido problema de impressão para Documentos Anteriores campo chave_297 não existente.
+
+  #18865 - Corrigida a impressão do DACTE sem a seção do XML <infCTeNorm>, no qual se encontram informações dos Modais.
+
+  #18870 - Corrigida a impressão do DACTE quando não é informada a seção do xml <indGlobalizado>, onde no DACTE deve sair como CT-e não globalizado.
+
+* Novidades
+  #18921 - NT CTe 2017.002 Inclusão do campo tpNav_378 pode ser alimentado no tx2 junto ao Modal Aquaviario
+           Atualização de XSD incluiu campo dhEmi na montagem do XML de envio EPEC, campo gerado automaticamente.
+
+  #19179 - Implementada a alteração na impressão dos campos dos pesos do DACTE, para que passem a ser impressos com 4 casas decimais. A unidade dos pesos também está sendo impressa.
+
+====================================  LEIAME VS 9.7.35.59055 ============================================
+* Correções
+  #18672 - Impressão DACTE 3.00 corrigido problema de exportar PDF para quando impresso modal de Veiculos Novos transportados no modelo Retrato,
+           e também corrigido erro de excessão lota_307 para impressão modelo Paisagem.
+
+  #18678 - Corrigido quando indIEToma = 9 (ISENTO), e houver preenchimento de CNPJ ou CPF do expedidor, a TAG IE no Xml não é enviada.
+
+  #18717 - Corrigido problema na geração do campo "tpUnidCarga_755" para CTe 3.00, quando utilizado não se gerava XML.
+
+
+====================================  LEIAME VS 9.7.34.57956 ============================================
+* Novidades
+  #18069 - Compatibilizado o componente spdCTe com o Delphi 10.2 Tokyo.
+
+* Correções
+  #18009 - Gerar no DACTE a informação do CNPJ/CPF do remetente no campo “CNPJ/CPF Emitente” dos Documentos Originários, quando tipo documento for “99-Outros” ou “00-Declaração”
+
+====================================  LEIAME VS 8.7.33.57007 ============================================
+* Novidades
+  #17843 - Compatibilizado o componente CT-e com a nova versão 3.00.
+           Para maiores informações acesse: http://tsdn.tecnospeed.com.br/base-de-conhecimento/post/componente-ct-e-compatibilizado-com-a-nova-versao-3-00
+
+  #17825 - Implementada melhoria quando é gerado um CTe de redespacho, agora o grupo do remetente pode ser omitido.
+
+  #17849 - Alterado campo Observação do DACTE para aceitar 2000 caracteres.
+
+  #18069 - Compatibilizado o componente spdCTe com o Delphi 10.2 Tokyo.
+
+====================================  LEIAME VS 8.7.32.55198 ============================================
+* Novidades:
+  #17498 - O componente CTe agora é assinado digitalmente, garantindo maior segurança e confiabilidade.
+
+* Correções:
+  #17633 - Corrigido propriedade "DiretorioLogErro" para respeitar sua configuração e gerar o arquivo de erro corretamente.
+  #17617 - Corrigida apresentação da frase "Sem Valor Fiscal" nas notas emitidas somente em ambiente de Homologação.
+
+====================================  LEIAME VS 8.7.31.54228 ============================================
+* Correções
+  #17401 - Corrigidas as propriedades CaminhoCertificado e SenhaCertificado para o método de cancelamento.
+
+* Novidades:
+  #17416 - Compatibilizado RTM multimodal com os novos campos COTM e indNegociável.
+
+====================================  LEIAME VS 8.7.30.53474 ============================================
+* Correções
+  #17135 - Corrigido impressão do DACTE com várias NFes vinculadas.
+           Também corrigido a impressão dos campos TpServ e Modal para os valores 4 e (6 ou 06) respectivamente.
+
+  #16857 - Corrigido problema no RTM ao imprimir um xml que contém mais de um motorista.
+         - Adicionado no layout de impressão a frase "Previsão Dacte" ao utilizar o método PreverDacte.
+
+* Novidades:
+  #17018 - Implementada nova forma como é listado os certificados digitais, agora os certificados estão acompanhados do número de série no final.
+           Essa modificação foi feita para atender clientes que possuem dois ou mais certificados com o mesmo nome impossibilitando assim a diferenciação dos mesmos.
+
+====================================  LEIAME VS 8.7.29.50572 ============================================
+* Novidades:
+  #16112 - Compatibilizado componente spdCTe com Delphi 10.1 Berlin.
+
+====================================  LEIAME VS 8.7.28.49824 ============================================
+
+Está sendo liberada a versão 8 deste componente, que agrega várias melhorias no produto:
+  * Os links dos WebServices da UF de RS foram atualizados conforme documentação, para assim que não ter impactos no envio de notas.
+           Documentações:
+           Links: https://www.sefaz.rs.gov.br/Site/MontaDuvidas.aspx?al=l_rel_end_ws_cte
+           Documentação TSDN: https://ciranda.me/tsdn/blog-da-tecnospeed/post/atencao-ambiente-antigo-de-autorizacao-de-documentos-fiscais-eletronicos-do-rs-sera-desativado
+  * Compatibilizado impressão de Volumes do DACTE com Manual 1.01.
+  * Compatibilizado componente NT 2015.003.
+  * Compatibilizado componente spdCTe com Delphi 10 Seattle.
+  * Compatibilizado componente NT 2015.004.
+           Parecer: https://ciranda.me/tsdn/base-de-conhecimento/post/parecer-tecnico-da-nt-2015-004-de-ct-e
+
+====================================  LEIAME VS 7.7.27.48902 ============================================
+
+Houveram apenas melhorias internas no produto.
+
+====================================  LEIAME VS 7.7.26.47293 ============================================
+* Novidades:
+  #15493 - Compatibilizando XML de CCe para que ele seja salvo em UTF-8 sem BOM.
+
+====================================  LEIAME VS 7.7.25.46256 ============================================
+* Novidades:
+  #15185 - Campo "ValorAlterado" agora respeita seu tamanho total na impressão de CCe.
+
+====================================  LEIAME VS 7.7.24.41256 ============================================
+* Novidades:
+  #14474 - Compatibilizado componente NT 2015.003.
+  #14727 - Compatibilizado componente spdCTe com Delphi 10 Seattle.
+  #14747 - Compatibilizado componente NT 2015.004.
+           Parecer: https://ciranda.me/tsdn/base-de-conhecimento/post/parecer-tecnico-da-nt-2015-004-de-ct-e
+
+====================================  LEIAME VS 7.7.22.41256 ============================================
+* Novidades:
+  #14104 - Compatibilizado impressão de Volumes do DACTE com Manual 1.01.
+
+====================================  LEIAME VS 7.7.21.41256 ============================================
+* Novidades:
+  #13785 - Os links dos WebServices da UF de RS foram atualizados conforme documentação, para assim que não ter impactos no envio de notas.
+           Documentações:
+           Links: https://www.sefaz.rs.gov.br/Site/MontaDuvidas.aspx?al=l_rel_end_ws_cte
+           Documentação TSDN: https://ciranda.me/tsdn/blog-da-tecnospeed/post/atencao-ambiente-antigo-de-autorizacao-de-documentos-fiscais-eletronicos-do-rs-sera-desativado
+
+====================================  LEIAME VS  6.7.20.40935 ============================================
+* Correção
+  #13283 - Corrigido problema que ocorria quando alguns diretórios, por exemplo diretório log erro, não existiam.
+            O diretório logerro, quando não configurado será criado em um subdiretório na raiz da aplicação: App\logErro\
+            O mesmo só é criado quando o componente necessita adicionar e salvar algum erro no log.
+  #13544 -  Corrigido RTM retrato e paisagem, para que quando informado o campo chave da tag: infCteComp, o mesmo seja exibido nos documentos        originários, assim como no emissor gratuito.
+  #13492 -  Corrigido RTM retrato e paisagem, para que seja visível todos os dados do Tomador, quando no xml for informado toma4.
+
+* Problemas Conhecidos:
+  1) Com a nova versão 2.00a, o componente agora precisa que a tag tpImp esteja corretamente preenchida para definir a impressão retrato ou paisagem.
+     Isso ocorre pois para SEFAZ o XML sempre é 2.00, não há como diferenciar o 2.00 do 2.00a.
+	 
+====================================  LEIAME VS 4.7.19.39492 ==========================================
+* Novidade
+  #12374 - Atualização de compatibilidade com o framework spdGOV 1.6.7.xxxx
+  #13310 - Compatibilizado componente CTe com a Nota Técnica 2015/001. Para isto foi necessário a criação de uma nova versão manual, vm2.00a,
+           para adequação. De todas as alterações, a mais impactante é a retirada dos grupos de local da entrega (dest\locEnt) e local da coleta (rem\locColeta).
+           Ou seja, esses grupos não poderão existir no TX2 desta versão manual 2.00a.
+  #12025 - Modificado o local do desinstalador de dependências para o diretório padrão de instalação em Arquivos de Programas:
+           Ex: C:\Arquivos de Programas\Tecnospeed\CTe\Unins000.exe
+           Documentação: https://ciranda.me/tsdn/base-de-conhecimento/post/desinstalador-de-dependencia-dos-componentes-nova-estrutura-de-pastas
+  #12948 - Compatibilizado componente com Delphi XE8.
+  #13408 - Alterado template de cancelamento para o estado de São Paulo.
+  #13448 - Removido namespace na geração do xml de envio CCe para todos estados..
+
+* Correção
+  #12911 - Corrigido problema na impressão ao tentar imprimir um CT-e que não possua os campos de seguro.
+  #12611 - Corrigido problema na impressão do DACTE, CNPJ do remetente não estava sendo apresentado.
+  #13264 - Corrigido problema na impressão do DACTE, com vários documentos originários.
+           Obs: O titulo Documentos originário só é exibido na segunda, a partir da 3° página não.
+  #13127 - Corrigido erro na impressão de CTe, quando não tem nenhum valor informado na tag "respSeg".
+
+====================================  LEIAME VS 4.7.16.xxxxx ==========================================
+* Correção
+  #11837 - Agora o campo Identificação das Balsas mostra de 0 a 3 balsas seguindo padrão do esquema.
+  #12370 - Implementado tratamento para quando informado letras nos campos: série e número do Cte.
+
+* Novidade
+  #10948 - Compatibilizado componente com Delphi XE7.
+  #12260 - Modificado o instalador de dependências, adicionados os arquivos leia-me atualizado e o arquivo versaoCte.inc na instalação.
+  #12205 - Adicionado opção de importar o "midas.dll" na instalação do componente.
+
+====================================  LEIAME VS 4.7.15.xxxxx ==========================================
+* Correção
+  #11761 - Corrigido campo valorAlterado_5 que estava como limite inferior ao permitido.
+  #11958 - Corrigido problema com ordem na impressão de continuação dos documentos originarios.
+  #12111 - Corrigido problema na execução do componente na versão instalada para Xe4.
+
+====================================  LEIAME VS 4.7.14.34099 ==========================================
+* Correções
+  #11122 - Corrigido problema ao enviar email do CTe com UTF8 com BOM.
+  #11338 - Corrigido problema no envio de CCe.
+  #11363 - Ao informar um campo no TX2 ou XML contendo o caracter da tecla TAB (#9) o Componente CTe não
+              assinava o XML. Problema foi corrigido e agora é possível assinar normalmente.
+
+  #11494 - Atualizado endereço servidores para Acre no arquivo cteServidoresProd.ini.
+  #11586 - Corrigido problema ao imprimir um CT-e com várias apólices.
+
+====================================  LEIAME VS 4.7.13.32123 ==========================================
+* Atualização
+  #10638 - Compatibilizado componente com última versão Gov 2.0.
+  #11370 - Melhorada a mensagem de validação na geração de campos que não pertencem ao Dataset.
+  #10492 - Criado método de envio de e-mail de CCe(EnviarCCeTomador). As configurações de envio de e-mail são as mesma do CTe.
+  #11036 - Campo descOutros_160 disponibilizado na DLL de impressão, nos grupos DocumentosOriginarios e DocumentosOriginariosContinuacao, para customização do RTM.
+  #11212 - Disponibilizado todos os métodos de impressão do CCe. Verifique a documentação.
+           http://ciranda.me/tsdn/base-de-conhecimento/post/novos-metodos-de-impressao-para-a-carta-de-correcao-eletronica-cce-para-cte
+  #11000 - Disponibilizado propriedade para configurar certificado PFX sem a necessidade de instalação. Verifique a documentação:
+           http://ciranda.me/tsdn/base-de-conhecimento/post/utilizando-certificado-a1-em-rede-componente-cte
+
+* Correções
+  #11207 - Corrigido problema com métodos de impressão, exportação e visualização do DACTE em ambientes x64
+  #11218 - Corrigido conflito de referência entre a spdGovX.ocx e spdCCeCTeDataSetX.ocx.
+  #11334 - Corrigido problema na impressão inteligente na OCX ocorria quando utilizava o Visual Basic.
+
+====================================  LEIAME VS 4.7.12.29522 ==========================================
+* Atualização
+  #10449 - Disponibilizado envio de email em formato HTML.
+  #10581 - Adequadas as informações de quantidades de carga do DACTE com Manual DACTE v1.01.
+  #10429 - Compatibilizado com a NT 2014/001.
+    *Obervação: O Web Service ainda não atualizou os Schemas da NT 2014-001.
+
+* Correções
+  #10288 - Tratamento no instalador para não fechar aplicações quando instalar, nem solicitar reinicialização.
+  #10598 - Corrigido problema com tag inicial no xmlDestinatario de cancelamento.
+  #10728 - Correção do DACTE para imprimir as descrições corretas dos dados do grupo infOutros.
+  #10650 - Correção do cce do cte para que seja disponibilizado também no data module.
+           Documentação no TSDN - http://ciranda.me/tsdn/base-de-conhecimento/post/atualizacao-do-componente-cte-metodo-de-uso-do-tspdccectedatasetx
+
+====================================  LEIAME VS 4.7.10.26868 ==========================================
+Correções:
+  #10135 - Atualizado base dos componentes (spdGov) para corrigir problema ao carregar certificados A3.
+  #10228 - Corrigido erro ao adicionar grupo "infUnidCarga" no CT-e.
+  #10284 - Adicionados os arquivos de templates referente ao estado Piauí (PI).
+  #10169 - Problemas de Encode ao gerar XmlTomadorServico de CTe e CCe.
+  #10213 - Origem de Prestação e Destino da Prestação mostra a UF relacionada a Cidade na impressão 2.00.
+  #10309 - Ajustado campos que compõe o endereço na impressão de CT-e 2.00.
+  #10241 - Atualizado o Activex para a versão manual 2.00.
+  #10310 - Corrigido problema na impressão do código de barras quando se utilizava o método de exportar para PDF.
+  #10311 - Corrigido problema na geração do XML de autorização.
+  #10187 - Retirado as dependencias não utilizadas do componente MDFe no Activex CCeCTeDataSetX.
+  #9988  - Corrigido tags de retorno métodos: Inutiliza, Consulta, Inutilização.
+  #10063 - Corrigido problema de não carregar os dados dos modais ao usar a função TspdCTe.ConverteXmlparaDataSet.
+  #10368 - Corrigido problema na impressão do campo "vTotTrib" que não era impresso no DACTE sem o grupo "osbCont".
+
+* Atualização:
+  #9909 - Compatibilizado o componente CTe com o Delphi XE6.
+  #10316 - Atualizado o arquivo de template de cancelamento por evento para o estado de MT para a versão manual 2.00.
+
+* Observação:
+  Não há links de recepção de Eventos para os servidores de Produção e Homologação do modo SVSP. Portanto, não será
+  possível utilizar o cancelamento de notas nos mesmos.
+
+====================================  LEIAME VS 4.7.10.26868 ==========================================
+* Atualização
+  #9487  - Foi adicionado uma ConfigSection default para propriedade spdCCeCTeDatasetX.ConfigSection para
+          evitar erros caso não seja informado nenhuma.
+  #9772  - Foi implementada uma inteligência no spdCTe em todos os métodos no que diz respeito à impressão.
+           Agora ao informar um xml para esses métodos, o spdCTe verifica a versão do mesmo e, altera suas
+           configurações de modo a efetuar a impressão utilizando a versão do xml informado, não importando
+           o que estiver configurado na propriedade spdCTe.VersaoManual.
+
+           Obs. Essa funcionalidade será utilizada apenas se os arquivos MappingCTe.txt e os arquivos *.rtm
+           estiverem contidos na estrutura original de diretórios do spdCTe.
+           Ex: Demo\Templates\2.00\DACTE\Retrato.rtm, Demo\Esquemas\2.00\MappingCTe.txt.
+           Caso contrário a propriedade spdCTe.VersaoManual deve estar configurada na mesma versão do xml informado,
+           ou o componente spdCTe ecoará uma exception informando que as versões não são compatíveis.
+
+* Correção:
+  #9743  - Corrigido problema de informar um CTe na tag idDocAntEle e ele ser mostrado com Tipo NF-e na
+           parte de Documentos originários do DACTE.
+  #10064 - Corrigida a impressão dos campos de número do protocolo e data e hora de autorização do CTe.
+  #10130 - Corrigido problema de impressão incorreta da máscara de CNPJ.
+
+====================================  LEIAME VS 4.7.9.26011 ==========================================
+* Correção:
+  #9488 - Corrigido problema ao setar apenas o nome do arquivo MappingCCeCTe.txt.
+  #7811 - Corrigido problema ao setar propriedade PINCODE.
+
+====================================  LEIAME VS 4.7.8.25483 ==========================================
+* Atualização
+  #9186 - Implementado propriedade para geração dos Arquivos de exception e Arquivos Temporários no componente CTe:
+          - DiretorioLogErro
+          - DiretorioTemporario
+  #9508 - Implementação de suporte a impressão de múltiplos CTes. Um lote com vários CTes pode ser
+          previsto normalmente, sem alterações. Para visualizar/imprimir/exportar múltiplos DACTEs
+          deve-se usar um arquivo com os XMLs de Tomador de Serviço (que ficam no diretório
+          XmlTomadorServico) concatenados.
+  #9660 - Implementado método GerarXmlEventoDestinatario, para criar o XML Destinatário dos eventos EPEC, CCe e
+          MultiModal.
+  #9274 - Agora o envio de e-mail anexa além do xml tomador, todos os outros xml's destinatários de eventos gerados
+          para o CT-e em questão.
+
+* Correção:
+  #9490 - Corrido os links de recepção de eventos para os estados disponíveis.
+  #9494 - Corrigido problema ao tentar imprimir um DACTE com o grupo InfNF sem estar informando o grupo locRet.
+  #9478 - Corrigido problema ao prever/visualizar/imprimir/exportar DACTE com CTe contendo o grupo infCTeComp.
+  #9481 - Corrigido problema de não encontrar o arquivo Mapping ao utilizar o método
+          TspdCCeCTeDataSetX.CreateDataSets.
+  #9480 - Foi corrigido problema no disparo do evento OnLog no envio do CCe.
+  #9483 - Corrigido problema ao configurar versão manual 2.00 utilizando a dll CTeX.
+  #9479 - Adicionado correção na geração dos modais para permitir a criação de XMLs Substituto e Anulado.
+  #9485 - Corrigido problema na geração do campo vValePed do modal rodoviário para CTe 2.0.
+
+====================================  LEIAME VS 4.7.7.24989 ==========================================
+* Correção:
+  #9265 - Corrigido problema com cancelamento de CTe com validação de esquema ativado.
+  #8832 - Corrigido problema ao setar propriedade MappingFileName com nome relativo.
+  #9401 - Corrigido problema de não permitir executar aplicação somente com o componente e sem instalar a GOV.
+
+* Atualização:
+  #9275 - Implementado o método "ConverteXmlparaDataSet(aXml :String): TspdCTeDataset", que
+          ele alimenta e retorna um TspdCTeDataset com os campos presentes no xml passado como parâmetro.
+
+====================================  LEIAME VS 4.7.6.24391 ==========================================
+* Atualização
+  #8829 - Compatibilizado Componente CTe com Delphi XE5 versão 32 e 64 bits.
+  #2905 - Implementado suporte a quebra de linha no DACTE para campos de observações (xObs_87, xTexto_90
+          e xTexto_93) através de nova propriedade spdCTe.DacteSettings.LineDelimiter.
+
+* Correção:
+  #8824 - Corrigido problema na impressão quando o CT-e é para pessoa física.
+  #8834 - Corrigido problema no método GetVencimentoCertificado da DLL.
+
+====================================  LEIAME VS 3.7.5.23398 ==========================================
+
+* Correção:
+  #8953 - Corrigido endereço de webservice de envio eventos para o estado do PR e sequencia evento de
+          cancelamento.
+  #2725 - Alterado para não criar o diretório XmlTomadorServico ao instanciar o componente.
+
+====================================  LEIAME VS 3.7.4.22795 ==========================================
+* Correção:
+  #4599 - Corrigido mensagem no tratamento da exceção com license.
+
+* Atualização
+  #8434 - Compatibilizado Componente CTe com as versões Delphi XE2, XE3, XE4, OCX e DLL para 64 bits.
+
+====================================  LEIAME VS 3.6.3.22146 ==========================================
+* Correção:
+  #8462 - Corrigido problema ao invocar o método GerarXMLPorTX2 em OCX
+  #8446 - Corrigido erro ao exportar PDF com caminhos em caminhos diferentes.
+  #8205 - Corrigido os arquivos RTMs Retrato e Paisagem, das versão 1.04 e 2.00, quanto a impressão dos
+          lacres rodoviários. Agora, dependendo do tamanho do número do lacre, é impresso até um máximo
+          de 40 lacres.
+
+* Atualização
+  #7640 - Realizado a compatibilização do componente CTe com a versão Delphi XE4 32Bits.
+  #8148 - Adicionado na interface OCX (CTeX) duas novas propriedades: UltimoLogEnvio e UltimoLogConsRecibo.
+  #8646 - Atualizado regras de validação, arquivos TX2 e esquemas para a nova correção liberada pela SEFAZ:
+          Nota Técnica 2013/013 (Altera NT 2013/012 e MOC 2.00)
+  #8679 - Componente aceita a tag infCte de maneiras diferentes, ou seja, com o campo "versao=" em posições
+          diferentes.
+
+====================================  LEIAME VS 3.6.2.21147 ==========================================
+* Atualização
+  #7961 - Incluso CNPJ e IE no cabeçalho do DACTE
+  #8279 #8280 - Inclusão dos templates e atualizações do endereços dos servidores para emissão de CT-e
+   para os estados de Roraima, Pernambuco e Amapá
+  #8311 #8312 #8313 #8366 - Criação do envio do Evento de Carta de Correção (CC-e) e criação do novo
+   DataSet (spdCCeCTeDataSetX) para emissão deste evento. Foram criados dois novos métodos:
+
+   CTe.GerarXMLCCeporTX2(aTx2File)   ,
+   CTe.EnviarCCe(aChaveCTe, aDataHoraEvento, aXmlEvento, aSequenciaEvento) onde o parâmetro aXmlEvento
+     deve ser aquele que é retornado da propriedade LoteCCe do DataSet spdCCeCTeDataset.
+   CTe.EnviarCCe(aXmlEvento) este para enviar o xml de CCe já pronto (sem assinar)
+
+   A geração do XML para envio do evento CCe pode ser realizada através deste método GerarXMLCCeporTX2
+   passando como parâmetro o caminho para o arquivo TX2, ou via o componente DataSet.
+
+  #8132 - Implementado o novo evento para Cancelamento de CTe conforme solicitado no manual 2.0 de integração.
+   O método ficou:
+
+   CTe.CancelarCTEvento(aChaveCTe, aNumProtocolo, aJustificativa, aDataHoraEvento, aSequenciaEvento)
+
+  #7347 - Implementado o novo modal MultiModal. Este novo modal possui somente dois campos que são:
+   COTM_1501 e indNegociavel_1502
+
+   inclusos dentro do dataSet Multimodal: IncluirMultimodal e SalvarMultimodal
+
+  #8133 - Implementado o envio do evento Multimodal de acordo com o manual 2.0 de integração do CT-e.
+
+   CTe.GerarXMLEventoMultimodal(aChaveCTe, aRegistro, aNumDocumento, aDataHoraEvento, aSequenciaEvento)
+   CTe.EnviarEventoMultimodal(aXmlMultimodal)
+
+   onde primeiramente é gerado o XML e em seguida enviado o arquivo para a SEFAZ responsável.
+
+** SOMENTE O EVENTO DE CANCELAMENTO ESTÁ EM PLENO FUNCIONAMENTO, OS DEMAIS EVENTOS (MULTIMODAL E CCE) ESTÃO **
+   RETORNANDO SEMPRE A SEGUINTE MENSAGEM DO WEBSERVICE: "Falha no processo de validacao CT-e". PORÉM O MESMO
+   XML FOI APROVADO EM TODAS VALIDAÇÕES DE ESQUEMAS REALIZADAS.
+
+** A GERAÇÃO DE XML DO EVENTO CCE E DO EVENTO MULTIMODAL PARA DESTINATÁRIO AINDA NÃO FOI DIVULGADA PELA SEFAZ. **
+   POR ESTE MOTIVO ESTES MÉTODOS AINDA NÃO ESTÃO IMPLEMENTADOS NO COMPONENTE CTE.
+
+* Correção:
+  #8317 - Corrigindo instalador de dependências
+  #8207 - Correção da impressão do DACTE que sempre saia em duas páginas
+  #7964 - Correção do loop que era gerado ao emitir mais de 8 NF Referenciadas no DACTE
+  #8281 - Retornado o método GetVencimentoCertificado
+  #8150 - Retornado o método RemoverCertificado
+
+====================================  LEIAME VS 3.6.2.20377 ==========================================
+* Atualização
+  1) #7710 - Compatibilizado componente CTe com Delphi Xe3 versão 32 bits.
+
+====================================  LEIAME VS 3.5.34.18908 ==========================================
+* Atualizações
+  1) #6131 - Compatibilizado componente CTe com Delphi Xe3 versão 32 bits.
+  2) #7601 - Alteração no método "MontarEPEC". Agora, além do parâmetro DataHoraEvento é passado também
+      a Justificativa do Evento (aJustificativaEvento), assim não será mais obrigatório o preenchimento
+      dos campos xJust e dhCont no XML gerador do EPEC.
+  3) #6788 - Adicionado no arquivos templates e esquemas os arquivos necessários para emissão de CT-e para
+      o estado do Pará.
+     #6615 - Correção no leiaute do DACTE onde o canhoto foi direcionado para o topo da impressão conforme
+      Nota Técnica solicita.
+     #6138 - Incluido no manual do componente o método "GerarXMLEnvioTomadorServico".
+
+* Correção:
+     #6180 - Corrigido Erro no Método "GerarXmlTomadorServico" da classe TspdCTeXmlTomadorServico.
+
+
+====================================  LEIAME VS 3.5.33.18374 ==========================================
+* Atualizações
+  1) #6987 - Atualizado implementação do Envio em contingência EPEC. Após a liberação das Notas Técnicas 2013/003 e
+      2013/004 foram atualizados os arquivos templates, arquivos esquemas, links para servidores de homologação e
+      produção e a demonstração em BPL que acompanha o componente.
+  2) #6992 - Aplicado alterações solicitadas na NT 2013/001.
+  3) #7263 - Alteração no RTM para contemplação da NT 2013/005.
+
+====================================  LEIAME VS 3.5.32.17707 ==========================================
+* Correção:
+  1) #6851 - Correção no esquema do XML do estado de Mato Grosso - MT.
+
+====================================  LEIAME VS 3.5.31.16523 ==========================================
+* Correções:
+  1) #6068 - Corrigido o problema na impressão do DACTE com mais de um campo xTexto_90 grupo OBSCONT.
+  2) #6367 - Corrigido problema de arquivos de configuração de servidores em pasta diferente da localização do executável.
+
+====================================  LEIAME VS 3.5.30.15894 ==========================================
+* Atualizações:
+  1) #6016 - Implementado NT 2012/004 Evento prévio de emissão em contingência por evento (EPEC). São 4 novos métodos:
+             * CTe.MontarEPEC(aLoteCTeNormal, aDataHoraEvento);
+             * CTe.AssinarEPEC(aXMLEpec);
+             * CTe.EnviarEPEC(aEPECAssinado);
+             * CTe.ConsultarEPEC(aChaveCTe).
+           - Criado um novo Modo de Operação: moEPEC.
+           - O tipo de emissão EPEC é o 4 (tpEmis=4).
+           - O evento EPEC só será disponibilizado pela SEFAZ em ambiente de homologação no dia 01/04/2013.
+           - As demonstrações em BPL e OCX (VB6 e C#) foram atualizadas para contemplarem essa nova contingência.
+
+  2) #4598 - Implementação da NT2012/005 Contempla Regras de Validação para Recepção de CT-e no Ambiente de Homologação.
+  3) #4806 - Atualizado o endereço dos servidores de homologação e produção do estado do Paraná.
+
+* Correções:
+  1) #6096 - Acrescentado o "LicenseX.ocx" na instalação de dependências full sources.
+  2) #5997 - Corrigido o problema de impressão de volumes no DACTE.
+
+====================================  LEIAME VS 2.5.29.12193 ==========================================
+* Atualizações:
+  1) #4173 - Publicado propriedade ModoOperacao em ActiveX.
+
+* Correções:
+  1) #4195 - Corrigido problema na geração de IE vazio quando dois veículos são informados no modal rodoviário.
+
+====================================  LEIAME VS 2.5.28.10834 ==========================================
+* Correções:
+  1) #4214 - Corrigido problema nas operações com Dacte (Visualizar, Prever, Imprimir) quando informado
+             valores com casas decimais. Na correção foi adicionada também a seguinte regra para soma dos
+             pesos (Bruto, Aferido e de Base de Cálculo):
+             Para somar os pesos deve-se informar no campo tpMed qual o tipo de pesagem referido, sendo eles:
+             "PESO BRUTO",
+             "PESO AFERIDO" ou
+             "PESO BASE DE CALCULO";
+
+====================================  LEIAME VS 2.5.28.10401 ==========================================
+* Correções
+  1) #3868 - Corrigido problemas de memory leak com ExportarDacteParaPDF.
+  2) #1935 - Implementado validação e tratamento de erro ao assinar Lotes com CTe´s iguais.
+  3) #3422 - Corrigido problema ao imprimir dados de volume, cubagem e valor total da mercadoria.
+
+* Atualizações
+  1) #3671 - Compatibilizado componente com Delphi XE2.
+
+====================================  LEIAME VS 2.5.28.9971 ==========================================
+* Correções
+  1) #3406 - Correção do problema na geração de IE vazio. Campos: IE_96, IE_348, IE_286, IE_318 e IE_390
+
+* Atualizações
+  1) #3511 - Implementação da NT 1.04c. Contempla Sefaz Virtual de Contingência (SVC).
+
+====================================  LEIAME VS 2.5.26.8611 ==========================================
+* Correções
+  1) #3399 - Correção na Previsão de DACTE gerando a mensagem de "Previsão de Dacte" no Layout de impressão.
+           - Criado método no componente PrevisaoDACTE que aceita somente XML de CTe não autorizado.
+           - Adicionado método PrevisaoDACTE no ActiveX.
+  2) #2908 - Correção do erro ao exportar DACTE com mais de oito notas.
+
+* Atualizações
+  1) #3438 - Adicionado a funcionalidade de previsão de DACTE nas Demos OCX (Delphi6, Visual Basic e C#).
+
+====================================  LEIAME VS 2.5.25.8199 ==========================================
+* Atualizações
+  1) #2721 - Adicionado a funcionalidade de previsão da DACTE utilizando Xml assinado.
+  2) #2934 - Adicionado a funcionalidade de geração do XML de Cancelamento do destinatário.
+
+* Correções
+  1) #2801 - Correção na geração da tag <IE> para Expedidor, Recebedor e Destinatário.
+  2) #1253 - Correção do campo Tomador no DACTE quando informado tomador do serviço com o valor 'Outros'.
+
+====================================  LEIAME VS 2.5.24.6687pa ==========================================
+* Correções
+  1)  - Correção na geração da tag <IE> para remetente. (Pode ser gerada sem valor)
+  2)  - Realizadas correções na geração de XMLTomadorServiço (na tag <infCTe>, trocada a ordem de
+        versão e id, retirado o namespace que era gerado na tag <protCTe> e acrescentada a declaração
+        <?xml version="1.0" encoding="utf-8"?> no começo do XML).
+
+====================================  LEIAME VS 2.5.23.6660pa ==========================================
+* Atualizações
+  1)  - Implementação dos Dactes Rodoviário, Aéreo, Aquaviário e Ferroviário no formato paisagem
+  2)  - Componente CTe totalmente compatibilizado com manual de integração 1.04b
+  3)  - Os DACTEs Rodoviário, Aéreo, Aquaviário e Ferroviário, tanto formato paisagem quanto retrato
+        foram compatibilizados com o Manual de Integração DACTE versão 1.00
+
+* Correções
+  1) #632 - Correção na emissão da tag <toma04>, emitindo no DACTE os dados referente a esta tag
+  2) #630 - Correção da propriedade ValidarEsquemaAntesEnvio na versão 1.03
+  3) Correção de tamanho de campos longos (ex: xObs) na impressão dos DACTEs.
+
+* Problemas Conhecidos:
+  1) DACTE Modal aéreo: os campos "Informações do Manuseio" e "Código Carga Especial" não estão tendo
+     seus dados exibidos.
+  2) DACTE Modal ferroviário: os dados excedentes dos detalhamentos dos vagões e identificação dos
+     contêiners não estão sendo exibidos em páginas subsequentes.
+
+====================================  LEIAME VS 2.5.22.6098 ==========================================
+* Correções
+  1) #528 - Ajuste no DACTE referente aos dados do Tomador de Serviço.
+  2)      - Correção na propriedade ValidarEsquemaAntesEnvio.
+
+* Atualização
+  1) #576 - Emissão e impressão de CT-e complementar. Adicionado ao pacote um exemplo de TX2
+            Rodoviário Complementar ("CTe Rodoviário Complementar 1.04.tx2").
+
+OBS: Para emissão de notas Complementares a propriedade ValidaEsquemaAntesEnvio não pode estar ativa
+     pois não existe esquema para este tipo de XML.
+
+====================================  LEIAME VS 2.5.21.5821 ==========================================
+* Atualizações:
+  1) Compatibilizado componente com a NT 2011.003:
+
+    1.1) Alteração no layout específico do modal aéreo:
+         - Alteração do nome da Tag cIATA para IdT (Identificação Interna do Tomador).
+         - Alteração da tag xDime de obrigatória para opcional.
+
+    1.2) Alteração no layout específico do modal Aquaviário:
+         - Criação do grupo de informações de detalhamento dos conteiners
+           contendo o detalhamento dos lacres e o rateio dos documentos transportados.
+
+    1.3) Implementada a contingência FSDA (tpEmis=5) e retirados os valores não utilizados no CT-e (2- Contingencia FS, 3-SCAN e 4 - DPEC).
+
+    1.4) Criação das TAGs para informação de entrada em contingência (dhCont e xJust).
+
+    1.5) Alterado o schema para aceitar “ISENTO” IE do proprietário do veículo. (modal rodoviário).
+
+  2) Compatibilizado componente com a NT 2011.004:
+
+    2.1) Aplica as regras de validação facultativas D01a e D01b para todos os WebServices, nas versões 1.03 e 1.04b:
+         - D01a: Verifica a existência de qualquer namespace diverso do namespace padrão do CT-e (http://www.portalfiscal.inf.br/cte)
+         - D01b: Verifica a existência de caracteres de edição no início ou fim da mensagem ou entre as tags
+
+* Problemas Conhecidos:
+  1) Não há DACTEs para os modais Aéreo, Aquaviário, Ferroviário e Dutoviário em formato retrato
+  2) Não há DACTEs para nenhum modal em formato paisagem
+  3) A propriedade "ValidarEsquemaAntesEnvio" esta desabilitada provisoriamente
+
+====================================  LEIAME VS 2.5.20.4764 ==========================================
+* Atualização
+  1) Suporte aos comandos INCLUIR/SALVAR e INCLUIRPARTE=NomeParte/SALVARPARTE=NomeParte nos arquivos
+     TX2.
+
+* Correções
+  1) Correção de erro na geração de XML de envio versão 1.04a para lotes de CTe com mais de 1 CTe.
+  2) #300 - Correção do nome do campo "xNome_184" para "xNome_185".
+
+====================================  LEIAME VS 2.5.19.4326 ==========================================
+* Correções
+  1) Ajustes no Dicionário de Dados versão 1.04a
+     - Adicionado coluna informando tipo de alteração
+     - Adicionado coluna informando o nível da tag no XML
+     - Alterado nomes de campos que foram alterados no XML (vCarga, cMunEnv, XMunEnv, UFEnv)
+  2) Atualizado médodo CalculaChave no Activex para ter a mesma interface do NF-e
+  3) Corrigido problemas nas demontrações relacionados a troca de versão
+
+====================================  LEIAME VS 2.5.18.4173 ==========================================
+* Atualização
+  1) Compatibilidade com versão 1.04a do manual de integração.
+     - Geração de XML de envio de CT-e: todos os modais.
+     - Comunicação: todas as rotinas de comunicação.
+     - Impressão de DACTE: somente modal Rodoviário (retrato).
+
+* Arquivos adicionados/alterados/removidos:
+  - Adicionados exemplos de TX2 para v1.04a.
+  - Alteradas as pastas de Esquemas e Templates.
+
+====================================  LEIAME VS 2.5.17.3761 ==========================================
+* Correções
+  1) Ajustes em campos e layout geral do DACTE
+
+====================================  LEIAME VS 2.5.16.1901 ==========================================
+* Atualização
+  1) Compatibilidade com Delphi XE.
+
+====================================  LEIAME VS 1.5.15.1683 ==========================================
+* Correções
+  1) Conflitos no método de impressão com os componentes Tecnospeed NFe e NFSe.
+
+====================================  LEIAME VS 1.5.14.1658pa ==========================================
+* Atualizações
+  1) Adicionados arquivos TX2 de exemplo para cada tipo de modal suportado (rodoviário, ferroviário,
+     aéreo e aquaviário), com documentos originários diversificados (NF, NFe e outros).
+
+====================================  LEIAME VS 1.5.13.860 ==========================================
+* Atualizações
+  1) Suporte a impressão de DACTE em contingência.
+  2) Impressão dos dados das tags infNF, infNFe, infOutros e idDocAntEle no campo "Documentos Originários".
+
+====================================  LEIAME VS 1.5.12.851 ==========================================
+* Atualizações
+  1) Atualização de compatibilidade com o framework spdGOV 1.1.5.x
+  2) CTeDataset foi adicionado à palheta de componentes
+  3) Atualização do manual
+  4) Adicionada a propriedade "ValidarArquivoXmlDestinatario", que realiza a validação da Assinatura e
+     do DigestValue do arquivo XML. Não foi possível utilizar esta propriedade para validar o esquema
+     XSD, pois no retorno do WebService a versão de esquema é a 1.10 e, no site do CTe, a última versão
+     de esquema disponibilizada é a 1.03a, o que inviabiliza a validação.
+
+====================================  LEIAME VS 1.4.11.6922 ==========================================
+* Atualizações
+  1) Disponibilizada comunicação com servidores de MG (experiemental).
+
+* Nota técnica
+  1) Compatível com spdGOV 1.1.4.x, spdNFSe 1.4.15.x e spdNFe 2.4.7.x.
+  2) Trial habilitada por 60 dias.
+
+====================================  LEIAME VS 1.4.10.6537 ==========================================
+* Atualizações
+  1) Disponibilizado método "EnviarConhecimentoTomadorAnexos" para a distribuição do CT-e para o
+     tomador de serviços com anexos.
+
+* Correções
+  1) Adicionadas propriedades que não eram tratadas nos métodos LoadConfig e SaveConfig.
+  2) Removida validação que impedia a impressão de um DACTE sem logotipo.
+
+* Nota técnica
+  1) Compatível com spdGOV 1.1.4.x, spdNFSe 1.4.15.x e spdNFe 2.4.7.x.
+  2) Trial habilitada por 60 dias.
+
+====================================  LEIAME VS 1.4.9.6312 ==========================================
+* Atualizações
+  1) Alteração na forma como o componente lida com os arquivos .ini nos métodos LoadConfig e SaveConfig. Exemplo:
+     Método antigo:
+       spdCTe1.ConfigIni := TIniFile.Create('caminho_para_arquivo.ini');
+       spdCTe1.LoadConfig;
+     Método novo:
+       spdCTe1.LoadConfig;
+       ou
+       spdCTe1.LoadConfig('caminho_para_arquivo.ini');
+
+     No método novo, a propriedade ConfigIni não deve mais ser utilizada.
+
+* Nota técnica
+  1) Compatível com spdGOV 1.1.4.x, spdNFSe 1.4.14.x e NFe 2.4.7.x.
+  2) Trial habilitada por 60 dias.
+
+====================================  LEIAME VS 1.3.8.5788 ==========================================
+* Atualizações:
+  1) Atualização na numeração de versão do componente.
+
+* Nota técnica
+  1) Compatível com spdGOV 1.1.3.x, spdCTe 1.3.8.x e NFe 1.4.6.x.
+  2) Trial habilitada por 60 dias.
+  3) Versão pré-alpha.
+
+====================================  LEIAME VS 1.0.007.5601 ==========================================
+* Atualizações:
+  1) Alteração nos métodos de impressão:
+    - De Editar para EditarModeloDACTE
+    - De Imprimir para ImprimirDACTE
+    - De Exportar para ExportarDACTEParaPDF
+    - De Visualizar para VisualizarDACTE
+  2) Adicionada documentação do código fonte
+  3) Criado o CTeDataSet: Novo dataset para geração de XML de lote de envio
+  4) Adicionado método GerarXMLPorTX2
+  5) Adicionado instalador de dependências ao pacote FULL do CTe, na pasta Utils
+
+* Correções:
+  1) O método EnviarEmail na DLL OCX foi alterado para utilizar o delimitador "," ao invés de "|"
+  2) Resolvido problema de compatibilidade com NFSe nos para D2006 e D2007
+
+* Nota técnica
+  1) Compatível com spdGOV 1.1.3.x e spdNFSe 1.1.012.x. ATENÇÃO: Esta versão AINDA NÃO É COMPATÍVEL com o componente NF-e.
+  2) Trial habilitada por 60 dias.
+  3) Versão pré-alpha.
+
+====================================  LEIAME VS 1.0.5.4672pa ==========================================
+* Atualizações:
+  1) Impressão de todos os modais: Rodoviário, Aéreo, Aquaviário, Ferroviário e Dutoviário, utilizando um único
+  modelo RTM personalizável
+  2) Adicionada propriedade indicando a versão do componente Delphi.
+  3) Criado aplicativo de demonstração em Delphi 6 utilizando ActiveX.
+  4) Compatibilidade com spdGOV 1.1.2.3883, spdNFe 1.4.2.x e spdNFSe 1.1.7.x.
+
+* Correções:
+  1) Problema com "Read Time Out" ao enviar email pelo C# e VB.
+
+====================================  LEIAME VS 1.0.3.3737pa ==========================================
+* Atualizações:
+  1) Impressão de DACTE modelo aéreo
+  2) Componente em ActiveX
+  3) Atualização da demo em Delphi e criação de demos em VB6 e C#
+
+* Correções:
+  1) Geração de XML em lote
+  2) Alterado XMLDestinatario para XMLTomadorServico
+
+====================================  LEIAME VS 1.0.2.3533pa ==========================================
+* Atualizações:
+  1) Impressão de DACTE modelo rodoviário lotação e carga fracionada
+  2) Compatibilidade com spdGOV 1.1.1
+  3) Geração de XML de envio na consulta avulsa
+
+====================================  LEIAME VS 1.0.1.3444pa ==========================================
+* ATENÇÃO:
+  Esta versão do componente spdCTe não é compatível com as versões de outros componentes da TecnoSpeed
+
+* Atualizações:
+  1) Comunicação com os servidores do RS
+  2) Implementado componente em D7, D2006, D2007, D2009, D2010
+  2) Disponibilizado aplicativo de demonstração em Delphi (sem impressão)

@@ -1,0 +1,45 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+  {$I Utils.txt}
+
+Var
+  _Xml : string;
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CANCELARNFSE';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+
+    _Xml := UnEscapeXml(Input);
+    _Xml := UnIndentXml(_Xml);
+    //As operações abaixo são necessárias para adequar o Xml retornado pelo WS ao schema.
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="iso-8859-1"?>', '', [rfReplaceAll]);
+    if Trim(XmlSelect(_Xml, '//*[local-name()="DataHora"]')) <> '' then
+    begin
+      _Xml := XmlSelect(_Xml, '//*[local-name()="RetCancelamento"]');
+      _Xml := '<CancelarNfseResposta>' + _Xml + '</CancelarNfseResposta>';
+    end
+    else
+      _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+    Params.Add('XmlNFSe='+_Xml);
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

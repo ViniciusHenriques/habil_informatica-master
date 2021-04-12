@@ -1,0 +1,16 @@
+<CancelarNfseEnvio
+    xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <Pedido>
+        <InfPedidoCancelamento Id="0001">
+            <IdentificacaoNfse>
+                <Numero>%s</Numero>
+                <CpfCnpj>
+                    %s
+                </CpfCnpj>
+                <InscricaoMunicipal>%s</InscricaoMunicipal>
+                <CodigoMunicipio>%s</CodigoMunicipio>
+            </IdentificacaoNfse>
+            <CodigoCancelamento>%s</CodigoCancelamento>
+        </InfPedidoCancelamento>
+    </Pedido>
+</CancelarNfseEnvio>

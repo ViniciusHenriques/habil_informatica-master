@@ -1,0 +1,9 @@
+<nfse:ConsultarNfsePorRpsRequest>
+	<nfseCabecMsg>
+		<![CDATA[<?xml version='1.0' encoding='UTF-8'?><cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd"
+versao="2.04"><versaoDados>2.04</versaoDados></cabecalho>]]>
+	</nfseCabecMsg>
+	<nfseDadosMsg>
+		<![CDATA[<ConsultarNfseRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd"><IdentificacaoRps><Numero>%s</Numero><Serie>%s</Serie><Tipo>%s</Tipo></IdentificacaoRps><Prestador><CpfCnpj>%s</CpfCnpj><InscricaoMunicipal>%s</InscricaoMunicipal></Prestador></ConsultarNfseRpsEnvio>]]>
+	</nfseDadosMsg>
+</nfse:ConsultarNfsePorRpsRequest>

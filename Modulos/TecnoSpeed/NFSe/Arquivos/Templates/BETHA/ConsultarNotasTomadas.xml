@@ -1,0 +1,7 @@
+<e:ConsultarNfseEnvio>
+  <Prestador>
+    <Cnpj>%s</Cnpj>
+  </Prestador>
+  %s
+  %s
+</e:ConsultarNfseEnvio>

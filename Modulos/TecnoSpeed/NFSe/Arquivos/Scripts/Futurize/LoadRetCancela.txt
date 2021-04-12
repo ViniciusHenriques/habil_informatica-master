@@ -1,0 +1,53 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+  {$I Utils.txt}
+
+Var
+  _Xml : string;
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CANCELARNFSE';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+   
+    _Xml := StringReplace(Input, 'CancelarNfseResult', 'CancelarNfseResposta', [rfReplaceAll]);
+    
+    _Xml := StringReplace(_Xml, '<![CDATA[', '', []);
+    _Xml := StringReplace(_Xml, ']]>', '', []);
+    if (Pos('PROBLEMA AO CANCELAR NFS-E', UpperCase(_Xml)) > 0)then
+    begin
+      _Xml := StringReplace(_Xml, '<CancelarNfseEn...', '', [rfReplaceAll]);
+      _Xml := StringReplace(_Xml, '<soapenv:Envelo...', '', [rfReplaceAll]);
+      Params.values['notaJaCancelada'] := _Xml;
+    end;
+
+    if Pos('<!--CRLF-->', _Xml) > 0 then
+    begin
+      _Xml := StringReplace(_Xml, '<!--CRLF-->', #13#10, [rfReplaceAll]);
+      _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+      _Xml := StringReplace(_Xml, #13#10, '<!--CRLF-->', [rfReplaceAll]);
+    end
+    else
+      _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="CancelarNfseResposta"]');
+    Params.values['xmlCancelada'] := _Xml;
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

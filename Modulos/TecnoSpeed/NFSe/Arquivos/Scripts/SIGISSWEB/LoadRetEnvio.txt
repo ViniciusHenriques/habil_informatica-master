@@ -1,0 +1,36 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+Var
+  _Xml, _Value : string;
+
+{$I ..\Comuns\Comuns.txt}
+  
+begin
+  Progress('Carregando XML de Retorno de Envio');
+  if Pos('faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, '<!--CRLF-->', '', [rfReplaceAll]);
+    Params.Add('faultstring=' + Input);
+  end
+  else
+  begin
+    _Value := Input;
+    if pos('<!doctype html>', _Value) > 0 then
+    begin
+      _Value := StringReplace(_Value, '<!doctype html>', '', [rfReplaceAll]);
+      _Value := StringReplace(_Value, ';', '\delimiter', [rfReplaceAll]);
+    end;
+    if xmlSelectNodeValue(_Value, '//*[local-name()="notafiscal"]', _Xml) then
+    begin
+      Params.Add('XML='+ _Value);
+      Progress('Retorno carregado com sucesso');
+    end
+    else
+      Params.Add('Texto='+ Input);
+  end;
+end.

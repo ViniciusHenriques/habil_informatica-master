@@ -1,0 +1,33 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _Xml, _Erro : string;
+  
+{$I ..\Comuns\Utils.txt}
+{$I ..\Comuns\Comuns.txt}
+
+begin
+  Progress('Carregando XML de Retorno de Envio');
+
+  _Xml := StringReplace(Input, '<!--CRLF-->', '', [rfReplaceAll]);
+
+  if Pos('<Status>EMITIDA</Status>',_Xml) > 0 then
+    _Xml := XmlSelect(_Xml, '//*[local-name()="Table"]');
+
+  if Pos('<faultstring',_Xml) > 0 then
+  begin
+    if XmlSelectNodeValue(_Xml, '//*[local-name()="faultstring"]', _Erro) then
+      Params.Add('Erro='+_Erro);
+  end
+  else
+  begin
+    Params.Add('XML='+_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

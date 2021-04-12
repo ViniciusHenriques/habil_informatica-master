@@ -1,0 +1,8 @@
+<tem:GerarNfse>
+	<!--Optional:-->
+	<tem:aXml>%s</tem:aXml>
+	<!--Optional:-->
+	<tem:aUsuario>%s</tem:aUsuario>
+	<!--Optional:-->
+	<tem:aSenha>%s</tem:aSenha>
+</tem:GerarNfse>

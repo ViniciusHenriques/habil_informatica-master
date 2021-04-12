@@ -1,0 +1,29 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _Xml : string;
+  _ListFields : TStringList;
+
+{$I ..\Bauru\Utils.txt}
+{$I ..\Comuns\Utils.txt}
+
+begin
+  Progress('Carregando XML de Retorno de Envio');
+  if Pos('<faultstring', Input) > 0 then
+    Params.Add('faultstring=' + Input)
+  else
+  begin
+    _Xml := StringReplace(Input, '&amp;lt;', '&lt;', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '&amp;gt;', '&gt;', [rfReplaceAll]);
+    _Xml := UnEscapeXml(_Xml);    
+    _Xml := ObterXmlRetornoBauru(_Xml);
+    Params.Add('XML=' + _Xml);
+    Progress('XML carregado com sucesso');
+  end;
+end.

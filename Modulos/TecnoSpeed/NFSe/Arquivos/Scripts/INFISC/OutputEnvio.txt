@@ -1,0 +1,23 @@
+{ 
+  Variáveis externas disponíveis: 
+    Output: string; 
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\RealizarDelimitacaoLoteRps.txt}
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+{$I ..\Comuns\Utils.txt}
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXML;
+
+  { Correção da tag 'NFS_e' }
+  Output := StringReplace(Output, 'NFS_e', 'NFS-e', [RFReplaceAll]);
+
+  Output := RealizarDelimitacaoLoteRps(Output, 'NFS-e', 'envioLote');
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_GINFES);
+  Output := RemoverAcentos(Output);
+
+  Progress('Arquivo XML gerado com sucesso.');
+end.

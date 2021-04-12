@@ -1,0 +1,75 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _NFSE,_DSFalha,_DSAlerta,_DSFalhaLote,_DSFalhaDefault : TSpdXSDClientDataSet;
+  _ListFields,_ListDsNamesFalha : TStringList;
+  _Motivo : String;
+
+{$I ..\SH3\Utils.txt}
+
+  procedure GetPonteirosDataSetsXpath(const aDataSetNameSucesso : string;  const aDataSetNamesFalha : TStringList;
+    var aDSSucesso, aDSFalha, aDSFalhaLote, aDSAlerta : TSpdXSDClientDataSet);
+  begin
+    aDSSucesso := Datasets.GetDataSetByName(aDataSetNameSucesso);
+
+    aDSFalha := Datasets.GetDataSetByXpath(aDataSetNamesFalha[0]);
+    aDSFalhaLote := Datasets.GetDataSetByXpath(aDataSetNamesFalha[1]);
+    aDSAlerta := Datasets.GetDataSetByXpath(aDataSetNamesFalha[2]);
+
+    if (aDSSucesso = nil) then
+      RaiseException('DataSet ' + aDataSetNameSucesso + ' não foi carregado corretamente.');
+
+    if (aDSFalha = nil) then
+      RaiseException('DataSet ' + aDataSetNamesFalha[0] + ' não foi carregado corretamente.');
+
+    if (aDSFalhaLote = nil) then
+      RaiseException('DataSet ' + aDataSetNamesFalha[1] + ' não foi carregado corretamente.');
+
+    if (aDSAlerta = nil) then
+      RaiseException('DataSet ' + aDataSetNamesFalha[2] + ' não foi carregado corretamente.');
+  end;
+
+begin
+  Output := '';
+
+  Progress('Obtendo ponteiros dos datasets.');
+
+  if Params.Values['faultstring'] <> '' then
+    Output :=  GetListFieldsFaulstring(_ListFields, Input)
+  else
+  begin
+    _ListDsNamesFalha := TStringList.create;
+    try
+      _ListDsNamesFalha.add('ConsultarLoteRpsResposta/ListaMensagemRetorno/MensagemRetorno');
+      _ListDsNamesFalha.add('ConsultarLoteRpsResposta/ListaMensagemRetornoLote/MensagemRetorno');
+      _ListDsNamesFalha.add('ConsultarLoteRpsResposta/ListaNfse/ListaMensagemAlertaRetorno/MensagemRetorno');
+
+      GetPonteirosDataSetsXpath('CompNfse',_ListDsNamesFalha,_NFSE,_DSFalha,_DSFalhaLote,_DSAlerta);
+      Progress('Adicionando valores aos campos.');
+
+      //Verifica se o conteúdo não é um Alerta ou Lista de erros.
+      if _DSAlerta.FieldByName('codigo').AsString <> '' then
+          _DSFalhaDefault := _DSAlerta
+      else if _DSFalhaLote.FieldByName('codigo').AsString <> '' then
+        _DSFalhaDefault := _DSFalhaLote
+      else
+      begin
+        _DSFalhaDefault := _DSFalha;
+      end;
+
+      Output := GetListFieldsNota(_NFSE,_DSFalhaDefault,_ListFields,'//*[local-name()="CompNfse"]/*[local-name()="Nfse"]'+
+                                                           '/*[local-name()="InfNfse"]/*[local-name()="Numero" and'+
+                                                           ' text()="%s"]/../../..','XmlLote');
+    finally
+      _ListDsNamesFalha.free;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.
+

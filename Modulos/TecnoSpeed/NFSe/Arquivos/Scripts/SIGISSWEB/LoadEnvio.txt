@@ -1,0 +1,369 @@
+{
+  Variðveis externas disponüveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _Tx2: TStringList;
+  _CamposMunicipio: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _ValorCampo: string;
+  _ValorCampoVal, _ValorCampoValtrib: string;
+  _NomeCampo: string;
+  _inicio, _QtdeRps: Integer;  
+  _IndexCidadeConfig: Integer;
+  _CodigoCidadeConfig: string;
+  _linha: string;
+  _PastaTecnoNFSe: string;
+  i : Integer;
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_NOTA = 'notafiscal';
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\BuscarInfoCidade.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\FormataFloat.txt}
+{$I ..\Comuns\Utils.TXT}
+
+  procedure ExceptionValorInvalidoCampo(const aNomeCampo: string);
+  begin
+    RaiseException('Valor inválido para o campo: ' + aNomeCampo);
+  end;
+ 
+  procedure SetarCampoCurrencySigIssWeb(const aCampoCidade, aCampoTecno: string; const SetarSeZero: boolean);
+  var _Valor: Currency;
+  begin
+    _Valor := 0;
+    try
+      _Valor := AnyCurrencyToCurrency(CampoTecno(aCampoTecno));
+    except
+      RaiseException('Valor inválido para o campo: ' + aCampoTecno);
+    end;
+    
+    if ((_Valor <> 0) and (_Valor <> 0.00)) or SetarSeZero then
+      Campo(_DsCidadeAtual, aCampoCidade).AsString :=
+        CurrencyToXsdCurrency(_Valor);
+  end;
+
+  procedure VerificaMoedaZero(const aCampoTecno, aCampoSigIssWeb: string);
+  var
+    _Valor: string;
+  begin
+    _Valor := CampoTecno(aCampoTecno);
+    if (_Valor = '0') or (_Valor = '0.00') then
+      SetarCampoValor(aCampoSigIssWeb, CampoTecno(aCampoTecno))
+    else
+      SetarCampoCurrencySigIssWeb(aCampoSigIssWeb, aCampoTecno, True);
+  end;
+
+  function EnvioSincrono: Boolean;
+  begin
+    Result := UpperCase(Params.Values['EnvioSincrono']) = 'TRUE';
+  end;
+
+  procedure VerificaMaiorQueZero(const aCampoTecno : String);
+  var
+    _Valor : String;
+    _Valor64 : Int64;
+  begin
+    _Valor := StringReplace(CampoTecno(aCampoTecno), '.', '', [rfReplaceAll]);
+    _Valor := StringReplace(_Valor, ',', '', [rfReplaceAll]);
+    VerificaSeEhNumero(aCampoTecno, _Valor);
+    if trim(_Valor) = '' then
+      RaiseException('Valor inválido para o campo ' + aCampoTecno + ', deve ser um número maior que 0.');
+    _Valor64 := StrToInt64(_Valor);
+    if _Valor64 <= 0 then
+      RaiseException('Valor inválido para o campo ' + aCampoTecno + ', deve ser um número maior que 0.');
+  end;
+
+  function IsPreenchidoCorretamente(aNomeTributo : string): boolean;
+  begin
+    Result := ((CampoTecno('Aliquota' + UpperCase(aNomeTributo)) <> '') and (CampoTecno('Aliquota' + UpperCase(aNomeTributo)) <> '0.00')) and 
+              ((CampoTecno('Valor' + aNomeTributo) <> '') and (CampoTecno('Valor' + aNomeTributo) <> '0.00'));
+  end;
+
+begin
+  //Incrementar tambem na declaracao do array  
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+
+  _Tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+
+  try
+    Progress('Carregando conteúdo/arquivo TX2');
+    CarregarTX2;
+
+    //if not EnvioSincrono then
+      //RaiseException('Geração de Xml Assíncrono não suportado pelo padrão SigIssWeb');
+
+    _DsTecnoAtual := nil;
+
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+
+      // Editar dados carregados no Datasets, para fazer algumas transformações
+      Progress('Usando padrão TecnoNFSe: carregando dados das notas');
+
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+
+      if _QtdeRps > 1 then
+        RaiseException('Envio síncrono não suporta envio em Lote, envie somente 1 RPS.');
+
+      _DsTecnoAtual.First;
+
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+
+        _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjPrestador'));
+        VerificaSeEhNumero('CpfCnpjPrestador', _ValorCampo);
+        case length(_ValorCampo) of
+          14:
+            SetarCampoObrigatorioValorTamanho('cnpj_cpf_prestador', 'CpfCnpjPrestador', _ValorCampo, 14);
+          11:
+            SetarCampoObrigatorioValorTamanho('cnpj_cpf_prestador', 'CpfCnpjPrestador', _ValorCampo, 11);
+        else
+          RaiseException('Valor inválido para o campo CpfCnpjPrestador, deve conter 11 ou 14 números');
+        end;
+        SetarCampoValor('exterior_dest', '0');
+
+        ValidaCampoVazio('CpfCnpjTomador');
+        _ValorCampo := RemoveMascara(CampoTecno('CpfCnpjTomador'));
+        VerificaSeEhNumero('CpfCnpjTomador', _ValorCampo);
+        case length(_ValorCampo) of
+          14:
+          begin
+            SetarCampoValor('pessoa_destinatario', 'J');
+            SetarCampoObrigatorioValorTamanho('cnpj_cpf_destinatario', 'CpfCnpjTomador', _ValorCampo, 14);
+          end;
+          11:
+          begin
+            SetarCampoValor('pessoa_destinatario', 'F');
+            SetarCampoObrigatorioValorTamanho('cnpj_cpf_destinatario', 'CpfCnpjTomador', _ValorCampo, 11);
+          end;
+        else
+          RaiseException('Valor inválido para o campo CpfCnpjTomador, deve conter 11 ou 14 números');
+        end;
+
+        _ValorCampo := RemoveMascara(CampoTecno('InscricaoEstadualTomador'));
+        if trim(_ValorCampo) <> '' then
+        begin
+          VerificaSeEhNumero('InscricaoEstadualTomador', _ValorCampo);
+          SetarCampoValor('ie_destinatario', CampoTecno('InscricaoEstadualTomador'));
+        end
+        else
+          SetarCampoValor('ie_destinatario', 'isento');
+
+        _ValorCampo := RemoveMascara(CampoTecno('InscricaoMunicipalTomador'));
+        if _ValorCampo <> '' then
+        begin
+          VerificaSeEhNumero('InscricaoMunicipalTomador', _ValorCampo);        
+          SetarCampoValor('im_destinatario', CampoTecno('InscricaoMunicipalTomador'));
+        end
+        else
+          SetarCampoValor('im_destinatario', 'isento');        
+
+        SetarCampoObrigatorioValorTamanho('razao_social_destinatario', 
+          'RazaoSocialTomador', CampoTecno('RazaoSocialTomador'), 50);
+        SetarCampoObrigatorioValorTamanho('endereco_destinatario',
+          'EnderecoTomador', CampoTecno('EnderecoTomador'), 50);
+        SetarCampoObrigatorioValorTamanho('numero_ende_destinatario',
+          'NumeroTomador', CampoTecno('NumeroTomador'), 5);
+          
+        _ValorCampo := CampoTecno('ComplementoTomador');
+        if _ValorCampo <> '' then
+          SetarCampoObrigatorioValorTamanho('complemento_ende_destinatario',
+            'ComplementoTomador', _ValorCampo, 40)
+        else
+          SetarCampoValor('complemento_ende_destinatario', '.');
+          
+        SetarCampoObrigatorioValorTamanho('bairro_destinatario',
+          'BairroTomador', CampoTecno('BairroTomador'), 100);
+
+        VerificaSeEhNumero('CepTomador', RemoveMascara(CampoTecno('CepTomador')));
+        SetarCampoObrigatorioValorTamanho('cep_destinatario', 'CepTomador', CampoTecno('CepTomador'), 8);
+        
+        _ValorCampo := CampoTecno('DescricaoCidadeTomador');
+        if trim(_ValorCampo) <> '' then
+          SetarCampoValorTamanho('cidade_destinatario', _ValorCampo, 50)
+        else
+        begin
+          _ValorCampo := BuscarInfoCidade('CodIBGE', CampoTecno('CodigoCidadeTomador'), 'NomeMunicSIAFI');
+          if trim(_ValorCampo) <> '' then
+            SetarCampoValorTamanho('cidade_destinatario', _ValorCampo, 50)
+          else
+            RaiseException('Valor inválido para o campo CodigoCidadeTomador,' +
+              ' Informe o código IBGE da cidade do tomador ou o campo DescricaoCidadeTomador'+
+              ' com a descrição da cidade');
+        end;
+
+        _ValorCampo := CampoTecno('UfTomador');
+        if trim(_ValorCampo) <> '' then
+          SetarCampoValorTamanho('uf_destinatario', _ValorCampo, 2)
+        else
+        begin
+          _ValorCampo := BuscarInfoCidade('CodIBGE', CampoTecno('CodigoCidadeTomador'), 'UF');
+          SetarCampoValorTamanho('uf_destinatario', _ValorCampo, 2)
+        end;
+
+        _ValorCampo := UpperCase(CampoTecno('PaisTomador'));
+        if AnsiMatchText(_ValorCampo, ['01058', '1058', 'BRASIL', '']) then
+          SetarCampoValor('pais_destinatario', 'Brasil')
+        else
+          SetarCampoValor('pais_destinatario', CampoTecno('PaisTomador'));
+        
+        SetarTelefone('TelefoneTomador', 'fone_destinatario', 'DDDTomador');
+        SetarCampoValor('email_destinatario', CampoTecno('EmailTomador'));
+        
+        VerificaMaiorQueZero('ValorLiquidoNFSe');
+        SetarCampoCurrencySigIssWeb('valor_nf', 'ValorLiquidoNFSe', True);
+        SetarCampoCurrencySigIssWeb('deducao', 'ValorDeducoes', True);
+        SetarCampoCurrencySigIssWeb('valor_servico', 'ValorServicos', True);
+
+        case AnsiIndexText(CampoTecno('IssRetido'), ['', '1', 'sim', 'true', '2', 'nao', 'não', 'false']) of
+        0: // Vazio: deduzir do TipoTributacao
+          begin
+            if CampoTecno('TipoTributacao') = '7' then
+              SetarCampoValor('iss_retido', 'F')
+            else if CampoTecno('TipoTributacao') = '3' then
+              SetarCampoValor('iss_retido', 'D')
+            else if AnsiMatchText(CampoTecno('TipoTributacao'), ['1','4']) then
+              SetarCampoValor('iss_retido', 'I')
+            else
+              SetarCampoValor('iss_retido', 'N');
+          end;
+          1, 2, 3: SetarCampoValor('iss_retido', 'S');
+          4, 5, 6, 7: SetarCampoValor('iss_retido', 'N');
+        else
+          RaiseException('Valor inválido para o campo IssRetido. Valores aceitos: 1, sim, true, 2, nao, não, false.');
+        end;
+
+        _ValorCampo := CampoTecno('DataEmissao');
+        if _ValorCampo <> '' then
+        begin
+          try
+            _ValorCampo := FormatAnyDateTime(_ValorCampo, 'DD/MM/YYYY');
+          except
+            ExceptionValorInvalidoCampo('DataEmissao. Deve ser informado da seguinte forma: yyyy-mm-dd.');
+          end;
+          SetarCampoValor('data_emissao', _ValorCampo);
+        end
+        else
+          ExceptionValorInvalidoCampo('DataEmissao. É obrigatório e deve ser informado da seguinte forma: yyyy-mm-dd.');
+
+        SetarCampoObrigatorioValorTamanho('descricao',
+          'DiscriminacaoServico', CampoTecno('DiscriminacaoServico'), 2000);
+
+        _ValorCampo := CampoTecno('CodigoItemListaServico');
+        _ValorCampo := FormatarCodigoItemListaServicoSemZeroEsquerda(_ValorCampo, True);
+        VerificaSeEhNumero('CodigoItemListaServico', StringReplace(_ValorCampo, '.', '', [rfReplaceAll]));
+        SetarCampoObrigatorioValorTamanho('id_codigo_servico', 'CodigoItemListaServico', _ValorCampo, 5);
+
+        SetarCampoValor('cancelada', 'N');
+
+        if DivideCampoPorcentagem(CampoTecno('AliquotaISS')) then
+        begin
+          _ValorCampo := StringReplace(CampoTecno('AliquotaISS'), ',', '.',[]);
+          FormataFloat(StrToFloat(_ValorCampo), 6, 4);
+          SetarCampoValor('aliq_iss', _ValorCampo);
+        end
+        else
+          RaiseException('Valor inválido para o campo AliquotaISS, o mesmo deve ser informado da seguinte maneira: "5.00" para 5%');
+
+        SetarCampoCurrencySigIssWeb('valor_iss', 'ValorIss', True);
+
+
+        //Setar os campos com 0,00 antes pois são obrigatorios
+        SetarCampoValor('bc_pis', '0,00');
+        SetarCampoValor('aliq_pis', '0,00');
+        SetarCampoValor('valor_pis', '0,00');        
+        if IsPreenchidoCorretamente('Pis') then
+        begin
+          SetarCampoCurrencySigIssWeb('valor_pis', 'ValorPis', True);
+          SetarCampoCurrencySigIssWeb('aliq_pis', 'AliquotaPis', True);
+          SetarCampoCurrencySigIssWeb('bc_pis', 'BaseCalculo', True);
+        end;        
+        
+        SetarCampoValor('bc_cofins', '0,00');
+        SetarCampoValor('aliq_cofins', '0,00');
+        SetarCampoValor('valor_cofins', '0,00');        
+        if IsPreenchidoCorretamente('Cofins') then
+        begin
+          SetarCampoCurrencySigIssWeb('valor_cofins', 'ValorCofins', True);
+          SetarCampoCurrencySigIssWeb('aliq_cofins', 'AliquotaCofins', True);
+          SetarCampoCurrencySigIssWeb('bc_cofins', 'BaseCalculo', True);
+        end;        
+        
+        SetarCampoValor('bc_csll', '0,00');
+        SetarCampoValor('aliq_csll', '0,00');
+        SetarCampoValor('valor_csll', '0,00');
+        if IsPreenchidoCorretamente('CSLL') then
+        begin
+          SetarCampoCurrencySigIssWeb('valor_csll', 'ValorCSLL', True);
+          SetarCampoCurrencySigIssWeb('aliq_csll', 'AliquotaCSLL', True);
+          SetarCampoCurrencySigIssWeb('bc_csll', 'BaseCalculo', True);
+        end;
+        
+        SetarCampoValor('bc_irrf', '0,00');
+        SetarCampoValor('aliq_irrf', '0,00');
+        SetarCampoValor('valor_irrf', '0,00');
+        if IsPreenchidoCorretamente('ir') then
+        begin
+          SetarCampoCurrencySigIssWeb('valor_irrf', 'ValorIR', True);
+          SetarCampoCurrencySigIssWeb('aliq_irrf', 'Aliquotair', True);
+          SetarCampoCurrencySigIssWeb('bc_irrf', 'BaseCalculo', True);
+        end;
+        
+        SetarCampoValor('bc_inss', '0,00');
+        SetarCampoValor('aliq_inss', '0,00');
+        SetarCampoValor('valor_inss', '0,00');
+        if IsPreenchidoCorretamente('inss') then
+        begin
+          SetarCampoCurrencySigIssWeb('valor_inss', 'Valorinss', True);
+          SetarCampoCurrencySigIssWeb('aliq_inss', 'Aliquotainss', True);
+          SetarCampoCurrencySigIssWeb('bc_inss', 'BaseCalculo', True);
+        end;
+
+
+        SetarCampoValor('sistema_gerador', 'API');
+        
+        _ValorCampo := RemoveMascara(CampoTecno('SerieRps'));
+        SetarCampoObrigatorioValorTamanho('serie_rps', 'SerieRps', CampoTecno('SerieRps'), 8);
+
+        _ValorCampo := RemoveMascara(CampoTecno('NumeroRps'));
+        SetarCampoObrigatorioValorTamanho('rps', 'NumeroRps', CampoTecno('NumeroRps'), 8);
+        VerificaSeEhNumero('NumeroRps', _ValorCampo);
+
+        _DsCidadeAtual.Post;
+        _DsTecnoAtual.Next;
+      end;
+      SetarCamposMunicipio(false);
+    end
+    else
+      Datasets.LoadFromTx2Content(_Tx2.Text);
+  finally
+    _Tx2.Free;
+    _CamposMunicipio.Free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

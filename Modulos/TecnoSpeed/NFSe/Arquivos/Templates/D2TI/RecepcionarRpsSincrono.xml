@@ -1,0 +1,8 @@
+<wsn:executar>
+  <arg0>
+    <![CDATA[<cabecalhoNfseLote xmlns="http://www.ctaconsult.com/nfse" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><versao>1.00</versao><ambiente>%s</ambiente></cabecalhoNfseLote>]]>
+  </arg0>
+  <arg1>
+    <![CDATA[%s]]>
+  </arg1>
+</wsn:executar>

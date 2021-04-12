@@ -1,0 +1,12 @@
+<urn:CancelarNota soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <DadosPrestador xsi:type="urn:tcDadosPrestador">
+    <ccm>%s</ccm>
+    <cnpj>%s</cnpj>
+    <senha>%s</senha>
+  </DadosPrestador>
+  <DescricaoCancelaNota xsi:type="urn:tcDescricaoCancelaNota">    
+    <nota>%s</nota>
+    <motivo>%s</motivo>
+    <email>%s</email>
+  </DescricaoCancelaNota>
+</urn:CancelarNota>

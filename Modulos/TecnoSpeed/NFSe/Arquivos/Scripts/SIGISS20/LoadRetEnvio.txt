@@ -1,0 +1,38 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+  {$I Utils.txt}
+
+Var
+  _Xml : string;
+begin
+  Progress('Carregando configurações do XSDDataset');
+
+  Datasets.XsdElementName := 'EnviarLoteRpsSincronoResposta';
+  Datasets.ConfigSection := 'RETORNO_ENVIOSINCRONO';
+  if Trim(MappingXsdFileName) <> '' then
+    Datasets.MappingFileName := MappingXsdFileName;
+
+  Progress('Carregando XML de Retorno de Envio');
+  _Xml := UnEscapeXml(Input);
+  _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>', '', [rfReplaceAll]);
+  _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="utf-16"?>', '', [rfReplaceAll]);
+  _Xml := StringReplace(_Xml, '<br>', '&lt;br&gt;', [rfReplaceAll]);
+  _Xml := StringReplace(_Xml, 'EnviarLoteRpsResposta', 'EnviarLoteRpsSincronoResposta', [rfReplaceAll]);
+  
+  _Xml := XmlSelect(_Xml, '//*[local-name()="EnviarLoteRpsSincronoResposta"]');
+  
+  if Pos('<faultstring',input) > 0 then
+    Params.Add('faultstring='+input)
+  else
+  begin
+    Datasets.LoadFromXMLContent(_Xml);
+    Params.Add('XML='+_XML);
+    Progress('XML carregado com sucesso');
+  end;
+end.

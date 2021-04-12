@@ -1,0 +1,17 @@
+<ws_cancela_nfse_x_pnfse.Execute>
+	<Sdt_ws_002_in_canc_nfse_x_pnfse>
+		<ws_002_in_prest_insc_seq>%s</ws_002_in_prest_insc_seq>
+		<ws_002_in_prest_cnpj>%s</ws_002_in_prest_cnpj>
+		<ws_002_in_pnfse_senha>%s</ws_002_in_pnfse_senha>
+		<ws_002_in_pnfse_bloco_seq>%s</ws_002_in_pnfse_bloco_seq>
+		<ws_002_in_pnfse_det_seq>%s</ws_002_in_pnfse_det_seq>
+		<ws_002_in_pnfse_det_cod_val>%s</ws_002_in_pnfse_det_cod_val>
+		<ws_002_in_nfse_numero>%s</ws_002_in_nfse_numero>
+		<ws_002_in_nfse_codigo_especie>%s</ws_002_in_nfse_codigo_especie>
+		<ws_002_in_nfse_cod_atividade>%s</ws_002_in_nfse_cod_atividade>
+		<ws_002_in_nfse_codigo_validacao>%s</ws_002_in_nfse_codigo_validacao>
+		<ws_002_in_nfse_mes_p_a>%s</ws_002_in_nfse_mes_p_a>
+		<ws_002_in_nfse_ano_p_a>%s</ws_002_in_nfse_ano_p_a>
+		<ws_002_in_opcao_execucao>%s</ws_002_in_opcao_execucao>
+	</Sdt_ws_002_in_canc_nfse_x_pnfse>
+</ws_cancela_nfse_x_pnfse.Execute>

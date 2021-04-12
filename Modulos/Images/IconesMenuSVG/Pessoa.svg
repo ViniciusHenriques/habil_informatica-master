@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="32px" height="32px" fill="red"><g><g>
+	<g>
+		<circle cx="256" cy="195.84" r="76.8" data-original="#000000" class="active-path" />
+	</g>
+</g><g>
+	<g>
+		<path d="M256,295.68c-71.68,0-128,58.88-128,128h256C384,352,327.68,295.68,256,295.68z" data-original="#000000" class="active-path" />
+	</g>
+</g><g>
+	<g>
+		<path d="M384,90.88c-15.36,0-28.16,5.12-40.96,12.8c25.6,23.04,56.32,76.8,30.72,140.8c2.56,0,81.92,0,87.04-76.8    C463.36,124.16,427.52,90.88,384,90.88z" data-original="#000000" class="active-path" />
+	</g>
+</g><g>
+	<g>
+		<path d="M384,270.08c-10.24,0-30.72,5.12-33.28,5.12c0,0,69.12,43.52,79.36,122.88H512C512,326.4,455.68,270.08,384,270.08z" data-original="#000000" class="active-path" />
+	</g>
+</g><g>
+	<g>
+		<path d="M168.96,101.12c-12.8-7.68-25.6-12.8-40.96-12.8c-43.52,0-76.8,35.84-76.8,76.8c2.56,76.8,81.92,76.8,84.48,76.8    C112.64,172.8,143.36,124.16,168.96,101.12z" data-original="#000000" class="active-path" />
+	</g>
+</g><g>
+	<g>
+		<path d="M128,267.52c-71.68,0-128,56.32-128,128h79.36c15.36-84.48,79.36-122.88,81.92-122.88    C158.72,272.64,135.68,270.08,128,267.52z" data-original="#000000" class="active-path" />
+	</g>
+</g></g> </svg>

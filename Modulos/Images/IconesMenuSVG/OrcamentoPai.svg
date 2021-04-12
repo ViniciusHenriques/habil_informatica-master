@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="32px" height="32px" fill="#7c7979">
+  <g>
+    <g>
+	<g>
+		<path d="M460.8,0H51.2C35.84,0,25.6,10.24,25.6,25.6v460.8c0,15.36,10.24,25.6,25.6,25.6h409.6c15.36,0,25.6-10.24,25.6-25.6V25.6    C486.4,10.24,476.16,0,460.8,0z M128,460.8H76.8v-51.2H128V460.8z M128,358.4H76.8v-51.2H128V358.4z M128,256H76.8v-51.2H128V256z     M230.4,460.8h-51.2v-51.2h51.2V460.8z M230.4,358.4h-51.2v-51.2h51.2V358.4z M230.4,256h-51.2v-51.2h51.2V256z M332.8,460.8    h-51.2v-51.2h51.2V460.8z M332.8,358.4h-51.2v-51.2h51.2V358.4z M332.8,256h-51.2v-51.2h51.2V256z M435.2,460.8H384V307.2h51.2    V460.8z M435.2,256H384v-51.2h51.2V256z M435.2,153.6H76.8V51.2h358.4V153.6z" data-original="#000000" class="active-path" />
+	</g>
+</g>
+  </g> </svg>

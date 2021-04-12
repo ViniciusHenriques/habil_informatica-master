@@ -1,0 +1,1 @@
+<ws:ConsultarNfseServicoTomado soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><xml xsi:type="xsd:string"><![CDATA[<ConsultarNfseServicoTomadoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd"><Consulente><CpfCnpj>%s</CpfCnpj>%s</Consulente>%s<Pagina>%s</Pagina></ConsultarNfseServicoTomadoEnvio>]]></xml></ws:ConsultarNfseServicoTomado>

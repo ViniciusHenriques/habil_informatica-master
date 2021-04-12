@@ -1,0 +1,284 @@
+{
+  Variveis externas disponveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Params: TStringList;
+    Datasets: TspdXSDDataset;
+}
+
+var
+  _CamposMunicipio, _CodCidades,
+  _Tx2: TStringList;
+  _DsTecnoAtual: TSpdXSDClientDataSet;
+  _DsCidadeAtual: TSpdXSDClientDataSet;
+  _PadraoTecnoNFSe: Boolean;
+  _ValorCampo,_DataEmissao,_linha,_NomeCampo,
+  _Cidade, _Uf, _PastaTecnoNFSe, _ListaCidades,
+  _aux : string;
+  _inicio, _QtdeRps, _registro, _NumeroSequencial,
+  _UnidadeServico : Integer;
+  _Data : TDateTime;
+
+const
+  DSTECNO_LOTE = 'TecnoNFSe';
+  DSTECNO_NOTA = 'Rps';
+  DSCIDADE_LOTE = 'Xml';
+  DSCIDADE_NOTA = 'Rps';
+
+
+{$I ..\Comuns\RotinasLerSetarCampos.txt}
+{$I ..\Comuns\BuscarInfoCidade.txt}
+{$I ..\Comuns\FormatarCodigoItemListaServico.txt}
+{$I ..\Comuns\EhComando.txt}
+{$I ..\Comuns\PrepararTecnoNFSeDatasets.txt}
+{$I ..\Comuns\CriarDatasets.txt}
+{$I ..\Comuns\CarregarTX2.txt}
+{$I ..\Comuns\SetarCamposMunicipio.txt}
+{$I ..\Comuns\Comuns.txt}
+{$I ..\Comuns\Utils.TXT}
+ 
+  procedure SetarCampoValorNumericoTamanhoPubliCenter(const aNomeCampoCidade, aValor: string; aTamanho: integer); 
+  begin 
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" do campo ' + aNomeCampoCidade + ' ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)'); 
+
+    if (Length(aValor) = aTamanho) then 
+      SetarCampoValor(aNomeCampoCidade, aValor) 
+    else 
+      SetarCampoValor(aNomeCampoCidade, PreencheZerosEsquerda(aValor, aTamanho)); 
+  end;
+
+  procedure SetarCampoValorNumericoTamanhoObrigPubliCenter(const aNomeCampoCidade, aValor: string; aTamanho: integer); 
+  begin 
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" do campo ' + aNomeCampoCidade + ' ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)');
+
+    if Length(aValor) <> 0 then
+    begin
+      if (Length(aValor) = aTamanho) then 
+        SetarCampoValor(aNomeCampoCidade, aValor) 
+      else 
+        SetarCampoValor(aNomeCampoCidade, PreencheZerosEsquerda(aValor, aTamanho));
+    end
+    else
+      RaiseException('Para essa cidade o campo "' + aNomeCampoCidade + '" é obrigatório e deve conter até ' + inttostr(aTamanho) + ' caractere(s)');
+  end;
+  
+  procedure SetarCampoValorStrTamanhoPubliCenter(const aNomeCampoCidade, aValor: string; aTamanho: integer); 
+  begin 
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" do campo ' + aNomeCampoCidade + ' ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)');
+
+    if (Length(aValor) = aTamanho) then 
+      SetarCampoValor(aNomeCampoCidade, aValor) 
+    else 
+      SetarCampoValor(aNomeCampoCidade, PreencheComEspacos(aValor, aTamanho));
+  end; 
+
+  procedure SetarCampoValorStrTamanhoObrigPubliCenter(const aNomeCampoCidade, aValor: string; aTamanho: integer); 
+  begin 
+    if Length(aValor) > aTamanho then 
+      RaiseException('O valor: "' + aValor + '" do campo ' + aNomeCampoCidade + ' ultrapassou o limite de ' + inttostr(aTamanho) + ' Caractere(s)');
+
+    if Length(aValor) <> 0 then
+    begin
+      if (Length(aValor) = aTamanho) then 
+        SetarCampoValor(aNomeCampoCidade, aValor) 
+      else 
+        SetarCampoValor(aNomeCampoCidade, PreencheComEspacos(aValor, aTamanho));
+    end
+    else
+      RaiseException('Para essa cidade o campo "' + aNomeCampoCidade + '" é obrigatório e deve conter até ' + inttostr(aTamanho) + ' caractere(s)');
+  end;  
+
+begin
+  Progress('Criando XSDDataset');
+  CriarDatasets;
+  _tx2 := TStringList.Create;
+  _CamposMunicipio := TStringList.Create;
+  _CodCidades := TStringList.create;
+  _NumeroSequencial := 2;
+  _UnidadeServico := 1;
+  
+  try
+    Progress('Carregando contedo/arquivo TX2');
+    CarregarTX2;
+
+    _DsTecnoAtual := nil;
+    if _PadraoTecnoNFSe then
+    begin
+      Progress('Usando padrão TecnoNFSe: preparando datasets');
+      PrepararTecnoNFSeDatasets;
+      // Editar dados carregados no Datasets, para fazer algumas transformaes
+
+      Progress('Usando padrão TecnoNFSe: carregando dados das notas');
+      _DsTecnoAtual := TecnoNFSeDS.GetDataSetByName(DSTECNO_NOTA);
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_NOTA);
+      _QtdeRps := _DsTecnoAtual.RecordCount;
+      _DsTecnoAtual.First;
+      
+      while not _DsTecnoAtual.Eof do
+      begin
+        _DsCidadeAtual.Append;
+        
+        if _QtdeRps > 20 then
+          RaiseException('Só é possível enviar 20 RPS por Lote.');  
+        
+        //Identificação do RPS
+        SetarCampoValorStrTamanhoPubliCenter('TipoLinhaRps', 'RPS2', 4);
+        SetarCampoValorNumericoTamanhoPubliCenter('NumeroSequencialRps', IntToStr(_NumeroSequencial), 6);
+        _NumeroSequencial := _NumeroSequencial + 1;
+        SetarCampoValorStrTamanhoPubliCenter('VersaoLeiauteRps', '5', 1);
+        
+        SetarCampoValorNumericoTamanhoPubliCenter('NumeroNota', CampoTecno('NumeroNFReferencia'), 10);
+        SetarCampoValorNumericoTamanhoObrigPubliCenter('NumeroRps', CampoTecno('NumeroRps'), 10);
+        
+        SetarCampoValorStrTamanhoPubliCenter('CodigoVerificacao', '', 10);
+        
+        SetarCampoValorStrTamanhoObrigPubliCenter('MunicipioPrestacao', CampoTecno('DescricaoCidadePrestacao'), 50);
+        SetarCampoValorStrTamanhoObrigPubliCenter('UfPrestacao', CampoTecno('UfCidadePrestacao'), 2);
+        
+        SetarCampoValorNumericoTamanhoPubliCenter('NumeroNfseSubstituida', CampoTecno('NumeroNfseSubstituida'), 10);
+        
+        if CampoTecno('Competencia') <> '' then
+        begin
+          _ValorCampo := FormatAnyDateTime(CampoTecno('Competencia'), 'YYYYMM'); 
+          SetarCampoValorNumericoTamanhoObrigPubliCenter('MesCompetencia', Copy(_ValorCampo, 5, Length(_ValorCampo)), 2);
+          SetarCampoValorNumericoTamanhoObrigPubliCenter('AnoCompetencia', Copy(_ValorCampo, 0, 4), 4);
+        end
+        else
+          RaiseException('Para essa cidade o campo Competencia é obrigatorio e deve ser no seguinte formato: YYYY-MM-DDThh:mm:ss');
+
+        if CampoTecno('DataEmissao') <> '' then
+        begin
+          _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissao'), 'YYYYMMDD');
+          SetarCampoValorNumericoTamanhoObrigPubliCenter('DataEmissao', _ValorCampo, 8);
+        end
+        else
+          RaiseException('Para essa cidade o campo DataEmissao é obrigatorio e deve ser no seguinte formato: YYYY-MM-DDThh:mm:ss');
+        
+        case StrToInt(CampoTecno('NaturezaTributacao')) of
+          0, 1, 2, 3, 4, 5: SetarCampoValorNumericoTamanhoObrigPubliCenter('NaturezaOperacao', CampoTecno('NaturezaTributacao'), 1);
+          else
+            RaiseException('Valor inválido para o campo "NaturezaTributacao". Valores aceitos: ' + #13#10 + '0 - Tributação no município;' + #13#10 +
+                                                                                                            '1 - Tributação fora do município;' + #13#10 +
+                                                                                                            '2 - Isenção;' + #13#10 +
+                                                                                                            '3 - Exigibilidade suspensa por decisão judicial;' + #13#10 +
+                                                                                                            '4 - Imune;' + #13#10 +
+                                                                                                            '5 - Exigibilidade suspensa por procedimento administrativo.');
+        end;
+        
+        //Informações Tomador
+        SetarCampoValorStrTamanhoObrigPubliCenter('RazaoSocialTomador', CampoTecno('RazaoSocialTomador'), 100);
+        SetarCampoValorStrTamanhoObrigPubliCenter('CpfCnpjTomador', RemoveMascara(CampoTecno('CpfCnpjTomador')), 20);
+        SetarCampoValorStrTamanhoPubliCenter('InscricaoEstadualTomador', RemoveMascara(CampoTecno('InscricaoEstadualTomador')), 20);
+        SetarCampoValorStrTamanhoPubliCenter('InscricaoMunicipalTomador', RemoveMascara(CampoTecno('InscricaoMunicipalTomador')), 20);
+        
+        SetarCampoValorStrTamanhoObrigPubliCenter('EnderecoTomador', CampoTecno('EnderecoTomador'), 100);
+        SetarCampoValorStrTamanhoObrigPubliCenter('BairroTomador', CampoTecno('BairroTomador'), 60);
+        SetarCampoValorStrTamanhoObrigPubliCenter('MunicipioTomador', CampoTecno('DescricaoCidadeTomador'), 60);
+        SetarCampoValorStrTamanhoObrigPubliCenter('UfTomador', CampoTecno('UfTomador'), 2);
+        SetarCampoValorNumericoTamanhoPubliCenter('CepTomador', RemoveMascara(CampoTecno('CepTomador')), 8);
+        SetarCampoValorStrTamanhoPubliCenter('EmailTomador', CampoTecno('EmailTomador'), 150);
+        
+        //Valores do RPS
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorDesconto', RemoveMascara(CampoTecno('DescontoCondicionado')), 16);
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorDeducoes', RemoveMascara(CampoTecno('ValorDeducoes')), 16);
+        
+        SetarCampoValorNumericoTamanhoObrigPubliCenter('ItemListaServico', RemoveMascara(CampoTecno('CodigoItemListaServico')), 10);
+        
+        case StrToInt(CampoTecno('NaturezaTributacao')) of
+          2, 3, 4, 5: SetarCampoValorNumericoTamanhoObrigPubliCenter('Aliquota', '00000', 5);
+          else
+            SetarCampoValorNumericoTamanhoObrigPubliCenter('Aliquota', RemoveMascara(CampoTecno('AliquotaISS')), 5);
+        end;
+        
+        case StrToInt(CampoTecno('IssRetido')) of
+          1: SetarCampoValorNumericoTamanhoObrigPubliCenter('IssRetido', 'S', 1);
+          2: SetarCampoValorNumericoTamanhoObrigPubliCenter('IssRetido', 'N', 1);
+          else
+            RaiseException('Valor Inválido para o campo "IssRetido". Valores aceitos: 1 - Sim; 2 - Não.');
+        end;
+        
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorPis', RemoveMascara(CampoTecno('ValorPis')), 16);
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorCofins', RemoveMascara(CampoTecno('ValorCofins')), 16);
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorIr', RemoveMascara(CampoTecno('ValorIr')), 16);
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorCsll', RemoveMascara(CampoTecno('ValorCsll')), 16);
+        SetarCampoValorNumericoTamanhoPubliCenter('ValorInss', RemoveMascara(CampoTecno('ValorInss')), 16);
+        
+        SetarCampoValorStrTamanhoPubliCenter('Observacao', CampoTecno('OutrasInformacoes'), 500);
+        
+        //Identificação do Serviço
+        SetarCampoValorStrTamanhoPubliCenter('TipoLinhaServico', 'RPS3', 4);
+        SetarCampoValorNumericoTamanhoPubliCenter('NumeroSequencialServico', IntToStr(_NumeroSequencial), 6);
+        _NumeroSequencial := _NumeroSequencial + 1;
+        
+        SetarCampoValorNumericoTamanhoPubliCenter('UnidadeServico', IntToStr(_UnidadeServico), 2);
+        _UnidadeServico := _UnidadeServico + 1;
+        
+        if _UnidadeServico = 2 then
+          SetarCampoValorStrTamanhoObrigPubliCenter('DiscriminacaoServico', CampoTecno('DiscriminacaoServico'), 100)
+        else
+          SetarCampoValorStrTamanhoPubliCenter('DiscriminacaoServico', CampoTecno('DiscriminacaoServico'), 100);
+        
+        if CampoTecno('DiscriminacaoServico') <> '' then
+          SetarCampoValorNumericoTamanhoObrigPubliCenter('QuantidadeServicos', CampoTecno('QuantidadeServicos'), 7)
+        else
+          SetarCampoValorNumericoTamanhoPubliCenter('QuantidadeServicos', CampoTecno('QuantidadeServicos'), 7);
+          
+        if CampoTecno('QuantidadeServicos') <> '' then
+          SetarCampoValorNumericoTamanhoObrigPubliCenter('ValorUnitarioServico', RemoveMascara(CampoTecno('ValorUnitarioServico')), 16)
+        else
+          SetarCampoValorNumericoTamanhoPubliCenter('ValorUnitarioServico', RemoveMascara(CampoTecno('ValorUnitarioServico')), 16);
+          
+        if CampoTecno('DataEmissaoNFSeCancelada') <> '' then
+        begin
+          SetarCampoValorStrTamanhoPubliCenter('TipoLinhaCancelamento', 'RPS4', 4);
+          SetarCampoValorNumericoTamanhoPubliCenter('NumeroSequencialCancelamento', IntToStr(_NumeroSequencial), 6);
+          _NumeroSequencial := _NumeroSequencial + 1;
+          
+          _ValorCampo := FormatAnyDateTime(CampoTecno('DataEmissaoNFSeCancelada'), 'YYYYMMDD');
+          SetarCampoValorNumericoTamanhoPubliCenter('DataCancelamento', _ValorCampo, 8);
+          
+          SetarCampoValorStrTamanhoPubliCenter('MotCancelamento', CampoTecno('MotCancelamento'), 250);
+        end;
+
+        _DsCidadeAtual.Post;
+        _DsTecnoAtual.Next;
+
+      end;
+
+      // Atribuir os campos do lote
+      Progress('Usando Padrão TecnoNFSe: carregando dados do lote');
+
+      _DsCidadeAtual := Datasets.GetDataSetByName(DSCIDADE_LOTE);
+      _DsCidadeAtual.Append;      
+
+      //Identificação da Empresa
+      SetarCampoValorStrTamanhoPubliCenter('TipoLinhaLote', 'RPS1', 4);
+      SetarCampoValorNumericoTamanhoPubliCenter('NumeroSequencialLote', '1', 6);
+      
+      _ValorCampo := TecnoNFSeDS.GetDataSetByName(DSTECNO_LOTE).FieldByName('InscricaoMunicipalRemetente').AsString;
+      SetarCampoValorStrTamanhoObrigPubliCenter('IncricaoMunicipalPrestador', RemoveMascara(_ValorCampo), 15);
+      
+      SetarCampoValorStrTamanhoPubliCenter('VersaoLeiaute', '5', 1);      
+      
+      SetarCampoValorStrTamanhoPubliCenter('TipoLinha', 'RPS9', 4);
+      SetarCampoValorNumericoTamanhoPubliCenter('NumeroSequencial', IntToStr(_NumeroSequencial), 6);
+      _NumeroSequencial := _NumeroSequencial + 1;
+      
+      SetarCampoValorNumericoTamanhoObrigPubliCenter('QuantidadeRps', IntToStr(_QtdeRps), 6);
+
+      Datasets.GetDataSetByName(DSCIDADE_LOTE).Post;
+      
+      SetarCamposMunicipio(true);
+    end
+    else
+      RaiseException('Utilize o Tx2 padrão TecnoNFSe para gerar o contedo da remessa');
+  finally
+    _tx2.free;
+    _CamposMunicipio.free;
+    Progress('Arquivo TX2 carregado com Sucesso')
+  end;
+end.

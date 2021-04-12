@@ -1,0 +1,10 @@
+<trib:nfse_web_service.CONSULTARNFSEFAIXA>
+	<trib:Consultarnfseporfaixarequest>
+		<trib:nfseCabecMsg>
+			<![CDATA[<cabecalho xmlns="http://www.abrasf.org.br/nfse.xsd" versao="2.02"><versaoDados>2.02</versaoDados></cabecalho>]]>
+		</trib:nfseCabecMsg>
+		<trib:nfseDadosMsg>
+			<![CDATA[<ConsultarNfseFaixaEnvio xmlns="http://www.abrasf.org.br/nfse.xsd"><Prestador><CpfCnpj>%s</CpfCnpj><InscricaoMunicipal>%s</InscricaoMunicipal></Prestador><Faixa><NumeroNfseInicial>%s</NumeroNfseInicial><NumeroNfseFinal>%s</NumeroNfseFinal></Faixa><Pagina>1</Pagina></ConsultarNfseFaixaEnvio>]]>
+		</trib:nfseDadosMsg>
+	</trib:Consultarnfseporfaixarequest>
+</trib:nfse_web_service.CONSULTARNFSEFAIXA>

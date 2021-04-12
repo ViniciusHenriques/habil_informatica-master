@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Xml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Lote"/>
+        <xs:element ref="TotalizacaoArquivo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Lote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Rps"/>
+        <xs:element ref="Empresa"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroSequencial"/>
+        <xs:element ref="VersaoLeiaute"/>
+        <xs:element ref="NumeroNota"/>
+        <xs:element ref="NumeroRps"/>
+        <xs:element ref="CodigoVerificacao"/>
+        <xs:element ref="MunicipioPrestacao"/>
+        <xs:element ref="UfPrestacao"/>
+        <xs:element ref="NumeroNfseSubstituida"/>
+        <xs:element ref="MesCompetencia"/>
+        <xs:element ref="AnoCompetencia"/>
+        <xs:element ref="DataEmissao"/>
+        <xs:element ref="NaturezaOperacao"/>
+        <xs:element ref="RazaoSocialTomador"/>
+        <xs:element ref="CpfCnpjTomador"/>
+        <xs:element ref="InscricaoEstadualTomador"/>
+        <xs:element ref="InscricaoMunicipalTomador"/>
+        <xs:element ref="EnderecoTomador"/>
+        <xs:element ref="BairroTomador"/>
+        <xs:element ref="MunicipioTomador"/>
+        <xs:element ref="UfTomador"/>
+        <xs:element ref="CepTomador"/>
+        <xs:element ref="EmailTomador"/>
+        <xs:element ref="Valordesconto"/>
+        <xs:element ref="ValorDeducoes"/>
+        <xs:element ref="CodigoItemListaServico"/>
+        <xs:element ref="Aliquota"/>
+        <xs:element ref="IssRetido"/>
+        <xs:element ref="ValorPis"/>
+        <xs:element ref="ValorCofins"/>
+        <xs:element ref="ValorIr"/>
+        <xs:element ref="ValorCsll"/>
+        <xs:element ref="ValorInss"/>
+        <xs:element ref="Observacao"/>
+        <xs:element ref="Servico"/>
+        <xs:element minOccurs="0" ref="InformacoesCancelamento"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NumeroNota" type="xs:integer"/>
+  <xs:element name="NumeroRps" type="xs:integer"/>
+  <xs:element name="CodigoVerificacao" type="xs:string"/>
+  <xs:element name="MunicipioPrestacao" type="xs:string"/>
+  <xs:element name="UfPrestacao" type="xs:NCName"/>
+  <xs:element name="NumeroNfseSubstituida" type="xs:integer"/>
+  <xs:element name="MesCompetencia" type="xs:integer"/>
+  <xs:element name="AnoCompetencia" type="xs:integer"/>
+  <xs:element name="DataEmissao" type="xs:integer"/>
+  <xs:element name="NaturezaOperacao" type="xs:integer"/>
+  <xs:element name="RazaoSocialTomador" type="xs:string"/>
+  <xs:element name="CpfCnpjTomador" type="xs:string"/>
+  <xs:element name="InscricaoEstadualTomador" type="xs:string"/>
+  <xs:element name="InscricaoMunicipalTomador" type="xs:string"/>
+  <xs:element name="EnderecoTomador" type="xs:string"/>
+  <xs:element name="BairroTomador" type="xs:string"/>
+  <xs:element name="MunicipioTomador" type="xs:string"/>
+  <xs:element name="UfTomador" type="xs:NCName"/>
+  <xs:element name="CepTomador" type="xs:integer"/>
+  <xs:element name="EmailTomador" type="xs:string"/>
+  <xs:element name="Valordesconto" type="xs:integer"/>
+  <xs:element name="ValorDeducoes" type="xs:integer"/>
+  <xs:element name="CodigoItemListaServico" type="xs:integer"/>
+  <xs:element name="Aliquota" type="xs:integer"/>
+  <xs:element name="IssRetido" type="xs:NCName"/>
+  <xs:element name="ValorPis" type="xs:integer"/>
+  <xs:element name="ValorCofins" type="xs:integer"/>
+  <xs:element name="ValorIr" type="xs:integer"/>
+  <xs:element name="ValorCsll" type="xs:integer"/>
+  <xs:element name="ValorInss" type="xs:integer"/>
+  <xs:element name="Observacao" type="xs:string"/>
+  <xs:element name="Servico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroSequencial"/>
+        <xs:element ref="UnidadeServico"/>
+        <xs:element ref="DiscriminacaoServico"/>
+        <xs:element ref="QuantidadeServicos"/>
+        <xs:element ref="ValorUnitarioServico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnidadeServico" type="xs:integer"/>
+  <xs:element name="DiscriminacaoServico" type="xs:string"/>
+  <xs:element name="QuantidadeServicos" type="xs:integer"/>
+  <xs:element name="ValorUnitarioServico" type="xs:integer"/>
+  <xs:element name="InformacoesCancelamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroSequencial"/>
+        <xs:element ref="DataCancelamento"/>
+        <xs:element ref="MotCancelamento"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DataCancelamento" type="xs:integer"/>
+  <xs:element name="MotCancelamento" type="xs:string"/>
+  <xs:element name="Empresa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroSequencial"/>
+        <xs:element ref="IncricaoMunicipalPrestador"/>
+        <xs:element ref="VersaoLeiaute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IncricaoMunicipalPrestador" type="xs:string"/>
+  <xs:element name="TotalizacaoArquivo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroSequencial"/>
+        <xs:element ref="QuantidadeRps"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuantidadeRps" type="xs:integer"/>
+  <xs:element name="TipoLinha" type="xs:NCName"/>
+  <xs:element name="NumeroSequencial" type="xs:integer"/>
+  <xs:element name="VersaoLeiaute" type="xs:integer"/>
+</xs:schema>

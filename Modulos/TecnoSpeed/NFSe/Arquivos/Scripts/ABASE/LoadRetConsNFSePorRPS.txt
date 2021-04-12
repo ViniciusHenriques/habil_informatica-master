@@ -1,0 +1,63 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+
+{$I Utils.txt}
+
+Var
+  _Xml, _Discriminacao: string;
+  
+  function TratarDiscriminacao(const aXml: String): String;
+  var
+    _discrIni, _discrFim : Integer;
+
+  begin
+    _discrIni := Pos('&amp;lt;Discriminacao&amp;gt;', aXml);
+    _discrFim := Pos('&amp;lt;/Discriminacao&amp;gt;', aXml) + 30;
+    _discrFim := _discrFim - _discrIni;    
+    _Discriminacao := Copy(aXml, _discrIni, _discrFim);
+    Result := StringReplace(aXml, _Discriminacao, '####DISCRIMINACAO####', [rfReplaceAll]);
+    _Discriminacao := StringReplace(_Discriminacao, '&amp;lt;Discriminacao&amp;gt;', '<Discriminacao>', [rfReplaceAll]);
+    _Discriminacao := StringReplace(_Discriminacao, '&amp;lt;/Discriminacao&amp;gt;', '</Discriminacao>', [rfReplaceAll]);  
+  end;
+
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CONSULTARNFSEPORRPS';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+
+    _Xml := Input;
+    _Xml := TratarDiscriminacao(_Xml);
+    
+    _Xml := StringReplace(_Xml, '<?xml version="1.0"?>', '', [rfReplaceAll]);
+    _Xml := UnEscapeXml(_Xml);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="utf-8"?>', '', [rfReplaceAll]);
+    
+    _Xml := StringReplace(_Xml, '####DISCRIMINACAO####', _Discriminacao, [rfReplaceAll]);
+    _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="ConsultarNfseRpsResposta"]');
+
+    if _Xml = '' then
+      _Xml := XmlDeepNodeSearch(Input, Datasets.XsdElementName, '//*[local-name()="ConsultarNfseRpsResposta"]');
+
+    Params.Add('XmlNFSe='+_Xml);
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

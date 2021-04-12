@@ -1,0 +1,70 @@
+;***************************************************************************************************
+;        ARQUIVO DE MAPEAMENTO PARA O PADRÃO D2TI
+;***************************************************************************************************
+
+;***************************************************************************************************
+;Configuração do NFSeDataset para Envio de Lote de RPS (Proxy)
+;***************************************************************************************************
+[RETORNO_ENVIOSINCRONO]
+XSDElementName=retornoNfseLote
+XSDFile=RetornoRecepcaoNFse_v1.00.xsd
+XSDStartNode=
+IgnoredXPaths=
+UseNamespacePrefixes=0
+XMLHeader=
+RootAttributes=
+
+;***************************************************************************************************
+;Nomes dos Campos: Envio de Lote de RPS Síncrono (Proxy)
+;***************************************************************************************************
+[retornoNfseLote]
+NumeroNfse=retornoNfseLote/numeroNota
+CodigoVerificacao=
+DataEmissaoNfse=
+NfseSubstituida=
+Cpf=
+Cnpj=
+InscricaoMunicipal=
+CpfPrestador=
+CnpjPrestador=
+InscMunicipalPrestador=
+NumeroRPS=
+SerieRPS=
+TipoRPS=
+DataEmissaoRPS=
+Status=retornoNfseLote/codigoStatus
+DataHoraCancelamento=
+NfseSubstituidora=
+;MensagemRetorno
+Codigo=retornoNfseLote/erros/erro/codigo
+Mensagem=retornoNfseLote/erros/erro/descricao
+
+
+;*****************************************************************************************************************************************
+;Configuração do XsdDataset para Retorno de Cancelamento
+;*****************************************************************************************************************************************
+[RETORNO_CANCELARNFSE]
+XSDElementName=retornoCancelamentoNfseLote
+XSDFile=RetornoCancelamentoNFse_v1.00.xsd
+XSDStartNode=
+IgnoredXPaths=
+UseNamespacePrefixes=0
+XMLHeader=
+RootAttributes=
+
+;***************************************************************************************************
+;Nomes dos Campos: Cancelamento
+;***************************************************************************************************
+[retornoCancelamentoNfseLote]
+NumeroNFSe=retornoCancelamentoNfseLote/numeroNota
+CpfPrestador=
+CnpjPrestador=
+InscricaoMunicipal=
+CodigoMunicipio=retornoCancelamentoNfseLote/codigoMunicipio
+CodigoCancelamento=retornoCancelamentoNfseLote/protocolo
+DataCancelamento=
+
+;Retorno de erro
+Codigo=retornoCancelamentoNfseLote/erros/erro/codigo
+Mensagem=retornoCancelamentoNfseLote/erros/erro/descricao
+Correcao=

@@ -1,0 +1,23 @@
+;***************************************************************************************************
+;        ARQUIVO DE MAPEAMENTO PARA O PADRÃO EddyData
+;***************************************************************************************************
+
+;***************************************************************************************************
+;Configuração do NFSeDataset para Envio de Lote de RPS (Proxy)
+;***************************************************************************************************
+[RETORNO_ENVIAR]
+XSDElementName=Resposta
+XSDFile=EddyDataRetorno.xsd
+XSDStartNode=
+IgnoredXPaths=
+UseNamespacePrefixes=0
+XMLHeader=
+RootAttributes=
+
+;***************************************************************************************************
+;Nomes dos Campos: Envio de Lote de RPS (Proxy)
+;***************************************************************************************************
+[Resposta]
+Status=Resposta/Status
+Mensagem=Resposta/Mensagem
+Dados=Resposta/Dados

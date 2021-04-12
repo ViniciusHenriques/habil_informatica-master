@@ -1,0 +1,92 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I Utils.txt}
+    
+Var
+  _DSSucesso, _DSFalha, _NFSE,_DSFalhaLote,_DSAlerta, _DSFalhaDefault : TSpdXSDClientDataSet;
+  _ListFields, _ListDsNamesFalha, _ListDsNamesFalhaSubs : TStringList;
+
+  function EnvioSincrono : Boolean;
+  begin
+    Result := Params.Values['EnvioSincrono'] = 'true';
+  end;
+
+  function GetNumeroProtocolo : string;
+  begin
+    if (GetMotivo(_DSFalha) = '') then
+      Result := _DSSucesso.FieldByName('Protocolo').AsString
+    else
+      Result := '';
+  end;
+
+  function GetStatusEnvio : string;
+  begin
+    if (GetMotivo(_DSFalha) <> '') then
+      Result := 'ERRO'
+    else
+      Result := 'SUCESSO';
+  end;
+  
+  function SubstituirNFSe : Boolean;
+  begin
+    Result := Params.Values['SubstituirNFSe'] = 'true';
+  end;
+  
+  procedure GetPonteirosDataSetsXpathSubs(const aDataSetNameSucesso : string;  const aDataSetNamesFalha : TStringList;
+    var aDSSucesso, aDSFalha, aDSAlerta : TSpdXSDClientDataSet);
+  begin
+    aDSSucesso := Datasets.GetDataSetByName(aDataSetNameSucesso);
+    aDSFalha := Datasets.GetDataSetByXpath(aDataSetNamesFalha[0]);
+
+    if (aDSSucesso = nil) then
+       RaiseException('DataSet ' + aDataSetNameSucesso + ' nao foi carregado corretamente.');
+
+    if (aDSFalha = nil) then
+        RaiseException('DataSet ' + aDataSetNamesFalha[0] + ' nao foi carregado corretamente.');
+
+  end;
+
+begin
+  if Params.Values['faultstring'] <> '' then
+    Output := GetListFieldsFaulstring(_ListFields, Input)
+  else
+  begin
+    Progress('Adicionando valores aos campos.');
+    _ListDsNamesFalha := TStringList.create;
+    _ListDsNamesFalhaSubs := TStringList.create;
+    try
+      _ListDsNamesFalha.add('EnviarLoteRpsSincronoResposta/ListaMensagemRetorno/MensagemRetorno');
+      _ListDsNamesFalha.add('EnviarLoteRpsSincronoResposta/ListaMensagemRetornoLote/MensagemRetorno');
+      _ListDsNamesFalhaSubs.add('SubstituirNfseResposta/ListaMensagemRetorno/MensagemRetorno');
+      
+      if SubstituirNFSe then
+        GetPonteirosDataSetsXpathSubs('SubstituirNfseResposta', _ListDsNamesFalhaSubs, _NFSE, _DSFalha, _DSAlerta)
+      else
+        GetPonteirosDataSetsXpath('CompNfse',_ListDsNamesFalha,_NFSE,_DSFalha,_DSFalhaLote,_DSAlerta);
+        
+      //Verifica se o conteúdo não é um Alerta ou Lista de erros.
+      if not SubstituirNFSe then
+      begin
+        if _DSFalhaLote.FieldByName('codigo').AsString <> '' then
+        _DSFalhaDefault := _DSFalhaLote
+        else        
+          _DSFalhaDefault := _DSFalha;        
+      end
+      else      
+        _DSFalhaDefault := _DSFalha;      
+
+      Output :=  GetListFieldsNota( _NFSE, _DSFalhaDefault, _ListFields, '', 'XmlNfse');
+
+    Finally
+      _ListDsNamesFalha.Free;
+      _ListDsNamesFalhaSubs.Free;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.

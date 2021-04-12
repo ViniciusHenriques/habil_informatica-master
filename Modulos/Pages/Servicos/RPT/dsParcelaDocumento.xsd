@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsParcelaDocumento" targetNamespace="http://tempuri.org/dsMovAcesso.xsd" xmlns:mstns="http://tempuri.org/dsMovAcesso.xsd" xmlns="http://tempuri.org/dsMovAcesso.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsParcelaDocumento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsParcelaDocumento" msprop:Generator_UserDSName="dsParcelaDocumento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DS_VW_PARCELA_DOCUMENTO" msprop:Generator_TableClassName="DS_VW_PARCELA_DOCUMENTODataTable" msprop:Generator_TableVarName="tableDS_VW_PARCELA_DOCUMENTO" msprop:Generator_RowChangedName="DS_VW_PARCELA_DOCUMENTORowChanged" msprop:Generator_TablePropName="DS_VW_PARCELA_DOCUMENTO" msprop:Generator_RowDeletingName="DS_VW_PARCELA_DOCUMENTORowDeleting" msprop:Generator_RowChangingName="DS_VW_PARCELA_DOCUMENTORowChanging" msprop:Generator_RowEvHandlerName="DS_VW_PARCELA_DOCUMENTORowChangeEventHandler" msprop:Generator_RowDeletedName="DS_VW_PARCELA_DOCUMENTORowDeleted" msprop:Generator_RowClassName="DS_VW_PARCELA_DOCUMENTORow" msprop:Generator_UserTableName="DS_VW_PARCELA_DOCUMENTO" msprop:Generator_RowEvArgName="DS_VW_PARCELA_DOCUMENTORowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_DOCUMENTO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="CD_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="CD_DOCUMENTOColumn" msprop:Generator_UserColumnName="CD_DOCUMENTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_PARCELA" msprop:Generator_ColumnVarNameInTable="columnCD_PARCELA" msprop:Generator_ColumnPropNameInRow="CD_PARCELA" msprop:Generator_ColumnPropNameInTable="CD_PARCELAColumn" msprop:Generator_UserColumnName="CD_PARCELA" type="xs:int" minOccurs="0" />
+              <xs:element name="DT_VENCIMENTO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDT_VENCIMENTO" msprop:Generator_ColumnPropNameInRow="DT_VENCIMENTO" msprop:Generator_ColumnPropNameInTable="DT_VENCIMENTOColumn" msprop:Generator_UserColumnName="DT_VENCIMENTO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="VL_PARCELA" msprop:Generator_ColumnVarNameInTable="columnVL_PARCELA" msprop:Generator_ColumnPropNameInRow="VL_PARCELA" msprop:Generator_ColumnPropNameInTable="VL_PARCELAColumn" msprop:Generator_UserColumnName="VL_PARCELA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CD_DOC_PAGAMENTO" msprop:Generator_ColumnVarNameInTable="columnCD_DOC_PAGAMENTO" msprop:Generator_ColumnPropNameInRow="CD_DOC_PAGAMENTO" msprop:Generator_ColumnPropNameInTable="CD_DOC_PAGAMENTOColumn" msprop:Generator_UserColumnName="CD_DOC_PAGAMENTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DG_DOCUMENTO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDG_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="DG_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="DG_DOCUMENTOColumn" msprop:Generator_UserColumnName="DG_DOCUMENTO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

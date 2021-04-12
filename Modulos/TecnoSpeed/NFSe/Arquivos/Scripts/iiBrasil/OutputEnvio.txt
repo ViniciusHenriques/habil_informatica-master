@@ -1,0 +1,28 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+
+  function RealizarDelimitacaoLoteRps(const aOutput: string): string;
+  var
+    _DelimitadorRPS : string;
+  begin
+    Result := aOutput;
+    _DelimitadorRPS := Params.Values['DelimitadorRPS'];
+    if _DelimitadorRPS <> '' then
+    begin
+      Result := StringReplace(Result, '<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">', '<GerarNfseEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">' + _DelimitadorRPS, [rfReplaceAll]);
+      Result := StringReplace(Result, '</GerarNfseEnvio>', _DelimitadorRPS + '</GerarNfseEnvio>', [rfReplaceAll]);
+    end;
+  end;
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXML;
+  Output := RealizarDelimitacaoLoteRps(Output);
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_IIBRASIL);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

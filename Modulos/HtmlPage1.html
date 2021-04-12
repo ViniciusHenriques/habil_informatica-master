@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Formatacao de campos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/javascript" src="Scripts/MascaraValidacao.js"></script>
+ <script src="Scripts/jquery-2.1.4.js"></script>
+   <script type="text/javascript">
+       jQuery(function ($) {
+           $("#txtData").mask("99/99/9999");
+           $("#txtTelefone").mask("(099) 9999-9999");
+           $("#txtCep").mask("99999-999");
+           $("#txtCPF").mask("999.999.999-99");
+           $("#txtCNPJ").mask("99.999.999/9999-99");
+           $("#txtPlacaVeiculo").mask("aaa - 9999");
+           $("#txtIP").mask('099.099.099.099');
+       });
+    </script> 
+</head>
+<body>
+<form name="form1">
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style2">Data do Nascimento</td>
+                <td><asp:TextBox ID="txtData" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Telefone</td>
+                <td><asp:TextBox ID="txtTelefone" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style3">CEP</td>
+                <td class="auto-style4"><asp:TextBox ID="txtCep" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">CPF</td>
+                <td><asp:TextBox ID="txtCPF" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style2">CNPJ</td>
+                <td><asp:TextBox ID="txtCNPJ" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Placa do Veículo</td>
+                <td><asp:TextBox ID="txtPlacaVeiculo" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style2">Endereco IP</td>
+                <td><asp:TextBox ID="txtIP" runat="server" BackColor="#FFFFCC" Width="228px" ClientIDMode="Static"></asp:TextBox></td>
+            </tr>
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td><asp:Button ID="btnEnviar" runat="server" Text="Enviar" Width="234px" /></td>
+            </tr>
+        </table>
+</form>
+</body>
+</html>

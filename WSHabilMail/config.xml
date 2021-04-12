@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ConfigData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PathPadrao>C:\TEMP</PathPadrao>
+  <ServidorPop>smtp.gmail.com</ServidorPop>
+  <ConnectString >Data Source=PC12GB\SQLEXPRESS2016;Initial Catalog=VILADELCO;user=sa;password=habil</ConnectString>
+  <Porta>587</Porta>
+  <Usuario>disparador.emails.habil@gmail.com</Usuario>
+  <NomeUsuario>HabilWeb</NomeUsuario>
+  <Senha>@disparadorHabil@</Senha>
+  <Arquivos>
+    <string>pdf|c:\temp</string>
+    <string>txt|c:\temp</string>
+  </Arquivos>
+  <CorpoEhHTML>true</CorpoEhHTML>
+  <UsaSSL>true</UsaSSL>
+</ConfigData>

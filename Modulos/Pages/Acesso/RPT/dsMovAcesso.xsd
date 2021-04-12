@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMovAcesso" targetNamespace="http://tempuri.org/dsMovAcesso.xsd" xmlns:mstns="http://tempuri.org/dsMovAcesso.xsd" xmlns="http://tempuri.org/dsMovAcesso.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMovAcesso" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMovAcesso" msprop:Generator_UserDSName="dsMovAcesso">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DS_VW_MOV_ACESSO" msprop:Generator_TableClassName="DS_VW_MOV_ACESSODataTable" msprop:Generator_TableVarName="tableDS_VW_MOV_ACESSO" msprop:Generator_RowChangedName="DS_VW_MOV_ACESSORowChanged" msprop:Generator_TablePropName="DS_VW_MOV_ACESSO" msprop:Generator_RowDeletingName="DS_VW_MOV_ACESSORowDeleting" msprop:Generator_RowChangingName="DS_VW_MOV_ACESSORowChanging" msprop:Generator_RowEvHandlerName="DS_VW_MOV_ACESSORowChangeEventHandler" msprop:Generator_RowDeletedName="DS_VW_MOV_ACESSORowDeleted" msprop:Generator_RowClassName="DS_VW_MOV_ACESSORow" msprop:Generator_UserTableName="DS_VW_MOV_ACESSO" msprop:Generator_RowEvArgName="DS_VW_MOV_ACESSORowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CD_MOV_ACESSO" msprop:Generator_ColumnVarNameInTable="columnCD_MOV_ACESSO" msprop:Generator_ColumnPropNameInRow="CD_MOV_ACESSO" msprop:Generator_ColumnPropNameInTable="CD_MOV_ACESSOColumn" msprop:Generator_UserColumnName="CD_MOV_ACESSO" type="xs:long" minOccurs="0" />
+              <xs:element name="DT_HR_ENTRADA" msprop:Generator_ColumnVarNameInTable="columnDT_HR_ENTRADA" msprop:Generator_ColumnPropNameInRow="DT_HR_ENTRADA" msprop:Generator_ColumnPropNameInTable="DT_HR_ENTRADAColumn" msprop:Generator_UserColumnName="DT_HR_ENTRADA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DT_HR_SAIDA" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDT_HR_SAIDA" msprop:Generator_ColumnPropNameInRow="DT_HR_SAIDA" msprop:Generator_ColumnPropNameInTable="DT_HR_SAIDAColumn" msprop:Generator_UserColumnName="DT_HR_SAIDA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CD_TIPO_ACESSO" msprop:Generator_ColumnVarNameInTable="columnCD_TIPO_ACESSO" msprop:Generator_ColumnPropNameInRow="CD_TIPO_ACESSO" msprop:Generator_ColumnPropNameInTable="CD_TIPO_ACESSOColumn" msprop:Generator_UserColumnName="CD_TIPO_ACESSO" type="xs:int" minOccurs="0" />
+              <xs:element name="TX_DOCUMENTO" msprop:Generator_ColumnVarNameInTable="columnTX_DOCUMENTO" msprop:Generator_ColumnPropNameInRow="TX_DOCUMENTO" msprop:Generator_ColumnPropNameInTable="TX_DOCUMENTOColumn" msprop:Generator_UserColumnName="TX_DOCUMENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_PESSOA" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_PESSOA" msprop:Generator_ColumnPropNameInRow="CD_PESSOA" msprop:Generator_ColumnPropNameInTable="CD_PESSOAColumn" msprop:Generator_UserColumnName="CD_PESSOA" type="xs:long" minOccurs="0" />
+              <xs:element name="CD_CONTATO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_CONTATO" msprop:Generator_ColumnPropNameInRow="CD_CONTATO" msprop:Generator_ColumnPropNameInTable="CD_CONTATOColumn" msprop:Generator_UserColumnName="CD_CONTATO" type="xs:int" minOccurs="0" />
+              <xs:element name="CD_VEICULO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCD_VEICULO" msprop:Generator_ColumnPropNameInRow="CD_VEICULO" msprop:Generator_ColumnPropNameInTable="CD_VEICULOColumn" msprop:Generator_UserColumnName="CD_VEICULO" type="xs:long" minOccurs="0" />
+              <xs:element name="TX_OBS" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnTX_OBS" msprop:Generator_ColumnPropNameInRow="TX_OBS" msprop:Generator_ColumnPropNameInTable="TX_OBSColumn" msprop:Generator_UserColumnName="TX_OBS" type="xs:string" minOccurs="0" />
+              <xs:element name="DS_TIPO_ACESSO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDS_TIPO_ACESSO" msprop:Generator_ColumnPropNameInRow="DS_TIPO_ACESSO" msprop:Generator_ColumnPropNameInTable="DS_TIPO_ACESSOColumn" msprop:Generator_UserColumnName="DS_TIPO_ACESSO" type="xs:string" minOccurs="0" />
+              <xs:element name="NM_PESSOA" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNM_PESSOA" msprop:Generator_ColumnPropNameInRow="NM_PESSOA" msprop:Generator_ColumnPropNameInTable="NM_PESSOAColumn" msprop:Generator_UserColumnName="NM_PESSOA" type="xs:string" minOccurs="0" />
+              <xs:element name="NM_CONTATO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNM_CONTATO" msprop:Generator_ColumnPropNameInRow="NM_CONTATO" msprop:Generator_ColumnPropNameInTable="NM_CONTATOColumn" msprop:Generator_UserColumnName="NM_CONTATO" type="xs:string" minOccurs="0" />
+              <xs:element name="NR_INSCRICAO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNR_INSCRICAO" msprop:Generator_ColumnPropNameInRow="NR_INSCRICAO" msprop:Generator_ColumnPropNameInTable="NR_INSCRICAOColumn" msprop:Generator_UserColumnName="NR_INSCRICAO" type="xs:string" minOccurs="0" />
+              <xs:element name="NR_IERG" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNR_IERG" msprop:Generator_ColumnPropNameInRow="NR_IERG" msprop:Generator_ColumnPropNameInTable="NR_IERGColumn" msprop:Generator_UserColumnName="NR_IERG" type="xs:string" minOccurs="0" />
+              <xs:element name="PLACA" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnPLACA" msprop:Generator_ColumnPropNameInRow="PLACA" msprop:Generator_ColumnPropNameInTable="PLACAColumn" msprop:Generator_UserColumnName="PLACA" type="xs:string" minOccurs="0" />
+              <xs:element name="NM_VEICULO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNM_VEICULO" msprop:Generator_ColumnPropNameInRow="NM_VEICULO" msprop:Generator_ColumnPropNameInTable="NM_VEICULOColumn" msprop:Generator_UserColumnName="NM_VEICULO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

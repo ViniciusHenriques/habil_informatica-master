@@ -1,0 +1,4 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsn="http://wsnfselote.ctaconsult.com.br/">
+  <soapenv:Header/>
+  <soapenv:Body>%s</soapenv:Body>
+</soapenv:Envelope>

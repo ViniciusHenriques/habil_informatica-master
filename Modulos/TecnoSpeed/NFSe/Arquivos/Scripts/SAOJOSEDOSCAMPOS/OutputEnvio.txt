@@ -1,0 +1,18 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\RealizarDelimitacaoLoteRps.txt}
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXML;
+  
+  Output := StringReplace(Output,'<LoteRps Id="lote">','<LoteRps Id="lote" versao="1.00">',[rfReplaceAll]);
+  Output := RealizarDelimitacaoLoteRps(Output, 'Rps', 'ListaRps');
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_SAOJOSEDOSCAMPOS);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

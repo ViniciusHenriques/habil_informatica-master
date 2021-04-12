@@ -1,0 +1,8 @@
+<ws:ConsultarNfsePorRpsRequest>
+  <nfseCabecMsg>
+    <![CDATA[<cabecalho versao="1.00" xmlns="http://megasoftarrecadanet.com.br/xsd/nfse_v01.xsd"><versaoDados>1.00</versaoDados></cabecalho>]]>
+  </nfseCabecMsg>
+  <nfseDadosMsg>
+    <![CDATA[<ConsultarNfseRpsEnvio xmlns="http://megasoftarrecadanet.com.br/xsd/nfse_v01.xsd"><IdentificacaoRps><Numero>%s</Numero></IdentificacaoRps><Prestador><CpfCnpj>%s</CpfCnpj><InscricaoMunicipal>%s</InscricaoMunicipal></Prestador></ConsultarNfseRpsEnvio>]]>
+  </nfseDadosMsg>
+</ws:ConsultarNfsePorRpsRequest>

@@ -1,0 +1,83 @@
+;***************************************************************************************************
+;Definições dos Campos: Impressão de RPS (Impressão Nova)
+;***************************************************************************************************
+[PrintXml_DadosRPS]
+
+; Campos Info RPS
+NumeroRps=/DadosNotaFiscal/ID
+NumeroNfse=/DadosNotaFiscal/NumeroNF
+SituacaoNota=/DadosNotaFiscal/SituacaoNF
+TipoNF=/DadosNotaFiscal/TipoNF
+DataEmissao=/DadosNotaFiscal/Emissao
+OutrasInformacoes=/DadosNotaFiscal/Observacao
+MotivoCancelamento=/DadosNotaFiscal/MotivoCancelamento
+TipoDocumento=/DadosNotaFiscal/TipoDocumento
+
+; Campos Tomador
+CpfCnpjTomador=/DadosNotaFiscal/CNPJCPFTomador
+RazaoSocialTomador=/DadosNotaFiscal/NomeTomador
+UFTomador=/DadosNotaFiscal/UFTomador
+CodigoCidadeTomador=/DadosNotaFiscal/CidadeTomador
+EnderecoTomador=/DadosNotaFiscal/EnderecoTomador
+NumeroTomador=/DadosNotaFiscal/NumeroTomador
+ComplementoTomador=/DadosNotaFiscal/ComplementoTomador
+BairroTomador=/DadosNotaFiscal/BairroTomador
+CEPTomador=/DadosNotaFiscal/CEPTomador
+EmailTomador=/DadosNotaFiscal/EmailTomador
+
+; Campos Local Prestação
+LocalPrestacao=/DadosNotaFiscal/LocalPrestacao
+DescricaoLocalPrestacao=/DadosNotaFiscal/DescricaoLocalPrestacao
+DescricaoLocalPrestacaoComp=/DadosNotaFiscal/DescricaoLocalPrestacaoComplementar
+UFLocalPrestacao=/DadosNotaFiscal/UFLocalPrestacao
+CodigoCidadePrestacao=/DadosNotaFiscal/CidadeLocalPrestacao
+ValorAliquotaLocalPrestacao=/DadosNotaFiscal/ValorAliquotaLocalPrestacao
+EnderecoLocalPrestacao=/DadosNotaFiscal/EnderecoLocalPrestacao
+NumeroLocalPrestacao=/DadosNotaFiscal/NumeroLocalPrestacao
+ComplementoLocalPrestacao=/DadosNotaFiscal/ComplementoLocalPrestacao
+BairroLocalPrestacao=/DadosNotaFiscal/BairroLocalPrestacao
+CEPLocalPrestacao=/DadosNotaFiscal/CEPLocalPrestacao
+
+; Campos Serviço
+CodigoItemListaServico=/DadosNotaFiscal/DadosItensNotaFiscal/ItemAtividade
+DiscriminacaoServico=/DadosNotaFiscal/DadosItensNotaFiscal/TextoItem
+ValorServicos=/DadosNotaFiscal/DadosItensNotaFiscal/ValorItem
+ValorDeducoes=/DadosNotaFiscal/DadosItensNotaFiscal/ValorDeducao
+IssRetido=/DadosNotaFiscal/DadosItensNotaFiscal/Retido
+CodigoPais=/DadosNotaFiscal/DadosItensNotaFiscal/Pais
+
+;Campos Customizados
+
+; Prestador
+NomeFantasiaPrestador=String[80]
+CpfCnpjPrestador=String[30]
+InscricaoMunicipalPrestador=String[30]
+InscricaoEstadualPrestador=String[30]
+RazaoSocialPrestador=String[80]
+EnderecoPrestador=String[80]
+UfPrestador=String[2]
+BairroPrestador=String[40]
+CepPrestador=String[8]
+EmailPrestador=String[80]
+ComplementoPrestador=String[80]
+NumeroPrestador=String[7]
+CodigoCidadePrestador=String[10]
+
+; Tomador
+InscricaoEstadualTomador=String[30]
+InscricaoMunicipalTomador=String[30]
+
+; Servico
+CodigoServico=String[255]
+AliquotaISS=String[10]
+DataEmissaoRPS=String[20]
+ValorISSRetido=String[30]
+ValorISS=String[30]
+ValorBaseCalculo=String[30]
+ValorTotalServicos=String[30]
+ValorLiquidoNFSe=String[30]
+
+[PrintXml_DadosImpostosNotaFiscal]
+Imposto=/DadosNotaFiscal/DadosImpostosNotaFiscal/Imposto
+ValorImposto=/DadosNotaFiscal/DadosImpostosNotaFiscal/ValorImposto
+

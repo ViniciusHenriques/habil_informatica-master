@@ -1,0 +1,235 @@
+  {$I ..\Comuns\Comuns.TXT}
+
+  function UnEscapeXml(const aXML: string): string;
+  begin
+    // "Desescapar" o XML
+    Result:= aXML;
+    Result:= StringReplace(Result, '&apos;', '''', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&quot;', '"',  [rfReplaceAll]);
+    Result:= StringReplace(Result, '&gt;',  '>', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&lt;',  '<', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&amp;', '&', [rfReplaceAll]);
+    Result:= StringReplace(Result, '&#xD;', #13, [rfReplaceAll]);
+  end;
+  
+  function RemoveCaracteresInvalidosRespostaSH3(const aValue : string) : string;
+  begin
+    Result := StringReplace(aValue, '&amp;', '@@@@@',[rfReplaceAll]);
+    Result := StringReplace(Result, ';', '\delimiter',[rfReplaceAll]);
+    Result := StringReplace(Result, Params.Values['DelimitadorDoCampo'],'',[rfReplaceAll]);
+    Result := StringReplace(Result, Params.Values['DelimitadorDaLinha'],'',[rfReplaceAll]);
+    Result := StringReplace(Result,'@@@@@','&amp;',[rfReplaceAll]);
+  end;
+
+  function GetXmlNFSe(const aXpath, aParamName : string) : string;
+  begin
+    if aXpath = '' then
+      Result := XmlSelect(Params.Values[aParamName], '//*[local-name()="CompNfse"]')
+    else
+      Result := XmlSelect(Params.Values[aParamName], aXpath);
+
+    Result := StringReplace(Result, '&lt;br /&gt;', '|', [rfReplaceAll]);
+    Result := RemoveCaracteresInvalidosRespostaSH3(Result);
+  end;
+
+
+  function GetResult(const aListFieldsResult : TStringList) : string;
+  begin
+    if (Params.Values['DelimitadorDaLinha'] = '') then
+      Result := FormatLineResult(aListFieldsResult) + #13#10
+    else
+      Result := FormatLineResult(aListFieldsResult) +
+        Params.Values['DelimitadorDaLinha'];
+  end;
+
+  function RetornouNota(aXmlLote: string): Boolean;
+  var
+    _str: string;
+  begin
+    Result := XmlSelectNodeValue(aXmlLote, '//*[local-name() = "CompNfse"]', _str);
+  end;
+
+  //Função para Capturar a Ordem dos Campos do Params
+  function CreateFieldsResponseNotaTomadas : TStringList;
+  var
+    _i: Integer;
+  begin
+    result := TStringList.Create;
+    result.Text := StringReplace(Params.Values['ListaCampos'], ',',#13#10,[rfReplaceAll]);
+    // Checar se os campos da ListaCampos são suportados
+    for _i := 0 to Result.Count - 1 do
+    begin
+      if not AnsiMatchText(Trim(Result[_i]), ['Status','Motivo','Cnpj','InscMunicipal',
+        'SerieRps','NumeroRps','NumeroNFSe','DataEmissaoNFSe','DataAutorizacao',
+        'CodVerificacao','Situacao','DataCancelamento','ChaveCancelamento','Xml'
+        ,'Tipo','ValorServicos','ValorDeducoes','ValorPis','ValorCofins','ValorInss',
+        'ValorIr','ValorCsll','CodigoServico','AliquotaIss','ValorIss','IssRetido', 'RazaoSocialPrestador', 
+        'EnderecoPrestador', 'NumeroPrestador', 'ComplementoPrestador', 'BairroPrestador', 
+        'CodigoCidadePrestador', 'CepPrestador', 'CpfCnpjTomador', 'InscMunicipalTomador', 
+        'RazaoSocialTomador', 'EnderecoTomador', 'NumeroTomador', 'ComplementoTomador', 
+        'BairroTomador', 'CodigocidadeTomador', 'CepTomador', 'EmailTomador', 'TelefoneTomador', 
+        'ItemListaServico', 'CodigoCNAE', 'CodTributacaoMunicipio', 'CodigoCidadePrestacao', 'DiscriminacaoServico']) then
+        RaiseException('Campo "' + Result[_i] + '" não suportado')
+      else
+        Result[_i] := Trim(Result[_i]);
+    end;
+  end;
+
+
+  function GetListFieldsNota(var aDSSucesso, aDSFalha : TSpdXSDClientDataSet;
+    var aListFields : TStringList; const aXpathNFSe, aParamName : string): String;
+  var
+    _Motivo, _ValorCampo, _XmlNota: string;
+  begin
+    _Motivo := GetMotivo(aDSFalha);
+    if RetornouNota(Params.Values[aParamName]) then
+    begin
+      aDSSucesso.First;
+      while not aDSSucesso.Eof do
+      begin
+        if Params.Values['TipoXml'] = 'ConsultarNotasTomadas' then
+          aListFields := CreateFieldsResponseNotaTomadas
+        else  
+          aListFields := CreateFieldsResponseNota;
+        try
+          AddValueListFields('Motivo', '', aListFields);
+          AddValueListFields('Status', 'SUCESSO', aListFields);
+          _ValorCampo := aDSSucesso.FieldByName('Cnpj').AsString;
+
+          if _ValorCampo <> '' then
+            AddValueListFields('Cnpj', _ValorCampo, aListFields)
+          else
+            AddValueListFields('Cnpj', aDSSucesso.FieldByName('CnpjPrestador').AsString,
+              aListFields);
+
+          _ValorCampo := aDSSucesso.FieldByName('InscricaoMunicipal').AsString;
+
+          if _ValorCampo <> '' then
+            AddValueListFields('InscMunicipal', _ValorCampo, aListFields)
+          else
+            AddValueListFields('InscMunicipal',
+              aDSSucesso.FieldByName('InscMunicipalPrestador').AsString, aListFields);
+
+          AddValueListFields('SerieRps',  aDSSucesso.FieldByName('SerieRPS').AsString,
+            aListFields);
+          AddValueListFields('NumeroRps', aDSSucesso.FieldByName('NumeroRps').AsString,
+            aListFields);
+          AddValueListFields('NumeroNFSe', aDSSucesso.FieldByName('NumeroNfse').AsString,
+            aListFields);
+          AddValueListFields('DataEmissaoNFSe', aDSSucesso.FieldByName('DataEmissaoRPS').AsString,
+            aListFields);
+          AddValueListFields('DataAutorizacao', aDSSucesso.FieldByName('DataEmissaoNfse').AsString,
+            aListFields);
+          AddValueListFields('CodVerificacao',
+            aDSSucesso.FieldByName('CodigoVerificacao').AsString, aListFields);
+
+          _ValorCampo := aDSSucesso.FieldByName('Status').AsString;
+
+          if (aDSSucesso.FieldByName('DataHoraCancelamento').AsString <> '') or (_ValorCampo = '2') then
+            AddValueListFields('Situacao', 'CANCELADA', aListFields)
+          else
+            AddValueListFields('Situacao', 'AUTORIZADA', aListFields);
+
+          if aDSSucesso.FieldByName('DataHoraCancelamento').AsString = '' then
+            AddValueListFields('DataCancelamento', '', aListFields)
+          else
+            AddValueListFields('DataCancelamento', aDSSucesso.FieldByName('DataHoraCancelamento').AsString, aListFields);
+
+          AddValueListFields('ChaveCancelamento', aDSSucesso.FieldByName('NumeroNfse').AsString,
+              aListFields);
+
+          _XmlNota := GetXmlNFSe(Format1(aXpathNFSe, aDSSucesso.FieldByName('NumeroNfse').AsString),
+                               aParamName);
+
+          AddValueListFields('Xml', _XmlNota, aListFields);
+          
+          AddValueListFields('Tipo', aDSSucesso.FieldByName('TipoRPS').AsString, aListFields);
+
+          if Params.Values['TipoXml'] = 'ConsultarNotasTomadas' then
+          begin
+            AddValueListFields('ValorServicos', aDSSucesso.FieldByName('ValorServicos').AsString, aListFields);
+            AddValueListFields('ValorDeducoes', aDSSucesso.FieldByName('ValorDeducoes').AsString, aListFields);
+            AddValueListFields('ValorPis', aDSSucesso.FieldByName('ValorPis').AsString, aListFields);
+            AddValueListFields('ValorCofins', aDSSucesso.FieldByName('ValorCofins').AsString, aListFields);
+            AddValueListFields('ValorInss', aDSSucesso.FieldByName('ValorInss').AsString, aListFields);
+            AddValueListFields('ValorIr', aDSSucesso.FieldByName('ValorIr').AsString, aListFields);
+            AddValueListFields('ValorCsll', aDSSucesso.FieldByName('ValorCsll').AsString, aListFields);
+            AddValueListFields('AliquotaIss', aDSSucesso.FieldByName('Aliquota').AsString, aListFields);
+            AddValueListFields('ValorIss', aDSSucesso.FieldByName('ValorIss').AsString, aListFields);
+            AddValueListFields('IssRetido', aDSSucesso.FieldByName('IssRetido').AsString, aListFields);            
+            AddValueListFields('RazaoSocialPrestador', aDSSucesso.FieldByName('RazaoSocialPrestador').AsString, aListFields);
+            AddValueListFields('EnderecoPrestador', aDSSucesso.FieldByName('EnderecoPrestador').AsString, aListFields);
+            AddValueListFields('NumeroPrestador', aDSSucesso.FieldByName('NumeroPrestador').AsString, aListFields);
+            AddValueListFields('ComplementoPrestador', aDSSucesso.FieldByName('ComplementoPrestador').AsString, aListFields);
+            AddValueListFields('BairroPrestador', aDSSucesso.FieldByName('BairroPrestador').AsString, aListFields);
+            AddValueListFields('CodigoCidadePrestador', aDSSucesso.FieldByName('CodigoCidadePrestador').AsString, aListFields);
+            AddValueListFields('CepPrestador', aDSSucesso.FieldByName('CepPrestador').AsString, aListFields);
+            
+            if aDSSucesso.FieldByName('CnpjTomador').AsString <> '' then
+              AddValueListFields('CpfCnpjTomador', aDSSucesso.FieldByName('CnpjTomador').AsString, aListFields)
+            else
+              AddValueListFields('CpfCnpjTomador', aDSSucesso.FieldByName('CpfTomador').AsString, aListFields);
+            
+            AddValueListFields('InscMunicipalTomador', aDSSucesso.FieldByName('InscMunicipalTomador').AsString, aListFields);
+            AddValueListFields('RazaoSocialTomador', aDSSucesso.FieldByName('RazaoSocialTomador').AsString, aListFields);
+            AddValueListFields('EnderecoTomador', aDSSucesso.FieldByName('EnderecoTomador').AsString, aListFields);
+            AddValueListFields('NumeroTomador', aDSSucesso.FieldByName('NumeroTomador').AsString, aListFields);
+            AddValueListFields('ComplementoTomador', aDSSucesso.FieldByName('ComplementoTomador').AsString, aListFields);
+            AddValueListFields('BairroTomador', aDSSucesso.FieldByName('BairroTomador').AsString, aListFields);
+            AddValueListFields('CodigoCidadeTomador', aDSSucesso.FieldByName('CodigoCidadeTomador').AsString, aListFields);
+            AddValueListFields('CepTomador', aDSSucesso.FieldByName('CepTomador').AsString, aListFields);
+            AddValueListFields('EmailTomador', aDSSucesso.FieldByName('EmailTomador').AsString, aListFields);
+            AddValueListFields('TelefoneTomador', aDSSucesso.FieldByName('TelefoneTomador').AsString, aListFields);
+            AddValueListFields('ItemListaServico', aDSSucesso.FieldByName('ItemListaServico').AsString, aListFields);
+            AddValueListFields('CodigoCNAE', aDSSucesso.FieldByName('CodigoCNAE').AsString, aListFields);
+            AddValueListFields('CodTributacaoMunicipio', aDSSucesso.FieldByName('CodTributacaoMunicipio').AsString, aListFields);
+            AddValueListFields('CodigoCidadePrestacao', aDSSucesso.FieldByName('CodigoCidadePrestacao').AsString, aListFields);
+            AddValueListFields('DiscriminacaoServico', aDSSucesso.FieldByName('DiscriminacaoServico').AsString, aListFields);
+          end;
+
+          Result := Result + GetResult(aListFields);
+        Finally
+          aListFields.Free;
+        end;
+        aDSSucesso.Next;
+      end;
+    end
+    else
+    begin
+      aListFields := CreateFieldsResponseFalha;
+      try
+        AddValueListFields('Motivo', _Motivo, aListFields);
+        AddValueListFields('Status', 'ERRO', aListFields);
+        Result := Result + GetResult(aListFields);
+      Finally
+        aListFields.Free;
+      end;
+    end;
+  end;
+
+  function GetListFieldsFaulstring(var aListFields : TStringList; const aInput: string): String;
+  var
+    _Motivo: string;
+  begin
+    aListFields := CreateFieldsResponseFalha;
+    try
+      _Motivo := 'Falha na comunicação com WebService-' + GetFaultString(aInput);
+      AddValueListFields('Status', 'ERRO', aListFields);
+      AddValueListFields('Motivo',_Motivo, aListFields);
+      Result := Output + FormatLineResult(aListFields) + Params.Values['DelimitadorDaLinha'];
+    Finally
+      aListFields.Free;
+    end;
+  end;
+
+  function GetListFieldsNFSeInexistente(var aListFields : TStringList): String;
+  begin
+    aListFields := CreateFieldsResponseFalha;
+    try
+      AddValueListFields('Status', 'ERRO', aListFields);
+      AddValueListFields('Motivo', 'NFSe não encontrada na base de dados.', aListFields);
+      Result := Output + FormatLineResult(aListFields) + Params.Values['DelimitadorDaLinha'];
+    Finally
+      aListFields.Free;
+    end;
+  end;

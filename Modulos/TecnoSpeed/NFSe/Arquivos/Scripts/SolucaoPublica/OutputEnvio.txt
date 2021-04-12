@@ -1,0 +1,19 @@
+{
+  Variáveis externas disponíveis:
+    Output: string;
+    Datasets: TspdXSDDataset;
+}
+
+{$I ..\Comuns\RealizarDelimitacaoLoteRps.txt}
+{$I ..\Comuns\InserirQuebrasDeLinha.txt}
+{$I ..\Comuns\Utils.TXT}
+
+begin
+  Progress('Gerando arquivo XML.');
+  Output := Datasets.AsXML;
+  Output := RealizarDelimitacaoLoteRps(Output, 'Rps', 'ListaRps');
+  Output := InserirQuebrasDeLinha(Output, STR_LINE_BREAK_SolucaoPublica);
+  Output := StringReplace(Output, 'http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd', 'http://www.abrasf.org.br/nfse.xsd', [rfReplaceAll]);
+  Output := RemoverAcentos(Output);
+  Progress('Arquivo XML gerado com sucesso.');
+end.

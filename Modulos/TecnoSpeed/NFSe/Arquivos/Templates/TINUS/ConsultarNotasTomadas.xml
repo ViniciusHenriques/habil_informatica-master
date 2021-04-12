@@ -1,0 +1,18 @@
+<tin:ConsultarNfse>
+  <tin:Arg>
+    <tin:Prestador>
+      <tin:Cnpj>%s</tin:Cnpj>
+      %s
+    </tin:Prestador>
+    <tin:PeriodoEmissao>
+      <tin:DataInicial>%s</tin:DataInicial>
+      <tin:DataFinal>%s</tin:DataFinal>
+    </tin:PeriodoEmissao>
+    <tin:Tomador>
+      <tin:CpfCnpj>
+        %s
+      </tin:CpfCnpj>
+      %s
+    </tin:Tomador>
+  </tin:Arg>
+</tin:ConsultarNfse>

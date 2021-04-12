@@ -1,0 +1,11 @@
+<ws_consulta_nfse_x_pnfse.Execute>
+	<Sdt_ws_003_in_cons_nfse_x_pnfse>
+		<ws_003_in_prest_insc_seq>%s</ws_003_in_prest_insc_seq>
+		<ws_003_in_prest_cnpj>%s</ws_003_in_prest_cnpj>
+		<ws_003_in_pnfse_senha>%s</ws_003_in_pnfse_senha>
+		<ws_003_in_pnfse_bloco_seq>%s</ws_003_in_pnfse_bloco_seq>
+		<ws_003_in_pnfse_det_seq>%s</ws_003_in_pnfse_det_seq>
+		<ws_003_in_pnfse_det_cod_val>%s</ws_003_in_pnfse_det_cod_val>
+		<ws_003_in_nfse_opcao_envio_e_mail>%s</ws_003_in_nfse_opcao_envio_e_mail>
+	</Sdt_ws_003_in_cons_nfse_x_pnfse>
+</ws_consulta_nfse_x_pnfse.Execute>

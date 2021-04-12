@@ -1,0 +1,130 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo, _Xml: string;
+
+{$I ..\SOFTPLAN\Utils.TXT}
+
+  function TratarMensagemErro(const aXml: String): String;
+  var
+    _MensagemIni, _MensagemFim : Integer;
+    _message, _Xml : string;
+  begin
+    { Só será tratado em caso de rejeição }
+    if Pos('/message', aXml) > 0 then
+    begin
+      _Xml := StringReplace(aXml, '&gt;', '>', [rfReplaceAll]);
+      _Xml := StringReplace(_Xml, '&lt;', '<', [rfReplaceAll]);
+
+      _MensagemIni := Pos('<message>', _Xml) + 9;
+      _MensagemFim := Pos('</message>', _Xml);
+      _MensagemFim := _MensagemFim - _MensagemIni;
+      _message := Copy(_Xml, _MensagemIni, _MensagemFim);
+
+      _Xml := StringReplace(_Xml, _message, '####message####', [rfReplaceAll]);
+
+      _message := StringReplace(_message, '<', '&lt;', [rfReplaceAll]);
+      _message := StringReplace(_message, '>', '&gt;', [rfReplaceAll]);
+      
+      _Xml := StringReplace(_Xml, '####message####', _message, [rfReplaceAll]);
+      Result := _Xml;
+    end;
+  end;
+
+  function GetMotivo(const aXML:string) : string;
+  Var
+    _Aux, _FaultString, _str: string;
+  begin
+    if (aXML <> '') then
+    begin
+      if pos('</', aXML) = 0 then
+        Result := aXml
+      else
+      begin
+        xmlSelectNodeValue(aXML, '//*[local-name() = "message"]', _str);
+        Result := _str
+      end;
+
+      if (Result = '') and (xmlSelectNodeValue(aXML, '//*[local-name()="Header"]' +
+        '/*[local-name()="TipoRetorno" and contains(text(), "ListaErros")]' +
+        '/../../*[local-name()="EnvioLoteSincrono"]', _str)) then
+        Result := _str;
+    end
+    else
+      Result := '';
+    { Retorno completo  inconsistente, quebrando o fluxo no eDoc
+      então será retornado apenas o começo da msg do erro }
+    if Pos('Erro ao realizar o processamento da Nota Fiscal', Result) > 0 then
+      Result := 'Erro ao realizar o processamento da Nota Fiscal';
+  end;
+
+  function GetChaveCancelamento(const aXML:string) : string;
+  var
+    _NumeroAEDF, _NumeroNFSe, _CodigoVerificacao: string;
+  begin
+    _NumeroAEDF := GetValueXml(aXML, 'numeroAEDF');
+    _NumeroNFSe := GetValueXml(aXML, 'numeroSerie');
+    _CodigoVerificacao := GetValueXml(aXML, 'codigoVerificacao');
+    Result := Format3('%s_%s_%s', _NumeroAEDF, _NumeroNFSe, _CodigoVerificacao);
+  end;
+  
+begin
+  Output := '';
+  Progress('Adicionando valores aos campos');
+  _Xml := Params.Values['XML'];  
+  _Xml := TratarMensagemErro(_Xml);
+  _Status := GetStatusEnvio(_Xml);  
+
+  if _Status = 'ERRO' then
+  begin
+    _Motivo := GetMotivo(_Xml);
+    Try
+      _ListFields := CreateFieldsResponseFalha;
+      AddValueListFields('Status', 'ERRO');
+      AddValueListFields('Motivo', _Motivo);
+      Output := Output + FormatLineResult + Params.Values['DelimitadorDaLinha'];
+    Finally
+      _ListFields.Free;
+    end;
+  end
+  else
+  begin
+    _ListFields := CreateFieldsResponse;
+    if ((_ListFields <> nil) and (_ListFields.Text <> '')) then
+    begin
+      try
+        AddValueListFields('Motivo', '');
+        AddValueListFields('Status', 'SUCESSO');
+        AddValueListFields('Cnpj', GetValueXml(_Xml, 'cnpjPrestador'));
+        AddValueListFields('InscMunicipal', GetValueXml(_Xml, 'inscricaoMunicipalPrestador'));
+        AddValueListFields('SerieRps', GetValueXml(_Xml, 'numeroSerie'));
+        AddValueListFields('NumeroRps', '');
+        AddValueListFields('NumeroNFSe', GetValueXml(_Xml, 'numeroSerie'));
+        AddValueListFields('DataEmissaoNFSe', GetValueXml(_Xml, 'dataEmissao'));
+        AddValueListFields('DataAutorizacao', GetValueXml(_Xml, 'dataProcessamento'));
+        AddValueListFields('CodVerificacao', GetValueXml(_Xml, 'codigoVerificacao'));
+        AddValueListFields('Situacao', 'AUTORIZADA');
+        AddValueListFields('DataCancelamento', GetValueXml(_Xml, ''));
+        AddValueListFields('ChaveCancelamento', GetChaveCancelamento(_Xml));
+        AddValueListFields('Xml', GetXmlNFSe(_Xml));
+        AddValueListFields('Tipo', '');
+        AddValueListFields('Data de Autorização', '');
+
+        if (Params.Values['DelimitadorDaLinha'] = '') then
+          Output := Output + FormatLineResult + #13#10
+        else
+          Output := Output + FormatLineResult + Params.Values['DelimitadorDaLinha'];
+      Finally
+        _ListFields.Free;
+      end;
+    end;
+  end;
+  Progress('Valores adicionados com sucesso.');
+end.

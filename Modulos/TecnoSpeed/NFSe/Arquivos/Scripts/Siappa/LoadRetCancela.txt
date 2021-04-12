@@ -1,0 +1,27 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+var
+  _Xml: string;  
+  
+{$I ..\Comuns\Comuns.txt}
+
+begin
+  Progress('Carregando XML de Retorno de Cancelamento');
+  if Pos('<faultstring>', Input) > 0 then
+  begin
+    _Xml := StringReplace(Input, '&gt;', '', [rfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<!--CRLF-->', '', [rfReplaceAll]);
+    Params.Add('Erro=' + _Xml);
+  end
+  else
+  begin
+    _Xml := UnindentXml(XmlSelect(Input, '//*[local-name()="ws_cancela_nfse_x_pnfse.ExecuteResponse"]'));
+    Params.Add('XML=' + _Xml);
+    Progress('Retorno carregado com sucesso');
+  end;
+end.

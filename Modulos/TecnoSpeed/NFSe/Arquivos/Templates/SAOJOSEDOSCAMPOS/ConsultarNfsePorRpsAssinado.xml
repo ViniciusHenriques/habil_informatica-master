@@ -1,0 +1,10 @@
+<ns1:ConsultarNfsePorRpsV3 xmlns:ns1="http://www.abrasf.org.br/nfse.xsd">
+	<arg0>
+		<ns2:cabecalho versao="3" xmlns:ns2="http:/www.abrasf.org.br/nfse.xsd">
+			<versaoDados>3</versaoDados>
+		</ns2:cabecalho>
+	</arg0>
+	<arg1>
+		<![CDATA[%s]]>
+	</arg1>
+</ns1:ConsultarNfsePorRpsV3>

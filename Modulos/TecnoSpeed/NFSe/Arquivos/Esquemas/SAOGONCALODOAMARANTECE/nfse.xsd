@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="xml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Rps"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rps">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Identificacao"/>
+        <xs:element ref="Cabecalho"/>
+        <xs:element ref="Tomador"/>
+        <xs:element ref="Servico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Identificacao">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="CodigoPrestador"/>
+        <xs:element ref="CodigoMunicipioPrestador"/>
+        <xs:element ref="QuantidadeRps"/>
+        <xs:element ref="ValorTotalNota"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CodigoPrestador" type="xs:integer"/>
+  <xs:element name="CodigoMunicipioPrestador" type="xs:integer"/>
+  <xs:element name="QuantidadeRps" type="xs:integer"/>
+  <xs:element name="ValorTotalNota" type="xs:integer"/>
+  <xs:element name="Cabecalho">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroRps"/>
+        <xs:element ref="DataEmissao"/>
+        <xs:element ref="Competencia"/>
+        <xs:element ref="NaturezaOperacao"/>
+        <xs:element ref="RegimeEspecialTributacao"/>
+        <xs:element ref="BeneficioFiscal"/>
+        <xs:element ref="ValorTotalServicos"/>
+        <xs:element ref="ValorDeducoes"/>
+        <xs:element ref="ValorFiscal"/>
+        <xs:element ref="ValorPis"/>
+        <xs:element ref="ValorCofins"/>
+        <xs:element ref="ValorInss"/>
+        <xs:element ref="ValorIr"/>
+        <xs:element ref="ValorCsll"/>
+        <xs:element ref="ItemListaServico"/>
+        <xs:element ref="CodigoCnae"/>
+        <xs:element ref="BaseCalculo"/>
+        <xs:element ref="Aliquota"/>
+        <xs:element ref="ValorLiquido"/>
+        <xs:element ref="ValorIss"/>
+        <xs:element ref="IssRetido"/>
+        <xs:element ref="ValorIssRetido"/>
+        <xs:element ref="CodigoMunicipioPrestacao"/>
+        <xs:element ref="MunicipioIncidencia"/>
+        <xs:element ref="DataCancelamento"/>
+        <xs:element ref="CodigoObra"/>
+        <xs:element ref="Art"/>
+        <xs:element ref="CodigoMunicipioObra"/>
+        <xs:element ref="DiscriminacaoServico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DataEmissao" type="xs:NCName"/>
+  <xs:element name="Competencia" type="xs:NCName"/>
+  <xs:element name="NaturezaOperacao" type="xs:integer"/>
+  <xs:element name="RegimeEspecialTributacao" type="xs:integer"/>
+  <xs:element name="BeneficioFiscal" type="xs:integer"/>
+  <xs:element name="ValorTotalServicos" type="xs:integer"/>
+  <xs:element name="ValorDeducoes" type="xs:integer"/>
+  <xs:element name="ValorFiscal" type="xs:integer"/>
+  <xs:element name="ValorPis" type="xs:integer"/>
+  <xs:element name="ValorCofins" type="xs:integer"/>
+  <xs:element name="ValorInss" type="xs:integer"/>
+  <xs:element name="ValorIr" type="xs:integer"/>
+  <xs:element name="ValorCsll" type="xs:integer"/>
+  <xs:element name="ItemListaServico" type="xs:integer"/>
+  <xs:element name="CodigoCnae" type="xs:integer"/>
+  <xs:element name="BaseCalculo" type="xs:integer"/>
+  <xs:element name="Aliquota" type="xs:integer"/>
+  <xs:element name="ValorLiquido" type="xs:integer"/>
+  <xs:element name="ValorIss" type="xs:integer"/>
+  <xs:element name="IssRetido" type="xs:integer"/>
+  <xs:element name="ValorIssRetido" type="xs:integer"/>
+  <xs:element name="CodigoMunicipioPrestacao" type="xs:integer"/>
+  <xs:element name="MunicipioIncidencia" type="xs:integer"/>
+  <xs:element name="DataCancelamento" type="xs:NCName"/>
+  <xs:element name="CodigoObra" type="xs:integer"/>
+  <xs:element name="Art" type="xs:integer"/>
+  <xs:element name="CodigoMunicipioObra" type="xs:integer"/>
+  <xs:element name="Tomador">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NifTomador"/>
+        <xs:element ref="CpfCnpjTomador"/>
+        <xs:element ref="IdentificacaoTomador"/>
+        <xs:element ref="InscricaoMunicipalTomador"/>
+        <xs:element ref="RazaoSocialTomador"/>
+        <xs:element ref="EnderecoTomador"/>
+        <xs:element ref="NumeroTomador"/>
+        <xs:element ref="ComplementoTomador"/>
+        <xs:element ref="BairroTomador"/>
+        <xs:element ref="CodigoMunicipioTomador"/>
+        <xs:element ref="CepTomador"/>
+        <xs:element ref="EmailTomador"/>
+        <xs:element ref="TelefoneTomador"/>
+        <xs:element ref="PaisTomador"/>
+        <xs:element ref="IdentificacaoIntermediario"/>
+        <xs:element ref="CpfCnpjIntermediario"/>
+        <xs:element ref="RazaoSocialIntermediario"/>
+        <xs:element ref="EnderecoIntermediario"/>
+        <xs:element ref="NumeroIntermediario"/>
+        <xs:element ref="ComplementoIntermediario"/>
+        <xs:element ref="BairroIntermediario"/>
+        <xs:element ref="CodigoMunicipioIntermediario"/>
+        <xs:element ref="CepIntermediario"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NifTomador" type="xs:integer"/>
+  <xs:element name="CpfCnpjTomador" type="xs:integer"/>
+  <xs:element name="IdentificacaoTomador" type="xs:integer"/>
+  <xs:element name="InscricaoMunicipalTomador" type="xs:integer"/>
+  <xs:element name="RazaoSocialTomador" type="xs:string"/>
+  <xs:element name="EnderecoTomador" type="xs:string"/>
+  <xs:element name="NumeroTomador" type="xs:integer"/>
+  <xs:element name="ComplementoTomador" type="xs:string"/>
+  <xs:element name="BairroTomador" type="xs:NCName"/>
+  <xs:element name="CodigoMunicipioTomador" type="xs:integer"/>
+  <xs:element name="CepTomador" type="xs:integer"/>
+  <xs:element name="EmailTomador" type="xs:string"/>
+  <xs:element name="TelefoneTomador" type="xs:integer"/>
+  <xs:element name="PaisTomador" type="xs:integer"/>
+  <xs:element name="IdentificacaoIntermediario" type="xs:integer"/>
+  <xs:element name="CpfCnpjIntermediario" type="xs:integer"/>
+  <xs:element name="RazaoSocialIntermediario" type="xs:hexBinary"/>
+  <xs:element name="EnderecoIntermediario" type="xs:string"/>
+  <xs:element name="NumeroIntermediario" type="xs:integer"/>
+  <xs:element name="ComplementoIntermediario" type="xs:string"/>
+  <xs:element name="BairroIntermediario" type="xs:NCName"/>
+  <xs:element name="CodigoMunicipioIntermediario" type="xs:integer"/>
+  <xs:element name="CepIntermediario" type="xs:integer"/>
+  <xs:element name="Servico">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TipoLinha"/>
+        <xs:element ref="NumeroRps"/>
+        <xs:element ref="DiscriminacaoServico"/>
+        <xs:element ref="QuantidadeServico"/>
+        <xs:element ref="ValorUnitario"/>
+        <xs:element ref="ValorServico"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuantidadeServico" type="xs:integer"/>
+  <xs:element name="ValorUnitario" type="xs:integer"/>
+  <xs:element name="ValorServico" type="xs:integer"/>
+  <xs:element name="TipoLinha" type="xs:integer"/>
+  <xs:element name="NumeroRps" type="xs:integer"/>
+  <xs:element name="DiscriminacaoServico" type="xs:hexBinary"/>
+</xs:schema>

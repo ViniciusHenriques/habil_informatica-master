@@ -1,0 +1,1 @@
+<urn:RecepcionarLoteRpsSincrono soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><nfseDadosMsg xsi:type="xsd:string">%s</nfseDadosMsg></urn:RecepcionarLoteRpsSincrono>

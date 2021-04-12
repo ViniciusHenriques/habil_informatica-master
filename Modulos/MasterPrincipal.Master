@@ -1,0 +1,316 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPrincipal.Master.cs" Inherits="HabilInformatica.MasterPrincipal" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br"> 
+    <head runat="server">
+        <title>Sistema em Módulos</title>
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" href="images/IconePagina.svg" type="">
+        <link type="text/css" href="Content/Style.css" rel="stylesheet" />
+        <link type="text/css" href="Content/EstiloDefinidoPorParametro.css?cache + <%= DateTime.Now %>" rel="stylesheet" />
+        <link rel="stylesheet" href='Content/bootstrap.min.css' media="screen" />
+        <link rel="stylesheet" href="Content/MDB-Free/css/mdb.min.css">
+        <script src="Scripts/bootstrap.min.js"></script>    
+        <script type="text/javascript" src="../../Scripts/scrolltopcontrol.js"></script>  
+        <link rel="stylesheet" href="Content/Bootstrap3.0.3/bootstrap.min.css">
+        <script type="text/javascript" src="Content/Bootstrap3.0.3/jquery.min.js"></script>    
+        <script type="text/javascript" src='../../Content/Bootstrap3.0.3/jquery-1.8.3.min.js'></script>
+        <script type="text/javascript" src='../../Content/Bootstrap3.0.3/bootstrap.min.js'></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".relative").slideDown().animate({
+                    bottom: $(document).height()
+                }, 1000);
+            });
+
+            function alertBootstrap() {
+                $("#divAlertBootstrap").slideDown(500).delay(2000).slideUp(500);Ftot
+            };
+            $(document).on('keydown', function (e) {
+                 if ((e.altKey) && (e.which === 91)) { 
+                    $get('<%=btnVoltar.ClientID%>').click(); 
+                }
+                else if ((e.altKey) && (e.which === 8)) { 
+                    $get('<%=btnSair.ClientID%>').click(); 
+                }
+
+            });
+        </script>
+        <style type="text/css">
+
+             #preloader {
+                 position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
+                left: 0%!important; 
+                background-image:url('../../Images/Loading.svg');
+                background-size:100% 300%;
+                top:10%;
+                width: 100%!important; /* Largura da DIV */
+                height: 80%; /* Altura da DIV */
+                color: #FFF;       
+                text-align: center; /* Centraliza o texto */
+                z-index: 1000; /* Faz com que fique sobre todos os elementos da página */
+            }
+            #preloader3 {
+                 position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
+                left: 0%!important; 
+                background-image:url('../../Images/Loading.svg');
+                background-size:5000px 100%;
+                top:2%;
+                width: 100%!important; /* Largura da DIV */
+                height: 100%; /* Altura da DIV */
+                color: #FFF;       
+                text-align: center; /* Centraliza o texto */
+                z-index: 1000; /* Faz com que fique sobre todos os elementos da página */
+            }
+            #fechar { margin: 5px; font-size: 12px; }
+            .vertical {
+               height: 40px;
+                display: grid;
+                align-items: center;
+            }
+            .menu{
+                background-color:white!important;
+                padding:0!important;
+                margin:0!important;
+                border:0!important;
+        
+            }
+            .icon-bar{
+                background-color:white;
+            }
+            .navbar-nav{
+                position:static!important;
+                background-color:white;
+            }
+            .relative {
+               background: #B22222;
+               height: 140px;
+               width: 300px;
+               position: fixed;
+               color:white;
+               top: 200%;
+               right:2%;
+               text-align:center;
+               padding:5px;
+               border-radius:5px;
+               box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+            }
+            .NoPaddingMarginRight{
+                padding-right:0!important;
+                margin-left:0!important;
+            }
+            @media screen and (max-width: 1000px) {
+                .infos {
+                   border-bottom:2px solid white;
+                   height:55px;
+                   margin-top:0px;
+                   padding:0px;
+                }
+                .logo{
+                    margin-top:0px;
+                }
+                #btnSair, #btnVoltar{
+                    margin-top:7px;
+                    margin-bottom:10px;
+                }
+                .usuario{
+                    padding-top:7px;
+                }
+            }
+            .Transparente{
+                background-color:transparent!important;
+            }
+            .no-outline,*:focus {outline:none!important;}
+        </style>
+        <script type="text/javascript">
+           
+            $(document).on('click', '#botao1', function() {
+                document.getElementById('menu').style.marginBottom = document.getElementById("menu").offsetHeight;
+                $(this).attr("id", "botao2");
+            });
+            $(document).on('click', '#botao2', function() {
+                document.getElementById('menu').style.marginBottom = 0;
+                $(this).attr("id", "botao1");
+            });  
+            function MostrarModalFoto() {
+                $("#modalFotoUsuario").modal("show");
+            } 
+        </script> 
+    </head>
+    <body style="overflow:scroll;" class="CorPadraoFundo">   
+        <form id="frmMasterPage" runat="server" >
+            <div>
+                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" ></asp:ScriptManager>
+                <asp:Panel ID="Panel2" runat="server" Visible="true">
+                    <div class="container-fluid CorPadraoEscolhida" style=" padding-top:9px;padding-top:9px; padding-bottom:5px;margin-right:0!important" >
+                        <div class="row" >
+                            <div class="infos" >                  
+                                <div class="col-md-1 col-xs-2 logo" style="float:left">
+                                    <div class="LogoDaEmpresa"  title="MSoftGate" Style="height:49px; width:65px; margin-top:-5px!important;" ></div>
+                                </div>                   
+                                <div class="col-md-5 col-xs-10 empresa" style="margin-top:2px;" >
+                                    <asp:Label ID="lblEmpresa" Text="Empresa: ---- " Font-Size="9pt" Font-Bold="true"  runat="server" CssClass="CorPadraoEscolhidaTexto"/>
+                                    <br/>
+                                    <asp:Label ID="lblModulo" Text="Pagina: Inicial" Font-Size="9pt" Font-Bold="true"  runat="server" CssClass="CorPadraoEscolhidaTexto"/>
+                                </div>
+                            </div>                                 
+                            <div class="col-md-4 col-xs-8 usuario" style="margin-top:2px; float:left" >
+                                <asp:Panel ID="pnlAuttenticado" runat="server" Visible="false">
+                                    <div class="form-inline col-xs-2" style="float:left">
+                                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Always">
+                                            <ContentTemplate>
+                                                <a id="linkFoto" onclick="MostrarModalFoto()"><asp:Image runat="server" ID="imgUsuario" ImageUrl="/Images/IconeBarraSuperior.svg" title="Usuário" height="40" width="40" style="border-radius:50%" /></a>
+                                            </ContentTemplate> 
+                                        </asp:UpdatePanel>
+                                    </div>
+                                    <div class="form-inline vertical col-xs-8" >                                
+                                        <asp:Label ID="Label3" Text="   Bem Vindo ! " Font-Size="9pt" Font-Bold="true"  runat="server" CssClass="CorPadraoEscolhidaTexto"/>
+                                        <asp:Label ID="lblUsuario" Text="" Font-Size="9pt" Font-Bold="true"  runat="server" CssClass="CorPadraoEscolhidaTexto"/>
+                                    </div>
+                                </asp:Panel>
+                            </div>
+                            <div class="col-md-2 col-xs-4" style="margin-top:3px;">
+                                <div class="col-md-2 col-xs-1"></div>
+                                <asp:LinkButton ID="btnVoltar" title="Selecionar Gestão/Módulo ( Alt + Windows )" runat="server" CssClass="btn btn-success" Font-Size="12pt" Font-Bold="true" UseSubmitBehavior="false" OnClick="btnVoltar_Click" height="35"  >
+                                    <span aria-hidden="true"  class="glyphicon glyphicon glyphicon-th-list" ></span>
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnSair" title="Sair do Sistema ( Alt + BackSpace)" Text="Sair" runat="server" CssClass="btn btn-warning" Font-Size="12pt" Font-Bold="true" UseSubmitBehavior="false" OnClick="btnSair_Click"  height="35"  >
+                                    <span aria-hidden="true" class="glyphicon glyphicon-off"></span> 
+                                </asp:LinkButton>
+                            </div>
+                        </div>                            
+                    </div>
+                </asp:Panel>
+                <asp:Panel ID="pnlPrincipalMasterPage" runat="server" Visible="true">
+                    <div class="container-fluid " style="padding:0!important;margin:0!important;" id="menu">
+                        <nav class="navbar navbar-info menu CorPadraoFundo " style="padding:0!important;">                       
+                            <div class="navbar-header " >
+                                <button type="button" id="botao1" class="navbar-toggle collapsed CorPadraoEscolhida" aria-label="Toggle navigation" aria-controls="navbarResponsive" aria-expanded="false" data-toggle="collapse" data-target="#myNavbar" style="float:left!important;margin-left:10px" >
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                                </button>                       
+                            </div>                        
+                            <div class="collapse navbar-collapse  CorPadraoFundo CorPadraoEscolhidaBorder" id="myNavbar" >                               
+                                <asp:Menu ID="Menu1" runat="server"
+                                    Orientation="Horizontal"
+                                    RenderingMode="List" StaticMenuItemStyle-CssClass="CorPadraoEscolhidaItemMenu CorPadraoFundo CorPadraoItemHover"
+                                    IncludeStyleBlock="false" EnableViewState="false"
+                                    StaticMenuStyle-CssClass="nav navbar-nav no-outline"
+                                    DynamicMenuStyle-CssClass ="dropdown-menu no-outline" 
+                                    OnMenuItemClick="Menu1_MenuItemClick">  
+                                </asp:Menu>                           
+                            </div>       
+                            <div id="preloader"></div>
+                        </nav>
+                    </div>   
+                    
+                </asp:Panel>
+                <asp:Panel ID="pnlPrincipalMasterPageVertical" runat="server" Visible="false">
+                    <div class="<%=TamanhoDivMenu%> CorPadraoEscolhidaBorderRight " style="padding:0!important;margin:0!important;height:100%;" id="menu2">
+                        <nav class="navbar navbar-info menu CorPadraoFundo " style="padding:0!important; background-color:transparent!important">                       
+                            <div class="navbar-header " >
+                                <button type="button" id="botao2" class="navbar-toggle collapsed CorPadraoEscolhida" aria-label="Toggle navigation" aria-controls="navbarResponsive" aria-expanded="false" data-toggle="collapse" data-target="#myNavbar2" style="float:left!important;margin-left:10px" >
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                                </button>                       
+                            </div>                        
+                            <div class="collapse navbar-collapse  CorPadraoFundo " id="myNavbar2" style="width:90%;float:left">                               
+                                <asp:Menu ID="Menu2" runat="server" 
+                                    RenderingMode="List" StaticMenuItemStyle-CssClass="CorPadraoEscolhidaItemMenu CorPadraoFundo CorPadraoItemHover " 
+                                    IncludeStyleBlock="false" EnableViewState="false"
+                                    StaticMenuStyle-CssClass="nav navbar-nav CorPadraoFundo no-outline" 
+                                    DynamicMenuStyle-CssClass="dropdown-menu no-outline " 
+                                    OnMenuItemClick="Menu1_MenuItemClick">  
+                                </asp:Menu>                           
+                            </div>       
+                            <%--<div id="preloader3"></div>--%>
+                            <div style="float:left;width:10%;text-align:right;">
+                                <asp:LinkButton runat="server" class="CorPadraoEscolhidaItemMenu" id="btnMinMenu" OnClick="btnMinMenu_Click" AutoPostBack="true"><span class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
+                                <asp:LinkButton runat="server" class="CorPadraoEscolhidaItemMenu" id="btnMaxMenu" OnClick="btnMaxMenu_Click" AutoPostBack="true"><span class="glyphicon glyphicon-arrow-right"></span></asp:LinkButton>                                               
+                            </div>
+                        </nav>
+                    </div>                     
+                </asp:Panel>
+                
+                <div class="<%=TamanhoDivCorpo%>" style="margin-right:0!important;padding-right:0!important;padding-left:0!important;margin-left:0!important">
+                    <asp:ContentPlaceHolder ID="cttCorpo" runat="server"  >
+                       
+                    </asp:ContentPlaceHolder>
+                </div>
+                        
+
+                <asp:ContentPlaceHolder ID="cttRodape" runat="server">                                 
+                </asp:ContentPlaceHolder>
+
+            </div>
+            <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Always">
+                <ContentTemplate>
+                    <asp:linkbutton runat="server" ID="btnOK" OnClick="btnOK_Click"></asp:linkbutton>
+                </ContentTemplate> 
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnOK" EventName="Click" />
+                </Triggers>
+            </asp:UpdatePanel>
+            
+            <script type="text/javascript" src="../../Content/MDB-Free/js/mdb.min.js" ></script>     
+            
+            <script type="text/javascript">
+               
+                toastr.options = {
+                    "closeButton": true, // true/false
+                    "debug": false, // true/false
+                    "newestOnTop": false, // true/false
+                    "progressBar": false, // true/false
+                    "positionClass": "toast-bottom-right", // toast-top-right / toast-top-left / toast-bottom-right / toast-bottom-left
+                    "preventDuplicates": false, //true/false
+                    //"onclick": ExecutaClickBotaoOK(),
+                    "showDuration": "300", // in milliseconds
+                    "hideDuration": "1000", // in milliseconds
+                    "timeOut": "10000", // in milliseconds
+                    "extendedTimeOut": "1000", // in milliseconds
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                 toastr.options.onclick = function () {
+                    $get("btnOK").click();
+                }
+                $(document).ready(function () {
+                    //Esconde preloader
+                    $(window).load(function () {
+                        $('#preloader').fadeOut(500);//1500 é a duração do efeito (1.5 seg)
+                    });
+                });
+                $(document).ready(function () {
+                    //Esconde preloader
+                    $(window).load(function () {
+                        $('#preloader3').fadeOut(500);//1500 é a duração do efeito (1.5 seg)
+                    });
+                });
+                
+                 
+ 
+            </script>
+
+        </form>
+         <div class="modal fade" id="modalFotoUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" >
+            <div class="modal-dialog" role="document" style="width:60%!important;margin-top:10px!important">
+                <div class="modal-content" style="padding:0!important">
+                    
+                    <div class="modal-body" style="text-align:center;padding:0!important">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-bottom:-35px;margin-right:10px;font-size:35px"><span aria-hidden="true" >&times;</span></button>
+                        <asp:Image runat="server" ID="imgFotoModal" ImageUrl="/Images/IconeBarraSuperior.svg" title="Usuário" height="100%" width="100%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

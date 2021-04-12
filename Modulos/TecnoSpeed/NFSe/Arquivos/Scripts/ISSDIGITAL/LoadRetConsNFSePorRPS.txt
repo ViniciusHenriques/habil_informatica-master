@@ -1,0 +1,46 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+    Params : TStringList;
+}
+{$I ..\comuns\Utils.txt}
+Var
+  _Xml: string;
+begin
+  if Pos('<faultstring',input) > 0 then
+  begin
+    Input := StringReplace(Input, #13#10, '', [rfReplaceAll]);
+    Params.Add('faultstring='+input);
+  end
+  else
+  begin
+    Progress('Carregando configurações de XSDDataset.');
+    Datasets.ConfigSection := 'RETORNO_CONSULTARNFSEPORRPS';
+
+    if Trim(MappingXsdFileName) <> '' then
+      Datasets.MappingFileName := MappingXsdFileName;
+
+    Progress('Criando XSDDataset.');
+    Datasets.CreateXSDDataset;
+    _Xml := UnEscapeXml (Input);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="iso-8859-1"?>', '', [RfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<?xml version="1.0" encoding="UTF-8"?>', '', [RfReplaceAll]);
+    
+    _Xml := StringReplace(_Xml, '<ListaNfse>', '', [RfReplaceAll]);
+    _Xml := StringReplace(_Xml, '</ListaNfse>', '', [RfReplaceAll]);
+    
+    _Xml := StringReplace(_Xml, '&', '&amp;',[RfReplaceAll]);
+    _Xml := StringReplace(_Xml, '<!--CRLF-->', '',[RfReplaceAll]);     
+    _Xml := StringReplace(_Xml, '<ConsultarNfseRpsResposta xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" <!--CRLF-->', 
+      '<ConsultarNfseRpsResposta xmlns:ns2="http://www.w3.org/2000/09/xmldsig#"',[RfReplaceAll]);
+    
+    _Xml := XmlDeepNodeSearch(_Xml, Datasets.XsdElementName, '//*[local-name()="ConsultarNfseRpsResposta"]');
+    
+    Params.Add('XmlNfse='+_Xml);
+    Datasets.LoadFromXMLContent(_Xml);
+    Progress('XML carregado com sucesso.');
+  end;
+end.

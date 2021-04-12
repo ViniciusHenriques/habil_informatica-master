@@ -1,0 +1,85 @@
+;*****************************************************************************************************************************************
+;Definições dos Campos: Impressão de RPS (Impressão Nova)
+;*****************************************************************************************************************************************
+[PrintXml_DadosRPS]
+;Dados do RPS
+Numero=/rps/nrRps
+DataEmissao=/rps/dtEmissaoRps
+Situacao=/rps/stRps
+NumeroEmissorRps=/rps/nrEmissorRps
+OptanteSimplesNacional=/rps/prestador/isOptanteSimplesNacional
+TipoTributacao=/rps/tpTributacao
+TipoAmbiente=/rps/tpAmbiente
+
+;Dados do Serviço
+ValorPis=/rps/retencoes/vlPis
+ValorCofins=/rps/retencoes/vlCofins
+ValorInss=/rps/retencoes/vlInss
+ValorIr=/rps/retencoes/vlIrrf
+ValorCsll=/rps/retencoes/vlCsll
+IssRetido=/rps/isIssRetido
+ValorIss=/rps/retencoes/vlIss
+ValorLiquidoNfse=/rps/vlLiquidoRps
+CodigoTributacaoMunicipio=/rps/tpTributacao
+Servicos=/rps/listaServicos/servico[]
+AliquotaCofins=/rps/retencoes/vlAliquotaCofins
+AliquotaCsll=/rps/retencoes/vlAliquotaCsll
+AliquotaInss=/rps/retencoes/vlAliquotaInss
+AliquotaIrrf=/rps/retencoes/vlAliquotaIrrf
+AliquotaPis=/rps/retencoes/vlAliquotaPis
+TotalServicos=/rps/vlTotalRps
+TotalLiquido=/rps/vlLiquidoRps
+
+;Dados do Prestador
+CnpjPrestador=/rps/prestador/nrCnpj
+InscricaoMunicipalPrestador=/rps/prestador/nrInscricaoMunicipal
+
+;Dados do Tomador
+CpfTomador=/rps/tomador/documento/nrDocumento
+CnpjTomador=/rps/tomador/documento/nrDocumento
+InscricaoMunicipalTomador=/rps/tomador/nrInscricaoMunicipal
+InscricaoEstadualTomador=/rps/tomador/nrInscricaoEstadual
+RazaoSocialTomador=/rps/tomador/nmTomador
+EnderecoTomador=/rps/tomador/dsEndereco
+NumeroEnderecoTomador=/rps/tomador/nrEndereco
+ComplementoEnderecoTomador=/rps/tomador/dsComplemento
+BairroTomador=/rps/tomador/nmBairro
+CodigoMunicipioTomador=/rps/tomador/nrCidadeIbge
+UFTomador=/rps/tomador/nmUf
+CepTomador=/rps/tomador/nrCep
+TelefoneTomador=/rps/tomador/nrTelefone
+EmailTomador=/rps/tomador/dsEmail
+
+;Campos Customizados
+RazaoSocialPrestador=String[80]
+EnderecoPrestador=String[80]
+UfPrestador=String[2]
+NumeroEnderecoPrestador=String[7]
+ComplementoEnderecoPrestador=String[20]
+BairroPrestador=String[40]
+CepPrestador=String[8]
+Serie=String[20]
+DiscriminacaoImpostos=String[255]
+TipoLogradouroPrestador=String[20]
+TipoLogradouroTomador=String[20]
+DataCancelamento=String[20]
+OutrasInformacoes=String[255]
+NfseSubstituidora=String[40]
+NfseSubstituida=String[40]
+vlAliquotaIss=String[20]
+NumeroNFSe=String[40]
+DataHoraNFSe=String[40]
+SitePrestador=String[60]
+
+;*****************************************************************************************************************************************
+;Dados dos Servicos
+;*****************************************************************************************************************************************
+[PrintXml_Servicos]
+DiscriminacaoServico=/rps/listaServicos/servico[]/dsDiscriminacaoServico
+NumeroServicoItem=/rps/listaServicos/servico[]/nrServicoItem
+NumeroServicoSubItem=/rps/listaServicos/servico[]/nrServicoSubItem
+ValorServico=/rps/listaServicos/servico[]/vlServico
+DeducaoServico=/rps/listaServicos/servico[]/vlDeducao
+BaseCalculoServico=/rps/listaServicos/servico[]/vlBaseCalculo
+AliquotaServico=/rps/listaServicos/servico[]/vlAliquota
+ISSServico=/rps/listaServicos/servico[]/vlIssServico

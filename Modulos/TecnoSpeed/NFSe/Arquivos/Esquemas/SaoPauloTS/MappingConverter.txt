@@ -1,0 +1,77 @@
+;*****************************************************************************************************************************************
+;Configuração do XsdDataset para Retorno da Consulta de NFSe
+;*****************************************************************************************************************************************
+[RETORNO_CONSULTARNFTS]
+XSDElementName=RetornoConsultaNFTS
+XSDFile=RetornoConsulta_v01.xsd
+XSDStartNode=
+IgnoredXPaths=PedidoConsultaNFTS/Signature
+UseNamespacePrefixes=0
+
+;*****************************************************************************************************************************************
+;Configuração do XsdDataset para Retorno do Envio de Lote de RPS
+;*****************************************************************************************************************************************
+[RETORNO_ENVIAR]
+XSDElementName=RetornoEnvioLoteRPS
+XSDFile=RetornoEnvioLoteRPS_v01.xsd
+XSDStartNode=
+IgnoredXPaths=RetornoConsultaLoteNFTS/NFTS/Assinatura
+
+;*****************************************************************************************************************************************
+;Nomes dos Campos: Retorno do Envio de Lote de RPS
+;*****************************************************************************************************************************************
+[RetornoEnvioLoteRPS]
+NumeroProtocolo=RetornoEnvioLoteRPS/Cabecalho/InformacoesLote/NumeroLote
+MotivoCodigo=RetornoEnvioLoteRPS/Erro/Codigo
+MotivoMensagemAlerta=RetornoEnvioLoteRPS/Erro/Descricao
+MotivoCodigo=RetornoEnvioLoteRPS/Alerta/Codigo
+MotivoMensagemAlerta=RetornoEnvioLoteRPS/Alerta/Descricao
+
+;*****************************************************************************************************************************************
+;Configuração do XsdDataset para Retorno de Cancelamento
+;*****************************************************************************************************************************************
+[RETORNO_CANCELARNFTS]
+XSDElementName=RetornoCancelamentoNFTS
+XSDFile=RetornoCancelamentoNFTS_v01.xsd
+XSDStartNode=
+IgnoredXPaths=
+UseNamespacePrefixes=0
+XMLHeader=
+RootAttributes=
+
+;***************************************************************************************************
+;Nomes dos Campos: Retorno de Cancelamento
+;***************************************************************************************************
+[RetornoCancelamentoNFTS]
+Sucesso=RetornoCancelamentoNFTS/Cabecalho/Sucesso
+MotivoCodigo=RetornoCancelamentoNFTS/Erro/Codigo
+MotivoMensagem=RetornoCancelamentoNFTS/Erro/Descricao
+
+;***************************************************************************************************
+;Configuração do NFSeDataset para Retorno de Lote
+;***************************************************************************************************
+[RETORNO_CONSULTARLOTE]
+XSDElementName=RetornoConsultaNFTS
+XSDFile=RetornoConsulta_v01.xsd
+IgnoredXPaths=RetornoConsultaNFTS/NFTS/Assinatura
+UseNamespacePrefixes=0
+
+;*****************************************************************************************************************************************
+;Nomes dos Campos: Retorno da Consulta de Lote
+;*****************************************************************************************************************************************
+[RetornoConsulta]
+Sucesso=RetornoConsultaLoteNFTS/Cabecalho/Sucesso
+NumeroNFSe=RetornoConsultaLoteNFTS/NFTS/ChaveDocumento/NumeroNFSe
+CodVerificacao=RetornoConsultaLoteNFTS/NFTS/ChaveDocumento/CodigoVerificacao
+DataEmissaoNFSe=RetornoConsultaLoteNFTS/NFTS/DataEmissaoRPS
+NumeroRps=RetornoConsultaNFTS/RetornoConsultaLoteNFTS/NFTS/ChaveDocumento/NumeroDocumento
+SerieRps=RetornoConsultaLoteNFTS/NFTS/ChaveDocumento/SerieNFTS
+Tipo=RetornoConsultaLoteNFTS/NFTS/TipoRPS
+DataAutorizacao=RetornoConsultaLoteNFTS/NFTS/DataEmissaoNFe
+CNPJ=RetornoConsultaLoteNFTS/NFTS/CPFCNPJPrestador/CNPJ
+InscMunicipal=RetornoConsultaLoteNFTS/NFTS/ChaveDocumento/InscricaoMunicipal
+DataCancelamento=RetornoConsultaLoteNFTS/NFTS/DataCancelamento
+MotivoCodigo=Erro/Codigo
+MotivoMensagem=Erro/Descricao
+MotivoCodigoAlerta=Alerta/Codigo
+MotivoMensagemAlerta=Alerta/Descricao

@@ -1,0 +1,135 @@
+;*****************************************************************************************************************************************
+;Definições dos Campos: Impressão de NFSe
+;*****************************************************************************************************************************************
+[PrintXml_DadosNFSe]
+;Dados da NFSe
+Numero=/Nfse/CompNfse/Nfse/InfNfse/Numero
+CodigoVerificacao=/Nfse/CompNfse/Nfse/InfNfse/CodigoVerificacao
+DataEmissaoNFSe=/Nfse/CompNfse/Nfse/InfNfse/DataEmissao
+NfseSubstituida=/Nfse/CompNfse/Nfse/InfNfse/NfseSubstituida
+Competencia=/Nfse/CompNfse/Nfse/InfNfse/Competencia
+
+;Outras informações
+OutrasInformacoes=/Nfse/CompNfse/Nfse/InfNfse/OutrasInformacoes
+
+;Dados Prestador
+CpfPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/IdentificacaoPrestador/CpfCnpj/Cpf
+CnpjPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/IdentificacaoPrestador/CpfCnpj/Cnpj
+InscricaoMunicipalPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/IdentificacaoPrestador/InscricaoMunicipal
+;RazaoSocialPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/RazaoSocial
+;NomeFantasiaPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/NomeFantasia
+;EnderecoPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Endereco
+NumeroPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Numero
+ComplementoPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Complemento
+BairroPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Bairro
+CodigoMunicipioPrestador=/Nfse/CompNfse/Nfse/InfNfse/OrgaoGerador/CodigoMunicipio
+UfPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Uf
+CodigoPaisPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/CodigoPais
+CepPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Endereco/Cep
+;TelefonePrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Contato/Telefone
+EmailPrestador=/Nfse/CompNfse/Nfse/InfNfse/PrestadorServico/Contato/Email
+
+;Dados Prestador
+CpfPrestadorServico=/Nfse/CompNfse/Nfse/InfNfse/Prestador/CpfCnpj/Cpf
+CnpjPrestadorServico=/Nfse/CompNfse/Nfse/InfNfse/Prestador/CpfCnpj/Cnpj
+InscMunicipalPrestadorServico=/Nfse/CompNfse/Nfse/InfNfse/Prestador/InscricaoMunicipal
+
+;Dados Órgão Gerador
+CodigoMunicipioOrgaoGerador=/Nfse/CompNfse/Nfse/InfNfse/OrgaoGerador/CodigoMunicipio
+UfOrgaoGerador=/Nfse/CompNfse/Nfse/InfNfse/OrgaoGerador/Uf
+
+;Dados Rps
+NumeroRps=/Nfse/CompNfse/Nfse/InfNfse/IdentificacaoRps/Numero
+SerieRps=/Nfse/CompNfse/Nfse/InfNfse/IdentificacaoRps/Serie
+TipoRps=/Nfse/CompNfse/Nfse/InfNfse/IdentificacaoRps/Tipo
+DataEmissaoRps=/Nfse/CompNfse/Nfse/InfNfse/DataEmissao
+StatusRps=/Nfse/CompNfse/Nfse/InfNfse/Status
+NumeroRpsSubstituido=/Nfse/CompNfse/Nfse/InfNfseRps/RpsSubstituido/Numero
+SerieRpsSubstituido=/Nfse/CompNfse/Nfse/InfNfseRps/RpsSubstituido/Serie
+TipoRpsSubstituido=/Nfse/CompNfse/Nfse/InfNfseRps/RpsSubstituido/Tipo
+;IdRps=/Nfse/CompNfse/Nfse/InfNfseRps/@Id
+
+;Dados serviço
+BaseCalculo=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/BaseCalculo
+Aliquota=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/Aliquota
+ValorIss=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorIss
+ValorLiquidoNfse=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorLiquidoNfse
+ValorCredito=/Nfse/CompNfse/Nfse/InfNfse/ValorCredito
+ValorServicos=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorServicos
+ValorDeducoes=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorDeducoes
+ValorPis=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorPis
+ValorCofins=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorCofins
+ValorInss=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorInss
+ValorIr=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorIr
+ValorCsll=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorCsll
+OutrasRetencoes=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/OutrasRetencoes
+ValorIssServico=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/ValorIss
+AliquotaServico=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/Aliquota
+DescontoIncondicionado=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/DescontoIncondicionado
+DescontoCondicionado=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/DescontoCondicionado
+IssRetido=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/IssRetido
+IssRetidoNfse=/Nfse/CompNfse/Nfse/InfNfse/Servico/Valores/IssRetido
+ResponsavelRetencao=/Nfse/CompNfse/Nfse/InfNfse/Servico/ResponsavelRetencao
+ItemListaServico=/Nfse/CompNfse/Nfse/InfNfse/Servico/ItemListaServico
+CodigoCnae=/Nfse/CompNfse/Nfse/InfNfse/Servico/CodigoCnae
+CodigoTributacaoMunicipio=/Nfse/CompNfse/Nfse/InfNfse/Servico/CodigoTributacaoMunicipio
+Discriminacao=/Nfse/CompNfse/Nfse/InfNfse/Servico/Discriminacao
+CodigoMunicipioServico=/Nfse/CompNfse/Nfse/InfNfse/Servico/CodigoMunicipio
+CodigoPaisServico=/Nfse/CompNfse/Nfse/InfNfse/Servico/CodigoPais
+ExigibilidadeISS=/Nfse/CompNfse/Nfse/InfNfse/Servico/ExigibilidadeISS
+MunicipioIncidencia=/Nfse/CompNfse/Nfse/InfNfse/Servico/MunicipioIncidencia
+NumeroProcesso=/Nfse/CompNfse/Nfse/InfNfse/Servico/NumeroProcesso
+RegimeEspecialTributacao=/Nfse/CompNfse/Nfse/InfNfse/RegimeEspecialTributacao
+NaturezaOperacao=/Nfse/CompNfse/Nfse/InfNfse/NaturezaOperacao
+OptanteSimplesNacional=/Nfse/CompNfse/Nfse/InfNfse/OptanteSimplesNacional
+IncentivoFiscal=/Nfse/CompNfse/Nfse/InfNfse/IncentivoFiscal
+
+;Dados Tomador
+CpfTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/IdentificacaoTomador/CpfCnpj/Cpf
+CnpjTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/IdentificacaoTomador/CpfCnpj/Cnpj
+InscricaoMunicipalTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/IdentificacaoTomador/InscricaoMunicipal
+RazaoSocialTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/RazaoSocial
+EnderecoTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Endereco
+NumeroTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Numero
+ComplementoTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Complemento
+BairroTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Bairro
+CodigoMunicipioTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/CodigoMunicipio
+UfTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Uf
+CodigoPaisTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/CodigoPais
+CepTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Endereco/Cep
+TelefoneTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Contato/Telefone
+;EmailTomador=/Nfse/CompNfse/Nfse/InfNfse/TomadorServico/Contato/Email
+
+;Dados Intermediario
+CpfIntermediario=/Nfse/CompNfse/Nfse/InfNfse/Intermediario/IdentificacaoIntermediario/CpfCnpj/Cpf
+CnpjIntermediario=/Nfse/CompNfse/Nfse/InfNfse/Intermediario/IdentificacaoIntermediario/CpfCnpj/Cnpj
+InscricaoMunicipalIntermediario=/Nfse/CompNfse/Nfse/InfNfse/Intermediario/IdentificacaoIntermediario/InscricaoMunicipal
+RazaoSocialIntermediario=/Nfse/CompNfse/Nfse/InfNfse/Intermediario/RazaoSocial
+
+;Dados Obra
+CodigoObra=/Nfse/CompNfse/Nfse/InfNfse/ConstrucaoCivil/CodigoObra
+Art=/Nfse/CompNfse/Nfse/InfNfse/ConstrucaoCivil/Art
+
+;Dados Cancelamento
+CodigoCancelamento=/Nfse/CompNfse/NfseCancelamento/Confirmacao/Pedido/InfPedidoCancelamento/CodigoCancelamento
+DataHoraCancelamento=/Nfse/CompNfse/NfseCancelamento/Confirmacao/DataHora
+
+;Dados Substituição
+NfseSubstituidora=/Nfse/CompNfse/NfseSubstituicao/SubstituicaoNfse/NfseSubstituidora
+
+;Campos Customizados NFSe
+ValorTributoFederal=String[30]
+PorcentagemTributoFederal=String[30]
+MotivoCancelamento=String[80]
+ImuneIsento=string[10]
+InscricaoEstadualPrestador=string[20]
+InscricaoEstadualTomador=string[20]
+Acrescimos=string[10]
+Credito=string[10]
+TotalRetencoes=string[10]
+
+NomeFantasiaPrestador=String[80]
+RazaoSocialPrestador=String[80]
+TelefonePrestador=String[20]
+EnderecoPrestador=String[80]
+EmailTomador=String[80]

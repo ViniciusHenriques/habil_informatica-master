@@ -1,0 +1,60 @@
+{
+  Variáveis externas disponíveis:
+    PathXsd: string;
+    MappingXsdFileName: string;
+    Input: string;
+    Datasets: TspdXSDDataset;
+}
+
+Var
+  _ListFields : TStringList;
+  _Status, _Motivo, _Xml : string;
+
+{$I ..\Comuns\Utils.TXT}
+{$I ..\Comuns\Comuns.txt}
+
+  function GetStatusNota(const aXML : string):String;
+  var
+    _Value : string;
+  begin    
+     if (xmlSelectNodeValue(_Xml, '//*[local-name()="ws_002_out_status_retorno"]',  _Value)) and (_Value = 'S') then
+        Result := 'SUCESSO'
+      else
+        Result := 'ERRO';
+  end; 
+  
+  function GetCodigo(const aXML: string): String;
+  begin    
+      Result := GetValueTag('ws_002_out_codigo_retorno', aXml)
+  end;  
+ 
+  function GetMotivoNota(const aXML: string): String;
+  begin
+    if (pos('<faultstring>', params.values['ERRO']) > 0) then    
+      Result := XmlSelect(params.values['ERRO'], '//*[local-name()="faultstring"]')    
+    else
+      Result := GetCodigo(aXml) + '-' + GetValueTag('ws_002_out_msg_retorno', aXml)
+  end;
+
+begin
+  _Xml := Params.Values['XML'];  
+  _Status := GetStatusNota(_Xml);
+  _Motivo := GetMotivoNota(_Xml);  
+  Progress('Adicionando valores aos campos.');
+  _ListFields := CreateFieldsResponseCancelamento;
+  if _ListFields <> nil then
+  Try
+    AddValueListFields('Status', _Status, _ListFields);
+    AddValueListFields('Motivo', _Motivo, _ListFields);    
+    
+    if _Status = 'SUCESSO' then
+      AddValueListFields('DataCancelamento', FormatDateTime('yyyy-mm-dd',now), _ListFields)
+    else
+      AddValueListFields('DataCancelamento', '', _ListFields);    
+      
+    Output := FormatLineResult(_ListFields);
+  Finally
+    _ListFields.Free;
+    Progress('Valores adicionados com sucesso.');
+  end;
+end.
