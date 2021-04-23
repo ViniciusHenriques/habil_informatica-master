@@ -53,12 +53,23 @@ namespace SoftHabilInformatica.Pages.Compromissos
 
             for (int i = 0; i < Lista.Count; i++)
             {
-
-                Agendamentos += "{" +
-                                    "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n"," ").Replace("\r", " ") + "'," +
-                                    "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
-                                    "color: '"+ Lista[i].CorLembrete + "'" +
-                                "},";
+                if (Lista[i].CodigoSituacao == 206)
+                {
+                    Agendamentos += "{" +
+                                        "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n", " ").Replace("\r", " ") + "'," +
+                                        "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
+                                        "color: '" + Lista[i].CorLembrete + "'," +
+                                        "className: 'TarefaConcluida'" +
+                                    "},";
+                }
+                else
+                {
+                    Agendamentos += "{" +
+                                        "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n", " ").Replace("\r", " ") + "'," +
+                                        "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
+                                        "color: '" + Lista[i].CorLembrete + "'" +
+                                    "},";
+                }
 
             }
             Session["ListaUsuariosPermitidos"] = null;

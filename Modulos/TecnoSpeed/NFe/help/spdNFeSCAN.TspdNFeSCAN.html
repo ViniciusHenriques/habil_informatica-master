@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeSCAN: Classe TspdNFeSCAN</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeSCAN"></a><h1 class="cio">Classe TspdNFeSCAN</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeSCAN.html">spdNFeSCAN</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeSCAN = class(<a class="normal"  href="spdNFe.TspdNFe.html">TspdNFe</a>)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe responsável pela comunicação com WebService de Contingência Nacional de Nota Fiscal Eletrônica</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TComponent</li>
+<li class="ancestor"><a class="normal"  href="spdNFe.TspdCustomNFe.html">TspdCustomNFe</a></li>
+<li class="ancestor"><a class="normal"  href="spdNFe.TspdNFe.html">TspdNFe</a></li>
+<li class="thisitem">TspdNFeSCAN</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeSCAN.TspdNFeSCAN.html#FSerie">FSerie</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeSCAN.TspdNFeSCAN.html#FTpEmis">FTpEmis</a></b>: String;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#SetSerie">SetSerie</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#SetTpEmis">SetTpEmis</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#PrepararXMLAssinar">PrepararXMLAssinar</a></b>(var aNota: string); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#AtualizaDadosNFeEventos">AtualizaDadosNFeEventos</a></b>; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#UpdateNFeData">UpdateNFeData</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#GetTemplateFolder">GetTemplateFolder</a></b>: String; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#SetVersaoManual">SetVersaoManual</a></b>(const Value: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#CarregarConfiguracoes">CarregarConfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#Salvarconfiguracoes">Salvarconfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#LoadConfig">LoadConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#LoadConfig">LoadConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#SaveConfig">SaveConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#SaveConfig">SaveConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#Create">Create</a></b> (aOwner : TComponent); override;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#Serie">Serie</a></b> : String read <a   href="spdNFeSCAN.TspdNFeSCAN.html#FSerie">FSerie</a> write <a   href="spdNFeSCAN.TspdNFeSCAN.html#SetSerie">SetSerie</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeSCAN.TspdNFeSCAN.html#TpEmis">TpEmis</a></b> : String read <a   href="spdNFeSCAN.TspdNFeSCAN.html#FTpEmis">FTpEmis</a> write <a   href="spdNFeSCAN.TspdNFeSCAN.html#SetTpEmis">SetTpEmis</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FSerie"></a><code><b>FSerie</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FTpEmis"></a><code><b>FTpEmis</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetSerie"></a><code>procedure <b>SetSerie</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetTpEmis"></a><code>procedure <b>SetTpEmis</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="PrepararXMLAssinar"></a><code>procedure <b>PrepararXMLAssinar</b>(var aNota: string); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="AtualizaDadosNFeEventos"></a><code>procedure <b>AtualizaDadosNFeEventos</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="UpdateNFeData"></a><code>procedure <b>UpdateNFeData</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetTemplateFolder"></a><code>function <b>GetTemplateFolder</b>: String; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetVersaoManual"></a><code>procedure <b>SetVersaoManual</b>(const Value: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="CarregarConfiguracoes"></a><code>procedure <b>CarregarConfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="Salvarconfiguracoes"></a><code>procedure <b>Salvarconfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega as configurações do arquivo nfeConfig.INI</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega as configurações a partir do conteúdo de um arquivo ini</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega as configurações do Componente no arquivo nfeConfig.INI</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Seta as configurações do componente no parâmetro</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b> (aOwner : TComponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inicialização do Componente</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="Serie"></a><code>property <b>Serie</b> : String read <a   href="spdNFeSCAN.TspdNFeSCAN.html#FSerie">FSerie</a> write <a   href="spdNFeSCAN.TspdNFeSCAN.html#SetSerie">SetSerie</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Serie</code> que será utilizada na assinatura da NFe quer será enviada para SCAN</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="TpEmis"></a><code>property <b>TpEmis</b> : String read <a   href="spdNFeSCAN.TspdNFeSCAN.html#FTpEmis">FTpEmis</a> write <a   href="spdNFeSCAN.TspdNFeSCAN.html#SetTpEmis">SetTpEmis</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Tipo de Emissão (padrão 3) que será utilizado na NFe enviada para o SCAN</p>
+</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

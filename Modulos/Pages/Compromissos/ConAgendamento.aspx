@@ -48,7 +48,9 @@
         });
     </script>
     <style>
-
+        .TarefaConcluida{
+            opacity:0.4
+        }
       body {
         margin: 0;
         padding: 0;

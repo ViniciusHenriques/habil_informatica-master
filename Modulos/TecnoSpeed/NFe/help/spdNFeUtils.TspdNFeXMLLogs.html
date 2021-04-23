@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeUtils: Classe TspdNFeXMLLogs</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeXMLLogs"></a><h1 class="cio">Classe TspdNFeXMLLogs</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td>Campos</td><td><a class="section"  href="#%40Methods">Métodos</a></td><td>Properties</td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeUtils.html">spdNFeUtils</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeXMLLogs = class(TObject)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe com funções úteis na Recuperacao de XML Parseados dos arquivos de Log</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">TspdNFeXMLLogs</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#LoadLog">LoadLog</a></b>(const aLog, aLogDir : String): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class procedure <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#ListaChavesLogEnv">ListaChavesLogEnv</a></b>(aLogEnv: String; aListOut: TStringList; aLogDir : string);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class procedure <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#ListaChavesLogRecibo">ListaChavesLogRecibo</a></b>(aLogConsRecibo: String; cStat: integer; aListOut: TStrings; aLogDir : string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#AchaInfProtLogConsNF">AchaInfProtLogConsNF</a></b>(aIdNFe, aLogConsNF: String; aLogDir : string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#AchaNFeAssinadaLogEnvio">AchaNFeAssinadaLogEnvio</a></b>(aIdNFe, aLogEnvLote: String; aLogDir : string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXMLLogs.html#AchaInfProtLogConsRec">AchaInfProtLogConsRec</a></b>(aIdNFe, aLogConsRecibo: String; aLogDir : string): string;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadLog"></a><code>class function <b>LoadLog</b>(const aLog, aLogDir : String): string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ListaChavesLogEnv"></a><code>class procedure <b>ListaChavesLogEnv</b>(aLogEnv: String; aListOut: TStringList; aLogDir : string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ListaChavesLogRecibo"></a><code>class procedure <b>ListaChavesLogRecibo</b>(aLogConsRecibo: String; cStat: integer; aListOut: TStrings; aLogDir : string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AchaInfProtLogConsNF"></a><code>class function <b>AchaInfProtLogConsNF</b>(aIdNFe, aLogConsNF: String; aLogDir : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AchaNFeAssinadaLogEnvio"></a><code>class function <b>AchaNFeAssinadaLogEnvio</b>(aIdNFe, aLogEnvLote: String; aLogDir : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AchaInfProtLogConsRec"></a><code>class function <b>AchaInfProtLogConsRec</b>(aIdNFe, aLogConsRecibo: String; aLogDir : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

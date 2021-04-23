@@ -154,17 +154,51 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     RegraFreteDAL regDAL = new RegraFreteDAL();
                                     reg = regDAL.PesquisarRegraFreteIndex(Convert.ToInt32(word));
                                     ddlTransp.SelectedValue = reg.CodigoTransportador.ToString();
-                                    txtDePara11.Text = reg.DePara11.ToString();
-                                    txtDePara12.Text = reg.DePara12.ToString();
-                                    txtDePara21.Text = reg.DePara21.ToString();
-                                    txtDePara22.Text = reg.DePara22.ToString();
-                                    txtDePara31.Text = reg.DePara31.ToString();
-                                    txtDePara32.Text = reg.DePara32.ToString();
-                                    txtDeParaPct11.Text = reg.DeParaPct11.ToString();
-                                    txtDeParaPct12.Text = reg.DeParaPct12.ToString();
                                     txtFreteMinimo.Text = reg.ValorFreteMinimo.ToString();
                                     txtGRIS.Text = reg.ValorGRIS.ToString();
                                     txtRegiao.Text = reg.Regiao.ToString();
+
+                                    txtGRISMinimo.Text = reg.ValorGRISMinimo.ToString();
+                                    txtPedagio.Text = reg.ValorPedagio.ToString();
+                                    txtPedagioMaximo.Text = reg.ValorPedagioMaximo.ToString();
+                                    txtADValor.Text = reg.ValorAD.ToString();
+                                    txtPorTonelada.Text = reg.ValorPorTonelada.ToString();
+                                    txtSeguro.Text = reg.ValorSeguro.ToString();
+                                    txtSeguroMinimo.Text = reg.ValorSeguroMinimo.ToString();
+                                    txtExcedente1.Text = reg.DeParaExcedente1.ToString();
+                                    txtExcedente2.Text = reg.DeParaExcedente2.ToString();
+                                    txtCalcularADValor1.Text = reg.IndicadorCalcularAdValorDePara1.ToString();
+                                    txtCalcularADValor2.Text = reg.IndicadorCalcularAdValorDePara2.ToString();
+                                    txtTipoCalculo.Text = reg.IndicadorTipoCalculo.ToString();
+                                    txtPesoCubado.Text = reg.ValorPesoCubado.ToString();
+
+                                    txtDePara11.Text = reg.DePara11.ToString();
+                                    txtDePara12.Text = reg.DePara12.ToString();
+                                    txtDeParaPct11.Text = reg.DeParaPct11.ToString();
+
+                                    txtDePara21.Text = reg.DePara21.ToString();
+                                    txtDePara22.Text = reg.DePara22.ToString();
+                                    txtDeParaPct12.Text = reg.DeParaPct12.ToString();
+
+                                    txtDePara31.Text = reg.DePara31.ToString();
+                                    txtDePara32.Text = reg.DePara32.ToString();
+                                    txtDeParaPct31.Text = reg.DeParaPct13.ToString();
+
+                                    txtDePara41.Text = reg.DePara41.ToString();
+                                    txtDePara42.Text = reg.DePara42.ToString();
+                                    txtDeParaPct41.Text = reg.DeParaPct14.ToString();
+
+                                    txtDePara51.Text = reg.DePara51.ToString();
+                                    txtDePara52.Text = reg.DePara52.ToString();
+                                    txtDeParaPct51.Text = reg.DeParaPct15.ToString();
+
+                                    txtDePara61.Text = reg.DePara61.ToString();
+                                    txtDePara62.Text = reg.DePara62.ToString();
+                                    txtDeParaPct61.Text = reg.DeParaPct16.ToString();
+
+                                    txtDePara71.Text = reg.DePara71.ToString();
+                                    txtDePara72.Text = reg.DePara72.ToString();
+                                    txtDeParaPct71.Text = reg.DeParaPct17.ToString();
 
                                     CidadeRegraFreteDAL cityDAL = new CidadeRegraFreteDAL();
                                     ListaCidades = cityDAL.ObterCidadesRegraFrete(Convert.ToInt32(txtCodigo.Text));
@@ -225,6 +259,19 @@ namespace SoftHabilInformatica.Pages.Transporte
                 reg.Regiao = txtRegiao.Text;
                 reg.ValorFreteMinimo = Convert.ToDecimal(txtFreteMinimo.Text);
                 reg.ValorGRIS = Convert.ToDecimal(txtGRIS.Text);
+                reg.ValorGRISMinimo = Convert.ToDecimal(txtGRISMinimo.Text);
+                reg.ValorPedagio = Convert.ToDecimal(txtPedagio.Text);
+                reg.ValorPedagioMaximo = Convert.ToDecimal(txtPedagioMaximo.Text);
+                reg.ValorAD = Convert.ToDecimal(txtADValor.Text);
+                reg.ValorPorTonelada = Convert.ToDecimal(txtPorTonelada.Text);
+                reg.ValorSeguro = Convert.ToDecimal(txtSeguro.Text);
+                reg.ValorSeguroMinimo = Convert.ToDecimal(txtSeguroMinimo.Text);
+                reg.DeParaExcedente1 = Convert.ToDecimal(txtExcedente1.Text);
+                reg.DeParaExcedente2 = Convert.ToDecimal(txtExcedente2.Text);
+                reg.IndicadorCalcularAdValorDePara1 = Convert.ToInt32(txtCalcularADValor1.Text);
+                reg.IndicadorCalcularAdValorDePara2 = Convert.ToInt32(txtCalcularADValor2.Text);
+                reg.IndicadorTipoCalculo = Convert.ToInt32(txtTipoCalculo.Text);
+                reg.ValorPesoCubado = Convert.ToInt32(txtPesoCubado.Text);
 
                 reg.DePara11 = Convert.ToDecimal(txtDePara11.Text);
                 reg.DePara12 = Convert.ToDecimal(txtDePara12.Text);
@@ -236,8 +283,25 @@ namespace SoftHabilInformatica.Pages.Transporte
                 
                 reg.DePara31 = Convert.ToDecimal(txtDePara31.Text);
                 reg.DePara32 = Convert.ToDecimal(txtDePara32.Text);
+                reg.DeParaPct13 = Convert.ToDecimal(txtDeParaPct31.Text);
 
-                if(txtCodigo.Text == "Novo")
+                reg.DePara41 = Convert.ToDecimal(txtDePara41.Text);
+                reg.DePara42 = Convert.ToDecimal(txtDePara42.Text);
+                reg.DeParaPct14 = Convert.ToDecimal(txtDeParaPct41.Text);
+
+                reg.DePara51 = Convert.ToDecimal(txtDePara51.Text);
+                reg.DePara52 = Convert.ToDecimal(txtDePara52.Text);
+                reg.DeParaPct15 = Convert.ToDecimal(txtDeParaPct51.Text);
+
+                reg.DePara61 = Convert.ToDecimal(txtDePara61.Text);
+                reg.DePara62 = Convert.ToDecimal(txtDePara62.Text);
+                reg.DeParaPct16 = Convert.ToDecimal(txtDeParaPct61.Text);
+
+                reg.DePara71 = Convert.ToDecimal(txtDePara71.Text);
+                reg.DePara72 = Convert.ToDecimal(txtDePara72.Text);
+                reg.DeParaPct17 = Convert.ToDecimal(txtDeParaPct71.Text);
+
+                if (txtCodigo.Text == "Novo")
                 {
                     regDAL.Inserir(reg, ListaCidades);
                     Session["MensagemTela"] = "Regra de frete cadastrada com sucesso!";
@@ -506,6 +570,11 @@ namespace SoftHabilInformatica.Pages.Transporte
             var query = ListaCidades.Where(x => x.CodigoIBGE == Convert.ToInt32(ddlCidade.SelectedItem.Value));
             if(query.Count() == 0)
             {
+                if(ddlTransp.SelectedValue == "* Nenhum selecionado")
+                {
+                    ShowMessage("Selecione uma transportadora", MessageType.Info);
+                    return;
+                }
                 RegraFrete reg = new RegraFrete();
                 RegraFreteDAL regDAL = new RegraFreteDAL();
                 Pessoa_Inscricao ins = new Pessoa_Inscricao();
@@ -565,6 +634,578 @@ namespace SoftHabilInformatica.Pages.Transporte
             grdCidades.DataSource = ListaNova;
             grdCidades.DataBind();
             Session["ListaCidadesRegra"] = ListaNova;
+        }
+
+        protected void txtTipoCalculo_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtTipoCalculo.Text.Equals(""))
+            {
+                txtTipoCalculo.Text = "0";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtTipoCalculo.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtTipoCalculo.Text = Convert.ToDecimal(txtTipoCalculo.Text).ToString("#0");
+                }
+                else
+                    txtTipoCalculo.Text = "0";
+
+            }
+        }
+
+        protected void txtPorTonelada_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtPorTonelada.Text.Equals(""))
+            {
+                txtPorTonelada.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtPorTonelada.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtPorTonelada.Text = Convert.ToDecimal(txtPorTonelada.Text).ToString("###,#####0.00000");
+                    txtPorTonelada.Focus();
+                }
+                else
+                    txtPorTonelada.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtCalcularADValor2_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtCalcularADValor2.Text.Equals(""))
+            {
+                txtCalcularADValor2.Text = "0";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtCalcularADValor2.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtCalcularADValor2.Text = Convert.ToDecimal(txtCalcularADValor2.Text).ToString("#0");
+                    txtCalcularADValor2.Focus();
+                }
+                else
+                    txtCalcularADValor2.Text = "0";
+
+            }
+        }
+
+        protected void txtCalcularADValor1_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtCalcularADValor1.Text.Equals(""))
+            {
+                txtCalcularADValor1.Text = "0";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtCalcularADValor1.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtCalcularADValor1.Text = Convert.ToDecimal(txtCalcularADValor1.Text).ToString("#0");
+                    txtCalcularADValor1.Focus();
+                }
+                else
+                    txtCalcularADValor1.Text = "0";
+
+            }
+        }
+
+        protected void txtSeguroMinimo_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtSeguroMinimo.Text.Equals(""))
+            {
+                txtSeguroMinimo.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtSeguroMinimo.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtSeguroMinimo.Text = Convert.ToDecimal(txtSeguroMinimo.Text).ToString("###,#####0.00000");
+                    txtSeguroMinimo.Focus();
+                }
+                else
+                    txtSeguroMinimo.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtSeguro_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtSeguro.Text.Equals(""))
+            {
+                txtSeguro.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtSeguro.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtSeguro.Text = Convert.ToDecimal(txtSeguro.Text).ToString("###,#####0.00000");
+                    txtSeguro.Focus();
+                }
+                else
+                    txtSeguro.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtExcedente2_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtExcedente2.Text.Equals(""))
+            {
+                txtExcedente2.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtExcedente2.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtExcedente2.Text = Convert.ToDecimal(txtExcedente2.Text).ToString("###,#####0.00000");
+                    txtExcedente2.Focus();
+                }
+                else
+                    txtExcedente2.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtExcedente1_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtExcedente1.Text.Equals(""))
+            {
+                txtExcedente1.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtExcedente1.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtExcedente1.Text = Convert.ToDecimal(txtExcedente1.Text).ToString("###,#####0.00000");
+                    txtExcedente1.Focus();
+                }
+                else
+                    txtExcedente1.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtPedagioMaximo_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtPedagioMaximo.Text.Equals(""))
+            {
+                txtPedagioMaximo.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtPedagioMaximo.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtPedagioMaximo.Text = Convert.ToDecimal(txtPedagioMaximo.Text).ToString("###,#####0.00000");
+                    txtPedagioMaximo.Focus();
+                }
+                else
+                    txtPedagioMaximo.Text = "0,00000";
+
+            }
+
+        }
+
+        protected void txtADValor_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtADValor.Text.Equals(""))
+            {
+                txtADValor.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtADValor.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtADValor.Text = Convert.ToDecimal(txtADValor.Text).ToString("###,#####0.00000");
+                    txtADValor.Focus();
+                }
+                else
+                    txtADValor.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtPedagio_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtPedagio.Text.Equals(""))
+            {
+                txtPedagio.Text = "0,00";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtPedagio.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtPedagio.Text = Convert.ToDecimal(txtPedagio.Text).ToString("###,##0.00");
+                    txtPedagio.Focus();
+                }
+                else
+                    txtPedagio.Text = "0,00";
+
+            }
+        }
+
+        protected void txtGRISMinimo_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtGRISMinimo.Text.Equals(""))
+            {
+                txtGRISMinimo.Text = "0,00";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtGRISMinimo.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtGRISMinimo.Text = Convert.ToDecimal(txtGRISMinimo.Text).ToString("###,##0.00");
+                    txtGRISMinimo.Focus();
+                }
+                else
+                    txtGRISMinimo.Text = "0,00";
+
+            }
+        }
+
+        protected void txtDeParaPct31_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDeParaPct31.Text.Equals(""))
+            {
+                txtDeParaPct31.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDeParaPct31.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDeParaPct31.Text = Convert.ToDecimal(txtDeParaPct31.Text).ToString("###,#####0.00000");
+                    txtDeParaPct31.Focus();
+                }
+                else
+                    txtDeParaPct31.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDeParaPct41_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDeParaPct41.Text.Equals(""))
+            {
+                txtDeParaPct41.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDeParaPct41.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDeParaPct41.Text = Convert.ToDecimal(txtDeParaPct41.Text).ToString("###,#####0.00000");
+                    txtDeParaPct41.Focus();
+                }
+                else
+                    txtDeParaPct41.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara41_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara41.Text.Equals(""))
+            {
+                txtDePara41.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara41.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara41.Text = Convert.ToDecimal(txtDePara41.Text).ToString("###,#####0.00000");
+                    txtDePara41.Focus();
+                }
+                else
+                    txtDePara41.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara42_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara42.Text.Equals(""))
+            {
+                txtDePara42.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara42.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara42.Text = Convert.ToDecimal(txtDePara42.Text).ToString("###,#####0.00000");
+                    txtDePara42.Focus();
+                }
+                else
+                    txtDePara42.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDeParaPct51_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDeParaPct51.Text.Equals(""))
+            {
+                txtDeParaPct51.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDeParaPct51.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDeParaPct51.Text = Convert.ToDecimal(txtDeParaPct51.Text).ToString("###,#####0.00000");
+                    txtDeParaPct51.Focus();
+                }
+                else
+                    txtDeParaPct51.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara51_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara51.Text.Equals(""))
+            {
+                txtDePara51.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara51.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara51.Text = Convert.ToDecimal(txtDePara51.Text).ToString("###,#####0.00000");
+                    txtDePara51.Focus();
+                }
+                else
+                    txtDePara51.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara52_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara52.Text.Equals(""))
+            {
+                txtDePara52.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara52.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara52.Text = Convert.ToDecimal(txtDePara52.Text).ToString("###,#####0.00000");
+                    txtDePara52.Focus();
+                }
+                else
+                    txtDePara52.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDeParaPct61_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDeParaPct61.Text.Equals(""))
+            {
+                txtDeParaPct61.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDeParaPct61.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDeParaPct61.Text = Convert.ToDecimal(txtDeParaPct61.Text).ToString("###,#####0.00000");
+                    txtDeParaPct61.Focus();
+                }
+                else
+                    txtDeParaPct61.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara61_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara61.Text.Equals(""))
+            {
+                txtDePara61.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara61.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara61.Text = Convert.ToDecimal(txtDePara61.Text).ToString("###,#####0.00000");
+                    txtDePara61.Focus();
+                }
+                else
+                    txtDePara61.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara62_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara62.Text.Equals(""))
+            {
+                txtDePara62.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara62.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara62.Text = Convert.ToDecimal(txtDePara62.Text).ToString("###,#####0.00000");
+                    txtDePara62.Focus();
+                }
+                else
+                    txtDePara62.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDeParaPct71_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDeParaPct71.Text.Equals(""))
+            {
+                txtDeParaPct71.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDeParaPct71.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDeParaPct71.Text = Convert.ToDecimal(txtDeParaPct71.Text).ToString("###,#####0.00000");
+                    txtDeParaPct71.Focus();
+                }
+                else
+                    txtDeParaPct71.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara71_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara71.Text.Equals(""))
+            {
+                txtDePara71.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara71.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara71.Text = Convert.ToDecimal(txtDePara71.Text).ToString("###,#####0.00000");
+                    txtDePara71.Focus();
+                }
+                else
+                    txtDePara71.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtDePara72_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtDePara72.Text.Equals(""))
+            {
+                txtDePara72.Text = "0,00000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtDePara72.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtDePara72.Text = Convert.ToDecimal(txtDePara72.Text).ToString("###,#####0.00000");
+                    txtDePara72.Focus();
+                }
+                else
+                    txtDePara72.Text = "0,00000";
+
+            }
+        }
+
+        protected void txtPesoCubado_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtPesoCubado.Text.Equals(""))
+            {
+                txtPesoCubado.Text = "000";
+            }
+            else
+            {
+                v.CampoValido("Para percentual", txtPesoCubado.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtPesoCubado.Text = Convert.ToDecimal(txtPesoCubado.Text).ToString("###000");
+                    txtPesoCubado.Focus();
+                }
+                else
+                    txtPesoCubado.Text = "000";
+
+            }
         }
     }
 }

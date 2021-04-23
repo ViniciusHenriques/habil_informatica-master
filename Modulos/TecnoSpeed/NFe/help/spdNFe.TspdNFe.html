@@ -1,0 +1,2375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFe: Classe TspdNFe</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFe"></a><h1 class="cio">Classe TspdNFe</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFe.html">spdNFe</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFe = class(<a class="normal"  href="spdNFe.TspdCustomNFe.html">TspdCustomNFe</a>)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe responsável pela comunicação com WebServices da Receita para Nota Fiscal Eletrônica</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TComponent</li>
+<li class="ancestor"><a class="normal"  href="spdNFe.TspdCustomNFe.html">TspdCustomNFe</a></li>
+<li class="thisitem">TspdNFe</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#FConversor">FConversor</a></b>: TspdNFeConverter;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#FXmlUtil">FXmlUtil</a></b>: <a   href="spdNFeUtils.TspdNFeXmlUtils.html">TspdNFeXmlUtils</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#fDiretorioXmlDestinatario">fDiretorioXmlDestinatario</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#FDiretorioDownloads">FDiretorioDownloads</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#fMaxSizeLoteEnvio">fMaxSizeLoteEnvio</a></b>: integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#fOnXmlDestinatario">fOnXmlDestinatario</a></b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#fOnXmlCanDestinatario">fOnXmlCanDestinatario</a></b>: <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFe.TspdNFe.html#FOnDownloadNFe">FOnDownloadNFe</a></b>: <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a>;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetNumNotas">GetNumNotas</a></b>(const aLote : string) : integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetNota">GetNota</a></b>(const Index : integer; const aLote : string) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetVersaoNota">GetVersaoNota</a></b> : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetDiretorioDownloads">SetDiretorioDownloads</a></b>(const aValue: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetDiretorioDownloads">GetDiretorioDownloads</a></b> : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetMaxSizeLoteEnvio">SetMaxSizeLoteEnvio</a></b>(const Value: integer);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetDiretorioXmlDestinatario">GetDiretorioXmlDestinatario</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#CopiaArquivo">CopiaArquivo</a></b>(aOrigem, aDestino : string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a></b>(const Value: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#DoOnXmlDestinatario">DoOnXmlDestinatario</a></b>(const aFileName: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetOnXmlCanDestinatario">SetOnXmlCanDestinatario</a></b>(const Value: <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#DoOnXmlCanDestinatario">DoOnXmlCanDestinatario</a></b>(const aFileName: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetOnDownloadNFe">SetOnDownloadNFe</a></b>(const aValue: <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CalcularHashCSRT">CalcularHashCSRT</a></b>(const aChave: WideString; const aCSRT: WideString): WideString;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetDiretorioTemplates">SetDiretorioTemplates</a></b>(const Value: string); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SetVersaoManual">SetVersaoManual</a></b>(const Value: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#UpdateNFeData">UpdateNFeData</a></b>; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#UpdateIniServidores">UpdateIniServidores</a></b>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ChecarVersaoEsquema">ChecarVersaoEsquema</a></b>(const aVersaoEsquema : string); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#PrepararXMLAssinar">PrepararXMLAssinar</a></b>(var aNota: string); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SaveFileChavesTemporario">SaveFileChavesTemporario</a></b>(const aNomeLogEnv : String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFe.TspdNFe.html#SaveFileTemporario">SaveFileTemporario</a></b>(const aFileName, aNomeLogEnv : String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#GerarXMLDestinatario">GerarXMLDestinatario</a></b>(const aNotaID, aLogConsNFName : String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFe.TspdNFe.html#GerarXmlDestinatarioNFsAprovadas">GerarXmlDestinatarioNFsAprovadas</a></b>(aNumRecibo, aLogConsRecibo: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#AtualizaDadosNFeEventos">AtualizaDadosNFeEventos</a></b>; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GetConversor">GetConversor</a></b> : TspdNFeConverter;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#CarregarConfiguracoes">CarregarConfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SalvarConfiguracoes">SalvarConfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarxmlDestinatarioInutilizacao">GerarxmlDestinatarioInutilizacao</a></b>(aRetornoInutilizacao, aEnvioInutilizacao : String) : String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#AuditarXml">AuditarXml</a></b>(const aXml: WideString; const aDelimitador: WideString; const aServidor: WideString; const aExibirRegra, aExibirHtml : WordBool; const aParams : WideString=''): WideString;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarManifestacaoDestinatario">EnviarManifestacaoDestinatario</a></b>(aTpEvento: Integer; const aNotaID, aCNPJCPF, aJustificativa, aDataHoraEvento: String; aSequenciaEvento : integer; const aFusoHorario : String = ''; const aCOrgao : string = ''): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarNFeDestinadas">ConsultarNFeDestinadas</a></b>(const aIndNFe, aIndEmi: Integer; const aUltNSU: string = '0'): string; deprecated;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarDistribuicaoDFe">ConsultarDistribuicaoDFe</a></b>(const aCodigoUF, aCNPJCPF : string; const aNSU: string = '000000000000000'; const aTipoNSU: <a   href="spdNFeType.html#TNSUKind">TNSUKind</a> = nkUltimo): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarDistribuicaoDFeChave">ConsultarDistribuicaoDFeChave</a></b>(const aCodigoUF, aCNPJCPF, aChave: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#DescompactarXMLZip">DescompactarXMLZip</a></b>(const aXML: string) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#DownloadNFe">DownloadNFe</a></b>(const aChaves : string; const aCOrgao : string = '') : string; deprecated;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#TratarXMLRetornoDFe">TratarXMLRetornoDFe</a></b>(const aXML: string; aDiretorio: string = '');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ValidarLoteParaEnvio">ValidarLoteParaEnvio</a></b>(const aNumLote : String; aLoteNotas : string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ValidarTamanhoArquivoEnvio">ValidarTamanhoArquivoEnvio</a></b> (aLoteNotas : string);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#LoadConfig">LoadConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#LoadConfig">LoadConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SaveConfig">SaveConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#SaveConfig">SaveConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#CheckConfig">CheckConfig</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CalculaChaveNFe">CalculaChaveNFe</a></b>(const aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aCodSistema: String; aTpEmis : string = ''): String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#AssinarNota">AssinarNota</a></b>(aXML : string): string; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarNotasAleatorias">GerarNotasAleatorias</a></b>(const Qtde : Integer; const CNPJ : string = '') : string; deprecated;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConverterLoteParaXml">ConverterLoteParaXml</a></b>(const ArquivoLoteTxt : string; aLayoutConv : <a   href="spdNFeType.html#TLayoutConvKind">TLayoutConvKind</a> = lkTXTDic; aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> = pl_009; aExportacao : boolean = false) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#StatusDoServico">StatusDoServico</a></b> : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CancelarNF">CancelarNF</a></b>(const aNotaID, aNumProtocolo, aJustificativa : String): string; deprecated;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CancelarNFeEvento">CancelarNFeEvento</a></b>(const aNotaID, aNumProtocolo,aJustificativa, aDataHoraEvento: String; aSequenciaEvento: integer; const aFusoHorario: String; const aIdLote : string = '1'): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarNF">ConsultarNF</a></b>(const aNotaID : String): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CalculaChaveInutilizacao">CalculaChaveInutilizacao</a></b>(const aAno, aCNPJCPF, aModelo, aSerie, aNFIni, aNFFin : string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#InutilizarNF">InutilizarNF</a></b>(aNotaID : String; const aAno, aCNPJCPF,aModelo,aSerie, aNFIni, aNFFin, aJustificativa : string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarNF">EnviarNF</a></b>(const aNumLote : String; aLoteNotas : string; const aCompactado : Boolean = False): string; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarNFSincrono">EnviarNFSincrono</a></b>(const aNumLote : String; aLoteNota : string; const aCompactado : Boolean = False): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarRecibo">ConsultarRecibo</a></b>(aNumRecibo : String): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConsultarCadastro">ConsultarCadastro</a></b>(const aDocumento : String; aTpDocumento : String = 'CNPJ'; aUF : String = '') : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ListarLogs">ListarLogs</a></b>(aList : TStrings; aFilter : <a   href="spdNFeType.html#TLogFilter">TLogFilter</a>=lfXml; aCustomFilter : string='');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#LerLog">LerLog</a></b>(aPathArquivoLog : string) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#VisualizarDanfeLog">VisualizarDanfeLog</a></b>(aPathArquivoLog : string); deprecated;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Function <b><a   href="spdNFe.TspdNFe.html#GerarXMLEnvioDestinatario">GerarXMLEnvioDestinatario</a></b>(aIdNFe : String; const aLogEnvLote, aLogConsReciboOuChave: String; aSalvarComo : String='') : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#EnviarNotaDestinatario">EnviarNotaDestinatario</a></b>(const aIDNFe : String; aLogEnvio : String = ''; aLogRecibo : String = '');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#EnviarNotaDestinatarioAnexos">EnviarNotaDestinatarioAnexos</a></b>(const aArquivoPDF, aArquivoXML : String; aOutros : String = '');</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarXMLCancelamentoDestinatario">GerarXMLCancelamentoDestinatario</a></b>(const aIDNFe, aContentLogPedCanc, aContentLogRetCanc : String; aSalvarComo : String = '') : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#EnviarNotaCanceladaDestinatario">EnviarNotaCanceladaDestinatario</a></b>(const aIDNFe : string; aLogPedCanc:string = ''; aLogRetCanc:String = ''; aEmailDestinatario:String = '');</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ValidarArquivoXmlDestinatario">ValidarArquivoXmlDestinatario</a></b>(const aXml : String; var aErrorList : TStringList) : boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ValidarLoteItem">ValidarLoteItem</a></b>(const aNumLote: String; aLoteNotas: string); deprecated;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#ConverteXmlParaDataSet">ConverteXmlParaDataSet</a></b>(const aXml: String; aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> = pl_006s): <a   href="spdNFeDataSets.TspdNFeDataSets.html">TspdNFeDataSets</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarCCe">EnviarCCe</a></b>(const aIdLote, aXmlCCe: string) : string; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarCCe">EnviarCCe</a></b>(const aNotaID, aTextoCorrecao, aDataHoraEvento, aOrgao, aIdLote : string; aSequenciaEvento : integer; const aFusoHorario : string = '') : string; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarPedidoProrrogacao">EnviarPedidoProrrogacao</a></b>(const aIdLote, aXmlPedProrrogacao: string): string; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#AdicionarItens">AdicionarItens</a></b>(aNumItens, aQtdeItens: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarPedidoProrrogacao">EnviarPedidoProrrogacao</a></b>(const aIdLote, aChaveNFe, aNumProtocolo : string; aDataHoraEvento, aOrgao : string;const aTpEvento : <a   href="spdNFeUtils.html#TTipoPedidoProrrogacao">TTipoPedidoProrrogacao</a>; const aSequenciaEvento : integer; aFusoHorario : string = '') : String; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#CancelarPedidoProrrogacao">CancelarPedidoProrrogacao</a></b>(const aIdLote, aChaveNFe, aNumProtocolo, aDataHoraEvento : string; const aTpEvento : <a   href="spdNFeUtils.html#TTipoCancelamentoPedidoProrrogacao">TTipoCancelamentoPedidoProrrogacao</a>; const aSequenciaEvento : integer; aFusoHorario : string = '') : String; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarXMLCCeDestinatario">GerarXMLCCeDestinatario</a></b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarXMLManifestoDestinatario">GerarXMLManifestoDestinatario</a></b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarXMLEPECDestinatario">GerarXMLEPECDestinatario</a></b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ImprimirEPEC">ImprimirEPEC</a></b>(const aLoteNotas: string; const aProtEPEC, aDataHoraEPEC: String; aArquivoModelo :string = ''; aImpressora: String = '');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ExportarEPEC">ExportarEPEC</a></b>(const aLoteNotas: string; const aProtEPEC, aDataHoraEPEC: String; const aArquivoModelo : string = ''; aFormato : Integer=1; aExportarParaArquivo : String='');</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#VisualizarEPEC">VisualizarEPEC</a></b>(const aLoteNotas : string; const aProtEPEC, aDataHoraEPEC : String; aArquivoModelo : string = '');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#GerarIdCCe">GerarIdCCe</a></b>(const aChaveNFe: string; aSeqEvento: integer): string; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#EnviarCCeDestinatario">EnviarCCeDestinatario</a></b>(const aCCe : string);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ImprimirCCe">ImprimirCCe</a></b>(const aXmlCCe: string; const aImpressora : String = ''); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#VisualizarCCe">VisualizarCCe</a></b>(const aXmlCCe: string); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#EditarModeloCCe">EditarModeloCCe</a></b>(const aXmlCCe: string); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFe.TspdNFe.html#ExportarCCe">ExportarCCe</a></b>(const aXmlCCe: string; aSalvarComo: String); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#MontarXmlCCe">MontarXmlCCe</a></b>(const aChaveNFe, aTextoCorrecao, aDataHoraEvento, aOrgao: string; aSequenciaEvento: integer; const aFusoHorario: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#AssinarCCe">AssinarCCe</a></b>(const aXmlCCe: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#MontarEPEC">MontarEPEC</a></b>(const aIdLote, aXmlEnvio, aDHEvento, aFusoHorario: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#AssinarEPEC">AssinarEPEC</a></b>(const aXMLEpec: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#EnviarEPEC">EnviarEPEC</a></b>(const aXMLEpecAssinado: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFe.TspdNFe.html#TestarEmailConfig">TestarEmailConfig</a></b> : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFe.TspdNFe.html#Create">Create</a></b> (aOwner : TComponent); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a   href="spdNFe.TspdNFe.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#DiretorioXmlDestinatario">DiretorioXmlDestinatario</a></b> : String read <a   href="spdNFe.TspdNFe.html#GetDiretorioXmlDestinatario">GetDiretorioXmlDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#DiretorioDownloads">DiretorioDownloads</a></b>: string read <a   href="spdNFe.TspdNFe.html#GetDiretorioDownloads">GetDiretorioDownloads</a> write <a   href="spdNFe.TspdNFe.html#SetDiretorioDownloads">SetDiretorioDownloads</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#MaxSizeLoteEnvio">MaxSizeLoteEnvio</a></b> : integer read <a   href="spdNFe.TspdNFe.html#fMaxSizeLoteEnvio">fMaxSizeLoteEnvio</a> write <a   href="spdNFe.TspdNFe.html#SetMaxSizeLoteEnvio">SetMaxSizeLoteEnvio</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#OnXmlDestinatario">OnXmlDestinatario</a></b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a> read <a   href="spdNFe.TspdNFe.html#fOnXmlDestinatario">fOnXmlDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#OnXmlCanDestinatario">OnXmlCanDestinatario</a></b> : <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a> read <a   href="spdNFe.TspdNFe.html#fOnXmlCanDestinatario">fOnXmlCanDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetOnXmlCanDestinatario">SetOnXmlCanDestinatario</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#OnDownloadNFe">OnDownloadNFe</a></b> : <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a> read <a   href="spdNFe.TspdNFe.html#FOnDownloadNFe">FOnDownloadNFe</a> write <a   href="spdNFe.TspdNFe.html#SetOnDownloadNFe">SetOnDownloadNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFe.TspdNFe.html#DanfeSimplificado">DanfeSimplificado</a></b>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FConversor"></a><code><b>FConversor</b>: TspdNFeConverter;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FXmlUtil"></a><code><b>FXmlUtil</b>: <a   href="spdNFeUtils.TspdNFeXmlUtils.html">TspdNFeXmlUtils</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fDiretorioXmlDestinatario"></a><code><b>fDiretorioXmlDestinatario</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FDiretorioDownloads"></a><code><b>FDiretorioDownloads</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fMaxSizeLoteEnvio"></a><code><b>fMaxSizeLoteEnvio</b>: integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fOnXmlDestinatario"></a><code><b>fOnXmlDestinatario</b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fOnXmlCanDestinatario"></a><code><b>fOnXmlCanDestinatario</b>: <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FOnDownloadNFe"></a><code><b>FOnDownloadNFe</b>: <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetNumNotas"></a><code>function <b>GetNumNotas</b>(const aLote : string) : integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetNota"></a><code>function <b>GetNota</b>(const Index : integer; const aLote : string) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetVersaoNota"></a><code>function <b>GetVersaoNota</b> : string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioXmlDestinatario"></a><code>procedure <b>SetDiretorioXmlDestinatario</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioDownloads"></a><code>procedure <b>SetDiretorioDownloads</b>(const aValue: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetDiretorioDownloads"></a><code>function <b>GetDiretorioDownloads</b> : string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetMaxSizeLoteEnvio"></a><code>procedure <b>SetMaxSizeLoteEnvio</b>(const Value: integer);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetDiretorioXmlDestinatario"></a><code>function <b>GetDiretorioXmlDestinatario</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="CopiaArquivo"></a><code>procedure <b>CopiaArquivo</b>(aOrigem, aDestino : string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetOnXmlDestinatario"></a><code>procedure <b>SetOnXmlDestinatario</b>(const Value: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="DoOnXmlDestinatario"></a><code>procedure <b>DoOnXmlDestinatario</b>(const aFileName: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetOnXmlCanDestinatario"></a><code>procedure <b>SetOnXmlCanDestinatario</b>(const Value: <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="DoOnXmlCanDestinatario"></a><code>procedure <b>DoOnXmlCanDestinatario</b>(const aFileName: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetOnDownloadNFe"></a><code>procedure <b>SetOnDownloadNFe</b>(const aValue: <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="CalcularHashCSRT"></a><code>function <b>CalcularHashCSRT</b>(const aChave: WideString; const aCSRT: WideString): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetDiretorioTemplates"></a><code>procedure <b>SetDiretorioTemplates</b>(const Value: string); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetVersaoManual"></a><code>procedure <b>SetVersaoManual</b>(const Value: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="UpdateNFeData"></a><code>procedure <b>UpdateNFeData</b>; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="UpdateIniServidores"></a><code>procedure <b>UpdateIniServidores</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="ChecarVersaoEsquema"></a><code>procedure <b>ChecarVersaoEsquema</b>(const aVersaoEsquema : string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="PrepararXMLAssinar"></a><code>procedure <b>PrepararXMLAssinar</b>(var aNota: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SaveFileChavesTemporario"></a><code>procedure <b>SaveFileChavesTemporario</b>(const aNomeLogEnv : String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SaveFileTemporario"></a><code>Procedure <b>SaveFileTemporario</b>(const aFileName, aNomeLogEnv : String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GerarXMLDestinatario"></a><code>procedure <b>GerarXMLDestinatario</b>(const aNotaID, aLogConsNFName : String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GerarXmlDestinatarioNFsAprovadas"></a><code>Procedure <b>GerarXmlDestinatarioNFsAprovadas</b>(aNumRecibo, aLogConsRecibo: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="AtualizaDadosNFeEventos"></a><code>procedure <b>AtualizaDadosNFeEventos</b>; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetConversor"></a><code>function <b>GetConversor</b> : TspdNFeConverter;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="CarregarConfiguracoes"></a><code>procedure <b>CarregarConfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SalvarConfiguracoes"></a><code>procedure <b>SalvarConfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GerarxmlDestinatarioInutilizacao"></a><code>function <b>GerarxmlDestinatarioInutilizacao</b>(aRetornoInutilizacao, aEnvioInutilizacao : String) : String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AuditarXml"></a><code>function <b>AuditarXml</b>(const aXml: WideString; const aDelimitador: WideString; const aServidor: WideString; const aExibirRegra, aExibirHtml : WordBool; const aParams : WideString=''): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para a validação do auditor fiscal         </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXml:</dt>
+<dd>xml passado para a validação.</dd>
+<dt>aDelimitador:</dt>
+<dd>Delimitador necessário para a validação.</dd>
+<dt>aServidor:</dt>
+<dd>Necessário informar servidor para dar a resposta da validação.</dd>
+<dt>aExibirRegra:</dt>
+<dd>Exibição das regras de validação.</dd>
+<dt>aExibirHtml:</dt>
+<dd>Exibição da validação em HTML.</dd>
+<dt>aParam:</dt>
+<dd>parâmetro não necessário, somente para caso precise futuramente.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna um tipo de validação dependendo das propriedades setadas.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt>UNKNOWN</dt>
+<dd>Quando o validadorClient não é instanciado.</dd>
+<dt>UNKNOWN</dt>
+<dd>Quando a comunicação com a validação falhar.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarManifestacaoDestinatario"></a><code>function <b>EnviarManifestacaoDestinatario</b>(aTpEvento: Integer; const aNotaID, aCNPJCPF, aJustificativa, aDataHoraEvento: String; aSequenciaEvento : integer; const aFusoHorario : String = ''; const aCOrgao : string = ''): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para o envio de Manifestação de Destinatário.  1: Confirmação da operação (tmdConfirmacaoOperacao). 2: Ciência da operação (tmdCienciaOperacao). 3: Desconhecimento da operação (tmdDesconhecimentoOperacao). 4: Operação não Realizada (tmdOperacaoNaoRealizada).              </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aTpEvento</dt>
+<dd>tipo do evento que deseja enviar:</dd>
+<dt>aNotaID</dt>
+<dd>Chave de Acesso da NF-e vinculada ao Evento.</dd>
+<dt>aCNPJCPF</dt>
+<dd>Informar o <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> ou o CPF do autor do Evento.</dd>
+<dt>aJustificativa</dt>
+<dd>Justificativa para manifestação.</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora do evento.</dd>
+<dt>aSequencia</dt>
+<dd>Número sequêncial do evento.</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário.</dd>
+<dt>aCOrgao</dt>
+<dd>Parâmetro para forçar o componente a enviar dados para o <a class="normal"  href="spdNFe.TspdCustomNFe.html#Ambiente">ambiente</a> nacional. Inserir aCorgao = '91'</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna XML contendo mensaegm do resultado da solicitação.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosFusoHorarioInvalidException.html">EspdNFeEventosFusoHorarioInvalidException</a></dt>
+<dd>quando formato fuso horário informado é inválido.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosDataHoraInvalidException.html">EspdNFeEventosDataHoraInvalidException</a></dt>
+<dd>quando Data Hora informada é inválida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosUFInvalidException.html">EspdNFeEventosUFInvalidException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> não é definida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosChaveInvalidException.html">EspdNFeEventosChaveInvalidException</a></dt>
+<dd>quando Chave da NFe informada é inválida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosCodigoOrgaoInvalidException.html">EspdNFeEventosCodigoOrgaoInvalidException</a></dt>
+<dd>quando código do orgão é inválido.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosJustificativaInvalidException.html">EspdNFeEventosJustificativaInvalidException</a></dt>
+<dd>quando justificativa informada é inválida</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarNFeDestinadas"></a><code>function <b>ConsultarNFeDestinadas</b>(const aIndNFe, aIndEmi: Integer; const aUltNSU: string = '0'): string; deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Função de &quot;Consulta da Relação de Documentos Destinados” para um determinado <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> de destinatário informado na NF-e.  2 para &quot;Idem anterior, incluindo as NF-e que também não tiveram a Ciência da Operação&quot;)  1 para &quot;Somente as NF-e emitidas por emissores / remetentes que não tenham a mesma raiz do <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> do destinatário (para excluir as notas fiscais de transferência entre filiais)&quot;)  consulta retornará unicamente as notas fiscais que tenham sido recepcionadas nos últimos 15 dias)      </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := ConsultarNFeDestinadas(<span class="pascal_numeric">0</span>, <span class="pascal_numeric">0</span>, <span class="pascal_string">'999'</span>);
+   </pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIndNFe</dt>
+<dd>Indicador de NF-e consultada. Utilizar: (0 para &quot;Todas as NF-e&quot;; 1 para &quot;Somente as NF-e sem manifestação&quot;;</dd>
+<dt>aIndEmi</dt>
+<dd>Indicador do Emissor da NF-e. Utilizar: (0 para &quot;Todos os Emitentes / Remetentes&quot;;</dd>
+<dt>aUltNSU</dt>
+<dd>Último NSU recebido pela Empresa (Caso seja informado com zero, ou com um NSU muito antigo, a</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna XML contendo mensaegm do resultado da solicitação.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosCNPJInvalidException.html">EspdNFeEventosCNPJInvalidException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosIndNFeInvalidException.html">EspdNFeEventosIndNFeInvalidException</a></dt>
+<dd>quando indicador de NFe é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosIndEmiInvalidException.html">EspdNFeEventosIndEmiInvalidException</a></dt>
+<dd>quando indicador de emitente é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosUltNSUInvalidException.html">EspdNFeEventosUltNSUInvalidException</a></dt>
+<dd>quando Último Número Sequêncial Único (NSU é inválido)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarDistribuicaoDFe"></a><code>function <b>ConsultarDistribuicaoDFe</b>(const aCodigoUF, aCNPJCPF : string; const aNSU: string = '000000000000000'; const aTipoNSU: <a   href="spdNFeType.html#TNSUKind">TNSUKind</a> = nkUltimo): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função de &quot;Consulta da Relação de Documentos a serem distribuidos para determinado CPF ou <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> de acordo com a NF-e.&quot;           </p>
+
+<pre class="longcode">
+    Ex:
+    Por CPF utilizando Ultimo NSU:
+    _Result := ConsultarDistribuicaoDFe(<span class="pascal_string">'41'</span>, <span class="pascal_string">'12345678900'</span>);
+
+    Por CNPJ utilizando NSU especifico:
+    _Result := ConsultarDistribuicaoDFe(<span class="pascal_string">'41'</span>, <span class="pascal_string">'12345678912345'</span>, <span class="pascal_string">'000000000000015'</span>, nkEspecifico);
+   </pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCodigoUF</dt>
+<dd>- Código da <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> que sera feita a consulta DF-e. Ex: 41 (PARANÁ)</dd>
+<dt>aCNPJCPF</dt>
+<dd>- CPF ou <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> que solicitou a Distribuição DF-e. Ex: &quot;12345678912&quot; ou &quot;12345678911234&quot;</dd>
+<dt>aNSU</dt>
+<dd>- Número NSU (Número Sequencial Unico) para consulta. Ex: &quot;000000000000001&quot;</dd>
+<dt>aTipoNSU</dt>
+<dd>- Tipo do NSU, o tipo que será utilizado para requisição Especifico ou o Ultimo. Ex: nkEspecifico</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna Os XMLs Destinados pela busca do NSU.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeUFInvalidaException.html">EspdNFeDFeUFInvalidaException</a></dt>
+<dd>quando o código da <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> configurada é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeCNPJInvalidoException.html">EspdNFeDFeCNPJInvalidoException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeCPFInvalidoException.html">EspdNFeDFeCPFInvalidoException</a></dt>
+<dd>quando CPF configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeNSUInvalidaException.html">EspdNFeDFeNSUInvalidaException</a></dt>
+<dd>quando NSU configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeException.html">EspdNFeDFeException</a></dt>
+<dd>quando houve algum problema na requisição.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarDistribuicaoDFeChave"></a><code>function <b>ConsultarDistribuicaoDFeChave</b>(const aCodigoUF, aCNPJCPF, aChave: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função de &quot;Consulta da Relação de Documentos a serem distribuidos para determinado CPF ou <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> de acordo com a NF-e.&quot;          </p>
+
+<pre class="longcode">
+    Ex:
+    Por CPF utilizando Ultimo NSU:
+    _Result := ConsultaDistribuicaoDFeChave(<span class="pascal_string">'41'</span>, <span class="pascal_string">'12345678900'</span>, <span class="pascal_string">'00000000000000000000000000000000000000000000'</span>);
+
+   </pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCodigoUF</dt>
+<dd>- Código da <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> que sera feita a consulta DF-e. Ex: 41 (PARANÁ)</dd>
+<dt>aCNPJCPF</dt>
+<dd>- CPF ou <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> que solicitou a Distribuição DF-e. Ex: &quot;12345678912&quot; ou &quot;12345678911234&quot;</dd>
+<dt>aChave</dt>
+<dd>- Chave da NFe a ser consultada. EX : 00000000000000000000000000000000000000000000</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna Os XMLs Destinados pela busca da chave.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeUFInvalidaException.html">EspdNFeDFeUFInvalidaException</a></dt>
+<dd>quando o código da <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> configurada é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeCNPJInvalidoException.html">EspdNFeDFeCNPJInvalidoException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeCPFInvalidoException.html">EspdNFeDFeCPFInvalidoException</a></dt>
+<dd>quando CPF configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeChaveInvalidaException.html">EspdNFeDFeChaveInvalidaException</a></dt>
+<dd>quando Chave informada diferente de 44 caracteres</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeDFeException.html">EspdNFeDFeException</a></dt>
+<dd>quando houve algum problema na requisição.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DescompactarXMLZip"></a><code>function <b>DescompactarXMLZip</b>(const aXML: string) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para descompactação de xml's zipados que podem ser provenientes por exemplo de consultas de distribuição DFe  @raise (<a class="normal"  href="spdNFeException.EspdNFeDescompactarXMLException.html">EspdNFeDescompactarXMLException</a> quando houver algum problema na tentativa de descompactação.)</p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>- String contendo o conteúdo do XML compactado.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DownloadNFe"></a><code>function <b>DownloadNFe</b>(const aChaves : string; const aCOrgao : string = '') : string; deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Função de &quot;Download NFe&quot; do servidor da Sefaz.       </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := DownloadNFe(<span class="pascal_string">'098909012345555090290124509890223879820934212,098909012345555090290124509890223879820934212'</span>);
+   </pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aChaves</dt>
+<dd>Chave das NF-e que seja realizar download (Seperadas por vírgula)</dd>
+<dt>aCOrgao</dt>
+<dd>Parâmetro para forçar o componente a enviar dados para o <a class="normal"  href="spdNFe.TspdCustomNFe.html#Ambiente">ambiente</a> nacional. Inserir aCorgao = '91'</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna XML contendo mensaegm do resultado da solicitação.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosCNPJInvalidException.html">EspdNFeEventosCNPJInvalidException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a> configurado é inválido</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosChaveInvalidException.html">EspdNFeEventosChaveInvalidException</a></dt>
+<dd>quando pelo menos uma das chaves informadas é inválida</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventoDownloadLimitNotasException.html">EspdNFeEventoDownloadLimitNotasException</a></dt>
+<dd>quando informado mais que 10 chaves</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TratarXMLRetornoDFe"></a><code>procedure <b>TratarXMLRetornoDFe</b>(const aXML: string; aDiretorio: string = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para descompactar e gravar em disco o retorno da DistribuicaoDFe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>parametro com o xml de retorno da DistribuicaoDFe</dd>
+<dt>aDiretorio</dt>
+<dd>parametro com o diretorio onde será salvo os arquivos xmls</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ValidarLoteParaEnvio"></a><code>function <b>ValidarLoteParaEnvio</b>(const aNumLote : String; aLoteNotas : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Valida Lote de Notas, realizando vários procedimentos, desde verificação de assinatura, até validação do xml de acordo com o esquema requerido para envio das notas    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumLote</dt>
+<dd>Número do lote de notas, para montagem do xml</dd>
+<dt>aLoteNotas</dt>
+<dd>Lote de Notas a ser avaliado</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeSchemaNotFoundException.html">EspdNFeSchemaNotFoundException</a></dt>
+<dd>Quando o XML não puder ser validado por não indicar o arquivo esquema</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ValidarTamanhoArquivoEnvio"></a><code>procedure <b>ValidarTamanhoArquivoEnvio</b> (aLoteNotas : string);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Valida o Tamanho máximo do XML de Envio baseado na configuração da propriedade <a class="normal"  href="spdNFe.TspdNFe.html#MaxSizeLoteEnvio">MaxSizeLoteEnvio</a>  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote de Notas a ser avaliado</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeMaxSizeException.html">EspdNFeMaxSizeException</a></dt>
+<dd>Quando o XML estiver com tamanho acima do permitido</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega configurações do componente a partir de um arquivo .ini presente na pasta do .exe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega configurações do componente a partir do conteúdo de um arquivo .ini</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva configurações do componente a partir de um arquivo .ini presente na pasta do .exe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Seta as configurações do componente no parâmetro</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CheckConfig"></a><code>procedure <b>CheckConfig</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Checa as configurações previamente setadas</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CalculaChaveNFe"></a><code>function <b>CalculaChaveNFe</b>(const aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aCodSistema: String; aTpEmis : string = ''): String;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que calcula a Chave da NFe        </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aDtEmissao</dt>
+<dd>Data de Emissão do Documento no formato YYYY-MM-DD</dd>
+<dt>aUF</dt>
+<dd>Código do Estado do Emissor da NFe</dd>
+<dt>aCNPJ</dt>
+<dd><a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a>/CPF do Emitente contendo apenas numeros</dd>
+<dt>aModelo</dt>
+<dd>Modelo do Documento Fiscal que está sendo Emitido</dd>
+<dt>aSerie</dt>
+<dd>Serieo do Documento Fiscal que está sendo Emitido</dd>
+<dt>aNRNota</dt>
+<dd>Número da Nota Fiscal registrada no sistema</dd>
+<dt>aCodSistema</dt>
+<dd>Número Identificador da NF dentro do banco de dados da empresa</dd>
+<dt>aTpEmis</dt>
+<dd>Tipo de Emissão da NFe - Utilizado a partir da versão 4.0 do Manual de integração</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AssinarNota"></a><code>function <b>AssinarNota</b>(aXML : string): string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Gera assinatura de cada Nota dentro do arquivo XML  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>xml da Nota a ser assinado</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeException.html">EspdNFeException</a></dt>
+<dd>Quando o campo Id não for encontrado para na fiscal.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarNotasAleatorias"></a><code>function <b>GerarNotasAleatorias</b>(const Qtde : Integer; const CNPJ : string = '') : string; deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Método está obsoleto a partir da versão 1.4.x.x</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConverterLoteParaXml"></a><code>function <b>ConverterLoteParaXml</b>(const ArquivoLoteTxt : string; aLayoutConv : <a   href="spdNFeType.html#TLayoutConvKind">TLayoutConvKind</a> = lkTXTDic; aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> = pl_009; aExportacao : boolean = false) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que converte um Lote de Nf's formato TXT para XML     </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>ArquivoLoteTxt</dt>
+<dd>arquivo com Lote de NF's em formato TXT</dd>
+<dt>aLayoutConv</dt>
+<dd>Modo de conversão <a class="normal"  href="spdNFeType.html#TLayoutConvKind">TLayoutConvKind</a> (Tx2/Rec)</dd>
+<dt>aVersaoEsquema</dt>
+<dd>Versão do esquema que será utilizado na conversão</dd>
+<dt>aExportacao</dt>
+<dd>Utilizado para setar a conversão da NFe normal (False) ou de exportação (True).</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Lote de entrada convertido para formato XML</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="StatusDoServico"></a><code>function <b>StatusDoServico</b> : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que Verifica a situação do serviço WebService solicitado  </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := StatusDoServico; </pre>
+
+<p></p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML com resultado da operação solicitada</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CancelarNF"></a><code>function <b>CancelarNF</b>(const aNotaID, aNumProtocolo, aJustificativa : String): string; deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Função que envia solicitação de Cancelamento da NF     </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := CancelarNF(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>,<span class="pascal_string">'098950000123463'</span>,<span class="pascal_string">'emitente incorreto'</span>);</pre>
+
+<p> </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNotaID</dt>
+<dd>Chave de Identificação da NF</dd>
+<dt>aNumProtocolo</dt>
+<dd>Número do Protocolo de registro da NF, que deve conter exatamente 15 dígitos</dd>
+<dt>aJustificativa</dt>
+<dd>Texto (mínimo 15 dígitos) para descrição do Motivo de cancelamento da NF</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML com o resultado da operação solicitada</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CancelarNFeEvento"></a><code>function <b>CancelarNFeEvento</b>(const aNotaID, aNumProtocolo,aJustificativa, aDataHoraEvento: String; aSequenciaEvento: integer; const aFusoHorario: String; const aIdLote : string = '1'): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que envia solicitação de Cancelamento de uma NFe como um evento.                </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := CancelarNFeEvento(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>,<span class="pascal_string">'098950000123463'</span>,<span class="pascal_string">'emitente incorreto'</span>,
+    <span class="pascal_string">'2012-05-15T15:30:30'</span>, <span class="pascal_numeric">1</span>, <span class="pascal_string">'-03:00'</span>);
+   </pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNotaID</dt>
+<dd>Chave de Identificação da NF</dd>
+<dt>aNumProtocolo</dt>
+<dd>Número do Protocolo de registro da NF, que deve conter exatamente 15 dígitos</dd>
+<dt>aJustificativa</dt>
+<dd>Texto (mínimo 15 dígitos) para descrição do Motivo de cancelamento da NF</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora da Emissão do Evento Ex.: 2010-08-19T13:00:15</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+<dt>aConfigFilePath</dt>
+<dd>caminho para um arquivo ini com configurações</dd>
+<dt>aSequenciaEvento</dt>
+<dd>é o numero do evento</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML com o resultado da operação solicitada.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosNumeroProtException.html">EspdNFeEventosNumeroProtException</a></dt>
+<dd>Quando número do protocolo não é informado</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosFusoHorarioInvalidException.html">EspdNFeEventosFusoHorarioInvalidException</a></dt>
+<dd>quando formato fuso horário informado é inválido.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosDataHoraInvalidException.html">EspdNFeEventosDataHoraInvalidException</a></dt>
+<dd>quando Data Hora informada é inválida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosUFInvalidException.html">EspdNFeEventosUFInvalidException</a></dt>
+<dd>quando <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> não é definida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosChaveInvalidException.html">EspdNFeEventosChaveInvalidException</a></dt>
+<dd>quando Chave da NFe informada é inválida.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosCodigoOrgaoInvalidException.html">EspdNFeEventosCodigoOrgaoInvalidException</a></dt>
+<dd>quando código do orgão é inválido.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeEventosJustificativaInvalidException.html">EspdNFeEventosJustificativaInvalidException</a></dt>
+<dd>quando justificativa informada é inválida</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarNF"></a><code>function <b>ConsultarNF</b>(const aNotaID : String): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para consultar NF no servidor   </p>
+
+<pre class="longcode">
+    Ex:
+    _Result := ConsultaNF(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>); </pre>
+
+<p> </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNotaID</dt>
+<dd>Chave de Identificação da NF</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML com o resultado da operação solicitada</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CalculaChaveInutilizacao"></a><code>function <b>CalculaChaveInutilizacao</b>(const aAno, aCNPJCPF, aModelo, aSerie, aNFIni, aNFFin : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que calcula a Chave da Inutilização de NFe      </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aAno</dt>
+<dd>Ano de inutilização da numeração no formato YY</dd>
+<dt>aCNPJ</dt>
+<dd><a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a>/CPF do emitente</dd>
+<dt>aModelo</dt>
+<dd>Modelo da NFe</dd>
+<dt>aSérie</dt>
+<dd>Série da NFe</dd>
+<dt>aNFIni</dt>
+<dd>Número da NFe inicial a ser inutilizada</dd>
+<dt>aNFFin</dt>
+<dd>Número da NFe final a ser inutilizada</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="InutilizarNF"></a><code>function <b>InutilizarNF</b>(aNotaID : String; const aAno, aCNPJCPF,aModelo,aSerie, aNFIni, aNFFin, aJustificativa : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que solicita a Inutilização de Numeração.  &quot;ID&quot; + Código <a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> + Ano + CNPJCPF + Modelo + Serie + NrInicial + NrFinal. Esse paramnetro pode ser deixado vazio para que o componente auto preencha o seu valor, baseado nos próximos parametros.        </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNotaID</dt>
+<dd>Refere-se ao identificador DP04 descrito no Manual de Integração, que é resultado da concatenação dos campos:</dd>
+<dt>aAno</dt>
+<dd>Ano de inutilização da numeração</dd>
+<dt>aCNPJ</dt>
+<dd><a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a>/CPF do emitente</dd>
+<dt>aModelo</dt>
+<dd>Modelo da NFe</dd>
+<dt>aSérie</dt>
+<dd>Série da NFe</dd>
+<dt>aNFIni</dt>
+<dd>Número da NFe inicial a ser inutilizada</dd>
+<dt>aNFFin</dt>
+<dd>Número da NFe final a ser inutilizada</dd>
+<dt>aJustificativa</dt>
+<dd>Justificativa para a Inutilização da Faixa de Notas</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML contendo a mensagem do resultado da solicitação</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarNF"></a><code>function <b>EnviarNF</b>(const aNumLote : String; aLoteNotas : string; const aCompactado : Boolean = False): string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para Enviar Lote das NF's assinadas.    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumLote</dt>
+<dd>Número de Identificação do Lote a ser enviado.</dd>
+<dt>aLoteNotas</dt>
+<dd>XML das NF's Assinadas encapsuladas no Lote.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Xml contendo mensagem do resultado da solicitaçao.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarNFSincrono"></a><code>function <b>EnviarNFSincrono</b>(const aNumLote : String; aLoteNota : string; const aCompactado : Boolean = False): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para Enviar Lote das NF's assinadas no modo síncrono. O Lote de notas para o modo síncrono deve conter somente uma nota.     </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumLote</dt>
+<dd>Número de Identificação do Lote a ser enviado.</dd>
+<dt>aLoteNota</dt>
+<dd>XML da NF-e Assinada e encapsulada no Lote.</dd>
+<dt>aCompactado</dt>
+<dd>define se o XML enviado será normal ou compactado.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Xml contendo mensagem do resultado da solicitaçao.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarRecibo"></a><code>function <b>ConsultarRecibo</b>(aNumRecibo : String): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que verifica a Situação do Recibo (que pode conter várias NFs).   </p>
+
+<pre class="longcode">
+    ex:
+    _Result := ConsultarRecibo(<span class="pascal_string">'009098765436527'</span>); </pre>
+
+<p> </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumRecibo</dt>
+<dd>Número do Recibo que deve conter 15 dígitos.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna Xml contendo mensagem do resultado da solicitação.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarCadastro"></a><code>function <b>ConsultarCadastro</b>(const aDocumento : String; aTpDocumento : String = 'CNPJ'; aUF : String = '') : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para consultar cadastro do Contribuinte ICMS    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aDocumento</dt>
+<dd>Número do Documento a ser consultado.</dd>
+<dt>aTpDocumento</dt>
+<dd>que será consultado. Utilizar (<a class="normal"  href="spdNFe.TspdCustomNFe.html#CNPJ">CNPJ</a>, IE, CPF)</dd>
+<dt>aUF</dt>
+<dd><a class="normal"  href="spdNFe.TspdCustomNFe.html#UF">UF</a> do documento que está sendo consultado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Retorna XML contendo mensaegm do resultado da solicitação.(Dados do Contribuinte)</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ListarLogs"></a><code>procedure <b>ListarLogs</b>(aList : TStrings; aFilter : <a   href="spdNFeType.html#TLogFilter">TLogFilter</a>=lfXml; aCustomFilter : string='');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Lista todos os logs ou filtra de acordo com o filtro passado em aFilter
+
+<p>Os tipos de filtro que podem ser passado em aFilter são: </p>
+
+<dl class="paragraph_spacing">
+  <dt>lfXml</dt>
+  <dd><p>lista todos os arquivos XML. É o valor padrão.</p></dd>
+  <dt>lfNfe</dt>
+  <dd><p>lista arquivos de NFe.</p></dd>
+  <dt>lfEnvLot</dt>
+  <dd><p>lista arquivos de envio de lote de NFe.</p></dd>
+  <dt>lfRec</dt>
+  <dd><p>lista arquivos de recibo.</p></dd>
+  <dt>lfPedRec</dt>
+  <dd><p>lista arquivos de pedido do resultado do processamento do lote de NFe.</p></dd>
+  <dt>lfProRec</dt>
+  <dd><p>lista arquivos de resultado do processamento do lote de NFe.</p></dd>
+  <dt>lfDen</dt>
+  <dd><p>lista arquivos de denegação de uso.</p></dd>
+  <dt>lfPedCan</dt>
+  <dd><p>lista arquivos de pedido de cancelamento de NFe.</p></dd>
+  <dt>lfCan</dt>
+  <dd><p>lista arquivos de cancelamento de NFe.</p></dd>
+  <dt>lfPedInu</dt>
+  <dd><p>lista arquivos de pedido de inutilização de numeração.</p></dd>
+  <dt>lfInu</dt>
+  <dd><p>lista arquivos de inutilização de numeração.</p></dd>
+  <dt>lfPedSit</dt>
+  <dd><p>lista arquivos de pedido de consulta de situação atual da NFe.</p></dd>
+  <dt>lfSit</dt>
+  <dd><p>lista arquivos de situação atual da NF-e.</p></dd>
+  <dt>lfPedSta</dt>
+  <dd><p>lista arquivos de pedido de consulta de status do serviço.</p></dd>
+  <dt>lfSta</dt>
+  <dd><p>lista arquivos de status de serviço.</p></dd>
+  <dt>lfCustom</dt>
+  <dd><p>lista arquivos obtidos através de um filtro personalizado pelo usuário em aCustomFilter.</p></dd>
+</dl>
+
+<p></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LerLog"></a><code>function <b>LerLog</b>(aPathArquivoLog : string) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Lê o conteúdo do arquivo de <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">log</a> especificado em aPathArquivoLog e retorna o valor em uma WideString 
+
+<p>Exemplo: </p>
+
+<pre class="longcode">LerLog(<span class="pascal_string">'c:\NFE\log\0001-env-lot.xml'</span>)</pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aPathArquivoLof</dt>
+<dd>caminho completo para o arquivo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">log</a>.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="VisualizarDanfeLog"></a><code>procedure <b>VisualizarDanfeLog</b>(aPathArquivoLog : string); deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Abre o visualizador de DANFE com o arquivo especificado em aPathArquivoLog. O arquivo deve conter o XML de uma NFe enviada (arquivos com sufixo -env-lot.xml). 
+
+<p>Exemplo: </p>
+
+<pre class="longcode">VisualizarDanfeLog(<span class="pascal_string">'c:\NFE\log\0001-env-lot.xml'</span>)</pre>
+
+<p></p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aPathArquivoLof</dt>
+<dd>caminho completo para o arquivo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">log</a>.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXMLEnvioDestinatario"></a><code>Function <b>GerarXMLEnvioDestinatario</b>(aIdNFe : String; const aLogEnvLote, aLogConsReciboOuChave: String; aSalvarComo : String='') : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Gerar XML no Padrão da SEFAZ a ser Enviado ao Destinatário      </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXMLAssinado</dt>
+<dd>XML da NFe Assinada que será enviada ao Destinatário</dd>
+<dt>aLogConsRecibo</dt>
+<dd>Arquivo de <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> referente a consulta do Recibo de Entrega ao WS do SEFAZ</dd>
+<dt>aSalvarComo</dt>
+<dd>Parâmetro a ser utilizado caso necessite Salvar o Arquivo XML de Envio.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML Padrão da SEFAZ para Envio ao Destinatário</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Caso algum dos parâmetros aAssinado ou aLogConsRecibo estiverem Vazio</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeLogNotFoundException.html">EspdNFeLogNotFoundException</a></dt>
+<dd>Caso o parâmetro aLogConsRecibo se referir a um arquivo Inexistente</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarNotaDestinatario"></a><code>procedure <b>EnviarNotaDestinatario</b>(const aIDNFe : String; aLogEnvio : String = ''; aLogRecibo : String = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio dos arquivos ao destinatario da nota     </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumLote</dt>
+<dd>Número de Identificação do Lote a ser enviado.</dd>
+<dt>aLoteNotas</dt>
+<dd>XML das NF's encapsuladas no Lote.</dd>
+<dt>aLog</dt>
+<dd>Arquivo de <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> referente a consulta do Recibo de Entrega ao WS do SEFAZ</dd>
+<dt>ArquivoNota</dt>
+<dd>nome do arquivo xml a ser gerado</dd>
+<dt>ArquivoDanfe</dt>
+<dd>nome do arquivo da Danfe a ser gerado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarNotaDestinatarioAnexos"></a><code>procedure <b>EnviarNotaDestinatarioAnexos</b>(const aArquivoPDF, aArquivoXML : String; aOutros : String = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio dos arquivos ao destinatario da nota   </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aArquivoPDF</dt>
+<dd>Arquivo PDF da Danfe que será anexada</dd>
+<dt>aArquivoXML</dt>
+<dd>Arquivo padrão Sefaz de distribuição ao destinatário que será anexado no email.</dd>
+<dt>aOutros</dt>
+<dd>Qualquer outro arquivo que será anexado como por exemplo: PDF de boleto bancário</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXMLCancelamentoDestinatario"></a><code>function <b>GerarXMLCancelamentoDestinatario</b>(const aIDNFe, aContentLogPedCanc, aContentLogRetCanc : String; aSalvarComo : String = '') : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função responsavel por gerar XML de Cancelamento que deve ser distribuído ao Destinatário    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDNFe</dt>
+<dd>Chave da Nota que deseja gerar o arquivo</dd>
+<dt>aContentLogPedCanc</dt>
+<dd>Conteúdo ou diretório do arquivo <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Pedido de Cancelamento prefixo &quot;ped-can&quot;</dd>
+<dt>aContentLogRetCanc</dt>
+<dd>Conteúdo ou diretório do arquivo <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Retorno de Cancelamento prefixo &quot;can&quot;</dd>
+<dt>aSalvarComo</dt>
+<dd>Caso informado esse parametro salva em arquivo o conteúdo gerado pela função</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarNotaCanceladaDestinatario"></a><code>procedure <b>EnviarNotaCanceladaDestinatario</b>(const aIDNFe : string; aLogPedCanc:string = ''; aLogRetCanc:String = ''; aEmailDestinatario:String = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo que baseado em Logs de Cancelamento monta o XML padronizado pelo sefaz e o envia por email ao destinatário    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDNFe</dt>
+<dd>Chave da Nota que deseja gerar o arquivo</dd>
+<dt>aLogPedCanc</dt>
+<dd>Arquivo <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Pedido de Cancelamento prefixo &quot;ped-can&quot;</dd>
+<dt>aLogRetCanc</dt>
+<dd>Arquivo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Retorno de Cancelamento prefixo &quot;can&quot;</dd>
+<dt>aEmailDestinatario</dt>
+<dd>Informar para qual e-mail o arquivo gerado será enviado. Caso não seja informado o componente obtém o email configurado em EmailSettings.EmailDestinatario</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ValidarArquivoXmlDestinatario"></a><code>function <b>ValidarArquivoXmlDestinatario</b>(const aXml : String; var aErrorList : TStringList) : boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função utilizada para checar a integridade do XMLDestinatário  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXml</dt>
+<dd>Xml que será avaliado</dd>
+<dt>aErrorList</dt>
+<dd>Lista de Erros que foram encontrados na validação do XML</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ValidarLoteItem"></a><code>procedure <b>ValidarLoteItem</b>(const aNumLote: String; aLoteNotas: string); deprecated;</code></td>
+</tr>
+<tr><td colspan="2">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Valida Lote de Notas, realizando vários procedimentos, desde verificação de assinatura, até validação do xml de acordo com o esquema requerido para envio das notas    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumLote</dt>
+<dd>Número do lote de notas, para montagem do xml</dd>
+<dt>aLoteNotas</dt>
+<dd>Lote de Notas a ser avaliado</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeSchemaNotFoundException.html">EspdNFeSchemaNotFoundException</a></dt>
+<dd>Quando o XML não puder ser validado por não indicar o arquivo esquema</dd>
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConverteXmlParaDataSet"></a><code>function <b>ConverteXmlParaDataSet</b>(const aXml: String; aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> = pl_006s): <a   href="spdNFeDataSets.TspdNFeDataSets.html">TspdNFeDataSets</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função criada para conveter dados de um XML de NFe válido para um DataSet populado.  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>Conteúdo do arquivo xml</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeDataSetException.html">EspdNFeDataSetException</a></dt>
+<dd>Quando não conseguir conveter o xml para um dataset</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarCCe"></a><code>function <b>EnviarCCe</b>(const aIdLote, aXmlCCe: string) : string; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio de carta de correção eletrônica    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIdLote</dt>
+<dd>Número de Identificação do Lote a ser enviado.</dd>
+<dt>aXmlCCe</dt>
+<dd>XML da CCe Assinada</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Xml contendo mensagem do resultado da solicitaçao.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarCCe"></a><code>function <b>EnviarCCe</b>(const aNotaID, aTextoCorrecao, aDataHoraEvento, aOrgao, aIdLote : string; aSequenciaEvento : integer; const aFusoHorario : string = '') : string; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio de carta de correção eletrônica       </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNotaID</dt>
+<dd>Chave de Identificação da NF.</dd>
+<dt>aTextoCorrecao</dt>
+<dd>Texto (mínimo 15 dígitos) para descrição da correção.</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora da Emissão do Evento. Ex.: 2010-08-19T13:00:15</dd>
+<dt>aOrgao</dt>
+<dd>Código do Estado do Emissor da NFe.</dd>
+<dt>aIdLote</dt>
+<dd>ID do Lote da nota no qual a CCe será vinculada.</dd>
+<dt>aSequenciaEvento</dt>
+<dd>Número do evento (sequencial)</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarPedidoProrrogacao"></a><code>function <b>EnviarPedidoProrrogacao</b>(const aIdLote, aXmlPedProrrogacao: string): string; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio do Pedido de Prorrogação    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIdLote</dt>
+<dd>Número de Identificação do Lote a ser enviado.</dd>
+<dt>aXmlPedProrrogacao</dt>
+<dd>XML do Pedido assinado.</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Xml contendo mensagem do resultado da solicitaçao.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckParams.html">EspdNFeCheckParams</a></dt>
+<dd>Levantada quando os parâmetros estiverem com acento ou diferentes do tamanho exigido.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AdicionarItens"></a><code>procedure <b>AdicionarItens</b>(aNumItens, aQtdeItens: String);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método responsável para popular os dados pedido e quantidade, para utilização no método: <a class="normal"  href="spdNFe.TspdNFe.html#EnviarPedidoProrrogacao">EnviarPedidoProrrogacao</a>  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumItens:</dt>
+<dd>número do Item</dd>
+<dt>aQtdeItens:</dt>
+<dd>quantidade do Item</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarPedidoProrrogacao"></a><code>function <b>EnviarPedidoProrrogacao</b>(const aIdLote, aChaveNFe, aNumProtocolo : string; aDataHoraEvento, aOrgao : string;const aTpEvento : <a   href="spdNFeUtils.html#TTipoPedidoProrrogacao">TTipoPedidoProrrogacao</a>; const aSequenciaEvento : integer; aFusoHorario : string = '') : String; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio do Pedido de Prorrogação        </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIdLote</dt>
+<dd>Id do lote a ser enviado.</dd>
+<dt>aChaveNFe</dt>
+<dd>Chave da NF-e que possui os itens a serem prorrogados.</dd>
+<dt>aNumProtocolo</dt>
+<dd>Número do protocólo de autorização da NF-e a ser prorrogada.</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora da Emissão do Evento. Ex.: 2010-08-19T13:00:15</dd>
+<dt>aOrgao</dt>
+<dd>Código do Estado do Emissor da NFe.</dd>
+<dt>aTpEvento</dt>
+<dd>Tipo do evento EPP1=111500 ou EPP2=111501</dd>
+<dt>aSequenciaEvento</dt>
+<dd>Número do evento (sequencial)</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="CancelarPedidoProrrogacao"></a><code>function <b>CancelarPedidoProrrogacao</b>(const aIdLote, aChaveNFe, aNumProtocolo, aDataHoraEvento : string; const aTpEvento : <a   href="spdNFeUtils.html#TTipoCancelamentoPedidoProrrogacao">TTipoCancelamentoPedidoProrrogacao</a>; const aSequenciaEvento : integer; aFusoHorario : string = '') : String; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo responsavel pelo envio de Cancelamento do Pedido de Prorrogação        </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIdLote</dt>
+<dd>Id do lote a ser enviado.</dd>
+<dt>aChaveNFe</dt>
+<dd>Chave da NF-e que possui Pedido de Prorrgação a ser cancelado.</dd>
+<dt>aIdEvento</dt>
+<dd>Chave do evento de Pedido de Prorrogação autorizado.</dd>
+<dt>aNumProtocolo</dt>
+<dd>Número do protocólo de autorização da NF-e a ser prorrogada.</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora da Emissão do Evento. Ex.: 2010-08-19T13:00:15</dd>
+<dt>aTpEvento</dt>
+<dd>Tipo do evento CEPP1=111502 ou CEPP2=111503</dd>
+<dt>aSequenciaEvento</dt>
+<dd>Número do evento (sequencial)</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXMLCCeDestinatario"></a><code>function <b>GerarXMLCCeDestinatario</b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função responsavel por gerar XML de CCe que deve ser enviado ao Destinatário    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDEvento</dt>
+<dd>Chave da CCe que deseja gerar o arquivo</dd>
+<dt>aLogEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Envio da CCe</dd>
+<dt>aLogRetEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Retorno da CCe</dd>
+<dt>aSalvarComo</dt>
+<dd>Caso informado esse parametro salva em arquivo o conteúdo gerado pela função</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXMLManifestoDestinatario"></a><code>function <b>GerarXMLManifestoDestinatario</b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função responsavel por gerar XML de Manifestação que deve ser enviado ao Destinatário    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDEvento</dt>
+<dd>Chave da Manifestação que deseja gerar o arquivo</dd>
+<dt>aLogEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Envio da Manifestação</dd>
+<dt>aLogRetEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Retorno da Manifestação</dd>
+<dt>aSalvarComo</dt>
+<dd>Caso informado esse parametro salva em arquivo o conteúdo gerado pela função</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXMLEPECDestinatario"></a><code>function <b>GerarXMLEPECDestinatario</b>(aIDEvento: String; const aLogEvento,aLogRetEvento: String; aSalvarComo: String) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função responsavel por gerar XML de EPEC que deve ser enviado ao Destinatário    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDEvento</dt>
+<dd>Chave do EPEC que deseja gerar o arquivo</dd>
+<dt>aLogEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Envio do EPEC</dd>
+<dt>aLogRetEvento</dt>
+<dd>Conteúdo do <a class="normal"  href="spdNFe.TspdCustomNFe.html#Log">Log</a> de Retorno do EPEC</dd>
+<dt>aSalvarComo</dt>
+<dd>Caso informado esse parametro salva em arquivo o conteúdo gerado pela função</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ImprimirEPEC"></a><code>procedure <b>ImprimirEPEC</b>(const aLoteNotas: string; const aProtEPEC, aDataHoraEPEC: String; aArquivoModelo :string = ''; aImpressora: String = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Imprimir a DANFE em contingência EPEC     </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtEPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de EPEC</dd>
+<dt>aDataHoraEPEC</dt>
+<dd>Data e Hora de recebimento do EPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+<dt>aImpressora</dt>
+<dd>Nome da impressora registrada no windows, caso deseje omitir a tela de seleção de impressora no momento da impressão</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ExportarEPEC"></a><code>procedure <b>ExportarEPEC</b>(const aLoteNotas: string; const aProtEPEC, aDataHoraEPEC: String; const aArquivoModelo : string = ''; aFormato : Integer=1; aExportarParaArquivo : String='');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Exportar a DANFE em contingência EPEC      </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtEPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de EPEC</dd>
+<dt>aDataHoraEPEC</dt>
+<dd>Data e Hora de recebimento do EPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+<dt>aFormato</dt>
+<dd>Formato da exportação (1-PDF, 2-JPG)</dd>
+<dt>aExportarParaArquivo</dt>
+<dd>Nome completo do arquivo que será gerado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="VisualizarEPEC"></a><code>procedure <b>VisualizarEPEC</b>(const aLoteNotas : string; const aProtEPEC, aDataHoraEPEC : String; aArquivoModelo : string = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Visualizar a DANFE em contingência EPEC    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtEPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de EPEC</dd>
+<dt>aDataHoraEPEC</dt>
+<dd>Data e Hora de recebimento do EPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarIdCCe"></a><code>function <b>GerarIdCCe</b>(const aChaveNFe: string; aSeqEvento: integer): string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que gera o ID da Carta de correção Eletrônica, que é usado para gerar o XML Destinatário da CCe.  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aChaveNFe</dt>
+<dd>Chave na Nota.</dd>
+<dt>aSeqEvento</dt>
+<dd>Sequência do Evento.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarCCeDestinatario"></a><code>procedure <b>EnviarCCeDestinatario</b>(const aCCe : string);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Metodo que envia a CCe para o email do destinatário </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCCe</dt>
+<dd>aceita tanto o caminho do arquivo XML quanto a chave da CCe</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ImprimirCCe"></a><code>procedure <b>ImprimirCCe</b>(const aXmlCCe: string; const aImpressora : String = ''); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Permite imprimir um documento CCe passado como parâmetro em xml.  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlCCe</dt>
+<dd>XML válido contendo uma CCe</dd>
+<dt>aImpressora</dt>
+<dd>Nome da impressora a ser utilizada.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="VisualizarCCe"></a><code>procedure <b>VisualizarCCe</b>(const aXmlCCe: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Permite Prever como será impresso um DANFE </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlCCe</dt>
+<dd>XML de CCe Assinado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EditarModeloCCe"></a><code>procedure <b>EditarModeloCCe</b>(const aXmlCCe: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Permite editar o modelo para impressão da CCe. </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlCCe</dt>
+<dd>XML válido contendo uma CCe.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ExportarCCe"></a><code>procedure <b>ExportarCCe</b>(const aXmlCCe: string; aSalvarComo: String); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Permite exportar a CCe para PDF.  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlCCe</dt>
+<dd>XML válido contendo uma CCe.</dd>
+<dt>aSalvarComo</dt>
+<dd>Nome do arquivo a ser salvo.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="MontarXmlCCe"></a><code>function <b>MontarXmlCCe</b>(const aChaveNFe, aTextoCorrecao, aDataHoraEvento, aOrgao: string; aSequenciaEvento: integer; const aFusoHorario: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Permite montar o xml de envio da CCe.      </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aChaveNFe</dt>
+<dd>Chave de Identificação da NF.</dd>
+<dt>aTextoCorrecao</dt>
+<dd>Texto (mínimo 15 dígitos) para descrição da correção.</dd>
+<dt>aDataHoraEvento</dt>
+<dd>Data e Hora da Emissão do Evento. Ex.: 2010-08-19T13:00:15</dd>
+<dt>aOrgao</dt>
+<dd>Código do Estado do Emissor da NFe.</dd>
+<dt>aSequenciaEvento</dt>
+<dd>Número do evento (sequencial)</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AssinarCCe"></a><code>function <b>AssinarCCe</b>(const aXmlCCe: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assina o XML da CCe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlCCe</dt>
+<dd>xml da CCe a ser assinada</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeException.html">EspdNFeException</a></dt>
+<dd>Quando o campo Id não for encontrado para na fiscal.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="MontarEPEC"></a><code>function <b>MontarEPEC</b>(const aIdLote, aXmlEnvio, aDHEvento, aFusoHorario: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Monta o XML do evento EPEC a partir do xml de envio da nota       ou o xml estiver inválido </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIdLote</dt>
+<dd>identificador de controle do lote de envio do evento</dd>
+<dt>aXmlEnvio</dt>
+<dd>xml de envio da nota (tpemis=4)</dd>
+<dt>aDHEvento</dt>
+<dd>Data e Hora da Emissão do Evento. Ex.: 2010-08-19T13:00:15</dd>
+<dt>aFusoHorario</dt>
+<dd>Fuso horário do local de envio. Ex.: -03:00</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">o xml da nota</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdEventoCheckParams.html">EspdEventoCheckParams</a></dt>
+<dd>caso algum parâmetro de entrada ou algum valor no XML</dd>
+<dt><a class="normal"  href="spdNFeException.EspdEventosException.html">EspdEventosException</a></dt>
+<dd>caso não consiga gerar o xml</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AssinarEPEC"></a><code>function <b>AssinarEPEC</b>(const aXMLEpec: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assina o XML da nota a ser enviada em Modo EPEC    de assinatura</p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXMLEpec</dt>
+<dd>xml da nota com tpemis 4 a ser assinada</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">o xml assinado</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdSignatureException.html">EspdSignatureException</a></dt>
+<dd>caso ocorra algum problema durante o processo</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarEPEC"></a><code>function <b>EnviarEPEC</b>(const aXMLEpecAssinado: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Envia a nota em modo de contingência EPEC ao WebService da Sefaz    Web Service e não seja possível enviar a EPEC  o esquema antes do envio e o xml esteja inválido</p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlEPECAssinado</dt>
+<dd>xml da nota em modo EPEC já assinado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">xml de retorno do web service de recepção de evento da Sefaz</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeException.html">EspdNFeException</a></dt>
+<dd>caso ocorra algum problema de comunicação com o</dd>
+<dt><a class="normal"  href="spdNFeException.EspdSchemaValidationException.html">EspdSchemaValidationException</a></dt>
+<dd>caso esteja configurado para validar</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TestarEmailConfig"></a><code>function <b>TestarEmailConfig</b> : string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Testa se a configuração de e-mail é válida através da tentativa de um envio  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>Nenhum</dt>
+<dd></dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">vazio em caso de sucesso ou o erro ocorrido</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b> (aOwner : TComponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inicializa a classe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Finaliza a classe</p>
+</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="DiretorioXmlDestinatario"></a><code>property <b>DiretorioXmlDestinatario</b> : String read <a   href="spdNFe.TspdNFe.html#GetDiretorioXmlDestinatario">GetDiretorioXmlDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Diretorio onde será gerado o arquivo de XML Destinatario</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="DiretorioDownloads"></a><code>property <b>DiretorioDownloads</b>: string read <a   href="spdNFe.TspdNFe.html#GetDiretorioDownloads">GetDiretorioDownloads</a> write <a   href="spdNFe.TspdNFe.html#SetDiretorioDownloads">SetDiretorioDownloads</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Diretorio onde serão salvos os arquivos baixados</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="MaxSizeLoteEnvio"></a><code>property <b>MaxSizeLoteEnvio</b> : integer read <a   href="spdNFe.TspdNFe.html#fMaxSizeLoteEnvio">fMaxSizeLoteEnvio</a> write <a   href="spdNFe.TspdNFe.html#SetMaxSizeLoteEnvio">SetMaxSizeLoteEnvio</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Limite para o tamanho de arquivo que será Enviado</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="OnXmlDestinatario"></a><code>property <b>OnXmlDestinatario</b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a> read <a   href="spdNFe.TspdNFe.html#fOnXmlDestinatario">fOnXmlDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Evento que é chamado após a criação do arquivo de Xml NFE de Destinatario</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="OnXmlCanDestinatario"></a><code>property <b>OnXmlCanDestinatario</b> : <a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a> read <a   href="spdNFe.TspdNFe.html#fOnXmlCanDestinatario">fOnXmlCanDestinatario</a> write <a   href="spdNFe.TspdNFe.html#SetOnXmlCanDestinatario">SetOnXmlCanDestinatario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Evento que é chamado após a criação do arquivo de Xml Cancelamento de Destinatario</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="OnDownloadNFe"></a><code>property <b>OnDownloadNFe</b> : <a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a> read <a   href="spdNFe.TspdNFe.html#FOnDownloadNFe">FOnDownloadNFe</a> write <a   href="spdNFe.TspdNFe.html#SetOnDownloadNFe">SetOnDownloadNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Evento que é chamdo após o download de uma NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="DanfeSimplificado"></a><code>property <b>DanfeSimplificado</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>DanfeSimplificado</code> - é utilizado para ativar o uso o RTM do <code>DanfeSimplificado</code></p>
+</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:51</em>
+</span>
+</body></html>

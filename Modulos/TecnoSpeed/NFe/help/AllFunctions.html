@@ -1,0 +1,779 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: Todas as funções e procedimentos</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<h1 class="allitems">Todas as funções e procedimentos</h1>
+<table class="itemstable wide_list">
+<tr class="listheader">
+<th class="itemname">Nome</th>
+<th class="itemunit">Unit</th>
+<th class="itemdesc">Descrição</th>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AdicionarItens">AdicionarItens</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Método responsável para popular os dados pedido e quantidade, para utilização no método: <a class="normal"  href="spdNFELibrary.html#EnviarPedidoProrrogacao">EnviarPedidoProrrogacao</a>  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AssinarCCe">AssinarCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Assina o XML da CCe  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AssinarDPEC">AssinarDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Assina digitalmente o XML (resumido da NFe específico para DPEC) que será enviado ao SEFAZ  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AssinarEPEC">AssinarEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Assina o XML da nota a ser enviada em Modo EPEC    de assinatura</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AssinarNota">AssinarNota</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Gera assinatura de cada Nota dentro do arquivo XML   </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#AuditarXml">AuditarXml</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para a validação do auditor fiscal         </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CalcDigVerificadorCodMunicipio">CalcDigVerificadorCodMunicipio</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que Calcula o Dígito Verificador do Código do Município  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CalculaChave">CalculaChave</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que Gera a Chave (ID Nota) baseada nos Fields. Contempla o layout definido no Manual de integração 3.0   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CalculaChave">CalculaChave</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que Gera a Chave (ID Nota) baseada nos Fields. Contempla o novo layout definido no Manual de integração 4.0 sua chamada é feita pela classe <a class="normal"  href="spdNFe.html">spdNFe</a> quando for definido VersaoManual = vm40     </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#CalculaChaveNFe">CalculaChaveNFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que calcula a Chave da NFe de Acordo com a versão do Manual de Integração configurado no arquivo INI.    @aModelo Modelo do Documento Fiscal que está sendo Emitido @aSerie Serieo do Documento Fiscal que está sendo Emitido @NRNota Número da Nota Fiscal registrada no sistema @CodSistema Número Identificador da NF dentro do banco de dados da empresa @TpEmis Tipo de Emissão da NFe (1-Normal, 2-FS, 3-SCAN, 4-DPEC, 5-FSDA), utilizado após regulamentação do Manual 4.0</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CalculaDadosDaNFe">CalculaDadosDaNFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que gera Código de Barras dos Dados da NFe        </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#CancelarNF">CancelarNF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que envia solicitação de Cancelamento da NF      </p>
+
+<pre class="longcode">
+    Ex:
+     _Result := CancelarNF(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>,<span class="pascal_string">'098950000123463'</span>,<span class="pascal_string">'emitente incorreto'</span>);</pre>
+
+<p> </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#CancelarNFeEvento">CancelarNFeEvento</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que envia solicitação de Cancelamento de uma NFe como um evento.                  </p>
+
+<pre class="longcode">
+     Ex:
+      _Result := CancelarNFeEvento(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>,<span class="pascal_string">'098950000123463'</span>,<span class="pascal_string">'emitente incorreto'</span>,
+      <span class="pascal_string">'2012-05-15T15:30:30'</span>, <span class="pascal_numeric">1</span>, <span class="pascal_string">'-03:00'</span>,<span class="pascal_numeric">1</span>);
+  </pre>
+
+<p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#CancelarNFeEventoIdLote">CancelarNFeEventoIdLote</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que envia solicitação de Cancelamento de uma NFe como um evento.                </p>
+
+<pre class="longcode">
+     Ex:
+      _Result := CancelarNFeEvento(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>,<span class="pascal_string">'098950000123463'</span>,<span class="pascal_string">'emitente incorreto'</span>,
+      <span class="pascal_string">'2012-05-15T15:30:30'</span>, <span class="pascal_numeric">1</span>, <span class="pascal_string">'-03:00'</span>);
+  </pre>
+
+<p></td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#CancelarPedidoProrrogacao">CancelarPedidoProrrogacao</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Metodo responsavel pelo envio de Cancelamento do Pedido de Prorrogação        </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CompareComTolerancia">CompareComTolerancia</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que compara dois valores com tolerância - (sefaz utiliza 1,00 geralmente)   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#CompareDigValLogsNFe">CompareDigValLogsNFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função utilizada para comparar se o DigVal dos Logs de Envio e Processamento da nota são iguais  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarCadastro">ConsultarCadastro</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para consultar cadastro do Contribuinte      </p>
+
+<pre class="longcode">
+    ex:
+     _Result := ConsultarCadastro(<span class="pascal_string">'0000000000000000'</span>); </pre>
+
+<p></td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarDistribuicaoDFe">ConsultarDistribuicaoDFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Consulta a Distribuição DF-e    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarDPEC">ConsultarDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Consulta o registro de um DPEC no WebService do Sefaz nacional   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarNF">ConsultarNF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para consultar NF no servidor    </p>
+
+<pre class="longcode">
+    Ex:
+     _Result := ConsultaNF(<span class="pascal_string">'098909012345555090290124509890223879820934212'</span>); </pre>
+
+<p> </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarNFeDestinadas">ConsultarNFeDestinadas</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função de &quot;Consulta da Relação de Documentos Destinados” para um determinado CNPJ  2 para &quot;Idem anterior, incluindo as NF-e que também não tiveram a Ciência da Operação&quot;)  1 para &quot;Somente as NF-e emitidas por emissores / remetentes que não tenham a mesma raiz do CNPJ do destinatário (para excluir as notas fiscais de transferência entre filiais)&quot;)  consulta retornará unicamente as notas fiscais que tenham sido recepcionadas nos últimos 15 dias)  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConsultarRecibo">ConsultarRecibo</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que verifica a Situação do Recibo (que pode conter várias NFs).    </p>
+
+<pre class="longcode">
+    ex:
+     _Result := ConsultarRecibo(<span class="pascal_string">'009098765436527'</span>); </pre>
+
+<p> </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ConverteData">ConverteData</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte datas no formato AAAA-MM-DD para o formato DD/MM/YYYY.  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ConverteDataComVersaoNFe">ConverteDataComVersaoNFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte datas no formato AAAA-MM-DD para o formato DD/MM/YYYY. Tanto para NF-e 2.00 ou 3.10 passando a versão do manual Passar a versão manual como 2.00 ou 3.10  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ConverteHora">ConverteHora</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte horas no formato AAAA-MM-DDThh:mm:ss para o formato hh:mm:ss.  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConverterLoteParaXml">ConverterLoteParaXml</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que converte um Lote de Nf's formato TXT para XML     de acordo com a Versão do Manual de Integração setada ao componente </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ConverteXmlparaDataSet">ConverteXmlparaDataSet</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função criada para conveter dados de um XML de NFe válido para um DataSet populado.  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#DecodeChave">DecodeChave</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Decodifica a Chave da Nota de acordo com a Versão do Manual de Integração  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#DescompactarXMLZip">DescompactarXMLZip</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para descompactação de xml's zipados que podem ser provenientes por exemplo de consultas de distribuição DFe  @raise (<a class="normal"  href="spdNFeException.EspdNFeDescompactarXMLException.html">EspdNFeDescompactarXMLException</a> quando houver algum problema na tentativa de descompactação.)</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#DownloadNFe">DownloadNFe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função de &quot;Download NFe&quot; do servidor da Sefaz.       </p>
+
+<pre class="longcode">
+     Ex:
+      _Result := DownloadNFe(<span class="pascal_string">'098909012345555090290124509890223879820934212,098909012345555090290124509890223879820934212'</span>);
+  </pre>
+
+<p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EditarModeloCCe">EditarModeloCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite editar o modelo para impressão da CCe. </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EditarModeloDanfe">EditarModeloDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite editar o modelo para impressão do DANFE. Para utilizar o modelo alterado, é necessário salvar o arquivo com extensão RTM e utilizá-lo nas chamadas de <a class="normal"  href="spdNFELibrary.html#VisualizarDanfe">VisualizarDanfe</a> e <a class="normal"  href="spdNFELibrary.html#ImprimirDanfe">ImprimirDanfe</a>. Os parâmetro do método são os mesmos dos citados, para permitir a edição de um relatório com os campos preenchidos   passar o XML Destinatário que contém os dados de Autorização da NFe.  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EditarModeloDanfeDPEC">EditarModeloDanfeDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite editar o modelo para impressão do DANFE usando como base o padrão de Contigência DPEC, é necessário salvar o arquivo com extensão RTM e utilizá-lo nas chamadas de <a class="normal"  href="spdNFELibrary.html#VisualizarDanfe">VisualizarDanfe</a> e <a class="normal"  href="spdNFELibrary.html#ImprimirDanfe">ImprimirDanfe</a>. Os parâmetro do método são os mesmos dos citados, para permitir a edição de um relatório com os campos preenchidos     </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EmailDanfe">EmailDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite enviar a DANFE por email    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarCCe">EnviarCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarCCeDestinatario">EnviarCCeDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Metodo que envia a CCe para o email do destinatário </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarDPEC">EnviarDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Envia um XML de DPEC assinado ao WebService de DPEC (Declaração prévia de Emissão em Contingência)  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarEPEC">EnviarEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Envia a nota em modo de contingência EPEC ao WebService da Sefaz    Web Service e não seja possível enviar a EPEC  o esquema antes do envio e o xml esteja inválido</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarManifestacaoDestinatario">EnviarManifestacaoDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para o envio de Manifestação de Destinatário.  Desconhecimento da operação (tmdDesconhecimentoOperacao), Operação não Realizada (tmdOperacaoNaoRealizada) e Ciência da operação (tmdCienciaOperacao).        </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarNF">EnviarNF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para Enviar Lote das NF's assinadas.      </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarNFSincrono">EnviarNFSincrono</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função para Enviar Lote das NF's assinadas.      </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarNotaCanceladaDestinatario">EnviarNotaCanceladaDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Método que Monta um Xml de Cancelamento e envia por email ao (destinatário) no padrão exigido pelo Sefaz    @aEmailDestinatario Email do Destinatário para o qual será enviado o arquivo XML, caso deixe &quot;vazio&quot; o componente assumirá o valor setado nas propriedades de EmailSettings </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarNotaDestinatario">EnviarNotaDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Envia Email para o Destinatário com 2 arquivos Anexos (1-PDF da Danfe, 2-XML da NFe no padrão SEFAZ). Os dados para Email serão carregados do arquivo config.INI.   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarNotaDestinatarioAnexos">EnviarNotaDestinatarioAnexos</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Metodo responsavel pelo envio dos arquivos ao destinatario da nota   </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#EnviarPedidoProrrogacao">EnviarPedidoProrrogacao</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Metodo responsavel pelo envio do Pedido de Prorrogação         </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#EscapeCaracteres">EscapeCaracteres</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#EscapeXml">EscapeXml</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ExisteCaracteresEscapados">ExisteCaracteresEscapados</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ExpandPath">ExpandPath</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ExpandPathFull">ExpandPathFull</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ExportarCCe">ExportarCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite exportar a CCe para PDF.  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ExportarDanfe">ExportarDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite exportar a DANFE para os formatos PDF e JPG.   passar o XML Destinatário que contém os dados de Autorização da NFe.   </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ExportarDanfeDPEC">ExportarDanfeDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite exportar a DANFE de contingência DPEC para os formatos PDF e JPG.      </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ExportarEPEC">ExportarEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Método utilizado para Exportar a DANFE em contingência EPEC      </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ExportarPreverDanfe">ExportarPreverDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite Exportar um PDF de previsão de como será impresso um DANFE   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#FixSlash">FixSlash</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#FormataErro">FormataErro</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarIdCCe">GerarIdCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que gera o ID da Carta de correção Eletrônica, que é usado para gerar o XML Destinatário da CCe.  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarNotasAleatorias">GerarNotasAleatorias</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que gera Notas Fiscais com numeração Aleatória, utilizado como Demonstração de uso do Componente. Este método será desabilitado nas próximas atualizações.    </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarXMLCancelamentoDestinatario">GerarXMLCancelamentoDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que Retorna um XML de Cancelamento (destinatário) no padrão exigido pelo Sefaz    @aSalvarComo Arquivo que será Salvo o XML montado a partir dos LOG´s </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GerarXMLCancelamentoDestinatario">GerarXMLCancelamentoDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função utilizada para gerar XMLCancelamentoDestinatario do componente <a class="normal"  href="spdNFe.html">spdNFe</a> e spdNFeEvento    </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarXMLCCeDestinatario">GerarXMLCCeDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função responsavel por gerar XML de CCe que deve ser enviado ao Destinatário    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarXMLEnvioDestinatario">GerarXMLEnvioDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que Retorna um XML no padrão do SEFAZ para envio da NFe ao Destinatário    @aSalvarComo Arquivo que será Salvo o XML montado a partir dos LOG´s</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarXMLEPECDestinatario">GerarXMLEPECDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função responsavel por gerar XML de EPEC que deve ser enviado ao Destinatário    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GerarXMLManifestoDestinatario">GerarXMLManifestoDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função responsavel por gerar XML de Manifestação que deve ser enviado ao Destinatário    </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetActualDir">GetActualDir</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetCodeUF">GetCodeUF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém o Código de uma UF (sigla) </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetDescricaoManifestacao">GetDescricaoManifestacao</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetReferenceInfo">GetReferenceInfo</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetRetEvento">GetRetEvento</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetTagCnpjCpf">GetTagCnpjCpf</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetTipoAmbiente">GetTipoAmbiente</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetUF">GetUF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém a UF (sigla) com base no código informado </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GetUltimoErro">GetUltimoErro</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetValueTag">GetValueTag</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém o conteúdo de um elemento (tag) XML   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetValueTagFilho">GetValueTagFilho</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém o conteúdo de um elemento(tag) dentro de outra Tag XML    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#GetVencimentoCertificado">GetVencimentoCertificado</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função utilizada para verificar a data de vencimento do certificado digital </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#GetVersaoManualDoEsquema">GetVersaoManualDoEsquema</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que identifica a qual versão de manual de integração o Esquema pertence </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ImprimirCCe">ImprimirCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite imprimir um documento CCe passado como parâmetro em xml.  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ImprimirDanfe">ImprimirDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite imprimir um documento DANFE para o Lote de Notas passado como parâmetro em xml.   passar o XML Destinatário que contém os dados de Autorização da NFe.  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ImprimirDanfeDPEC">ImprimirDanfeDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite imprimir um documento DANFE no padrão de Contingência DPEC. O lote de notas deve ser um xml válido e obedecendo as regras no esquema env-lot.xsd     </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ImprimirDanfeXmlDiretorio">ImprimirDanfeXmlDiretorio</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite imprimir xmls que estão contidos dentro de um pasta.  .  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ImprimirEPEC">ImprimirEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Método utilizado para Imprimir a DANFE em contingência EPEC     </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ImprimirFrenteVersoToStr">ImprimirFrenteVersoToStr</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#InutilizarNF">InutilizarNF</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que solicita a Inutilização de Numeração.          </p>
+
+<pre class="longcode">
+    ex:
+      Result := fNF.CancelarNF(<span class="pascal_string">'35080677917680004205550010000011450045364376'</span>,<span class="pascal_string">'135080000000001'</span>,<span class="pascal_string">'123456789123456'</span>); </pre>
+
+<p> </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#LerLog">LerLog</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Lê o conteúdo do arquivo de log especificado em aPathArquivoLog e retorna o valor em uma WideString 
+
+<p>Exemplo: </p>
+
+<pre class="longcode">LerLog(PCHAR(<span class="pascal_string">'c:\NFE\log\0001-env-lot.xml'</span>))</pre>
+
+<p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ListarLogs">ListarLogs</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Lista todos os logs ou filtra de acordo com o filtro passado em aFilter
+
+<p>Os valores para filtro que podem ser passado em aFilter são:
+
+<p>0: lista todos os arquivos XML. É o valor padrão. 1: lista arquivos de NFe 2: lfEnvLot lista arquivos de envio de lote de NFe 3: lfRec lista arquivos de recibo 4: lfPedRec lista arquivos de pedido do resultado do processamento do lote de NFe 5: lfProRec lista arquivos de resultado do processamento do lote de NFe 6: lfDen lista arquivos de denegação de uso 7: lfPedCan lista arquivos de pedido de cancelamento de NFe 8: lfCan lista arquivos de cancelamento de NFe 9: lfPedInu lista arquivos de pedido de inutilização de numeração 10: lfInu lista arquivos de inutilização de numeração 11: lfPedSit lista arquivos de pedido de consulta de situação atual da NFe 12: lfSit lista arquivos de situação atual da NF-e 13: lfPedSta lista arquivos de pedido de consulta de status do serviço 14: lfSta lista arquivos de status de serviço 15: lfCustom lista arquivos obtidos através de um filtro personalizado pelo usuário em aCustomFilter</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#LoadTemplate">LoadTemplate</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Retorna um template de acordo com o nome de arquivo informado  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ModoOperacaoToString">ModoOperacaoToString</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte <a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a> em String  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#MontarEPEC">MontarEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Monta o XML do evento EPEC a partir do xml de envio da nota       ou o xml estiver inválido </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#MontarXmlCCe">MontarXmlCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite montar o xml de envio da CCe.      </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ObterCertificados">ObterCertificados</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Funcção que retorna uma lista de certificados instalados no Computador. </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObterChaveNota">ObterChaveNota</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém a Chave da NFe de um XML  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObtercStat">ObtercStat</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Obtém o cStat - Código de Identificação de Mensagens do Sefaz  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObterNotaID">ObterNotaID</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que obtém a ID completo da NFe a partir de um XML  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObterNumProt">ObterNumProt</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Obtém o Numero do Protocolo de um XML de retorno do Sefaz  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObterNumRecibo">ObterNumRecibo</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Obtém o Numero do Recibo de um XML de retorno do Sefaz  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ObterTpAmb">ObterTpAmb</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Obtém Tipo de Ambiente de um XML  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#PercorrerArquivos">PercorrerArquivos</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#PreverDanfe">PreverDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite visualizar um documento DANFE de acordo com o XML passado como parametro   </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeSCAN.html#Register">Register</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeSCAN.html">spdNFeSCAN</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeDataSets.html#Register">Register</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeDataSets.html">spdNFeDataSets</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFe.html#Register">Register</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFe.html">spdNFe</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeDPEC.html#Register">Register</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeDPEC.html">spdNFeDPEC</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#RemoverAcentos">RemoverAcentos</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Remove a acentuação de uma String</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#RemoverCertificado">RemoverCertificado</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Remove um certificado do sistema operacional </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#RemoveVersaoManualDoPath">RemoveVersaoManualDoPath</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função Remove a VersaoManual do Path utilizado em Templates e Esquemas </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#spdDirectoryExists">spdDirectoryExists</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#SplitString">SplitString</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#StatusDoServico">StatusDoServico</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função que Verifica a situação do serviço WebService solicitado   </p>
+
+<pre class="longcode">
+    Ex:
+     _Result := StatusDoServico; </pre>
+
+<p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToImprimirFrenteVerso">StrToImprimirFrenteVerso</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToModoOperacao">StrToModoOperacao</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a> utilizado pelo componente NFe  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToTipoCertificado">StrToTipoCertificado</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToTipoConsulta">StrToTipoConsulta</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte uma String em tipo ModoConsultaNSU utilizado pelo componente NFe  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToVersaoEsquema">StrToVersaoEsquema</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> utilizado pelo componente Nfe  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#StrToVersaoManual">StrToVersaoManual</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a> utilizado pelo componente Nfe  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#TipoCertificadoToString">TipoCertificadoToString</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#tpEveCanPedProrrogacaoToStr">tpEveCanPedProrrogacaoToStr</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#tpEvePedProrrogacaoToStr">tpEvePedProrrogacaoToStr</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ValidaAssinatura">ValidaAssinatura</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ValidaAutenticidadeDV">ValidaAutenticidadeDV</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que Verifica a autenticidade do Dígito verificador da Chave de Acesso  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ValidaCodigoMunicipio">ValidaCodigoMunicipio</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função que Valida o Código do Município informado </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ValidaDanfeSimplificado">ValidaDanfeSimplificado</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#ValidaEAN">ValidaEAN</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Função utilizada para validar o código EAN do produto </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ValidarArquivoXmlDestinatario">ValidarArquivoXmlDestinatario</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Função utilizada para checar a integridade do XMLDestinatário   </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ValidarLoteItem">ValidarLoteItem</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Valida Lote de Notas, realizando vários procedimentos, desde verificação de assinatura, até validação do xml de acordo com o esquema requerido para envio das notas    </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ValidarLoteParaEnvio">ValidarLoteParaEnvio</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Valida Lote de Notas, realizando vários procedimentos, desde verificação de assinatura, até validação do xml de acordo com o esquema requerido para envio das notas    </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#ValidarTamanhoArquivoEnvio">ValidarTamanhoArquivoEnvio</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Valida o Tamanho máximo do XML de Envio baseado na configuração da propriedade MaxSizeLoteEnvio  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#VersaoEsquemaToStr">VersaoEsquemaToStr</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte <a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> em String  </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#VersaoManualToStr">VersaoManualToStr</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte <a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a> em String  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#VisualizarCCe">VisualizarCCe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite Prever como será impresso um DANFE </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#VisualizarDanfe">VisualizarDanfe</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite visualizar um documento DANFE de acordo com o XML passado como parametro   passar o XML Destinatário que contém os dados de Autorização da NFe.  </td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#VisualizarDanfeDPEC">VisualizarDanfeDPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Permite visualizar um documento DANFE no padrão de Contingência em DPEC.     </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#VisualizarDanfeLog">VisualizarDanfeLog</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Abre o visualizador de DANFE com o arquivo especificado em aPathArquivoLog. O arquivo deve conter o XML de uma NFe enviada (arquivos com sufixo -env-lot.xml). 
+
+<p>Exemplo: </p>
+
+<pre class="longcode">VisualizarDanfeLog(PCHAR(<span class="pascal_string">'c:\NFE\log\0001-env-lot.xml'</span>))</pre>
+
+<p></td>
+</tr>
+<tr class="list2">
+<td class="itemname"><a class="bold"  href="spdNFELibrary.html#VisualizarEPEC">VisualizarEPEC</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFELibrary.html">spdNFELibrary</a></td>
+<td class="itemdesc">Método utilizado para Visualizar a DANFE em contingência EPEC    </td>
+</tr>
+<tr class="list">
+<td class="itemname"><a class="bold"  href="spdNFeUtils.html#XmlDateToDateTime">XmlDateToDateTime</a></td>
+<td class="itemunit"><a class="bold"  href="spdNFeUtils.html">spdNFeUtils</a></td>
+<td class="itemdesc">Converte Formato de Data do XML YYYY-MM-DD em TDateTime</td>
+</tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

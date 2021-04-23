@@ -799,9 +799,14 @@ namespace DAL.Persistence
 
                 string CaminhoArquivoLog = "";
                 if (CodCaminho == 1)//HabilServiceNFSe
-                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\Log-" + data.ToString("dd-MM-yyyy") + ".txt";
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\";
                 else//HabilInformatica
-                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\Log-" + data.ToString("dd-MM-yyyy") + ".txt";
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\";
+
+                if (!Directory.Exists(CaminhoArquivoLog))
+                    Directory.CreateDirectory(CaminhoArquivoLog);
+
+                CaminhoArquivoLog += "Log - " + data.ToString("dd-MM-yyyy") + ".txt";
 
                 if (!System.IO.File.Exists(CaminhoArquivoLog))
                 {

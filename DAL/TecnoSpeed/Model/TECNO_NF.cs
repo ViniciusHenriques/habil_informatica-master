@@ -322,5 +322,23 @@ namespace DAL.TecnoSpeed
 
         /// <summary></summary>
         public decimal? ICMSTOT_VFCPSTRET { get; set; }
+
+        /// <summary></summary>
+        public decimal? ICMSTOT_VIPIDEVOL { get; set; }
+
+        /// <summary></summary>
+        public decimal? VTROCO { get; set; }
+
+        /// <summary></summary>
+        public DateTime ISSQNTOT_DCOMPET { get; set; }
+
+        /// <summary></summary>
+        public decimal? IDE_INDINTERMED { get; set; }
+
+        /// <summary></summary>
+        public string INFINTERMED_CNPJ { get; set; }
+
+        /// <summary></summary>
+        public string INFINTERMED_IDCADINTTRAN { get; set; }
     }
 }

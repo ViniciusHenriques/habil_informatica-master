@@ -4771,6 +4771,7 @@ namespace SoftHabilInformatica.Pages.Faturamento
                                         else if (thisTable.TableName == "transporta" && column.ColumnName == "UF")
                                             InformacoesTransportador[7] = row[column].ToString();
 
+                                        //outras informações
                                         else if (thisTable.TableName == "transp" && column.ColumnName == "modFrete")
                                             ddlModalidadeFrete.Text = row[column].ToString();
                                         else if (thisTable.TableName == "ICMSTot" && column.ColumnName == "vBC")

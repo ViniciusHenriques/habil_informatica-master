@@ -1,0 +1,1024 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeRules</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<h1 class="unit">Unit spdNFeRules</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Uses">uses</a></td><td><a class="section"  href="#%40Classes">Classes, Interfaces, Objetos e Registros</a></td><td>Funções e Procedimentos</td><td>Tipos</td><td><a class="section"  href="#%40Constants">Constantes</a></td><td>Variáveis</td></tr></table>
+<a name="%40Description"></a><h2 class="description">Descrição</h2>
+<p>
+Classes responsáveis pelas regras de Negócio descritas no manual de integração aplicadas no momento da geração da NFe pelos recursos de conversão da Tecnospeed TI (DataSet, Tx2, Rec)</p>
+<a name="%40Uses"></a><h2 class="uses">uses</h2>
+<ul class="useslist"><li>Classes</li><li>DateUTils</li><li>spdRules</li><li><a   href="spdNFeUtils.html">spdNFeUtils</a></li><li><a   href="spdNFeDataSets.html">spdNFeDataSets</a></li><li><a   href="spdNFeException.html">spdNFeException</a></li><li><a   href="spdNFeType.html">spdNFeType</a></li><li>SysUtils</li><li>StrUtils</li><li>NFeGovX_TLB</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Classes"></a><h3 class="cio">Classes, Interfaces, Objetos e Registros</h3>
+<table class="classestable wide_list">
+<tr class="listheader">
+<th class="itemname">Nome</th>
+<th class="itemdesc">Descrição</th>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeRule.html"><code>TspdNFeRule</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGA03.html"><code>TspdNFeGA03</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB07.html"><code>TspdNFeGB07</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB09.html"><code>TspdNFeGB09</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB09_2.html"><code>TspdNFeGB09_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB21_2.html"><code>TspdNFeGB21_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB10_2.html"><code>TspdNFeGB10_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB10_3.html"><code>TspdNFeGB10_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB10a.html"><code>TspdNFeGB10a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB12.html"><code>TspdNFeGB12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB12_1.html"><code>TspdNFeGB12_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB13.html"><code>TspdNFeGB13</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB17.html"><code>TspdNFeGB17</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20d.html"><code>TspdNFeGB20d</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20e.html"><code>TspdNFeGB20e</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20i.html"><code>TspdNFeGB20i</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB22.html"><code>TspdNFeGB22</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB22_1.html"><code>TspdNFeGB22_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB22_3.html"><code>TspdNFeGB22_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB23.html"><code>TspdNFeGB23</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25.html"><code>TspdNFeGB25</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_1.html"><code>TspdNFeGB25_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_2.html"><code>TspdNFeGB25_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_7.html"><code>TspdNFeGB25_7</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB26.html"><code>TspdNFeGB26</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB28.html"><code>TspdNFeGB28</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC02.html"><code>TspdNFeGC02</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC02_a.html"><code>TspdNFeGC02_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC02_a1.html"><code>TspdNFeGC02_a1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC10.html"><code>TspdNFeGC10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC10_1.html"><code>TspdNFeGC10_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC17.html"><code>TspdNFeGC17</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC18_14.html"><code>TspdNFeGC18_14</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGC18_40.html"><code>TspdNFeGC18_40</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGD01.html"><code>TspdNFeGD01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGD01_2.html"><code>TspdNFeGD01_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE02.html"><code>TspdNFeGE02</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE02_1.html"><code>TspdNFeGE02_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE02_2.html"><code>TspdNFeGE02_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE03.html"><code>TspdNFeGE03</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE10_1.html"><code>TspdNFeGE10_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE10.html"><code>TspdNFeGE10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE10_2.html"><code>TspdNFeGE10_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE14.html"><code>TspdNFeGE14</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE14_1.html"><code>TspdNFeGE14_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE17.html"><code>TspdNFeGE17</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGF02.html"><code>TspdNFeGF02</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGF02_a.html"><code>TspdNFeGF02_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGF07.html"><code>TspdNFeGF07</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGF07_1.html"><code>TspdNFeGF07_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGF07_2.html"><code>TspdNFeGF07_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG02.html"><code>TspdNFeGG02</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG02_a.html"><code>TspdNFeGG02_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG07.html"><code>TspdNFeGG07</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG07_1.html"><code>TspdNFeGG07_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG07_2.html"><code>TspdNFeGG07_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGG07_20.html"><code>TspdNFeGG07_20</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeTemplateItem.html"><code>TspdNFeTemplateItem</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI03.html"><code>TspdNFeGI03</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI12.html"><code>TspdNFeGI12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08.html"><code>TspdNFeGI08</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_1.html"><code>TspdNFeGI08_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_2.html"><code>TspdNFeGI08_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_3.html"><code>TspdNFeGI08_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_4.html"><code>TspdNFeGI08_4</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_5.html"><code>TspdNFeGI08_5</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_7.html"><code>TspdNFeGI08_7</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI10_a.html"><code>TspdNFeGI10_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI14_a.html"><code>TspdNFeGI14_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI01.html"><code>TspdNFeGI01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI18.html"><code>TspdNFeGI18</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGY01.html"><code>TspdNFeGY01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28.html"><code>TspdNFeGN28</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28_1.html"><code>TspdNFeGN28_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28_2.html"><code>TspdNFeGN28_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_8.html"><code>TspdNFeGI08_8</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN12.html"><code>TspdNFeGN12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN17.html"><code>TspdNFeGN17</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN17_10.html"><code>TspdNFeGN17_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGU01.html"><code>TspdNFeGU01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGU05.html"><code>TspdNFeGU05</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGU05_10.html"><code>TspdNFeGU05_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW03.html"><code>TspdNFeGW03</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW04.html"><code>TspdNFeGW04</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW05.html"><code>TspdNFeGW05</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW06.html"><code>TspdNFeGW06</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW07.html"><code>TspdNFeGW07</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW08.html"><code>TspdNFeGW08</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW09.html"><code>TspdNFeGW09</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW10.html"><code>TspdNFeGW10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW11.html"><code>TspdNFeGW11</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW12.html"><code>TspdNFeGW12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW13.html"><code>TspdNFeGW13</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW14.html"><code>TspdNFeGW14</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW15.html"><code>TspdNFeGW15</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW16.html"><code>TspdNFeGW16</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW18.html"><code>TspdNFeGW18</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW19.html"><code>TspdNFeGW19</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW20.html"><code>TspdNFeGW20</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW21.html"><code>TspdNFeGW21</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22.html"><code>TspdNFeGW22</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGX04.html"><code>TspdNFeGX04</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGX05.html"><code>TspdNFeGX05</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGX07.html"><code>TspdNFeGX07</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGX17.html"><code>TspdNFeGX17</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB06.html"><code>TspdNFeGB06</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB06_1.html"><code>TspdNFeGB06_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_3.html"><code>TspdNFeGB25_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_4.html"><code>TspdNFeGB25_4</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_8.html"><code>TspdNFeGB25_8</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25b.html"><code>TspdNFeGB25b</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB26_1.html"><code>TspdNFeGB26_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE01.html"><code>TspdNFeGE01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE03a.html"><code>TspdNFeGE03a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE03a_1.html"><code>TspdNFeGE03a_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE03a_2.html"><code>TspdNFeGE03a_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE03a_3.html"><code>TspdNFeGE03a_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE04.html"><code>TspdNFeGE04</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE05.html"><code>TspdNFeGE05</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE12.html"><code>TspdNFeGE12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE12_1.html"><code>TspdNFeGE12_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE12_2.html"><code>TspdNFeGE12_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE12_3.html"><code>TspdNFeGE12_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE16a.html"><code>TspdNFeGE16a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE17_1.html"><code>TspdNFeGE17_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE17_2.html"><code>TspdNFeGE17_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE17_3.html"><code>TspdNFeGE17_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeLA02_1.html"><code>TspdNFeLA02_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI05_1.html"><code>TspdNFeGI05_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI05_10.html"><code>TspdNFeGI05_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI05_2.html"><code>TspdNFeGI05_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI05_3.html"><code>TspdNFeGI05_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGLA11_10.html"><code>TspdNFeGLA11_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGLA16_10.html"><code>TspdNFeGLA16_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_9.html"><code>TspdNFeGI08_9</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_10.html"><code>TspdNFeGI08_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_11.html"><code>TspdNFeGI08_11</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_12.html"><code>TspdNFeGI08_12</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_13.html"><code>TspdNFeGI08_13</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI17_10.html"><code>TspdNFeGI17_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI23_10.html"><code>TspdNFeGI23_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI23_b.html"><code>TspdNFeGI23_b</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI23_d.html"><code>TspdNFeGI23_d</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI23d_1.html"><code>TspdNFeGI23d_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI23_e.html"><code>TspdNFeGI23_e</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI29_a.html"><code>TspdNFeGI29_a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI50.html"><code>TspdNFeGI50</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI50_1.html"><code>TspdNFeGI50_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI51.html"><code>TspdNFeGI51</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI52.html"><code>TspdNFeGI52</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI54.html"><code>TspdNFeGI54</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI54_1.html"><code>TspdNFeGI54_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGL102a.html"><code>TspdNFeGL102a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGL109_1.html"><code>TspdNFeGL109_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGLB01_3.html"><code>TspdNFeGLB01_3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN16_04.html"><code>TspdNFeGN16_04</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN16a.html"><code>TspdNFeGN16a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN16c.html"><code>TspdNFeGN16c</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN17_NT005_2013.html"><code>TspdNFeGN17_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN17_2.html"><code>TspdNFeGN17_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28_2_NT005_2013.html"><code>TspdNFeGN28_2_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGO09_10.html"><code>TspdNFeGO09_10</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGQ01_2.html"><code>TspdNFeGQ01_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGS01_2.html"><code>TspdNFeGS01_2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW16a.html"><code>TspdNFeGW16a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22b.html"><code>TspdNFeGW22b</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22c.html"><code>TspdNFeGW22c</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22d.html"><code>TspdNFeGW22d</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22e.html"><code>TspdNFeGW22e</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22f.html"><code>TspdNFeGW22f</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGX04_1.html"><code>TspdNFeGX04_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGZA01.html"><code>TspdNFeGZA01</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGZA01_1.html"><code>TspdNFeGZA01_1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGZB02.html"><code>TspdNFeGZB02</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeTecno1.html"><code>TspdNFeTecno1</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeTecno2.html"><code>TspdNFeTecno2</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeTecno3.html"><code>TspdNFeTecno3</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeTecno4.html"><code>TspdNFeTecno4</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW03_NT003_2012.html"><code>TspdNFeGW03_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW04_NT003_2012.html"><code>TspdNFeGW04_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW04a.html"><code>TspdNFeGW04a</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW05_NT003_2012.html"><code>TspdNFeGW05_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW06_NT003_2012.html"><code>TspdNFeGW06_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW07_NT003_2012.html"><code>TspdNFeGW07_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW08_NT003_2012.html"><code>TspdNFeGW08_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW09_NT003_2012.html"><code>TspdNFeGW09_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW10_NT003_2012.html"><code>TspdNFeGW10_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW11_NT003_2012.html"><code>TspdNFeGW11_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW12_NT003_2012.html"><code>TspdNFeGW12_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_120_NT005_2013.html"><code>TspdNFeGI08_120_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_130_NT005_2013.html"><code>TspdNFeGI08_130_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW13_NT003_2012.html"><code>TspdNFeGW13_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW14_NT003_2012.html"><code>TspdNFeGW14_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW15_NT003_2012.html"><code>TspdNFeGW15_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW16_NT003_2012.html"><code>TspdNFeGW16_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW18_NT003_2012.html"><code>TspdNFeGW18_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW19_NT003_2012.html"><code>TspdNFeGW19_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW20_NT003_2012.html"><code>TspdNFeGW20_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW21_NT003_2012.html"><code>TspdNFeGW21_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW22_NT003_2012.html"><code>TspdNFeGW22_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeJ02_c_NT003_2012.html"><code>TspdNFeJ02_c_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB09_1_NT003_2012.html"><code>TspdNFeGB09_1_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGL101_NT003_2012.html"><code>TspdNFeGL101_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28_NT003_2012.html"><code>TspdNFeGN28_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN28_1_NT003_2012.html"><code>TspdNFeGN28_1_NT003_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN16_NT005_2012.html"><code>TspdNFeGN16_NT005_2012</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB13a_NT003_2013.html"><code>TspdNFeGB13a_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB13b_NT003_2013.html"><code>TspdNFeGB13b_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20_NT003_2013.html"><code>TspdNFeGB20_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20ha_NT003_2013.html"><code>TspdNFeGB20ha_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20ia_NT003_2013.html"><code>TspdNFeGB20ia_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB20m_NT003_2013.html"><code>TspdNFeGB20m_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGB25_3_NT003_2013.html"><code>TspdNFeGB25_3_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW16b_NT003_2013.html"><code>TspdNFeGW16b_NT003_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGN16_NT006_2013.html"><code>TspdNFeGN16_NT006_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE10_2_NT005_2013.html"><code>TspdNFeGE10_2_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE14_NT005_2013.html"><code>TspdNFeGE14_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGE14_1_NT005_2013.html"><code>TspdNFeGE14_1_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGW16_NT005_2013.html"><code>TspdNFeGW16_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_5_NT005_2013.html"><code>TspdNFeGI08_5_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeGI08_8_NT005_2013.html"><code>TspdNFeGI08_8_NT005_2013</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeN12_70_NT003_2015.html"><code>TspdNFeN12_70_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeN16_20_NT003_2015.html"><code>TspdNFeN16_20_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeN12_80_NT003_2015.html"><code>TspdNFeN12_80_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeN12a_70_NT003_2015.html"><code>TspdNFeN12a_70_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA09_20_NT003_2015.html"><code>TspdNFeNA09_20_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeN23_10_NT003_2015.html"><code>TspdNFeN23_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA01_20_NT003_2015.html"><code>TspdNFeNA01_20_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA01_30_NT003_2015.html"><code>TspdNFeNA01_30_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA09_10_NT003_2015.html"><code>TspdNFeNA09_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA09_30_NT003_2015.html"><code>TspdNFeNA09_30_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA15_10_NT003_2015.html"><code>TspdNFeNA15_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA13_10_NT003_2015.html"><code>TspdNFeNA13_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeW04e_10_NT003_2015.html"><code>TspdNFeW04e_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeW04c_10_NT003_2015.html"><code>TspdNFeW04c_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeW04g_10_NT003_2015.html"><code>TspdNFeW04g_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeE16a_30_NT003_2015.html"><code>TspdNFeE16a_30_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeNA11_10_NT003_2015.html"><code>TspdNFeNA11_10_NT003_2015</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeBA02_40_NT015_002.html"><code>TspdNFeBA02_40_NT015_002</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeU14_10_NT015_002.html"><code>TspdNFeU14_10_NT015_002</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeB09_30_NT015_002.html"><code>TspdNFeB09_30_NT015_002</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeG07_20_NT015_002.html"><code>TspdNFeG07_20_NT015_002</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeRules.TspdNFeI08_190_NT015_002.html"><code>TspdNFeI08_190_NT015_002</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+</table>
+<a name="%40Constants"></a><h3 class="summary">Constantes</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeRules.html#DataAtivacaoNT003">DataAtivacaoNT003</a></b> = '2016-01-01T00:01:00-03:00';</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeRules.html#dataAtivacaoNT003Prorrogada">dataAtivacaoNT003Prorrogada</a></b> = '2016-07-01T00:01:00-03:00';</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Constantes</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="DataAtivacaoNT003"></a><code><b>DataAtivacaoNT003</b> = '2016-01-01T00:01:00-03:00';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="dataAtivacaoNT003Prorrogada"></a><code><b>dataAtivacaoNT003Prorrogada</b> = '2016-07-01T00:01:00-03:00';</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:52</em>
+</span>
+</body></html>

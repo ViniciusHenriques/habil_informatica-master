@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeDataSets: Classe TXmlDataSetNFe</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TXmlDataSetNFe"></a><h1 class="cio">Classe TXmlDataSetNFe</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeDataSets.html">spdNFeDataSets</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TXmlDataSetNFe = class(TClientDataSet)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe que extende TClientDataSet com informações necessárias para gerar XML</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TClientDataSet</li>
+<li class="thisitem">TXmlDataSetNFe</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#FTagXML">FTagXML</a></b>: string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#FXMLMasterField">FXMLMasterField</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#FXmlMasterSource">FXmlMasterSource</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#FDataSource">FDataSource</a></b>: TDataSource;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#FXMLKeyField">FXMLKeyField</a></b>: String;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetDataSource">GetDataSource</a></b>: TDataSource; reintroduce; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetTagXML">GetTagXML</a></b>: string; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLKeyField">GetXMLKeyField</a></b>: String; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLMasterField">GetXMLMasterField</a></b>: String; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXmlMasterSource">GetXmlMasterSource</a></b>: String; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetTagXML">SetTagXML</a></b>(const Value: string); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLMasterField">SetXMLMasterField</a></b>(const Value: String); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXmlMasterSource">SetXmlMasterSource</a></b>(const Value: String); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLKeyField">SetXMLKeyField</a></b>(const Value: String); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetDataSource">SetDataSource</a></b>(const Value: TDataSource); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#Create">Create</a></b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#TagXML">TagXML</a></b>: string read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetTagXML">GetTagXML</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetTagXML">SetTagXML</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#XMLMasterSource">XMLMasterSource</a></b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXmlMasterSource">GetXmlMasterSource</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXmlMasterSource">SetXmlMasterSource</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#XMLMasterField">XMLMasterField</a></b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLMasterField">GetXMLMasterField</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLMasterField">SetXMLMasterField</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#XMLKeyField">XMLKeyField</a></b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLKeyField">GetXMLKeyField</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLKeyField">SetXMLKeyField</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlDataSetNFe.html#DataSource">DataSource</a></b> : TDataSource read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetDataSource">GetDataSource</a>  write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetDataSource">SetDataSource</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FTagXML"></a><code><b>FTagXML</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FXMLMasterField"></a><code><b>FXMLMasterField</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FXmlMasterSource"></a><code><b>FXmlMasterSource</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FDataSource"></a><code><b>FDataSource</b>: TDataSource;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FXMLKeyField"></a><code><b>FXMLKeyField</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetDataSource"></a><code>function <b>GetDataSource</b>: TDataSource; reintroduce; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetTagXML"></a><code>function <b>GetTagXML</b>: string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetXMLKeyField"></a><code>function <b>GetXMLKeyField</b>: String; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetXMLMasterField"></a><code>function <b>GetXMLMasterField</b>: String; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetXmlMasterSource"></a><code>function <b>GetXmlMasterSource</b>: String; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetTagXML"></a><code>procedure <b>SetTagXML</b>(const Value: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetXMLMasterField"></a><code>procedure <b>SetXMLMasterField</b>(const Value: String); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetXmlMasterSource"></a><code>procedure <b>SetXmlMasterSource</b>(const Value: String); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetXMLKeyField"></a><code>procedure <b>SetXMLKeyField</b>(const Value: String); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetDataSource"></a><code>procedure <b>SetDataSource</b>(const Value: TDataSource); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TagXML"></a><code>property <b>TagXML</b>: string read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetTagXML">GetTagXML</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetTagXML">SetTagXML</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Tag em XML que sempre será colocado quando o DataSet for Convertido por Completo</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="XMLMasterSource"></a><code>property <b>XMLMasterSource</b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXmlMasterSource">GetXmlMasterSource</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXmlMasterSource">SetXmlMasterSource</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="XMLMasterField"></a><code>property <b>XMLMasterField</b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLMasterField">GetXMLMasterField</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLMasterField">SetXMLMasterField</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="XMLKeyField"></a><code>property <b>XMLKeyField</b> : String read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetXMLKeyField">GetXMLKeyField</a> write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetXMLKeyField">SetXMLKeyField</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DataSource"></a><code>property <b>DataSource</b> : TDataSource read <a   href="spdNFeDataSets.TXmlDataSetNFe.html#GetDataSource">GetDataSource</a>  write <a   href="spdNFeDataSets.TXmlDataSetNFe.html#SetDataSource">SetDataSource</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:51</em>
+</span>
+</body></html>

@@ -2763,12 +2763,6 @@
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\CapturaWebcamASPNET\camutils\webcam.js" />
-    <Content Include="Scripts\CapturaWebcamASPNET\camutils\webcam.swf" />
-    <Content Include="Scripts\CapturaWebcamASPNET\Default.aspx" />
-    <Content Include="Scripts\CapturaWebcamASPNET\shutter.mp3" />
-    <Content Include="Scripts\CapturaWebcamASPNET\test.html" />
-    <Content Include="Scripts\CapturaWebcamASPNET\Upload.aspx" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
     <Content Include="Scripts\ckeditor\ckeditor.asp" />
@@ -3746,12 +3740,6 @@
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\CapturaWebcamASPNET\v15\.suo" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\CapturaWebcamASPNET\v15\Server\sqlite3\db.lock" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\CapturaWebcamASPNET\v15\Server\sqlite3\storage.ide" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\CapturaWebcamASPNET\v15\Server\sqlite3\storage.ide-shm" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\CapturaWebcamASPNET\v15\Server\sqlite3\storage.ide-wal" />
-    <Content Include="Scripts\CapturaWebcamASPNET\.vs\config\applicationhost.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize\currency.js" />
@@ -15918,20 +15906,6 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Scripts\CapturaWebcamASPNET\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Scripts\CapturaWebcamASPNET\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Scripts\CapturaWebcamASPNET\Upload.aspx.cs">
-      <DependentUpon>Upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Scripts\CapturaWebcamASPNET\Upload.aspx.designer.cs">
-      <DependentUpon>Upload.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Selecao.aspx.cs">
       <DependentUpon>Selecao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -19430,7 +19404,6 @@
     <Folder Include="Content\uploads\" />
     <Folder Include="Log\ImagemRelatorio\" />
     <Folder Include="Log\NFSe\" />
-    <Folder Include="Scripts\CapturaWebcamASPNET\uploads\" />
     <Folder Include="TecnoSpeed\NFSe\Arquivos\Esquemas\ABASE - Cópia\" />
     <Folder Include="TecnoSpeed\NFSe\Arquivos\Esquemas\Americana\" />
     <Folder Include="TecnoSpeed\NFSe\Arquivos\Esquemas\AngraDosReisRJ\" />

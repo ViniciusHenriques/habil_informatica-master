@@ -1,0 +1,790 @@
+DiGraph Classes {
+  EspdException -> Exception
+  EspdException [href="spdNFeException.EspdException.html"]
+  EspdNFeEventosException -> EspdException
+  EspdNFeEventosException [href="spdNFeException.EspdNFeEventosException.html"]
+  EspdCCeReportException -> EspdNFeEventosException
+  EspdCCeReportException [href="spdNFeException.EspdCCeReportException.html"]
+  EspdEventoCheckParams -> EspdNFeEventosException
+  EspdEventoCheckParams [href="spdNFeException.EspdEventoCheckParams.html"]
+  EspdEventoFileNotFoundException -> EspdNFeEventosException
+  EspdEventoFileNotFoundException [href="spdNFeException.EspdEventoFileNotFoundException.html"]
+  EspdEventoInvalidSigner -> EspdNFeEventosException
+  EspdEventoInvalidSigner [href="spdNFeException.EspdEventoInvalidSigner.html"]
+  EspdEventoLogNotFoundException -> EspdNFeEventosException
+  EspdEventoLogNotFoundException [href="spdNFeException.EspdEventoLogNotFoundException.html"]
+  EspdEventoMaxSizeException -> EspdNFeEventosException
+  EspdEventoMaxSizeException [href="spdNFeException.EspdEventoMaxSizeException.html"]
+  EspdEventoReportException -> EspdNFeEventosException
+  EspdEventoReportException [href="spdNFeException.EspdEventoReportException.html"]
+  EspdEventoRetException -> EspdNFeEventosException
+  EspdEventoRetException [href="spdNFeException.EspdEventoRetException.html"]
+  EspdEventosAddressException -> EspdNFeEventosException
+  EspdEventosAddressException [href="spdNFeException.EspdEventosAddressException.html"]
+  EspdEventosException -> EspdNFeEventosException
+  EspdEventosException [href="spdNFeException.EspdEventosException.html"]
+  EspdEventoXmlDestinatario -> EspdNFeEventosException
+  EspdEventoXmlDestinatario [href="spdNFeException.EspdEventoXmlDestinatario.html"]
+  EspdNFeDescompactarXMLException -> EspdNFeEventosException
+  EspdNFeDescompactarXMLException [href="spdNFeException.EspdNFeDescompactarXMLException.html"]
+  EspdNFeDFeChaveInvalidaException -> EspdNFeEventosException
+  EspdNFeDFeChaveInvalidaException [href="spdNFeException.EspdNFeDFeChaveInvalidaException.html"]
+  EspdNFeDFeCNPJInvalidoException -> EspdNFeEventosException
+  EspdNFeDFeCNPJInvalidoException [href="spdNFeException.EspdNFeDFeCNPJInvalidoException.html"]
+  EspdNFeDFeCPFInvalidoException -> EspdNFeEventosException
+  EspdNFeDFeCPFInvalidoException [href="spdNFeException.EspdNFeDFeCPFInvalidoException.html"]
+  EspdNFeDFeException -> EspdNFeEventosException
+  EspdNFeDFeException [href="spdNFeException.EspdNFeDFeException.html"]
+  EspdNFeDFeNSUInvalidaException -> EspdNFeEventosException
+  EspdNFeDFeNSUInvalidaException [href="spdNFeException.EspdNFeDFeNSUInvalidaException.html"]
+  EspdNFeDFeUFInvalidaException -> EspdNFeEventosException
+  EspdNFeDFeUFInvalidaException [href="spdNFeException.EspdNFeDFeUFInvalidaException.html"]
+  EspdNFeEventoDownloadNFeException -> EspdNFeEventosException
+  EspdNFeEventoDownloadNFeException [href="spdNFeException.EspdNFeEventoDownloadNFeException.html"]
+  EspdNFeEventoDownloadLimitNotasException -> EspdNFeEventoDownloadNFeException
+  EspdNFeEventoDownloadLimitNotasException [href="spdNFeException.EspdNFeEventoDownloadLimitNotasException.html"]
+  EspdNFeEventosChaveInvalidException -> EspdNFeEventosException
+  EspdNFeEventosChaveInvalidException [href="spdNFeException.EspdNFeEventosChaveInvalidException.html"]
+  EspdNFeEventosCNPJCPFInvalidException -> EspdNFeEventosException
+  EspdNFeEventosCNPJCPFInvalidException [href="spdNFeException.EspdNFeEventosCNPJCPFInvalidException.html"]
+  EspdNFeEventosCNPJInvalidException -> EspdNFeEventosException
+  EspdNFeEventosCNPJInvalidException [href="spdNFeException.EspdNFeEventosCNPJInvalidException.html"]
+  EspdNFeEventosCodigoOrgaoInvalidException -> EspdNFeEventosException
+  EspdNFeEventosCodigoOrgaoInvalidException [href="spdNFeException.EspdNFeEventosCodigoOrgaoInvalidException.html"]
+  EspdNFeEventosCPFInvalidException -> EspdNFeEventosException
+  EspdNFeEventosCPFInvalidException [href="spdNFeException.EspdNFeEventosCPFInvalidException.html"]
+  EspdNFeEventosDataHoraInvalidException -> EspdNFeEventosException
+  EspdNFeEventosDataHoraInvalidException [href="spdNFeException.EspdNFeEventosDataHoraInvalidException.html"]
+  EspdNFeEventosFusoHorarioInvalidException -> EspdNFeEventosException
+  EspdNFeEventosFusoHorarioInvalidException [href="spdNFeException.EspdNFeEventosFusoHorarioInvalidException.html"]
+  EspdNFeEventosIndEmiInvalidException -> EspdNFeEventosException
+  EspdNFeEventosIndEmiInvalidException [href="spdNFeException.EspdNFeEventosIndEmiInvalidException.html"]
+  EspdNFeEventosIndNFeInvalidException -> EspdNFeEventosException
+  EspdNFeEventosIndNFeInvalidException [href="spdNFeException.EspdNFeEventosIndNFeInvalidException.html"]
+  EspdNFeEventosJustificativaInvalidException -> EspdNFeEventosException
+  EspdNFeEventosJustificativaInvalidException [href="spdNFeException.EspdNFeEventosJustificativaInvalidException.html"]
+  EspdNFeEventosNumeroProtException -> EspdNFeEventosException
+  EspdNFeEventosNumeroProtException [href="spdNFeException.EspdNFeEventosNumeroProtException.html"]
+  EspdNFeEventosTipoEventoException -> EspdNFeEventosException
+  EspdNFeEventosTipoEventoException [href="spdNFeException.EspdNFeEventosTipoEventoException.html"]
+  EspdNFeEventosUFInvalidException -> EspdNFeEventosException
+  EspdNFeEventosUFInvalidException [href="spdNFeException.EspdNFeEventosUFInvalidException.html"]
+  EspdNFeEventosUltNSUInvalidException -> EspdNFeEventosException
+  EspdNFeEventosUltNSUInvalidException [href="spdNFeException.EspdNFeEventosUltNSUInvalidException.html"]
+  EspdNFeException -> EspdException
+  EspdNFeException [href="spdNFeException.EspdNFeException.html"]
+  EspdCertStoreException -> EspdNFeException
+  EspdCertStoreException [href="spdNFeException.EspdCertStoreException.html"]
+  EspdChaveNFeException -> EspdNFeException
+  EspdChaveNFeException [href="spdNFeException.EspdChaveNFeException.html"]
+  EspdCheckParams -> EspdNFeException
+  EspdCheckParams [href="spdNFeException.EspdCheckParams.html"]
+  EspdConfigINIException -> EspdNFeException
+  EspdConfigINIException [href="spdNFeException.EspdConfigINIException.html"]
+  EspdFileNotFoundException -> EspdNFeException
+  EspdFileNotFoundException [href="spdNFeException.EspdFileNotFoundException.html"]
+  EspdLogException -> EspdNFeException
+  EspdLogException [href="spdNFeException.EspdLogException.html"]
+  EspdNFeAddressException -> EspdNFeException
+  EspdNFeAddressException [href="spdNFeException.EspdNFeAddressException.html"]
+  EspdNFeCertificationException -> EspdNFeException
+  EspdNFeCertificationException [href="spdNFeException.EspdNFeCertificationException.html"]
+  EspdNFeCheckParams -> EspdNFeException
+  EspdNFeCheckParams [href="spdNFeException.EspdNFeCheckParams.html"]
+  EspdNFeCheckTXT -> EspdNFeException
+  EspdNFeCheckTXT [href="spdNFeException.EspdNFeCheckTXT.html"]
+  EspdNFeComunicacaoValidadorNotaException -> EspdNFeException
+  EspdNFeComunicacaoValidadorNotaException [href="spdNFeException.EspdNFeComunicacaoValidadorNotaException.html"]
+  EspdNFeConfigException -> EspdNFeException
+  EspdNFeConfigException [href="spdNFeException.EspdNFeConfigException.html"]
+  EspdNFeConversaoXMLException -> EspdNFeException
+  EspdNFeConversaoXMLException [href="spdNFeException.EspdNFeConversaoXMLException.html"]
+  EspdNFEConvertDateException -> EspdNFeException
+  EspdNFEConvertDateException [href="spdNFeException.EspdNFEConvertDateException.html"]
+  EspdNFEConvertHoraException -> EspdNFeException
+  EspdNFEConvertHoraException [href="spdNFeException.EspdNFEConvertHoraException.html"]
+  EspdNFeDanfeLoadINIException -> EspdNFeException
+  EspdNFeDanfeLoadINIException [href="spdNFeException.EspdNFeDanfeLoadINIException.html"]
+  EspdNFeDataSetException -> EspdNFeException
+  EspdNFeDataSetException [href="spdNFeException.EspdNFeDataSetException.html"]
+  EspdConvXmlException -> EspdNFeDataSetException
+  EspdConvXmlException [href="spdNFeException.EspdConvXmlException.html"]
+  EspdDataSetException -> EspdNFeDataSetException
+  EspdDataSetException [href="spdNFeException.EspdDataSetException.html"]
+  EspdDataSetFieldNotFoundException -> EspdNFeDataSetException
+  EspdDataSetFieldNotFoundException [href="spdNFeException.EspdDataSetFieldNotFoundException.html"]
+  EspdDataSetFileNotFoundException -> EspdNFeDataSetException
+  EspdDataSetFileNotFoundException [href="spdNFeException.EspdDataSetFileNotFoundException.html"]
+  EspdDataSetLoadTemplateException -> EspdNFeDataSetException
+  EspdDataSetLoadTemplateException [href="spdNFeException.EspdDataSetLoadTemplateException.html"]
+  EspdNFeConvTX2 -> EspdNFeDataSetException
+  EspdNFeConvTX2 [href="spdNFeException.EspdNFeConvTX2.html"]
+  EspdNfeDataSetConfigException -> EspdNFeDataSetException
+  EspdNfeDataSetConfigException [href="spdNFeException.EspdNfeDataSetConfigException.html"]
+  EspdNfeDataSetFieldNotFoundException -> EspdNFeDataSetException
+  EspdNfeDataSetFieldNotFoundException [href="spdNFeException.EspdNfeDataSetFieldNotFoundException.html"]
+  EspdNfeDataSetFileNotFoundException -> EspdNFeDataSetException
+  EspdNfeDataSetFileNotFoundException [href="spdNFeException.EspdNfeDataSetFileNotFoundException.html"]
+  EspdNFeDataSetLoadTemplateException -> EspdNFeDataSetException
+  EspdNFeDataSetLoadTemplateException [href="spdNFeException.EspdNFeDataSetLoadTemplateException.html"]
+  EspdNfeDataSetStateException -> EspdNFeDataSetException
+  EspdNfeDataSetStateException [href="spdNFeException.EspdNfeDataSetStateException.html"]
+  EspdNFeDeprecatedException -> EspdNFeException
+  EspdNFeDeprecatedException [href="spdNFeException.EspdNFeDeprecatedException.html"]
+  EspdNFeDirNotFoundException -> EspdNFeException
+  EspdNFeDirNotFoundException [href="spdNFeException.EspdNFeDirNotFoundException.html"]
+  EspdNFeDPecException -> EspdNFeException
+  EspdNFeDPecException [href="spdNFeException.EspdNFeDPecException.html"]
+  EspdNFeEnviarManifestacaoDestinatario -> EspdNFeException
+  EspdNFeEnviarManifestacaoDestinatario [href="spdNFeException.EspdNFeEnviarManifestacaoDestinatario.html"]
+  EspdNFeEnviarNotaCanceladaDestinatario -> EspdNFeException
+  EspdNFeEnviarNotaCanceladaDestinatario [href="spdNFeException.EspdNFeEnviarNotaCanceladaDestinatario.html"]
+  EspdNFeEnviarNotaDestinatarioException -> EspdNFeException
+  EspdNFeEnviarNotaDestinatarioException [href="spdNFeException.EspdNFeEnviarNotaDestinatarioException.html"]
+  EspdNFeExportarPreverDanfeException -> EspdNFeException
+  EspdNFeExportarPreverDanfeException [href="spdNFeException.EspdNFeExportarPreverDanfeException.html"]
+  EspdNFeGerarIdCCeException -> EspdNFeException
+  EspdNFeGerarIdCCeException [href="spdNFeException.EspdNFeGerarIdCCeException.html"]
+  EspdNFeIDInutilizacao -> EspdNFeException
+  EspdNFeIDInutilizacao [href="spdNFeException.EspdNFeIDInutilizacao.html"]
+  EspdNFeIndexException -> EspdNFeException
+  EspdNFeIndexException [href="spdNFeException.EspdNFeIndexException.html"]
+  EspdNFeLoadTemplateException -> EspdNFeException
+  EspdNFeLoadTemplateException [href="spdNFeException.EspdNFeLoadTemplateException.html"]
+  EspdNFeLogException -> EspdNFeException
+  EspdNFeLogException [href="spdNFeException.EspdNFeLogException.html"]
+  EspdNFeLogNotFoundException -> EspdNFeException
+  EspdNFeLogNotFoundException [href="spdNFeException.EspdNFeLogNotFoundException.html"]
+  EspdNFeMaxSizeException -> EspdNFeException
+  EspdNFeMaxSizeException [href="spdNFeException.EspdNFeMaxSizeException.html"]
+  EspdNFeModoOperacaoException -> EspdNFeException
+  EspdNFeModoOperacaoException [href="spdNFeException.EspdNFeModoOperacaoException.html"]
+  EspdNFeNotaCanceladaDestinatario -> EspdNFeException
+  EspdNFeNotaCanceladaDestinatario [href="spdNFeException.EspdNFeNotaCanceladaDestinatario.html"]
+  EspdNFeReportException -> EspdNFeException
+  EspdNFeReportException [href="spdNFeException.EspdNFeReportException.html"]
+  EspdNFeReportNotFoundException -> EspdNFeException
+  EspdNFeReportNotFoundException [href="spdNFeException.EspdNFeReportNotFoundException.html"]
+  EspdNFeRuleException -> EspdNFeException
+  EspdNFeRuleException [href="spdNFeException.EspdNFeRuleException.html"]
+  EspdNFeSchemaNotFoundException -> EspdNFeException
+  EspdNFeSchemaNotFoundException [href="spdNFeException.EspdNFeSchemaNotFoundException.html"]
+  EspdNFeSchemaValidationException -> EspdNFeException
+  EspdNFeSchemaValidationException [href="spdNFeException.EspdNFeSchemaValidationException.html"]
+  EspdNFeTrial -> EspdNFeException
+  EspdNFeTrial [href="spdNFeException.EspdNFeTrial.html"]
+  EspdNFeValidadeAssinatura -> EspdNFeException
+  EspdNFeValidadeAssinatura [href="spdNFeException.EspdNFeValidadeAssinatura.html"]
+  EspdNFeValidadorClientOCXException -> EspdNFeException
+  EspdNFeValidadorClientOCXException [href="spdNFeException.EspdNFeValidadorClientOCXException.html"]
+  EspdNFeVersaoEsquemaException -> EspdNFeException
+  EspdNFeVersaoEsquemaException [href="spdNFeException.EspdNFeVersaoEsquemaException.html"]
+  EspdNFeVersaoManualException -> EspdNFeException
+  EspdNFeVersaoManualException [href="spdNFeException.EspdNFeVersaoManualException.html"]
+  EspdNFeXmlDestinatario -> EspdNFeException
+  EspdNFeXmlDestinatario [href="spdNFeException.EspdNFeXmlDestinatario.html"]
+  EspdNotaSeguraException -> EspdNFeException
+  EspdNotaSeguraException [href="spdNFeException.EspdNotaSeguraException.html"]
+  EspdSchemaValidationException -> EspdNFeException
+  EspdSchemaValidationException [href="spdNFeException.EspdSchemaValidationException.html"]
+  EspdSignatureException -> EspdNFeException
+  EspdSignatureException [href="spdNFeException.EspdSignatureException.html"]
+  EspdSoapException -> EspdNFeException
+  EspdSoapException [href="spdNFeException.EspdSoapException.html"]
+  EspdTemplateNotFoundException -> EspdNFeException
+  EspdTemplateNotFoundException [href="spdNFeException.EspdTemplateNotFoundException.html"]
+  EspdTipoConsultaException -> EspdNFeException
+  EspdTipoConsultaException [href="spdNFeException.EspdTipoConsultaException.html"]
+  TXmlDataSetNFe -> TClientDataSet
+  TXmlDataSetNFe [href="spdNFeDataSets.TXmlDataSetNFe.html"]
+  TspdCustomNFe -> TComponent
+  TspdCustomNFe [href="spdNFe.TspdCustomNFe.html"]
+  TspdNFe -> TspdCustomNFe
+  TspdNFe [href="spdNFe.TspdNFe.html"]
+  TspdNFeSCAN -> TspdNFe
+  TspdNFeSCAN [href="spdNFeSCAN.TspdNFeSCAN.html"]
+  TspdNFeDPEC -> TspdCustomNFe
+  TspdNFeDPEC [href="spdNFeDPEC.TspdNFeDPEC.html"]
+  TspdNFeDataSets -> TComponent
+  TspdNFeDataSets [href="spdNFeDataSets.TspdNFeDataSets.html"]
+  TspdXMLDataSetNFe -> TComponent
+  TspdXMLDataSetNFe [href="spdNFeDataSets.TspdXMLDataSetNFe.html"]
+  TspdNFeCustomDataSet -> TspdXMLDataSetNFe
+  TspdNFeCustomDataSet [href="spdNFeDataSets.TspdNFeCustomDataSet.html"]
+  TspdDS_pl005a -> TspdNFeCustomDataSet
+  TspdDS_pl005a [href="spdNFeDataSets.TspdDS_pl005a.html"]
+  TspdDS_pl005b -> TspdDS_pl005a
+  TspdDS_pl005b [href="spdNFeDataSets.TspdDS_pl005b.html"]
+  TspdDS_pl005c -> TspdDS_pl005b
+  TspdDS_pl005c [href="spdNFeDataSets.TspdDS_pl005c.html"]
+  TspdDS_pl005d -> TspdDS_pl005c
+  TspdDS_pl005d [href="spdNFeDataSets.TspdDS_pl005d.html"]
+  TspdDS_pl005f -> TspdDS_pl005d
+  TspdDS_pl005f [href="spdNFeDataSets.TspdDS_pl005f.html"]
+  TspdDS_pl006e -> TspdDS_pl005d
+  TspdDS_pl006e [href="spdNFeDataSets.TspdDS_pl006e.html"]
+  TspdDS_pl006f -> TspdDS_pl006e
+  TspdDS_pl006f [href="spdNFeDataSets.TspdDS_pl006f.html"]
+  TspdDS_pl006g -> TspdDS_pl006f
+  TspdDS_pl006g [href="spdNFeDataSets.TspdDS_pl006g.html"]
+  TspdDS_pl006i -> TspdDS_pl006g
+  TspdDS_pl006i [href="spdNFeDataSets.TspdDS_pl006i.html"]
+  TspdDS_pl006j -> TspdDS_pl006i
+  TspdDS_pl006j [href="spdNFeDataSets.TspdDS_pl006j.html"]
+  TspdDS_pl006m -> TspdDS_pl006j
+  TspdDS_pl006m [href="spdNFeDataSets.TspdDS_pl006m.html"]
+  TspdDS_pl006n -> TspdDS_pl006m
+  TspdDS_pl006n [href="spdNFeDataSets.TspdDS_pl006n.html"]
+  TspdDS_pl006p -> TspdDS_pl006n
+  TspdDS_pl006p [href="spdNFeDataSets.TspdDS_pl006p.html"]
+  TspdDS_pl006q -> TspdDS_pl006p
+  TspdDS_pl006q [href="spdNFeDataSets.TspdDS_pl006q.html"]
+  TspdDS_pl006r -> TspdDS_pl006q
+  TspdDS_pl006r [href="spdNFeDataSets.TspdDS_pl006r.html"]
+  TspdDS_pl006s -> TspdDS_pl006r
+  TspdDS_pl006s [href="spdNFeDataSets.TspdDS_pl006s.html"]
+  TspdDS_pl006t -> TspdDS_pl006s
+  TspdDS_pl006t [href="spdNFeDataSets.TspdDS_pl006t.html"]
+  TspdDS_pl006u -> TspdDS_pl006t
+  TspdDS_pl006u [href="spdNFeDataSets.TspdDS_pl006u.html"]
+  TspdDS_pl006v -> TspdDS_pl006u
+  TspdDS_pl006v [href="spdNFeDataSets.TspdDS_pl006v.html"]
+  TspdDS_pl008a -> TspdDS_pl006s
+  TspdDS_pl008a [href="spdNFeDataSets.TspdDS_pl008a.html"]
+  TspdDS_pl008b -> TspdDS_pl008a
+  TspdDS_pl008b [href="spdNFeDataSets.TspdDS_pl008b.html"]
+  TspdDS_pl008c -> TspdDS_pl008b
+  TspdDS_pl008c [href="spdNFeDataSets.TspdDS_pl008c.html"]
+  TspdDS_pl008d -> TspdDS_pl008c
+  TspdDS_pl008d [href="spdNFeDataSets.TspdDS_pl008d.html"]
+  TspdDS_pl008e -> TspdDS_pl008d
+  TspdDS_pl008e [href="spdNFeDataSets.TspdDS_pl008e.html"]
+  TspdDS_pl008f -> TspdDS_pl008e
+  TspdDS_pl008f [href="spdNFeDataSets.TspdDS_pl008f.html"]
+  TspdDS_pl008g -> TspdDS_pl008f
+  TspdDS_pl008g [href="spdNFeDataSets.TspdDS_pl008g.html"]
+  TspdDS_pl008h -> TspdDS_pl008g
+  TspdDS_pl008h [href="spdNFeDataSets.TspdDS_pl008h.html"]
+  TspdDS_pl008i -> TspdDS_pl008h
+  TspdDS_pl008i [href="spdNFeDataSets.TspdDS_pl008i.html"]
+  TspdDS_pl008i1 -> TspdDS_pl008i
+  TspdDS_pl008i1 [href="spdNFeDataSets.TspdDS_pl008i1.html"]
+  TspdDS_pl008i2 -> TspdDS_pl008i1
+  TspdDS_pl008i2 [href="spdNFeDataSets.TspdDS_pl008i2.html"]
+  TspdDS_pl009 -> TspdDS_pl008i2
+  TspdDS_pl009 [href="spdNFeDataSets.TspdDS_pl009.html"]
+  TspdAdicionaPedidoProrrogacao -> TObject
+  TspdAdicionaPedidoProrrogacao [href="spdNFeUtils.TspdAdicionaPedidoProrrogacao.html"]
+  TspdControllerRulesNFe -> TObject
+  TspdControllerRulesNFe [href="spdNFeDataSets.TspdControllerRulesNFe.html"]
+  TspdNFeEventoXmlCancelamentoDestinatario -> TObject
+  TspdNFeEventoXmlCancelamentoDestinatario [href="spdNFeUtils.TspdNFeEventoXmlCancelamentoDestinatario.html"]
+  TspdNFeEventoXmlManifestacaoDestinatario -> TObject
+  TspdNFeEventoXmlManifestacaoDestinatario [href="spdNFeUtils.TspdNFeEventoXmlManifestacaoDestinatario.html"]
+  TspdNFeXmlCancelamentoDestinatario -> TObject
+  TspdNFeXmlCancelamentoDestinatario [href="spdNFeUtils.TspdNFeXmlCancelamentoDestinatario.html"]
+  TspdNFeXmlDestinatario -> TObject
+  TspdNFeXmlDestinatario [href="spdNFeUtils.TspdNFeXmlDestinatario.html"]
+  TspdNFeXMLLogs -> TObject
+  TspdNFeXMLLogs [href="spdNFeUtils.TspdNFeXMLLogs.html"]
+  TspdNFeXmlUtils -> TObject
+  TspdNFeXmlUtils [href="spdNFeUtils.TspdNFeXmlUtils.html"]
+  TAuditorSettings -> TPersistent
+  TAuditorSettings [href="spdNFeType.TAuditorSettings.html"]
+  TDanfeSettings -> TPersistent
+  TDanfeSettings [href="spdNFeType.TDanfeSettings.html"]
+  TspdEmailSettings -> TPersistent
+  TspdEmailSettings [href="spdNFeType.TspdEmailSettings.html"]
+  TspdNFeRule -> TspdRule
+  TspdNFeRule [href="spdNFeRules.TspdNFeRule.html"]
+  TspdNFeB09_30_NT015_002 -> TspdNFeRule
+  TspdNFeB09_30_NT015_002 [href="spdNFeRules.TspdNFeB09_30_NT015_002.html"]
+  TspdNFeBA02_40_NT015_002 -> TspdNFeRule
+  TspdNFeBA02_40_NT015_002 [href="spdNFeRules.TspdNFeBA02_40_NT015_002.html"]
+  TspdNFeE16a_30_NT003_2015 -> TspdNFeRule
+  TspdNFeE16a_30_NT003_2015 [href="spdNFeRules.TspdNFeE16a_30_NT003_2015.html"]
+  TspdNFeG07_20_NT015_002 -> TspdNFeRule
+  TspdNFeG07_20_NT015_002 [href="spdNFeRules.TspdNFeG07_20_NT015_002.html"]
+  TspdNFeGA03 -> TspdNFeRule
+  TspdNFeGA03 [href="spdNFeRules.TspdNFeGA03.html"]
+  TspdNFeGB06 -> TspdNFeRule
+  TspdNFeGB06 [href="spdNFeRules.TspdNFeGB06.html"]
+  TspdNFeGB06_1 -> TspdNFeRule
+  TspdNFeGB06_1 [href="spdNFeRules.TspdNFeGB06_1.html"]
+  TspdNFeGB07 -> TspdNFeRule
+  TspdNFeGB07 [href="spdNFeRules.TspdNFeGB07.html"]
+  TspdNFeGB09 -> TspdNFeRule
+  TspdNFeGB09 [href="spdNFeRules.TspdNFeGB09.html"]
+  TspdNFeGB09_1_NT003_2012 -> TspdNFeRule
+  TspdNFeGB09_1_NT003_2012 [href="spdNFeRules.TspdNFeGB09_1_NT003_2012.html"]
+  TspdNFeGB09_2 -> TspdNFeRule
+  TspdNFeGB09_2 [href="spdNFeRules.TspdNFeGB09_2.html"]
+  TspdNFeGB10a -> TspdNFeRule
+  TspdNFeGB10a [href="spdNFeRules.TspdNFeGB10a.html"]
+  TspdNFeGB10_2 -> TspdNFeRule
+  TspdNFeGB10_2 [href="spdNFeRules.TspdNFeGB10_2.html"]
+  TspdNFeGB10_3 -> TspdNFeRule
+  TspdNFeGB10_3 [href="spdNFeRules.TspdNFeGB10_3.html"]
+  TspdNFeGB12 -> TspdNFeRule
+  TspdNFeGB12 [href="spdNFeRules.TspdNFeGB12.html"]
+  TspdNFeGB12_1 -> TspdNFeRule
+  TspdNFeGB12_1 [href="spdNFeRules.TspdNFeGB12_1.html"]
+  TspdNFeGB13 -> TspdNFeRule
+  TspdNFeGB13 [href="spdNFeRules.TspdNFeGB13.html"]
+  TspdNFeGB13a_NT003_2013 -> TspdNFeRule
+  TspdNFeGB13a_NT003_2013 [href="spdNFeRules.TspdNFeGB13a_NT003_2013.html"]
+  TspdNFeGB13b_NT003_2013 -> TspdNFeRule
+  TspdNFeGB13b_NT003_2013 [href="spdNFeRules.TspdNFeGB13b_NT003_2013.html"]
+  TspdNFeGB17 -> TspdNFeRule
+  TspdNFeGB17 [href="spdNFeRules.TspdNFeGB17.html"]
+  TspdNFeGB20d -> TspdNFeRule
+  TspdNFeGB20d [href="spdNFeRules.TspdNFeGB20d.html"]
+  TspdNFeGB20e -> TspdNFeRule
+  TspdNFeGB20e [href="spdNFeRules.TspdNFeGB20e.html"]
+  TspdNFeGB20ha_NT003_2013 -> TspdNFeRule
+  TspdNFeGB20ha_NT003_2013 [href="spdNFeRules.TspdNFeGB20ha_NT003_2013.html"]
+  TspdNFeGB20i -> TspdNFeRule
+  TspdNFeGB20i [href="spdNFeRules.TspdNFeGB20i.html"]
+  TspdNFeGB20ia_NT003_2013 -> TspdNFeRule
+  TspdNFeGB20ia_NT003_2013 [href="spdNFeRules.TspdNFeGB20ia_NT003_2013.html"]
+  TspdNFeGB20m_NT003_2013 -> TspdNFeRule
+  TspdNFeGB20m_NT003_2013 [href="spdNFeRules.TspdNFeGB20m_NT003_2013.html"]
+  TspdNFeGB20_NT003_2013 -> TspdNFeRule
+  TspdNFeGB20_NT003_2013 [href="spdNFeRules.TspdNFeGB20_NT003_2013.html"]
+  TspdNFeGB21_2 -> TspdNFeRule
+  TspdNFeGB21_2 [href="spdNFeRules.TspdNFeGB21_2.html"]
+  TspdNFeGB22 -> TspdNFeRule
+  TspdNFeGB22 [href="spdNFeRules.TspdNFeGB22.html"]
+  TspdNFeGB22_1 -> TspdNFeRule
+  TspdNFeGB22_1 [href="spdNFeRules.TspdNFeGB22_1.html"]
+  TspdNFeGB22_3 -> TspdNFeRule
+  TspdNFeGB22_3 [href="spdNFeRules.TspdNFeGB22_3.html"]
+  TspdNFeGB23 -> TspdNFeRule
+  TspdNFeGB23 [href="spdNFeRules.TspdNFeGB23.html"]
+  TspdNFeGB25 -> TspdNFeRule
+  TspdNFeGB25 [href="spdNFeRules.TspdNFeGB25.html"]
+  TspdNFeGB25b -> TspdNFeRule
+  TspdNFeGB25b [href="spdNFeRules.TspdNFeGB25b.html"]
+  TspdNFeGB25_1 -> TspdNFeRule
+  TspdNFeGB25_1 [href="spdNFeRules.TspdNFeGB25_1.html"]
+  TspdNFeGB25_2 -> TspdNFeRule
+  TspdNFeGB25_2 [href="spdNFeRules.TspdNFeGB25_2.html"]
+  TspdNFeGB25_3 -> TspdNFeRule
+  TspdNFeGB25_3 [href="spdNFeRules.TspdNFeGB25_3.html"]
+  TspdNFeGB25_3_NT003_2013 -> TspdNFeRule
+  TspdNFeGB25_3_NT003_2013 [href="spdNFeRules.TspdNFeGB25_3_NT003_2013.html"]
+  TspdNFeGB25_4 -> TspdNFeRule
+  TspdNFeGB25_4 [href="spdNFeRules.TspdNFeGB25_4.html"]
+  TspdNFeGB25_7 -> TspdNFeRule
+  TspdNFeGB25_7 [href="spdNFeRules.TspdNFeGB25_7.html"]
+  TspdNFeGB25_8 -> TspdNFeRule
+  TspdNFeGB25_8 [href="spdNFeRules.TspdNFeGB25_8.html"]
+  TspdNFeGB26 -> TspdNFeRule
+  TspdNFeGB26 [href="spdNFeRules.TspdNFeGB26.html"]
+  TspdNFeGB26_1 -> TspdNFeRule
+  TspdNFeGB26_1 [href="spdNFeRules.TspdNFeGB26_1.html"]
+  TspdNFeGB28 -> TspdNFeRule
+  TspdNFeGB28 [href="spdNFeRules.TspdNFeGB28.html"]
+  TspdNFeGC02 -> TspdNFeRule
+  TspdNFeGC02 [href="spdNFeRules.TspdNFeGC02.html"]
+  TspdNFeGC02_a -> TspdNFeRule
+  TspdNFeGC02_a [href="spdNFeRules.TspdNFeGC02_a.html"]
+  TspdNFeGC02_a1 -> TspdNFeRule
+  TspdNFeGC02_a1 [href="spdNFeRules.TspdNFeGC02_a1.html"]
+  TspdNFeGC10 -> TspdNFeRule
+  TspdNFeGC10 [href="spdNFeRules.TspdNFeGC10.html"]
+  TspdNFeGC10_1 -> TspdNFeRule
+  TspdNFeGC10_1 [href="spdNFeRules.TspdNFeGC10_1.html"]
+  TspdNFeGC17 -> TspdNFeRule
+  TspdNFeGC17 [href="spdNFeRules.TspdNFeGC17.html"]
+  TspdNFeGC18_14 -> TspdNFeRule
+  TspdNFeGC18_14 [href="spdNFeRules.TspdNFeGC18_14.html"]
+  TspdNFeGC18_40 -> TspdNFeRule
+  TspdNFeGC18_40 [href="spdNFeRules.TspdNFeGC18_40.html"]
+  TspdNFeGD01 -> TspdNFeRule
+  TspdNFeGD01 [href="spdNFeRules.TspdNFeGD01.html"]
+  TspdNFeGD01_2 -> TspdNFeRule
+  TspdNFeGD01_2 [href="spdNFeRules.TspdNFeGD01_2.html"]
+  TspdNFeGE01 -> TspdNFeRule
+  TspdNFeGE01 [href="spdNFeRules.TspdNFeGE01.html"]
+  TspdNFeGE02 -> TspdNFeRule
+  TspdNFeGE02 [href="spdNFeRules.TspdNFeGE02.html"]
+  TspdNFeGE02_1 -> TspdNFeRule
+  TspdNFeGE02_1 [href="spdNFeRules.TspdNFeGE02_1.html"]
+  TspdNFeGE02_2 -> TspdNFeRule
+  TspdNFeGE02_2 [href="spdNFeRules.TspdNFeGE02_2.html"]
+  TspdNFeGE03 -> TspdNFeRule
+  TspdNFeGE03 [href="spdNFeRules.TspdNFeGE03.html"]
+  TspdNFeGE03a -> TspdNFeRule
+  TspdNFeGE03a [href="spdNFeRules.TspdNFeGE03a.html"]
+  TspdNFeGE03a_1 -> TspdNFeRule
+  TspdNFeGE03a_1 [href="spdNFeRules.TspdNFeGE03a_1.html"]
+  TspdNFeGE03a_2 -> TspdNFeRule
+  TspdNFeGE03a_2 [href="spdNFeRules.TspdNFeGE03a_2.html"]
+  TspdNFeGE03a_3 -> TspdNFeRule
+  TspdNFeGE03a_3 [href="spdNFeRules.TspdNFeGE03a_3.html"]
+  TspdNFeGE04 -> TspdNFeRule
+  TspdNFeGE04 [href="spdNFeRules.TspdNFeGE04.html"]
+  TspdNFeGE05 -> TspdNFeRule
+  TspdNFeGE05 [href="spdNFeRules.TspdNFeGE05.html"]
+  TspdNFeGE10 -> TspdNFeRule
+  TspdNFeGE10 [href="spdNFeRules.TspdNFeGE10.html"]
+  TspdNFeGE10_1 -> TspdNFeRule
+  TspdNFeGE10_1 [href="spdNFeRules.TspdNFeGE10_1.html"]
+  TspdNFeGE10_2 -> TspdNFeRule
+  TspdNFeGE10_2 [href="spdNFeRules.TspdNFeGE10_2.html"]
+  TspdNFeGE10_2_NT005_2013 -> TspdNFeRule
+  TspdNFeGE10_2_NT005_2013 [href="spdNFeRules.TspdNFeGE10_2_NT005_2013.html"]
+  TspdNFeGE12 -> TspdNFeRule
+  TspdNFeGE12 [href="spdNFeRules.TspdNFeGE12.html"]
+  TspdNFeGE12_1 -> TspdNFeRule
+  TspdNFeGE12_1 [href="spdNFeRules.TspdNFeGE12_1.html"]
+  TspdNFeGE12_2 -> TspdNFeRule
+  TspdNFeGE12_2 [href="spdNFeRules.TspdNFeGE12_2.html"]
+  TspdNFeGE12_3 -> TspdNFeRule
+  TspdNFeGE12_3 [href="spdNFeRules.TspdNFeGE12_3.html"]
+  TspdNFeGE14 -> TspdNFeRule
+  TspdNFeGE14 [href="spdNFeRules.TspdNFeGE14.html"]
+  TspdNFeGE14_1 -> TspdNFeRule
+  TspdNFeGE14_1 [href="spdNFeRules.TspdNFeGE14_1.html"]
+  TspdNFeGE14_1_NT005_2013 -> TspdNFeRule
+  TspdNFeGE14_1_NT005_2013 [href="spdNFeRules.TspdNFeGE14_1_NT005_2013.html"]
+  TspdNFeGE14_NT005_2013 -> TspdNFeRule
+  TspdNFeGE14_NT005_2013 [href="spdNFeRules.TspdNFeGE14_NT005_2013.html"]
+  TspdNFeGE16a -> TspdNFeRule
+  TspdNFeGE16a [href="spdNFeRules.TspdNFeGE16a.html"]
+  TspdNFeGE17 -> TspdNFeRule
+  TspdNFeGE17 [href="spdNFeRules.TspdNFeGE17.html"]
+  TspdNFeGE17_1 -> TspdNFeRule
+  TspdNFeGE17_1 [href="spdNFeRules.TspdNFeGE17_1.html"]
+  TspdNFeGE17_2 -> TspdNFeRule
+  TspdNFeGE17_2 [href="spdNFeRules.TspdNFeGE17_2.html"]
+  TspdNFeGE17_3 -> TspdNFeRule
+  TspdNFeGE17_3 [href="spdNFeRules.TspdNFeGE17_3.html"]
+  TspdNFeGF02 -> TspdNFeRule
+  TspdNFeGF02 [href="spdNFeRules.TspdNFeGF02.html"]
+  TspdNFeGF02_a -> TspdNFeRule
+  TspdNFeGF02_a [href="spdNFeRules.TspdNFeGF02_a.html"]
+  TspdNFeGF07 -> TspdNFeRule
+  TspdNFeGF07 [href="spdNFeRules.TspdNFeGF07.html"]
+  TspdNFeGF07_1 -> TspdNFeRule
+  TspdNFeGF07_1 [href="spdNFeRules.TspdNFeGF07_1.html"]
+  TspdNFeGF07_2 -> TspdNFeRule
+  TspdNFeGF07_2 [href="spdNFeRules.TspdNFeGF07_2.html"]
+  TspdNFeGG02 -> TspdNFeRule
+  TspdNFeGG02 [href="spdNFeRules.TspdNFeGG02.html"]
+  TspdNFeGG02_a -> TspdNFeRule
+  TspdNFeGG02_a [href="spdNFeRules.TspdNFeGG02_a.html"]
+  TspdNFeGG07 -> TspdNFeRule
+  TspdNFeGG07 [href="spdNFeRules.TspdNFeGG07.html"]
+  TspdNFeGG07_1 -> TspdNFeRule
+  TspdNFeGG07_1 [href="spdNFeRules.TspdNFeGG07_1.html"]
+  TspdNFeGG07_2 -> TspdNFeRule
+  TspdNFeGG07_2 [href="spdNFeRules.TspdNFeGG07_2.html"]
+  TspdNFeGG07_20 -> TspdNFeRule
+  TspdNFeGG07_20 [href="spdNFeRules.TspdNFeGG07_20.html"]
+  TspdNFeGI05_10 -> TspdNFeRule
+  TspdNFeGI05_10 [href="spdNFeRules.TspdNFeGI05_10.html"]
+  TspdNFeGI08_120_NT005_2013 -> TspdNFeRule
+  TspdNFeGI08_120_NT005_2013 [href="spdNFeRules.TspdNFeGI08_120_NT005_2013.html"]
+  TspdNFeGI08_130_NT005_2013 -> TspdNFeRule
+  TspdNFeGI08_130_NT005_2013 [href="spdNFeRules.TspdNFeGI08_130_NT005_2013.html"]
+  TspdNFeGN17_10 -> TspdNFeRule
+  TspdNFeGN17_10 [href="spdNFeRules.TspdNFeGN17_10.html"]
+  TspdNFeGU01 -> TspdNFeRule
+  TspdNFeGU01 [href="spdNFeRules.TspdNFeGU01.html"]
+  TspdNFeGU05 -> TspdNFeRule
+  TspdNFeGU05 [href="spdNFeRules.TspdNFeGU05.html"]
+  TspdNFeGU05_10 -> TspdNFeRule
+  TspdNFeGU05_10 [href="spdNFeRules.TspdNFeGU05_10.html"]
+  TspdNFeGW03 -> TspdNFeRule
+  TspdNFeGW03 [href="spdNFeRules.TspdNFeGW03.html"]
+  TspdNFeGW03_NT003_2012 -> TspdNFeRule
+  TspdNFeGW03_NT003_2012 [href="spdNFeRules.TspdNFeGW03_NT003_2012.html"]
+  TspdNFeGW04 -> TspdNFeRule
+  TspdNFeGW04 [href="spdNFeRules.TspdNFeGW04.html"]
+  TspdNFeGW04a -> TspdNFeRule
+  TspdNFeGW04a [href="spdNFeRules.TspdNFeGW04a.html"]
+  TspdNFeGW04_NT003_2012 -> TspdNFeRule
+  TspdNFeGW04_NT003_2012 [href="spdNFeRules.TspdNFeGW04_NT003_2012.html"]
+  TspdNFeGW05 -> TspdNFeRule
+  TspdNFeGW05 [href="spdNFeRules.TspdNFeGW05.html"]
+  TspdNFeGW05_NT003_2012 -> TspdNFeRule
+  TspdNFeGW05_NT003_2012 [href="spdNFeRules.TspdNFeGW05_NT003_2012.html"]
+  TspdNFeGW06 -> TspdNFeRule
+  TspdNFeGW06 [href="spdNFeRules.TspdNFeGW06.html"]
+  TspdNFeGW06_NT003_2012 -> TspdNFeRule
+  TspdNFeGW06_NT003_2012 [href="spdNFeRules.TspdNFeGW06_NT003_2012.html"]
+  TspdNFeGW07 -> TspdNFeRule
+  TspdNFeGW07 [href="spdNFeRules.TspdNFeGW07.html"]
+  TspdNFeGW07_NT003_2012 -> TspdNFeRule
+  TspdNFeGW07_NT003_2012 [href="spdNFeRules.TspdNFeGW07_NT003_2012.html"]
+  TspdNFeGW08 -> TspdNFeRule
+  TspdNFeGW08 [href="spdNFeRules.TspdNFeGW08.html"]
+  TspdNFeGW08_NT003_2012 -> TspdNFeRule
+  TspdNFeGW08_NT003_2012 [href="spdNFeRules.TspdNFeGW08_NT003_2012.html"]
+  TspdNFeGW09 -> TspdNFeRule
+  TspdNFeGW09 [href="spdNFeRules.TspdNFeGW09.html"]
+  TspdNFeGW09_NT003_2012 -> TspdNFeRule
+  TspdNFeGW09_NT003_2012 [href="spdNFeRules.TspdNFeGW09_NT003_2012.html"]
+  TspdNFeGW10 -> TspdNFeRule
+  TspdNFeGW10 [href="spdNFeRules.TspdNFeGW10.html"]
+  TspdNFeGW10_NT003_2012 -> TspdNFeRule
+  TspdNFeGW10_NT003_2012 [href="spdNFeRules.TspdNFeGW10_NT003_2012.html"]
+  TspdNFeGW11 -> TspdNFeRule
+  TspdNFeGW11 [href="spdNFeRules.TspdNFeGW11.html"]
+  TspdNFeGW11_NT003_2012 -> TspdNFeRule
+  TspdNFeGW11_NT003_2012 [href="spdNFeRules.TspdNFeGW11_NT003_2012.html"]
+  TspdNFeGW12 -> TspdNFeRule
+  TspdNFeGW12 [href="spdNFeRules.TspdNFeGW12.html"]
+  TspdNFeGW12_NT003_2012 -> TspdNFeRule
+  TspdNFeGW12_NT003_2012 [href="spdNFeRules.TspdNFeGW12_NT003_2012.html"]
+  TspdNFeGW13 -> TspdNFeRule
+  TspdNFeGW13 [href="spdNFeRules.TspdNFeGW13.html"]
+  TspdNFeGW13_NT003_2012 -> TspdNFeRule
+  TspdNFeGW13_NT003_2012 [href="spdNFeRules.TspdNFeGW13_NT003_2012.html"]
+  TspdNFeGW14 -> TspdNFeRule
+  TspdNFeGW14 [href="spdNFeRules.TspdNFeGW14.html"]
+  TspdNFeGW14_NT003_2012 -> TspdNFeRule
+  TspdNFeGW14_NT003_2012 [href="spdNFeRules.TspdNFeGW14_NT003_2012.html"]
+  TspdNFeGW15 -> TspdNFeRule
+  TspdNFeGW15 [href="spdNFeRules.TspdNFeGW15.html"]
+  TspdNFeGW15_NT003_2012 -> TspdNFeRule
+  TspdNFeGW15_NT003_2012 [href="spdNFeRules.TspdNFeGW15_NT003_2012.html"]
+  TspdNFeGW16 -> TspdNFeRule
+  TspdNFeGW16 [href="spdNFeRules.TspdNFeGW16.html"]
+  TspdNFeGW16b_NT003_2013 -> TspdNFeRule
+  TspdNFeGW16b_NT003_2013 [href="spdNFeRules.TspdNFeGW16b_NT003_2013.html"]
+  TspdNFeGW16_NT003_2012 -> TspdNFeRule
+  TspdNFeGW16_NT003_2012 [href="spdNFeRules.TspdNFeGW16_NT003_2012.html"]
+  TspdNFeGW16_NT005_2013 -> TspdNFeRule
+  TspdNFeGW16_NT005_2013 [href="spdNFeRules.TspdNFeGW16_NT005_2013.html"]
+  TspdNFeGW18 -> TspdNFeRule
+  TspdNFeGW18 [href="spdNFeRules.TspdNFeGW18.html"]
+  TspdNFeGW18_NT003_2012 -> TspdNFeRule
+  TspdNFeGW18_NT003_2012 [href="spdNFeRules.TspdNFeGW18_NT003_2012.html"]
+  TspdNFeGW19 -> TspdNFeRule
+  TspdNFeGW19 [href="spdNFeRules.TspdNFeGW19.html"]
+  TspdNFeGW19_NT003_2012 -> TspdNFeRule
+  TspdNFeGW19_NT003_2012 [href="spdNFeRules.TspdNFeGW19_NT003_2012.html"]
+  TspdNFeGW20 -> TspdNFeRule
+  TspdNFeGW20 [href="spdNFeRules.TspdNFeGW20.html"]
+  TspdNFeGW20_NT003_2012 -> TspdNFeRule
+  TspdNFeGW20_NT003_2012 [href="spdNFeRules.TspdNFeGW20_NT003_2012.html"]
+  TspdNFeGW21 -> TspdNFeRule
+  TspdNFeGW21 [href="spdNFeRules.TspdNFeGW21.html"]
+  TspdNFeGW21_NT003_2012 -> TspdNFeRule
+  TspdNFeGW21_NT003_2012 [href="spdNFeRules.TspdNFeGW21_NT003_2012.html"]
+  TspdNFeGW22 -> TspdNFeRule
+  TspdNFeGW22 [href="spdNFeRules.TspdNFeGW22.html"]
+  TspdNFeGW22_NT003_2012 -> TspdNFeRule
+  TspdNFeGW22_NT003_2012 [href="spdNFeRules.TspdNFeGW22_NT003_2012.html"]
+  TspdNFeGX04 -> TspdNFeRule
+  TspdNFeGX04 [href="spdNFeRules.TspdNFeGX04.html"]
+  TspdNFeGX04_1 -> TspdNFeRule
+  TspdNFeGX04_1 [href="spdNFeRules.TspdNFeGX04_1.html"]
+  TspdNFeGX05 -> TspdNFeRule
+  TspdNFeGX05 [href="spdNFeRules.TspdNFeGX05.html"]
+  TspdNFeGX07 -> TspdNFeRule
+  TspdNFeGX07 [href="spdNFeRules.TspdNFeGX07.html"]
+  TspdNFeGX17 -> TspdNFeRule
+  TspdNFeGX17 [href="spdNFeRules.TspdNFeGX17.html"]
+  TspdNFeGZA01 -> TspdNFeRule
+  TspdNFeGZA01 [href="spdNFeRules.TspdNFeGZA01.html"]
+  TspdNFeGZA01_1 -> TspdNFeRule
+  TspdNFeGZA01_1 [href="spdNFeRules.TspdNFeGZA01_1.html"]
+  TspdNFeGZB02 -> TspdNFeRule
+  TspdNFeGZB02 [href="spdNFeRules.TspdNFeGZB02.html"]
+  TspdNFeI08_190_NT015_002 -> TspdNFeRule
+  TspdNFeI08_190_NT015_002 [href="spdNFeRules.TspdNFeI08_190_NT015_002.html"]
+  TspdNFeJ02_c_NT003_2012 -> TspdNFeRule
+  TspdNFeJ02_c_NT003_2012 [href="spdNFeRules.TspdNFeJ02_c_NT003_2012.html"]
+  TspdNFeLA02_1 -> TspdNFeRule
+  TspdNFeLA02_1 [href="spdNFeRules.TspdNFeLA02_1.html"]
+  TspdNFeN12a_70_NT003_2015 -> TspdNFeRule
+  TspdNFeN12a_70_NT003_2015 [href="spdNFeRules.TspdNFeN12a_70_NT003_2015.html"]
+  TspdNFeN12_70_NT003_2015 -> TspdNFeRule
+  TspdNFeN12_70_NT003_2015 [href="spdNFeRules.TspdNFeN12_70_NT003_2015.html"]
+  TspdNFeN12_80_NT003_2015 -> TspdNFeRule
+  TspdNFeN12_80_NT003_2015 [href="spdNFeRules.TspdNFeN12_80_NT003_2015.html"]
+  TspdNFeN16_20_NT003_2015 -> TspdNFeRule
+  TspdNFeN16_20_NT003_2015 [href="spdNFeRules.TspdNFeN16_20_NT003_2015.html"]
+  TspdNFeN23_10_NT003_2015 -> TspdNFeRule
+  TspdNFeN23_10_NT003_2015 [href="spdNFeRules.TspdNFeN23_10_NT003_2015.html"]
+  TspdNFeNA01_20_NT003_2015 -> TspdNFeRule
+  TspdNFeNA01_20_NT003_2015 [href="spdNFeRules.TspdNFeNA01_20_NT003_2015.html"]
+  TspdNFeNA01_30_NT003_2015 -> TspdNFeRule
+  TspdNFeNA01_30_NT003_2015 [href="spdNFeRules.TspdNFeNA01_30_NT003_2015.html"]
+  TspdNFeNA09_10_NT003_2015 -> TspdNFeRule
+  TspdNFeNA09_10_NT003_2015 [href="spdNFeRules.TspdNFeNA09_10_NT003_2015.html"]
+  TspdNFeNA09_20_NT003_2015 -> TspdNFeRule
+  TspdNFeNA09_20_NT003_2015 [href="spdNFeRules.TspdNFeNA09_20_NT003_2015.html"]
+  TspdNFeNA09_30_NT003_2015 -> TspdNFeRule
+  TspdNFeNA09_30_NT003_2015 [href="spdNFeRules.TspdNFeNA09_30_NT003_2015.html"]
+  TspdNFeNA11_10_NT003_2015 -> TspdNFeRule
+  TspdNFeNA11_10_NT003_2015 [href="spdNFeRules.TspdNFeNA11_10_NT003_2015.html"]
+  TspdNFeNA13_10_NT003_2015 -> TspdNFeRule
+  TspdNFeNA13_10_NT003_2015 [href="spdNFeRules.TspdNFeNA13_10_NT003_2015.html"]
+  TspdNFeNA15_10_NT003_2015 -> TspdNFeRule
+  TspdNFeNA15_10_NT003_2015 [href="spdNFeRules.TspdNFeNA15_10_NT003_2015.html"]
+  TspdNFeTecno1 -> TspdNFeRule
+  TspdNFeTecno1 [href="spdNFeRules.TspdNFeTecno1.html"]
+  TspdNFeTecno2 -> TspdNFeRule
+  TspdNFeTecno2 [href="spdNFeRules.TspdNFeTecno2.html"]
+  TspdNFeTecno3 -> TspdNFeRule
+  TspdNFeTecno3 [href="spdNFeRules.TspdNFeTecno3.html"]
+  TspdNFeTecno4 -> TspdNFeRule
+  TspdNFeTecno4 [href="spdNFeRules.TspdNFeTecno4.html"]
+  TspdNFeTemplateItem -> TspdNFeRule
+  TspdNFeTemplateItem [href="spdNFeRules.TspdNFeTemplateItem.html"]
+  TspdNFeGI01 -> TspdNFeTemplateItem
+  TspdNFeGI01 [href="spdNFeRules.TspdNFeGI01.html"]
+  TspdNFeGI03 -> TspdNFeTemplateItem
+  TspdNFeGI03 [href="spdNFeRules.TspdNFeGI03.html"]
+  TspdNFeGI05_1 -> TspdNFeTemplateItem
+  TspdNFeGI05_1 [href="spdNFeRules.TspdNFeGI05_1.html"]
+  TspdNFeGI05_2 -> TspdNFeTemplateItem
+  TspdNFeGI05_2 [href="spdNFeRules.TspdNFeGI05_2.html"]
+  TspdNFeGI05_3 -> TspdNFeTemplateItem
+  TspdNFeGI05_3 [href="spdNFeRules.TspdNFeGI05_3.html"]
+  TspdNFeGI08 -> TspdNFeTemplateItem
+  TspdNFeGI08 [href="spdNFeRules.TspdNFeGI08.html"]
+  TspdNFeGI08_1 -> TspdNFeTemplateItem
+  TspdNFeGI08_1 [href="spdNFeRules.TspdNFeGI08_1.html"]
+  TspdNFeGI08_10 -> TspdNFeTemplateItem
+  TspdNFeGI08_10 [href="spdNFeRules.TspdNFeGI08_10.html"]
+  TspdNFeGI08_11 -> TspdNFeTemplateItem
+  TspdNFeGI08_11 [href="spdNFeRules.TspdNFeGI08_11.html"]
+  TspdNFeGI08_12 -> TspdNFeTemplateItem
+  TspdNFeGI08_12 [href="spdNFeRules.TspdNFeGI08_12.html"]
+  TspdNFeGI08_13 -> TspdNFeTemplateItem
+  TspdNFeGI08_13 [href="spdNFeRules.TspdNFeGI08_13.html"]
+  TspdNFeGI08_2 -> TspdNFeTemplateItem
+  TspdNFeGI08_2 [href="spdNFeRules.TspdNFeGI08_2.html"]
+  TspdNFeGI08_3 -> TspdNFeTemplateItem
+  TspdNFeGI08_3 [href="spdNFeRules.TspdNFeGI08_3.html"]
+  TspdNFeGI08_4 -> TspdNFeTemplateItem
+  TspdNFeGI08_4 [href="spdNFeRules.TspdNFeGI08_4.html"]
+  TspdNFeGI08_5 -> TspdNFeTemplateItem
+  TspdNFeGI08_5 [href="spdNFeRules.TspdNFeGI08_5.html"]
+  TspdNFeGI08_5_NT005_2013 -> TspdNFeTemplateItem
+  TspdNFeGI08_5_NT005_2013 [href="spdNFeRules.TspdNFeGI08_5_NT005_2013.html"]
+  TspdNFeGI08_7 -> TspdNFeTemplateItem
+  TspdNFeGI08_7 [href="spdNFeRules.TspdNFeGI08_7.html"]
+  TspdNFeGI08_8 -> TspdNFeTemplateItem
+  TspdNFeGI08_8 [href="spdNFeRules.TspdNFeGI08_8.html"]
+  TspdNFeGI08_8_NT005_2013 -> TspdNFeTemplateItem
+  TspdNFeGI08_8_NT005_2013 [href="spdNFeRules.TspdNFeGI08_8_NT005_2013.html"]
+  TspdNFeGI08_9 -> TspdNFeTemplateItem
+  TspdNFeGI08_9 [href="spdNFeRules.TspdNFeGI08_9.html"]
+  TspdNFeGI10_a -> TspdNFeTemplateItem
+  TspdNFeGI10_a [href="spdNFeRules.TspdNFeGI10_a.html"]
+  TspdNFeGI12 -> TspdNFeTemplateItem
+  TspdNFeGI12 [href="spdNFeRules.TspdNFeGI12.html"]
+  TspdNFeGI14_a -> TspdNFeTemplateItem
+  TspdNFeGI14_a [href="spdNFeRules.TspdNFeGI14_a.html"]
+  TspdNFeGI17_10 -> TspdNFeTemplateItem
+  TspdNFeGI17_10 [href="spdNFeRules.TspdNFeGI17_10.html"]
+  TspdNFeGI18 -> TspdNFeTemplateItem
+  TspdNFeGI18 [href="spdNFeRules.TspdNFeGI18.html"]
+  TspdNFeGI23d_1 -> TspdNFeTemplateItem
+  TspdNFeGI23d_1 [href="spdNFeRules.TspdNFeGI23d_1.html"]
+  TspdNFeGI23_10 -> TspdNFeTemplateItem
+  TspdNFeGI23_10 [href="spdNFeRules.TspdNFeGI23_10.html"]
+  TspdNFeGI23_b -> TspdNFeTemplateItem
+  TspdNFeGI23_b [href="spdNFeRules.TspdNFeGI23_b.html"]
+  TspdNFeGI23_d -> TspdNFeTemplateItem
+  TspdNFeGI23_d [href="spdNFeRules.TspdNFeGI23_d.html"]
+  TspdNFeGI23_e -> TspdNFeTemplateItem
+  TspdNFeGI23_e [href="spdNFeRules.TspdNFeGI23_e.html"]
+  TspdNFeGI29_a -> TspdNFeTemplateItem
+  TspdNFeGI29_a [href="spdNFeRules.TspdNFeGI29_a.html"]
+  TspdNFeGI50 -> TspdNFeTemplateItem
+  TspdNFeGI50 [href="spdNFeRules.TspdNFeGI50.html"]
+  TspdNFeGI50_1 -> TspdNFeTemplateItem
+  TspdNFeGI50_1 [href="spdNFeRules.TspdNFeGI50_1.html"]
+  TspdNFeGI51 -> TspdNFeTemplateItem
+  TspdNFeGI51 [href="spdNFeRules.TspdNFeGI51.html"]
+  TspdNFeGI52 -> TspdNFeTemplateItem
+  TspdNFeGI52 [href="spdNFeRules.TspdNFeGI52.html"]
+  TspdNFeGI54 -> TspdNFeTemplateItem
+  TspdNFeGI54 [href="spdNFeRules.TspdNFeGI54.html"]
+  TspdNFeGI54_1 -> TspdNFeTemplateItem
+  TspdNFeGI54_1 [href="spdNFeRules.TspdNFeGI54_1.html"]
+  TspdNFeGL101_NT003_2012 -> TspdNFeTemplateItem
+  TspdNFeGL101_NT003_2012 [href="spdNFeRules.TspdNFeGL101_NT003_2012.html"]
+  TspdNFeGL102a -> TspdNFeTemplateItem
+  TspdNFeGL102a [href="spdNFeRules.TspdNFeGL102a.html"]
+  TspdNFeGL109_1 -> TspdNFeTemplateItem
+  TspdNFeGL109_1 [href="spdNFeRules.TspdNFeGL109_1.html"]
+  TspdNFeGLA11_10 -> TspdNFeTemplateItem
+  TspdNFeGLA11_10 [href="spdNFeRules.TspdNFeGLA11_10.html"]
+  TspdNFeGLA16_10 -> TspdNFeTemplateItem
+  TspdNFeGLA16_10 [href="spdNFeRules.TspdNFeGLA16_10.html"]
+  TspdNFeGLB01_3 -> TspdNFeTemplateItem
+  TspdNFeGLB01_3 [href="spdNFeRules.TspdNFeGLB01_3.html"]
+  TspdNFeGN12 -> TspdNFeTemplateItem
+  TspdNFeGN12 [href="spdNFeRules.TspdNFeGN12.html"]
+  TspdNFeGN16a -> TspdNFeTemplateItem
+  TspdNFeGN16a [href="spdNFeRules.TspdNFeGN16a.html"]
+  TspdNFeGN16c -> TspdNFeTemplateItem
+  TspdNFeGN16c [href="spdNFeRules.TspdNFeGN16c.html"]
+  TspdNFeGN16_04 -> TspdNFeTemplateItem
+  TspdNFeGN16_04 [href="spdNFeRules.TspdNFeGN16_04.html"]
+  TspdNFeGN16_NT005_2012 -> TspdNFeTemplateItem
+  TspdNFeGN16_NT005_2012 [href="spdNFeRules.TspdNFeGN16_NT005_2012.html"]
+  TspdNFeGN16_NT006_2013 -> TspdNFeTemplateItem
+  TspdNFeGN16_NT006_2013 [href="spdNFeRules.TspdNFeGN16_NT006_2013.html"]
+  TspdNFeGN17 -> TspdNFeTemplateItem
+  TspdNFeGN17 [href="spdNFeRules.TspdNFeGN17.html"]
+  TspdNFeGN17_2 -> TspdNFeTemplateItem
+  TspdNFeGN17_2 [href="spdNFeRules.TspdNFeGN17_2.html"]
+  TspdNFeGN17_NT005_2013 -> TspdNFeTemplateItem
+  TspdNFeGN17_NT005_2013 [href="spdNFeRules.TspdNFeGN17_NT005_2013.html"]
+  TspdNFeGN28 -> TspdNFeTemplateItem
+  TspdNFeGN28 [href="spdNFeRules.TspdNFeGN28.html"]
+  TspdNFeGN28_1 -> TspdNFeTemplateItem
+  TspdNFeGN28_1 [href="spdNFeRules.TspdNFeGN28_1.html"]
+  TspdNFeGN28_1_NT003_2012 -> TspdNFeTemplateItem
+  TspdNFeGN28_1_NT003_2012 [href="spdNFeRules.TspdNFeGN28_1_NT003_2012.html"]
+  TspdNFeGN28_2 -> TspdNFeTemplateItem
+  TspdNFeGN28_2 [href="spdNFeRules.TspdNFeGN28_2.html"]
+  TspdNFeGN28_2_NT005_2013 -> TspdNFeTemplateItem
+  TspdNFeGN28_2_NT005_2013 [href="spdNFeRules.TspdNFeGN28_2_NT005_2013.html"]
+  TspdNFeGN28_NT003_2012 -> TspdNFeTemplateItem
+  TspdNFeGN28_NT003_2012 [href="spdNFeRules.TspdNFeGN28_NT003_2012.html"]
+  TspdNFeGO09_10 -> TspdNFeTemplateItem
+  TspdNFeGO09_10 [href="spdNFeRules.TspdNFeGO09_10.html"]
+  TspdNFeGQ01_2 -> TspdNFeTemplateItem
+  TspdNFeGQ01_2 [href="spdNFeRules.TspdNFeGQ01_2.html"]
+  TspdNFeGS01_2 -> TspdNFeTemplateItem
+  TspdNFeGS01_2 [href="spdNFeRules.TspdNFeGS01_2.html"]
+  TspdNFeGW16a -> TspdNFeTemplateItem
+  TspdNFeGW16a [href="spdNFeRules.TspdNFeGW16a.html"]
+  TspdNFeGW22b -> TspdNFeTemplateItem
+  TspdNFeGW22b [href="spdNFeRules.TspdNFeGW22b.html"]
+  TspdNFeGW22c -> TspdNFeTemplateItem
+  TspdNFeGW22c [href="spdNFeRules.TspdNFeGW22c.html"]
+  TspdNFeGW22d -> TspdNFeTemplateItem
+  TspdNFeGW22d [href="spdNFeRules.TspdNFeGW22d.html"]
+  TspdNFeGW22e -> TspdNFeTemplateItem
+  TspdNFeGW22e [href="spdNFeRules.TspdNFeGW22e.html"]
+  TspdNFeGW22f -> TspdNFeTemplateItem
+  TspdNFeGW22f [href="spdNFeRules.TspdNFeGW22f.html"]
+  TspdNFeGY01 -> TspdNFeTemplateItem
+  TspdNFeGY01 [href="spdNFeRules.TspdNFeGY01.html"]
+  TspdNFeU14_10_NT015_002 -> TspdNFeRule
+  TspdNFeU14_10_NT015_002 [href="spdNFeRules.TspdNFeU14_10_NT015_002.html"]
+  TspdNFeW04c_10_NT003_2015 -> TspdNFeRule
+  TspdNFeW04c_10_NT003_2015 [href="spdNFeRules.TspdNFeW04c_10_NT003_2015.html"]
+  TspdNFeW04e_10_NT003_2015 -> TspdNFeRule
+  TspdNFeW04e_10_NT003_2015 [href="spdNFeRules.TspdNFeW04e_10_NT003_2015.html"]
+  TspdNFeW04g_10_NT003_2015 -> TspdNFeRule
+  TspdNFeW04g_10_NT003_2015 [href="spdNFeRules.TspdNFeW04g_10_NT003_2015.html"]
+  TXmlFieldNFe -> TStringField
+  TXmlFieldNFe [href="spdNFeDataSets.TXmlFieldNFe.html"]
+  TspdNFeXMLField -> TXmlFieldNFe
+  TspdNFeXMLField [href="spdNFeDataSets.TspdNFeXMLField.html"]
+  TspdCertStringNFe -> TStringlist
+  TspdCertStringNFe [href="spdNFeType.TspdCertStringNFe.html"]
+}

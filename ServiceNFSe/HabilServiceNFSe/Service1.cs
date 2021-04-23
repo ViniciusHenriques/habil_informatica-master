@@ -25,7 +25,7 @@ namespace HabilServiceNFSe
             GerandoArquivoLog("iniciando servico");
             try
             {
-                ThreadStart start = new ThreadStart(verificarEmailPendente);
+                ThreadStart start = new ThreadStart(verificarDocumentosEletronicos);
                 Thread thread = new Thread(start);
 
                 thread.Start();
@@ -48,36 +48,43 @@ namespace HabilServiceNFSe
 
         }
 
-        public void verificarEmailPendente()
+        public void verificarDocumentosEletronicos()
         {
-            GerandoArquivoLog("Entrou na rotina");
+            //GerandoArquivoLog("Entrou na rotina");
             while (true)
             {
-                GerandoArquivoLog("Vai rodar 5 seg");
+                //GerandoArquivoLog("Vai rodar 5 seg");
                 Thread.Sleep(5000);
-                GerandoArquivoLog("rodou");
+                //GerandoArquivoLog("rodou");
                 try
                 {
-                    GerandoArquivoLog("entrou try");
+                    NFeFuncoes NFe = new NFeFuncoes();
+                    NFe.EnviarNFe();
+
+                    //GerandoArquivoLog("entrou try");
                     //clsEmail c2 = new clsEmail();
                     //c2.ProcessaEnvio();
-                    GerandoArquivoLog("instanciou class NFSe");
+                    //GerandoArquivoLog("instanciou class NFSe");
                     NFSeFuncoes NFSe = new NFSeFuncoes();
 
-                    GerandoArquivoLog("Log de inicio de serviço");
+                    //GerandoArquivoLog("Log de inicio de serviço");
                     NFSe.GerandoArquivoLog(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
                                 "           >>>>>>>>>>>>>>>>>>>>>>>>>>>> Inicializando HabilServiceNFse <<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
                                 "           >>>>>>>>>>>> Produto de Habil Informatica - Versao Sistema de Faturamento <<<<<<<<<<<<<<\n" +
                                 "           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n", 1);
                     //NFSe.ExecutarFuncoes();
-                    GerandoArquivoLog("Enviou NFSe's");
+                    //GerandoArquivoLog("Enviou NFSe's");
                     Thread.Sleep(5000);
 
-                    GerandoArquivoLog("Vai rodar class CTE");
+                    //GerandoArquivoLog("Vai rodar class CTE");
                     CTEFuncoes CTe = new CTEFuncoes();
                     CTe.EnviarDesacordo();
 
-                    GerandoArquivoLog("enviou desacordos");
+                    //GerandoArquivoLog("enviou desacordos");
+
+
+                    
+                    
                 }
                 catch (Exception ex)
                 {

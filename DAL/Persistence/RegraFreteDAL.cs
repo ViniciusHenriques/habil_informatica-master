@@ -18,19 +18,45 @@ namespace DAL.Persistence
             {
                 AbrirConexao();
                 strSQL = "INSERT INTO [dbo].[REGRA_DE_FRETE] " +
-                                       "([CD_TRANSPORTADOR] " +
-                                       ",[DE_PARA_11] " +
-                                       ",[DE_PARA_12] " +
-                                       ",[DE_PARA_21] " +
-                                       ",[DE_PARA_22] " +
-                                       ",[DE_PARA_PCT_11] " +
-                                       ",[DE_PARA_PCT_12] " +
-                                       ",[VL_FRETE_MINIMO] " +
-                                       ",[VL_GRIS] " +
-                                       ",[DE_PARA_31] " +
-                                       ",[DE_PARA_32] " +
-                                       ",[REGIAO]) " +
-                "values(@v1,@v2,@v3,@v4,@v5,@v6,@v7,@v8,@v9,@v10,@v11,@v12) SELECT SCOPE_IDENTITY();";
+                                       "([CD_TRANSPORTADOR]" +
+                                       " ,[DE_PARA_11]" +
+                                       " ,[DE_PARA_12]" +
+                                       " ,[DE_PARA_21]" +
+                                       " ,[DE_PARA_22]" +
+                                       " ,[DE_PARA_PCT_11]" +
+                                       " ,[DE_PARA_PCT_12]" +
+                                       " ,[VL_FRETE_MINIMO]" +
+                                       " ,[VL_GRIS]" +
+                                       " ,[DE_PARA_31]" +
+                                       " ,[DE_PARA_32]" +
+                                       " ,[REGIAO]" +
+                                       " ,[DE_PARA_41]" +
+                                       " ,[DE_PARA_42]" +
+                                       " ,[DE_PARA_PCT_13]" +
+                                       " ,[DE_PARA_PCT_14]" +
+                                       " ,[DE_PARA_EXCEDENTE_11]" +
+                                       " ,[DE_PARA_EXCEDENTE_12]" +
+                                       " ,[VL_GRIS_MINIMO]" +
+                                       " ,[VL_PEDAGIO]" +
+                                       " ,[VL_AD_VALOR]" +
+                                       " ,[DE_PARA_51]" +
+                                       " ,[DE_PARA_52]" +
+                                       " ,[DE_PARA_PCT_51]" +
+                                       " ,[DE_PARA_61]" +
+                                       " ,[DE_PARA_62]" +
+                                       " ,[DE_PARA_PCT_61]" +
+                                       " ,[VL_SEGURO]" +
+                                       " ,[VL_SEGURO_MINIMO]" +
+                                       " ,[VL_PEDAGIO_MAXIMO]" +
+                                       " ,[IN_TP_CALCULO]" +
+                                       " ,[IN_CALCULA_ADVALOR_DE_PARA1]" +
+                                       " ,[IN_CALCULA_ADVALOR_DE_PARA2]" +
+                                       " ,[VL_POR_TONELADA]" +
+                                       " ,[DE_PARA_71]" +
+                                       " ,[DE_PARA_72]" +
+                                       " ,[DE_PARA_PCT_71]" +
+                                       ",[VL_PESO_CUBADO])" +
+                "values(@v1,@v2,@v3,@v4,@v5,@v6,@v7,@v8,@v9,@v10,@v11,@v12,@v13,@v14,@v15,@v16,@v17,@v18,@v19,@v20,@v21,@v22,@v23,@v24,@v25,@v26,@v27,@v28,@v29,@v30,@v31,@v32,@v33,@v34,@v35,@v36,@v37,@v38) SELECT SCOPE_IDENTITY();";
 
                 Cmd = new SqlCommand(strSQL, Con);
 
@@ -46,6 +72,32 @@ namespace DAL.Persistence
                 Cmd.Parameters.AddWithValue("@v10", p.DePara31);
                 Cmd.Parameters.AddWithValue("@v11", p.DePara32);
                 Cmd.Parameters.AddWithValue("@v12", p.Regiao);
+                Cmd.Parameters.AddWithValue("@v13", p.DePara41);
+                Cmd.Parameters.AddWithValue("@v14", p.DePara42);
+                Cmd.Parameters.AddWithValue("@v15", p.DeParaPct13);
+                Cmd.Parameters.AddWithValue("@v16", p.DeParaPct14);
+                Cmd.Parameters.AddWithValue("@v17", p.DeParaExcedente1);
+                Cmd.Parameters.AddWithValue("@v18", p.DeParaExcedente2);
+                Cmd.Parameters.AddWithValue("@v19", p.ValorGRISMinimo);
+                Cmd.Parameters.AddWithValue("@v20", p.ValorPedagio);
+                Cmd.Parameters.AddWithValue("@v21", p.ValorAD);
+                Cmd.Parameters.AddWithValue("@v22", p.DePara51);
+                Cmd.Parameters.AddWithValue("@v23", p.DePara52);
+                Cmd.Parameters.AddWithValue("@v24", p.DeParaPct15);
+                Cmd.Parameters.AddWithValue("@v25", p.DePara61);
+                Cmd.Parameters.AddWithValue("@v26", p.DePara62);
+                Cmd.Parameters.AddWithValue("@v27", p.DeParaPct16);
+                Cmd.Parameters.AddWithValue("@v28", p.ValorSeguro);
+                Cmd.Parameters.AddWithValue("@v29", p.ValorSeguroMinimo);
+                Cmd.Parameters.AddWithValue("@v30", p.ValorPedagioMaximo);
+                Cmd.Parameters.AddWithValue("@v31", p.IndicadorTipoCalculo);
+                Cmd.Parameters.AddWithValue("@v32", p.IndicadorCalcularAdValorDePara1);
+                Cmd.Parameters.AddWithValue("@v33", p.IndicadorCalcularAdValorDePara2);
+                Cmd.Parameters.AddWithValue("@v34", p.ValorPorTonelada);
+                Cmd.Parameters.AddWithValue("@v35", p.DePara71);
+                Cmd.Parameters.AddWithValue("@v36", p.DePara72);
+                Cmd.Parameters.AddWithValue("@v37", p.DeParaPct17);
+                Cmd.Parameters.AddWithValue("@v38", p.ValorPesoCubado);
 
                 p.CodigoIndex = Convert.ToInt32(Cmd.ExecuteScalar());
             }
@@ -95,7 +147,33 @@ namespace DAL.Persistence
                               ",[DE_PARA_31] = @v10 " +
                               ",[DE_PARA_32] = @v11 " +
                               ",[REGIAO] = @v12 " +
-                         "WHERE [CD_INDEX] = @CODIGO";
+                              " ,[DE_PARA_41]  = @v13" +
+                                " ,[DE_PARA_42]  = @v14" +
+                                " ,[DE_PARA_PCT_13] = @v15" +
+                                " ,[DE_PARA_PCT_14] = @v16" +
+                                " ,[DE_PARA_EXCEDENTE_11] = @v17" +
+                                " ,[DE_PARA_EXCEDENTE_12] = @v18" +
+                                " ,[VL_GRIS_MINIMO] = @v19" +
+                                " ,[VL_PEDAGIO] = @v20" +
+                                " ,[VL_AD_VALOR] = @v21" +
+                                " ,[DE_PARA_51] = @v22" +
+                                " ,[DE_PARA_52] = @v23" +
+                                " ,[DE_PARA_PCT_51] = @v24" +
+                                " ,[DE_PARA_61] = @v25" +
+                                " ,[DE_PARA_62] = @v26" +
+                                " ,[DE_PARA_PCT_61] = @v27" +
+                                " ,[VL_SEGURO] = @v28" +
+                                " ,[VL_SEGURO_MINIMO] = @v29" +
+                                " ,[VL_PEDAGIO_MAXIMO] = @v30" +
+                                " ,[IN_TP_CALCULO] = @v31" +
+                                " ,[IN_CALCULA_ADVALOR_DE_PARA1] = @v32" +
+                                " ,[IN_CALCULA_ADVALOR_DE_PARA2] = @v33" +
+                                " ,[VL_POR_TONELADA] = @v34" +
+                                " ,[DE_PARA_71] = @v35" +
+                                " ,[DE_PARA_72] = @v36" +
+                                " ,[DE_PARA_PCT_71] = @v37" +
+                                " ,[VL_PESO_CUBADO] = @v38" +
+                         " WHERE [CD_INDEX] = @CODIGO";
 
                 Cmd = new SqlCommand(strSQL, Con);
 
@@ -112,6 +190,32 @@ namespace DAL.Persistence
                 Cmd.Parameters.AddWithValue("@v10", p.DePara31);
                 Cmd.Parameters.AddWithValue("@v11", p.DePara32);
                 Cmd.Parameters.AddWithValue("@v12", p.Regiao);
+                Cmd.Parameters.AddWithValue("@v13", p.DePara41);
+                Cmd.Parameters.AddWithValue("@v14", p.DePara42);
+                Cmd.Parameters.AddWithValue("@v15", p.DeParaPct13);
+                Cmd.Parameters.AddWithValue("@v16", p.DeParaPct14);
+                Cmd.Parameters.AddWithValue("@v17", p.DeParaExcedente1);
+                Cmd.Parameters.AddWithValue("@v18", p.DeParaExcedente2);
+                Cmd.Parameters.AddWithValue("@v19", p.ValorGRISMinimo);
+                Cmd.Parameters.AddWithValue("@v20", p.ValorPedagio);
+                Cmd.Parameters.AddWithValue("@v21", p.ValorAD);
+                Cmd.Parameters.AddWithValue("@v22", p.DePara51);
+                Cmd.Parameters.AddWithValue("@v23", p.DePara52);
+                Cmd.Parameters.AddWithValue("@v24", p.DeParaPct15);
+                Cmd.Parameters.AddWithValue("@v25", p.DePara61);
+                Cmd.Parameters.AddWithValue("@v26", p.DePara62);
+                Cmd.Parameters.AddWithValue("@v27", p.DeParaPct16);
+                Cmd.Parameters.AddWithValue("@v28", p.ValorSeguro);
+                Cmd.Parameters.AddWithValue("@v29", p.ValorSeguroMinimo);
+                Cmd.Parameters.AddWithValue("@v30", p.ValorPedagioMaximo);
+                Cmd.Parameters.AddWithValue("@v31", p.IndicadorTipoCalculo);
+                Cmd.Parameters.AddWithValue("@v32", p.IndicadorCalcularAdValorDePara1);
+                Cmd.Parameters.AddWithValue("@v33", p.IndicadorCalcularAdValorDePara2);
+                Cmd.Parameters.AddWithValue("@v34", p.ValorPorTonelada);
+                Cmd.Parameters.AddWithValue("@v35", p.DePara71);
+                Cmd.Parameters.AddWithValue("@v36", p.DePara72);
+                Cmd.Parameters.AddWithValue("@v37", p.DeParaPct17);
+                Cmd.Parameters.AddWithValue("@v38", p.ValorPesoCubado);
 
                 Cmd.ExecuteNonQuery();
 
@@ -185,19 +289,93 @@ namespace DAL.Persistence
 
                     p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
                     p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
-                    p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
-                    p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
-                    p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
-                    p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
-                    p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
-                    p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
-                    p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
-                    p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
-                    p.ValorFreteMinimo= Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
-                    p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
-                    p.Regiao = Dr["REGIAO"].ToString();
                     p.Cpl_InscricaoTransportador = Dr["NR_INSCRICAO"].ToString();
                     p.Cpl_NomeTransportador = Dr["NM_TRANSPORTADOR"].ToString();
+                    if (Dr["DE_PARA_11"] != DBNull.Value)
+                        p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
+                    if (Dr["DE_PARA_12"] != DBNull.Value)
+                        p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
+                    if (Dr["DE_PARA_21"] != DBNull.Value)
+                        p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
+                    if (Dr["DE_PARA_22"] != DBNull.Value)
+                        p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
+                    if (Dr["DE_PARA_31"] != DBNull.Value)
+                        p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
+                    if (Dr["DE_PARA_32"] != DBNull.Value)
+                        p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
+                    if (Dr["DE_PARA_41"] != DBNull.Value)
+                        p.DePara41 = Convert.ToDecimal(Dr["DE_PARA_41"]);
+                    if (Dr["DE_PARA_42"] != DBNull.Value)
+                        p.DePara42 = Convert.ToDecimal(Dr["DE_PARA_42"]);
+                    if (Dr["DE_PARA_51"] != DBNull.Value)
+                        p.DePara51 = Convert.ToDecimal(Dr["DE_PARA_51"]);
+                    if (Dr["DE_PARA_52"] != DBNull.Value)
+                        p.DePara52 = Convert.ToDecimal(Dr["DE_PARA_52"]);
+                    if (Dr["DE_PARA_61"] != DBNull.Value)
+                        p.DePara61 = Convert.ToDecimal(Dr["DE_PARA_61"]);
+                    if (Dr["DE_PARA_62"] != DBNull.Value)
+                        p.DePara62 = Convert.ToDecimal(Dr["DE_PARA_62"]);
+                    if (Dr["DE_PARA_71"] != DBNull.Value)
+                        p.DePara71 = Convert.ToDecimal(Dr["DE_PARA_71"]);
+                    if (Dr["DE_PARA_72"] != DBNull.Value)
+                        p.DePara72 = Convert.ToDecimal(Dr["DE_PARA_72"]);
+
+                    if (Dr["DE_PARA_PCT_11"] != DBNull.Value)
+                        p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
+                    if (Dr["DE_PARA_PCT_12"] != DBNull.Value)
+                        p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
+                    if (Dr["DE_PARA_PCT_13"] != DBNull.Value)
+                        p.DeParaPct13 = Convert.ToDecimal(Dr["DE_PARA_PCT_13"]);
+                    if (Dr["DE_PARA_PCT_14"] != DBNull.Value)
+                        p.DeParaPct14 = Convert.ToDecimal(Dr["DE_PARA_PCT_14"]);
+                    if (Dr["DE_PARA_PCT_51"] != DBNull.Value)
+                        p.DeParaPct15 = Convert.ToDecimal(Dr["DE_PARA_PCT_51"]);
+                    if (Dr["DE_PARA_PCT_61"] != DBNull.Value)
+                        p.DeParaPct16 = Convert.ToDecimal(Dr["DE_PARA_PCT_61"]);
+                    if (Dr["DE_PARA_PCT_71"] != DBNull.Value)
+                        p.DeParaPct17 = Convert.ToDecimal(Dr["DE_PARA_PCT_71"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_11"] != DBNull.Value)
+                        p.DeParaExcedente1 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_11"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_12"] != DBNull.Value)
+                        p.DeParaExcedente2 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_12"]);
+
+                    if (Dr["VL_GRIS_MINIMO"] != DBNull.Value)
+                        p.ValorGRISMinimo = Convert.ToDecimal(Dr["VL_GRIS_MINIMO"]);
+
+                    if (Dr["VL_PEDAGIO"] != DBNull.Value)
+                        p.ValorPedagio = Convert.ToDecimal(Dr["VL_PEDAGIO"]);
+
+                    if (Dr["VL_PEDAGIO_MAXIMO"] != DBNull.Value)
+                        p.ValorPedagioMaximo = Convert.ToDecimal(Dr["VL_PEDAGIO_MAXIMO"]);
+
+                    if (Dr["VL_AD_VALOR"] != DBNull.Value)
+                        p.ValorAD = Convert.ToDecimal(Dr["VL_AD_VALOR"]);
+
+                    if (Dr["VL_SEGURO"] != DBNull.Value)
+                        p.ValorSeguro = Convert.ToDecimal(Dr["VL_SEGURO"]);
+
+                    if (Dr["VL_SEGURO_MINIMO"] != DBNull.Value)
+                        p.ValorSeguroMinimo = Convert.ToDecimal(Dr["VL_SEGURO_MINIMO"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA1"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara1 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA1"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA2"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara2 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA2"]);
+
+                    if (Dr["VL_POR_TONELADA"] != DBNull.Value)
+                        p.ValorPorTonelada = Convert.ToDecimal(Dr["VL_POR_TONELADA"]);
+
+                    if (Dr["VL_PESO_CUBADO"] != DBNull.Value)
+                        p.ValorPesoCubado = Convert.ToDecimal(Dr["VL_PESO_CUBADO"]);
+
+                    p.IndicadorTipoCalculo = Convert.ToDecimal(Dr["IN_TP_CALCULO"]);
+                    p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
+                    p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
+                    p.Inscricao = Dr["NR_INSCRICAO"].ToString();
+                    p.Regiao = Dr["REGIAO"].ToString();
 
                     lista.Add(p);
                 }
@@ -243,19 +421,93 @@ namespace DAL.Persistence
                     RegraFrete p = new RegraFrete();
                     p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
                     p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
-                    p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
-                    p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
-                    p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
-                    p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
-                    p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
-                    p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
-                    p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
-                    p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
-                    p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
-                    p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
-                    p.Regiao = Dr["REGIAO"].ToString();
                     p.Cpl_InscricaoTransportador = Dr["NR_INSCRICAO"].ToString();
                     p.Cpl_NomeTransportador = Dr["NM_TRANSPORTADOR"].ToString();
+                    if (Dr["DE_PARA_11"] != DBNull.Value)
+                        p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
+                    if (Dr["DE_PARA_12"] != DBNull.Value)
+                        p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
+                    if (Dr["DE_PARA_21"] != DBNull.Value)
+                        p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
+                    if (Dr["DE_PARA_22"] != DBNull.Value)
+                        p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
+                    if (Dr["DE_PARA_31"] != DBNull.Value)
+                        p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
+                    if (Dr["DE_PARA_32"] != DBNull.Value)
+                        p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
+                    if (Dr["DE_PARA_41"] != DBNull.Value)
+                        p.DePara41 = Convert.ToDecimal(Dr["DE_PARA_41"]);
+                    if (Dr["DE_PARA_42"] != DBNull.Value)
+                        p.DePara42 = Convert.ToDecimal(Dr["DE_PARA_42"]);
+                    if (Dr["DE_PARA_51"] != DBNull.Value)
+                        p.DePara51 = Convert.ToDecimal(Dr["DE_PARA_51"]);
+                    if (Dr["DE_PARA_52"] != DBNull.Value)
+                        p.DePara52 = Convert.ToDecimal(Dr["DE_PARA_52"]);
+                    if (Dr["DE_PARA_61"] != DBNull.Value)
+                        p.DePara61 = Convert.ToDecimal(Dr["DE_PARA_61"]);
+                    if (Dr["DE_PARA_62"] != DBNull.Value)
+                        p.DePara62 = Convert.ToDecimal(Dr["DE_PARA_62"]);
+                    if (Dr["DE_PARA_71"] != DBNull.Value)
+                        p.DePara71 = Convert.ToDecimal(Dr["DE_PARA_71"]);
+                    if (Dr["DE_PARA_72"] != DBNull.Value)
+                        p.DePara72 = Convert.ToDecimal(Dr["DE_PARA_72"]);
+
+                    if (Dr["DE_PARA_PCT_11"] != DBNull.Value)
+                        p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
+                    if (Dr["DE_PARA_PCT_12"] != DBNull.Value)
+                        p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
+                    if (Dr["DE_PARA_PCT_13"] != DBNull.Value)
+                        p.DeParaPct13 = Convert.ToDecimal(Dr["DE_PARA_PCT_13"]);
+                    if (Dr["DE_PARA_PCT_14"] != DBNull.Value)
+                        p.DeParaPct14 = Convert.ToDecimal(Dr["DE_PARA_PCT_14"]);
+                    if (Dr["DE_PARA_PCT_51"] != DBNull.Value)
+                        p.DeParaPct15 = Convert.ToDecimal(Dr["DE_PARA_PCT_51"]);
+                    if (Dr["DE_PARA_PCT_61"] != DBNull.Value)
+                        p.DeParaPct16 = Convert.ToDecimal(Dr["DE_PARA_PCT_61"]);
+                    if (Dr["DE_PARA_PCT_71"] != DBNull.Value)
+                        p.DeParaPct17 = Convert.ToDecimal(Dr["DE_PARA_PCT_71"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_11"] != DBNull.Value)
+                        p.DeParaExcedente1 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_11"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_12"] != DBNull.Value)
+                        p.DeParaExcedente2 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_12"]);
+
+                    if (Dr["VL_GRIS_MINIMO"] != DBNull.Value)
+                        p.ValorGRISMinimo = Convert.ToDecimal(Dr["VL_GRIS_MINIMO"]);
+
+                    if (Dr["VL_PEDAGIO"] != DBNull.Value)
+                        p.ValorPedagio = Convert.ToDecimal(Dr["VL_PEDAGIO"]);
+
+                    if (Dr["VL_PEDAGIO_MAXIMO"] != DBNull.Value)
+                        p.ValorPedagioMaximo = Convert.ToDecimal(Dr["VL_PEDAGIO_MAXIMO"]);
+
+                    if (Dr["VL_AD_VALOR"] != DBNull.Value)
+                        p.ValorAD = Convert.ToDecimal(Dr["VL_AD_VALOR"]);
+
+                    if (Dr["VL_SEGURO"] != DBNull.Value)
+                        p.ValorSeguro = Convert.ToDecimal(Dr["VL_SEGURO"]);
+
+                    if (Dr["VL_SEGURO_MINIMO"] != DBNull.Value)
+                        p.ValorSeguroMinimo = Convert.ToDecimal(Dr["VL_SEGURO_MINIMO"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA1"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara1 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA1"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA2"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara2 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA2"]);
+
+                    if (Dr["VL_POR_TONELADA"] != DBNull.Value)
+                        p.ValorPorTonelada = Convert.ToDecimal(Dr["VL_POR_TONELADA"]);
+
+                    if (Dr["VL_PESO_CUBADO"] != DBNull.Value)
+                        p.ValorPesoCubado = Convert.ToDecimal(Dr["VL_PESO_CUBADO"]);
+
+                    p.IndicadorTipoCalculo = Convert.ToDecimal(Dr["IN_TP_CALCULO"]);
+                    p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
+                    p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
+                    p.Inscricao = Dr["NR_INSCRICAO_TRANSP"].ToString();
+                    p.Regiao = Dr["REGIAO"].ToString();
                     lista.Add(p);
                 }
 
@@ -374,42 +626,13 @@ namespace DAL.Persistence
                     if (Dr["VL_POR_TONELADA"] != DBNull.Value)
                         p.ValorPorTonelada = Convert.ToDecimal(Dr["VL_POR_TONELADA"]);
 
+                    if (Dr["VL_PESO_CUBADO"] != DBNull.Value)
+                        p.ValorPesoCubado = Convert.ToDecimal(Dr["VL_PESO_CUBADO"]);
+
                     p.IndicadorTipoCalculo = Convert.ToDecimal(Dr["IN_TP_CALCULO"]);
                     p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
                     p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
                     p.Inscricao = Dr["NR_INSCRICAO_TRANSP"].ToString();
-                    p.Regiao = Dr["REGIAO"].ToString();
-                }
-
-                return p;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao pesquisar regra de frete: " + ex.Message.ToString());
-            }
-            finally
-            {
-                FecharConexao();
-            }
-        }
-        public RegraFrete Pesquisarteste(string regiao)
-        {
-            try
-            {
-                AbrirConexao();
-                Cmd = new SqlCommand("select * FROM REGRA_DE_FRETE WHERE REGIAO = @v1", Con);
-
-                Cmd.Parameters.AddWithValue("@v1", regiao);
-                
-
-                Dr = Cmd.ExecuteReader();
-
-                RegraFrete p = null;
-                if (Dr.Read())
-                {
-                    p = new RegraFrete();
-                    p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
-                    
                     p.Regiao = Dr["REGIAO"].ToString();
                 }
 
@@ -441,14 +664,87 @@ namespace DAL.Persistence
                     p = new RegraFrete();
                     p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
                     p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
-                    p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
-                    p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
-                    p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
-                    p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
-                    p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
-                    p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
-                    p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
-                    p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
+                    if (Dr["DE_PARA_11"] != DBNull.Value)
+                        p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
+                    if (Dr["DE_PARA_12"] != DBNull.Value)
+                        p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
+                    if (Dr["DE_PARA_21"] != DBNull.Value)
+                        p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
+                    if (Dr["DE_PARA_22"] != DBNull.Value)
+                        p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
+                    if (Dr["DE_PARA_31"] != DBNull.Value)
+                        p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
+                    if (Dr["DE_PARA_32"] != DBNull.Value)
+                        p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
+                    if (Dr["DE_PARA_41"] != DBNull.Value)
+                        p.DePara41 = Convert.ToDecimal(Dr["DE_PARA_41"]);
+                    if (Dr["DE_PARA_42"] != DBNull.Value)
+                        p.DePara42 = Convert.ToDecimal(Dr["DE_PARA_42"]);
+                    if (Dr["DE_PARA_51"] != DBNull.Value)
+                        p.DePara51 = Convert.ToDecimal(Dr["DE_PARA_51"]);
+                    if (Dr["DE_PARA_52"] != DBNull.Value)
+                        p.DePara52 = Convert.ToDecimal(Dr["DE_PARA_52"]);
+                    if (Dr["DE_PARA_61"] != DBNull.Value)
+                        p.DePara61 = Convert.ToDecimal(Dr["DE_PARA_61"]);
+                    if (Dr["DE_PARA_62"] != DBNull.Value)
+                        p.DePara62 = Convert.ToDecimal(Dr["DE_PARA_62"]);
+                    if (Dr["DE_PARA_71"] != DBNull.Value)
+                        p.DePara71 = Convert.ToDecimal(Dr["DE_PARA_71"]);
+                    if (Dr["DE_PARA_72"] != DBNull.Value)
+                        p.DePara72 = Convert.ToDecimal(Dr["DE_PARA_72"]);
+
+                    if (Dr["DE_PARA_PCT_11"] != DBNull.Value)
+                        p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
+                    if (Dr["DE_PARA_PCT_12"] != DBNull.Value)
+                        p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
+                    if (Dr["DE_PARA_PCT_13"] != DBNull.Value)
+                        p.DeParaPct13 = Convert.ToDecimal(Dr["DE_PARA_PCT_13"]);
+                    if (Dr["DE_PARA_PCT_14"] != DBNull.Value)
+                        p.DeParaPct14 = Convert.ToDecimal(Dr["DE_PARA_PCT_14"]);
+                    if (Dr["DE_PARA_PCT_51"] != DBNull.Value)
+                        p.DeParaPct15 = Convert.ToDecimal(Dr["DE_PARA_PCT_51"]);
+                    if (Dr["DE_PARA_PCT_61"] != DBNull.Value)
+                        p.DeParaPct16 = Convert.ToDecimal(Dr["DE_PARA_PCT_61"]);
+                    if (Dr["DE_PARA_PCT_71"] != DBNull.Value)
+                        p.DeParaPct17 = Convert.ToDecimal(Dr["DE_PARA_PCT_71"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_11"] != DBNull.Value)
+                        p.DeParaExcedente1 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_11"]);
+
+                    if (Dr["DE_PARA_EXCEDENTE_12"] != DBNull.Value)
+                        p.DeParaExcedente2 = Convert.ToDecimal(Dr["DE_PARA_EXCEDENTE_12"]);
+
+                    if (Dr["VL_GRIS_MINIMO"] != DBNull.Value)
+                        p.ValorGRISMinimo = Convert.ToDecimal(Dr["VL_GRIS_MINIMO"]);
+
+                    if (Dr["VL_PEDAGIO"] != DBNull.Value)
+                        p.ValorPedagio = Convert.ToDecimal(Dr["VL_PEDAGIO"]);
+
+                    if (Dr["VL_PEDAGIO_MAXIMO"] != DBNull.Value)
+                        p.ValorPedagioMaximo = Convert.ToDecimal(Dr["VL_PEDAGIO_MAXIMO"]);
+
+                    if (Dr["VL_AD_VALOR"] != DBNull.Value)
+                        p.ValorAD = Convert.ToDecimal(Dr["VL_AD_VALOR"]);
+
+                    if (Dr["VL_SEGURO"] != DBNull.Value)
+                        p.ValorSeguro = Convert.ToDecimal(Dr["VL_SEGURO"]);
+
+                    if (Dr["VL_SEGURO_MINIMO"] != DBNull.Value)
+                        p.ValorSeguroMinimo = Convert.ToDecimal(Dr["VL_SEGURO_MINIMO"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA1"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara1 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA1"]);
+
+                    if (Dr["IN_CALCULA_ADVALOR_DE_PARA2"] != DBNull.Value)
+                        p.IndicadorCalcularAdValorDePara2 = Convert.ToInt32(Dr["IN_CALCULA_ADVALOR_DE_PARA2"]);
+
+                    if (Dr["VL_POR_TONELADA"] != DBNull.Value)
+                        p.ValorPorTonelada = Convert.ToDecimal(Dr["VL_POR_TONELADA"]);
+
+                    if(Dr["VL_PESO_CUBADO"] != DBNull.Value)
+                        p.ValorPesoCubado = Convert.ToDecimal(Dr["VL_PESO_CUBADO"]);
+
+                    p.IndicadorTipoCalculo = Convert.ToDecimal(Dr["IN_TP_CALCULO"]);
                     p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
                     p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
                     p.Regiao = Dr["REGIAO"].ToString();
@@ -484,16 +780,6 @@ namespace DAL.Persistence
                     p = new RegraFrete();
                     p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
                     p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
-                    p.DePara11 = Convert.ToDecimal(Dr["DE_PARA_11"]);
-                    p.DePara12 = Convert.ToDecimal(Dr["DE_PARA_12"]);
-                    p.DePara21 = Convert.ToDecimal(Dr["DE_PARA_21"]);
-                    p.DePara22 = Convert.ToDecimal(Dr["DE_PARA_22"]);
-                    p.DePara31 = Convert.ToDecimal(Dr["DE_PARA_31"]);
-                    p.DePara32 = Convert.ToDecimal(Dr["DE_PARA_32"]);
-                    p.DeParaPct11 = Convert.ToDecimal(Dr["DE_PARA_PCT_11"]);
-                    p.DeParaPct12 = Convert.ToDecimal(Dr["DE_PARA_PCT_12"]);
-                    p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
-                    p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
                     p.Regiao = Dr["REGIAO"].ToString();
                 }
 

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeUtils: Classe TspdNFeXmlUtils</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeXmlUtils"></a><h1 class="cio">Classe TspdNFeXmlUtils</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td>Campos</td><td><a class="section"  href="#%40Methods">Métodos</a></td><td>Properties</td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeUtils.html">spdNFeUtils</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeXmlUtils = class(TObject)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe Auxiliadora na manipulação de XMLs da NFe</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">TspdNFeXmlUtils</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#GetNota">GetNota</a></b>(const Index: integer; const aLote: string;const bolAprovada: boolean = false): string; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#getNotaXPath">getNotaXPath</a></b>(const Index : integer; const aLote: string;const bolAprovada: boolean = false) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#GetNumNotas">GetNumNotas</a></b>(const aLote: string): integer;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#GetNumNotasXPath">GetNumNotasXPath</a></b>(const aLote : string) : integer;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#getIDNotaXPath">getIDNotaXPath</a></b>(const aXmlNota: string; aLiteralNFE : boolean = false) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a   href="spdNFeUtils.TspdNFeXmlUtils.html#GetXMLAttribute">GetXMLAttribute</a></b>(const aXml:WideString; const aTag: WideString; const aAttribute: WideString): WideString;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetNota"></a><code>class function <b>GetNota</b>(const Index: integer; const aLote: string;const bolAprovada: boolean = false): string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que obtém o XML de uma NFe dentro de um Lote de Notas    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>Index</dt>
+<dd>Indice da NFe dentro do Lote</dd>
+<dt>aLote</dt>
+<dd>Lote Xml que encapsula as NFes</dd>
+<dt>bolAprovada</dt>
+<dd>Seta o tipo de XML que está sendo utilizado (False = XmlAssinado / True=XmlDestinatário - Nfe Autorizada)</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Xml da Nota de acordo com o índice setado no primeiro parametro</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="getNotaXPath"></a><code>class function <b>getNotaXPath</b>(const Index : integer; const aLote: string;const bolAprovada: boolean = false) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetNumNotas"></a><code>class function <b>GetNumNotas</b>(const aLote: string): integer;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que obtém a Quantidade de Notas num Lote  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLote</dt>
+<dd>Lote XML que encapsula as NFes</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Quantidade de Notas dentro do Lote XML</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetNumNotasXPath"></a><code>class function <b>GetNumNotasXPath</b>(const aLote : string) : integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="getIDNotaXPath"></a><code>class function <b>getIDNotaXPath</b>(const aXmlNota: string; aLiteralNFE : boolean = false) : string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetXMLAttribute"></a><code>class function <b>GetXMLAttribute</b>(const aXml:WideString; const aTag: WideString; const aAttribute: WideString): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

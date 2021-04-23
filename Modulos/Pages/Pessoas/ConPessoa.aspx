@@ -432,7 +432,7 @@
                                 GridLines="None" AutoGenerateColumns="false" 
                                 Font-Size="8pt" AllowSorting ="true"  
                                 OnRowCommand="grdGrid_SelectedIndexChanged"
-                                PageSize="100" AllowPaging="true"
+                                PageSize="200" AllowPaging="true"
                                 OnPageIndexChanging="grdGrid_PageIndexChanging"
                                 PagerSettings-Mode ="NumericFirstLast"
                                 OnSorting="grdGrid_Sorting"

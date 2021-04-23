@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeDPEC: Classe TspdNFeDPEC</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeDPEC"></a><h1 class="cio">Classe TspdNFeDPEC</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td>Campos</td><td><a class="section"  href="#%40Methods">Métodos</a></td><td>Properties</td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeDPEC.html">spdNFeDPEC</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeDPEC = class(<a class="normal"  href="spdNFe.TspdCustomNFe.html">TspdCustomNFE</a>)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe responsável pela comunicação com WebService Nacional de DPEC</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TComponent</li>
+<li class="ancestor"><a class="normal"  href="spdNFe.TspdCustomNFe.html">TspdCustomNFe</a></li>
+<li class="thisitem">TspdNFeDPEC</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#GetEnviarDPECAddress">GetEnviarDPECAddress</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#GetConsultarDPECAddress">GetConsultarDPECAddress</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#CheckParamsPrint">CheckParamsPrint</a></b>(aProtDPEC, aDataHoraDPEC : String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#UpdatePathVersaoManual">UpdatePathVersaoManual</a></b>(var aPath: string); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#CarregarConfiguracoes">CarregarConfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#SalvarConfiguracoes">SalvarConfiguracoes</a></b>; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#GetTemplateFolder">GetTemplateFolder</a></b>: String; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#SaveConfig">SaveConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#SaveConfig">SaveConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#LoadConfig">LoadConfig</a></b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#LoadConfig">LoadConfig</a></b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#AssinarDPEC">AssinarDPEC</a></b>(aXMLDpec : string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#ConsultarDPEC">ConsultarDPEC</a></b>(aTpConsulta : <a   href="spdNFeType.html#TParamConsDPEC">TParamConsDPEC</a>; const aParam : String): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#EnviarDPEC">EnviarDPEC</a></b>(const aDPECAssinado: string; aNumLote : String = ''): string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#MontarDPEC">MontarDPEC</a></b>(const aLoteNormal: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#VisualizarDanfe">VisualizarDanfe</a></b>(const aLoteNotas : string; const aProtDPEC, aDataHoraDPEC : String; aArquivoModelo : string = ''); reintroduce;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#ImprimirDanfe">ImprimirDanfe</a></b>(const aLoteNotas: string; const aProtDPEC, aDataHoraDPEC: String; aArquivoModelo :string = ''; aImpressora: String = ''); reintroduce;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#EditarModeloDanfe">EditarModeloDanfe</a></b>(const aLoteNotas : string; const aProtDPEC, aDataHoraDPEC: String; const aArquivoModelo : string = ''); reintroduce;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#ExportarDanfe">ExportarDanfe</a></b>(const aLoteNotas: string; const aProtDPEC, aDataHoraDPEC: String; const aArquivoModelo : string = ''; aFormato : Integer=1; aExportarParaArquivo : String=''); reintroduce;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#PreverDanfe">PreverDanfe</a></b>(const aLoteNotas: string; aArquivoModelo : string = '');</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFeDPEC.TspdNFeDPEC.html#Create">Create</a></b> (aOwner : Tcomponent); override;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetEnviarDPECAddress"></a><code>function <b>GetEnviarDPECAddress</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetConsultarDPECAddress"></a><code>function <b>GetConsultarDPECAddress</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="CheckParamsPrint"></a><code>procedure <b>CheckParamsPrint</b>(aProtDPEC, aDataHoraDPEC : String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="UpdatePathVersaoManual"></a><code>procedure <b>UpdatePathVersaoManual</b>(var aPath: string); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="CarregarConfiguracoes"></a><code>procedure <b>CarregarConfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SalvarConfiguracoes"></a><code>procedure <b>SalvarConfiguracoes</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetTemplateFolder"></a><code>function <b>GetTemplateFolder</b>: String; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salve configurações do componente a partir de um arquivo .ini presente na pasta do .exe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SaveConfig"></a><code>procedure <b>SaveConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Seta as configurações do componente no parâmetro</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aConfigFile : string = ''); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega configurações do componente a partir de um arquivo .ini presente na pasta do .exe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LoadConfig"></a><code>procedure <b>LoadConfig</b>(const aIniContent : TCustomIniFile); override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Carrega configurações do componente a partir co conteúdo de um arquivo ini</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="AssinarDPEC"></a><code>function <b>AssinarDPEC</b>(aXMLDpec : string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Gera assinatura para o DPEC a ser enviado  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXMLDpec</dt>
+<dd>xml do DPEC a ser assinado</dd>
+</dl>
+<h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeDPecException.html">EspdNFeDPecException</a></dt>
+<dd>Quando o campo Id não for encontrado para o DPEC.</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ConsultarDPEC"></a><code>function <b>ConsultarDPEC</b>(aTpConsulta : <a   href="spdNFeType.html#TParamConsDPEC">TParamConsDPEC</a>; const aParam : String): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função para Consultar DPEC  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aTpConsulta</dt>
+<dd>Tipo de Consulta do DPEC que será realizada</dd>
+<dt>aParam</dt>
+<dd>Valor para o paramtro definido na aTpConsulta</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EnviarDPEC"></a><code>function <b>EnviarDPEC</b>(const aDPECAssinado: string; aNumLote : String = ''): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método para Enviar DPEC ao Webservice nacional  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aDPECAssindo</dt>
+<dd>XML de DPEC assinado que será enviado ao WebService</dd>
+<dt>aNumLote</dt>
+<dd>Número do Lote (opcional)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="MontarDPEC"></a><code>function <b>MontarDPEC</b>(const aLoteNormal: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método para construir lote DPEC para um lote normal de notas  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNormal</dt>
+<dd>XML de Notas Assinado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML DPEC montado</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="VisualizarDanfe"></a><code>procedure <b>VisualizarDanfe</b>(const aLoteNotas : string; const aProtDPEC, aDataHoraDPEC : String; aArquivoModelo : string = ''); reintroduce;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Visualizar a DANFE em contingência DPEC    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtDPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de DPEC</dd>
+<dt>aDataHoraDPEC</dt>
+<dd>Data e Hora de recebimento do DPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ImprimirDanfe"></a><code>procedure <b>ImprimirDanfe</b>(const aLoteNotas: string; const aProtDPEC, aDataHoraDPEC: String; aArquivoModelo :string = ''; aImpressora: String = ''); reintroduce;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Imprimir a DANFE em contingência DPEC     </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtDPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de DPEC</dd>
+<dt>aDataHoraDPEC</dt>
+<dd>Data e Hora de recebimento do DPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+<dt>aImpressora</dt>
+<dd>Nome da impressora registrada no windows, caso deseje omitir a tela de seleção de impressora no momento da impressão</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="EditarModeloDanfe"></a><code>procedure <b>EditarModeloDanfe</b>(const aLoteNotas : string; const aProtDPEC, aDataHoraDPEC: String; const aArquivoModelo : string = ''); reintroduce;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Editar Modelo da DANFE em contingência DPEC    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtDPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de DPEC</dd>
+<dt>aDataHoraDPEC</dt>
+<dd>Data e Hora de recebimento do DPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ExportarDanfe"></a><code>procedure <b>ExportarDanfe</b>(const aLoteNotas: string; const aProtDPEC, aDataHoraDPEC: String; const aArquivoModelo : string = ''; aFormato : Integer=1; aExportarParaArquivo : String=''); reintroduce;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Exportar a DANFE em contingência DPEC      </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aProtDPEC</dt>
+<dd>Número de Protocolo obtido após envio ao WebService de DPEC</dd>
+<dt>aDataHoraDPEC</dt>
+<dd>Data e Hora de recebimento do DPEC no WebService</dd>
+<dt>aArquivoModelo</dt>
+<dd>Arquivo (rtm) de layot de impressão (opcional)</dd>
+<dt>aFormato</dt>
+<dd>Formato da exportação (1-PDF, 2-JPG)</dd>
+<dt>aExportarParaArquivo</dt>
+<dd>Nome completo do arquivo que será gerado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="PreverDanfe"></a><code>procedure <b>PreverDanfe</b>(const aLoteNotas: string; aArquivoModelo : string = '');</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Método utilizado para Prever como será impresso um DANFE em contingência DPEC   se deixar em branco será utilizado o modelo padrão, localizado no diretório de Templates, subdiretório Danfe</p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aLoteNotas</dt>
+<dd>Lote XML de NFe Assinado</dd>
+<dt>aArquivoModelo</dt>
+<dd>caminho para arquivo de modelo do DANFE (extensão RTM),</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b> (aOwner : Tcomponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:51</em>
+</span>
+</body></html>

@@ -1837,7 +1837,7 @@ namespace DAL.Persistence
 			{
 				AbrirConexao();
 
-				string strSQL = "Select * from [HABIL_TIPO] where CD_TIPO in(167, 168,169)";
+				string strSQL = "Select * from [HABIL_TIPO] where CD_TIPO in(167, 168,169,206)";
 
 				Cmd = new SqlCommand(strSQL, Con);
 				Dr = Cmd.ExecuteReader();

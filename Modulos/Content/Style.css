@@ -98,7 +98,9 @@
 .REGISTRADO {
     background-color: #228B22;
 }
-
+.CONCLUIDO {
+    background-color: dodgerblue;
+}
 
 .FINALIZADO, .ENCERRADO, .ENCERRADA {
     background-color: rgb(55, 92, 6);

@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeDataSets: Classe TXmlFieldNFe</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TXmlFieldNFe"></a><h1 class="cio">Classe TXmlFieldNFe</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeDataSets.html">spdNFeDataSets</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TXmlFieldNFe = class(TStringField)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe que extende TStringField com informações necessárias para gerar XML</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TStringField</li>
+<li class="thisitem">TXmlFieldNFe</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#fEnum">fEnum</a></b>: TStringList;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#FTpNode">FTpNode</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#FTagXML">FTagXML</a></b>: string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#FGeraTagVazia">FGeraTagVazia</a></b>: boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#fDica">fDica</a></b>: string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#FDiretorioLogErro">FDiretorioLogErro</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TXmlFieldNFe.html#FTamanhoMapeadoDataSet">FTamanhoMapeadoDataSet</a></b>: Integer;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDiretorioLogErro">SetDiretorioLogErro</a></b>(const aDiretorioLogErro: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTamanhoMapeadoDataSet">SetTamanhoMapeadoDataSet</a></b>(const Value: Integer);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GetDica">GetDica</a></b>: string; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GetGeraTagVazia">GetGeraTagVazia</a></b>: boolean; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTagXML">GetTagXML</a></b>: string; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTpNode">GetTpNode</a></b>: string; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTpNode">SetTpNode</a></b>(const Value: string); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTagXml">SetTagXml</a></b>(const Value: string); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetGeraTagVazia">SetGeraTagVazia</a></b>(const Value: boolean); virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDica">SetDica</a></b>(const Value: string); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#Create">Create</a></b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GetEnumText">GetEnumText</a></b> : String; virtual;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#SetEnum">SetEnum</a></b>(Value : String); virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#ValidarConteudo">ValidarConteudo</a></b>; virtual;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#TpNode">TpNode</a></b>: string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTpNode">GetTpNode</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTpNode">SetTpNode</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#TagXml">TagXml</a></b>: string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTagXML">GetTagXML</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTagXml">SetTagXml</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#GeraTagVazia">GeraTagVazia</a></b> : boolean read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetGeraTagVazia">GetGeraTagVazia</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetGeraTagVazia">SetGeraTagVazia</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#Dica">Dica</a></b> : string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetDica">GetDica</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDica">SetDica</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#DiretorioLogErro">DiretorioLogErro</a></b> : string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#FDiretorioLogErro">FDiretorioLogErro</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDiretorioLogErro">SetDiretorioLogErro</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TXmlFieldNFe.html#TamanhoMapeadoDataSet">TamanhoMapeadoDataSet</a></b> : Integer read <a   href="spdNFeDataSets.TXmlFieldNFe.html#FTamanhoMapeadoDataSet">FTamanhoMapeadoDataSet</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTamanhoMapeadoDataSet">SetTamanhoMapeadoDataSet</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fEnum"></a><code><b>fEnum</b>: TStringList;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FTpNode"></a><code><b>FTpNode</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FTagXML"></a><code><b>FTagXML</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FGeraTagVazia"></a><code><b>FGeraTagVazia</b>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fDica"></a><code><b>fDica</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FDiretorioLogErro"></a><code><b>FDiretorioLogErro</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FTamanhoMapeadoDataSet"></a><code><b>FTamanhoMapeadoDataSet</b>: Integer;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioLogErro"></a><code>procedure <b>SetDiretorioLogErro</b>(const aDiretorioLogErro: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetTamanhoMapeadoDataSet"></a><code>procedure <b>SetTamanhoMapeadoDataSet</b>(const Value: Integer);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetDica"></a><code>function <b>GetDica</b>: string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetGeraTagVazia"></a><code>function <b>GetGeraTagVazia</b>: boolean; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetTagXML"></a><code>function <b>GetTagXML</b>: string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="GetTpNode"></a><code>function <b>GetTpNode</b>: string; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetTpNode"></a><code>procedure <b>SetTpNode</b>(const Value: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetTagXml"></a><code>procedure <b>SetTagXml</b>(const Value: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetGeraTagVazia"></a><code>procedure <b>SetGeraTagVazia</b>(const Value: boolean); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="protected.gif" alt="Protected" title="Protected"></a></td>
+<td class="itemcode"><a name="SetDica"></a><code>procedure <b>SetDica</b>(const Value: string); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GetEnumText"></a><code>function <b>GetEnumText</b> : String; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SetEnum"></a><code>procedure <b>SetEnum</b>(Value : String); virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ValidarConteudo"></a><code>procedure <b>ValidarConteudo</b>; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TpNode"></a><code>property <b>TpNode</b>: string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTpNode">GetTpNode</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTpNode">SetTpNode</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Guarda o Tipo de Node que esse campo será convertido para XML (elemento ou atributo)</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TagXml"></a><code>property <b>TagXml</b>: string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetTagXML">GetTagXML</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTagXml">SetTagXml</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GeraTagVazia"></a><code>property <b>GeraTagVazia</b> : boolean read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetGeraTagVazia">GetGeraTagVazia</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetGeraTagVazia">SetGeraTagVazia</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Dica"></a><code>property <b>Dica</b> : string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#GetDica">GetDica</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDica">SetDica</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DiretorioLogErro"></a><code>property <b>DiretorioLogErro</b> : string read <a   href="spdNFeDataSets.TXmlFieldNFe.html#FDiretorioLogErro">FDiretorioLogErro</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetDiretorioLogErro">SetDiretorioLogErro</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="TamanhoMapeadoDataSet"></a><code>property <b>TamanhoMapeadoDataSet</b> : Integer read <a   href="spdNFeDataSets.TXmlFieldNFe.html#FTamanhoMapeadoDataSet">FTamanhoMapeadoDataSet</a> write <a   href="spdNFeDataSets.TXmlFieldNFe.html#SetTamanhoMapeadoDataSet">SetTamanhoMapeadoDataSet</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:51</em>
+</span>
+</body></html>

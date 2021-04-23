@@ -315,6 +315,12 @@ namespace SoftHabilInformatica.Pages.Pessoas
                                 ddlGrupoPessoa.SelectedValue = item.Inicio;
                                 Session["LST_CADPESSOA"] = null;
                             }
+                            else if (item.Filtro == "QUANTIDADE_REGISTROS")
+                            {
+                                ddlRegistros.SelectedValue = item.Inicio;
+                                Session["LST_CADPESSOA"] = null;
+                            }
+                            
                         }
                     }
                     btnConsultar_Click(sender, e);
@@ -701,9 +707,17 @@ namespace SoftHabilInformatica.Pages.Pessoas
                 listaT.Add(rowp6);
             }
 
+            DBTabelaCampos rowp7 = new DBTabelaCampos();
+            rowp7.Filtro = "QUANTIDADE_REGISTROS";
+            rowp7.Inicio = ddlRegistros.SelectedValue;
+            rowp7.Fim = ddlRegistros.SelectedValue;
+            rowp7.Tipo = "INT";
+            listaT.Add(rowp7);
+
             PanelSelect = "consulta";
             Session["LST_CADPESSOA"] = listaT;
             Session["ListaRepresentantes"] = null;
+            listaT = listaT.Where(x => x.Filtro != "QUANTIDADE_REGISTROS").ToList();
 
             PessoaDAL r = new PessoaDAL();
 

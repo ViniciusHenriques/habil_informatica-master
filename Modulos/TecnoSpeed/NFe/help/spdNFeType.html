@@ -1,0 +1,1523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeType</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<h1 class="unit">Unit spdNFeType</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Uses">uses</a></td><td><a class="section"  href="#%40Classes">Classes, Interfaces, Objetos e Registros</a></td><td>Funções e Procedimentos</td><td><a class="section"  href="#%40Types">Tipos</a></td><td>Constantes</td><td>Variáveis</td></tr></table>
+<a name="%40Description"></a><h2 class="description">Descrição</h2>
+<p>
+Tipos utilizados nos componente <a class="normal"  href="spdNFe.html">spdNFE</a> e <a class="normal"  href="spdNFeDataSets.html">spdNFeDataSets</a></p>
+<a name="%40Uses"></a><h2 class="uses">uses</h2>
+<ul class="useslist"><li>SysUtils</li><li>SOAPHTTPtrans</li><li>Classes</li><li>NFeGovX_TLB</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Classes"></a><h3 class="cio">Classes, Interfaces, Objetos e Registros</h3>
+<table class="classestable wide_list">
+<tr class="listheader">
+<th class="itemname">Nome</th>
+<th class="itemdesc">Descrição</th>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeType.TspdEmailSettings.html"><code>TspdEmailSettings</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeType.TAuditorSettings.html"><code>TAuditorSettings</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeType.TDanfeSettings.html"><code>TDanfeSettings</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeType.TspdCertStringNFe.html"><code>TspdCertStringNFe</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+</table>
+<a name="%40Types"></a><h3 class="summary">Tipos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#XMLString">XMLString</a></b> = string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TLogFilter">TLogFilter</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TParamConsDPEC">TParamConsDPEC</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TModoOperacao">TModoOperacao</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TLayoutConvKind">TLayoutConvKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a></b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnXmlCanDestinatarioEvent">TOnXmlCanDestinatarioEvent</a></b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnXmlManDestinatarioEvent">TOnXmlManDestinatarioEvent</a></b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnDownloadNFeEvent">TOnDownloadNFeEvent</a></b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnLogEventNFe">TOnLogEventNFe</a></b> = procedure(const aNome, aID, aFileName: String) of object;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnLogContentEventNFe">TOnLogContentEventNFe</a></b> = procedure(const aNome, aID, aFileName, aContent: String) of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnGetValidCertificateNFe">TOnGetValidCertificateNFe</a></b> = procedure (const HTTPReqResp: THTTPReqResp; Data: Pointer) of object;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnCheckCertificateEventNFe">TOnCheckCertificateEventNFe</a></b> = procedure(var CertificateName : string) of object;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoRegraKind">TTipoRegraKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCertificadoKind">TCertificadoKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TAmbienteKind">TAmbienteKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TNSUKind">TNSUKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TImprimirFrenteVersoKind">TImprimirFrenteVersoKind</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TBandeiraCartao">TBandeiraCartao</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCondicaoVeiculo">TCondicaoVeiculo</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TConsumidorFinal">TConsumidorFinal</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCRT">TCRT</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCSOSNIcms">TCSOSNIcms</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCstCofins">TCstCofins</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCstIcms">TCstIcms</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCstIpi">TCstIpi</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TCstPis">TCstPis</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TDestinoOperacao">TDestinoOperacao</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TDeterminacaoBaseIcms">TDeterminacaoBaseIcms</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TDeterminacaoBaseIcmsST">TDeterminacaoBaseIcmsST</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TECFModRef">TECFModRef</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TFinalidadeNFe">TFinalidadeNFe</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TFormaPagamento">TFormaPagamento</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndEscala">TIndEscala</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndicadorPagamento">TIndicadorPagamento</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndicadorProcesso">TIndicadorProcesso</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndicadorTotal">TIndicadorTotal</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndIEDest">TIndIEDest</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndIncentivo">TIndIncentivo</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TIndISS">TIndISS</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TModalidadeFrete">TModalidadeFrete</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TMotivoDesoneracaoICMS">TMotivoDesoneracaoICMS</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOrigemMercadoria">TOrigemMercadoria</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TPresencaComprador">TPresencaComprador</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TProcessoEmissao">TProcessoEmissao</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TRegTribISSQN">TRegTribISSQN</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoAmbiente">TTipoAmbiente</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoArma">TTipoArma</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoEmissao">TTipoEmissao</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoImpressao">TTipoImpressao</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoIntermedio">TTipoIntermedio</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoNFe">TTipoNFe</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoOperacao">TTipoOperacao</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTipoViaTransp">TTipoViaTransp</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TTpIntegra">TTpIntegra</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeType.html#TOnSetTextEvent">TOnSetTextEvent</a></b> = procedure(const aText: String) of object;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Tipos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="XMLString"></a><code><b>XMLString</b> = string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TLogFilter"></a><code><b>TLogFilter</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Tipos de filtro para logs                </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+lfXml: lista todos os arquivos XML</li>
+<li>
+lfNFe: lista arquivos de NFe</li>
+<li>
+lfEnvLot: lista arquivos de envio de lote de NFe</li>
+<li>
+lfRec: lista arquivos de recibo</li>
+<li>
+lfPedRec: lista arquivos de pedido do resultado do processamento do lote de NFe</li>
+<li>
+lfProRec: lista arquivos de resultado do processamento do lote de NFe</li>
+<li>
+lfDen: lista arquivos de denegação de uso</li>
+<li>
+lfPedCan: lista arquivos de pedido de cancelamento de NFe</li>
+<li>
+lfCan: lista arquivos de cancelamento de NFe</li>
+<li>
+lfPedInu: lista arquivos de pedido de inutilização de numeração</li>
+<li>
+lfInu: lista arquivos de inutilização de numeração</li>
+<li>
+lfPedSit: lista arquivos de pedido de consulta de situação atual da NFe</li>
+<li>
+lfSit: lista arquivos de situação atual da NF-e</li>
+<li>
+lfPedSta: lista arquivos de pedido de consulta de status do serviço</li>
+<li>
+lfSta: lista arquivos de status de serviço</li>
+<li>
+lfCustom: lista arquivos obtidos através de um filtro personalizado pelo usuário</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TParamConsDPEC"></a><code><b>TParamConsDPEC</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Tipo de Consulta para o DPEC  </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+pcChaveNFe: Consulta DPEC pela Chave da NFe</li>
+<li>
+pcRegDpec: Consulta DPEC pelo número de registro de DPEC</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TVersaoManual"></a><code><b>TVersaoManual</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Versão do Manual de Integração      </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+vm202a: Versão de 2008</li>
+<li>
+vm30: Versão em vigor a partir de 2009 e vigente até final de 2010</li>
+<li>
+vm40: Versão em vigor a partir de 2010.</li>
+<li>
+vm50: Versão em vigor a partir de 2012.</li>
+<li>
+vm50a: Versão em vigoar a partir de 2014.</li>
+<li>
+vm60: Versão em vigoar a partir de 2018. Versão mais recente.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TModoOperacao"></a><code><b>TModoOperacao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Modo Operação   </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+moNormal: para comunicação normal com a SEFAZ autorizadora</li>
+<li>
+moSVCAN: &nbsp;</li>
+<li>
+moSVCRS: &nbsp;</li>
+<li>
+moEPEC: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TVersaoEsquema"></a><code><b>TVersaoEsquema</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Versão do Esquema XSD disponibilizado pelo SEFAZ                          </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+pl_005a: - Compatível com Manual de integração 2.02</li>
+<li>
+pl_005b: - Compatível com Manual de integração 2.02</li>
+<li>
+pl_005c: - Compatível com Manual de integração 2.02 e 3.0</li>
+<li>
+pl_005d: - Compatível com Manual de integração 3.0</li>
+<li>
+pl_005f: - Compatível com Manual de integração 3.0 - Nota Técnica 005/2010</li>
+<li>
+pl_006e: - Compatível com Manual de integração 4.0</li>
+<li>
+pl_006f: - Compatível com Manual de integração 4.0</li>
+<li>
+pl_006g: - Compatível com Manual de integração 4.0 - Nota Técnica 005/2010</li>
+<li>
+pl_006i: - Compatível com Manual de integração 4.0 - Nota Técnica 004/2011</li>
+<li>
+pl_006j: - Compatível com Manual de integração 4.0 - Nota Técnica 005/2011</li>
+<li>
+pl_006m: - Compatível com Manual de integração 5.0 - Nota Técnica 003/2012</li>
+<li>
+pl_006n: - Compatível com Manual de integração 5.0 - Nota Técnica 003/2012b</li>
+<li>
+pl_006p: - Compatível com Manual de integração 5.0</li>
+<li>
+pl_006q: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2012</li>
+<li>
+pl_006r: - Compatível com Manual de integração 5.0 - Nota Técnica 003/2013</li>
+<li>
+pl_006s: - Compatível com Manual de integração 5.0 - Nota Técnica 006/2013</li>
+<li>
+pl_006t: &nbsp;</li>
+<li>
+pl_006u: &nbsp;</li>
+<li>
+pl_006v: &nbsp;</li>
+<li>
+pl_008a: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.01</li>
+<li>
+pl_008b: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.02</li>
+<li>
+pl_008c: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.02</li>
+<li>
+pl_008d: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.02</li>
+<li>
+pl_008e: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.02</li>
+<li>
+pl_008f: - Compatível com Manual de integração 5.0 - Nota Técnica 005/2013 v1.02</li>
+<li>
+pl_008g: - Compatível com Manual de integração 5.0 - Nota Técnica 003/2015 v1.02</li>
+<li>
+pl_008h: - Compatível com Manual de integração 5.0 - Nota Técnica 003/2015 v1.02</li>
+<li>
+pl_008i: &nbsp;</li>
+<li>
+pl_008i1: &nbsp;</li>
+<li>
+pl_008i2: - Compatível com Manual de integração 5.0 - Nota Técnica 002/2015 v1.41</li>
+<li>
+pl_009: - Compatível com Manual de integração 6.0</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TLayoutConvKind"></a><code><b>TLayoutConvKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Layout Conv TXT   </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+lkTXTDic: Laypout de conversão baseado em arquivos Dic TXT. - OBSOLETO</li>
+<li>
+lkTXTDataSet: Layout de conversão baseado em Estrutura DataSet</li>
+<li>
+lkTXTRec: Layout de conversão baseado Modelo da Receita</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnXmlDestinatarioEvent"></a><code><b>TOnXmlDestinatarioEvent</b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Evento chamado após ser gerado um arquivo de XML de NFe que deve ser distribuído ao Destinatário</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnXmlCanDestinatarioEvent"></a><code><b>TOnXmlCanDestinatarioEvent</b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Evento chamado após ser gerado um arquivo de XML de Cancelamento que deve ser distribuído ao Destinatário</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnXmlManDestinatarioEvent"></a><code><b>TOnXmlManDestinatarioEvent</b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Evento chamado após ser gerado um arquivo de XML de Manifestação que deve ser distribuído ao Destinatário</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnDownloadNFeEvent"></a><code><b>TOnDownloadNFeEvent</b> = procedure(const aFileName: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Evento chamado após ser gerado um arquivo zip baixado</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnLogEventNFe"></a><code><b>TOnLogEventNFe</b> = procedure(const aNome, aID, aFileName: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnLogContentEventNFe"></a><code><b>TOnLogContentEventNFe</b> = procedure(const aNome, aID, aFileName, aContent: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnGetValidCertificateNFe"></a><code><b>TOnGetValidCertificateNFe</b> = procedure (const HTTPReqResp: THTTPReqResp; Data: Pointer) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnCheckCertificateEventNFe"></a><code><b>TOnCheckCertificateEventNFe</b> = procedure(var CertificateName : string) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Evento chamado ao se checar a existêcia de um certificado  quando a função ligada a este evento for chamada</p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>CertificateName</dt>
+<dd>é uma variável que pode ser preenchida com o nome de um certificado válido,</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoRegraKind"></a><code><b>TTipoRegraKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+rkTecno: &nbsp;</li>
+<li>
+rkSefaz: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCertificadoKind"></a><code><b>TCertificadoKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Tipos de Certificado  </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ckMemory: &nbsp;</li>
+<li>
+ckLocalMachine: &nbsp;</li>
+<li>
+ckFile: Certificado em arquivo, A1</li>
+<li>
+ckActiveDiretory: &nbsp;</li>
+<li>
+ckSmartCard: Cartões, Tokens, A3.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TAmbienteKind"></a><code><b>TAmbienteKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Tipos de Ambientes  </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+akProducao: Ambiente Oficial</li>
+<li>
+akHomologacao: Ambiente para Testes.</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TNSUKind"></a><code><b>TNSUKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Tipos de NSU  </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+nkUltimo: Ultimo NSU.</li>
+<li>
+nkEspecifico: NSU Especifico.</li>
+<li>
+nkConsChNFe: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TImprimirFrenteVersoKind"></a><code><b>TImprimirFrenteVersoKind</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Imprimir Frente e Verso   </p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+fvDesabilitado: Impressão Frente e Verso Desabilitado</li>
+<li>
+fvVertical: Impressão Frente e Verso Vertical</li>
+<li>
+fvHorizontal: Impressão Frente e Verso Horizontal</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TBandeiraCartao"></a><code><b>TBandeiraCartao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+bcVisa: &nbsp;</li>
+<li>
+bcMasterCard: &nbsp;</li>
+<li>
+bcAmericanExpress: &nbsp;</li>
+<li>
+bcSorocred: &nbsp;</li>
+<li>
+bcDinersClub: &nbsp;</li>
+<li>
+bcElo: &nbsp;</li>
+<li>
+bcHipercard: &nbsp;</li>
+<li>
+bcAura: &nbsp;</li>
+<li>
+bcCabal: &nbsp;</li>
+<li>
+bcOutros: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCondicaoVeiculo"></a><code><b>TCondicaoVeiculo</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+cvAcabado: &nbsp;</li>
+<li>
+cvInacabado: &nbsp;</li>
+<li>
+cvSemiAcabado: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TConsumidorFinal"></a><code><b>TConsumidorFinal</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+cfNao: &nbsp;</li>
+<li>
+cfConsumidorFinal: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCRT"></a><code><b>TCRT</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+crtSimplesNacional: &nbsp;</li>
+<li>
+crtSimplesExcessoReceita: &nbsp;</li>
+<li>
+crtRegimeNormal: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCSOSNIcms"></a><code><b>TCSOSNIcms</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+csosnVazio: &nbsp;</li>
+<li>
+csosn101: &nbsp;</li>
+<li>
+csosn102: &nbsp;</li>
+<li>
+csosn103: &nbsp;</li>
+<li>
+csosn201: &nbsp;</li>
+<li>
+csosn202: &nbsp;</li>
+<li>
+csosn203: &nbsp;</li>
+<li>
+csosn300: &nbsp;</li>
+<li>
+csosn400: &nbsp;</li>
+<li>
+csosn500: &nbsp;</li>
+<li>
+csosn900: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCstCofins"></a><code><b>TCstCofins</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+cof01: &nbsp;</li>
+<li>
+cof02: &nbsp;</li>
+<li>
+cof03: &nbsp;</li>
+<li>
+cof04: &nbsp;</li>
+<li>
+cof05: &nbsp;</li>
+<li>
+cof06: &nbsp;</li>
+<li>
+cof07: &nbsp;</li>
+<li>
+cof08: &nbsp;</li>
+<li>
+cof09: &nbsp;</li>
+<li>
+cof49: &nbsp;</li>
+<li>
+cof50: &nbsp;</li>
+<li>
+cof51: &nbsp;</li>
+<li>
+cof52: &nbsp;</li>
+<li>
+cof53: &nbsp;</li>
+<li>
+cof54: &nbsp;</li>
+<li>
+cof55: &nbsp;</li>
+<li>
+cof56: &nbsp;</li>
+<li>
+cof60: &nbsp;</li>
+<li>
+cof61: &nbsp;</li>
+<li>
+cof62: &nbsp;</li>
+<li>
+cof63: &nbsp;</li>
+<li>
+cof64: &nbsp;</li>
+<li>
+cof65: &nbsp;</li>
+<li>
+cof66: &nbsp;</li>
+<li>
+cof67: &nbsp;</li>
+<li>
+cof70: &nbsp;</li>
+<li>
+cof71: &nbsp;</li>
+<li>
+cof72: &nbsp;</li>
+<li>
+cof73: &nbsp;</li>
+<li>
+cof74: &nbsp;</li>
+<li>
+cof75: &nbsp;</li>
+<li>
+cof98: &nbsp;</li>
+<li>
+cof99: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCstIcms"></a><code><b>TCstIcms</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+cst00: &nbsp;</li>
+<li>
+cst10: &nbsp;</li>
+<li>
+cst20: &nbsp;</li>
+<li>
+cst30: &nbsp;</li>
+<li>
+cst40: &nbsp;</li>
+<li>
+cst41: &nbsp;</li>
+<li>
+cst45: &nbsp;</li>
+<li>
+cst50: &nbsp;</li>
+<li>
+cst51: &nbsp;</li>
+<li>
+cst60: &nbsp;</li>
+<li>
+cst70: &nbsp;</li>
+<li>
+cst80: &nbsp;</li>
+<li>
+cst81: &nbsp;</li>
+<li>
+cst90: &nbsp;</li>
+<li>
+cstPart10: &nbsp;</li>
+<li>
+cstPart90: &nbsp;</li>
+<li>
+cstRep41: &nbsp;</li>
+<li>
+cstVazio: &nbsp;</li>
+<li>
+cstICMSOutraUF: &nbsp;</li>
+<li>
+cstICMSSN: &nbsp;</li>
+<li>
+cstRep60: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCstIpi"></a><code><b>TCstIpi</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ipi00: &nbsp;</li>
+<li>
+ipi49: &nbsp;</li>
+<li>
+ipi50: &nbsp;</li>
+<li>
+ipi99: &nbsp;</li>
+<li>
+ipi01: &nbsp;</li>
+<li>
+ipi02: &nbsp;</li>
+<li>
+ipi03: &nbsp;</li>
+<li>
+ipi04: &nbsp;</li>
+<li>
+ipi05: &nbsp;</li>
+<li>
+ipi51: &nbsp;</li>
+<li>
+ipi52: &nbsp;</li>
+<li>
+ipi53: &nbsp;</li>
+<li>
+ipi54: &nbsp;</li>
+<li>
+ipi55: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TCstPis"></a><code><b>TCstPis</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+pis01: &nbsp;</li>
+<li>
+pis02: &nbsp;</li>
+<li>
+pis03: &nbsp;</li>
+<li>
+pis04: &nbsp;</li>
+<li>
+pis05: &nbsp;</li>
+<li>
+pis06: &nbsp;</li>
+<li>
+pis07: &nbsp;</li>
+<li>
+pis08: &nbsp;</li>
+<li>
+pis09: &nbsp;</li>
+<li>
+pis49: &nbsp;</li>
+<li>
+pis50: &nbsp;</li>
+<li>
+pis51: &nbsp;</li>
+<li>
+pis52: &nbsp;</li>
+<li>
+pis53: &nbsp;</li>
+<li>
+pis54: &nbsp;</li>
+<li>
+pis55: &nbsp;</li>
+<li>
+pis56: &nbsp;</li>
+<li>
+pis60: &nbsp;</li>
+<li>
+pis61: &nbsp;</li>
+<li>
+pis62: &nbsp;</li>
+<li>
+pis63: &nbsp;</li>
+<li>
+pis64: &nbsp;</li>
+<li>
+pis65: &nbsp;</li>
+<li>
+pis66: &nbsp;</li>
+<li>
+pis67: &nbsp;</li>
+<li>
+pis70: &nbsp;</li>
+<li>
+pis71: &nbsp;</li>
+<li>
+pis72: &nbsp;</li>
+<li>
+pis73: &nbsp;</li>
+<li>
+pis74: &nbsp;</li>
+<li>
+pis75: &nbsp;</li>
+<li>
+pis98: &nbsp;</li>
+<li>
+pis99: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDestinoOperacao"></a><code><b>TDestinoOperacao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+doInterna: &nbsp;</li>
+<li>
+doInterestadual: &nbsp;</li>
+<li>
+doExterior: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDeterminacaoBaseIcms"></a><code><b>TDeterminacaoBaseIcms</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+dbiMargemValorAgregado: &nbsp;</li>
+<li>
+dbiPauta: &nbsp;</li>
+<li>
+dbiPrecoTabelado: &nbsp;</li>
+<li>
+dbiValorOperacao: &nbsp;</li>
+<li>
+dbiNenhum: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TDeterminacaoBaseIcmsST"></a><code><b>TDeterminacaoBaseIcmsST</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+dbisPrecoTabelado: &nbsp;</li>
+<li>
+dbisListaNegativa: &nbsp;</li>
+<li>
+dbisListaPositiva: &nbsp;</li>
+<li>
+dbisListaNeutra: &nbsp;</li>
+<li>
+dbisMargemValorAgregado: &nbsp;</li>
+<li>
+dbisPauta: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TECFModRef"></a><code><b>TECFModRef</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ECFModRefVazio: &nbsp;</li>
+<li>
+ECFModRef2B: &nbsp;</li>
+<li>
+ECFModRef2C: &nbsp;</li>
+<li>
+ECFModRef2D: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TFinalidadeNFe"></a><code><b>TFinalidadeNFe</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+fnNormal: &nbsp;</li>
+<li>
+fnComplementar: &nbsp;</li>
+<li>
+fnAjuste: &nbsp;</li>
+<li>
+fnDevolucao: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TFormaPagamento"></a><code><b>TFormaPagamento</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+fpDinheiro: &nbsp;</li>
+<li>
+fpCheque: &nbsp;</li>
+<li>
+fpCartaoCredito: &nbsp;</li>
+<li>
+fpCartaoDebito: &nbsp;</li>
+<li>
+fpCreditoLoja: &nbsp;</li>
+<li>
+fpValeAlimentacao: &nbsp;</li>
+<li>
+fpValeRefeicao: &nbsp;</li>
+<li>
+fpValePresente: &nbsp;</li>
+<li>
+fpValeCombustivel: &nbsp;</li>
+<li>
+fpDuplicataMercantil: &nbsp;</li>
+<li>
+fpBoletoBancario: &nbsp;</li>
+<li>
+fpSemPagamento: &nbsp;</li>
+<li>
+fpOutro: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndEscala"></a><code><b>TIndEscala</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ieRelevante: &nbsp;</li>
+<li>
+ieNaoRelevante: &nbsp;</li>
+<li>
+ieNenhum: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndicadorPagamento"></a><code><b>TIndicadorPagamento</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ipVista: &nbsp;</li>
+<li>
+ipPrazo: &nbsp;</li>
+<li>
+ipOutras: &nbsp;</li>
+<li>
+ipNenhum: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndicadorProcesso"></a><code><b>TIndicadorProcesso</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+ipSEFAZ: &nbsp;</li>
+<li>
+ipJusticaFederal: &nbsp;</li>
+<li>
+ipJusticaEstadual: &nbsp;</li>
+<li>
+ipSecexRFB: &nbsp;</li>
+<li>
+ipOutros: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndicadorTotal"></a><code><b>TIndicadorTotal</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+itSomaTotalNFe: &nbsp;</li>
+<li>
+itNaoSomaTotalNFe: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndIEDest"></a><code><b>TIndIEDest</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+inContribuinte: &nbsp;</li>
+<li>
+inIsento: &nbsp;</li>
+<li>
+inNaoContribuinte: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndIncentivo"></a><code><b>TIndIncentivo</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+iiSim: &nbsp;</li>
+<li>
+iiNao: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TIndISS"></a><code><b>TIndISS</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+iiExigivel: &nbsp;</li>
+<li>
+iiNaoIncidencia: &nbsp;</li>
+<li>
+iiIsencao: &nbsp;</li>
+<li>
+iiExportacao: &nbsp;</li>
+<li>
+iiImunidade: &nbsp;</li>
+<li>
+iiExigSuspDecisaoJudicial: &nbsp;</li>
+<li>
+iiExigSuspProcessoAdm: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TModalidadeFrete"></a><code><b>TModalidadeFrete</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+mfContaEmitente: &nbsp;</li>
+<li>
+mfContaDestinatario: &nbsp;</li>
+<li>
+mfContaTerceiros: &nbsp;</li>
+<li>
+mfProprioRemetente: &nbsp;</li>
+<li>
+mfProprioDestinatario: &nbsp;</li>
+<li>
+mfSemFrete: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TMotivoDesoneracaoICMS"></a><code><b>TMotivoDesoneracaoICMS</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+mdiTaxi: &nbsp;</li>
+<li>
+mdiDeficienteFisico: &nbsp;</li>
+<li>
+mdiProdutorAgropecuario: &nbsp;</li>
+<li>
+mdiFrotistaLocadora: &nbsp;</li>
+<li>
+mdiDiplomaticoConsular: &nbsp;</li>
+<li>
+mdiAmazoniaLivreComercio: &nbsp;</li>
+<li>
+mdiSuframa: &nbsp;</li>
+<li>
+mdiVendaOrgaosPublicos: &nbsp;</li>
+<li>
+mdiOutros: &nbsp;</li>
+<li>
+mdiDeficienteCondutor: &nbsp;</li>
+<li>
+mdiDeficienteNaoCondutor: &nbsp;</li>
+<li>
+mdiOrgaoFomento: &nbsp;</li>
+<li>
+mdiOlimpiadaRio2016: &nbsp;</li>
+<li>
+mdiSolicitadoFisco: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOrigemMercadoria"></a><code><b>TOrigemMercadoria</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+oeNacional: &nbsp;</li>
+<li>
+oeEstrangeiraImportacaoDireta: &nbsp;</li>
+<li>
+oeEstrangeiraAdquiridaBrasil: &nbsp;</li>
+<li>
+oeNacionalConteudoImportacaoSuperior40: &nbsp;</li>
+<li>
+oeNacionalProcessosBasicos: &nbsp;</li>
+<li>
+oeNacionalConteudoImportacaoInferiorIgual40: &nbsp;</li>
+<li>
+oeEstrangeiraImportacaoDiretaSemSimilar: &nbsp;</li>
+<li>
+oeEstrangeiraAdquiridaBrasilSemSimilar: &nbsp;</li>
+<li>
+oeNacionalConteudoImportacaoSuperior70: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TPresencaComprador"></a><code><b>TPresencaComprador</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+pcNao: &nbsp;</li>
+<li>
+pcPresencial: &nbsp;</li>
+<li>
+pcInternet: &nbsp;</li>
+<li>
+pcTeleatendimento: &nbsp;</li>
+<li>
+pcEntregaDomicilio: &nbsp;</li>
+<li>
+pcPresencialForaEstabelecimento: &nbsp;</li>
+<li>
+pcOutros: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TProcessoEmissao"></a><code><b>TProcessoEmissao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+peAplicativoContribuinte: &nbsp;</li>
+<li>
+peAvulsaFisco: &nbsp;</li>
+<li>
+peAvulsaContribuinte: &nbsp;</li>
+<li>
+peContribuinteAplicativoFisco: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TRegTribISSQN"></a><code><b>TRegTribISSQN</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+RTISSMicroempresaMunicipal: &nbsp;</li>
+<li>
+RTISSEstimativa: &nbsp;</li>
+<li>
+RTISSSociedadeProfissionais: &nbsp;</li>
+<li>
+RTISSCooperativa: &nbsp;</li>
+<li>
+RTISSMEI: &nbsp;</li>
+<li>
+RTISSMEEPP: &nbsp;</li>
+<li>
+RTISSNenhum: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoAmbiente"></a><code><b>TTipoAmbiente</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+taProducao: &nbsp;</li>
+<li>
+taHomologacao: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoArma"></a><code><b>TTipoArma</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+taUsoPermitido: &nbsp;</li>
+<li>
+taUsoRestrito: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoEmissao"></a><code><b>TTipoEmissao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+teNormal: &nbsp;</li>
+<li>
+teContingencia: &nbsp;</li>
+<li>
+teSCAN: &nbsp;</li>
+<li>
+teDPEC: &nbsp;</li>
+<li>
+teFSDA: &nbsp;</li>
+<li>
+teSVCAN: &nbsp;</li>
+<li>
+teSVCRS: &nbsp;</li>
+<li>
+teSVCSP: &nbsp;</li>
+<li>
+teOffLine: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoImpressao"></a><code><b>TTipoImpressao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tiSemGeracao: &nbsp;</li>
+<li>
+tiRetrato: &nbsp;</li>
+<li>
+tiPaisagem: &nbsp;</li>
+<li>
+tiSimplificado: &nbsp;</li>
+<li>
+tiNFCe: &nbsp;</li>
+<li>
+tiMsgEletronica: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoIntermedio"></a><code><b>TTipoIntermedio</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tiContaPropria: &nbsp;</li>
+<li>
+tiContaOrdem: &nbsp;</li>
+<li>
+tiEncomenda: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoNFe"></a><code><b>TTipoNFe</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tnEntrada: &nbsp;</li>
+<li>
+tnSaida: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoOperacao"></a><code><b>TTipoOperacao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+toVendaConcessionaria: &nbsp;</li>
+<li>
+toFaturamentoDireto: &nbsp;</li>
+<li>
+toVendaDireta: &nbsp;</li>
+<li>
+toOutros: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoViaTransp"></a><code><b>TTipoViaTransp</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tvMaritima: &nbsp;</li>
+<li>
+tvFluvial: &nbsp;</li>
+<li>
+tvLacustre: &nbsp;</li>
+<li>
+tvAerea: &nbsp;</li>
+<li>
+tvPostal: &nbsp;</li>
+<li>
+tvFerroviaria: &nbsp;</li>
+<li>
+tvRodoviaria: &nbsp;</li>
+<li>
+tvConduto: &nbsp;</li>
+<li>
+tvMeiosProprios: &nbsp;</li>
+<li>
+tvEntradaSaidaFicta: &nbsp;</li>
+<li>
+tvCourier: &nbsp;</li>
+<li>
+tvHandcarry: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTpIntegra"></a><code><b>TTpIntegra</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tiNaoInformado: &nbsp;</li>
+<li>
+tiPagIntegrado: &nbsp;</li>
+<li>
+tiPagNaoIntegrado: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TOnSetTextEvent"></a><code><b>TOnSetTextEvent</b> = procedure(const aText: String) of object;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

@@ -1,0 +1,1437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeDataSets: Classe TspdNFeDataSets</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeDataSets"></a><h1 class="cio">Classe TspdNFeDataSets</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeDataSets.html">spdNFeDataSets</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeDataSets = class(TComponent)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe reponsável por gerenciar <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> geraçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de XML com base na versã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de esquema <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> atravé<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#S">s</a> da coleçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de ClientDataSets manipulados</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TComponent</li>
+<li class="thisitem">TspdNFeDataSets</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#FUtils">FUtils</a></b>: TspdGovUtils;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fActiveDSVersao">fActiveDSVersao</a></b>: <a   href="spdNFeDataSets.TspdNFeCustomDataSet.html">TspdNFeCustomDataSet</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fVersaoEsquema">fVersaoEsquema</a></b>: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocio">fValidaRegrasNegocio</a></b>: boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fExcecoesDeRegras">fExcecoesDeRegras</a></b>: string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocioTecno">fValidaRegrasNegocioTecno</a></b>: boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeDataSets.TspdNFeDataSets.html#fDiretorioLogErro">fDiretorioLogErro</a></b>: string;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetVersaoEsquema">SetVersaoEsquema</a></b>(const Value: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetA">GetA</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetB">GetB</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetC">GetC</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#getD">getD</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#getE">getE</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetF">GetF</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetH">GetH</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI">GetI</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI80">GetI80</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetJ">GetJ</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetK">GetK</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetL">GetL</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetM">GetM</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetN">GetN</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#getNA">getNA</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetO">GetO</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetP">GetP</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetQ">GetQ</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetR">GetR</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetS">GetS</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetT">GetT</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetU">GetU</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetV">GetV</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetW">GetW</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetX">GetX</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetY">GetY</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA01">GetYA01</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA">GetYA</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetZ">GetZ</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetG">GetG</a></b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetLoteNFe">GetLoteNFe</a></b>: TStringList;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetLoteNFe">SetLoteNFe</a></b>(const Value: TStringList);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetXMLDicionario">GetXMLDicionario</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetXMLDicionario">SetXMLDicionario</a></b>(const Value: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetState">GetState</a></b>: TDataSetState;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetStateItem">GetStateItem</a></b>: TDataSetState;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetListDataSets">GetListDataSets</a></b>: TObjectList;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#AplicarRegrasDeNegocio">AplicarRegrasDeNegocio</a></b>(const aTipoRegra : <a   href="spdNFeType.html#TTipoRegraKind">TTipoRegraKind</a>);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocio">SetValidaRegrasNegocio</a></b>(const Value: boolean);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetExcecoesDeRegras">SetExcecoesDeRegras</a></b>(const Value: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocioTecno">SetValidaRegrasNegocioTecno</a></b>(const Value: boolean);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetDiretorioLogErro">SetDiretorioLogErro</a></b>(const aDiretorioLogErro: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetGovUtils">GetGovUtils</a></b> : TspdGovUtils;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#GetUsarDatasetExportacao">GetUsarDatasetExportacao</a></b>: boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SetUsarDatasetExportacao">SetUsarDatasetExportacao</a></b>(const Value: boolean);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#FindDataSet">FindDataSet</a></b>(aName : String) : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Campo">Campo</a></b>(aNome: String): <a   href="spdNFeDataSets.TspdNFeXMLField.html">TspdNFeXMLField</a>; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Campo">Campo</a></b>(const aGrupo: string; const aPosicao : integer): <a   href="spdNFeDataSets.TspdNFeXMLField.html">TspdNFeXMLField</a>; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Incluir">Incluir</a></b>; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#IncluirItem">IncluirItem</a></b>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#IncluirCobranca">IncluirCobranca</a></b>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#IncluirPart">IncluirPart</a></b>(aPartXml: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Salvar">Salvar</a></b>; virtual;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SalvarItem">SalvarItem</a></b>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SalvarCobranca">SalvarCobranca</a></b>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#SalvarPart">SalvarPart</a></b>(aPartXml: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Procedure <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Cancelar">Cancelar</a></b>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>constructor <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Create">Create</a></b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>destructor <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#A">A</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetA">GetA</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#B">B</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetB">GetB</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#C">C</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetC">GetC</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#D">D</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#getD">getD</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#E">E</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#getE">getE</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#F">F</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetF">GetF</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#G">G</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetG">GetG</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#H">H</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetH">GetH</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#I">I</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI">GetI</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#I80">I80</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI80">GetI80</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#J">J</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetJ">GetJ</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#K">K</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetK">GetK</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#L">L</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetL">GetL</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#M">M</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetM">GetM</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#N">N</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetN">GetN</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#O">O</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetO">GetO</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#P">P</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetP">GetP</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Q">Q</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetQ">GetQ</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#R">R</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetR">GetR</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#S">S</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetS">GetS</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#T">T</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetT">GetT</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#U">U</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetU">GetU</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#V">V</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetV">GetV</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#W">W</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetW">GetW</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#X">X</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetX">GetX</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Y">Y</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetY">GetY</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#YA01">YA01</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA01">GetYA01</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#YA">YA</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA">GetYA</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#Z">Z</a></b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetZ">GetZ</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#LoteNFe">LoteNFe</a></b> : TStringList read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetLoteNFe">GetLoteNFe</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetLoteNFe">SetLoteNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#VersaoEsquema">VersaoEsquema</a></b> : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fVersaoEsquema">fVersaoEsquema</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetVersaoEsquema">SetVersaoEsquema</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#XMLDicionario">XMLDicionario</a></b> : string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetXMLDicionario">GetXMLDicionario</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetXMLDicionario">SetXMLDicionario</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#State">State</a></b> : TDataSetState read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetState">GetState</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#StateItem">StateItem</a></b> : TDataSetState read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetStateItem">GetStateItem</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#ListDataSets">ListDataSets</a></b> : TObjectList read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetListDataSets">GetListDataSets</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#ValidaRegrasNegocio">ValidaRegrasNegocio</a></b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocio">fValidaRegrasNegocio</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocio">SetValidaRegrasNegocio</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#ValidaRegrasNegocioTecno">ValidaRegrasNegocioTecno</a></b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocioTecno">fValidaRegrasNegocioTecno</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocioTecno">SetValidaRegrasNegocioTecno</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#ExcecoesDeRegras">ExcecoesDeRegras</a></b> : string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fExcecoesDeRegras">fExcecoesDeRegras</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetExcecoesDeRegras">SetExcecoesDeRegras</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#DiretorioLogErro">DiretorioLogErro</a></b>: string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fDiretorioLogErro">fDiretorioLogErro</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetDiretorioLogErro">SetDiretorioLogErro</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeDataSets.TspdNFeDataSets.html#UsarDatasetExportacao">UsarDatasetExportacao</a></b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetUsarDatasetExportacao">GetUsarDatasetExportacao</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetUsarDatasetExportacao">SetUsarDatasetExportacao</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FUtils"></a><code><b>FUtils</b>: TspdGovUtils;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fActiveDSVersao"></a><code><b>fActiveDSVersao</b>: <a   href="spdNFeDataSets.TspdNFeCustomDataSet.html">TspdNFeCustomDataSet</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fVersaoEsquema"></a><code><b>fVersaoEsquema</b>: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fValidaRegrasNegocio"></a><code><b>fValidaRegrasNegocio</b>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fExcecoesDeRegras"></a><code><b>fExcecoesDeRegras</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fValidaRegrasNegocioTecno"></a><code><b>fValidaRegrasNegocioTecno</b>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fDiretorioLogErro"></a><code><b>fDiretorioLogErro</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetVersaoEsquema"></a><code>procedure <b>SetVersaoEsquema</b>(const Value: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetA"></a><code>function <b>GetA</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetB"></a><code>function <b>GetB</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetC"></a><code>function <b>GetC</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="getD"></a><code>function <b>getD</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="getE"></a><code>function <b>getE</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetF"></a><code>function <b>GetF</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetH"></a><code>function <b>GetH</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetI"></a><code>function <b>GetI</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetI80"></a><code>function <b>GetI80</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetJ"></a><code>function <b>GetJ</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetK"></a><code>function <b>GetK</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetL"></a><code>function <b>GetL</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetM"></a><code>function <b>GetM</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetN"></a><code>function <b>GetN</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="getNA"></a><code>function <b>getNA</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetO"></a><code>function <b>GetO</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetP"></a><code>function <b>GetP</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetQ"></a><code>function <b>GetQ</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetR"></a><code>function <b>GetR</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetS"></a><code>function <b>GetS</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetT"></a><code>function <b>GetT</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetU"></a><code>function <b>GetU</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetV"></a><code>function <b>GetV</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetW"></a><code>function <b>GetW</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetX"></a><code>function <b>GetX</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetY"></a><code>function <b>GetY</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetYA01"></a><code>function <b>GetYA01</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetYA"></a><code>function <b>GetYA</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetZ"></a><code>function <b>GetZ</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetG"></a><code>function <b>GetG</b>: <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetLoteNFe"></a><code>function <b>GetLoteNFe</b>: TStringList;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetLoteNFe"></a><code>procedure <b>SetLoteNFe</b>(const Value: TStringList);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetXMLDicionario"></a><code>function <b>GetXMLDicionario</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetXMLDicionario"></a><code>procedure <b>SetXMLDicionario</b>(const Value: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetState"></a><code>function <b>GetState</b>: TDataSetState;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetStateItem"></a><code>function <b>GetStateItem</b>: TDataSetState;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetListDataSets"></a><code>function <b>GetListDataSets</b>: TObjectList;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="AplicarRegrasDeNegocio"></a><code>procedure <b>AplicarRegrasDeNegocio</b>(const aTipoRegra : <a   href="spdNFeType.html#TTipoRegraKind">TTipoRegraKind</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetValidaRegrasNegocio"></a><code>procedure <b>SetValidaRegrasNegocio</b>(const Value: boolean);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetExcecoesDeRegras"></a><code>procedure <b>SetExcecoesDeRegras</b>(const Value: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetValidaRegrasNegocioTecno"></a><code>procedure <b>SetValidaRegrasNegocioTecno</b>(const Value: boolean);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioLogErro"></a><code>procedure <b>SetDiretorioLogErro</b>(const aDiretorioLogErro: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetGovUtils"></a><code>function <b>GetGovUtils</b> : TspdGovUtils;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetUsarDatasetExportacao"></a><code>function <b>GetUsarDatasetExportacao</b>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetUsarDatasetExportacao"></a><code>procedure <b>SetUsarDatasetExportacao</b>(const Value: boolean);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="FindDataSet"></a><code>function <b>FindDataSet</b>(aName : String) : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retorna <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> Ponteiro de um ClientDataSet </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aName</dt>
+<dd>nome do da parte representada na NFe</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Campo"></a><code>function <b>Campo</b>(aNome: String): <a   href="spdNFeDataSets.TspdNFeXMLField.html">TspdNFeXMLField</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retorna <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> Ponteiro de um Field </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNome</dt>
+<dd>do <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#Campo">Campo</a> que está sendo procurado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Campo"></a><code>function <b>Campo</b>(const aGrupo: string; const aPosicao : integer): <a   href="spdNFeDataSets.TspdNFeXMLField.html">TspdNFeXMLField</a>; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Retorna <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> Ponteiro de um Field baseado no Grupo <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> Posiçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> definida no Manual REC  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aGrupo</dt>
+<dd>Grupo definido no Manual REC</dd>
+<dt>aPosicao</dt>
+<dd>Posiçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do <code>Campo</code> definida no Manual REC</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Incluir"></a><code>procedure <b>Incluir</b>; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inicia inclusã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de dados quer irã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> gerar <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> XML da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IncluirItem"></a><code>procedure <b>IncluirItem</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inicia <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> inclusã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de dados de um Produto ou Serviç<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IncluirCobranca"></a><code>Procedure <b>IncluirCobranca</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Inicia <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> inclusã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de dados de de Cobranç<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> (Duplicata) para <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> NFe no ponteiro</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="IncluirPart"></a><code>procedure <b>IncluirPart</b>(aPartXml: String);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> conteúdo do DataSet representado pela Parte informada </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aPartXml</dt>
+<dd>Parte da NFe que será salva</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Salvar"></a><code>Procedure <b>Salvar</b>; virtual;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> coleçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de ClientDataSets convertendo <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> seu conteúdo em XML <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> armazenando na propriedade <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#LoteNFe">LoteNFe</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SalvarItem"></a><code>procedure <b>SalvarItem</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva os dados na coleçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de ClientDataSets que representam os itens da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SalvarCobranca"></a><code>Procedure <b>SalvarCobranca</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva os dados no ClientDataSet responsável pelos dados de Cobranç<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SalvarPart"></a><code>procedure <b>SalvarPart</b>(aPartXml: String);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Salva os dados no ClientDataSet representado pela Parte setada no parametro </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aPartXML</dt>
+<dd>Parte da NFe que será salva</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Cancelar"></a><code>Procedure <b>Cancelar</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Cancela <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> Inclusã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> da NFe que estava sendo informada</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>constructor <b>Create</b>(AOwner: TComponent); override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="A"></a><code>property <b>A</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetA">GetA</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>A</code> - Dados da Nota Fiscal eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="B"></a><code>property <b>B</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetB">GetB</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>B</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="C"></a><code>property <b>C</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetC">GetC</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>C</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do Emitente da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="D"></a><code>property <b>D</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#getD">getD</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>D</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do Fisco Emitente da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="E"></a><code>property <b>E</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#getE">getE</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>E</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do Destinatário da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="F"></a><code>property <b>F</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetF">GetF</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>F</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do Local da Retirada da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="G"></a><code>property <b>G</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetG">GetG</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>G</code> - Identificaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> do Local da Entrega da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="H"></a><code>property <b>H</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetH">GetH</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>H</code> - Detalhamento de Produtos <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> Serviços da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="I"></a><code>property <b>I</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI">GetI</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>I</code> - Produtos <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> Serviços da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="I80"></a><code>property <b>I80</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetI80">GetI80</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>I80</code> - Rastrabilidade de produto da Nota Nota Fiscal Eletrônica</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="J"></a><code>property <b>J</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetJ">GetJ</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>J</code> - Detalhamento Específico de Veículos Novos</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="K"></a><code>property <b>K</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetK">GetK</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>K</code> - Detalhamento Específico de Medicamentos</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="L"></a><code>property <b>L</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetL">GetL</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>L</code> - Detalhamento Específico de Armamentos</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="M"></a><code>property <b>M</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetM">GetM</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>M</code> - Tributos Incidentes no Produto ou Serviç<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="N"></a><code>property <b>N</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetN">GetN</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>N</code> - ICMS Normal <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#E">e</a> ST</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="O"></a><code>property <b>O</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetO">GetO</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>O</code> - Imposto sobre Produto Industrializado</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="P"></a><code>property <b>P</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetP">GetP</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>P</code> - Imposto de Importaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Q"></a><code>property <b>Q</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetQ">GetQ</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Q</code> - PIS</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="R"></a><code>property <b>R</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetR">GetR</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>R</code> - PIS ST</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="S"></a><code>property <b>S</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetS">GetS</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>S</code> - COFINS</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="T"></a><code>property <b>T</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetT">GetT</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>T</code> - COFINS ST</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="U"></a><code>property <b>U</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetU">GetU</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>U</code> - ISSQN</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="V"></a><code>property <b>V</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetV">GetV</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>V</code> - Informações Adicionais do Item</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="W"></a><code>property <b>W</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetW">GetW</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>W</code> - Valores Totais da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="X"></a><code>property <b>X</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetX">GetX</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>X</code> - Informações do Transporte da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Y"></a><code>property <b>Y</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetY">GetY</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Y</code> - Dados da Cobranç<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a></p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="YA01"></a><code>property <b>YA01</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA01">GetYA01</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>YA01</code> - Dados de Pagamento</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="YA"></a><code>property <b>YA</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetYA">GetYA</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>YA</code> - Dados dos detalhes do pagamento</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Z"></a><code>property <b>Z</b> : <a   href="spdNFeDataSets.TXmlDataSetNFe.html">TXmlDataSetNFe</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetZ">GetZ</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+<code>Z</code> - Informações Adicionais da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="LoteNFe"></a><code>property <b>LoteNFe</b> : TStringList read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetLoteNFe">GetLoteNFe</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetLoteNFe">SetLoteNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="VersaoEsquema"></a><code>property <b>VersaoEsquema</b> : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fVersaoEsquema">fVersaoEsquema</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetVersaoEsquema">SetVersaoEsquema</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="XMLDicionario"></a><code>property <b>XMLDicionario</b> : string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetXMLDicionario">GetXMLDicionario</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetXMLDicionario">SetXMLDicionario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="State"></a><code>property <b>State</b> : TDataSetState read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetState">GetState</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="StateItem"></a><code>property <b>StateItem</b> : TDataSetState read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetStateItem">GetStateItem</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="ListDataSets"></a><code>property <b>ListDataSets</b> : TObjectList read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetListDataSets">GetListDataSets</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="ValidaRegrasNegocio"></a><code>property <b>ValidaRegrasNegocio</b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocio">fValidaRegrasNegocio</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocio">SetValidaRegrasNegocio</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Propriedades descontinuadas em 01/01/2016. Utilizar <a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#A">a</a> validaçã<a class="normal"  href="spdNFeDataSets.TspdNFeDataSets.html#O">o</a> de XML via Auditor Fiscal.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="ValidaRegrasNegocioTecno"></a><code>property <b>ValidaRegrasNegocioTecno</b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fValidaRegrasNegocioTecno">fValidaRegrasNegocioTecno</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetValidaRegrasNegocioTecno">SetValidaRegrasNegocioTecno</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="ExcecoesDeRegras"></a><code>property <b>ExcecoesDeRegras</b> : string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fExcecoesDeRegras">fExcecoesDeRegras</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetExcecoesDeRegras">SetExcecoesDeRegras</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="DiretorioLogErro"></a><code>property <b>DiretorioLogErro</b>: string read <a   href="spdNFeDataSets.TspdNFeDataSets.html#fDiretorioLogErro">fDiretorioLogErro</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetDiretorioLogErro">SetDiretorioLogErro</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+/////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><a name="UsarDatasetExportacao"></a><code>property <b>UsarDatasetExportacao</b> : boolean read <a   href="spdNFeDataSets.TspdNFeDataSets.html#GetUsarDatasetExportacao">GetUsarDatasetExportacao</a> write <a   href="spdNFeDataSets.TspdNFeDataSets.html#SetUsarDatasetExportacao">SetUsarDatasetExportacao</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:51</em>
+</span>
+</body></html>

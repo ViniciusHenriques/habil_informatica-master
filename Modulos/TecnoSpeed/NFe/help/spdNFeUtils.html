@@ -1,0 +1,985 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeUtils</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<h1 class="unit">Unit spdNFeUtils</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Uses">uses</a></td><td><a class="section"  href="#%40Classes">Classes, Interfaces, Objetos e Registros</a></td><td><a class="section"  href="#%40FuncsProcs">Funções e Procedimentos</a></td><td><a class="section"  href="#%40Types">Tipos</a></td><td>Constantes</td><td>Variáveis</td></tr></table>
+<a name="%40Description"></a><h2 class="description">Descrição</h2>
+<p>
+Utilitários NFe - Funções e classes auxiliares.  </p>
+<a name="%40Uses"></a><h2 class="uses">uses</h2>
+<ul class="useslist"><li>Classes</li><li>SysUtils</li><li>StrUtils</li><li>Windows</li><li><a   href="spdNFeException.html">spdNFeException</a></li><li><a   href="spdNFeType.html">spdNFeType</a></li><li>DateUtils</li><li>NFeGovX_TLB</li><li>ActiveX</li><li>Types</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Classes"></a><h3 class="cio">Classes, Interfaces, Objetos e Registros</h3>
+<table class="classestable wide_list">
+<tr class="listheader">
+<th class="itemname">Nome</th>
+<th class="itemdesc">Descrição</th>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeXmlUtils.html"><code>TspdNFeXmlUtils</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeXMLLogs.html"><code>TspdNFeXMLLogs</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeXmlDestinatario.html"><code>TspdNFeXmlDestinatario</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeXmlCancelamentoDestinatario.html"><code>TspdNFeXmlCancelamentoDestinatario</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeEventoXmlCancelamentoDestinatario.html"><code>TspdNFeEventoXmlCancelamentoDestinatario</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdNFeEventoXmlManifestacaoDestinatario.html"><code>TspdNFeEventoXmlManifestacaoDestinatario</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list">
+<td class="itemname">Classe&nbsp;<a class="bold"  href="spdNFeUtils.TspdAdicionaPedidoProrrogacao.html"><code>TspdAdicionaPedidoProrrogacao</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+<tr class="list2">
+<td class="itemname">record&nbsp;<a class="bold"  href="spdNFeUtils.TspdDecodeChaveNFe.html"><code>TspdDecodeChaveNFe</code></a></td>
+<td class="itemdesc">&nbsp;</td>
+</tr>
+</table>
+<a name="%40FuncsProcs"></a><h3 class="summary">Funções e Procedimentos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#DecodeChave">DecodeChave</a></b> (Const aChave : string; aVersaoManual : <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>) : <a   href="spdNFeUtils.TspdDecodeChaveNFe.html">TspdDecodeChaveNFe</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#XmlDateToDateTime">XmlDateToDateTime</a></b>(aXmlDate : String) : TDateTime;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ConverteData">ConverteData</a></b>(Data: String): String; deprecated;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ConverteDataComVersaoNFe">ConverteDataComVersaoNFe</a></b>(aData, aVersaoNFe: String): String;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ConverteHora">ConverteHora</a></b>(Hora: String): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CalculaDadosDaNFe">CalculaDadosDaNFe</a></b>(cUF, tpEmis, CNPJ, vNF, ICMSp, ICMSs, DD: String) : String;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CalculaChave">CalculaChave</a></b>(aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aCodigo: String): String; overload;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CalculaChave">CalculaChave</a></b>(aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aTpEmis, aCodigo: String): String; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ValidaAutenticidadeDV">ValidaAutenticidadeDV</a></b>(Const aChave : String; aVersaoManual : <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>) :Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetCodeUF">GetCodeUF</a></b>(Const aUF : String) : String;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetUF">GetUF</a></b>(Const aCodeUF : String) : String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetValueTag">GetValueTag</a></b>(aTag, aTxt: String): String;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetValueTagFilho">GetValueTagFilho</a></b>(aTagPai, aTagFilho, aXML : string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObterChaveNota">ObterChaveNota</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObterNotaID">ObterNotaID</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObterNumProt">ObterNumProt</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObterNumRecibo">ObterNumRecibo</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObterTpAmb">ObterTpAmb</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ObtercStat">ObtercStat</a></b>(const aXml: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToVersaoManual">StrToVersaoManual</a></b>(aVersao: String): <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#VersaoManualToStr">VersaoManualToStr</a></b>(aVersao: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToModoOperacao">StrToModoOperacao</a></b>(const aValue: string): <a   href="spdNFeType.html#TModoOperacao">TModoOperacao</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToTipoConsulta">StrToTipoConsulta</a></b>(const aValue: string): <a   href="spdNFeType.html#TNSUKind">TNSUKind</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ModoOperacaoToString">ModoOperacaoToString</a></b> (const aModo : <a   href="spdNFeType.html#TModoOperacao">TModoOperacao</a>) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#VersaoEsquemaToStr">VersaoEsquemaToStr</a></b>(aVersao: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToVersaoEsquema">StrToVersaoEsquema</a></b>(aVersao: String): <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CompareComTolerancia">CompareComTolerancia</a></b>(Const aValue1, aValue2, aTolerancia : Extended) : Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CalcDigVerificadorCodMunicipio">CalcDigVerificadorCodMunicipio</a></b>(Const aCodigoMun : string) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ValidaCodigoMunicipio">ValidaCodigoMunicipio</a></b>(Const aCodigoMun : string) : Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetVersaoManualDoEsquema">GetVersaoManualDoEsquema</a></b>(aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>):<a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.html#RemoveVersaoManualDoPath">RemoveVersaoManualDoPath</a></b>(var aPath : string);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#CompareDigValLogsNFe">CompareDigValLogsNFe</a></b>(const aXmlEnvio, aXmlInfProt : string) : boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ValidaEAN">ValidaEAN</a></b>(const aEAN: String): Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GerarXMLCancelamentoDestinatario">GerarXMLCancelamentoDestinatario</a></b>(const aIDNFe, aContentLogPedCanc, aContentLogRetCanc, aDiretorioLog, aDiretorioTemplates, aUF, aDiretorioXMLDestinatario: String; aSalvarComo: String; aVersaoManual: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>): String;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.html#PercorrerArquivos">PercorrerArquivos</a></b>(const aDirectory, aFileMask: string; aSearchInSubdirectories: Boolean; aFileList: TStrings);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetDescricaoManifestacao">GetDescricaoManifestacao</a></b>(aTipoEvento : <a   href="spdNFeUtils.html#TTipoManifestacaoDestinatario">TTipoManifestacaoDestinatario</a>): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetTipoAmbiente">GetTipoAmbiente</a></b>(aAmbiente: <a   href="spdNFeType.html#TAmbienteKind">TAmbienteKind</a>): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetTagCnpjCpf">GetTagCnpjCpf</a></b>(aAtribuirNomeTag: boolean; aCnpjCpf: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#TipoCertificadoToString">TipoCertificadoToString</a></b>(const aTipoCertificado : <a   href="spdNFeType.html#TCertificadoKind">TCertificadoKind</a>) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToTipoCertificado">StrToTipoCertificado</a></b>(const aTipoCertificado : string) : <a   href="spdNFeType.html#TCertificadoKind">TCertificadoKind</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetReferenceInfo">GetReferenceInfo</a></b>(var aXML : string) : String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ValidaAssinatura">ValidaAssinatura</a></b>(aLoteNotas : string): boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#spdDirectoryExists">spdDirectoryExists</a></b>(const aDirectoryPath: string): Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetActualDir">GetActualDir</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.html#FixSlash">FixSlash</a></b>(var aPath: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ExpandPath">ExpandPath</a></b>(const aPath: WideString): WideString;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ExpandPathFull">ExpandPathFull</a></b>(const aPath: String): String;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#GetRetEvento">GetRetEvento</a></b>(const aXML: string): string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#EscapeCaracteres">EscapeCaracteres</a></b>(const aValue: String) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ExisteCaracteresEscapados">ExisteCaracteresEscapados</a></b>(const aValue: String) : Boolean;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#EscapeXml">EscapeXml</a></b>(const aXml: WideString) : WideString;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#tpEvePedProrrogacaoToStr">tpEvePedProrrogacaoToStr</a></b>(const aValue : <a   href="spdNFeUtils.html#TTipoPedidoProrrogacao">TTipoPedidoProrrogacao</a>) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#tpEveCanPedProrrogacaoToStr">tpEveCanPedProrrogacaoToStr</a></b>(const aValue : <a   href="spdNFeUtils.html#TTipoCancelamentoPedidoProrrogacao">TTipoCancelamentoPedidoProrrogacao</a>) : string;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#ImprimirFrenteVersoToStr">ImprimirFrenteVersoToStr</a></b>(const aImprimirFrenteVerso : <a   href="spdNFeType.html#TImprimirFrenteVersoKind">TImprimirFrenteVersoKind</a>) : string;</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#StrToImprimirFrenteVerso">StrToImprimirFrenteVerso</a></b>(const aImprimirFrenteVerso : string) : <a   href="spdNFeType.html#TImprimirFrenteVersoKind">TImprimirFrenteVersoKind</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.html#SplitString">SplitString</a></b>(const S, Delimiters: string): TStringDynArray;</code></td>
+</tr>
+</table>
+<a name="%40Types"></a><h3 class="summary">Tipos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeUtils.html#TTipoManifestacaoDestinatario">TTipoManifestacaoDestinatario</a></b> = (...);</code></td>
+</tr>
+<tr class="list2">
+<td class="itemcode"><code><b><a   href="spdNFeUtils.html#TTipoPedidoProrrogacao">TTipoPedidoProrrogacao</a></b> = (...);</code></td>
+</tr>
+<tr class="list">
+<td class="itemcode"><code><b><a   href="spdNFeUtils.html#TTipoCancelamentoPedidoProrrogacao">TTipoCancelamentoPedidoProrrogacao</a></b> = (...);</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Funções e Procedimentos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="DecodeChave"></a><code>function <b>DecodeChave</b> (Const aChave : string; aVersaoManual : <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>) : <a   href="spdNFeUtils.TspdDecodeChaveNFe.html">TspdDecodeChaveNFe</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Decodifica a Chave da Nota de acordo com a Versão do Manual de Integração  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aChave</dt>
+<dd>Chave de Acesso da NFe que será Decodificada</dd>
+<dt>aVersaoManual</dt>
+<dd>Versao do Manual de Integração da Chave da Acesso da NFe</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="XmlDateToDateTime"></a><code>function <b>XmlDateToDateTime</b>(aXmlDate : String) : TDateTime;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte Formato de Data do XML YYYY-MM-DD em TDateTime</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConverteData"></a><code>function <b>ConverteData</b>(Data: String): String; deprecated;</code></td>
+</tr>
+<tr><td colspan="1">
+<p class="hint_directive">Warning: este símbolo está depreciado.</p><p>
+Converte datas no formato AAAA-MM-DD para o formato DD/MM/YYYY.  </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">'' se o parâmetro for vazio</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFEConvertDateException.html">EspdNFEConvertDateException</a></dt>
+<dd>caso a data seja inválida</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConverteDataComVersaoNFe"></a><code>function <b>ConverteDataComVersaoNFe</b>(aData, aVersaoNFe: String): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte datas no formato AAAA-MM-DD para o formato DD/MM/YYYY. Tanto para NF-e 2.00 ou 3.10 passando a versão do manual Passar a versão manual como 2.00 ou 3.10  </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">'' se o parâmetro for vazio</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFEConvertDateException.html">EspdNFEConvertDateException</a></dt>
+<dd>caso a data seja inválida</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ConverteHora"></a><code>function <b>ConverteHora</b>(Hora: String): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte horas no formato AAAA-MM-DDThh:mm:ss para o formato hh:mm:ss.  </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">'' se o parâmetro for vazio</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFEConvertHoraException.html">EspdNFEConvertHoraException</a></dt>
+<dd>caso a data seja inválida</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CalculaDadosDaNFe"></a><code>function <b>CalculaDadosDaNFe</b>(cUF, tpEmis, CNPJ, vNF, ICMSp, ICMSs, DD: String) : String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que gera Código de Barras dos Dados da NFe        </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>cUF</dt>
+<dd>Código da UF do destinatário ou remetente do Documento Fiscal, informar 99 quando a operação for de comércio exterior</dd>
+<dt>tpEmis</dt>
+<dd>Forma de Emissão da NF-e, informar 2-Contingência FS ou 5- Contingência FS-DA</dd>
+<dt>CNPJ</dt>
+<dd>CNPJ do destinatário ou do remetente, informar zeros no caso de operação com o exterior ou o CPF caso o destinatário ou remetente seja pessoa física</dd>
+<dt>vNF</dt>
+<dd>Valor Total da NF-e (sem ponto decimal, informar sempre os centavos)</dd>
+<dt>ICMSp</dt>
+<dd>Destaque de ICMS próprio na NF-e no seguinte formato: 1 = há destaque de ICMS próprio; 2 = não há destaque de ICMS próprio.</dd>
+<dt>ICMSs</dt>
+<dd>Destaque de ICMS por substituição tributária na NF-e, no seguinte formato: 1 = há destaque de ICMS por substituição tributária; 2 = não há destaque de ICMS por substituição tributária.</dd>
+<dt>DD</dt>
+<dd>Dia da emissão da NF-e;</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Código de Barras dos Dados da NFe</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CalculaChave"></a><code>function <b>CalculaChave</b>(aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aCodigo: String): String; overload;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que Gera a Chave (ID Nota) baseada nos Fields. Contempla o layout definido no Manual de integração 3.0   </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Chave (ID Nota) calculada.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckTXT.html">EspdNFeCheckTXT</a></dt>
+<dd>Levantada quando o CNPJ/CPF não for um número inteiro</dd>
+<dt><a class="normal"  href="spdNFeException.EspdCheckParams.html">EspdCheckParams</a></dt>
+<dd>%s Data de Emissão no Formato inválido. Utilizar YYYY-MM-DD</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CalculaChave"></a><code>function <b>CalculaChave</b>(aDtEmissao, aUF, aCNPJCPF, aModelo, aSerie, aNRNota, aTpEmis, aCodigo: String): String; overload;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que Gera a Chave (ID Nota) baseada nos Fields. Contempla o novo layout definido no Manual de integração 4.0 sua chamada é feita pela classe <a class="normal"  href="spdNFe.html">spdNFe</a> quando for definido VersaoManual = vm40     </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Chave (ID Nota) calculada.</p><h6 class="description_section">Exceções</h6>
+<dl class="exceptions_raised">
+<dt><a class="normal"  href="spdNFeException.EspdNFeCheckTXT.html">EspdNFeCheckTXT</a></dt>
+<dd>Levantada quando o CNPJ/CPF não for um número inteiro</dd>
+<dt><a class="normal"  href="spdNFeException.EspdCheckParams.html">EspdCheckParams</a></dt>
+<dd>O Código da nota(cNF) &quot;%s&quot;, excede o máximo de 8 dígitos (Manual 4.01)</dd>
+<dt><a class="normal"  href="spdNFeException.EspdCheckParams.html">EspdCheckParams</a></dt>
+<dd>O valor do tipo de emissão(tpEmis) &quot;%s&quot; é inesperado.</dd>
+<dt><a class="normal"  href="spdNFeException.EspdCheckParams.html">EspdCheckParams</a></dt>
+<dd>%s Data de Emissão no Formato inválido. Utilizar YYYY-MM-DD</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ValidaAutenticidadeDV"></a><code>function <b>ValidaAutenticidadeDV</b>(Const aChave : String; aVersaoManual : <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>) :Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que Verifica a autenticidade do Dígito verificador da Chave de Acesso  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aChave</dt>
+<dd>Chave que será avaliada</dd>
+<dt>aVersaoManual</dt>
+<dd>Versao do Manual de Integração da chave que será avaliada</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetCodeUF"></a><code>function <b>GetCodeUF</b>(Const aUF : String) : String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém o Código de uma UF (sigla) </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aUF</dt>
+<dd>Sigla da UF que deseja saber o código</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetUF"></a><code>function <b>GetUF</b>(Const aCodeUF : String) : String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém a UF (sigla) com base no código informado </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCodeUF</dt>
+<dd>código da UF que deseja saber a sigla</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetValueTag"></a><code>function <b>GetValueTag</b>(aTag, aTxt: String): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém o conteúdo de um elemento (tag) XML   </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aTag</dt>
+<dd>Elemento XML (tag) que está sendo procurado</dd>
+<dt>aTxt</dt>
+<dd>Onde o elemento (tag) está sendo procurado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Conteúdo do elemento (tag) procurado</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetValueTagFilho"></a><code>function <b>GetValueTagFilho</b>(aTagPai, aTagFilho, aXML : string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém o conteúdo de um elemento(tag) dentro de outra Tag XML    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aTagPai</dt>
+<dd>Elemento(tag) Superior</dd>
+<dt>aTagFilho</dt>
+<dd>Elemento(tag) que está sendo procurado</dd>
+<dt>aXML</dt>
+<dd>conteudo onde as tags estao sendo procurada</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Conteudo dentro do Elemento(tag) Filho</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObterChaveNota"></a><code>function <b>ObterChaveNota</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém a Chave da NFe de um XML  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>da NFe</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Chave da NFe contida no XML</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObterNotaID"></a><code>function <b>ObterNotaID</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que obtém a ID completo da NFe a partir de um XML  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>da NFe</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">ID da NFe contida no XML</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObterNumProt"></a><code>function <b>ObterNumProt</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Obtém o Numero do Protocolo de um XML de retorno do Sefaz  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>de retorno do SEFAZ</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Número do Protocolo</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObterNumRecibo"></a><code>function <b>ObterNumRecibo</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Obtém o Numero do Recibo de um XML de retorno do Sefaz  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>de retorno do SEFAZ</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Número do Recibo</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObterTpAmb"></a><code>function <b>ObterTpAmb</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Obtém Tipo de Ambiente de um XML  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>que será avaliado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Tipo de Ambiente</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ObtercStat"></a><code>function <b>ObtercStat</b>(const aXml: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Obtém o cStat - Código de Identificação de Mensagens do Sefaz  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXML</dt>
+<dd>que será avaliado</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Código de Identificação de Mensagens do Sefaz</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToVersaoManual"></a><code>function <b>StrToVersaoManual</b>(aVersao: String): <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a> utilizado pelo componente Nfe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aVersao</dt>
+<dd>versao do Manual de integração em forma de string</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return"><a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a></p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="VersaoManualToStr"></a><code>function <b>VersaoManualToStr</b>(aVersao: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte <a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a> em String  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aVersao</dt>
+<dd><a class="normal"  href="spdNFeType.html#TVersaoManual">TVersaoManual</a> que será convertido</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Versão do Manual em formato String</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToModoOperacao"></a><code>function <b>StrToModoOperacao</b>(const aValue: string): <a   href="spdNFeType.html#TModoOperacao">TModoOperacao</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a> utilizado pelo componente NFe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aModo</dt>
+<dd>modo de operação para envio de nota</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return"><a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a></p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToTipoConsulta"></a><code>function <b>StrToTipoConsulta</b>(const aValue: string): <a   href="spdNFeType.html#TNSUKind">TNSUKind</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte uma String em tipo ModoConsultaNSU utilizado pelo componente NFe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aValue</dt>
+<dd>tipo de consultansu para consulta de DFe</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return"><a class="normal"  href="spdNFeType.html#TNSUKind">TNSUKind</a></p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ModoOperacaoToString"></a><code>function <b>ModoOperacaoToString</b> (const aModo : <a   href="spdNFeType.html#TModoOperacao">TModoOperacao</a>) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte <a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a> em String  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aModo</dt>
+<dd><a class="normal"  href="spdNFeType.html#TModoOperacao">TModoOperacao</a> que será convertido</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Modo Operação em formato String</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="VersaoEsquemaToStr"></a><code>function <b>VersaoEsquemaToStr</b>(aVersao: <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte <a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> em String  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aVersao</dt>
+<dd><a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> que será convertido</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Versão do Esquema em formato String</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToVersaoEsquema"></a><code>function <b>StrToVersaoEsquema</b>(aVersao: String): <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Converte uma String em tipo <a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a> utilizado pelo componente Nfe  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aVersao</dt>
+<dd>versao do Esquema em forma de string</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return"><a class="normal"  href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a></p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CompareComTolerancia"></a><code>function <b>CompareComTolerancia</b>(Const aValue1, aValue2, aTolerancia : Extended) : Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que compara dois valores com tolerância - (sefaz utiliza 1,00 geralmente)   </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aValue1</dt>
+<dd>Valor que será comparado</dd>
+<dt>aValue2</dt>
+<dd>Valor que será comparado</dd>
+<dt>aTolerancia</dt>
+<dd>Valor para tolerancia na comparação entre os parametros aValue1 e aValue2</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CalcDigVerificadorCodMunicipio"></a><code>function <b>CalcDigVerificadorCodMunicipio</b>(Const aCodigoMun : string) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que Calcula o Dígito Verificador do Código do Município  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCodigoMun</dt>
+<dd>Código do Município sem o dígito verificador</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">Dígito Verificador calculado</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ValidaCodigoMunicipio"></a><code>function <b>ValidaCodigoMunicipio</b>(Const aCodigoMun : string) : Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que Valida o Código do Município informado </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aCodigoMun</dt>
+<dd>Código do Município que será avaliado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetVersaoManualDoEsquema"></a><code>function <b>GetVersaoManualDoEsquema</b>(aVersaoEsquema : <a   href="spdNFeType.html#TVersaoEsquema">TVersaoEsquema</a>):<a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função que identifica a qual versão de manual de integração o Esquema pertence </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aVersaoEsquema</dt>
+<dd>Versão de esquema que será consultada</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="RemoveVersaoManualDoPath"></a><code>procedure <b>RemoveVersaoManualDoPath</b>(var aPath : string);</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função Remove a VersaoManual do Path utilizado em Templates e Esquemas </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aPath</dt>
+<dd>Caminho que será modificado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="CompareDigValLogsNFe"></a><code>function <b>CompareDigValLogsNFe</b>(const aXmlEnvio, aXmlInfProt : string) : boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função utilizada para comparar se o DigVal dos Logs de Envio e Processamento da nota são iguais  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aXmlEnvio</dt>
+<dd>Conteúdo do Log de Envio</dd>
+<dt>aXmlIngProt</dt>
+<dd>COnteúdo do Log de Processamento da Nota (Chave ou Recibo)</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ValidaEAN"></a><code>function <b>ValidaEAN</b>(const aEAN: String): Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função utilizada para validar o código EAN do produto </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aEAN</dt>
+<dd>Código EAN que será validado</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GerarXMLCancelamentoDestinatario"></a><code>function <b>GerarXMLCancelamentoDestinatario</b>(const aIDNFe, aContentLogPedCanc, aContentLogRetCanc, aDiretorioLog, aDiretorioTemplates, aUF, aDiretorioXMLDestinatario: String; aSalvarComo: String; aVersaoManual: <a   href="spdNFeType.html#TVersaoManual">TVersaoManual</a>): String;</code></td>
+</tr>
+<tr><td colspan="1">
+<p>
+Função utilizada para gerar XMLCancelamentoDestinatario do componente <a class="normal"  href="spdNFe.html">spdNFe</a> e spdNFeEvento    </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aIDNFe</dt>
+<dd>Chave da NFe</dd>
+<dt>aContentLogPedCanc</dt>
+<dd>String com o XML de pedido de cancelamento</dd>
+<dt>aContentLogRetCand</dt>
+<dd>String com o XML de retorno de Cancelamento</dd>
+<dt>aSalvarComo</dt>
+<dd>String contendo nome completo do arquivo a gerar</dd>
+</dl>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="PercorrerArquivos"></a><code>procedure <b>PercorrerArquivos</b>(const aDirectory, aFileMask: string; aSearchInSubdirectories: Boolean; aFileList: TStrings);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetDescricaoManifestacao"></a><code>function <b>GetDescricaoManifestacao</b>(aTipoEvento : <a   href="spdNFeUtils.html#TTipoManifestacaoDestinatario">TTipoManifestacaoDestinatario</a>): string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetTipoAmbiente"></a><code>function <b>GetTipoAmbiente</b>(aAmbiente: <a   href="spdNFeType.html#TAmbienteKind">TAmbienteKind</a>): String;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetTagCnpjCpf"></a><code>function <b>GetTagCnpjCpf</b>(aAtribuirNomeTag: boolean; aCnpjCpf: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TipoCertificadoToString"></a><code>function <b>TipoCertificadoToString</b>(const aTipoCertificado : <a   href="spdNFeType.html#TCertificadoKind">TCertificadoKind</a>) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToTipoCertificado"></a><code>function <b>StrToTipoCertificado</b>(const aTipoCertificado : string) : <a   href="spdNFeType.html#TCertificadoKind">TCertificadoKind</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetReferenceInfo"></a><code>function <b>GetReferenceInfo</b>(var aXML : string) : String;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ValidaAssinatura"></a><code>function <b>ValidaAssinatura</b>(aLoteNotas : string): boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="spdDirectoryExists"></a><code>function <b>spdDirectoryExists</b>(const aDirectoryPath: string): Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetActualDir"></a><code>function <b>GetActualDir</b>: string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="FixSlash"></a><code>procedure <b>FixSlash</b>(var aPath: string);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ExpandPath"></a><code>function <b>ExpandPath</b>(const aPath: WideString): WideString;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ExpandPathFull"></a><code>function <b>ExpandPathFull</b>(const aPath: String): String;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="GetRetEvento"></a><code>function <b>GetRetEvento</b>(const aXML: string): string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EscapeCaracteres"></a><code>function <b>EscapeCaracteres</b>(const aValue: String) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ExisteCaracteresEscapados"></a><code>function <b>ExisteCaracteresEscapados</b>(const aValue: String) : Boolean;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="EscapeXml"></a><code>function <b>EscapeXml</b>(const aXml: WideString) : WideString;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="tpEvePedProrrogacaoToStr"></a><code>function <b>tpEvePedProrrogacaoToStr</b>(const aValue : <a   href="spdNFeUtils.html#TTipoPedidoProrrogacao">TTipoPedidoProrrogacao</a>) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="tpEveCanPedProrrogacaoToStr"></a><code>function <b>tpEveCanPedProrrogacaoToStr</b>(const aValue : <a   href="spdNFeUtils.html#TTipoCancelamentoPedidoProrrogacao">TTipoCancelamentoPedidoProrrogacao</a>) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="ImprimirFrenteVersoToStr"></a><code>function <b>ImprimirFrenteVersoToStr</b>(const aImprimirFrenteVerso : <a   href="spdNFeType.html#TImprimirFrenteVersoKind">TImprimirFrenteVersoKind</a>) : string;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="StrToImprimirFrenteVerso"></a><code>function <b>StrToImprimirFrenteVerso</b>(const aImprimirFrenteVerso : string) : <a   href="spdNFeType.html#TImprimirFrenteVersoKind">TImprimirFrenteVersoKind</a>;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="SplitString"></a><code>function <b>SplitString</b>(const S, Delimiters: string): TStringDynArray;</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Tipos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoManifestacaoDestinatario"></a><code><b>TTipoManifestacaoDestinatario</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tmdConfirmacaoOperacao = 210200: &nbsp;</li>
+<li>
+tmdCienciaOperacao = 210210: &nbsp;</li>
+<li>
+tmdDesconhecimentoOperacao = 210220: &nbsp;</li>
+<li>
+tmdOperacaoNaoRealizada = 210240: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoPedidoProrrogacao"></a><code><b>TTipoPedidoProrrogacao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tEPP1: &nbsp;</li>
+<li>
+tEPP2: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="itemcode"><a name="TTipoCancelamentoPedidoProrrogacao"></a><code><b>TTipoCancelamentoPedidoProrrogacao</b> = (...);</code></td>
+</tr>
+<tr><td colspan="1">
+&nbsp;<h6 class="description_section">Values</h6>
+<ul>
+<li>
+tECPP1: &nbsp;</li>
+<li>
+tECPP2: &nbsp;</li>
+</ul>
+</td></tr>
+</table>
+<h2 class="authors">Autores</h2>
+<ul class="authors">
+<li>TecnoSpeed (<a   href="http://www.tecnospeed.com.br">www.tecnospeed.com.br</a>)</li>
+<li>Copyright (c) 2008-2014, Tecnospeed TI</li>
+</ul>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

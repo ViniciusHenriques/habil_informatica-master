@@ -66,8 +66,6 @@ namespace HabilServiceNFSe
             {
 
             }
-
         }
-
     }
 }

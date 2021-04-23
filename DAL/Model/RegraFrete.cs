@@ -49,6 +49,7 @@ namespace DAL.Model
         public decimal ValorPedagio { get; set; }
         public decimal ValorAD { get; set; }
         public decimal ValorPorTonelada { get; set; }
+        public decimal ValorPesoCubado { get; set; }
         //COMPLEMENTARES
         public string Cpl_NomeTransportador { get; set; }
         public string Cpl_InscricaoTransportador { get; set; }

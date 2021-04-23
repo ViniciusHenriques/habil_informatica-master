@@ -34,7 +34,10 @@
         function FecharModalHistorico(){
             $("#modalHistorico").modal("hide");
         }
-
+        function ReplaceAll() {
+            var anotacao = document.getElementById('<%=txtAnotacao.ClientID%>').value;
+            document.getElementById('<%=txtAnotacao.ClientID%>').value = anotacao.replaceAll("<", "[").replaceAll(">", "]");
+        }
         function MostrarCalendario() {
             $("#modalCalendario").modal("show");
 
@@ -123,7 +126,9 @@
         }
     </script>
     <style>
-
+        .TarefaConcluida{
+            opacity:0.4
+        }
         .style-content-h4{
             background-color:rgba(000,000,000,0.5);
             border-radius:10px!important;
@@ -180,6 +185,9 @@
             .no-print {
                 display:none;
             }
+        }
+        .no-print2{
+            display:none;
         }
     </style>
     <body>
@@ -245,15 +253,23 @@
                                     </div>
                                     <div class="panel-body" >
                                         <div class="col-md-6" style="margin-top:10px"> 
-                                            <asp:LinkButton ID="btnNovo" runat="server" CssClass="btn btn-info" TabIndex="0" OnClick="btnNovo_Click" Visible="true" ToolTip="Novo ( Alt + N )"> 
-                                                <span aria-hidden="true" title="Salvar" class="glyphicon glyphicon-edit"></span>  Novo
-                                            </asp:LinkButton>
-                                            <asp:LinkButton ID="btnSalvar" runat="server" CssClass="btn btn-success" TabIndex="0" OnClick="btnSalvar_Click" Visible="true" ToolTip="Salvar ( Alt + S )"> 
-                                                <span aria-hidden="true" title="Salvar" class="glyphicon glyphicon-save"></span>  Salvar
-                                            </asp:LinkButton>
-                                            <asp:LinkButton ID="BtnReativar" runat="server" CssClass="btn btn-warning" TabIndex="0" OnClick="BtnReativar_Click" Visible="false" ToolTip="Reativar ( Alt + R )"> 
-                                                <span aria-hidden="true" title="Reativar" class="glyphicon glyphicon-ok"></span>  Reativar
-                                            </asp:LinkButton> 
+                                            <asp:UpdatePanel ID="UpdatePanel11" runat="server" UpdateMode="Always">
+                                                <ContentTemplate>
+                                                    <asp:LinkButton ID="btnNovo" runat="server" CssClass="btn btn-info" TabIndex="0" OnClick="btnNovo_Click" Visible="true" ToolTip="Novo ( Alt + N )"> 
+                                                        <span aria-hidden="true" title="Salvar" class="glyphicon glyphicon-edit"></span>  Novo
+                                                    </asp:LinkButton>
+                                                    <asp:LinkButton ID="btnSalvar" runat="server" CssClass="btn btn-success" TabIndex="0" OnClick="btnSalvar_Click" Visible="true" ToolTip="Salvar ( Alt + S )"> 
+                                                        <span aria-hidden="true" title="Salvar" class="glyphicon glyphicon-save"></span>  Salvar
+                                                    </asp:LinkButton>
+                                            
+                                                    <asp:LinkButton ID="BtnReativar" runat="server" CssClass="btn btn-warning" TabIndex="0" OnClick="BtnReativar_Click" Visible="false" ToolTip="Reativar ( Alt + R )"> 
+                                                        <span aria-hidden="true" title="Reativar" class="glyphicon glyphicon-ok"></span>  Reativar
+                                                    </asp:LinkButton> 
+                                                    <asp:LinkButton ID="btnConcluir" title="Concluir tarefa" runat="server" CssClass="btn alert-info" TabIndex="0" OnClick="BtnConcluir_Click" Visible="false" height="34"> 
+                                                        <span aria-hidden="true"  class="glyphicon glyphicon-ok"></span>
+                                                    </asp:LinkButton> 
+                                                </ContentTemplate> 
+                                            </asp:UpdatePanel>
 
                                         </div>
                                          <div class="col-md-6" style="text-align:center;margin-top:5px" >
@@ -285,7 +301,6 @@
                                                 <div role="tabpanel" class="tab-pane" id="home" style="font-size: small;">
                                                     <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Always">
                                                         <ContentTemplate>
-                         
                                                             <div class="col-md-4" style="font-size:x-small;">
                                                                 <label for="usr" style ="margin-top:1px;">Lançamento</label>
                                                                 <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server" Enabled="false" Text ="" Font-Size="Small"  MaxLength="10"/>
@@ -335,7 +350,7 @@
                                                  
                                                             <div class="col-md-12" style="font-size:x-small;">
                                                                 <label for="usr" style ="margin-top:1px;">Anotação  <span style="color: red;" title="Campo Obrigátorio">*</span></label>
-                                                                <asp:TextBox ID="txtAnotacao" CssClass="form-control" runat="server"  TabIndex="8" TextMode="multiline" Columns="10" Rows="7" MaxLength="50"  onFocus="this.select()" />        
+                                                                <asp:TextBox ID="txtAnotacao" CssClass="form-control" runat="server"  TabIndex="8" TextMode="multiline" Columns="10" Rows="7" MaxLength="50"  onFocus="this.select()" onchange="ReplaceAll()" />        
                                                             </div>
                                                         </ContentTemplate> 
                                                         <Triggers>
@@ -403,11 +418,12 @@
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="#" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText no-print" ItemStyle-CssClass="divCorAnotacao no-print">
                                                         <ItemTemplate>
-                                                            <div style="width:15px;height:15px;color:white;background-color:<%# Eval("CorLembrete")%>" class="arredondamento" >
+                                                            <div style="width:20px;padding-top:3px;height:20px;color:white;background-color:<%# Eval("CorLembrete")%>" class="arredondamento" >
                                                                 <%# Eval("CodigoIndex")%>
                                                             </div>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+                                                    <asp:BoundField DataField="CodigoIndex" HeaderText="Hora" ItemStyle-Width = "3%" ItemStyle-CssClass="no-print2" HeaderStyle-CssClass="no-print2"/>            
                                                     <asp:BoundField DataField="DataHoraAgendamento" HeaderText="Hora" DataFormatString="{0:HH:mm}" ItemStyle-Width = "3%"/>            
                                                     <asp:BoundField DataField="Cpl_NomeCliente" HeaderText="Cliente" ItemStyle-Width = "10%"/>
                                                     <asp:BoundField DataField="Cpl_NomeUsuario" HeaderText="Usuário" ItemStyle-Width = "10%"/>

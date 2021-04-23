@@ -1,0 +1,613 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<meta name="GENERATOR" content="PasDoc 0.11.0">
+<title>TecnoSpeed NFe: spdNFeUtils: Classe TspdNFeXmlDestinatario</title>
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#FF0000">
+<a name="TspdNFeXmlDestinatario"></a><h1 class="cio">Classe TspdNFeXmlDestinatario</h1>
+<table class="sections wide_list">
+<tr>
+<td><a class="section"  href="#%40Description">Descrição</a></td><td><a class="section"  href="#%40Hierarchy">Hierarquia</a></td><td><a class="section"  href="#%40Fields">Campos</a></td><td><a class="section"  href="#%40Methods">Métodos</a></td><td><a class="section"  href="#%40Properties">Properties</a></td></tr></table>
+<a name="%40Description"></a><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a   href="spdNFeUtils.html">spdNFeUtils</a></p>
+<h2 class="declaration">Declaração</h2>
+<p class="declaration">
+<code>type TspdNFeXmlDestinatario = class(TObject)</code></p>
+<h2 class="description">Descrição</h2>
+<p>
+Classe responsável por gerar o XML da NFe que deve ser disponibilizado ao Destinatário da nota. Padronizado pelo Manual de Integração</p>
+<a name="%40Hierarchy"></a><h2 class="hierarchy">Hierarquia</h2>
+<ul class="hierarchy"><li class="ancestor">TObject</li>
+<li class="thisitem">TspdNFeXmlDestinatario</li></ul><h2 class="overview">Visão Geral</h2>
+<a name="%40Fields"></a><h3 class="summary">Campos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#FUtils">FUtils</a></b>: TspdGovUtils;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fXmlLog">fXmlLog</a></b>: <a   href="spdNFeUtils.TspdNFeXMLLogs.html">TspdNFeXMLLogs</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsRec">fLogConsRec</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogEnvio">fLogEnvio</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fSalvarComo">fSalvarComo</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsChave">fLogConsChave</a></b>: String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioXmlDestinatario">fDiretorioXmlDestinatario</a></b>: string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioLog">fDiretorioLog</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fChaveNFe">fChaveNFe</a></b>: String;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fTemplate">fTemplate</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fOnXmlDestinatario">fOnXmlDestinatario</a></b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code><b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#FSalvarLogsEmDisco">FSalvarLogsEmDisco</a></b>: boolean;</code></td>
+</tr>
+</table>
+<a name="%40Methods"></a><h3 class="summary">Métodos</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsChave">SetLogConsChave</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsRec">SetLogConsRec</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogEnvio">SetLogEnvio</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarComo">SetSalvarComo</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioLog">SetDiretorioLog</a></b>(const Value: string);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a></b>(const Value: string);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#TrataXmlAssinado">TrataXmlAssinado</a></b>(const aXMLAssinado: string): string;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#GetXmlLogEnvio">GetXmlLogEnvio</a></b>(aChave: String): WideString;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#GetXmlInfProtocolo">GetXmlInfProtocolo</a></b>(aChave: String): WideString;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#GetTempNameLogEnv">GetTempNameLogEnv</a></b>(aFileName: String): String;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SalvarEmArquivo">SalvarEmArquivo</a></b>(aXml: WideString);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetChaveNFe">SetChaveNFe</a></b>(const Value: String);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#MontarXmlDestinatario">MontarXmlDestinatario</a></b>(aChaveNFe: String): WideString;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetTemplate">SetTemplate</a></b>(const Value: string);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#DeleteTempFile">DeleteTempFile</a></b>(aFileName: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#getTemplate">getTemplate</a></b>: string;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#DoOnXmlDestinatario">DoOnXmlDestinatario</a></b>(const aFileName: String);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a></b>(const Value: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>);</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><code>procedure <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarLogsEmDisco">SetSalvarLogsEmDisco</a></b>(const Value: boolean);</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Constructor <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#Create">Create</a></b>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>Destructor <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#Destroy">Destroy</a></b>; override;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#GerarXmlDestinatario">GerarXmlDestinatario</a></b>: WideString; overload;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#GerarXmlDestinatario">GerarXmlDestinatario</a></b>(aNumDoc: String): WideString; overload;</code></td>
+</tr>
+</table>
+<a name="%40Properties"></a><h3 class="summary">Properties</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#Template">Template</a></b>: string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#getTemplate">getTemplate</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetTemplate">SetTemplate</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#LogEnvio">LogEnvio</a></b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogEnvio">fLogEnvio</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogEnvio">SetLogEnvio</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#LogConsRec">LogConsRec</a></b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsRec">fLogConsRec</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsRec">SetLogConsRec</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#LogConsChave">LogConsChave</a></b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsChave">fLogConsChave</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsChave">SetLogConsChave</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SalvarComo">SalvarComo</a></b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fSalvarComo">fSalvarComo</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarComo">SetSalvarComo</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#ChaveNFe">ChaveNFe</a></b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fChaveNFe">fChaveNFe</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetChaveNFe">SetChaveNFe</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#DiretorioXmlDestinatario">DiretorioXmlDestinatario</a></b> : string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioXmlDestinatario">fDiretorioXmlDestinatario</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#DiretorioLog">DiretorioLog</a></b>: string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioLog">fDiretorioLog</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioLog">SetDiretorioLog</a>;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#OnXmlDestinatario">OnXmlDestinatario</a></b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a> read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fOnXmlDestinatario">fOnXmlDestinatario</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a>;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>property <b><a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SalvarLogsEmDisco">SalvarLogsEmDisco</a></b>: boolean read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#FSalvarLogsEmDisco">FSalvarLogsEmDisco</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarLogsEmDisco">SetSalvarLogsEmDisco</a>;</code></td>
+</tr>
+</table>
+<h2 class="description">Descrição</h2>
+<h3 class="detail">Campos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FUtils"></a><code><b>FUtils</b>: TspdGovUtils;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fXmlLog"></a><code><b>fXmlLog</b>: <a   href="spdNFeUtils.TspdNFeXMLLogs.html">TspdNFeXMLLogs</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fLogConsRec"></a><code><b>fLogConsRec</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fLogEnvio"></a><code><b>fLogEnvio</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fSalvarComo"></a><code><b>fSalvarComo</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fLogConsChave"></a><code><b>fLogConsChave</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fDiretorioXmlDestinatario"></a><code><b>fDiretorioXmlDestinatario</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fDiretorioLog"></a><code><b>fDiretorioLog</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fChaveNFe"></a><code><b>fChaveNFe</b>: String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fTemplate"></a><code><b>fTemplate</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="fOnXmlDestinatario"></a><code><b>fOnXmlDestinatario</b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="FSalvarLogsEmDisco"></a><code><b>FSalvarLogsEmDisco</b>: boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<h3 class="detail">Métodos</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetLogConsChave"></a><code>procedure <b>SetLogConsChave</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetLogConsRec"></a><code>procedure <b>SetLogConsRec</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetLogEnvio"></a><code>procedure <b>SetLogEnvio</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetSalvarComo"></a><code>procedure <b>SetSalvarComo</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioLog"></a><code>procedure <b>SetDiretorioLog</b>(const Value: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetDiretorioXmlDestinatario"></a><code>procedure <b>SetDiretorioXmlDestinatario</b>(const Value: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="TrataXmlAssinado"></a><code>function <b>TrataXmlAssinado</b>(const aXMLAssinado: string): string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetXmlLogEnvio"></a><code>function <b>GetXmlLogEnvio</b>(aChave: String): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetXmlInfProtocolo"></a><code>function <b>GetXmlInfProtocolo</b>(aChave: String): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="GetTempNameLogEnv"></a><code>function <b>GetTempNameLogEnv</b>(aFileName: String): String;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SalvarEmArquivo"></a><code>procedure <b>SalvarEmArquivo</b>(aXml: WideString);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetChaveNFe"></a><code>procedure <b>SetChaveNFe</b>(const Value: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="MontarXmlDestinatario"></a><code>function <b>MontarXmlDestinatario</b>(aChaveNFe: String): WideString;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetTemplate"></a><code>procedure <b>SetTemplate</b>(const Value: string);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="DeleteTempFile"></a><code>procedure <b>DeleteTempFile</b>(aFileName: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="getTemplate"></a><code>function <b>getTemplate</b>: string;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="DoOnXmlDestinatario"></a><code>procedure <b>DoOnXmlDestinatario</b>(const aFileName: String);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetOnXmlDestinatario"></a><code>procedure <b>SetOnXmlDestinatario</b>(const Value: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a>);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="private.gif" alt="Private" title="Private"></a></td>
+<td class="itemcode"><a name="SetSalvarLogsEmDisco"></a><code>procedure <b>SetSalvarLogsEmDisco</b>(const Value: boolean);</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Create"></a><code>Constructor <b>Create</b>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Contrutor da Classe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Destroy"></a><code>Destructor <b>Destroy</b>; override;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Finalização da classe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXmlDestinatario"></a><code>function <b>GerarXmlDestinatario</b>: WideString; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que gera XML no Padrão do Sefaz que deve ser distribuído ao Destinatário </p>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML Destinatário</p></td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="GerarXmlDestinatario"></a><code>function <b>GerarXmlDestinatario</b>(aNumDoc: String): WideString; overload;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Função que gera XML no Padrão do Sefaz que deve ser distribuído ao Destinatário  </p>
+<h6 class="description_section">Parâmetros</h6>
+<dl class="parameters">
+<dt>aNumDoc</dt>
+<dd>Utilizar Chave da NFe ou Número do Recibo</dd>
+</dl>
+<h6 class="description_section">Retornos</h6>
+<p class="return">XML Destinatário</p></td></tr>
+</table>
+<h3 class="detail">Properties</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="Template"></a><code>property <b>Template</b>: string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#getTemplate">getTemplate</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetTemplate">SetTemplate</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Diretório de Templates necessário para obter o <code>template</code> do arquivo que será gerado</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LogEnvio"></a><code>property <b>LogEnvio</b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogEnvio">fLogEnvio</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogEnvio">SetLogEnvio</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Arquivo Log de Envio da NFe, pode ser encontrado na pasta Log com sufixo env-lot</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LogConsRec"></a><code>property <b>LogConsRec</b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsRec">fLogConsRec</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsRec">SetLogConsRec</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Arquivo Log de Retorno da Consulta de Recibo, pode ser encontrado na pasta Log com sufixo pro-rec</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="LogConsChave"></a><code>property <b>LogConsChave</b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fLogConsChave">fLogConsChave</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetLogConsChave">SetLogConsChave</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Arquivo Log de Retorno da Consulta da NFe, pode ser encontrado na pasta Log com sufixo sit</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SalvarComo"></a><code>property <b>SalvarComo</b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fSalvarComo">fSalvarComo</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarComo">SetSalvarComo</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Define se o XMlDestinatário gerado será salvo em Arquivo</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="ChaveNFe"></a><code>property <b>ChaveNFe</b>: String read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fChaveNFe">fChaveNFe</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetChaveNFe">SetChaveNFe</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Chave da Nota que será gerado o XML de Destinatário</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DiretorioXmlDestinatario"></a><code>property <b>DiretorioXmlDestinatario</b> : string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioXmlDestinatario">fDiretorioXmlDestinatario</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioXmlDestinatario">SetDiretorioXmlDestinatario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Diretório em que será gerado o arquivo de Xml Destinatário, onde estáo os arquivos temporários utilizados para referenciar os logs de comunicação</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="DiretorioLog"></a><code>property <b>DiretorioLog</b>: string read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fDiretorioLog">fDiretorioLog</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetDiretorioLog">SetDiretorioLog</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Diretório de Logs da NFe</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="OnXmlDestinatario"></a><code>property <b>OnXmlDestinatario</b>: <a   href="spdNFeType.html#TOnXmlDestinatarioEvent">TOnXmlDestinatarioEvent</a> read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#fOnXmlDestinatario">fOnXmlDestinatario</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetOnXmlDestinatario">SetOnXmlDestinatario</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Evento que é chamado após a criação do arquivo de Xml de Destinatario</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a   href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><a name="SalvarLogsEmDisco"></a><code>property <b>SalvarLogsEmDisco</b>: boolean read <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#FSalvarLogsEmDisco">FSalvarLogsEmDisco</a> write <a   href="spdNFeUtils.TspdNFeXmlDestinatario.html#SetSalvarLogsEmDisco">SetSalvarLogsEmDisco</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+&nbsp;</td></tr>
+</table>
+<hr noshade size="1"><span class="appinfo"><em>Gerado por <a  target="_parent" href="http://pasdoc.sourceforge.net/">PasDoc 0.11.0</a> as 2020-11-03 14:24:53</em>
+</span>
+</body></html>

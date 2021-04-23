@@ -76,6 +76,15 @@ namespace SoftHabilInformatica.Pages.Compromissos {
         protected global::System.Web.UI.WebControls.LinkButton btnUsuario;
         
         /// <summary>
+        /// Controle UpdatePanel11.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel11;
+        
+        /// <summary>
         /// Controle btnNovo.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace SoftHabilInformatica.Pages.Compromissos {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton BtnReativar;
+        
+        /// <summary>
+        /// Controle btnConcluir.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnConcluir;
         
         /// <summary>
         /// Controle UpdatePanel10.

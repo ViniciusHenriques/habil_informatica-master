@@ -31,7 +31,6 @@ namespace SoftHabilInformatica.Pages.Compromissos
         protected void LimpaCampos(bool LimparSession)
         {          
             txtCodigo.Text = "Novo";
-            CarregaSituacao();
             txtContato.Text = "";
             txtCodPessoa.Text = "";
             txtPessoa.Text = "";
@@ -117,6 +116,7 @@ namespace SoftHabilInformatica.Pages.Compromissos
             ddlSituacao.DataTextField = "DescricaoTipo";
             ddlSituacao.DataValueField = "CodigoTipo";
             ddlSituacao.DataBind();
+            ddlSituacao.SelectedValue = "168";
 
             ddlTipoCompromisso.DataSource = sd.TipoCompromisso();
             ddlTipoCompromisso.DataTextField = "DescricaoTipo";
@@ -212,26 +212,31 @@ namespace SoftHabilInformatica.Pages.Compromissos
                     grdAnexo.DataBind();
                 }
 
-              
-
                 Session["ZoomAnexoTimelineCliente"] = null;
                 Session["ZoomAnexoTimelineCliente2"] = null;
 
                 DateTime resultado = DateTime.MinValue;
                 if (DateTime.TryParse(txtData.Text, out resultado))
-                {
-                    
-                    if (ddlSituacao.SelectedValue == "169")
+                {                    
+                    if (ddlSituacao.SelectedValue == "169" )
                     {
                         BtnReativar.Visible = true;
                         btnSalvar.Visible = false;
+                        btnConcluir.Visible = false;
+                    }
+                    else if (ddlSituacao.SelectedValue == "206")
+                    {
+                        BtnReativar.Visible = false;
+                        btnSalvar.Visible = true;
+                        btnConcluir.Visible = false;
                     }
                     else
                     {
                         BtnReativar.Visible = false;
                         btnSalvar.Visible = true;
-                    }
-                    
+                        if(ddlSituacao.SelectedValue == "167")
+                            btnConcluir.Visible = true;
+                    }                  
                 }
                 
                 if (grdAgendamento.Rows.Count == 0)
@@ -247,6 +252,8 @@ namespace SoftHabilInformatica.Pages.Compromissos
                 if (txtCodigo.Text == "")
                     LimpaCampos(true);
                
+                if(ddlTipoCompromisso.Items.Count == 0 )
+                    CarregaSituacao();
 
             }
             catch(Exception ex)
@@ -273,7 +280,7 @@ namespace SoftHabilInformatica.Pages.Compromissos
                 p.Telefone = txtTelefone.Text;
                 p.Contato = txtContato.Text;
                 p.Local = txtLocal.Text;
-                p.CodigoSituacao = 167;
+                p.CodigoSituacao = Convert.ToInt32(ddlSituacao.SelectedValue);
                 p.CodigoUsuario = Convert.ToInt32(Session["CodUsuario"]);
                 p.CodigoEmpresa = Convert.ToInt32(Session["CodEmpresa"]);
                 p.ListaUsuario = (List<UsuarioAgendamento>)Session["ListaUsuariosPermitidos"];
@@ -310,20 +317,41 @@ namespace SoftHabilInformatica.Pages.Compromissos
                     ListaAnexoAgendamento.Add(anexo);
                 }
 
-                if (txtCodigo.Text == "Novo")
+                if (txtCodigo.Text == "Novo" )
                 {
+                    p.CodigoSituacao = 167;
                     d.Inserir(p, ListaAnexoAgendamento);
                     ShowMessage("Agendamento Incluído com Sucesso!!!", MessageType.Success);
                 }
                 else
                 {
                     p.CodigoIndex = Convert.ToInt32(txtCodigo.Text);
-                    d.Atualizar(p, ListaAnexoAgendamento);
+
+                    if (p.CodigoSituacao == 206)
+                    {
+                        AgendamentoCompromisso p2 = new AgendamentoCompromisso();
+                        p2 = d.PesquisarAgendamento(p.CodigoIndex);
+                        if (p2.DataHoraAgendamento != p.DataHoraAgendamento)
+                        {
+                            p.CodigoSituacao = 167;
+                            d.Inserir(p, ListaAnexoAgendamento);
+                        }
+                        else
+                        {
+                            d.Atualizar(p, ListaAnexoAgendamento);
+                        }
+                    }
+                    else
+                    {
+                        d.Atualizar(p, ListaAnexoAgendamento);
+                    }
 
                     ShowMessage("Agendamento Alterado com Sucesso!!!", MessageType.Success);
                 }
                 
                 LimpaCampos(true);
+                btnConcluir.Visible = false;
+                BtnReativar.Visible = false;
                 Session["ZoomAgendamento"] = null;
                 txtData_TextChanged(sender, e);
             }
@@ -662,7 +690,19 @@ namespace SoftHabilInformatica.Pages.Compromissos
                     {
                         BtnReativar.Visible = true;
                         btnSalvar.Visible = false;
+                        btnConcluir.Visible = false;
                     }
+                    else if(agenda.CodigoSituacao == 206)
+                    {
+                        BtnReativar.Visible = false;
+                        btnSalvar.Visible = true;
+                        btnConcluir.Visible = false;
+                    }
+                    else
+                    {
+                        btnConcluir.Visible = true;
+                    }
+
                 }
                 else if (x == "Cancelar")
                 {
@@ -691,11 +731,23 @@ namespace SoftHabilInformatica.Pages.Compromissos
 
                 for (int i = 0; i < Lista.Count; i++)
                 {
-                    Agendamentos += "{" +
-                                        "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n", " ").Replace("\r", " ") + "'," +
-                                        "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
-                                        "color: '" + Lista[i].CorLembrete + "'" +
-                                    "},";
+                    if (Lista[i].CodigoSituacao == 206)
+                    {
+                        Agendamentos += "{" +
+                                            "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n", " ").Replace("\r", " ") + "'," +
+                                            "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
+                                            "color: '" + Lista[i].CorLembrete + "'," +
+                                            "className: 'TarefaConcluida'" +
+                                        "},";
+                    }
+                    else
+                    {
+                        Agendamentos += "{" +
+                                            "title: '" + Lista[i].DataHoraAgendamento.ToString("HH:mm") + " - " + Lista[i].Anotacao.Replace("\n", " ").Replace("\r", " ") + "'," +
+                                            "start: '" + Lista[i].DataHoraAgendamento.ToString("yyyy-MM-dd") + "'," +
+                                            "color: '" + Lista[i].CorLembrete + "'" +
+                                        "},";
+                    }
                 }
 
                 ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "MostrarCalendario()", true);
@@ -731,6 +783,7 @@ namespace SoftHabilInformatica.Pages.Compromissos
             ddlSituacao.SelectedValue = "167";
             BtnReativar.Visible = false;
             btnSalvar.Visible = true;
+            btnConcluir.Visible = false;
             btnSalvar_Click(sender, e);
             
         }
@@ -1092,6 +1145,19 @@ namespace SoftHabilInformatica.Pages.Compromissos
         {         
             //CompactaDocumento();
             //Response.Redirect("~/Pages/Compromissos/ManAgendamento.aspx");
+        }
+
+        protected void BtnConcluir_Click(object sender, EventArgs e)
+        {
+            ddlSituacao.SelectedValue = "206";
+            BtnReativar.Visible = false;
+            btnSalvar.Visible = true;
+            btnSalvar_Click(sender, e);
+        }
+
+        protected void txtAnotacao_TextChanged1(object sender, EventArgs e)
+        {
+            txtAnotacao.Text = txtAnotacao.Text.Replace("<", "[").Replace(">", "]");
         }
     }
 }
