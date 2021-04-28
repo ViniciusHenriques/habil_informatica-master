@@ -32,12 +32,24 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_FORMA_PGTO obj = new TECNO_NF_FORMA_PGTO();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.FORMA_PGTO_NITEM = Convert.ToDecimal(Dr["FORMA_PGTO_NITEM"]);
-                    obj.TPAG = Convert.ToString(Dr["TPAG"]);
-                    obj.VPAG = Convert.ToDecimal(Dr["VPAG"]);
-                    obj.VTROCO = Convert.ToDecimal(Dr["VTROCO"]);
-                    obj.INDPAG = Convert.ToString(Dr["INDPAG"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["FORMA_PGTO_NITEM"] != DBNull.Value)
+                        obj.FORMA_PGTO_NITEM = Convert.ToDecimal(Dr["FORMA_PGTO_NITEM"]);
+
+                    if (Dr["TPAG"] != DBNull.Value)
+                        obj.TPAG = Convert.ToString(Dr["TPAG"]);
+
+                    if (Dr["VPAG"] != DBNull.Value)
+                        obj.VPAG = Convert.ToDecimal(Dr["VPAG"]);
+
+                    if (Dr["VTROCO"] != DBNull.Value)
+                        obj.VTROCO = Convert.ToDecimal(Dr["VTROCO"]);
+
+                    if (Dr["INDPAG"] != DBNull.Value)
+                        obj.INDPAG = Convert.ToString(Dr["INDPAG"]);
+
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -52,7 +64,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_FORMA_PGTO PesquisarTECNO_NF_FORMA_PGTO(string strID_NOTA_FISCAL)
+        public TECNO_NF_FORMA_PGTO PesquisarTECNO_NF_FORMA_PGTO(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -61,7 +73,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -69,12 +81,23 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_FORMA_PGTO();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.FORMA_PGTO_NITEM = Convert.ToDecimal(Dr["FORMA_PGTO_NITEM"]);
-                    obj.TPAG = Convert.ToString(Dr["TPAG"]);
-                    obj.VPAG = Convert.ToDecimal(Dr["VPAG"]);
-                    obj.VTROCO = Convert.ToDecimal(Dr["VTROCO"]);
-                    obj.INDPAG = Convert.ToString(Dr["INDPAG"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["FORMA_PGTO_NITEM"] != DBNull.Value)
+                        obj.FORMA_PGTO_NITEM = Convert.ToDecimal(Dr["FORMA_PGTO_NITEM"]);
+
+                    if (Dr["TPAG"] != DBNull.Value)
+                        obj.TPAG = Convert.ToString(Dr["TPAG"]);
+
+                    if (Dr["VPAG"] != DBNull.Value)
+                        obj.VPAG = Convert.ToDecimal(Dr["VPAG"]);
+
+                    if (Dr["VTROCO"] != DBNull.Value)
+                        obj.VTROCO = Convert.ToDecimal(Dr["VTROCO"]);
+
+                    if (Dr["INDPAG"] != DBNull.Value)
+                        obj.INDPAG = Convert.ToString(Dr["INDPAG"]);
                 }
                 return obj;
             }

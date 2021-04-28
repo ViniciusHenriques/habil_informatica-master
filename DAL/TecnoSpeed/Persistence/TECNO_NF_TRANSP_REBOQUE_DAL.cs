@@ -32,11 +32,20 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_TRANSP_REBOQUE obj = new TECNO_NF_TRANSP_REBOQUE();
-                    obj.REBOQUE_PLACA = Convert.ToString(Dr["REBOQUE_PLACA"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.REBOQUE_UF = Convert.ToString(Dr["REBOQUE_UF"]);
-                    obj.REBOQUE_RNTC = Convert.ToString(Dr["REBOQUE_RNTC"]);
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["REBOQUE_PLACA"] != DBNull.Value)
+                        obj.REBOQUE_PLACA = Convert.ToString(Dr["REBOQUE_PLACA"]);
+
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+
+                    if (Dr["REBOQUE_UF"] != DBNull.Value)
+                        obj.REBOQUE_UF = Convert.ToString(Dr["REBOQUE_UF"]);
+
+                    if (Dr["REBOQUE_RNTC"] != DBNull.Value)
+                        obj.REBOQUE_RNTC = Convert.ToString(Dr["REBOQUE_RNTC"]);
+
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -51,7 +60,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_TRANSP_REBOQUE PesquisarTECNO_NF_TRANSP_REBOQUE(string strID_NOTA_FISCAL)
+        public TECNO_NF_TRANSP_REBOQUE PesquisarTECNO_NF_TRANSP_REBOQUE(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -60,7 +69,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -68,11 +77,20 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_TRANSP_REBOQUE();
-                    obj.REBOQUE_PLACA = Convert.ToString(Dr["REBOQUE_PLACA"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.REBOQUE_UF = Convert.ToString(Dr["REBOQUE_UF"]);
-                    obj.REBOQUE_RNTC = Convert.ToString(Dr["REBOQUE_RNTC"]);
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["REBOQUE_PLACA"] != DBNull.Value)
+                        obj.REBOQUE_PLACA = Convert.ToString(Dr["REBOQUE_PLACA"]);
+
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+
+                    if (Dr["REBOQUE_UF"] != DBNull.Value)
+                        obj.REBOQUE_UF = Convert.ToString(Dr["REBOQUE_UF"]);
+
+                    if (Dr["REBOQUE_RNTC"] != DBNull.Value)
+                        obj.REBOQUE_RNTC = Convert.ToString(Dr["REBOQUE_RNTC"]);
+
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
                 }
                 return obj;
             }

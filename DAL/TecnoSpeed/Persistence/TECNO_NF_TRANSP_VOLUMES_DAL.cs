@@ -32,14 +32,29 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_TRANSP_VOLUMES obj = new TECNO_NF_TRANSP_VOLUMES();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.VOL_QVOL = Convert.ToDecimal(Dr["VOL_QVOL"]);
-                    obj.VOL_ESP = Convert.ToString(Dr["VOL_ESP"]);
-                    obj.VOL_MARCA = Convert.ToString(Dr["VOL_MARCA"]);
-                    obj.VOL_NVOL = Convert.ToString(Dr["VOL_NVOL"]);
-                    obj.VOL_PESOL = Convert.ToDecimal(Dr["VOL_PESOL"]);
-                    obj.VOL_PESOB = Convert.ToDecimal(Dr["VOL_PESOB"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+
+                    if (Dr["VOL_QVOL"] != DBNull.Value)
+                        obj.VOL_QVOL = Convert.ToDecimal(Dr["VOL_QVOL"]);
+
+                    if (Dr["VOL_ESP"] != DBNull.Value)
+                        obj.VOL_ESP = Convert.ToString(Dr["VOL_ESP"]);
+
+                    if (Dr["VOL_MARCA"] != DBNull.Value)
+                        obj.VOL_MARCA = Convert.ToString(Dr["VOL_MARCA"]);
+
+                    if (Dr["VOL_NVOL"] != DBNull.Value)
+                        obj.VOL_NVOL = Convert.ToString(Dr["VOL_NVOL"]);
+
+                    if (Dr["VOL_PESOL"] != DBNull.Value)
+                        obj.VOL_PESOL = Convert.ToDecimal(Dr["VOL_PESOL"]);
+
+                    if (Dr["VOL_PESOB"] != DBNull.Value)
+                        obj.VOL_PESOB = Convert.ToDecimal(Dr["VOL_PESOB"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -54,7 +69,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_TRANSP_VOLUMES PesquisarTECNO_NF_TRANSP_VOLUMES(string strID_NOTA_FISCAL)
+        public TECNO_NF_TRANSP_VOLUMES PesquisarTECNO_NF_TRANSP_VOLUMES(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -63,7 +78,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -71,14 +86,29 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_TRANSP_VOLUMES();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.VOL_QVOL = Convert.ToDecimal(Dr["VOL_QVOL"]);
-                    obj.VOL_ESP = Convert.ToString(Dr["VOL_ESP"]);
-                    obj.VOL_MARCA = Convert.ToString(Dr["VOL_MARCA"]);
-                    obj.VOL_NVOL = Convert.ToString(Dr["VOL_NVOL"]);
-                    obj.VOL_PESOL = Convert.ToDecimal(Dr["VOL_PESOL"]);
-                    obj.VOL_PESOB = Convert.ToDecimal(Dr["VOL_PESOB"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+
+                    if (Dr["VOL_QVOL"] != DBNull.Value)
+                        obj.VOL_QVOL = Convert.ToDecimal(Dr["VOL_QVOL"]);
+
+                    if (Dr["VOL_ESP"] != DBNull.Value)
+                        obj.VOL_ESP = Convert.ToString(Dr["VOL_ESP"]);
+
+                    if (Dr["VOL_MARCA"] != DBNull.Value)
+                        obj.VOL_MARCA = Convert.ToString(Dr["VOL_MARCA"]);
+
+                    if (Dr["VOL_NVOL"] != DBNull.Value)
+                        obj.VOL_NVOL = Convert.ToString(Dr["VOL_NVOL"]);
+
+                    if (Dr["VOL_PESOL"] != DBNull.Value)
+                        obj.VOL_PESOL = Convert.ToDecimal(Dr["VOL_PESOL"]);
+
+                    if (Dr["VOL_PESOB"] != DBNull.Value)
+                        obj.VOL_PESOB = Convert.ToDecimal(Dr["VOL_PESOB"]);
                 }
                 return obj;
             }

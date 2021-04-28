@@ -32,13 +32,26 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_TRANSP_RETTRANSP obj = new TECNO_NF_TRANSP_RETTRANSP();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.RETTRANSP_VSERV = Convert.ToDecimal(Dr["RETTRANSP_VSERV"]);
-                    obj.RETTRANSP_VBCRET = Convert.ToDecimal(Dr["RETTRANSP_VBCRET"]);
-                    obj.RETTRANSP_PICMSRET = Convert.ToDecimal(Dr["RETTRANSP_PICMSRET"]);
-                    obj.RETTRANSP_VICMSRET = Convert.ToDecimal(Dr["RETTRANSP_VICMSRET"]);
-                    obj.RETTRANSP_CFOP = Convert.ToDecimal(Dr["RETTRANSP_CFOP"]);
-                    obj.RETTRANSP_CMUNFG = Convert.ToDecimal(Dr["RETTRANSP_CMUNFG"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["RETTRANSP_VSERV"] != DBNull.Value)
+                        obj.RETTRANSP_VSERV = Convert.ToDecimal(Dr["RETTRANSP_VSERV"]);
+
+                    if (Dr["RETTRANSP_VBCRET"] != DBNull.Value)
+                        obj.RETTRANSP_VBCRET = Convert.ToDecimal(Dr["RETTRANSP_VBCRET"]);
+
+                    if (Dr["RETTRANSP_PICMSRET"] != DBNull.Value)
+                        obj.RETTRANSP_PICMSRET = Convert.ToDecimal(Dr["RETTRANSP_PICMSRET"]);
+
+                    if (Dr["RETTRANSP_VICMSRET"] != DBNull.Value)
+                        obj.RETTRANSP_VICMSRET = Convert.ToDecimal(Dr["RETTRANSP_VICMSRET"]);
+
+                    if (Dr["RETTRANSP_CFOP"] != DBNull.Value)
+                        obj.RETTRANSP_CFOP = Convert.ToDecimal(Dr["RETTRANSP_CFOP"]);
+
+                    if (Dr["RETTRANSP_CMUNFG"] != DBNull.Value)
+                        obj.RETTRANSP_CMUNFG = Convert.ToDecimal(Dr["RETTRANSP_CMUNFG"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -53,7 +66,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_TRANSP_RETTRANSP PesquisarTECNO_NF_TRANSP_RETTRANSP(string strID_NOTA_FISCAL)
+        public TECNO_NF_TRANSP_RETTRANSP PesquisarTECNO_NF_TRANSP_RETTRANSP(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -62,7 +75,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -70,13 +83,26 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_TRANSP_RETTRANSP();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.RETTRANSP_VSERV = Convert.ToDecimal(Dr["RETTRANSP_VSERV"]);
-                    obj.RETTRANSP_VBCRET = Convert.ToDecimal(Dr["RETTRANSP_VBCRET"]);
-                    obj.RETTRANSP_PICMSRET = Convert.ToDecimal(Dr["RETTRANSP_PICMSRET"]);
-                    obj.RETTRANSP_VICMSRET = Convert.ToDecimal(Dr["RETTRANSP_VICMSRET"]);
-                    obj.RETTRANSP_CFOP = Convert.ToDecimal(Dr["RETTRANSP_CFOP"]);
-                    obj.RETTRANSP_CMUNFG = Convert.ToDecimal(Dr["RETTRANSP_CMUNFG"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["RETTRANSP_VSERV"] != DBNull.Value)
+                        obj.RETTRANSP_VSERV = Convert.ToDecimal(Dr["RETTRANSP_VSERV"]);
+
+                    if (Dr["RETTRANSP_VBCRET"] != DBNull.Value)
+                        obj.RETTRANSP_VBCRET = Convert.ToDecimal(Dr["RETTRANSP_VBCRET"]);
+
+                    if (Dr["RETTRANSP_PICMSRET"] != DBNull.Value)
+                        obj.RETTRANSP_PICMSRET = Convert.ToDecimal(Dr["RETTRANSP_PICMSRET"]);
+
+                    if (Dr["RETTRANSP_VICMSRET"] != DBNull.Value)
+                        obj.RETTRANSP_VICMSRET = Convert.ToDecimal(Dr["RETTRANSP_VICMSRET"]);
+
+                    if (Dr["RETTRANSP_CFOP"] != DBNull.Value)
+                        obj.RETTRANSP_CFOP = Convert.ToDecimal(Dr["RETTRANSP_CFOP"]);
+
+                    if (Dr["RETTRANSP_CMUNFG"] != DBNull.Value)
+                        obj.RETTRANSP_CMUNFG = Convert.ToDecimal(Dr["RETTRANSP_CMUNFG"]);
                 }
                 return obj;
             }

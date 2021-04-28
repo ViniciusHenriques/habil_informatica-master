@@ -32,10 +32,17 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_TRANSP_VEIC obj = new TECNO_NF_TRANSP_VEIC();
-                    obj.VEICTRANSP_PLACA = Convert.ToString(Dr["VEICTRANSP_PLACA"]);
-                    obj.VEICTRANSP_UF = Convert.ToString(Dr["VEICTRANSP_UF"]);
-                    obj.VEICTRANSP_RNTC = Convert.ToString(Dr["VEICTRANSP_RNTC"]);
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["VEICTRANSP_PLACA"] != DBNull.Value)
+                        obj.VEICTRANSP_PLACA = Convert.ToString(Dr["VEICTRANSP_PLACA"]);
+
+                    if (Dr["VEICTRANSP_UF"] != DBNull.Value)
+                        obj.VEICTRANSP_UF = Convert.ToString(Dr["VEICTRANSP_UF"]);
+
+                    if (Dr["VEICTRANSP_RNTC"] != DBNull.Value)
+                        obj.VEICTRANSP_RNTC = Convert.ToString(Dr["VEICTRANSP_RNTC"]);
+
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -50,7 +57,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_TRANSP_VEIC PesquisarTECNO_NF_TRANSP_VEIC(string strID_NOTA_FISCAL)
+        public TECNO_NF_TRANSP_VEIC PesquisarTECNO_NF_TRANSP_VEIC(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -59,7 +66,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -67,10 +74,17 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_TRANSP_VEIC();
-                    obj.VEICTRANSP_PLACA = Convert.ToString(Dr["VEICTRANSP_PLACA"]);
-                    obj.VEICTRANSP_UF = Convert.ToString(Dr["VEICTRANSP_UF"]);
-                    obj.VEICTRANSP_RNTC = Convert.ToString(Dr["VEICTRANSP_RNTC"]);
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["VEICTRANSP_PLACA"] != DBNull.Value)
+                        obj.VEICTRANSP_PLACA = Convert.ToString(Dr["VEICTRANSP_PLACA"]);
+
+                    if (Dr["VEICTRANSP_UF"] != DBNull.Value)
+                        obj.VEICTRANSP_UF = Convert.ToString(Dr["VEICTRANSP_UF"]);
+
+                    if (Dr["VEICTRANSP_RNTC"] != DBNull.Value)
+                        obj.VEICTRANSP_RNTC = Convert.ToString(Dr["VEICTRANSP_RNTC"]);
+
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
                 }
                 return obj;
             }

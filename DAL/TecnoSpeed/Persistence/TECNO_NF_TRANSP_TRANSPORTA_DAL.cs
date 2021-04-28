@@ -32,13 +32,26 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_TRANSP_TRANSPORTA obj = new TECNO_NF_TRANSP_TRANSPORTA();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.TRANSPORTA_CNPJ_CPF = Convert.ToString(Dr["TRANSPORTA_CNPJ_CPF"]);
-                    obj.TRANSPORTA_XNOME = Convert.ToString(Dr["TRANSPORTA_XNOME"]);
-                    obj.TRANSPORTA_IE = Convert.ToString(Dr["TRANSPORTA_IE"]);
-                    obj.TRANSPORTA_XENDER = Convert.ToString(Dr["TRANSPORTA_XENDER"]);
-                    obj.TRANSPORTA_XMUN = Convert.ToString(Dr["TRANSPORTA_XMUN"]);
-                    obj.TRANSPORTA_UF = Convert.ToString(Dr["TRANSPORTA_UF"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["TRANSPORTA_CNPJ_CPF"] != DBNull.Value)
+                        obj.TRANSPORTA_CNPJ_CPF = Convert.ToString(Dr["TRANSPORTA_CNPJ_CPF"]);
+
+                    if (Dr["TRANSPORTA_XNOME"] != DBNull.Value)
+                        obj.TRANSPORTA_XNOME = Convert.ToString(Dr["TRANSPORTA_XNOME"]);
+
+                    if (Dr["TRANSPORTA_IE"] != DBNull.Value)
+                        obj.TRANSPORTA_IE = Convert.ToString(Dr["TRANSPORTA_IE"]);
+
+                    if (Dr["TRANSPORTA_XENDER"] != DBNull.Value)
+                        obj.TRANSPORTA_XENDER = Convert.ToString(Dr["TRANSPORTA_XENDER"]);
+
+                    if (Dr["TRANSPORTA_XMUN"] != DBNull.Value)
+                        obj.TRANSPORTA_XMUN = Convert.ToString(Dr["TRANSPORTA_XMUN"]);
+
+                    if (Dr["TRANSPORTA_UF"] != DBNull.Value)
+                        obj.TRANSPORTA_UF = Convert.ToString(Dr["TRANSPORTA_UF"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -53,7 +66,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_TRANSP_TRANSPORTA PesquisarTECNO_NF_TRANSP_TRANSPORTA(string strID_NOTA_FISCAL)
+        public TECNO_NF_TRANSP_TRANSPORTA PesquisarTECNO_NF_TRANSP_TRANSPORTA(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -62,7 +75,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -70,13 +83,26 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_TRANSP_TRANSPORTA();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.TRANSPORTA_CNPJ_CPF = Convert.ToString(Dr["TRANSPORTA_CNPJ_CPF"]);
-                    obj.TRANSPORTA_XNOME = Convert.ToString(Dr["TRANSPORTA_XNOME"]);
-                    obj.TRANSPORTA_IE = Convert.ToString(Dr["TRANSPORTA_IE"]);
-                    obj.TRANSPORTA_XENDER = Convert.ToString(Dr["TRANSPORTA_XENDER"]);
-                    obj.TRANSPORTA_XMUN = Convert.ToString(Dr["TRANSPORTA_XMUN"]);
-                    obj.TRANSPORTA_UF = Convert.ToString(Dr["TRANSPORTA_UF"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["TRANSPORTA_CNPJ_CPF"] != DBNull.Value)
+                        obj.TRANSPORTA_CNPJ_CPF = Convert.ToString(Dr["TRANSPORTA_CNPJ_CPF"]);
+
+                    if (Dr["TRANSPORTA_XNOME"] != DBNull.Value)
+                        obj.TRANSPORTA_XNOME = Convert.ToString(Dr["TRANSPORTA_XNOME"]);
+
+                    if (Dr["TRANSPORTA_IE"] != DBNull.Value)
+                        obj.TRANSPORTA_IE = Convert.ToString(Dr["TRANSPORTA_IE"]);
+
+                    if (Dr["TRANSPORTA_XENDER"] != DBNull.Value)
+                        obj.TRANSPORTA_XENDER = Convert.ToString(Dr["TRANSPORTA_XENDER"]);
+
+                    if (Dr["TRANSPORTA_XMUN"] != DBNull.Value)
+                        obj.TRANSPORTA_XMUN = Convert.ToString(Dr["TRANSPORTA_XMUN"]);
+
+                    if (Dr["TRANSPORTA_UF"] != DBNull.Value)
+                        obj.TRANSPORTA_UF = Convert.ToString(Dr["TRANSPORTA_UF"]);
                 }
                 return obj;
             }

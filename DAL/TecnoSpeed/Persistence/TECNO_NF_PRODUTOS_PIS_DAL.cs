@@ -32,19 +32,44 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_PRODUTOS_PIS obj = new TECNO_NF_PRODUTOS_PIS();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.PIS_CST = Convert.ToDecimal(Dr["PIS_CST"]);
-                    obj.PIS_VBC = Convert.ToDecimal(Dr["PIS_VBC"]);
-                    obj.PIS_PPIS = Convert.ToDecimal(Dr["PIS_PPIS"]);
-                    obj.PIS_VPIS = Convert.ToDecimal(Dr["PIS_VPIS"]);
-                    obj.PIS_QBCPROD = Convert.ToDecimal(Dr["PIS_QBCPROD"]);
-                    obj.PIS_VALIQPROD = Convert.ToDecimal(Dr["PIS_VALIQPROD"]);
-                    obj.PISST_VBC = Convert.ToDecimal(Dr["PISST_VBC"]);
-                    obj.PISST_PPIS = Convert.ToDecimal(Dr["PISST_PPIS"]);
-                    obj.PISST_QBCPROD = Convert.ToDecimal(Dr["PISST_QBCPROD"]);
-                    obj.PISST_VALIQPROD = Convert.ToDecimal(Dr["PISST_VALIQPROD"]);
-                    obj.PISST_VPIS = Convert.ToDecimal(Dr["PISST_VPIS"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["PIS_CST"] != DBNull.Value)
+                        obj.PIS_CST = Convert.ToDecimal(Dr["PIS_CST"]);
+
+                    if (Dr["PIS_VBC"] != DBNull.Value)
+                        obj.PIS_VBC = Convert.ToDecimal(Dr["PIS_VBC"]);
+
+                    if (Dr["PIS_PPIS"] != DBNull.Value)
+                        obj.PIS_PPIS = Convert.ToDecimal(Dr["PIS_PPIS"]);
+
+                    if (Dr["PIS_VPIS"] != DBNull.Value)
+                        obj.PIS_VPIS = Convert.ToDecimal(Dr["PIS_VPIS"]);
+
+                    if (Dr["PIS_QBCPROD"] != DBNull.Value)
+                        obj.PIS_QBCPROD = Convert.ToDecimal(Dr["PIS_QBCPROD"]);
+
+                    if (Dr["PIS_VALIQPROD"] != DBNull.Value)
+                        obj.PIS_VALIQPROD = Convert.ToDecimal(Dr["PIS_VALIQPROD"]);
+
+                    if (Dr["PISST_VBC"] != DBNull.Value)
+                        obj.PISST_VBC = Convert.ToDecimal(Dr["PISST_VBC"]);
+
+                    if (Dr["PISST_PPIS"] != DBNull.Value)
+                        obj.PISST_PPIS = Convert.ToDecimal(Dr["PISST_PPIS"]);
+
+                    if (Dr["PISST_QBCPROD"] != DBNull.Value)
+                        obj.PISST_QBCPROD = Convert.ToDecimal(Dr["PISST_QBCPROD"]);
+
+                    if (Dr["PISST_VALIQPROD"] != DBNull.Value)
+                        obj.PISST_VALIQPROD = Convert.ToDecimal(Dr["PISST_VALIQPROD"]);
+
+                    if (Dr["PISST_VPIS"] != DBNull.Value)
+                        obj.PISST_VPIS = Convert.ToDecimal(Dr["PISST_VPIS"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -59,16 +84,17 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_PRODUTOS_PIS PesquisarTECNO_NF_PRODUTOS_PIS(string strID_NOTA_FISCAL)
+        public TECNO_NF_PRODUTOS_PIS PesquisarTECNO_NF_PRODUTOS_PIS(decimal decID_NOTA_FISCAL, decimal decPROD_NITEM)
         {
             try
             {
                 AbrirConexao();
-                string comando = "Select * from TECNO_NF_PRODUTOS_PIS Where ID_NOTA_FISCAL = @v1 ";
+                string comando = "Select * from TECNO_NF_PRODUTOS_PIS Where ID_NOTA_FISCAL = @v1 and PROD_NITEM = @v2";
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v2", decPROD_NITEM);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -76,19 +102,44 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_PRODUTOS_PIS();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.PIS_CST = Convert.ToDecimal(Dr["PIS_CST"]);
-                    obj.PIS_VBC = Convert.ToDecimal(Dr["PIS_VBC"]);
-                    obj.PIS_PPIS = Convert.ToDecimal(Dr["PIS_PPIS"]);
-                    obj.PIS_VPIS = Convert.ToDecimal(Dr["PIS_VPIS"]);
-                    obj.PIS_QBCPROD = Convert.ToDecimal(Dr["PIS_QBCPROD"]);
-                    obj.PIS_VALIQPROD = Convert.ToDecimal(Dr["PIS_VALIQPROD"]);
-                    obj.PISST_VBC = Convert.ToDecimal(Dr["PISST_VBC"]);
-                    obj.PISST_PPIS = Convert.ToDecimal(Dr["PISST_PPIS"]);
-                    obj.PISST_QBCPROD = Convert.ToDecimal(Dr["PISST_QBCPROD"]);
-                    obj.PISST_VALIQPROD = Convert.ToDecimal(Dr["PISST_VALIQPROD"]);
-                    obj.PISST_VPIS = Convert.ToDecimal(Dr["PISST_VPIS"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["PIS_CST"] != DBNull.Value)
+                        obj.PIS_CST = Convert.ToDecimal(Dr["PIS_CST"]);
+
+                    if (Dr["PIS_VBC"] != DBNull.Value)
+                        obj.PIS_VBC = Convert.ToDecimal(Dr["PIS_VBC"]);
+
+                    if (Dr["PIS_PPIS"] != DBNull.Value)
+                        obj.PIS_PPIS = Convert.ToDecimal(Dr["PIS_PPIS"]);
+
+                    if (Dr["PIS_VPIS"] != DBNull.Value)
+                        obj.PIS_VPIS = Convert.ToDecimal(Dr["PIS_VPIS"]);
+
+                    if (Dr["PIS_QBCPROD"] != DBNull.Value)
+                        obj.PIS_QBCPROD = Convert.ToDecimal(Dr["PIS_QBCPROD"]);
+
+                    if (Dr["PIS_VALIQPROD"] != DBNull.Value)
+                        obj.PIS_VALIQPROD = Convert.ToDecimal(Dr["PIS_VALIQPROD"]);
+
+                    if (Dr["PISST_VBC"] != DBNull.Value)
+                        obj.PISST_VBC = Convert.ToDecimal(Dr["PISST_VBC"]);
+
+                    if (Dr["PISST_PPIS"] != DBNull.Value)
+                        obj.PISST_PPIS = Convert.ToDecimal(Dr["PISST_PPIS"]);
+
+                    if (Dr["PISST_QBCPROD"] != DBNull.Value)
+                        obj.PISST_QBCPROD = Convert.ToDecimal(Dr["PISST_QBCPROD"]);
+
+                    if (Dr["PISST_VALIQPROD"] != DBNull.Value)
+                        obj.PISST_VALIQPROD = Convert.ToDecimal(Dr["PISST_VALIQPROD"]);
+
+                    if (Dr["PISST_VPIS"] != DBNull.Value)
+                        obj.PISST_VPIS = Convert.ToDecimal(Dr["PISST_VPIS"]);
                 }
                 return obj;
             }

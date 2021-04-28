@@ -32,17 +32,38 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_PRODUTOS_ICMS_UFDEST obj = new TECNO_NF_PRODUTOS_ICMS_UFDEST();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.VBCUFDEST = Convert.ToDecimal(Dr["VBCUFDEST"]);
-                    obj.PICMSUFDEST = Convert.ToDecimal(Dr["PICMSUFDEST"]);
-                    obj.PICMSINTER = Convert.ToDecimal(Dr["PICMSINTER"]);
-                    obj.PICMSINTERPART = Convert.ToDecimal(Dr["PICMSINTERPART"]);
-                    obj.VICMSUFDEST = Convert.ToDecimal(Dr["VICMSUFDEST"]);
-                    obj.VICMSUFREMET = Convert.ToDecimal(Dr["VICMSUFREMET"]);
-                    obj.PFCPUFDEST = Convert.ToDecimal(Dr["PFCPUFDEST"]);
-                    obj.VFCPUFDEST = Convert.ToDecimal(Dr["VFCPUFDEST"]);
-                    obj.VBCFCPUFDEST = Convert.ToDecimal(Dr["VBCFCPUFDEST"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["VBCUFDEST"] != DBNull.Value)
+                        obj.VBCUFDEST = Convert.ToDecimal(Dr["VBCUFDEST"]);
+
+                    if (Dr["PICMSUFDEST"] != DBNull.Value)
+                        obj.PICMSUFDEST = Convert.ToDecimal(Dr["PICMSUFDEST"]);
+
+                    if (Dr["PICMSINTER"] != DBNull.Value)
+                        obj.PICMSINTER = Convert.ToDecimal(Dr["PICMSINTER"]);
+
+                    if (Dr["PICMSINTERPART"] != DBNull.Value)
+                        obj.PICMSINTERPART = Convert.ToDecimal(Dr["PICMSINTERPART"]);
+
+                    if (Dr["VICMSUFDEST"] != DBNull.Value)
+                        obj.VICMSUFDEST = Convert.ToDecimal(Dr["VICMSUFDEST"]);
+
+                    if (Dr["VICMSUFREMET"] != DBNull.Value)
+                        obj.VICMSUFREMET = Convert.ToDecimal(Dr["VICMSUFREMET"]);
+
+                    if (Dr["PFCPUFDEST"] != DBNull.Value)
+                        obj.PFCPUFDEST = Convert.ToDecimal(Dr["PFCPUFDEST"]);
+
+                    if (Dr["VFCPUFDEST"] != DBNull.Value)
+                        obj.VFCPUFDEST = Convert.ToDecimal(Dr["VFCPUFDEST"]);
+
+                    if (Dr["VBCFCPUFDEST"] != DBNull.Value)
+                        obj.VBCFCPUFDEST = Convert.ToDecimal(Dr["VBCFCPUFDEST"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -57,16 +78,17 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_PRODUTOS_ICMS_UFDEST PesquisarTECNO_NF_PRODUTOS_ICMS_UFDEST(string strID_NOTA_FISCAL)
+        public TECNO_NF_PRODUTOS_ICMS_UFDEST PesquisarTECNO_NF_PRODUTOS_ICMS_UFDEST(decimal decID_NOTA_FISCAL, decimal decPROD_NITEM)
         {
             try
             {
                 AbrirConexao();
-                string comando = "Select * from TECNO_NF_PRODUTOS_ICMS_UFDEST Where ID_NOTA_FISCAL = @v1 ";
+                string comando = "Select * from TECNO_NF_PRODUTOS_ICMS_UFDEST Where ID_NOTA_FISCAL = @v1 and PROD_NITEM = @v2";
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v2", decPROD_NITEM);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -74,17 +96,38 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_PRODUTOS_ICMS_UFDEST();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.VBCUFDEST = Convert.ToDecimal(Dr["VBCUFDEST"]);
-                    obj.PICMSUFDEST = Convert.ToDecimal(Dr["PICMSUFDEST"]);
-                    obj.PICMSINTER = Convert.ToDecimal(Dr["PICMSINTER"]);
-                    obj.PICMSINTERPART = Convert.ToDecimal(Dr["PICMSINTERPART"]);
-                    obj.VICMSUFDEST = Convert.ToDecimal(Dr["VICMSUFDEST"]);
-                    obj.VICMSUFREMET = Convert.ToDecimal(Dr["VICMSUFREMET"]);
-                    obj.PFCPUFDEST = Convert.ToDecimal(Dr["PFCPUFDEST"]);
-                    obj.VFCPUFDEST = Convert.ToDecimal(Dr["VFCPUFDEST"]);
-                    obj.VBCFCPUFDEST = Convert.ToDecimal(Dr["VBCFCPUFDEST"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["VBCUFDEST"] != DBNull.Value)
+                        obj.VBCUFDEST = Convert.ToDecimal(Dr["VBCUFDEST"]);
+
+                    if (Dr["PICMSUFDEST"] != DBNull.Value)
+                        obj.PICMSUFDEST = Convert.ToDecimal(Dr["PICMSUFDEST"]);
+
+                    if (Dr["PICMSINTER"] != DBNull.Value)
+                        obj.PICMSINTER = Convert.ToDecimal(Dr["PICMSINTER"]);
+
+                    if (Dr["PICMSINTERPART"] != DBNull.Value)
+                        obj.PICMSINTERPART = Convert.ToDecimal(Dr["PICMSINTERPART"]);
+
+                    if (Dr["VICMSUFDEST"] != DBNull.Value)
+                        obj.VICMSUFDEST = Convert.ToDecimal(Dr["VICMSUFDEST"]);
+
+                    if (Dr["VICMSUFREMET"] != DBNull.Value)
+                        obj.VICMSUFREMET = Convert.ToDecimal(Dr["VICMSUFREMET"]);
+
+                    if (Dr["PFCPUFDEST"] != DBNull.Value)
+                        obj.PFCPUFDEST = Convert.ToDecimal(Dr["PFCPUFDEST"]);
+
+                    if (Dr["VFCPUFDEST"] != DBNull.Value)
+                        obj.VFCPUFDEST = Convert.ToDecimal(Dr["VFCPUFDEST"]);
+
+                    if (Dr["VBCFCPUFDEST"] != DBNull.Value)
+                        obj.VBCFCPUFDEST = Convert.ToDecimal(Dr["VBCFCPUFDEST"]);
                 }
                 return obj;
             }

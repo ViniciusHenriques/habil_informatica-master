@@ -51,7 +51,7 @@ namespace DAL.TecnoSpeed
         public DateTime IDE_DEMI { get; set; }
 
         /// <summary>dhSaiEnt_B10 - Data e hora de Saída ou da Entrada da Mercadoria/Produto</summary>
-        public DateTime? IDE_DSAIENT { get; set; }
+        public DateTime IDE_DSAIENT { get; set; }
 
         /// <summary>tpNF_B11 - Tipo de Operação</summary>
         public string IDE_TPNF { get; set; }
@@ -340,5 +340,60 @@ namespace DAL.TecnoSpeed
 
         /// <summary></summary>
         public string INFINTERMED_IDCADINTTRAN { get; set; }
+
+        /// <summary></summary>
+        public string EMIT_IE { get; set; }
+
+        /// <summary></summary>
+        public string EMIT_XNOME { get; set; }
+
+        /// <summary></summary>
+        public string EMIT_XFANT { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_XLOG { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_XCPL { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_NRO { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_XBAIRRO { get; set; }
+
+        /// <summary></summary>
+        public decimal ENDEREMIT_CMUN { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_XMUN { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_UF { get; set; }
+
+        /// <summary></summary>
+        public decimal ENDEREMIT_CEP { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_CPAIS { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_XPAIS { get; set; }
+
+        /// <summary></summary>
+        public string ENDEREMIT_FONE { get; set; }
+
+        /// <summary></summary>
+        public int IDE_TPIMP { get; set; }
+
+        /// <summary></summary>
+        public int IDE_TPEMIS { get; set; }
+
+        /// <summary></summary>
+        public int IDE_PROCEMI { get; set; }
+
+        /// <summary></summary>
+        public int IDE_CRT { get; set; }
+
     }
 }

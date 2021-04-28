@@ -521,38 +521,38 @@
         <div class="modal-dialog" role="document" style="width:95%">
             <div class="modal-content" >
                 <div class="modal-header" style="width:100%">
-                        <div class="row">
-                            <div class="col-md-12" style="font-size:x-small;">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title-historico">Histórico do cliente</h4>
-                            </div>
-                            <asp:UpdatePanel ID="UpdatePanel8" runat="server" UpdateMode="Always">
-                                <ContentTemplate>
-                                    <div class="col-md-12" style="font-size:x-small;">
-                                        <asp:TextBox ID="txtPesquisar" CssClass="form-control" runat="server" OnTextChanged="txtPesquisar_TextChanged" TabIndex="8" Placeholder="Pesquisar! No minimo 3 Caracteres ..." MaxLength="50"  onFocus="this.select()" AutoPostBack="true"/>        
-                                    </div>
-                                </ContentTemplate> 
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="txtPesquisar" EventName="TextChanged" />
-                                </Triggers>
-                            </asp:UpdatePanel>
+                    <div class="row">
+                        <div class="col-md-12" style="font-size:x-small;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title-historico">Histórico do cliente</h4>
                         </div>
+                        <asp:UpdatePanel ID="UpdatePanel8" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <div class="col-md-12" style="font-size:x-small;">
+                                    <asp:TextBox ID="txtPesquisar" CssClass="form-control" runat="server" OnTextChanged="txtPesquisar_TextChanged" TabIndex="8" Placeholder="Pesquisar! No minimo 3 Caracteres ..." MaxLength="50"  onFocus="this.select()" AutoPostBack="true"/>        
+                                </div>
+                            </ContentTemplate> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="txtPesquisar" EventName="TextChanged" />
+                            </Triggers>
+                        </asp:UpdatePanel>
                     </div>
-                    <div class="modal-body" style="width:100%">
-                        <div class="row">
-                            <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Always">
-                                <ContentTemplate>
-                                    <asp:TextBox runat="server" ID="txtDownloadAnexo" style="display:none" OnTextChanged="txtDownloadAnexo_TextChanged" AutoPostBack="true"></asp:TextBox>
-                                    <asp:literal runat="server" ID="litHistorico">
+                </div>
+                <div class="modal-body" style="width:100%">
+                    <div class="row">
+                        <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Always">
+                            <ContentTemplate>
+                                <asp:TextBox runat="server" ID="txtDownloadAnexo" style="display:none" OnTextChanged="txtDownloadAnexo_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                <asp:literal runat="server" ID="litHistorico">
 
-                                    </asp:literal>
-	                            </ContentTemplate> 
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="txtDownloadAnexo"  />
-                                </Triggers>
-                            </asp:UpdatePanel>
-                        </div>
+                                </asp:literal>
+	                        </ContentTemplate> 
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="txtDownloadAnexo"  />
+                            </Triggers>
+                        </asp:UpdatePanel>
                     </div>
+                </div>
             </div>
         </div>
     </div>

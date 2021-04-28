@@ -32,19 +32,44 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_PRODUTOS_IPI obj = new TECNO_NF_PRODUTOS_IPI();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.IPI_CLENQ = Convert.ToString(Dr["IPI_CLENQ"]);
-                    obj.IPI_CNPJPROD = Convert.ToString(Dr["IPI_CNPJPROD"]);
-                    obj.IPI_CSELO = Convert.ToString(Dr["IPI_CSELO"]);
-                    obj.IPI_QSELO = Convert.ToDecimal(Dr["IPI_QSELO"]);
-                    obj.IPI_CENQ = Convert.ToString(Dr["IPI_CENQ"]);
-                    obj.IPI_CST = Convert.ToDecimal(Dr["IPI_CST"]);
-                    obj.IPI_VBC = Convert.ToDecimal(Dr["IPI_VBC"]);
-                    obj.IPI_QUNID = Convert.ToDecimal(Dr["IPI_QUNID"]);
-                    obj.IPI_VUNID = Convert.ToDecimal(Dr["IPI_VUNID"]);
-                    obj.IPI_PIPI = Convert.ToDecimal(Dr["IPI_PIPI"]);
-                    obj.IPI_VIPI = Convert.ToDecimal(Dr["IPI_VIPI"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["IPI_CLENQ"] != DBNull.Value)
+                        obj.IPI_CLENQ = Convert.ToString(Dr["IPI_CLENQ"]);
+
+                    if (Dr["IPI_CNPJPROD"] != DBNull.Value)
+                        obj.IPI_CNPJPROD = Convert.ToString(Dr["IPI_CNPJPROD"]);
+
+                    if (Dr["IPI_CSELO"] != DBNull.Value)
+                        obj.IPI_CSELO = Convert.ToString(Dr["IPI_CSELO"]);
+
+                    if (Dr["IPI_QSELO"] != DBNull.Value)
+                        obj.IPI_QSELO = Convert.ToDecimal(Dr["IPI_QSELO"]);
+
+                    if (Dr["IPI_CENQ"] != DBNull.Value)
+                        obj.IPI_CENQ = Convert.ToString(Dr["IPI_CENQ"]);
+
+                    if (Dr["IPI_CST"] != DBNull.Value)
+                        obj.IPI_CST = Convert.ToDecimal(Dr["IPI_CST"]);
+
+                    if (Dr["IPI_VBC"] != DBNull.Value)
+                        obj.IPI_VBC = Convert.ToDecimal(Dr["IPI_VBC"]);
+
+                    if (Dr["IPI_QUNID"] != DBNull.Value)
+                        obj.IPI_QUNID = Convert.ToDecimal(Dr["IPI_QUNID"]);
+
+                    if (Dr["IPI_VUNID"] != DBNull.Value)
+                        obj.IPI_VUNID = Convert.ToDecimal(Dr["IPI_VUNID"]);
+
+                    if (Dr["IPI_PIPI"] != DBNull.Value)
+                        obj.IPI_PIPI = Convert.ToDecimal(Dr["IPI_PIPI"]);
+
+                    if (Dr["IPI_VIPI"] != DBNull.Value)
+                        obj.IPI_VIPI = Convert.ToDecimal(Dr["IPI_VIPI"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -59,36 +84,61 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_PRODUTOS_IPI PesquisarTECNO_NF_PRODUTOS_IPI(string strID_NOTA_FISCAL)
+        public TECNO_NF_PRODUTOS_IPI PesquisarTECNO_NF_PRODUTOS_IPI(decimal decID_NOTA_FISCAL, decimal decPROD_NITEM)
         {
             try
             {
                 AbrirConexao();
-                string comando = "Select * from TECNO_NF_PRODUTOS_IPI Where ID_NOTA_FISCAL = @v1 ";
+                string comando = "Select * from TECNO_NF_PRODUTOS_IPI Where ID_NOTA_FISCAL = @v1 and PROD_NITEM = @v2";
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v2", decPROD_NITEM);
 
                 Dr = Cmd.ExecuteReader();
 
                 TECNO_NF_PRODUTOS_IPI obj = null;
                 if (Dr.Read())
                 {
-                    obj = new TECNO_NF_PRODUTOS_IPI();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
-                    obj.IPI_CLENQ = Convert.ToString(Dr["IPI_CLENQ"]);
-                    obj.IPI_CNPJPROD = Convert.ToString(Dr["IPI_CNPJPROD"]);
-                    obj.IPI_CSELO = Convert.ToString(Dr["IPI_CSELO"]);
-                    obj.IPI_QSELO = Convert.ToDecimal(Dr["IPI_QSELO"]);
-                    obj.IPI_CENQ = Convert.ToString(Dr["IPI_CENQ"]);
-                    obj.IPI_CST = Convert.ToDecimal(Dr["IPI_CST"]);
-                    obj.IPI_VBC = Convert.ToDecimal(Dr["IPI_VBC"]);
-                    obj.IPI_QUNID = Convert.ToDecimal(Dr["IPI_QUNID"]);
-                    obj.IPI_VUNID = Convert.ToDecimal(Dr["IPI_VUNID"]);
-                    obj.IPI_PIPI = Convert.ToDecimal(Dr["IPI_PIPI"]);
-                    obj.IPI_VIPI = Convert.ToDecimal(Dr["IPI_VIPI"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+
+                    if (Dr["PROD_NITEM"] != DBNull.Value)
+                        obj.PROD_NITEM = Convert.ToDecimal(Dr["PROD_NITEM"]);
+
+                    if (Dr["IPI_CLENQ"] != DBNull.Value)
+                        obj.IPI_CLENQ = Convert.ToString(Dr["IPI_CLENQ"]);
+
+                    if (Dr["IPI_CNPJPROD"] != DBNull.Value)
+                        obj.IPI_CNPJPROD = Convert.ToString(Dr["IPI_CNPJPROD"]);
+
+                    if (Dr["IPI_CSELO"] != DBNull.Value)
+                        obj.IPI_CSELO = Convert.ToString(Dr["IPI_CSELO"]);
+
+                    if (Dr["IPI_QSELO"] != DBNull.Value)
+                        obj.IPI_QSELO = Convert.ToDecimal(Dr["IPI_QSELO"]);
+
+                    if (Dr["IPI_CENQ"] != DBNull.Value)
+                        obj.IPI_CENQ = Convert.ToString(Dr["IPI_CENQ"]);
+
+                    if (Dr["IPI_CST"] != DBNull.Value)
+                        obj.IPI_CST = Convert.ToDecimal(Dr["IPI_CST"]);
+
+                    if (Dr["IPI_VBC"] != DBNull.Value)
+                        obj.IPI_VBC = Convert.ToDecimal(Dr["IPI_VBC"]);
+
+                    if (Dr["IPI_QUNID"] != DBNull.Value)
+                        obj.IPI_QUNID = Convert.ToDecimal(Dr["IPI_QUNID"]);
+
+                    if (Dr["IPI_VUNID"] != DBNull.Value)
+                        obj.IPI_VUNID = Convert.ToDecimal(Dr["IPI_VUNID"]);
+
+                    if (Dr["IPI_PIPI"] != DBNull.Value)
+                        obj.IPI_PIPI = Convert.ToDecimal(Dr["IPI_PIPI"]);
+
+                    if (Dr["IPI_VIPI"] != DBNull.Value)
+                        obj.IPI_VIPI = Convert.ToDecimal(Dr["IPI_VIPI"]);
                 }
                 return obj;
             }

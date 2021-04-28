@@ -32,11 +32,16 @@ namespace DAL.TecnoSpeed.Persistence
                 while (Dr.Read())
                 {
                     TECNO_NF_DUPLICATA obj = new TECNO_NF_DUPLICATA();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.DUP_NDUP = Convert.ToString(Dr["DUP_NDUP"]);
-                    obj.DUP_DVENC = Convert.ToDateTime(Dr["DUP_DVENC"]);
-                    obj.DUP_VDUP = Convert.ToDecimal(Dr["DUP_VDUP"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+                    if (Dr["DUP_NDUP"] != DBNull.Value)
+                        obj.DUP_NDUP = Convert.ToString(Dr["DUP_NDUP"]);
+                    if (Dr["DUP_DVENC"] != DBNull.Value)
+                        obj.DUP_DVENC = Convert.ToDateTime(Dr["DUP_DVENC"]);
+                    if (Dr["DUP_VDUP"] != DBNull.Value)
+                        obj.DUP_VDUP = Convert.ToDecimal(Dr["DUP_VDUP"]);
                     tcn_nf.Add(obj);
                 }
                 return tcn_nf;
@@ -51,7 +56,7 @@ namespace DAL.TecnoSpeed.Persistence
             }
 
         }
-        public TECNO_NF_DUPLICATA PesquisarTECNO_NF_DUPLICATA(string strID_NOTA_FISCAL)
+        public TECNO_NF_DUPLICATA PesquisarTECNO_NF_DUPLICATA(decimal decID_NOTA_FISCAL)
         {
             try
             {
@@ -60,7 +65,7 @@ namespace DAL.TecnoSpeed.Persistence
 
                 Cmd = new SqlCommand(comando, Con);
 
-                Cmd.Parameters.AddWithValue("@v1", strID_NOTA_FISCAL);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
 
@@ -68,11 +73,16 @@ namespace DAL.TecnoSpeed.Persistence
                 if (Dr.Read())
                 {
                     obj = new TECNO_NF_DUPLICATA();
-                    obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
-                    obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
-                    obj.DUP_NDUP = Convert.ToString(Dr["DUP_NDUP"]);
-                    obj.DUP_DVENC = Convert.ToDateTime(Dr["DUP_DVENC"]);
-                    obj.DUP_VDUP = Convert.ToDecimal(Dr["DUP_VDUP"]);
+                    if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
+                        obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
+                    if (Dr["NITEM"] != DBNull.Value)
+                        obj.NITEM = Convert.ToDecimal(Dr["NITEM"]);
+                    if (Dr["DUP_NDUP"] != DBNull.Value)
+                        obj.DUP_NDUP = Convert.ToString(Dr["DUP_NDUP"]);
+                    if (Dr["DUP_DVENC"] != DBNull.Value)
+                        obj.DUP_DVENC = Convert.ToDateTime(Dr["DUP_DVENC"]);
+                    if (Dr["DUP_VDUP"] != DBNull.Value)
+                        obj.DUP_VDUP = Convert.ToDecimal(Dr["DUP_VDUP"]);
                 }
                 return obj;
             }
