@@ -447,7 +447,7 @@ namespace DAL.Persistence
         {
             DBTabelaDAL RnTab = new DBTabelaDAL();
             DateTime data = RnTab.ObterDataHoraServidor();
-
+            
             IntegraDocumentoEletronicoDAL integraDAL = new IntegraDocumentoEletronicoDAL();
             List<ParcelaDocumento> ListaParcelaDocumento = new List<ParcelaDocumento>();
 
@@ -798,10 +798,10 @@ namespace DAL.Persistence
                 DateTime data = DateTime.Now;
 
                 string CaminhoArquivoLog = "";
-                if (CodCaminho == 1)//HabilServiceNFSe
-                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\";
+                if (CodCaminho == 1)//HabilService
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\NFSe\\";
                 else//HabilInformatica
-                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\";
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\NFSe\\";
 
                 if (!Directory.Exists(CaminhoArquivoLog))
                     Directory.CreateDirectory(CaminhoArquivoLog);
@@ -823,10 +823,10 @@ namespace DAL.Persistence
 
                 arquivo.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 GerandoArquivoLog(ex.Message, 1);
-            }          
+            }
         }
         public void EventoDocumento(Doc_NotaFiscalServico NFSe, DateTime data,IntegraDocumentoEletronico integra)
         {

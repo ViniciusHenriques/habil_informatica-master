@@ -191,6 +191,7 @@ namespace SoftHabilInformatica.Pages.Vendas
                         Doc_Orcamento doc = new Doc_Orcamento();
                         doc = (Doc_Orcamento)Session["Doc_orcamento"];
 
+
                         Pessoa p = new Pessoa();
                         PessoaDAL pDAL = new PessoaDAL();
                         p = pDAL.PesquisarPessoa(doc.Cpl_CodigoPessoa);
@@ -720,16 +721,40 @@ namespace SoftHabilInformatica.Pages.Vendas
             {
                 if (ValidaCampos() == false)
                     return;
-
-                EstoqueProdutoDAL estoqueDAL = new EstoqueProdutoDAL();
-                decimal decQuantidadeDisponivel = estoqueDAL.PesquisarEstoqueDisponivelProduto(Convert.ToInt64(txtCodItem.Text), Convert.ToInt32(Session["CodEmpresa"]));
-                if (Convert.ToDecimal(txtQtde.Text) > decQuantidadeDisponivel)
+                int CodigoTipoOperacao = 0;
+                if (Session["Doc_orcamento"] != null)
                 {
-                    if (decQuantidadeDisponivel == 0)
-                        ShowMessage("Este produto não tem em estoque", MessageType.Warning);
-                    else
-                        ShowMessage("Produto possui apenas " + decQuantidadeDisponivel + " " + ddlUnidade.SelectedItem.Text + " disponível em estoque", MessageType.Warning);
+                    Doc_Orcamento doc = new Doc_Orcamento();
+                    doc = (Doc_Orcamento)Session["Doc_orcamento"];
+                    CodigoTipoOperacao = doc.CodigoTipoOperacao;
+                }
+                else if (Session["Doc_Pedido"] != null)
+                {
+                    Doc_Pedido doc = new Doc_Pedido();
+                    doc = (Doc_Pedido)Session["Doc_Pedido"];
+                    CodigoTipoOperacao = doc.CodigoTipoOperacao;
+                }
+                if(CodigoTipoOperacao == 0)
+                {
+                    ShowMessage("Tipo de operação é necessário, volte na tela anterior e selecione um tipo de operação", MessageType.Info);
                     return;
+                }
+
+                TipoOperacao tpOP = new TipoOperacao();
+                TipoOperacaoDAL tpOPDAL = new TipoOperacaoDAL();
+                tpOP = tpOPDAL.PesquisarTipoOperacao(CodigoTipoOperacao);
+                if (tpOP.MovimentaEstoque)
+                {
+                    EstoqueProdutoDAL estoqueDAL = new EstoqueProdutoDAL();
+                    decimal decQuantidadeDisponivel = estoqueDAL.PesquisarEstoqueDisponivelProduto(Convert.ToInt64(txtCodItem.Text), Convert.ToInt32(Session["CodEmpresa"]));
+                    if (Convert.ToDecimal(txtQtde.Text) > decQuantidadeDisponivel)
+                    {
+                        if (decQuantidadeDisponivel == 0)
+                            ShowMessage("Este produto não tem em estoque", MessageType.Warning);
+                        else
+                            ShowMessage("Produto possui apenas " + decQuantidadeDisponivel + " " + ddlUnidade.SelectedItem.Text + " disponível em estoque", MessageType.Warning);
+                        return;
+                    }
                 }
                 ProdutoDAL produtoDAL = new ProdutoDAL();
                 Produto p = new Produto();

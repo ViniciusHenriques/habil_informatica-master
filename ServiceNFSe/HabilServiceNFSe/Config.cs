@@ -10,7 +10,7 @@ namespace WindowsService2
     {
         #region Default Data
 
-        private const string CONNECTSTRING = @"Data Source=note-vaio\SQLEXPRESS2016;Initial Catalog=Habil_info_teste;user=habil;password=habil";
+        private const string CONNECTSTRING = @"Data Source=note-vaio\SQLEXPRESS2016;Initial Catalog=HABIL_INFO_TESTE;user=habil;password=habil";
 
         #endregion
 

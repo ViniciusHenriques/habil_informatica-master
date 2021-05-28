@@ -20,7 +20,6 @@
         <script type="text/javascript" src="Content/Bootstrap3.0.3/jquery.min.js"></script>    
         <script type="text/javascript" src='../../Content/Bootstrap3.0.3/jquery-1.8.3.min.js'></script>
         <script type="text/javascript" src='../../Content/Bootstrap3.0.3/bootstrap.min.js'></script>
-        
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".relative").slideDown().animate({
@@ -142,10 +141,15 @@
             } 
         </script> 
     </head>
-    <body style="overflow:scroll;" class="CorPadraoFundo">   
-        <form id="frmMasterPage" runat="server" >
+    <body style="overflow:scroll;" class="CorPadraoFundo" oncontextmenu="return false">   
+        <form id="frmMasterPage" runat="server" >            
             <div>
-                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" ></asp:ScriptManager>
+                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" >
+                    <Scripts>
+                        <asp:ScriptReference Path="~/Scripts/TratamentoINPUTs.js" />
+                    </Scripts>
+                </asp:ScriptManager>
+
                 <asp:Panel ID="Panel2" runat="server" Visible="true">
                     <div class="container-fluid CorPadraoEscolhida" style=" padding-top:9px;padding-top:9px; padding-bottom:5px;margin-right:0!important" >
                         <div class="row" >
@@ -209,7 +213,6 @@
                             <div id="preloader"></div>
                         </nav>
                     </div>   
-                    
                 </asp:Panel>
                 <asp:Panel ID="pnlPrincipalMasterPageVertical" runat="server" Visible="false">
                     <div class="<%=TamanhoDivMenu%> CorPadraoEscolhidaBorderRight " style="padding:0!important;margin:0!important;height:100%;" id="menu2">
@@ -238,17 +241,16 @@
                         </nav>
                     </div>                     
                 </asp:Panel>
-                
                 <div class="<%=TamanhoDivCorpo%>" style="margin-right:0!important;padding-right:0!important;padding-left:0!important;margin-left:0!important">
                     <asp:ContentPlaceHolder ID="cttCorpo" runat="server"  >
-                       
+                        
+
                     </asp:ContentPlaceHolder>
                 </div>
                         
 
                 <asp:ContentPlaceHolder ID="cttRodape" runat="server">                                 
                 </asp:ContentPlaceHolder>
-
             </div>
             <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Always">
                 <ContentTemplate>

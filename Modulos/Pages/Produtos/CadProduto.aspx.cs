@@ -182,7 +182,7 @@ namespace SoftHabilInformatica.Pages.Produtos
             {
                 txtBarras.Text = txtCodProduto.Text;
             }
-            if(txtNCM.Text.Length != 10)
+            if(txtNCM.Text.Length != 10 && txtNCM.Text.Length > 0)
             {
                 ShowMessage("NCM Inválido, deve ter formatação '9999.99.99'", MessageType.Info);
                 return false;

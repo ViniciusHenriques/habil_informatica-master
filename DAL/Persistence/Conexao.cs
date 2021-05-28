@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using DAL.Model;
 using System.Configuration;
 using System.Reflection;
+using System.Data;
+
 namespace DAL.Persistence
 {
     public class Conexao
@@ -19,7 +21,10 @@ namespace DAL.Persistence
             try
             {
                 Con = new SqlConnection(ObterConexaoString());
-                Con.Open();
+                if (Con.State != ConnectionState.Open)
+                    Con.Open();
+                
+
             }
             catch (Exception ex)
             {

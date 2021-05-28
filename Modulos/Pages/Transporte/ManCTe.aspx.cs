@@ -287,8 +287,10 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 txtValor.Text = doc.ValorTotal.ToString();
                                 txtOBS.Text = doc.ObservacaoDocumento;
 
-                                
 
+                                AnexoDocumentoDAL anexoDAL = new AnexoDocumentoDAL();
+                                ListaAnexo = anexoDAL.ObterAnexos(Convert.ToDecimal(txtCodigo.Text));
+                                Session["NovoAnexo"] = ListaAnexo;
 
                                 EventoEletronicoDocumentoDAL eventoDAL = new EventoEletronicoDocumentoDAL();
                                 ListaEventoDocEletronico = eventoDAL.ObterEventosEletronicos(Convert.ToInt32(txtCodigo.Text));
@@ -546,6 +548,71 @@ namespace SoftHabilInformatica.Pages.Transporte
 
         protected void SalvarDocumento(object sender, EventArgs e, bool VoltarParaConsulta)
         {
+            if(txtCodigo.Text != "Novo" && ListaEventoDocEletronico.Count > 0)
+            { 
+                IEnumerable<EventoEletronicoDocumento> EventosNaoInviados = ListaEventoDocEletronico.Where((EventoEletronicoDocumento c) => { return c.CodigoSituacao != 121 && c.CodigoSituacao != 119; });
+                if (EventosNaoInviados.Count() == 0)
+                {
+                    ShowMessage("Adicione um novo evento eletrônico para efetuar o desacordo!", MessageType.Info);
+                    PanelSelect = "consulta";
+                    return;
+                }
+
+                List<IntegraDocumentoEletronico> ListaIntegracaoDocEletronico = new List<IntegraDocumentoEletronico>();
+                List<DBTabelaCampos> listaT = new List<DBTabelaCampos>();
+
+                DBTabelaCampos rowp3 = new DBTabelaCampos();
+                rowp3.Filtro = "CD_DOCUMENTO";
+                rowp3.Inicio = txtCodigo.Text;
+                rowp3.Fim = txtCodigo.Text;
+                rowp3.Tipo = "NUMERIC";
+                listaT.Add(rowp3);
+
+                IntegraDocumentoEletronicoDAL integraDAL = new IntegraDocumentoEletronicoDAL();
+                ListaIntegracaoDocEletronico = integraDAL.ListarIntegracaoDocEletronicoCompleto(listaT);
+                int Contador = 0;
+                foreach (IntegraDocumentoEletronico integracao in ListaIntegracaoDocEletronico)
+                {
+                    if (integracao.CodigoAcao == 124 && integracao.IntegracaoProcessando == 0 && integracao.IntegracaoRecebido == 0
+                        && integracao.IntegracaoRetorno == 0 && integracao.RegistroDevolvido == 0 && integracao.RegistroEnviado == 1 && integracao.Mensagem == "")
+                    {
+                        Contador++;
+                    }
+                    else if (integracao.CodigoAcao == 124 && integracao.Mensagem == "")
+                    {
+                        Contador++;
+                    }
+                }
+                if (Contador != 0)
+                {
+                    ShowMessage("Já existe um evento sendo enviado! Aguarde...", MessageType.Info);
+                    return;
+                }
+
+                EventoEletronicoDocumentoDAL eveDAL = new EventoEletronicoDocumentoDAL();
+                List<EventoEletronicoDocumento> ListaEventos = new List<EventoEletronicoDocumento>();
+                ListaEventos = eveDAL.ObterEventosEletronicos(Convert.ToDecimal(txtCodigo.Text));
+                int i = 0;
+                foreach (var item in ListaEventos)
+                {
+                    if (i == 0)
+                        if (item.CodigoSituacao != 121 && item.CodigoTipoEvento != 119)
+                        {
+                            EventoEletronicoDocumento eve = new EventoEletronicoDocumento();
+                            eve = item;
+                            eve.CodigoSituacao = 119;
+                            eve.Retorno = "";
+                            eveDAL.AtualizarEventoEletronico(eve);
+                            btnRefresh_Click(sender, e);
+                            i++;
+                        }
+                }
+                if (i == 0 && ListaEventos.Count > 0)
+                {
+                    ShowMessage("Evento sendo enviado", MessageType.Info);
+                    return;
+                }
+            }
             if (ValidaCampos() == false)
                 return;
 
@@ -1023,7 +1090,6 @@ namespace SoftHabilInformatica.Pages.Transporte
 
         protected void btnSimSalvar_Click(object sender, EventArgs e)
         {
-            SalvarDocumento(sender, e, true);
             IEnumerable<EventoEletronicoDocumento> EventosNaoInviados = ListaEventoDocEletronico.Where((EventoEletronicoDocumento c) => { return c.CodigoSituacao != 121 && c.CodigoSituacao != 119; });
             if (EventosNaoInviados.Count() == 0)
             {
@@ -1087,6 +1153,8 @@ namespace SoftHabilInformatica.Pages.Transporte
                 return;
             }
 
+
+            SalvarDocumento(sender, e, true);
             ShowMessage("Documento salvo e desacordo enviado com sucesso! Aguarde o retorno...", MessageType.Info);
             PanelSelect = "home";
 

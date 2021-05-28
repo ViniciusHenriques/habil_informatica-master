@@ -48,15 +48,12 @@ namespace DAL.Persistence
                                        " ,[VL_SEGURO]" +
                                        " ,[VL_SEGURO_MINIMO]" +
                                        " ,[VL_PEDAGIO_MAXIMO]" +
-                                       " ,[IN_TP_CALCULO]" +
-                                       " ,[IN_CALCULA_ADVALOR_DE_PARA1]" +
-                                       " ,[IN_CALCULA_ADVALOR_DE_PARA2]" +
                                        " ,[VL_POR_TONELADA]" +
                                        " ,[DE_PARA_71]" +
                                        " ,[DE_PARA_72]" +
                                        " ,[DE_PARA_PCT_71]" +
                                        ",[VL_PESO_CUBADO])" +
-                "values(@v1,@v2,@v3,@v4,@v5,@v6,@v7,@v8,@v9,@v10,@v11,@v12,@v13,@v14,@v15,@v16,@v17,@v18,@v19,@v20,@v21,@v22,@v23,@v24,@v25,@v26,@v27,@v28,@v29,@v30,@v31,@v32,@v33,@v34,@v35,@v36,@v37,@v38) SELECT SCOPE_IDENTITY();";
+                "values(@v1,@v2,@v3,@v4,@v5,@v6,@v7,@v8,@v9,@v10,@v11,@v12,@v13,@v14,@v15,@v16,@v17,@v18,@v19,@v20,@v21,@v22,@v23,@v24,@v25,@v26,@v27,@v28,@v29,@v30,@v34,@v35,@v36,@v37,@v38) SELECT SCOPE_IDENTITY();";
 
                 Cmd = new SqlCommand(strSQL, Con);
 
@@ -90,9 +87,7 @@ namespace DAL.Persistence
                 Cmd.Parameters.AddWithValue("@v28", p.ValorSeguro);
                 Cmd.Parameters.AddWithValue("@v29", p.ValorSeguroMinimo);
                 Cmd.Parameters.AddWithValue("@v30", p.ValorPedagioMaximo);
-                Cmd.Parameters.AddWithValue("@v31", p.IndicadorTipoCalculo);
-                Cmd.Parameters.AddWithValue("@v32", p.IndicadorCalcularAdValorDePara1);
-                Cmd.Parameters.AddWithValue("@v33", p.IndicadorCalcularAdValorDePara2);
+
                 Cmd.Parameters.AddWithValue("@v34", p.ValorPorTonelada);
                 Cmd.Parameters.AddWithValue("@v35", p.DePara71);
                 Cmd.Parameters.AddWithValue("@v36", p.DePara72);
@@ -165,9 +160,6 @@ namespace DAL.Persistence
                                 " ,[VL_SEGURO] = @v28" +
                                 " ,[VL_SEGURO_MINIMO] = @v29" +
                                 " ,[VL_PEDAGIO_MAXIMO] = @v30" +
-                                " ,[IN_TP_CALCULO] = @v31" +
-                                " ,[IN_CALCULA_ADVALOR_DE_PARA1] = @v32" +
-                                " ,[IN_CALCULA_ADVALOR_DE_PARA2] = @v33" +
                                 " ,[VL_POR_TONELADA] = @v34" +
                                 " ,[DE_PARA_71] = @v35" +
                                 " ,[DE_PARA_72] = @v36" +
@@ -208,9 +200,6 @@ namespace DAL.Persistence
                 Cmd.Parameters.AddWithValue("@v28", p.ValorSeguro);
                 Cmd.Parameters.AddWithValue("@v29", p.ValorSeguroMinimo);
                 Cmd.Parameters.AddWithValue("@v30", p.ValorPedagioMaximo);
-                Cmd.Parameters.AddWithValue("@v31", p.IndicadorTipoCalculo);
-                Cmd.Parameters.AddWithValue("@v32", p.IndicadorCalcularAdValorDePara1);
-                Cmd.Parameters.AddWithValue("@v33", p.IndicadorCalcularAdValorDePara2);
                 Cmd.Parameters.AddWithValue("@v34", p.ValorPorTonelada);
                 Cmd.Parameters.AddWithValue("@v35", p.DePara71);
                 Cmd.Parameters.AddWithValue("@v36", p.DePara72);
@@ -262,16 +251,19 @@ namespace DAL.Persistence
                 FecharConexao();
             }
         }
+
         public List<RegraFrete> ListarRegraFrete(string strNomeCampo, string strTipoCampo, string strValor, string strOrdem)
         {
             try
             {
                 AbrirConexao();
 
-                string strSQL = "SELECT * FROM VW_REGRA_DE_FRETE ";
+                string strSQL = "SELECT R.*,(INS.NR_INSCRICAO + ' - ' + P.NM_PESSOA) AS CNPJ_NOME  FROM VW_REGRA_DE_FRETE as r " +
+                                    "INNER JOIN PESSOA AS P ON P.CD_PESSOA = R.CD_TRANSPORTADOR " +
+                                    "INNER JOIN PESSOA_INSCRICAO AS INS ON INS.CD_PESSOA = P.CD_PESSOA ";
 
                 if (strValor != "")
-                    strSQL = strSQL + " Where " + MontaFiltro(strNomeCampo, strTipoCampo, strValor);
+                    strSQL = strSQL + " Where " + MontaFiltro("r." +strNomeCampo, strTipoCampo, strValor);
 
 
                 if (strOrdem != "")
@@ -289,6 +281,7 @@ namespace DAL.Persistence
 
                     p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
                     p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
+                    p.Cpl_ComboRegras = Convert.ToString(Dr["CNPJ_NOME"]);
                     p.Cpl_InscricaoTransportador = Dr["NR_INSCRICAO"].ToString();
                     p.Cpl_NomeTransportador = Dr["NM_TRANSPORTADOR"].ToString();
                     if (Dr["DE_PARA_11"] != DBNull.Value)
@@ -375,6 +368,92 @@ namespace DAL.Persistence
                     p.ValorFreteMinimo = Convert.ToDecimal(Dr["VL_FRETE_MINIMO"]);
                     p.ValorGRIS = Convert.ToDecimal(Dr["VL_GRIS"]);
                     p.Inscricao = Dr["NR_INSCRICAO"].ToString();
+                    p.Regiao = Dr["REGIAO"].ToString();
+
+                    lista.Add(p);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro ao Listar Todos REGRAS DE FRETE: " + ex.Message.ToString());
+            }
+            finally
+            {
+                FecharConexao();
+
+            }
+        }
+        public List<RegraFrete> ListarTransportadoresRegraFrete()
+        {
+            try
+            {
+                AbrirConexao();
+
+                string strSQL = "SELECT distinct R.CD_TRANSPORTADOR, ins.NR_INSCRICAO,(INS.NR_INSCRICAO + ' - ' +substring(ende.DS_ESTADO,0,3)+' - '++ P.NM_PESSOA) AS CNPJ_NOME  FROM VW_REGRA_DE_FRETE as r " +
+                                    "INNER JOIN PESSOA AS P ON P.CD_PESSOA = R.CD_TRANSPORTADOR " +
+                                    "INNER JOIN PESSOA_INSCRICAO AS INS ON INS.CD_PESSOA = P.CD_PESSOA " +
+                                    "INNER JOIN PESSOA_ENDERECO AS ende ON ende.CD_PESSOA = P.CD_PESSOA " +
+                                    "ORDER BY ins.NR_INSCRICAO";
+
+
+                Cmd = new SqlCommand(strSQL, Con);
+
+                Dr = Cmd.ExecuteReader();
+
+                List<RegraFrete> lista = new List<RegraFrete>();
+
+                while (Dr.Read())
+                {
+                    RegraFrete p = new RegraFrete();
+
+                    p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
+                    p.Cpl_ComboRegras = Convert.ToString(Dr["CNPJ_NOME"]);
+                    p.Cpl_InscricaoTransportador = Dr["NR_INSCRICAO"].ToString();
+
+
+                    lista.Add(p);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro ao Listar Todos REGRAS DE FRETE: " + ex.Message.ToString());
+            }
+            finally
+            {
+                FecharConexao();
+
+            }
+        }
+        public List<RegraFrete> ListarRegiãoRegraFrete(decimal decCodigoTransp)
+        {
+            try
+            {
+                AbrirConexao();
+
+                string strSQL = "SELECT * FROM REGRA_DE_FRETE WHERE CD_TRANSPORTADOR = @v1";
+
+
+                Cmd = new SqlCommand(strSQL, Con);
+                Cmd.Parameters.AddWithValue("@v1", decCodigoTransp);
+                Dr = Cmd.ExecuteReader();
+
+                List<RegraFrete> lista = new List<RegraFrete>();
+
+                while (Dr.Read())
+                {
+                    RegraFrete p = new RegraFrete();
+
+                    p.CodigoIndex = Convert.ToInt32(Dr["CD_INDEX"]);
+                    p.CodigoTransportador = Convert.ToInt32(Dr["CD_TRANSPORTADOR"]);
+                    
                     p.Regiao = Dr["REGIAO"].ToString();
 
                     lista.Add(p);

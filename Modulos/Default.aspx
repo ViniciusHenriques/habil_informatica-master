@@ -10,10 +10,10 @@
         <link type="text/css" href="../Content/EstiloDefinidoPorParametro.css" rel="stylesheet" />
         <link type="text/css" href="Content/bootstrap.css" rel="stylesheet" />
         <link type="text/css" href="~/Content/style.css" rel="stylesheet" />
-        <script src="../../Scripts/jsMensagemAlert.js"></script>
-    
+        <script src="Scripts/ConfigTextBox.js"></script>
         <link rel="stylesheet" href='Content/Bootstrap3.0.3/bootstrap.min.css' media="screen" />
-    
+        <script src="Scripts/jsMensagemAlert.js"></script>
+           
     </head>
 
     <script src="Scripts/jquery-2.1.4.min.js"></script>
@@ -28,6 +28,8 @@
                 proximoCampo.focus()
             }
         }
+
+
     </script>
 
     <style>
@@ -44,9 +46,9 @@
         }
     </style>
     <%--#ff6a00--%>
-    <body class="CorPadraoEscolhida" style="background-image:url('Images/background_default.jpg'); background-size:100% 200%">
+    <body class="CorPadraoEscolhida" style="background-image:url('Images/background_default.jpg'); background-size:100% 200%" oncontextmenu="return false">
         <%--<body style ="background-color:#4169E1" >--%>
-    
+        <script src="Scripts/TratamentoINPUTs.js"></script>
         <div class="barra-apresentacao-sistema">
             <div style="width:7%;float:left">
                 <a href="http://habilinformatica.com.br/" target="_blank"><img src="Images/LogoGR2.png" width="55" height="50" /></a>

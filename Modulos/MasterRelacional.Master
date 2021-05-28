@@ -19,14 +19,16 @@
     <script type="text/javascript" src="Content/Bootstrap3.0.3/jquery.min.js"></script>    
     <script type="text/javascript" src='../../Content/Bootstrap3.0.3/jquery-1.8.3.min.js'></script>
     <script type="text/javascript" src='../../Content/Bootstrap3.0.3/bootstrap.min.js'></script>
-
+    <script src="../../Scripts/ConfigTextBox.js"></script>
     <script type="text/javascript">
-            function alertBootstrap() {
-                $("#divAlertBootstrap").slideDown(500).delay(2000).slideUp(500);
+
+        function alertBootstrap() {
+            $("#divAlertBootstrap").slideDown(500).delay(2000).slideUp(500);
         };
         function MostrarModalFoto() {
             $("#modalFotoUsuario").modal("show");
         } 
+       
     </script>
 
     <style type="text/css">
@@ -95,11 +97,15 @@
         *:focus {outline:none;}
       </style>
     </head>
-    <body style="overflow:scroll;" class="CorPadraoFundo">
-
+    <body style="overflow:scroll;" class="CorPadraoFundo" oncontextmenu="return false">
+        
         <form id="frmMasterPage" runat="server">
             <div>
-                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    <Scripts>
+                        <asp:ScriptReference Path="~/Scripts/TratamentoINPUTs.js" />
+                    </Scripts>
+                </asp:ScriptManager>
                     <div class="container-fluid CorPadraoEscolhida" style=" padding-top:9px;padding-top:9px; padding-bottom:5px;margin-right:0!important" >
                         <div class="row" style="margin:0!important">
                             <div class="infos" >                   
@@ -153,6 +159,7 @@
                 });
             });
         </script>
+        <script src="Scripts/TratamentoINPUTs.js"></script>
         <div class="modal fade" id="modalFotoUsuario" tabindex="-1" role="dialog" aria-labelledby="myLargeModal" >
             <div class="modal-dialog" role="document" style="width:60%!important;margin-top:10px!important">
                 <div class="modal-content" style="padding:0!important">

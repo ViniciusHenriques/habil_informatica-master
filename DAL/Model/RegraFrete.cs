@@ -53,5 +53,6 @@ namespace DAL.Model
         //COMPLEMENTARES
         public string Cpl_NomeTransportador { get; set; }
         public string Cpl_InscricaoTransportador { get; set; }
+        public string Cpl_ComboRegras { get; set; }
     }
 }

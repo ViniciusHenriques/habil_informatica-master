@@ -2,22 +2,22 @@
 <PARTES>
 	<A>
 		<campos>
-		    <campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
-			<campo nome="versao_A02" tipo="string" tamanho="7" requerido="n" tpnode="atributo" visible="s" rec="A=2"/>	
+		    <campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
+			<campo nome="versao_A02" tipo="string" tamanho="7" requerido="n" tpnode="atributo" visible="s" rec="A=2"/>
 			<campo nome="Id_A03" display="Chave da Nota" tipo="string" tamanho="47" requerido="n" tpnode="atributo" visible="s" rec="A=3"/>
-			<campo nome="pk_nitem_A04" tipo="string" tamanho="47" requerido="n" tpnode="atributo" visible="n" rec="A=4"/>
+			<campo nome="pk_nitem_A04" tipo="string" tamanho="47" requerido="n" tpnode="atributo" visible="n" rec="A=4" />
 		</campos>
 		<master/>
 	</A>
-	
+
 	<B>
 		<campos>
             <campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="cUF_B02" display="Código da UF do Emitente do Documento Fiscal" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s" dica="Verifique a Tabela de Códigos do IBGE" rec="B=2"/>
 		    <campo nome="cNF_B03" display="Código da NF controle interno" tipo="string" tamanho="8" requerido="s" tpnode="elemento" visible="s" dica="Campo para identificação da NFe dentro do softwares Emissores" rec="B=3"/>
-		    <campo nome="natOp_B04" display="Descrição da Natureza de Operação da Nota" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" dica="Utilizar a Tabela de Natureza de Operações disponibilizada pelo SEFAZ." rec="B=4"/>
-		    <campo nome="indPag_B05" display="Indicador da forma de Pagamento" tipo="string" tamanho="1"  requerido="s" tpnode="elemento" visible="s" enum="0,1,2" dica="Utilize: (0) Pagamento a Vista, (1) Pagamento a prazo, (2) Outros" rec="B=5"/> 
+		    <campo nome="natOp_B04" display="Descrição da Natureza de Operação da Nota" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" dica="Utilizar a Tabela de Natureza de Operações disponibilizada pelo SEFAZ." rec="B=4" escape="s"/>
+		    <campo nome="indPag_B05" display="Indicador da forma de Pagamento" tipo="string" tamanho="1"  requerido="s" tpnode="elemento" visible="s" enum="0,1,2" dica="Utilize: (0) Pagamento a Vista, (1) Pagamento a prazo, (2) Outros" rec="B=5"/>
 		    <campo nome="mod_B06" display="Modelo do Documento Fiscal" tipo="string" tamanho="2"  requerido="s" tpnode="elemento" visible="s" enum="55,65" dica="55 é o modelo padrão NFe e 65 é o modelo padrão NFCe" rec="B=6"/>
 		    <campo nome="serie_B07" display="Série" tipo="string" tamanho="3"  requerido="s" tpnode="elemento" visible="s" rec="B=7"/>
 		    <campo nome="nNF_B08" display="Número do Documento Fiscal" tipo="string" tamanho="9"  requerido="s" tpnode="elemento" visible="s" rec="B=8"/>
@@ -36,12 +36,12 @@
 		    <campo nome="procEmi_B26" display="Processo de emissao da NF-e" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="s" rec="B=21"/>
 		    <campo nome="verProc_B27" display="Versao do Processo de emissão da NF-e" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="B=22"/>
 			<campo nome="dhCont_B28" display="Data e Hora da entrada em contingencia" tipo="string" tamanho="25"  requerido="n" tpnode="elemento" visible="s" rec="B=23"/>
-			<campo nome="xJust_B29" display="Justificativa da entrada em contingencia" tipo="string" tamanho="256"  requerido="n" tpnode="elemento" visible="s" rec="B=24"/>
+			<campo nome="xJust_B29" display="Justificativa da entrada em contingencia" tipo="string" tamanho="256"  requerido="n" tpnode="elemento" visible="s" rec="B=24" escape="s"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 		<tagxml>ide</tagxml>
 	</B>
-	
+
 	<NREF>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -67,29 +67,29 @@
 			<campo nome="nCOO_BA23" display="Numero do Contador de Ordem de Operacao - COO" tipo="string" tamanho="6"  requerido="n" tpnode="elemento" visible="s" rec="BA20=4"/>
 		</campos>
 		<master mastersource="B" masterfield="Handle" keyfield="Handle_B"/>
-		<tagxml>NRef</tagxml>		
+		<tagxml>NRef</tagxml>
 	</NREF>
-	
+
 	<C>
 		<campos>
 		    <campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CNPJ_C02" display="CNPJ do Emitente" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="C02=2"/>
 			<campo nome="CPF_C02a" display="CPF do Emitente" tipo="string" tamanho="11"  requerido="n" tpnode="elemento" visible="s" rec="C02a=2"/>
-			<campo nome="xNome_C03" display="Nome ou Razao Social" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C=2"/>
-			<campo nome="xFant_C04" display="Nome Fantasia" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="C=3"/>
-			<campo nome="xLgr_C06" display="Logradouro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=2"/>
-			<campo nome="nro_C07" display="Numero" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=3"/>
-			<campo nome="xCpl_C08" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="C05=4"/>
-			<campo nome="xBairro_C09" display="Bairro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=5"/>
+			<campo nome="xNome_C03" display="Nome ou Razao Social" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C=2" escape="s"/>
+			<campo nome="xFant_C04" display="Nome Fantasia" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="C=3" escape="s"/>
+			<campo nome="xLgr_C06" display="Logradouro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=2" escape="s"/>
+			<campo nome="nro_C07" display="Numero" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=3" escape="s"/>
+			<campo nome="xCpl_C08" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="C05=4" escape="s"/>
+			<campo nome="xBairro_C09" display="Bairro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=5" escape="s"/>
 			<campo nome="cMun_C10" display="Codigo do Municipio IBGE" tipo="string" tamanho="7"  requerido="s" tpnode="elemento" visible="s" rec="C05=6"/>
 			<campo nome="xMun_C11" display="Nome do Municipio" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="C05=7"/>
 			<campo nome="UF_C12" display="Sigla do Estado" tipo="string" tamanho="2"  requerido="s" tpnode="elemento" visible="s" rec="C05=8"/>
 			<campo nome="CEP_C13" display="Cep" tipo="string" tamanho="8"  requerido="s" tpnode="elemento" visible="s" rec="C05=9"/>
-			<campo nome="cPais_C14" display="Codigo do Pais BACEN" tipo="string" tamanho="4"  requerido="n" tpnode="elemento" visible="s" rec="C05=10"/>            
+			<campo nome="cPais_C14" display="Codigo do Pais BACEN" tipo="string" tamanho="4"  requerido="n" tpnode="elemento" visible="s" rec="C05=10"/>
 			<campo nome="xPais_C15" display="Nome do Pais" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="C05=11"/>
-			<campo nome="fone_C16" display="Telefone" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="C05=12"/>            
-			<campo nome="IE_C17" display="Inscricao Estadual" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" tagvazia="s" rec="C=4"/>            
+			<campo nome="fone_C16" display="Telefone" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="C05=12"/>
+			<campo nome="IE_C17" display="Inscricao Estadual" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" tagvazia="s" rec="C=4"/>
 			<campo nome="IEST_C18" display="Inscricao Estadual Subst. Tributário" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="C=5"/>
 			<campo nome="IM_C19" display="Inscricao Municipal" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="C=6"/>
 			<campo nome="CNAE_C20" display="CNAE Fiscal" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="C=7"/>
@@ -97,26 +97,26 @@
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 		<tagxml>emit</tagxml>
-	</C> 
-	
+	</C>
+
 	<D>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CNPJ_D02" display="CNPJ do orgao emitente" tipo="string" tamanho="14" requerido="n" tpnode="elemento" visible="s" rec="D=2"/>
-		    <campo nome="xOrgao_D03" display="Orgao emitente" tipo="string" tamanho="60" requerido="n" tpnode="elemento" visible="s" rec="D=3"/>
+		    <campo nome="xOrgao_D03" display="Orgao emitente" tipo="string" tamanho="60" requerido="n" tpnode="elemento" visible="s" rec="D=3" escape="s"/>
 		    <campo nome="matr_D04" display="Matricula do agente" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="D=4"/>
-		    <campo nome="xAgente_D05" display="Nome do  Agente" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="D=5"/>
+		    <campo nome="xAgente_D05" display="Nome do  Agente" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="D=5" escape="s"/>
 		    <campo nome="fone_D06" display="Telefone" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="D=6"/>
 		    <campo nome="UF_D07" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="D=7"/>
 		    <campo nome="nDAR_D08" display="Numero do Documento de Arrecadacao" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="D=8"/>
 		    <campo nome="dEmi_D09" display="Data de Emissao do Documento de arrecadacao" tipo="string" tamanho="10"  requerido="n" tpnode="elemento" visible="s" rec="D=9"/>
-		    <campo nome="vDAR_D10" display="Valor Total constante no Documento de arrecadacao de receita" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="D=10"/>        
+		    <campo nome="vDAR_D10" display="Valor Total constante no Documento de arrecadacao de receita" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="D=10"/>
 		    <campo nome="repEmi_D11" display="Reparticao Fiscal Emitente" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="D=11"/>
 		    <campo nome="dPag_D12" display="Data de Pagamento do Documento de Arrecadacao" tipo="string" tamanho="10"  requerido="n" tpnode="elemento" visible="s" rec="D=12"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-        <tagxml>avulsa</tagxml>		
+        <tagxml>avulsa</tagxml>
 	</D>
 	<E>
 		<campos>
@@ -125,11 +125,11 @@
 			<campo nome="CNPJ_E02" display="CNPJ do destinatario" tipo="string" tamanho="14" requerido="n" tpnode="elemento" visible="s" tagvazia="n" rec="E02=2"/>
 		    <campo nome="CPF_E03" display="CPF do destinatario" tipo="string" tamanho="11" requerido="n" tpnode="elemento" visible="s" rec="E03=2"/>
 		    <campo nome="idEstrangeiro_E03a" display="Identificação do destinatário no caso de comprador estrangeiro" tipo="string" tamanho="20" requerido="n" tpnode="elemento" visible="s" rec="E03a=2"/>
-		    <campo nome="xNome_E04" display="Razao Social ou nome do destinatario" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E=2"/>
-		    <campo nome="xLgr_E06" display="Logradouro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="E05=2"/>
-		    <campo nome="nro_E07" display="Numero" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="E05=3"/>
-		    <campo nome="xCpl_E08" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E05=4"/>
-		    <campo nome="xBairro_E09" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E05=5"/>
+		    <campo nome="xNome_E04" display="Razao Social ou nome do destinatario" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E=2" escape="s"/>
+		    <campo nome="xLgr_E06" display="Logradouro" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="E05=2" escape="s"/>
+		    <campo nome="nro_E07" display="Numero" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="E05=3" escape="s"/>
+		    <campo nome="xCpl_E08" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E05=4" escape="s"/>
+		    <campo nome="xBairro_E09" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E05=5" escape="s"/>
 		    <campo nome="cMun_E10" display="Codigo do Municipio - IBGE" tipo="string" tamanho="7"  requerido="s" tpnode="elemento" visible="s" rec="E05=6"/>
 		    <campo nome="xMun_E11" display="Nome do Municipio" tipo="string" tamanho="60"  requerido="s" tpnode="elemento" visible="s" rec="E05=7"/>
 		    <campo nome="UF_E12" display="Sigla da UF" tipo="string" tamanho="2"  requerido="s" tpnode="elemento" visible="s" rec="E05=8"/>
@@ -144,7 +144,7 @@
 			<campo nome="email_E19" display="email" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="E=7"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-		<tagxml>dest</tagxml>				
+		<tagxml>dest</tagxml>
 	</E>
 	<F>
 		<campos>
@@ -152,33 +152,33 @@
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CNPJ_F02" display="CNPJ" tipo="string" tamanho="14" requerido="n" tpnode="elemento" visible="s" rec="F02=2"/>
 			<campo nome="CPF_F02a" display="CPF" tipo="string" tamanho="11"  requerido="n" tpnode="elemento" visible="s" rec="F02a=2"/>
-		    <campo nome="xLgr_F03" display="Logradouro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=2"/> 
-		    <campo nome="nro_F04" display="Numero" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=3"/>
-		    <campo nome="xCpl_F05" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=4"/>
-		    <campo nome="xBairro_F06" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=5"/>
+		    <campo nome="xLgr_F03" display="Logradouro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=2" escape="s"/>
+		    <campo nome="nro_F04" display="Numero" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=3" escape="s"/>
+		    <campo nome="xCpl_F05" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=4" escape="s"/>
+		    <campo nome="xBairro_F06" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=5" escape="s"/>
 		    <campo nome="cMun_F07" display="Codigo do Municipio - IBGE" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="F=6"/>
 		    <campo nome="xMun_F08" display="Nome do Municipio" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="F=7"/>
 		    <campo nome="UF_F09" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="F=8"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-		<tagxml>retirada</tagxml>				
+		<tagxml>retirada</tagxml>
 	</F>
 	<G>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CNPJ_G02" display="CNPJ" tipo="string" tamanho="14" requerido="n" tpnode="elemento" visible="s" tagvazia="n" rec="G02=2"/>
 			<campo nome="CPF_G02a" display="CPF" tipo="string" tamanho="11" requerido="n" tpnode="elemento" visible="s" rec="G02a=2"/>
-		    <campo nome="xLgr_G03" display="Logradouro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=2"/>
-		    <campo nome="nro_G04" display="Numero" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=3"/>
-		    <campo nome="xCpl_G05" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=4"/>
-		    <campo nome="xBairro_G06" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=5"/>
+		    <campo nome="xLgr_G03" display="Logradouro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=2" escape="s"/>
+		    <campo nome="nro_G04" display="Numero" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=3" escape="s"/>
+		    <campo nome="xCpl_G05" display="Complemento" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=4" escape="s"/>
+		    <campo nome="xBairro_G06" display="Bairro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=5" escape="s"/>
 		    <campo nome="cMun_G07" display="Codigo do Municipio - IBGE" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="G=6"/>
 		    <campo nome="xMun_G08" display="Nome do Municipio" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="G=7"/>
 		    <campo nome="UF_G09" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="G=8"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-		<tagxml>entrega</tagxml>
+                <tagxml>entrega</tagxml>
 	</G>
 
 	<AUTXML>
@@ -189,25 +189,25 @@
 			<campo nome="CPF_GA03" display="CPF Autorizado" tipo="string" tamanho="11"  requerido="n" tpnode="elemento" visible="s" rec="GA03=2"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-		<tagxml>autXML</tagxml>		
+		<tagxml>autXML</tagxml>
 	</AUTXML>
 
 	<H>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
-			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>			
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
+			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="nItem_H02" display="Numero do Item" tipo="string" tamanho="3" requerido="n" tpnode="atributo" visible="s" rec="H=2"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
-		<tagxml>det</tagxml>				
+		<tagxml>det</tagxml>
 	</H>
 	<I>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_H" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="cProd_I02" display="Codigo do Produto ou Servico" tipo="string" tamanho="60" requerido="n" tpnode="elemento" visible="s" rec="I=2"/>
+			<campo nome="cProd_I02" display="Codigo do Produto ou Servico" tipo="string" tamanho="60" requerido="n" tpnode="elemento" visible="s" rec="I=2" escape="s"/>
 		    <campo nome="cEAN_I03" display="Codigo de Barras - EAN" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" tagvazia="s" rec="I=3"/>
-		    <campo nome="xProd_I04" display="Descricao do Produto ou Servico" tipo="string" tamanho="120"  requerido="n" tpnode="elemento" visible="s" rec="I=4"/>
+		    <campo nome="xProd_I04" display="Descricao do Produto ou Servico" tipo="string" tamanho="120"  requerido="n" tpnode="elemento" visible="s" rec="I=4" escape="s"/>
 		    <campo nome="NCM_I05" display="Codigo NCM" tipo="string" tamanho="10"  requerido="s" tpnode="elemento" visible="s" rec="I=5"/>		
 		    <campo nome="CEST_I05c" display="Codigo CEST" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="I05c=2"/>
 		    <campo nome="EXTIPI_I06" display="EX_TIPI" tipo="string" tamanho="3"  requerido="n" tpnode="elemento" visible="s" rec="I=6"/>	   
@@ -225,7 +225,7 @@
 			<campo nome="vDesc_I17" display="Valor do Desconto" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="I=18"/>
 			<campo nome="vOutro_I17a" display="Outras despesas acessórias" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="I=19"/>
 			<campo nome="indTot_I17b" display="Indica se valor do Item vProd entra no valor total da NF-e vProd" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="s" dica="Utilize: [0] - O valor do Item compõe o valor total da nota / [1] - O valor do Item NÃO compõe o valor total da nota" rec="I=20"/>
-			<campo nome="xPed_I60" display="Numero do Pedido de Compra" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="I=21"/>
+			<campo nome="xPed_I60" display="Numero do Pedido de Compra" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="I=21" escape="s"/>
 			<campo nome="nItemPed_I61" display="Item do Pedido de Compra" tipo="string" tamanho="6"  requerido="n" tpnode="elemento" visible="s" rec="I=22"/>
 			<campo nome="nFCI_I70" display="Numero de controle da FCI - Ficha de Conteudo de Importacao" tipo="string" tamanho="36"  requerido="n" tpnode="elemento" visible="s" rec="I=23"/>
 		</campos>
@@ -242,11 +242,11 @@
 	</NVE>
 	<DI>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_I" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="nDI_I19" display="Numero do Documento de Importacao" tipo="string" tamanho="12"  requerido="n" tpnode="elemento" visible="s" rec="I18=2"/>
 			<campo nome="dDI_I20" display="Data de Registro do Doc. de Importacao" tipo="string" tamanho="10"  requerido="n" tpnode="elemento" visible="s" rec="I18=3"/>
-			<campo nome="xLocDesemb_I21" display="Local de Desembaraco Aduaneiro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="I18=4"/>
+			<campo nome="xLocDesemb_I21" display="Local de Desembaraco Aduaneiro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="I18=4" escape="s"/>
 			<campo nome="UFDesemb_I22" display="Sigla da UF onde ocorreu o  Desembaraco Aduaneiro" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="I18=5"/>
 			<campo nome="dDesemb_I23" display="Data do Desembaraco Aduaneiro" tipo="string" tamanho="10"  requerido="n" tpnode="elemento" visible="s" rec="I18=6"/>
 			<campo nome="tpViaTransp_I23a" display="Via de transporte internacional informada na Declaração de Importação" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" enum="1,2,3,4,5,6,7,8,9,10" dica="1-Marítima/2-Fluvial/3-Lacustre/4-Aérea/5-Postal/6-Ferroviaria/7-Rodoviaria/8-Conduto ou Rede Transmissão/9-Meios próprios/10-Entrada ou Saída ficta" rec="I18=7"/>
@@ -256,21 +256,21 @@
 			<campo nome="UFTerceiro_I23e" display="Sigla da UF do adquirente ou do encomendante" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s" rec="I18=11"/>
 			<campo nome="cExportador_I24" display="Codigo do Exportador" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="I18=12"/>
 		</campos>
-		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>			
+		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
 		<tagxml>di</tagxml>
 	</DI>
 	<ADI>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
-			<campo nome="Handle_DI" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>			
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
+			<campo nome="Handle_DI" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="nAdicao_I26" display="Numero da Adicao" tipo="string" tamanho="3"  requerido="n" tpnode="elemento" visible="s" rec="I25=2"/>
 			<campo nome="nSeqAdic_I27" display="Numero Sequencial do Item dentro da adicao" tipo="string" tamanho="3"  requerido="n" tpnode="elemento" visible="s" rec="I25=3"/>
 			<campo nome="cFabricante_I28" display="Codigo do fabricante estrangeiro" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="I25=4"/>
 			<campo nome="vDescDI_I29" display="Valor do desconto do Item da DI" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="I25=5"/>
 			<campo nome="nDraw_I29a" display="Numero do ato concessorio de Drawback" tipo="string" tamanho="11"  requerido="n" tpnode="elemento" visible="s" rec="I25=6"/>
 		</campos>
-		<master mastersource="DI" masterfield="Handle" keyfield="Handle_DI"/>			
-		<tagxml>adi</tagxml>						
+		<master mastersource="DI" masterfield="Handle" keyfield="Handle_DI"/>
+		<tagxml>adi</tagxml>
 	</ADI>
 	<DETEXPORT>
 		<campos>
@@ -278,8 +278,8 @@
 			<campo nome="Handle_I" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="nDraw_I51" display="Número do ato concessório de Drawback" tipo="string" tamanho="11" requerido="n" tpnode="elemento" visible="s" rec="I50=2"/>
 		</campos>
-		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>			
-		<tagxml>detExport</tagxml>						
+		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
+		<tagxml>detExport</tagxml>
 	</DETEXPORT>
 	<EXPORTIND>
 		<campos>
@@ -289,12 +289,12 @@
 			<campo nome="chNFe_I54" display="Chave de Acesso da NF-e recebida para exportação" tipo="string" tamanho="44" requerido="n" tpnode="elemento" visible="s" rec="I52=3"/>
 			<campo nome="qExport_I55" display="Quantidade do item realmente" tipo="string" tamanho="16" requerido="n" tpnode="elemento" visible="s" rec="I52=4"/>
 		</campos>
-		<master mastersource="DETEXPORT" masterfield="Handle" keyfield="Handle_DETEXPORT"/>			
+		<master mastersource="DETEXPORT" masterfield="Handle" keyfield="Handle_DETEXPORT"/>
 		<tagxml>exportInd</tagxml>
 	</EXPORTIND>
 	<J>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_I" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
             <campo nome="tpOp_J02" display="Tipo da operacao" tipo="string" tamanho="1" requerido="n" tpnode="elemento" visible="s" rec="JA=2"/>
 			<campo nome="chassi_J03" display="Chassi do veiculo" tipo="string" tamanho="17" requerido="n" tpnode="elemento" visible="s" rec="JA=3"/>
@@ -322,8 +322,8 @@
 			<campo nome="lota_J25" display="Capacidade maxima de lotacao" tipo="string" tamanho="3" requerido="n" tpnode="elemento" visible="s" rec="JA=24"/>
 			<campo nome="tpRest_J26" display="Restricao" tipo="string" tamanho="1" requerido="n" tpnode="elemento" visible="s" rec="JA=25"/>
 		</campos>
-		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>	
-		<tagxml>veicProd</tagxml>		
+		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
+		<tagxml>veicProd</tagxml>
 	</J>
 	<K>
 		<campos>
@@ -336,7 +336,7 @@
 			<campo nome="vPMC_K06" display="Preco Maximo Consumidor" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="K=6"/>
 		</campos>
 		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
-		<tagxml>med</tagxml>		
+		<tagxml>med</tagxml>
 	</K>
 	<L>
 		<campos>
@@ -345,10 +345,10 @@
 			<campo nome="tpArma_L02" display="Indicador do tipo de arma de fogo" tipo="string" tamanho="1" requerido="n" tpnode="elemento" visible="s" rec="L=2"/>
             <campo nome="nSerie_L03" display="Numero da serie da arma" tipo="string" tamanho="15" requerido="n" tpnode="elemento" visible="s" rec="L=3"/>
 			<campo nome="nCano_L04" display="Numero de serie do cano" tipo="string" tamanho="15" requerido="n" tpnode="elemento" visible="s" rec="L=4"/>
-			<campo nome="descr_L05" display="Descricao completa da arma" tipo="string" tamanho="256" requerido="n" tpnode="elemento" visible="s" rec="L=5"/>
+			<campo nome="descr_L05" display="Descricao completa da arma" tipo="string" tamanho="256" requerido="n" tpnode="elemento" visible="s" rec="L=5" escape="s"/>
 		</campos>
 		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
-		<tagxml>arma</tagxml>		
+		<tagxml>arma</tagxml>
 	</L>
 	<L1>
 		<campos>
@@ -361,7 +361,7 @@
 			<campo nome="UFCons_LA06" display="Sigla da UF de consumo" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s" rec="LA=6"/>
 			<campo nome="qBCProd_LA08" display="BC da CIDE" tipo="string" tamanho="21" requerido="n" tpnode="elemento" visible="s" rec="LA07=2"/>
             <campo nome="vAliqProd_LA09" display="Valor da aliquota da CIDE" tipo="string" tamanho="20" requerido="n" tpnode="elemento" visible="s" rec="LA07=3"/>
-            <campo nome="vCIDE_LA10" display="Valor da CIDE" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="LA07=4"/>
+            <campo nome="vCIDE_LA10" display="Valor da CIDE" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="LA07=4"/>            
             <campo nome="nBico_LA12" display="Número de identificação do bico utilizado no abastecimento" tipo="string" tamanho="3" requerido="n" tpnode="elemento" visible="s"/>
 			<campo nome="nBomba_LA13" display="Número de identificação da bomba ao qual o bico está interligado" tipo="string" tamanho="3" requerido="n" tpnode="elemento" visible="s"/>	
 			<campo nome="nTanque_LA14" display="Número de identificação do tanque ao qual o bico está interligado" tipo="string" tamanho="3" requerido="n" tpnode="elemento" visible="s"/>
@@ -369,7 +369,7 @@
 			<campo nome="vEncFin_LA16" display="Valor do Encerrante ao final do abastecimento" tipo="string" tamanho="15" requerido="n" tpnode="elemento" visible="s"/>
 		</campos>
 		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
-		<tagxml>comb</tagxml>		
+		<tagxml>comb</tagxml>
 	</L1>
 	<L2>
 		<campos>
@@ -378,27 +378,27 @@
             <campo nome="nRECOPI_LB01" display="Número do RECOPI" tipo="string" tamanho="20" requerido="n" tpnode="elemento" visible="s" rec="LB=2"/>
 		</campos>
 		<master mastersource="I" masterfield="Handle" keyfield="Handle_I"/>
-		<tagxml>nRECOPI</tagxml>		
-	</L2>
+		<tagxml>nRECOPI</tagxml>
+	</L2>	
 	<M>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_H" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="vTotTrib_M02" display="Valor Total dos Impostos" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="M=2"/>
 		</campos>
-		<master mastersource="H" masterfield="Handle" keyfield="Handle_H"/>			
-		<tagxml>imposto</tagxml>		
+		<master mastersource="H" masterfield="Handle" keyfield="Handle_H"/>
+		<tagxml>imposto</tagxml>
 	</M>
 	<N>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="orig_N11" display="Origem da mercadoria" tipo="string" tamanho="1" requerido="n" tpnode="elemento" visible="s" enum="0,1,2,3,4,5,6,7,8" dica="Utilize: Origem da mercadoria: (0) - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8; (1) - Estrangeira - Importação direta, exceto a indicada no código 6; (2) - Estrangeira - Adquirida no mercado interno, exceto a indicada no código 7; (3) - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 40% e inferior ou igual a 70%; (4) - Nacional, cuja produção tenha sido feita em conformidade com os processos produtivos básicos de que tratam as legislações citadas nos Ajustes; (5) - Nacional, mercadoria ou bem com Conteúdo de Importação inferior ou igual a 40%; (6) - Estrangeira - Importação direta, sem similar nacional, constante em lista da CAMEX e gás natural; (7) - Estrangeira - Adquirida no mercado interno, sem similar nacional, constante em lista da CAMEX e gás natural. (8) - Nacional, mercadoria ou bem com Conteúdo de Importação superior a 70%" rec="N02=2,N03=2,N04=2,N05=2,N06=2,N07=2,N08=2,N09=2,N10=2,N10a=2,N10b=2,N10c=2,N10d=2,N10e=2,N10f=2,N10g=2,N10h=2"/>
 		    <campo nome="CST_N12" display="Tributacao do ICMS" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="N02=3,N03=3,N04=3,N05=3,N06=3,N07=3,N08=3,N09=3,N10=3,N10a=3,N10b=3"/>
 			<campo nome="CSOSN_N12a" display="Codigo de Situacao da Operacao - Simples Nacional" tipo="string" tamanho="3"  requerido="n" tpnode="elemento" visible="s" rec="N10c=3,N10d=3,N10e=3,N10f=3,N10g=3,N10h=3"/>
 		    <campo nome="modBC_N13" display="Modalidade de determinacao da BC" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="s" rec="N02=4,N03=4,N04=4,N07=4,N09=4,N10=4,N10a=4,N10h=4"/>
 			<campo nome="vBC_N15" display="Valor da BC do ICMS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="N02=5,N03=5,N04=6,N07=6,N09=6,N10=5,N10a=6,N10h=5"/>
-			<campo nome="pRedBC_N14" display="Percentual de Reducao da BC" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="N04=5,N07=5,N09=5,N10=6,N10a=5,N10h=6"/>
+			<campo nome="pRedBC_N14" display="Percentual de Reducao da BC" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="N04=5,N07=5,N09=5,N10=6,N10a=5,N10h=6"/>			
 		    <campo nome="pICMS_N16" display="Aliquota do Imposto" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="N02=6,N03=6,N04=7,N07=7,N09=7,N10=7,N10a=7,N10h=7"/>
 		    <campo nome="vICMSOp_N16a" display="Valor do ICMS da Operação" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="N07=8"/>
 		    <campo nome="pDif_N16b" display="Percentual do diferimento" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="N07=9"/>
@@ -436,15 +436,15 @@
 		    <campo nome="vBC_O10" display="Valor da BC do IPI" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="O10=2"/>
 		    <campo nome="qUnid_O11" display="Quantidade Total da Unidade padrao para tributacao" tipo="string" tamanho="21"  requerido="n" tpnode="elemento" visible="s" rec="O11=2"/>
 			<campo nome="vUnid_O12" display="Valor por unidade tributavel" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="O11=3"/>
-		    <campo nome="pIPI_O13" display="Aliquota do IPI" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="O10=3"/>
-			<campo nome="vIPI_O14" display="Valor do IPI" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="O07=3,011=4"/>
+		    <campo nome="pIPI_O13" display="Aliquota do IPI" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="O10=3"/>			
+ 			<campo nome="vIPI_O14" display="Valor do IPI" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="O11=4,O07=3"/>		
 		</campos>
 		<master mastersource="M" masterfield="Handle" keyfield="Handle_M"/>
 	</O>
 	<P>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="vBC_P02" display="Valor da BC do Imposto de Importacao" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="P=2"/>
 		    <campo nome="vDespAdu_P03" display="Valor das Despesas Aduaneiras" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="P=3"/>
 		    <campo nome="vII_P04" display="Valor do Imposto de Importacao" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="P=4"/>
@@ -455,7 +455,7 @@
 	<Q>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CST_Q06" display="Codigo da Situacao Tributaria do PIS" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s" rec="Q02=2,Q03=2,Q04=2,Q05=2"/>
 			<campo nome="CST_Q02" display="Codigo da Situacao Tributaria do PIS" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s"/>
 		    <campo nome="vBC_Q07" display="Valor da Base de Calculo do PIS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="Q02=3,Q07=2"/>
@@ -469,11 +469,11 @@
 	<R>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="vBC_R02" display="Valor da Base de Calculo do PIS" tipo="string" tamanho="18" requerido="n" tpnode="elemento" visible="s" rec="R02=2"/>
 		    <campo nome="pPIS_R03" display="Aliquota do PIS em Percentual" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="R02=3"/>
 		    <campo nome="qBCProd_R04" display="Quantidade Vendida" tipo="string" tamanho="21"  requerido="n" tpnode="elemento" visible="s" rec="R04=2"/>
-		    <campo nome="vAliqProd_R05" display="Aliquota do PIS em Reais" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="R04=3"/>        
+		    <campo nome="vAliqProd_R05" display="Aliquota do PIS em Reais" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="R04=3"/>
 		    <campo nome="vPIS_R06" display="Valor do PIS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="R04=4,R=2"/>
 		</campos>
 		<master mastersource="M" masterfield="Handle" keyfield="Handle_M"/>
@@ -481,12 +481,12 @@
 	<S>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="CST_S06" display="Codigo da Situacao Tributaria" tipo="string" tamanho="2" requerido="n" tpnode="elemento" visible="s" rec="S02=2,S03=2,S04=2,S05=2"/>
 		    <campo nome="vBC_S07" display="Valor da Base de Calculo da COFINS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="S02=3,S07=2"/>
 		    <campo nome="pCOFINS_S08" display="Aliquota do COFINS em percentual" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="S02=4,S05=2,S07=3"/>
 		    <campo nome="qBCProd_S09" display="Quantidade Vendida" tipo="string" tamanho="21"  requerido="n" tpnode="elemento" visible="s" rec="S03=2,S03=3,S09=2"/>
-			<campo nome="vAliqProd_S10" display="Aliquota do COFINS em Reais" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="S03=4,S09=3"/>        		
+			<campo nome="vAliqProd_S10" display="Aliquota do COFINS em Reais" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="S03=4,S09=3"/>
 			<campo nome="vCOFINS_S11" display="Valor do COFINS em reais" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="S02=5,S03=5,S05=3"/>
 		</campos>
 		<master mastersource="M" masterfield="Handle" keyfield="Handle_M"/>
@@ -494,7 +494,7 @@
 	<T>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
-			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>	
+			<campo nome="Handle_M" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 		    <campo nome="vBC_T02" display="Valor da Base de Calculo da COFINS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="T02=2"/>
 		    <campo nome="pCOFINS_T03" display="Aliquota do COFINS em percentual" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="T02=3"/>
 			<campo nome="qBCProd_T04" display="Quantidade Vendida" tipo="string" tamanho="21"  requerido="n" tpnode="elemento" visible="s" rec="T04=2"/>
@@ -511,7 +511,7 @@
 		    <campo nome="vAliq_U03" display="Aliquota do ISSQN" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="U=3"/>
 			<campo nome="vISSQN_U04" display="Valor do ISSQN" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="U=4"/>
 			<campo nome="cMunFG_U05" display="Codigo do Municipio de Ocorrencia do fato gerador do ISSQN" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="U=5"/>
-		    <campo nome="cListServ_U06" display="Codigo da Lista de Servicos" tipo="string" tamanho="5" requerido="n" tpnode="elemento" visible="s" rec="U=6"/> 
+		    <campo nome="cListServ_U06" display="Codigo da Lista de Servicos" tipo="string" tamanho="5" requerido="n" tpnode="elemento" visible="s" rec="U=6"/>
 			<campo nome="vDeducao_U07" display="Valor dedução para redução da Base de Cálculo" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="U=7"/>
 			<campo nome="vOutro_U08" display="Valor outras retenções" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="U=8"/>
 			<campo nome="vDescIncond_U09" display="Valor do desconto incondicionado" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="U=9"/>
@@ -545,11 +545,11 @@
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s" />
 			<campo nome="Handle_H" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" />
-			<campo nome="infAdProd_V01" display="Informacoes Adicionais do Produto" tipo="string" tamanho="500"  requerido="n" tpnode="elemento" visible="s" rec="H=3" />
+			<campo nome="infAdProd_V01" display="Informacoes Adicionais do Produto" tipo="string" tamanho="500"  requerido="n" tpnode="elemento" visible="s" rec="H=3" escape="s"/>
 		</campos>
 		<master mastersource="H" masterfield="Handle" keyfield="Handle_H"/>
 	</V>
-	
+
 	<UB>
 	    <campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -559,7 +559,7 @@
 		</campos>
 		<master mastersource="H" masterfield="Handle" keyfield="Handle_H"/>
 	</UB>
-	
+
 	<W>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -607,68 +607,68 @@
 	</W>
 	<X tablename="">
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="modFrete_X02" display="Modalidade do frete" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="s" enum="0,1,2,9" dica="Utilize: 0 Por conta do emitente, 1 Por conta do destinatario, 2 Por conta de terceiros, 9 Sem frete" rec="X=2"/>
 			<campo nome="CNPJ_X04" display="CNPJ" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="X04=2"/>
 			<campo nome="CPF_X05" display="CPF" tipo="string" tamanho="11"  requerido="n" tpnode="elemento" visible="s" rec="X05=2"/>
-		    <campo nome="xNome_X06" display="Razao Social ou nome" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X03=2"/>
+		    <campo nome="xNome_X06" display="Razao Social ou nome" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X03=2" escape="s"/>
 		    <campo nome="IE_X07" display="Inscricao Estadual" tipo="string" tamanho="14"  requerido="n" tpnode="elemento" visible="s" rec="X03=3"/>
-			<campo nome="xEnder_X08" display="Endereco completo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X03=4"/>
+			<campo nome="xEnder_X08" display="Endereco completo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X03=4" escape="s"/>
 			<campo nome="xMun_X09" display="Nome do Municipio" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X03=5"/>
 		    <campo nome="UF_X10" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="X03=6"/>
 			<campo nome="vServ_X12" display="Valor do Servico" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="X11=2"/>
 			<campo nome="vBCRet_X13" display="BC da Retencao do ICMS" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="X11=3"/>
-			<campo nome="pICMSRet_X14" display="Aliquota da Retencao" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="X11=4"/>        		
+			<campo nome="pICMSRet_X14" display="Aliquota da Retencao" tipo="string" tamanho="8"  requerido="n" tpnode="elemento" visible="s" rec="X11=4"/>
 			<campo nome="vICMSRet_X15" display="Valor do ICMS Retido" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="X11=5"/>
 			<campo nome="CFOP_X16" display="CFOP" tipo="string" tamanho="4"  requerido="n" tpnode="elemento" visible="s" rec="X11=6"/>
 			<campo nome="cMunFG_X17" display="Codigo do Municipio de Ocorrencia do fato gerador do ICMS Transporte" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="X11=7"/>
-			<campo nome="placa_X19" display="Placa do Veiculo" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="X18=2"/>  
-			<campo nome="UF_X20" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="X18=3"/>  
+			<campo nome="placa_X19" display="Placa do Veiculo" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="X18=2"/>
+			<campo nome="UF_X20" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="X18=3"/>
 			<campo nome="RNTC_X21" display="Registro Nacional do Transportador" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="X18=4"/>
 			<campo nome="vagao_X25a" display="Identificacao do vagao" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="X=3"/>
 			<campo nome="balsa_X25b" display="Identificacao da balsa" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="X=4"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 	</X>
-	
+
 	<REBOQUE>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_X" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="placa_X23" display="Placa do Veiculo" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="X22=2"/> 
-			<campo nome="UF_X24" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="X22=3"/> 
+			<campo nome="placa_X23" display="Placa do Veiculo" tipo="string" tamanho="7"  requerido="n" tpnode="elemento" visible="s" rec="X22=2"/>
+			<campo nome="UF_X24" display="Sigla da UF" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="X22=3"/>
 			<campo nome="RNTC_X25" display="Registro Nacional do Transportador" tipo="string" tamanho="20"  requerido="n" tpnode="elemento" visible="s" rec="X22=4"/>
 		</campos>
 		<master mastersource="X" masterfield="Handle" keyfield="Handle_X"/>
 		<tagxml>reboque</tagxml>
-	</REBOQUE>	
-	
+	</REBOQUE>
+
 	<VOL>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_X" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="qVol_X27" display="Quantidade de Volumes Transportados" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="X26=2"/> 	
-			<campo nome="esp_X28" display="Especie dos Volumes transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=3"/> 	
-			<campo nome="marca_X29" display="Marca dos Volumes Transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=4"/> 	
-			<campo nome="nVol_X30" display="Numeracao dos Volumes Transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=5"/> 	
-			<campo nome="pesoL_X31" display="Pesoo Liquido em Kg" tipo="string" tamanho="19"  requerido="n" tpnode="elemento" visible="s" rec="X26=6"/> 	
-			<campo nome="pesoB_X32" display="Peso Bruto em Kg" tipo="string" tamanho="19"  requerido="n" tpnode="elemento" visible="s" rec="X26=7"/> 					
+			<campo nome="qVol_X27" display="Quantidade de Volumes Transportados" tipo="string" tamanho="15"  requerido="n" tpnode="elemento" visible="s" rec="X26=2"/>
+			<campo nome="esp_X28" display="Especie dos Volumes transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=3"/>
+			<campo nome="marca_X29" display="Marca dos Volumes Transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=4"/>
+			<campo nome="nVol_X30" display="Numeracao dos Volumes Transportados" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X26=5"/>
+			<campo nome="pesoL_X31" display="Pesoo Liquido em Kg" tipo="string" tamanho="19"  requerido="n" tpnode="elemento" visible="s" rec="X26=6"/>
+			<campo nome="pesoB_X32" display="Peso Bruto em Kg" tipo="string" tamanho="19"  requerido="n" tpnode="elemento" visible="s" rec="X26=7"/>
 		</campos>
 		<master mastersource="X" masterfield="Handle" keyfield="Handle_X"/>
-		<tagxml>vol</tagxml>		
+		<tagxml>vol</tagxml>
 	</VOL>
-	
+
 	<LACRE>
 		<campos>
-			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>	
+			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_VOL" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo1 nome="nLacre_X34" display="Numero dos Lacres" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="X33=2"/>
 		</campos>
 		<master mastersource="VOL" masterfield="Handle" keyfield="Handle_VOL"/>
 		<tagxml>lacres</tagxml>
 	</LACRE>
-	
+
 	<Y>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -680,7 +680,7 @@
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 	</Y>
-	
+
 	<DUP>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -690,54 +690,54 @@
 			<campo nome="vDup_Y10" display="Valor da Duplicata" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="Y07=4"/>
 		</campos>
 		<master mastersource="Y" masterfield="Handle" keyfield="Handle_Y"/>
-	</DUP>	
-	
+	</DUP>
+
 	<Z>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_A" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="infAdFisco_Z02" display="Informacoes Adicionais de interesse do Fisco" tipo="string" tamanho="2000"  requerido="n" tpnode="elemento" visible="s" rec="Z=2"/>
-			<campo nome="infCpl_Z03" display="Informacoes Adicionais de Interesse do Contribuinte" tipo="string" tamanho="5000"  requerido="n" tpnode="elemento" visible="s" rec="Z=3"/>
-           		<campo nome="UFSaidaPais_ZA02" display="Sigla da UF onde ocorrera o Embarque dos produtos" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="ZA=2"/>
-			<campo nome="xLocExporta_ZA03" display="Local onde ocorrera o Embarque dos produtos" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZA=3"/>
-			<campo nome="xLocDespacho_ZA04" display="Descrição do local de despacho" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZA=4"/>
+			<campo nome="infAdFisco_Z02" display="Informacoes Adicionais de interesse do Fisco" tipo="string" tamanho="2000"  requerido="n" tpnode="elemento" visible="s" rec="Z=2" escape="s"/>
+			<campo nome="infCpl_Z03" display="Informacoes Adicionais de Interesse do Contribuinte" tipo="string" tamanho="5000"  requerido="n" tpnode="elemento" visible="s" rec="Z=3" escape="s"/>
+           	<campo nome="UFSaidaPais_ZA02" display="Sigla da UF onde ocorrera o Embarque dos produtos" tipo="string" tamanho="2"  requerido="n" tpnode="elemento" visible="s" rec="ZA=2"/>
+			<campo nome="xLocExporta_ZA03" display="Local onde ocorrera o Embarque dos produtos" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZA=3" escape="s"/>
+			<campo nome="xLocDespacho_ZA04" display="Descrição do local de despacho" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZA=4" escape="s"/>
 			<campo nome="xNEmp_ZB02" display="Nota de Empenho" tipo="string" tamanho="22"  requerido="n" tpnode="elemento" visible="s" rec="ZB=2"/>
-		        <campo nome="xPed_ZB03" display="Pedido" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZB=3"/>
-		        <campo nome="xCont_ZB04" display="Contrato" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZB=4"/>
+		    <campo nome="xPed_ZB03" display="Pedido" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZB=3" escape="s"/>
+		    <campo nome="xCont_ZB04" display="Contrato" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZB=4" escape="s"/>
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 	</Z>
-	
+
 	<OBSCONT>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_Z" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="xCampo_Z05" display="Identificacao do Campo" tipo="string" tamanho="20"  requerido="n" tpnode="atributo" visible="s" rec="Z04=2"/>
-		    <campo nome="xTexto_Z06" display="Conteudo do Campo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z04=3"/>
+		    <campo nome="xTexto_Z06" display="Conteudo do Campo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z04=3" escape="s"/>
 		</campos>
 		<master mastersource="Z" masterfield="Handle" keyfield="Handle_Z"/>
 	</OBSCONT>
-	
+
 	<OBSFISCO>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_Z" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="xCampo_Z08" display="Identificacao do Campo" tipo="string" tamanho="20"  requerido="n" tpnode="atributo" visible="s" rec="Z07=2"/>
-			<campo nome="xTexto_Z09" display="Conteudo do Campo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z07=3"/>        	        		
+			<campo nome="xTexto_Z09" display="Conteudo do Campo" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z07=3" escape="s"/>
 		</campos>
 		<master mastersource="Z" masterfield="Handle" keyfield="Handle_Z"/>
 	</OBSFISCO>
-	
+
 	<PROCREF>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_Z" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="nProc_Z11" display="Identificador do processo ou ato concessorio" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z10=2"/>
+			<campo nome="nProc_Z11" display="Identificador do processo ou ato concessorio" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="Z10=2" escape="s"/>
 			<campo nome="indProc_Z12" display="Indicador da origem do processo" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="s" rec="Z10=3"/>
 		</campos>
 		<master mastersource="Z" masterfield="Handle" keyfield="Handle_Z"/>
 	</PROCREF>
-	
+
 	<CANA>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -753,29 +753,29 @@
 		</campos>
 		<master mastersource="A" masterfield="Handle" keyfield="Handle_A"/>
 	</CANA>
-	
+
 	<FORDIA>
 		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_CANA" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
 			<campo nome="dia_ZC05" display="Dia" tipo="string" tamanho="2"  requerido="n" tpnode="atributo" visible="s" rec="ZC04=2"/>
-			<campo nome="qtde_ZC06" display="Quantidade" tipo="string" tamanho="22"  requerido="n" tpnode="elemento" visible="s" rec="ZC04=3"/>        
+			<campo nome="qtde_ZC06" display="Quantidade" tipo="string" tamanho="22"  requerido="n" tpnode="elemento" visible="s" rec="ZC04=3"/>
 		</campos>
 		<master mastersource="CANA" masterfield="Handle" keyfield="Handle_CANA"/>
 		<tagxml>forDia</tagxml>
-	</FORDIA>	
-	
+	</FORDIA>
+
 	<DEDUC>
-		<campos>       
+		<campos>
 			<campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
 			<campo nome="Handle_CANA" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n"/>
-			<campo nome="xDed_ZC11" display="Descricao da Deducao" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZC10=2"/>
+			<campo nome="xDed_ZC11" display="Descricao da Deducao" tipo="string" tamanho="60"  requerido="n" tpnode="elemento" visible="s" rec="ZC10=2" escape="s"/>
 			<campo nome="vDed_ZC12" display="Valor da Deducao" tipo="string" tamanho="18"  requerido="n" tpnode="elemento" visible="s" rec="ZC10=3"/>
 		</campos>
 		<master mastersource="CANA" masterfield="Handle" keyfield="Handle_CANA"/>
 		<tagxml>deduc</tagxml>
-	</DEDUC>	
-	
+	</DEDUC>
+
 	<MANAGER>
 		<campos>
 		    <campo nome="Handle" tipo="string" tamanho="10" requerido="s" tpnode="elemento" visible="n" autoinc="s"/>
@@ -784,11 +784,11 @@
 			<campo nome="QtdeCopiasDanfe" display="Quantidade de Copias da Danfe" tipo="string" tamanho="10"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=4"/>
 			<campo nome="ModeloRtm" display="Modelo do Rtm da Danfe" tipo="string" tamanho="200"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=5"/>
 			<campo nome="EmailCCo" display="Email para ser enviado como CCo" tipo="string" tamanho="200"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=6"/>
-			<campo nome="Assunto" display="Assunto do Email" tipo="string" tamanho="100"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=7"/>
-			<campo nome="Texto" display="Texto do Email" tipo="string" tamanho="255"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=8"/>
+			<campo nome="Assunto" display="Assunto do Email" tipo="string" tamanho="100"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=7" escape="s"/>
+			<campo nome="Texto" display="Texto do Email" tipo="string" tamanho="255"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=8" escape="s"/>
 			<campo nome="AnexaPDF" display="Anexa PDF da Danfe no Email" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=9"/>
-			<campo nome="Tx2ComplementarGnre" display="Tx2 Complementar para GNRE" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=10"/>
+			<campo nome="Tx2ComplementarGnre" display="Tx2 Complementar para GNRE" tipo="string" tamanho="1"  requerido="n" tpnode="elemento" visible="n" rec="MANAGER=10" escape="s"/>
 		</campos>
-		<master/>			
-	</MANAGER>	
-</PARTES>	
+		<master/>
+	</MANAGER>
+</PARTES>

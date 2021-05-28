@@ -167,9 +167,6 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     txtSeguroMinimo.Text = reg.ValorSeguroMinimo.ToString();
                                     txtExcedente1.Text = reg.DeParaExcedente1.ToString();
                                     txtExcedente2.Text = reg.DeParaExcedente2.ToString();
-                                    txtCalcularADValor1.Text = reg.IndicadorCalcularAdValorDePara1.ToString();
-                                    txtCalcularADValor2.Text = reg.IndicadorCalcularAdValorDePara2.ToString();
-                                    txtTipoCalculo.Text = reg.IndicadorTipoCalculo.ToString();
                                     txtPesoCubado.Text = reg.ValorPesoCubado.ToString();
 
                                     txtDePara11.Text = reg.DePara11.ToString();
@@ -199,6 +196,65 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     txtDePara71.Text = reg.DePara71.ToString();
                                     txtDePara72.Text = reg.DePara72.ToString();
                                     txtDeParaPct71.Text = reg.DeParaPct17.ToString();
+
+                                    if(reg.IndicadorTipoCalculo == 1)
+                                    {
+                                        pnlRegra1.Visible = true;
+                                        pnlRegra2.Visible = true;
+                                        lbl1Regra1.Text = "(%) Valor (Frete Valor)";
+                                        lbl1Regra2.Text = "(R$) Valor (Frete Peso)";
+                                    }
+                                    else if (reg.IndicadorTipoCalculo == 2 || reg.IndicadorTipoCalculo == 4)
+                                    {
+                                        pnlRegra1.Visible = true;
+                                        pnlRegra2.Visible = true;
+                                        pnlRegra3.Visible = true;
+                                        pnlRegra4.Visible = true;
+
+                                        lbl2Regra1.Text = "(kg) Até";
+                                        lbl3Regra1.Text = "(R$) Até";
+
+                                        lbl2Regra2.Text = "(kg) Até";
+                                        lbl3Regra2.Text = "(R$) Até";
+
+                                        lbl2Regra3.Text = "(kg) Até";
+                                        lbl3Regra3.Text = "(R$) Até";
+
+                                        lbl2Regra4.Text = "(kg) Até";
+                                        lbl3Regra4.Text = "(R$) Até";
+
+                                    }
+                                    else if (reg.IndicadorTipoCalculo == 3)
+                                    {
+                                        pnlRegra1.Visible = true;
+                                        pnlRegra2.Visible = true;
+                                        pnlRegra3.Visible = true;
+                                        pnlRegra4.Visible = true;
+                                        pnlRegra5.Visible = true;
+                                        pnlRegra6.Visible = true;
+                                        pnlRegra7.Visible = true;
+
+                                        lbl2Regra1.Text = "(kg) Até";
+                                        lbl3Regra1.Text = "(R$) Até";
+
+                                        lbl2Regra2.Text = "(kg) Até";
+                                        lbl3Regra2.Text = "(R$) Até";
+
+                                        lbl2Regra3.Text = "(kg) Até";
+                                        lbl3Regra3.Text = "(R$) Até";
+
+                                        lbl2Regra4.Text = "(kg) Até";
+                                        lbl3Regra4.Text = "(R$) Até";
+
+                                        lbl2Regra5.Text = "(kg) Até";
+                                        lbl3Regra5.Text = "(R$) Até";
+
+                                        lbl2Regra6.Text = "(kg) Até";
+                                        lbl3Regra6.Text = "(R$) Até";
+
+                                        lbl2Regra7.Text = "(kg) Até";
+                                        lbl3Regra7.Text = "(R$) Até";
+                                    }
 
                                     CidadeRegraFreteDAL cityDAL = new CidadeRegraFreteDAL();
                                     ListaCidades = cityDAL.ObterCidadesRegraFrete(Convert.ToInt32(txtCodigo.Text));
@@ -268,9 +324,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                 reg.ValorSeguroMinimo = Convert.ToDecimal(txtSeguroMinimo.Text);
                 reg.DeParaExcedente1 = Convert.ToDecimal(txtExcedente1.Text);
                 reg.DeParaExcedente2 = Convert.ToDecimal(txtExcedente2.Text);
-                reg.IndicadorCalcularAdValorDePara1 = Convert.ToInt32(txtCalcularADValor1.Text);
-                reg.IndicadorCalcularAdValorDePara2 = Convert.ToInt32(txtCalcularADValor2.Text);
-                reg.IndicadorTipoCalculo = Convert.ToInt32(txtTipoCalculo.Text);
+
                 reg.ValorPesoCubado = Convert.ToInt32(txtPesoCubado.Text);
 
                 reg.DePara11 = Convert.ToDecimal(txtDePara11.Text);
@@ -495,18 +549,18 @@ namespace SoftHabilInformatica.Pages.Transporte
 
             if (txtGRIS.Text.Equals(""))
             {
-                txtGRIS.Text = "0,00";
+                txtGRIS.Text = "0,000";
             }
             else
             {
                 v.CampoValido("GRIS", txtGRIS.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
                 if (blnCampo)
                 {
-                    txtGRIS.Text = Convert.ToDecimal(txtGRIS.Text).ToString("###,##0.00");
+                    txtGRIS.Text = Convert.ToDecimal(txtGRIS.Text).ToString("###,###0.000");
                     txtDeParaPct11.Focus();
                 }
                 else
-                    txtGRIS.Text = "0,00";
+                    txtGRIS.Text = "0,000";
 
             }
         }
@@ -575,30 +629,18 @@ namespace SoftHabilInformatica.Pages.Transporte
                     ShowMessage("Selecione uma transportadora", MessageType.Info);
                     return;
                 }
-                RegraFrete reg = new RegraFrete();
-                RegraFreteDAL regDAL = new RegraFreteDAL();
-                Pessoa_Inscricao ins = new Pessoa_Inscricao();
-                PessoaInscricaoDAL insDAL = new PessoaInscricaoDAL();
-                ins = insDAL.PesquisarPessoaInscricao(Convert.ToInt64(ddlTransp.SelectedValue), 1);
-                reg = regDAL.PesquisarRegraFrete(ins._NumeroInscricao, ddlCidade.SelectedValue);
-                if (reg == null || reg.CodigoIndex.ToString() == txtCodigo.Text)
-                {
-                    CidadeRegraFrete city = new CidadeRegraFrete();
-                    city.CodigoIBGE = Convert.ToInt32(ddlCidade.SelectedItem.Value);
-                    city.Cpl_DescricaoCidade = ddlCidade.SelectedItem.Text;
-                    city.Cpl_CodigoEstado = Convert.ToInt32(ddlEstado.SelectedItem.Value);
-                    city.Cpl_Sigla = ddlEstado.SelectedItem.Text;
-                    ListaCidades.Add(city);
+                
+                CidadeRegraFrete city = new CidadeRegraFrete();
+                city.CodigoIBGE = Convert.ToInt32(ddlCidade.SelectedItem.Value);
+                city.Cpl_DescricaoCidade = ddlCidade.SelectedItem.Text;
+                city.Cpl_CodigoEstado = Convert.ToInt32(ddlEstado.SelectedItem.Value);
+                city.Cpl_Sigla = ddlEstado.SelectedItem.Text;
+                ListaCidades.Add(city);
 
-                    Session["ListaCidadesRegra"] = ListaCidades;
-                    grdCidades.DataSource = ListaCidades;
-                    grdCidades.DataBind();
-                }
-                else
-                {
-                    ShowMessage("Cidade já inclusa na região " + reg.Regiao, MessageType.Info);
-                    return;
-                }
+                Session["ListaCidadesRegra"] = ListaCidades;
+                grdCidades.DataSource = ListaCidades;
+                grdCidades.DataBind();
+                
             }
             else
             {
@@ -636,27 +678,6 @@ namespace SoftHabilInformatica.Pages.Transporte
             Session["ListaCidadesRegra"] = ListaNova;
         }
 
-        protected void txtTipoCalculo_TextChanged(object sender, EventArgs e)
-        {
-            Boolean blnCampo = false;
-
-            if (txtTipoCalculo.Text.Equals(""))
-            {
-                txtTipoCalculo.Text = "0";
-            }
-            else
-            {
-                v.CampoValido("Para percentual", txtTipoCalculo.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
-                if (blnCampo)
-                {
-                    txtTipoCalculo.Text = Convert.ToDecimal(txtTipoCalculo.Text).ToString("#0");
-                }
-                else
-                    txtTipoCalculo.Text = "0";
-
-            }
-        }
-
         protected void txtPorTonelada_TextChanged(object sender, EventArgs e)
         {
             Boolean blnCampo = false;
@@ -675,50 +696,6 @@ namespace SoftHabilInformatica.Pages.Transporte
                 }
                 else
                     txtPorTonelada.Text = "0,00000";
-
-            }
-        }
-
-        protected void txtCalcularADValor2_TextChanged(object sender, EventArgs e)
-        {
-            Boolean blnCampo = false;
-
-            if (txtCalcularADValor2.Text.Equals(""))
-            {
-                txtCalcularADValor2.Text = "0";
-            }
-            else
-            {
-                v.CampoValido("Para percentual", txtCalcularADValor2.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
-                if (blnCampo)
-                {
-                    txtCalcularADValor2.Text = Convert.ToDecimal(txtCalcularADValor2.Text).ToString("#0");
-                    txtCalcularADValor2.Focus();
-                }
-                else
-                    txtCalcularADValor2.Text = "0";
-
-            }
-        }
-
-        protected void txtCalcularADValor1_TextChanged(object sender, EventArgs e)
-        {
-            Boolean blnCampo = false;
-
-            if (txtCalcularADValor1.Text.Equals(""))
-            {
-                txtCalcularADValor1.Text = "0";
-            }
-            else
-            {
-                v.CampoValido("Para percentual", txtCalcularADValor1.Text, true, true, false, false, "", ref blnCampo, ref strMensagemR);
-                if (blnCampo)
-                {
-                    txtCalcularADValor1.Text = Convert.ToDecimal(txtCalcularADValor1.Text).ToString("#0");
-                    txtCalcularADValor1.Focus();
-                }
-                else
-                    txtCalcularADValor1.Text = "0";
 
             }
         }

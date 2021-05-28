@@ -236,6 +236,10 @@ namespace SoftHabilInformatica.Pages.Transporte
                 ws.Range("Y3:Y4").Merge();
                 ws.Columns("Y").Style.NumberFormat.Format = "R$ #,##0.00";
 
+                ws.Cell("Z3").Value = "Cod.Regra/   Região";
+                ws.Cell("Z3").Style.Font.Bold = true;
+                ws.Range("Z3:Z4").Merge();
+
                 //LISTA COM OS NOMES DAS DISCRIMINAÇÕES DO CTE
                 List<string> ListXNome = new List<string>();
                 ListXNome.Add("FRETE VALOR");
@@ -245,7 +249,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                 int linha = 5;
                 int ColunasExtras = 0;
 
-                char colunaExcel = 'Y';
+                char colunaExcel = 'Z';
                 string strColunaExcel = "";
 
                 foreach (DataSet dataSet in ListDataSet)
@@ -417,12 +421,13 @@ namespace SoftHabilInformatica.Pages.Transporte
                         ws.Range("V" + linha + ":V" + linhaMerge).Merge();
                         ws.Range("W" + linha + ":W" + linhaMerge).Merge();
                         ws.Range("Y" + linha + ":Y" + linhaMerge).Merge();
-                        ws.Range(GetColNameFromIndex(24 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(24 + ListXNome.Count) + linhaMerge).Merge();
+                        ws.Range("Z" + linha + ":Z" + linhaMerge).Merge();
                         ws.Range(GetColNameFromIndex(25 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(25 + ListXNome.Count) + linhaMerge).Merge();
                         ws.Range(GetColNameFromIndex(26 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(26 + ListXNome.Count) + linhaMerge).Merge();
                         ws.Range(GetColNameFromIndex(27 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(27 + ListXNome.Count) + linhaMerge).Merge();
                         ws.Range(GetColNameFromIndex(28 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(28 + ListXNome.Count) + linhaMerge).Merge();
                         ws.Range(GetColNameFromIndex(29 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(29 + ListXNome.Count) + linhaMerge).Merge();
+                        ws.Range(GetColNameFromIndex(30 + ListXNome.Count) + linha + ":" + GetColNameFromIndex(30 + ListXNome.Count) + linhaMerge).Merge();
 
                         // CONFERENCIA DA BASE DE CALCULO
                         decimal ValorBaseCalculoSemPedagio = 0;
@@ -574,6 +579,8 @@ namespace SoftHabilInformatica.Pages.Transporte
 
                         if (RegFrete != null)
                         {
+                            ws.Cell("Z" + (linha - chNota.Count() + 1)).Value = RegFrete.CodigoIndex + " / Região " + RegFrete.Regiao;
+
                             // CALCULO DE FRETE UTILIZANDO CUBAGEM DA TRASNPORTADOR
                             bool ExisteRegraPorCNPJ = false;
 
@@ -595,7 +602,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 {
                                     string[] array = ListXComp[valor].Split('³');
 
-                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "TARIFA SEGURO" && array[0].ToUpper() != "FRETE PESO (PES")
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "TARIFA SEGURO" && array[0].ToUpper() != "FRETE PESO (PES" )
                                     {
                                         ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
                                     }
@@ -681,7 +688,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 {
                                     string[] array = ListXComp[valor].Split('³');
 
-                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES")
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETEPESO" && array[0].ToUpper() != "EMISSAO") 
                                     {
                                         ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
                                     }
@@ -790,7 +797,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     else if (ExcedentePorValor > 0)
                                         ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                     else
-                                        ws.Cell("X" + (linha - chNota.Count() + 1)).Value = "0";
+                                        ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                 }
                             }
                             else if (RegFrete.IndicadorTipoCalculo == 3)
@@ -936,7 +943,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     else if (ExcedentePorValor > 0)
                                         ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                     else
-                                        ws.Cell("X" + (linha - chNota.Count() + 1)).Value = "0";
+                                        ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                 }
                             }
                             else if (RegFrete.IndicadorTipoCalculo == 4)
@@ -994,8 +1001,9 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     {
                                         ValorDiscriminacoes += RegFrete.DeParaExcedente1;
                                     }
+                                    if(RegFrete.DeParaPct11 > 0)
+                                        ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
 
-                                    ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
                                     if (ValorFrete > RegFrete.ValorFreteMinimo)
                                         ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ValorFrete + (TotalValor * (RegFrete.ValorGRIS / 100)) + ValorDiscriminacoes;
                                     else
@@ -1021,8 +1029,8 @@ namespace SoftHabilInformatica.Pages.Transporte
                                         if (RegFrete.ValorAD != 0)
                                             ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
                                     }
-
-                                    ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
+                                    if(RegFrete.DeParaPct12 > 0 )
+                                        ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct12 / 100)).ToString("F"));
                                     if (ValorFrete > RegFrete.ValorFreteMinimo)
                                         ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ValorFrete + (TotalValor * (RegFrete.ValorGRIS / 100)) + ValorDiscriminacoes;
                                     else
@@ -1145,10 +1153,13 @@ namespace SoftHabilInformatica.Pages.Transporte
 
                                 if (RegFrete.ValorPedagio > 0)
                                 {
-                                    decimal pedagio = (BaseCalculo * RegFrete.ValorPedagioMaximo) / 1000;
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
                                     if (pedagio < RegFrete.ValorPedagio)
-                                        pedagio = RegFrete.ValorPedagio;
+                                        pedagio += RegFrete.ValorPedagio;
 
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
                                     ValorDiscriminacoes += pedagio;
                                 }
 
@@ -1179,7 +1190,9 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     {
                                         decimal ADvalor = (TotalValor * (RegFrete.ValorAD / 100));
 
-                                        if (ADvalor > ValorFrete)
+                                        if (RegFrete.IndicadorCalcularAdValorDePara2 == 1)
+                                            ValorFrete += ADvalor;
+                                        else if (ADvalor > ValorFrete)
                                             ValorFrete = ADvalor;
                                     }
                                 }
@@ -1272,9 +1285,224 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
 
                                 if (ValorFrete > RegFrete.ValorFreteMinimo)
-                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorDiscriminacoes).ToString("F");
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorDiscriminacoes);
                                 else
-                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorDiscriminacoes).ToString("F");
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorDiscriminacoes);
+
+
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 8)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+
+                                //CALCULAR EXCEDENTE POR VALOR
+                                decimal ExcedentePorValor = (TotalValor - RegFrete.DePara12) * (RegFrete.DeParaExcedente2 / 100);
+
+                                //CALCULAR EXCEDENTE POR PESO
+                                decimal ExcedentePorPeso = 0;
+                                if (ExcedentePorValor < 0 && BaseCalculo > RegFrete.DePara11)
+                                {
+                                    ExcedentePorValor = 0;
+                                    ExcedentePorPeso = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaExcedente1);
+                                }
+
+                                decimal FreteMinimo = RegFrete.DeParaPct11;
+
+                                if (ExcedentePorPeso > 0 && ExcedentePorValor> 0)
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ExcedentePorValor + ExcedentePorPeso + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else if (ExcedentePorValor > 0)
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else if (ExcedentePorPeso > 0 && ExcedentePorPeso > FreteMinimo)
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ExcedentePorPeso + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
+                                
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 9)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETE PERCENT.")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+
+                                //CALCULAR  POR VALOR
+                                decimal ExcedentePorValor = (TotalValor) * (RegFrete.DeParaPct12 / 100);
+
+                                //CALCULAR  POR PESO
+                                decimal ExcedentePorPeso = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaPct11);
+
+                                if (ExcedentePorPeso > ExcedentePorValor)
+                                    ValorFrete = ExcedentePorPeso;
+                                else
+                                    ValorFrete = ExcedentePorValor;
+
+
+                                if (ValorFrete > RegFrete.ValorFreteMinimo)
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorGRIS + ValorDiscriminacoes);
+                                else
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorGRIS + ValorDiscriminacoes);
+
+
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 10)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETE PERCENT.")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+
+                                //CALCULAR VALOR AD
+                                if (RegFrete.ValorAD != 0)
+                                    ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
+
+                                //CALCULAR  POR PESO
+                                ValorFrete = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaExcedente1);
+
+
+
+                                if (ValorFrete > RegFrete.ValorFreteMinimo)
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorGRIS + ValorDiscriminacoes);
+                                else
+                                    ws.Cell("X" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorGRIS + ValorDiscriminacoes);
 
 
                             }
@@ -1396,7 +1624,7 @@ namespace SoftHabilInformatica.Pages.Transporte
 
                                 }
                             }
-                            else if (RegFrete.IndicadorTipoCalculo == 2)
+                            else if (RegFrete.IndicadorTipoCalculo == 2)    
                             {
                                 ExisteRegraPorCNPJ = true;
 
@@ -1410,7 +1638,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 {
                                     string[] array = ListXComp[valor].Split('³');
 
-                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES")
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETEPESO" && array[0].ToUpper() != "EMISSAO")
                                     {
                                         ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
                                     }
@@ -1442,7 +1670,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 {
                                     //CALCULAR VALOR AD
                                     if (RegFrete.ValorAD != 0)
-                                        ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
+                                            ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
                                 }
 
                                 //CALCULAR GRIS
@@ -1518,7 +1746,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     else if (ExcedentePorValor > 0)
                                         ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                     else
-                                        ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = "0";
+                                        ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                 }
                             }
                             else if (RegFrete.IndicadorTipoCalculo == 3)
@@ -1665,7 +1893,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     else if (ExcedentePorValor > 0)
                                         ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                     else
-                                        ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = "0";
+                                        ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
                                 }
                             }
                             else if (RegFrete.IndicadorTipoCalculo == 4)
@@ -1750,7 +1978,9 @@ namespace SoftHabilInformatica.Pages.Transporte
                                             ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
                                     }
 
-                                    ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
+                                    if (RegFrete.DeParaPct12 > 0)
+                                        ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct12 / 100)).ToString("F"));
+
                                     if (ValorFrete > RegFrete.ValorFreteMinimo)
                                         ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ValorFrete + (TotalValor * (RegFrete.ValorGRIS / 100)) + ValorDiscriminacoes;
                                     else
@@ -1871,10 +2101,13 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 }
                                 if (RegFrete.ValorPedagio > 0)
                                 {
-                                    decimal pedagio = (BaseCalculo * RegFrete.ValorPedagioMaximo) / 1000;
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
                                     if (pedagio < RegFrete.ValorPedagio)
-                                        pedagio = RegFrete.ValorPedagio;
+                                        pedagio += RegFrete.ValorPedagio;
 
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
                                     ValorDiscriminacoes += pedagio;
                                 }
 
@@ -1905,7 +2138,9 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     if (RegFrete.ValorAD != 0)
                                     {
                                         decimal ADvalor = (TotalValor * (RegFrete.ValorAD / 100));
-                                        if (ADvalor > ValorFrete)
+                                        if (RegFrete.IndicadorCalcularAdValorDePara2 == 1)
+                                            ValorFrete += ADvalor;
+                                        else if (ADvalor > ValorFrete)
                                             ValorFrete = ADvalor;
                                     }
                                 }
@@ -1995,9 +2230,221 @@ namespace SoftHabilInformatica.Pages.Transporte
                                     ValorFrete = Convert.ToDecimal((TotalValor * (RegFrete.DeParaPct11 / 100)).ToString("F"));
 
                                 if (ValorFrete > RegFrete.ValorFreteMinimo)
-                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorDiscriminacoes).ToString("F");
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ValorFrete + ValorDiscriminacoes;
                                 else
-                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorDiscriminacoes).ToString("F");
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = RegFrete.ValorFreteMinimo + ValorDiscriminacoes;
+
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 8)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+                                decimal ExcedentePorValor = ((TotalValor - RegFrete.DePara12) * (RegFrete.DeParaExcedente2 / 100));
+
+                                //CALCULAR EXCEDENTE POR PESO
+                                decimal ExcedentePorPeso = 0;
+                                if (ExcedentePorValor < 0 && BaseCalculo > RegFrete.DePara11)
+                                {
+                                    ExcedentePorValor = 0;
+                                    ExcedentePorPeso = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaExcedente1);
+                                }
+
+                                decimal FreteMinimo = RegFrete.DeParaPct11;
+
+                                if (ExcedentePorPeso > 0 && ExcedentePorValor > 0)
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ExcedentePorValor + ExcedentePorPeso + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else if (ExcedentePorValor > 0)
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ExcedentePorValor + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else if (ExcedentePorPeso > 0 && ExcedentePorPeso > FreteMinimo)
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ExcedentePorPeso + ValorGRIS + ValorDiscriminacoes + FreteMinimo);
+                                else
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = ValorGRIS + ValorDiscriminacoes + FreteMinimo;
+
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 9)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETE PERCENT.")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+
+                                //CALCULAR  POR VALOR
+                                decimal ExcedentePorValor = (TotalValor) * (RegFrete.DeParaPct12 / 100);
+
+                                //CALCULAR  POR PESO
+                                decimal ExcedentePorPeso = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaPct11);
+
+                                if (ExcedentePorPeso > ExcedentePorValor)
+                                    ValorFrete = ExcedentePorPeso;
+                                else
+                                    ValorFrete = ExcedentePorValor;
+
+
+                                if (ValorFrete > RegFrete.ValorFreteMinimo)
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorGRIS + ValorDiscriminacoes);
+                                else
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorGRIS + ValorDiscriminacoes);
+
+
+                            }
+                            else if (RegFrete.IndicadorTipoCalculo == 10)
+                            {
+                                ExisteRegraPorCNPJ = true;
+
+                                //VERIFICA SE CALCULO SERÁ FEITO POR PESO OU CUBAGEM
+                                if (CubagemBaseCalculo > TotalPeso)
+                                    BaseCalculo = Convert.ToDecimal(CubagemBaseCalculo.ToString("F"));
+
+                                //SOMAR DISCRIMINAÇÕES
+                                decimal ValorDiscriminacoes = 0;
+                                for (int valor = 0; valor < ListXComp.Count(); valor++)
+                                {
+                                    string[] array = ListXComp[valor].Split('³');
+
+                                    if (array[0].ToUpper() != "FRETE VALOR" && array[0].ToUpper() != "FRETE PESO" && array[0].ToUpper() != "GRIS" && array[0].ToUpper() != "PEDAGIO" && array[0].ToUpper() != "TAXA" && array[0].ToUpper() != "FRETE PESO (PES" && array[0].ToUpper() != "FRETE PERCENT.")
+                                    {
+                                        ValorDiscriminacoes += Convert.ToDecimal(array[1].Replace('.', ','));
+                                    }
+
+                                }
+
+                                //CALCULAR VALOR SEGURO
+                                if (RegFrete.ValorSeguro > 0)
+                                {
+                                    decimal CalculoSeguro = Convert.ToDecimal(ValorNota) * (RegFrete.ValorSeguro / 100);
+                                    if (CalculoSeguro < RegFrete.ValorSeguroMinimo)
+                                        CalculoSeguro = RegFrete.ValorSeguroMinimo;
+                                    ValorDiscriminacoes += CalculoSeguro;
+                                }
+
+                                if (RegFrete.ValorPedagio > 0)
+                                {
+                                    decimal t = (Math.Ceiling(BaseCalculo / 100));
+                                    decimal pedagio = (t * RegFrete.ValorPedagio);
+                                    if (pedagio < RegFrete.ValorPedagio)
+                                        pedagio += RegFrete.ValorPedagio;
+
+                                    if (pedagio > RegFrete.ValorPedagioMaximo && RegFrete.ValorPedagioMaximo > 0)
+                                        pedagio = RegFrete.ValorPedagioMaximo;
+                                    ValorDiscriminacoes += pedagio;
+                                }
+
+                                //CALCULAR GRIS
+                                decimal ValorGRIS = 0;
+                                if (RegFrete.ValorGRIS > 0)
+                                    ValorGRIS = TotalValor * (RegFrete.ValorGRIS / 100);
+
+                                //VERIFICA SE GRIS CALCULADO É MAIOR QUE GRIS MINIMO
+                                if (ValorGRIS < RegFrete.ValorGRISMinimo)
+                                    ValorGRIS = RegFrete.ValorGRISMinimo;
+
+
+                                //CALCULAR VALOR AD
+                                if (RegFrete.ValorAD != 0)
+                                    ValorDiscriminacoes += (TotalValor * (RegFrete.ValorAD / 100));
+
+                                //CALCULAR  POR PESO
+                                ValorFrete = ((BaseCalculo - RegFrete.DePara11) * RegFrete.DeParaExcedente1);
+
+
+
+                                if (ValorFrete > RegFrete.ValorFreteMinimo)
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (ValorFrete + ValorGRIS + ValorDiscriminacoes);
+                                else
+                                    ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = (RegFrete.ValorFreteMinimo + ValorGRIS + ValorDiscriminacoes);
+
 
                             }
                             else
@@ -2029,7 +2476,7 @@ namespace SoftHabilInformatica.Pages.Transporte
                             ws.Cell("Y" + (linha - chNota.Count() + 1)).Value = "Regra não encontrada";
                             ws.Cell("Y" + (linha - chNota.Count() + 1)).Style.Fill.BackgroundColor = XLColor.YellowProcess;
                         }
-
+                        
                         //VERIFICA SE O PESO DO CTE É IGUAL AO PESO NAS NF - SE NÃO, COLORIR DE VERMELHO
                         if (Convert.ToDecimal(PesoCTe.Replace('.', ',')).ToString("##,##00.00") != Convert.ToDecimal(TotalPesoNF).ToString("##,##00.00"))
                         {
@@ -2116,7 +2563,6 @@ namespace SoftHabilInformatica.Pages.Transporte
                                 }
                             }
                         }
-
                     }
                     else
                     {
@@ -2158,8 +2604,8 @@ namespace SoftHabilInformatica.Pages.Transporte
                 }
                 for (int i = 5; i < linha; i++)
                 {
-                    ws.Cell(GetColNameFromIndex(26 + ListXNome.Count) + i).FormulaA1 = "SUM(Z" + i + ":" + GetColNameFromIndex(25 + ListXNome.Count) + i + ")";
-                    ws.Cell(GetColNameFromIndex(26 + ListXNome.Count) + i).Style.Fill.BackgroundColor = XLColor.FromArgb(221, 217, 195);
+                    ws.Cell(GetColNameFromIndex(27 + ListXNome.Count) + i).FormulaA1 = "SUM(AA" + i + ":" + GetColNameFromIndex(26 + ListXNome.Count) + i + ")";
+                    ws.Cell(GetColNameFromIndex(27 + ListXNome.Count) + i).Style.Fill.BackgroundColor = XLColor.FromArgb(221, 217, 195);
                 }
 
                 //config de cor, alinhamento, etc.
@@ -2194,15 +2640,15 @@ namespace SoftHabilInformatica.Pages.Transporte
                     ColunasExtras++;
                 }
 
-                string ColunaTotal = GetColNameFromIndex(26 + ListXNome.Count);
+                string ColunaTotal = GetColNameFromIndex(27 + ListXNome.Count);
 
                 ws.Cell(ColunaTotal +"4").Value = "TOTAL";
                 ws.Cell(ColunaTotal +"4").Style.Fill.BackgroundColor = XLColor.ForestGreen;
                 ws.Column(ColunaTotal).Style.NumberFormat.Format = "R$ #,##0.00";
 
                 
-                ws.Cell("Z3").Value = "Discriminação do valor do CT-e";
-                ws.Range("Z3:"+ ColunaTotal + "3").Merge();
+                ws.Cell("AA3").Value = "Discriminação do valor do CT-e";
+                ws.Range("AA3:"+ ColunaTotal + "3").Merge();
 
                 ws.Columns("B-"+ GetColNameFromIndex(27 + ListXNome.Count)).Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
                 ws.Columns("B-"+ GetColNameFromIndex(27 + ListXNome.Count)).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
@@ -2233,8 +2679,9 @@ namespace SoftHabilInformatica.Pages.Transporte
                 ws.Cell("U" + rowSUM).FormulaA1 = "SUM(U5:U" + linha + ")";
                 ws.Cell("V" + rowSUM).FormulaA1 = "SUM(V5:V" + linha + ")";
                 ws.Cell("X" + rowSUM).FormulaA1 = "SUM(X5:X" + linha + ")";
-                
-                char col = 'X';
+                ws.Cell("Y" + rowSUM).FormulaA1 = "SUM(Y5:Y" + linha + ")";
+
+                char col = 'Y';
                 int contadorColuna = 0;
                 for (int i = 0; i < ColunasExtras + 2; i++)
                 {
@@ -2292,26 +2739,26 @@ namespace SoftHabilInformatica.Pages.Transporte
                 ws.Range("B4:"+ ColunaTotal + linha).Style.Border.InsideBorder = XLBorderStyleValues.Thin;
                 ws.Range("B4:"+ ColunaTotal + linha).Style.Border.InsideBorderColor = XLColor.Black;
                 
-                ws.Columns("B-" + GetColNameFromIndex(27 + ListXNome.Count)).Style.Alignment.WrapText = true;
-                ws.Columns("O-" + GetColNameFromIndex(27 + ListXNome.Count)).Width = 13;
+                ws.Columns("B-" + GetColNameFromIndex(28 + ListXNome.Count)).Style.Alignment.WrapText = true;
+                ws.Columns("O-" + GetColNameFromIndex(28 + ListXNome.Count)).Width = 13;
 
                 ws.Column("U").Width = 20;
                 ws.Column("A").Width = 0;
-                ws.Column(GetColNameFromIndex(26 + ListXNome.Count)).Width = 15;
+                ws.Column(GetColNameFromIndex(27 + ListXNome.Count)).Width = 15;
 
                 ws.Columns("J-M").Width = 13;
                 ws.Columns("I-I").Width = 20;
 
                 //copiar Cabeçalho no rodapé
                 var firstTableCell = ws.Cell("B3");
-                var lastTableCell = ws.Cell(GetColNameFromIndex(27 + ListXNome.Count) + "4");
+                var lastTableCell = ws.Cell(GetColNameFromIndex(28 + ListXNome.Count) + "4");
                 var rngData = ws.Range(firstTableCell.Address, lastTableCell.Address);
                 ws.Cell("B" + (linha + 1)).Value = rngData;
 
                 //titulo do relatorio
                 ws.Cell("B2").Value = "Relatório de CT-e";
                 ws.Cell("B2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                var range = ws.Range("B2:"+ GetColNameFromIndex(27 + ListXNome.Count) + "2");
+                var range = ws.Range("B2:"+ GetColNameFromIndex(28 + ListXNome.Count) + "2");
                 range.Merge().Style.Font.SetBold().Font.FontSize = 20;
 
                 //salvar arquivo em disco

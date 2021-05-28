@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace DAL.TecnoSpeed.Model
+namespace DAL.TecnoSpeed
 {
     public class TECNO_EVENTO_ERP
     {
@@ -39,6 +39,9 @@ namespace DAL.TecnoSpeed.Model
         public decimal? NPROT { get; set; }
 
         /// <summary></summary>
+        public decimal? NREC { get; set; }
+
+        /// <summary></summary>
         public string JUSTIFICATIVA { get; set; }
 
         /// <summary></summary>
@@ -60,10 +63,10 @@ namespace DAL.TecnoSpeed.Model
         public string DESC_RETORNO { get; set; }
 
         /// <summary></summary>
-        public string EMAIL_ENVIO { get; set; }
+        public string CONFIG_EMAIL_DESTINATARIO { get; set; }
 
         /// <summary></summary>
-        public decimal? COPIAS_IMPRESSAO { get; set; }
+        public decimal COPIAS_IMPRESSAO { get; set; }
 
         /// <summary></summary>
         public decimal? TP_IMP { get; set; }
@@ -90,7 +93,7 @@ namespace DAL.TecnoSpeed.Model
         public decimal? csitconf { get; set; }
 
         /// <summary></summary>
-        public string bo_enviou_email { get; set; }
+        public int IN_ENVIOU_EMAIL { get; set; }
 
         /// <summary></summary>
         public decimal? ID_CLE { get; set; }
@@ -105,7 +108,7 @@ namespace DAL.TecnoSpeed.Model
         public decimal? ID_CTE { get; set; }
 
         /// <summary></summary>
-        public string CONSULTA_STATUS_CUF { get; set; }
+        public string CODIGO_UF { get; set; }
 
         /// <summary></summary>
         public string BO_CONSULTA_STATUS_SVC { get; set; }
@@ -118,6 +121,69 @@ namespace DAL.TecnoSpeed.Model
 
         /// <summary></summary>
         public string GMT { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_SERVIDOR { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_REMETENTE { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_ASSUNTO { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_MENSAGEM { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_USUARIO { get; set; }
+
+        /// <summary></summary>
+        public string CONFIG_EMAIL_SENHA { get; set; }
+
+        /// <summary></summary>
+        public int CONFIG_EMAIL_AUTENTICACAO { get; set; }
+
+        /// <summary></summary>
+        public int CONFIG_EMAIL_PORTA { get; set; }
+
+        /// <summary></summary>
+        public int IN_REMOVER_ACENTOS { get; set; }
+
+        /// <summary></summary>
+        public int IN_VALIDAR_ESQUEMA { get; set; }
+
+        /// <summary></summary>
+        public int TP_MODO_OPERACAO { get; set; }
+
+        /// <summary></summary>
+        public string CERTIFICADO_CAMINHO { get; set; }
+
+        /// <summary></summary>
+        public string CERTIFICADO_SENHA { get; set; }
+
+        /// <summary></summary>
+        public string VERSAO_MANUAL { get; set; }
+
+        /// <summary></summary>
+        public string VERSAO_MANUAL_DPEC_SCAN { get; set; }
+
+        /// <summary></summary>
+        public int NR_LOTE { get; set; }
+
+        /// <summary></summary>
+        public int TP_EVENTO { get; set; }
+
+        /// <summary></summary>
+        public string NSU { get; set; }
+
+        /// <summary></summary>
+        public int TP_NSU { get; set; }
+
+        /// <summary></summary>
+        public string TX_CORRECAO { get; set; }
+
+        /// <summary></summary>
+        public string CONTRIB_CNPJ_CPF_IE { get; set; }
 
     }
 

@@ -1141,6 +1141,12 @@ namespace SoftHabilInformatica.Pages.Vendas
                     return;
                 }
             }
+            if (ddlTipoOperacao.SelectedValue == ".....SELECIONE TIPO DE OPERAÇÃO.....")
+            {
+                ShowMessage("Selecione um tipo de operação", MessageType.Info);
+                ddlTipoOperacao.Focus();
+                return ;
+            }
             CompactaDocumento();
 
             Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx?cad=1");

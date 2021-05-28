@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace DAL.TecnoSpeed.Model
+namespace DAL.TecnoSpeed
 {
     public class TECNO_ANEXO
     {
@@ -12,7 +12,7 @@ namespace DAL.TecnoSpeed.Model
         public string CHAVE_BUSCA { get; set; }
 
         /// <summary></summary>
-        public short CD_ANEXO { get; set; }
+        public int CD_ANEXO { get; set; }
 
         /// <summary></summary>
         public string DS_ARQUIVO { get; set; }
@@ -22,6 +22,9 @@ namespace DAL.TecnoSpeed.Model
 
         /// <summary></summary>
         public string EX_ARQUIVO { get; set; }
+
+        /// <summary></summary>
+        public int TP_ACAO { get; set; }
 
     }
 

@@ -2600,6 +2600,7 @@
     <Content Include="Pages\Produtos\CadComposicao.aspx" />
     <Content Include="Pages\Produtos\ConComposicao.aspx" />
     <Content Include="Pages\Produtos\RelComposicao.aspx" />
+    <Content Include="Pages\Transporte\ManCidadesRegraFrete.aspx" />
     <Content Include="Pages\Vendas\CnfPedido.aspx" />
     <Content Include="Pages\Vendas\ConAtividadeExtra.aspx" />
     <Content Include="Pages\Faturamento\ConNotaFiscal.aspx" />
@@ -3756,6 +3757,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.canvasjs.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker-en-CA.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar-tn.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.ar.min.js" />
@@ -3952,6 +3954,7 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\TratamentoINPUTs.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -14517,6 +14520,13 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Pages\Transporte\ManCidadesRegraFrete.aspx.cs">
+      <DependentUpon>ManCidadesRegraFrete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Transporte\ManCidadesRegraFrete.aspx.designer.cs">
+      <DependentUpon>ManCidadesRegraFrete.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Vendas\CnfPedido.aspx.cs">
       <DependentUpon>CnfPedido.aspx</DependentUpon>

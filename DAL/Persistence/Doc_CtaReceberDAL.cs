@@ -309,7 +309,7 @@ namespace DAL.Persistence
 
 
         }
-        public List<Doc_CtaPagar> ListarDoc_CtaReceberCompleto(List<DBTabelaCampos> ListaFiltros, int TpBaixa, int TipoCobranca, int PlanoConta)
+        public List<Doc_CtaReceber> ListarDoc_CtaReceberCompleto(List<DBTabelaCampos> ListaFiltros, int TpBaixa, int TipoCobranca, int PlanoConta)
         {
             try
             {
@@ -355,13 +355,13 @@ namespace DAL.Persistence
                 Cmd = new SqlCommand(strSQL, Con);
                 Dr = Cmd.ExecuteReader();
 
-                List<Doc_CtaPagar> lista = new List<Doc_CtaPagar>();
+                List<Doc_CtaReceber> lista = new List<Doc_CtaReceber>();
 
                 while (Dr.Read())
                 {
-                    Doc_CtaPagar p = new Doc_CtaPagar();
+                    Doc_CtaReceber p = new Doc_CtaReceber();
 
-                    foreach (Doc_CtaPagar item in lista)
+                    foreach (Doc_CtaReceber item in lista)
                     {
                         if (item.CodigoDocumento == Convert.ToInt64(Dr["CD_DOCUMENTO"]))
                         {
@@ -401,7 +401,10 @@ namespace DAL.Persistence
                     p.ValorAcrescimo = Convert.ToDecimal(Dr["VL_TOTAL_ACRESCIMO"]);
                     p.ValorGeral = Convert.ToDecimal(Dr["VL_TOTAL_GERAL"]);
 
-                GeraAlteracao:
+                    p.Cpl_vlPago = Convert.ToDecimal(Dr["VL_PAGO"]);
+                    p.Cpl_vlPagar = p.ValorGeral - p.Cpl_vlPago;
+
+                    GeraAlteracao:
 
                     lista.Add(p);
                 }

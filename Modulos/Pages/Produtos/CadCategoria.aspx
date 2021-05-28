@@ -17,7 +17,7 @@
         item = '<%=MaskCategoria%>';
         if (item != "") {
             jQuery(function ($) {
-                $("#txtCodigo").mask(item);
+                $("#txtCodigoCategoria").mask(item.toLowerCase());
             });
         }
 
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-md-6" >
                         <label for="usr">Código da Categoria: </label>
-                        <asp:TextBox ID="txtCodigo" CssClass="form-control" name="txtCodigo" Font-Size ="Medium" Font-Bold ="true"  ForeColor="Blue"  runat="server" TabIndex="2" ClientIDMode="Static" />
+                        <asp:TextBox ID="txtCodigoCategoria" CssClass="form-control" name="txtCodigo" Font-Size ="Medium" Font-Bold ="true"  ForeColor="Blue"  runat="server" TabIndex="2" ClientIDMode="Static" />
                     </div>
                     <div class="col-md-6">
                         <label for="usr">Descrição da Categoria: </label>

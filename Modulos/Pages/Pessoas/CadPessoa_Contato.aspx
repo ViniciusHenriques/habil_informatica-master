@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterRelacional.Master" AutoEventWireup="true" CodeBehind="CadPessoa_Contato.aspx.cs" Inherits="SoftHabilInformatica.Pages.Pessoas.CadPessoa_Contato" %>
+﻿    <%@ Page Title="" Language="C#" MasterPageFile="~/MasterRelacional.Master" AutoEventWireup="true" CodeBehind="CadPessoa_Contato.aspx.cs" Inherits="SoftHabilInformatica.Pages.Pessoas.CadPessoa_Contato" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cttCorpo" runat="server">
     <link type="text/css" href="~/Content/style.css" rel="stylesheet" />
     <script src="../../Scripts/jsCep.js" type="text/javascript"></script>

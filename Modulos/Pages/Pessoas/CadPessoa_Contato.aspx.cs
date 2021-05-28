@@ -153,12 +153,7 @@ namespace SoftHabilInformatica.Pages.Pessoas
                             txtCttItem.Text = p._CodigoItem.ToString();
                             ddlTipoContato.SelectedValue = p._TipoContato.ToString();
                             txtNomeContato.Text = p._NomeContato.ToString();
-                            if(p._Fone1.ToString().Length > 3)
-                                txtfone1.Text = p._Fone1.ToString().Substring(3);
-                            if (p._Fone2.ToString().Length > 3)
-                                txtfone2.Text = p._Fone2.ToString().Substring(3);
-                            if (p._Fone3.ToString().Length > 3)
-                                txtfone3.Text = p._Fone3.ToString().Substring(3);
+                            
                             txtmailnfe.Text = p._MailNFE.ToString();
                             txtmailNFSe.Text = p._MailNFSE.ToString();
                             txtmail1.Text = p._Mail1.ToString();
@@ -166,6 +161,22 @@ namespace SoftHabilInformatica.Pages.Pessoas
                             txtmail3.Text = p._Mail3.ToString();
                             ddlPaises.SelectedValue = p._CodigoPais.ToString();
                             ddlPaises_SelectedIndexChanged(sender, e);
+
+                            if (lblFone1.Text != "")
+                                txtfone1.Text = p._Fone1.ToString().Replace(lblFone1.Text, "");
+                            else
+                                txtfone1.Text = p._Fone1.ToString();
+
+                            if (lblFone2.Text != "")
+                                txtfone2.Text = p._Fone2.ToString().Replace(lblFone2.Text, "");
+                            else
+                                txtfone2.Text = p._Fone2.ToString();
+
+                            if (lblFone3.Text != "")
+                                txtfone3.Text = p._Fone3.ToString().Replace(lblFone3.Text, "");
+                            else
+                                txtfone3.Text = p._Fone3.ToString();
+
                             txtMailSenha.Attributes["value"] = p._EmailSenha.ToString();
 
                             if (p._FoneWhatsApp == 1)

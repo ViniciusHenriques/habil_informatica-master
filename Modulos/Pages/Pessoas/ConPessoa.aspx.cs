@@ -194,6 +194,7 @@ namespace SoftHabilInformatica.Pages.Pessoas
                 btnSair.Visible = false;
                 btnNovo.Visible = false;
                 btnVoltar.Visible = true;
+                btnImprimirRelatorioMatriculados.Visible = false;
             }
             else
             {

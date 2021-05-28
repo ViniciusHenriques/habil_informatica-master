@@ -43,7 +43,7 @@ namespace SoftHabilInformatica.Pages.Produtos
 
             // Validar conforme a critica data pela caracterista
 
-            v.CampoValido("Código da Categoria",  txtCodigo.Text,  true, false, false, false, "NVARCHAR", ref blnCampoValido, ref strMensagemR);
+            v.CampoValido("Código da Categoria", txtCodigoCategoria.Text,  true, false, false, false, "NVARCHAR", ref blnCampoValido, ref strMensagemR);
 
             if (!blnCampoValido)
             {
@@ -61,7 +61,7 @@ namespace SoftHabilInformatica.Pages.Produtos
             {
                 CategoriaDAL d = new CategoriaDAL();
                 Categoria p = new Categoria();
-                p = d.PesquisarCategoria(txtCodigo.Text);
+                p = d.PesquisarCategoria(txtCodigoCategoria.Text);
 
                 if ((txtLancamento.Text == "Novo") && (p != null))
                 {
@@ -150,7 +150,7 @@ namespace SoftHabilInformatica.Pages.Produtos
                     {
                         btnExcluir.Visible = true;
                         foreach (string word in words)
-                            if (txtCodigo.Text == "")
+                            if (txtCodigoCategoria.Text == "")
                             {
                                 CategoriaDAL r = new CategoriaDAL();
                                 Categoria p = new Categoria();
@@ -160,7 +160,7 @@ namespace SoftHabilInformatica.Pages.Produtos
 
                                 txtLancamento.Text = p.CodigoIndice.ToString();
                                 txtDescricao.Text = p.DescricaoCategoria;
-                                txtCodigo.Text = p.CodigoCategoria;
+                                txtCodigoCategoria.Text = p.CodigoCategoria;
                                 CarregaDropDown();
                                 ddlDepartamento.SelectedValue = p.CodigoDepartamento.ToString();
                                 ddlGpoComissao.SelectedValue = p.CodigoGpoComissao.ToString();
@@ -191,8 +191,8 @@ namespace SoftHabilInformatica.Pages.Produtos
                         txtLancamento.Text = "Novo";
                         txtLancamento.Enabled = false;
 
-                        txtCodigo.Enabled = true;
-                        txtCodigo.Focus();
+                        txtCodigoCategoria.Enabled = true;
+                        txtCodigoCategoria.Focus();
                         btnExcluir.Visible = false;
                         return;
                     }
@@ -201,9 +201,9 @@ namespace SoftHabilInformatica.Pages.Produtos
                         txtLancamento.Text = "Novo";
                         txtLancamento.Enabled = false;
 
-                        txtCodigo.Text = "";
-                        txtCodigo.Enabled = true;
-                        txtCodigo.Focus();
+                        txtCodigoCategoria.Text = "";
+                        txtCodigoCategoria.Enabled = true;
+                        txtCodigoCategoria.Focus();
                         btnExcluir.Visible = false;
                     }
                     
@@ -228,7 +228,7 @@ namespace SoftHabilInformatica.Pages.Produtos
             string strErro = "";
             try
             {
-                if (txtCodigo.Text.Trim() != "")
+                if (txtCodigoCategoria.Text.Trim() != "")
                 {
                     CategoriaDAL d = new CategoriaDAL();
                     d.Excluir(Convert.ToInt32(txtLancamento.Text));
@@ -277,7 +277,7 @@ namespace SoftHabilInformatica.Pages.Produtos
                 Categoria p = new Categoria();
 
                 p.DescricaoCategoria = txtDescricao.Text.ToUpper();
-                p.CodigoCategoria = txtCodigo.Text;
+                p.CodigoCategoria = txtCodigoCategoria.Text;
 
                 if (ddlDepartamento.Text != "*Nenhum Selecionado")
                     p.CodigoDepartamento = Convert.ToInt32(ddlDepartamento.SelectedValue);
@@ -301,7 +301,7 @@ namespace SoftHabilInformatica.Pages.Produtos
                 {
                     List<Produto> listCadProduto = new List<Produto>();
                     listCadProduto = (List<Produto>)Session["IncProdutoCategoria"];
-                    listCadProduto[0].CodigoCategoria = txtCodigo.Text;
+                    listCadProduto[0].CodigoCategoria = txtCodigoCategoria.Text;
                     Session["IncProdutoCategoria"] = listCadProduto;
                     Session["ZoomCategoria2"] = null;
 

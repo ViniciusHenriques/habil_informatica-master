@@ -6,7 +6,6 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using DAL.Persistence;
-using DAL.Model;
 
 namespace DAL.TecnoSpeed.Persistence
 {
@@ -14,25 +13,29 @@ namespace DAL.TecnoSpeed.Persistence
     {
         protected string strSQL = "";
 
-        public List<TECNO_NF> ListarTECNO_NF()
+        public TECNO_NF ListarTECNO_NF(decimal decID_NOTA_FISCAL)
         {
             try
             {
                 AbrirConexao();
-                string comando = "Select * from TECNO_NF";
+                string comando = "Select * from TECNO_NF where ID_NOTA_FISCAL = @v1";
 
                 Cmd = new SqlCommand(comando, Con);
+                Cmd.Parameters.AddWithValue("@v1", decID_NOTA_FISCAL);
 
                 Dr = Cmd.ExecuteReader();
-                List<TECNO_NF> tcn_nf = new List<TECNO_NF>();
 
-                while (Dr.Read())
+                TECNO_NF obj = null;
+                if (Dr.Read())
                 {
-                    TECNO_NF obj = new TECNO_NF();
+                    obj = new TECNO_NF();
 
                     if (Dr["ID_NOTA_FISCAL"] != DBNull.Value)
                         obj.ID_NOTA_FISCAL = Convert.ToDecimal(Dr["ID_NOTA_FISCAL"]);
 
+                    if (Dr["IDE_VERSAO"] != DBNull.Value)
+                        obj.IDE_VERSAO = Convert.ToDecimal(Dr["IDE_VERSAO"]);
+                    
                     if (Dr["IDE_CUF"] != DBNull.Value)
                         obj.IDE_CUF = Convert.ToDecimal(Dr["IDE_CUF"]);
 
@@ -319,7 +322,7 @@ namespace DAL.TecnoSpeed.Persistence
                         obj.IDE_HEMI = Convert.ToString(Dr["IDE_HEMI"]);
 
                     if (Dr["ICMStot_VICMSDESON"] != DBNull.Value)
-                        obj.ICMStot_VICMSDESON = Convert.ToDecimal(Dr["ICMStot_VICMSDESON"]);
+                        obj.ICMStot_VICMSDESON = Convert.ToDecimal(Convert.ToDecimal(Dr["ICMStot_VICMSDESON"]).ToString("F"));
 
                     if (Dr["DEST_IM"] != DBNull.Value)
                         obj.DEST_IM = Convert.ToString(Dr["DEST_IM"]);
@@ -417,11 +420,28 @@ namespace DAL.TecnoSpeed.Persistence
                     if (Dr["IDE_CRT"] != DBNull.Value)
                         obj.IDE_CRT = Convert.ToInt32(Dr["IDE_CRT"]);
 
-                    tcn_nf.Add(obj);
+                    if (Dr["INFTEC_CNPJ"] != DBNull.Value)
+                        obj.INFTEC_CNPJ = Convert.ToString(Dr["INFTEC_CNPJ"]);
+
+                    if (Dr["INFTEC_XCONTATO"] != DBNull.Value)
+                        obj.INFTEC_XCONTATO = Convert.ToString(Dr["INFTEC_XCONTATO"]);
+
+                    if (Dr["INFTEC_EMAIL"] != DBNull.Value)
+                        obj.INFTEC_EMAIL = Convert.ToString(Dr["INFTEC_EMAIL"]);
+
+                    if (Dr["INFTEC_FONE"] != DBNull.Value)
+                        obj.INFTEC_FONE = Convert.ToString(Dr["INFTEC_FONE"]);
+
+                    if (Dr["INFTEC_IDCSRT"] != DBNull.Value)
+                        obj.INFTEC_IDCSRT = Convert.ToString(Dr["INFTEC_IDCSRT"]);
+
+                    if (Dr["INFTEC_HASHCSRT"] != DBNull.Value)
+                        obj.INFTEC_HASHCSRT = Convert.ToString(Dr["INFTEC_HASHCSRT"]);
+
                 }
 
 
-                return tcn_nf;
+                return obj;
 
             }
             catch (Exception ex)

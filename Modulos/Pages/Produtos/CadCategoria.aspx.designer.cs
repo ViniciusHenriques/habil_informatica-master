@@ -76,13 +76,13 @@ namespace SoftHabilInformatica.Pages.Produtos {
         protected global::System.Web.UI.WebControls.TextBox txtLancamento;
         
         /// <summary>
-        /// Controle txtCodigo.
+        /// Controle txtCodigoCategoria.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigo;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoCategoria;
         
         /// <summary>
         /// Controle txtDescricao.

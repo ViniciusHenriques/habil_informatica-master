@@ -6,6 +6,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="../../Scripts/jsMensagemAlert.js"></script>
+    <script src="../../Scripts/TratamentoINPUTs.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
 
@@ -24,7 +25,11 @@
         $(document).ready(function (e) {
             $('#myTabs a[href="' + item + '"]').tab('show');
             console.log($(item));
+
+            
         });
+        
+
     </script>
 
     <link type="text/css" href="../../Content/Style.css" rel="stylesheet" />
@@ -71,7 +76,7 @@
                                     </div>
                                     <div class="col-md-2" style="font-size:x-small;">
                                         <label for="usr" style ="margin-top:1px;">Região</label>
-                                        <asp:TextBox ID="txtRegiao" runat="server" CssClass="form-control "  Font-Size ="Small" AutoPostBack="true" onFocus="this.select()" MaxLength="30"></asp:TextBox>
+                                        <asp:TextBox ID="txtRegiao" runat="server" CssClass="form-control "  Font-Size ="Small" AutoPostBack="true" onFocus="this.select()" MaxLength="30" ></asp:TextBox>
                                     </div>
                                     <div class="col-md-8" style="font-size:x-small;">
                                         <label for="usr" style ="margin-top:1px;">Transportador</label>
@@ -81,213 +86,216 @@
                             </div>
                             <div id="Tabs" role="tabpanel" style="background-color: white; border: none; text-align: left; font-size: small;margin:10px;">
                                 <ul class="nav nav-tabs" role="tablist" id="myTabs">
-                                    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" class="tab-select"><span class="glyphicon glyphicon-plane"></span>&nbsp;&nbsp;Cidades</a></li>
-                                    <li role="presentation"><a href="#consulta" aria-controls="profile" role="tab" data-toggle="tab" class="tab-select"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Configurações&nbsp;&nbsp;</a></li>
+                                    <li role="presentation"><a href="#home" aria-controls="profile" role="tab" data-toggle="tab" class="tab-select"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;Configurações&nbsp;&nbsp;</a></li>
+                                    <li role="presentation"><a href="#consulta" aria-controls="home" role="tab" data-toggle="tab" class="tab-select"><span class="glyphicon glyphicon-plane"></span>&nbsp;&nbsp;Cidades</a></li>
                                 </ul>
                                 <div class="tab-content" runat="server" id="PanelContext">
-                                        <div role="tabpanel" class="tab-pane" id="consulta" style="font-size: small;">
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Frete Minimo</label>
-                                                <asp:TextBox ID="txtFreteMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtFreteMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">GRIS</label>
-                                                <asp:TextBox ID="txtGRIS" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtGRIS_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor GRIS minimo </label>
-                                                <asp:TextBox ID="txtGRISMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtGRISMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Pedágio</label>
-                                                <asp:TextBox ID="txtPedagio" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPedagio_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Pedágio Máximo</label>
-                                                <asp:TextBox ID="txtPedagioMaximo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPedagioMaximo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">AD Valor</label>
-                                                <asp:TextBox ID="txtADValor" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtADValor_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Excedente 1</label>
-                                                <asp:TextBox ID="txtExcedente1" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtExcedente1_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Excedente 2</label>
-                                                <asp:TextBox ID="txtExcedente2" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtExcedente2_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Seguro</label>
-                                                <asp:TextBox ID="txtSeguro" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtSeguro_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Seguro Minimo</label>
-                                                <asp:TextBox ID="txtSeguroMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtSeguroMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Calcular AdValor 1</label>
-                                                <asp:TextBox ID="txtCalcularADValor1" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtCalcularADValor1_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Calcular AdValor 2</label>
-                                                <asp:TextBox ID="txtCalcularADValor2" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtCalcularADValor2_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Por Tonelada</label>
-                                                <asp:TextBox ID="txtPorTonelada" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPorTonelada_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Tipo de Cálculo</label>
-                                                <asp:TextBox ID="txtTipoCalculo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtTipoCalculo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-2" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor Peso Cubado</label>
-                                                <asp:TextBox ID="txtPesoCubado" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPesoCubado_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>                                       
-                                            <div class="col-md-12" style="padding:0!important">
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 1</div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct11" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct11_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De</label>
-                                                <asp:TextBox ID="txtDePara11" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara11_TextChanged" AutoPostBack="true"  Text="0,00000"  onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Até</label>
-                                                <asp:TextBox ID="txtDePara12" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara12_TextChanged" AutoPostBack="true" Text="0,00000"  onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 2</div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct12" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct12_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De</label>
-                                                <asp:TextBox ID="txtDePara21" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara21_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Até</label>
-                                                <asp:TextBox ID="txtDePara22" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara22_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 3
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct31" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct31_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De </label>
-                                                <asp:TextBox ID="txtDePara31" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara31_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Para </label>
-                                                <asp:TextBox ID="txtDePara32" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara32_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 4
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct41" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct41_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De </label>
-                                                <asp:TextBox ID="txtDePara41" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara41_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Para </label>
-                                                <asp:TextBox ID="txtDePara42" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara42_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 5
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct51" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct51_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De </label>
-                                                <asp:TextBox ID="txtDePara51" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara51_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Para </label>
-                                                <asp:TextBox ID="txtDePara52" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara52_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 6
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct61" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct61_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De </label>
-                                                <asp:TextBox ID="txtDePara61" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara61_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Para </label>
-                                                <asp:TextBox ID="txtDePara62" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara62_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="col-md-3" >
-                                    <div class="panel panel-primary" style="margin-top:15px!important">
-                                        <div class="panel-heading">Regra 7
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="col-md-12" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Valor</label>
-                                                <asp:TextBox ID="txtDeParaPct71" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct71_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">De </label>
-                                                <asp:TextBox ID="txtDePara71" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara71_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
-                                            </div>
-                                            <div class="col-md-6" style="font-size:x-small;">
-                                                <label for="usr" style ="margin-top:1px;">Para </label>
-                                                <asp:TextBox ID="txtDePara72" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara72_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                        </div>
                                     <div role="tabpanel" class="tab-pane" id="home" style="font-size: small;">
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Frete Minimo</label>
+                                            <asp:TextBox ID="txtFreteMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtFreteMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">GRIS</label>
+                                            <asp:TextBox ID="txtGRIS" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtGRIS_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor GRIS minimo </label>
+                                            <asp:TextBox ID="txtGRISMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtGRISMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Pedágio</label>
+                                            <asp:TextBox ID="txtPedagio" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPedagio_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Pedágio Máximo</label>
+                                            <asp:TextBox ID="txtPedagioMaximo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPedagioMaximo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">AD Valor</label>
+                                            <asp:TextBox ID="txtADValor" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtADValor_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Seguro</label>
+                                            <asp:TextBox ID="txtSeguro" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtSeguro_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Seguro Minimo</label>
+                                            <asp:TextBox ID="txtSeguroMinimo" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtSeguroMinimo_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Por Tonelada</label>
+                                            <asp:TextBox ID="txtPorTonelada" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPorTonelada_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Valor Peso Cubado (ex.:300,250,200)</label>
+                                            <asp:TextBox ID="txtPesoCubado" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtPesoCubado_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>   
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Excedente (R$)</label>
+                                            <asp:TextBox ID="txtExcedente1" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtExcedente1_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-2" style="font-size:x-small;">
+                                            <label for="usr" style ="margin-top:1px;">Excedente (%)</label>
+                                            <asp:TextBox ID="txtExcedente2" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtExcedente2_TextChanged" AutoPostBack="true" Text="0,00" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                        </div>
+                                    <div class="col-md-12" style="padding:0!important">
+                                        <asp:Panel runat="server" ID="pnlRegra1" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 1</div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra1" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct11" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct11_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra1" for="usr" style ="margin-top:1px;">De</asp:label>
+                                                            <asp:TextBox ID="txtDePara11" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara11_TextChanged" AutoPostBack="true"  Text="0,00000"  onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra1" for="usr" style ="margin-top:1px;">Até</asp:label>
+                                                            <asp:TextBox ID="txtDePara12" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara12_TextChanged" AutoPostBack="true" Text="0,00000"  onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra2" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 2</div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra2" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct12" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct12_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra2" for="usr" style ="margin-top:1px;">De</asp:label>
+                                                            <asp:TextBox ID="txtDePara21" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara21_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra2" for="usr" style ="margin-top:1px;">Até</asp:label>
+                                                            <asp:TextBox ID="txtDePara22" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara22_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra3" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 3
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra3" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct31" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct31_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra3" for="usr" style ="margin-top:1px;">De </asp:label>
+                                                            <asp:TextBox ID="txtDePara31" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara31_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra3" for="usr" style ="margin-top:1px;">Para </asp:label>
+                                                            <asp:TextBox ID="txtDePara32" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara32_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra4" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 4
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra4" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct41" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct41_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra4" for="usr" style ="margin-top:1px;">De </asp:label>
+                                                            <asp:TextBox ID="txtDePara41" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara41_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra4" for="usr" style ="margin-top:1px;">Para </asp:label>
+                                                            <asp:TextBox ID="txtDePara42" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara42_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra5" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 5
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra5" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct51" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct51_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra5" for="usr" style ="margin-top:1px;">De </asp:label>
+                                                            <asp:TextBox ID="txtDePara51" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara51_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra5" for="usr" style ="margin-top:1px;">Para </asp:label>
+                                                            <asp:TextBox ID="txtDePara52" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara52_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra6" Visible ="false">
+                                            <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 6
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra6" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct61" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct61_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra6" for="usr" style ="margin-top:1px;">De </asp:label>
+                                                            <asp:TextBox ID="txtDePara61" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara61_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra6" for="usr" style ="margin-top:1px;">Para </asp:label>
+                                                            <asp:TextBox ID="txtDePara62" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara62_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                        <asp:Panel runat="server" ID="pnlRegra7" Visible ="false">
+                                             <div class="col-md-3" >
+                                                <div class="panel panel-primary" style="margin-top:15px!important">
+                                                    <div class="panel-heading">Regra 7
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl1Regra7" for="usr" style ="margin-top:1px;">Valor</asp:label>
+                                                            <asp:TextBox ID="txtDeParaPct71" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDeParaPct71_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl2Regra7" for="usr" style ="margin-top:1px;">De </asp:label>
+                                                            <asp:TextBox ID="txtDePara71" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara71_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-md-6" style="font-size:x-small;">
+                                                            <asp:label runat="server" ID="lbl3Regra7" for="usr" style ="margin-top:1px;">Para </asp:label>
+                                                            <asp:TextBox ID="txtDePara72" runat="server" CssClass="form-control"  Font-Size ="Small" OnTextChanged="txtDePara72_TextChanged" AutoPostBack="true" Text="0,00000" onFocus="this.select()" MaxLength="13" ></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </asp:Panel>
+                                    </div>
+                                </div>
+                                    <div role="tabpanel" class="tab-pane" id="consulta" style="font-size: small;">
                                         <div class="col-md-12" style="margin-top:15px!important">
                                             <div class="panel panel-primary">
                                                 <div class="panel-heading" style="text-align:center">Cidades da Regra de frete</div>
@@ -369,12 +377,9 @@
                             <asp:AsyncPostBackTrigger ControlID="txtSeguroMinimo" EventName="TextChanged"/>
                             <asp:AsyncPostBackTrigger ControlID="txtADValor" EventName="TextChanged"/>
                             <asp:AsyncPostBackTrigger ControlID="txtPorTonelada" EventName="TextChanged"/>
-                            <asp:AsyncPostBackTrigger ControlID="txtTipoCalculo" EventName="TextChanged"/>
                             <asp:AsyncPostBackTrigger ControlID="txtExcedente1" EventName="TextChanged"/>
                             <asp:AsyncPostBackTrigger ControlID="txtExcedente2" EventName="TextChanged"/>
-                            <asp:AsyncPostBackTrigger ControlID="txtCalcularADValor1" EventName="TextChanged"/>
-                            <asp:AsyncPostBackTrigger ControlID="txtCalcularADValor2" EventName="TextChanged"/>
-                            <asp:AsyncPostBackTrigger ControlID="txtTipoCalculo" EventName="TextChanged"/>
+
                             <asp:AsyncPostBackTrigger ControlID="txtPesoCubado" EventName="TextChanged"/>
                         </Triggers>
                     </asp:UpdatePanel>

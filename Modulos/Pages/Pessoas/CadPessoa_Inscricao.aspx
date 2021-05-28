@@ -90,7 +90,7 @@
                                      <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                         <ContentTemplate>
                                             <label for="usr" style ="margin-top:1px;">País</label>
-                                            <asp:DropDownList ID="ddlPaises" runat="server" CssClass="form-control js-example-basic-single" ></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlPaises" runat="server" CssClass="form-control js-example-basic-single" TabIndex="0"></asp:DropDownList>
                                             </ContentTemplate>
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="ddlPaises" EventName="SelectedIndexChanged" />
@@ -101,7 +101,7 @@
                                     <label for="usr" style ="margin-top:1px;">CPF/CNPJ</label>
                                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                         <ContentTemplate>
-                                            <asp:TextBox ID="txtCNPJCPF" runat="server" AutoPostBack="true" CssClass="form-control" OnTextChanged="txtCNPJCPF_TextChanged" MaxLength="15"></asp:TextBox>
+                                            <asp:TextBox ID="txtCNPJCPF" runat="server" AutoPostBack="true" CssClass="form-control" OnTextChanged="txtCNPJCPF_TextChanged" MaxLength="15" TabIndex="1"></asp:TextBox>
                                         </ContentTemplate>
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="txtCNPJCPF" EventName="TextChanged" />
@@ -122,26 +122,26 @@
 
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Inscrição Estadual  / RG</label>
-                                    <asp:TextBox ID="txtIERG" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtIERG" runat="server" CssClass="form-control" TabIndex="2"></asp:TextBox>
                                 </div>
 
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Inscrição Municipal</label>
-                                    <asp:TextBox ID="txtIM" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtIM" runat="server" CssClass="form-control" TabIndex="3"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row" style="background-color:white;border:none;">
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Data Abertura/Nascimento</label>
-                                    <asp:TextBox ID="txtdtabertura" name="txtdtabertura" runat="server" CssClass="form-control" />
+                                    <asp:TextBox ID="txtdtabertura" name="txtdtabertura" runat="server" CssClass="form-control" TabIndex="4" />
                                 </div>
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Data Encerramento</label>
-                                    <asp:TextBox ID="txtdtencerramento" name="txtdtencerramento" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtdtencerramento" name="txtdtencerramento" runat="server" CssClass="form-control " TabIndex="5"></asp:TextBox>
                                 </div>
                                 <div class="col-md-8" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">OBS</label>
-                                    <asp:TextBox ID="txtOBSInscr" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtOBSInscr" runat="server" CssClass="form-control" TabIndex="6"></asp:TextBox>
                                 </div>
                             </div>
                         </div>

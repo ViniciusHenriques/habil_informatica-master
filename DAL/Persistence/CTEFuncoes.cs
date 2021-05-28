@@ -36,7 +36,6 @@ namespace DAL.Persistence
                 int Contador = 0;
                 foreach (IntegraDocumentoEletronico integracao in ListaIntegracaoDocEletronico)
                 {
-
                    if (integracao.CodigoAcao == 124 && integracao.IntegracaoProcessando == 0 && integracao.IntegracaoRecebido == 0 && integracao.IntegracaoRetorno == 0 && integracao.RegistroDevolvido == 0 && integracao.RegistroEnviado == 1 && integracao.Mensagem == "")
                    {
                         Doc_CTe doc = new Doc_CTe();
@@ -75,18 +74,17 @@ namespace DAL.Persistence
                         EventoEletronicoDocumentoDAL eventosEletronicosDAL = new EventoEletronicoDocumentoDAL();
                         ListaEventoDocEletronico = eventosEletronicosDAL.ObterEventosEletronicos(doc.CodigoDocumento);
 
+                        integracao.IntegracaoRecebido = 1;
+                        integraDAL.AtualizarIntegraDocEletronico(integracao);
+
                         foreach (var evento in ListaEventoDocEletronico)
                         {
-                            
                             if (Contador == 0) { 
                                 if (evento.CodigoSituacao != 121 && evento.CodigoTipoEvento == 120)
                                 {
                                     Contador++;
                                     try
                                     {
-                                        integracao.IntegracaoRecebido = 1;
-                                        integraDAL.AtualizarIntegraDocEletronico(integracao);
-                                        
                                         string consultaCTE = _spdCTeX.ConsultarCT(doc.ChaveAcesso);
                                         string CodigoSituacaoConsulta = BuscarValorTagXML(consultaCTE, "infProt", "cStat");
                                         GerandoArquivoLog("Fazendo consulta do CT-e " + doc.ChaveAcesso, 1);
@@ -127,8 +125,6 @@ namespace DAL.Persistence
                                             {
                                                 evento.CodigoSituacao = 122;
                                             }
-
-
                                         }
                                         else if (CodigoSituacaoConsulta == "218")
                                         {
@@ -164,14 +160,13 @@ namespace DAL.Persistence
                                     //NovoEvento = evento;
                                     //ListaEventoDocEletronico.Add(NovoEvento);
 
-
+                                    eventosEletronicosDAL.AtualizarEventoEletronico(evento);
+                                    GerandoArquivoLog("Evento eletronico do documento " + doc.CodigoDocumento + " atualizado com sucesso", 1);
+                                    integracao.Mensagem = evento.Retorno;
+                                    integracao.RegistroDevolvido = 1;
+                                    integraDAL.AtualizarIntegraDocEletronico(integracao);
                                 }
-                            }
-                            eventosEletronicosDAL.AtualizarEventoEletronico(evento);
-                            GerandoArquivoLog("Evento eletronico do documento " + doc.CodigoDocumento + " atualizado com sucesso", 1);
-                            integracao.Mensagem = evento.Retorno;
-                            integracao.RegistroDevolvido = 1;
-                            integraDAL.AtualizarIntegraDocEletronico(integracao);
+                            }               
                         }
 
                         integraDAL.AtualizarSituacaoDocumentoCTe(doc);
@@ -200,29 +195,42 @@ namespace DAL.Persistence
             }
             return "";
         }
-        public void GerandoArquivoLog(string strDescrição, int CodCaminho)
+        private void GerandoArquivoLog(string strDescrição, int CodCaminho)
         {
-            DateTime data = DateTime.Now;
-
-            string CaminhoArquivoLog = "";
-            if (CodCaminho == 1)//HabilServiceNFSe
-                CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\Log-" + data.ToString("dd-MM-yyyy") + ".txt";
-            else//HabilInformatica
-                CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\Log-" + data.ToString("dd-MM-yyyy") + ".txt";
-
-            if (!System.IO.File.Exists(CaminhoArquivoLog))
+            try
             {
-                FileStream file = new FileStream(CaminhoArquivoLog, FileMode.Create);
-                BinaryWriter bw = new BinaryWriter(file);
-                bw.Close();
+                DateTime data = DateTime.Now;
+
+                string CaminhoArquivoLog = "";
+                if (CodCaminho == 1)//HabilService
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\..\\..\\..\\..\\Modulos\\Log\\CTe\\";
+                else//HabilInformatica
+                    CaminhoArquivoLog = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + "\\Log\\CTe\\";
+
+                if (!Directory.Exists(CaminhoArquivoLog))
+                    Directory.CreateDirectory(CaminhoArquivoLog);
+
+                CaminhoArquivoLog += "Log - " + data.ToString("dd-MM-yyyy") + ".txt";
+
+                if (!System.IO.File.Exists(CaminhoArquivoLog))
+                {
+                    FileStream file = new FileStream(CaminhoArquivoLog, FileMode.Create);
+                    BinaryWriter bw = new BinaryWriter(file);
+                    bw.Close();
+                }
+
+                string nomeArquivo = CaminhoArquivoLog;
+                System.IO.TextWriter arquivo = System.IO.File.AppendText(nomeArquivo);
+
+                // Agora é só sair escrevendo
+                arquivo.WriteLine(data.ToString("HH:mm:ss") + " - " + strDescrição);
+
+                arquivo.Close();
             }
-            string nomeArquivo = CaminhoArquivoLog;
-            System.IO.TextWriter arquivo = System.IO.File.AppendText(nomeArquivo);
-
-            // Agora é só sair escrevendo
-            arquivo.WriteLine(data.ToString("HH:mm:ss") + " - " + strDescrição);
-
-            arquivo.Close();
+            catch (Exception ex)
+            {
+                GerandoArquivoLog(ex.Message, 1);
+            }
         }
         public void SalvarAnexos(decimal CodigoDocumento, byte[] Arquivo, DateTime data, IntegraDocumentoEletronico integra, string StrDescricao)
         {

@@ -427,7 +427,11 @@
                                     <asp:BoundField DataField="ValorGeral" HeaderText="Vl. Total" />
                                     <asp:BoundField DataField="Cpl_vlPago" HeaderText="Vl. Pago" />
                                     <asp:BoundField DataField="Cpl_vlPagar" HeaderText="Vl. Aberto" />
-                                    <asp:BoundField DataField="Cpl_DsSituacao" HeaderText="Situação" />
+                                    <asp:TemplateField HeaderText="Situação" ItemStyle-CssClass="centerVertical col-md-1 padding-top-15">
+                                        <ItemTemplate>
+                                            <label class="badge <%# Eval("Cpl_DsSituacao").ToString().Replace(' ','-').Split('(')[0] %>" id="situacaoSpan"><%# Eval("Cpl_DsSituacao").ToString() %></label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:CommandField HeaderText="Ação" ShowSelectButton="True" 
                                         ItemStyle-Height ="15px" ItemStyle-Width ="50px" 
                                         ButtonType="Image"  SelectImageUrl ="~/Images/Acessar.svg" 

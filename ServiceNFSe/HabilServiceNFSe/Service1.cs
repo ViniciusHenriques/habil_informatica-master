@@ -9,7 +9,6 @@ namespace HabilServiceNFSe
     {
         public Service1()
         {
-            GerandoArquivoLog("Começou");
             try
             {
                 InitializeComponent();
@@ -22,13 +21,13 @@ namespace HabilServiceNFSe
 
         protected override void OnStart(string[] args)
         {
-            GerandoArquivoLog("iniciando servico");
             try
             {
-                ThreadStart start = new ThreadStart(verificarDocumentosEletronicos);
+                ThreadStart start = new ThreadStart(VerificarDocumentosEletronicos);
                 Thread thread = new Thread(start);
 
                 thread.Start();
+
             }catch(Exception ex)
             {
                 GerandoArquivoLog(ex.Message);
@@ -38,62 +37,39 @@ namespace HabilServiceNFSe
 
         protected override void OnStop()
         {
-            NFSeFuncoes NFSe = new NFSeFuncoes();
-
-            NFSe.GerandoArquivoLog(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
-                        "           >>>>>>>>>>>>>>>>>>>>>>>>>>>> Finalizando HabilServiceNFse <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
-                        "           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n",1);
-
-
-
+            GerandoArquivoLog(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
+                        "           >>>>>>>>>>>>>>>>>>>>>>>>>>>> Finalizando HabilService  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
+                        "           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
         }
 
-        public void verificarDocumentosEletronicos()
+        public void VerificarDocumentosEletronicos()
         {
-            //GerandoArquivoLog("Entrou na rotina");
             while (true)
             {
-                //GerandoArquivoLog("Vai rodar 5 seg");
                 Thread.Sleep(5000);
-                //GerandoArquivoLog("rodou");
                 try
                 {
-                    NFeFuncoes NFe = new NFeFuncoes();
-                    NFe.EnviarNFe();
 
-                    //GerandoArquivoLog("entrou try");
-                    //clsEmail c2 = new clsEmail();
-                    //c2.ProcessaEnvio();
-                    //GerandoArquivoLog("instanciou class NFSe");
-                    NFSeFuncoes NFSe = new NFSeFuncoes();
-
-                    //GerandoArquivoLog("Log de inicio de serviço");
-                    NFSe.GerandoArquivoLog(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
-                                "           >>>>>>>>>>>>>>>>>>>>>>>>>>>> Inicializando HabilServiceNFse <<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
+                    GerandoArquivoLog(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
+                                "           >>>>>>>>>>>>>>>>>>>>>>>>>>>> Inicializando HabilService <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n" +
                                 "           >>>>>>>>>>>> Produto de Habil Informatica - Versao Sistema de Faturamento <<<<<<<<<<<<<<\n" +
-                                "           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n", 1);
+                                "           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+
+                    NFeFuncoes NFe = new NFeFuncoes();
+                    NFe.EnviarEvento();
+
+                    //NFSeFuncoes NFSe = new NFSeFuncoes();
                     //NFSe.ExecutarFuncoes();
-                    //GerandoArquivoLog("Enviou NFSe's");
-                    Thread.Sleep(5000);
 
-                    //GerandoArquivoLog("Vai rodar class CTE");
-                    CTEFuncoes CTe = new CTEFuncoes();
-                    CTe.EnviarDesacordo();
+                    //CTEFuncoes CTe = new CTEFuncoes();
+                    //CTe.EnviarDesacordo();
 
-                    //GerandoArquivoLog("enviou desacordos");
-
-
-                    
-                    
                 }
                 catch (Exception ex)
                 {
                     GerandoArquivoLog(ex.Message);
                 }
             }
-
-        
-        
         }
         public void GerandoArquivoLog(string strDescrição)
         {
@@ -125,13 +101,10 @@ namespace HabilServiceNFSe
             {
 
             }
-
         }
         public void OnDebug()
         {
             OnStart(null);
         }
-
-    
     }
 }

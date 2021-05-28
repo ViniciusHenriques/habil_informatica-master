@@ -587,13 +587,7 @@ namespace SoftHabilInformatica.Pages.Pessoas
             p.CodigoSisAnterior = txtCodSisAnterior.Text;
             p.ListaRepresentantes = listRepresentantes;
 
-            string[] strGrupoPessoa = ddlGpoPessoa.SelectedItem.Text.Split(' ');
-            if (strGrupoPessoa.Contains("SOCIO") || strGrupoPessoa.Contains("SÓCIO"))
-            {
-                DataTable dt = new DataTable();
-                dt = d.RelatorioMatriculados(0);
-                p.CodigoSisAnterior = (dt.Rows.Count + 1).ToString("D3");
-            }
+            ddlGpoPessoa_SelectedIndexChanged(sender, e);
 
             if (chkEmpresa.Checked == true)
                 p.PessoaEmpresa = 1;

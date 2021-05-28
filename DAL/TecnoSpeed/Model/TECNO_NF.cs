@@ -11,6 +11,9 @@ namespace DAL.TecnoSpeed
         /// <summary></summary>
         public decimal ID_NOTA_FISCAL { get; set; }
 
+        /// <summary></summary>
+        public decimal IDE_VERSAO { get; set; }
+        
         /// <summary>cUF_B02 - Código da UF do emitente do Documento Fiscal	</summary>
         public decimal IDE_CUF { get; set; }
 
@@ -297,7 +300,7 @@ namespace DAL.TecnoSpeed
         public string IDE_HEMI { get; set; }
 
         /// <summary></summary>
-        public decimal? ICMStot_VICMSDESON { get; set; }
+        public decimal ICMStot_VICMSDESON { get; set; }
 
         /// <summary>IM_E18a - Inscrição Municipal do Tomador do Serviço	</summary>
         public string DEST_IM { get; set; }
@@ -315,16 +318,16 @@ namespace DAL.TecnoSpeed
         public decimal? ICMSTOT_VFCPUFDEST { get; set; }
 
         /// <summary></summary>
-        public decimal? ICMSTOT_VFCP { get; set; }
+        public decimal ICMSTOT_VFCP { get; set; }
 
         /// <summary></summary>
-        public decimal? ICMSTOT_VFCPST { get; set; }
+        public decimal ICMSTOT_VFCPST { get; set; }
 
         /// <summary></summary>
-        public decimal? ICMSTOT_VFCPSTRET { get; set; }
+        public decimal ICMSTOT_VFCPSTRET { get; set; }
 
         /// <summary></summary>
-        public decimal? ICMSTOT_VIPIDEVOL { get; set; }
+        public decimal ICMSTOT_VIPIDEVOL { get; set; }
 
         /// <summary></summary>
         public decimal? VTROCO { get; set; }
@@ -394,6 +397,24 @@ namespace DAL.TecnoSpeed
 
         /// <summary></summary>
         public int IDE_CRT { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_CNPJ { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_XCONTATO { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_EMAIL { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_FONE { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_IDCSRT { get; set; }
+
+        /// <summary></summary>
+        public string INFTEC_HASHCSRT { get; set; }
 
     }
 }

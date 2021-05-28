@@ -157,24 +157,6 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtADValor;
         
         /// <summary>
-        /// Controle txtExcedente1.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExcedente1;
-        
-        /// <summary>
-        /// Controle txtExcedente2.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtExcedente2;
-        
-        /// <summary>
         /// Controle txtSeguro.
         /// </summary>
         /// <remarks>
@@ -193,24 +175,6 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtSeguroMinimo;
         
         /// <summary>
-        /// Controle txtCalcularADValor1.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalcularADValor1;
-        
-        /// <summary>
-        /// Controle txtCalcularADValor2.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalcularADValor2;
-        
-        /// <summary>
         /// Controle txtPorTonelada.
         /// </summary>
         /// <remarks>
@@ -218,15 +182,6 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPorTonelada;
-        
-        /// <summary>
-        /// Controle txtTipoCalculo.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipoCalculo;
         
         /// <summary>
         /// Controle txtPesoCubado.
@@ -238,6 +193,42 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtPesoCubado;
         
         /// <summary>
+        /// Controle txtExcedente1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExcedente1;
+        
+        /// <summary>
+        /// Controle txtExcedente2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExcedente2;
+        
+        /// <summary>
+        /// Controle pnlRegra1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra1;
+        
+        /// <summary>
+        /// Controle lbl1Regra1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra1;
+        
+        /// <summary>
         /// Controle txtDeParaPct11.
         /// </summary>
         /// <remarks>
@@ -245,6 +236,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct11;
+        
+        /// <summary>
+        /// Controle lbl2Regra1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra1;
         
         /// <summary>
         /// Controle txtDePara11.
@@ -256,6 +256,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara11;
         
         /// <summary>
+        /// Controle lbl3Regra1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra1;
+        
+        /// <summary>
         /// Controle txtDePara12.
         /// </summary>
         /// <remarks>
@@ -263,6 +272,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara12;
+        
+        /// <summary>
+        /// Controle pnlRegra2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra2;
+        
+        /// <summary>
+        /// Controle lbl1Regra2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra2;
         
         /// <summary>
         /// Controle txtDeParaPct12.
@@ -274,6 +301,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct12;
         
         /// <summary>
+        /// Controle lbl2Regra2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra2;
+        
+        /// <summary>
         /// Controle txtDePara21.
         /// </summary>
         /// <remarks>
@@ -281,6 +317,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara21;
+        
+        /// <summary>
+        /// Controle lbl3Regra2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra2;
         
         /// <summary>
         /// Controle txtDePara22.
@@ -292,6 +337,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara22;
         
         /// <summary>
+        /// Controle pnlRegra3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra3;
+        
+        /// <summary>
+        /// Controle lbl1Regra3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra3;
+        
+        /// <summary>
         /// Controle txtDeParaPct31.
         /// </summary>
         /// <remarks>
@@ -299,6 +362,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct31;
+        
+        /// <summary>
+        /// Controle lbl2Regra3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra3;
         
         /// <summary>
         /// Controle txtDePara31.
@@ -310,6 +382,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara31;
         
         /// <summary>
+        /// Controle lbl3Regra3.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra3;
+        
+        /// <summary>
         /// Controle txtDePara32.
         /// </summary>
         /// <remarks>
@@ -317,6 +398,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara32;
+        
+        /// <summary>
+        /// Controle pnlRegra4.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra4;
+        
+        /// <summary>
+        /// Controle lbl1Regra4.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra4;
         
         /// <summary>
         /// Controle txtDeParaPct41.
@@ -328,6 +427,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct41;
         
         /// <summary>
+        /// Controle lbl2Regra4.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra4;
+        
+        /// <summary>
         /// Controle txtDePara41.
         /// </summary>
         /// <remarks>
@@ -335,6 +443,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara41;
+        
+        /// <summary>
+        /// Controle lbl3Regra4.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra4;
         
         /// <summary>
         /// Controle txtDePara42.
@@ -346,6 +463,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara42;
         
         /// <summary>
+        /// Controle pnlRegra5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra5;
+        
+        /// <summary>
+        /// Controle lbl1Regra5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra5;
+        
+        /// <summary>
         /// Controle txtDeParaPct51.
         /// </summary>
         /// <remarks>
@@ -353,6 +488,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct51;
+        
+        /// <summary>
+        /// Controle lbl2Regra5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra5;
         
         /// <summary>
         /// Controle txtDePara51.
@@ -364,6 +508,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara51;
         
         /// <summary>
+        /// Controle lbl3Regra5.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra5;
+        
+        /// <summary>
         /// Controle txtDePara52.
         /// </summary>
         /// <remarks>
@@ -371,6 +524,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara52;
+        
+        /// <summary>
+        /// Controle pnlRegra6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra6;
+        
+        /// <summary>
+        /// Controle lbl1Regra6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra6;
         
         /// <summary>
         /// Controle txtDeParaPct61.
@@ -382,6 +553,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct61;
         
         /// <summary>
+        /// Controle lbl2Regra6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra6;
+        
+        /// <summary>
         /// Controle txtDePara61.
         /// </summary>
         /// <remarks>
@@ -389,6 +569,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara61;
+        
+        /// <summary>
+        /// Controle lbl3Regra6.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra6;
         
         /// <summary>
         /// Controle txtDePara62.
@@ -400,6 +589,24 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDePara62;
         
         /// <summary>
+        /// Controle pnlRegra7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegra7;
+        
+        /// <summary>
+        /// Controle lbl1Regra7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl1Regra7;
+        
+        /// <summary>
         /// Controle txtDeParaPct71.
         /// </summary>
         /// <remarks>
@@ -409,6 +616,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         protected global::System.Web.UI.WebControls.TextBox txtDeParaPct71;
         
         /// <summary>
+        /// Controle lbl2Regra7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl2Regra7;
+        
+        /// <summary>
         /// Controle txtDePara71.
         /// </summary>
         /// <remarks>
@@ -416,6 +632,15 @@ namespace SoftHabilInformatica.Pages.Transporte {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDePara71;
+        
+        /// <summary>
+        /// Controle lbl3Regra7.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl3Regra7;
         
         /// <summary>
         /// Controle txtDePara72.

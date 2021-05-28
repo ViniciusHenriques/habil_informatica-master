@@ -8,17 +8,63 @@ namespace DAL.Persistence
 {
     public class CidadeRegraFreteDAL : Conexao
     {
+        public void InserirCidades(int CodigoCidade, int CodigoRegra)
+        {
+            try
+            {
+                AbrirConexao();
 
+                RegraFrete reg = new RegraFrete();
+                RegraFreteDAL regDAL = new RegraFreteDAL();
+                reg = regDAL.PesquisarRegraFreteIndex(CodigoRegra);
+                Pessoa_Inscricao ins = new Pessoa_Inscricao();
+                PessoaInscricaoDAL insDAL = new PessoaInscricaoDAL();
+                ins = insDAL.PesquisarPessoaInscricao(reg.CodigoTransportador, 1);
+                reg = regDAL.PesquisarRegraFrete(ins._NumeroInscricao, CodigoCidade.ToString());
+                if (reg != null)
+                {
+                    Excluir(reg.CodigoIndex, CodigoCidade);
+                }
+
+                Cmd = new SqlCommand("insert into CIDADE_REGRA_DE_FRETE (CD_IBGE, CD_REGRA_DE_FRETE) " +
+                                                    "values (@v1,@v2);", Con);
+                Cmd.Parameters.AddWithValue("@v1", CodigoCidade);
+                Cmd.Parameters.AddWithValue("@v2", CodigoRegra);
+
+                Cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao gravar cidade da regra de frete: " + ex.Message.ToString());
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
         public void Inserir(List<CidadeRegraFrete> ListaCidades, int CodigoRegra)
         {
             try
             {
                 ExcluirTodos(CodigoRegra);
 
-                AbrirConexao();
 
+                AbrirConexao();
                 foreach (CidadeRegraFrete cit in ListaCidades)
                 {
+                    RegraFrete reg = new RegraFrete();
+                    RegraFreteDAL regDAL = new RegraFreteDAL();
+                    reg = regDAL.PesquisarRegraFreteIndex(CodigoRegra);
+                    Pessoa_Inscricao ins = new Pessoa_Inscricao();
+                    PessoaInscricaoDAL insDAL = new PessoaInscricaoDAL();
+                    ins = insDAL.PesquisarPessoaInscricao(reg.CodigoTransportador, 1);
+                    reg = regDAL.PesquisarRegraFrete(ins._NumeroInscricao, cit.CodigoIBGE.ToString());
+                    if (reg != null )
+                    {
+                        Excluir(reg.CodigoIndex, cit.CodigoIBGE);
+                    }
+                    
                     Cmd = new SqlCommand("insert into CIDADE_REGRA_DE_FRETE (CD_IBGE, CD_REGRA_DE_FRETE) " +
                                                         "values (@v1,@v2);", Con);
                     Cmd.Parameters.AddWithValue("@v1", cit.CodigoIBGE);
@@ -67,6 +113,22 @@ namespace DAL.Persistence
             {
                 FecharConexao();
             }
+        }
+        public void Excluir(decimal CodigoRegra, decimal CodigoIBGE)
+        {
+            try
+            {
+                
+                Cmd = new SqlCommand("delete from CIDADE_REGRA_DE_FRETE Where CD_REGRA_DE_FRETE = @v1 and CD_IBGE = @v2", Con);
+                Cmd.Parameters.AddWithValue("@v1", CodigoRegra);
+                Cmd.Parameters.AddWithValue("@v2", CodigoIBGE);
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao excluir cidade da regra: " + ex.Message.ToString());
+            }
+
         }
         public List<CidadeRegraFrete> ObterCidadesRegraFrete(decimal CodigoRegra)
         {
