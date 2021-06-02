@@ -90,7 +90,6 @@ namespace SoftHabilInformatica.Pages.Vendas
 
             RptDoc.SetDataSource(r.RelOrcamentoCompleto(lista));
             
-            
             CRViewer.ReportSource = RptDoc;
             Session["RptDoc"] = RptDoc;
             Session["LST_ORCAMENTO"] = null;

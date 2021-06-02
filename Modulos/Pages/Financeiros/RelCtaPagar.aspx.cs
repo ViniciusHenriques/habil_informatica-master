@@ -21,6 +21,12 @@ namespace SoftHabilInformatica.Pages.Financeiros
             {
                 Session["Pagina"] = Request.CurrentExecutionFilePath;
             }
+            else if (!IsPostBack)
+            {
+                Session["RptDoc"] = null;
+                btnVoltar_Click(sender, e);
+            }
+
 
             if ((Session["CodModulo"] != null) && (Session["CodPflUsuario"] != null))
             {

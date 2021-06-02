@@ -3,6 +3,8 @@ using DAL.Model;
 using DAL.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using static System.Console;
 
 namespace SoftHabilInformatica.Pages.Financeiros
 {
@@ -20,6 +22,11 @@ namespace SoftHabilInformatica.Pages.Financeiros
             {
                 Session["Pagina"] = Request.CurrentExecutionFilePath;
             }
+            else if (!IsPostBack)
+            {
+                Session["RptDoc"] = null;
+                btnVoltar_Click(sender, e);
+            }
 
             if ((Session["CodModulo"] != null) && (Session["CodPflUsuario"] != null))
             {
@@ -32,19 +39,14 @@ namespace SoftHabilInformatica.Pages.Financeiros
                 {
                     if (!x.AcessoCompleto)
                     {
-
                         if (!x.AcessoImprimir)
                         {
-
                             CRViewer.HasExportButton = false;
                             CRViewer.HasPrintButton = false;
                             CRViewer.HasToggleGroupTreeButton = false;
-
                         }
-
                     }
                 });
-
             }
         }
         protected void btnVoltar_Click(object sender, EventArgs e)
@@ -69,7 +71,6 @@ namespace SoftHabilInformatica.Pages.Financeiros
                 CRViewer.ReportSource = (ReportDocument)Session["RptDoc"];
                 CRViewer.DataBind();
             }
-
         }
         private void MontaCrystal()
         {
@@ -448,7 +449,9 @@ namespace SoftHabilInformatica.Pages.Financeiros
                 RptDoc.SetDataSource(r.RelCtaReceberCompleto(lista, CodigoFiltros));
 
             }
+
             CRViewer.ReportSource = RptDoc;
+
             Session["RptDoc"] = RptDoc;
             Session["LST_DOCCTARECEBER"] = null;
             Session["COD_FILTROS"] = null;

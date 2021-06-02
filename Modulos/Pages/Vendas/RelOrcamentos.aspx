@@ -6,7 +6,6 @@
     <script src="../../Scripts/funcoes.js"></script>
     <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="../../Scripts/jsMensagemAlert.js"></script>
-
     <link type="text/css" href="../../Content/GridViewPager.css" rel="stylesheet" />
 
     <script>
@@ -14,20 +13,14 @@
         $(document).ready(function (e) {
             $('#myTabs a[href="' + item + '"]').tab('show');
             console.log($(item));
-        });
-
-        
+        });   
     </script>
-    <style type="text/css">
-        
+    <style type="text/css">        
         @media screen and (max-width: 600px) {
             .noprint{display:none;}          
         }
     </style>
     <link type="text/css" href="../../Content/GridViewPager.css" rel="stylesheet" />
-
-
-
     <script src="../../Scripts/jquery-ui-1.12.1.min.js"></script>
     <link type="text/css" href="../../Content/DateTimePicker/css/bootstrap-datepicker.css" rel="stylesheet" />
     <script src="../../Content/DateTimePicker/js/bootstrap-datepicker.js"></script>
