@@ -48,5 +48,6 @@ namespace DAL.Model
         public int Cpl_Maquina { get; set; }
         public int CodigoPessoa { get; set; }
         public int Cpl_Acao { get; set; }
+        public bool Cpl_PodeReplicar { get; set; }
     }
 }

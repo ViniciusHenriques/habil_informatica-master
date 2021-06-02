@@ -377,7 +377,7 @@ namespace SoftHabilInformatica.Pages.Vendas
             ListPar = (List<ParSistema>)Session["VW_Par_Sistema"];
 
             if (ListPar.Count > 0)
-                if (ListPar[0].CodigoSequenciaGeracaoNFe == 147)
+                if (ListPar[0].CodigoSequenciaGeracaoNFe == 147 || ListPar[0].CodigoSequenciaGeracaoNFe == 209)
                     btnNovo.Visible = false;
         }
         protected void btnConsultar_Click(object sender, EventArgs e)

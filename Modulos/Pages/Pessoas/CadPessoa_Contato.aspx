@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="col-md-12" style="font-size:x-small;margin:0!important">
                                             <label for="usr" style ="margin-top:1px;">Nome do Contato</label>
-                                            <asp:TextBox ID="txtNomeContato" runat="server" CssClass="form-control" Width="100%" TabIndex="1"/>
+                                            <asp:TextBox ID="txtNomeContato" runat="server" CssClass="form-control" Width="100%" TabIndex="1" MaxLength="100"/>
                                         </div>
                                         <div class="col-md-4" style="background-color:white;border:none;text-align:left;font-size:x-small;">                                     
                                             <label for="usr" style ="margin-top:1px;">País</label>

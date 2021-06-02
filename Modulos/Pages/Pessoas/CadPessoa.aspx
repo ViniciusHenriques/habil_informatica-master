@@ -106,11 +106,11 @@
                             <div class="row" style="background-color:white;border:none;">
                                 <div class="col-md-6" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Razão Social / Nome Pessoa</label>
-                                    <asp:TextBox ID="txtRazSocial" runat="server" CssClass="form-control col-md-7"  Font-Size ="Small" AutoPostBack ="true"  OnTextChanged ="txtRazSocial_TextChanged" ></asp:TextBox>
+                                    <asp:TextBox ID="txtRazSocial" runat="server" CssClass="form-control col-md-7"  Font-Size ="Small" AutoPostBack ="true"  OnTextChanged ="txtRazSocial_TextChanged" MaxLength="100"></asp:TextBox>
                                 </div>
                                 <div class="col-md-6" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Nome Fantasia / Apelido</label>
-                                    <asp:TextBox ID="txtNomeFantasia" runat="server" CssClass="form-control col-md-4"  Font-Size ="Small" ></asp:TextBox>
+                                    <asp:TextBox ID="txtNomeFantasia" runat="server" CssClass="form-control col-md-4"  Font-Size ="Small" MaxLength="100"></asp:TextBox>
                                 </div>
                             </div>
                             </ContentTemplate> 

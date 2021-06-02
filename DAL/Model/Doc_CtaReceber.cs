@@ -47,5 +47,6 @@ namespace DAL.Model
         public int Cpl_Acao { get; set; }
         public decimal Cpl_vlPago { get; set; }
         public int Cpl_CodigoPessoa { get; set; }
+        public bool Cpl_PodeReplicar { get; set; }
     }
 }

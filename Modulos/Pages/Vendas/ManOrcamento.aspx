@@ -297,16 +297,16 @@
                                                 <div class="col-md-12 " style="margin-top:6px">
                                                     <div class="panel panel-primary">
                                                         <div class="panel-heading" style="text-align:center;padding:13px!important;height:45px">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-2 col-xs-4">
                                                                  <asp:LinkButton ID="btnAddItem" runat="server" Text="Voltar" CssClass="btn btn-info" TabIndex="16" UseSubmitBehavior="false"  OnClick="btnAddItem_Click" style="float:left!important;margin-top:-7px!important" title="Editar ( Alt + A )"> 
                                                                     <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span> Editar
                                                                 </asp:LinkButton>
                                                             </div>
-                                                            <div class="col-md-8">Produtos do Orçamento - 
+                                                            <div class="col-md-8 col-xs-4">Produtos do Orçamento - 
                                                                 <asp:Label ID="lblQtPedidos" runat="server"></asp:Label>
                                                                 <asp:Label ID="lblDescQtPedidos" runat="server"></asp:Label>                                                                
                                                             </div>
-                                                            <div class="col-md-2" >
+                                                            <div class="col-md-2 col-xs-4" >
                                                                 <asp:Label runat="server" ID="lblTotalItens" Font-Bold="true" Font-Size="Medium" ></asp:Label>    
                                                             </div>
                                                         </div>
@@ -424,9 +424,13 @@
                                                 <label for="usr" style ="margin-top:1px;">Bairro</label>
                                                 <asp:TextBox ID="txtBairro" CssClass="form-control" runat="server" Enabled="false" Text ="" />
                                             </div>
-                                            <div class="col-md-12" style="background-color: white; border: none; text-align: left; font-size: x-small;">
+                                            <div class="col-md-7" style="background-color: white; border: none; text-align: left; font-size: x-small;">
                                                 <label for="usr" style ="margin-top:1px;">E-mail</label>
                                                 <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" Enabled="false" Text ="" />
+                                            </div>
+                                            <div class="col-md-5" style="background-color: white; border: none; text-align: left; font-size: x-small;">
+                                                <label for="usr" style ="margin-top:1px;">Telefone</label>
+                                                <asp:TextBox ID="txtTelefone" CssClass="form-control" runat="server" Enabled="false" Text ="" />
                                             </div>
                                         </ContentTemplate> 
                                         <Triggers>
@@ -437,15 +441,16 @@
                                             <asp:AsyncPostBackTrigger ControlID="txtEstado" EventName="TextChanged" />
                                             <asp:AsyncPostBackTrigger ControlID="txtCidade" EventName="TextChanged" />
                                             <asp:AsyncPostBackTrigger ControlID="txtBairro" EventName="TextChanged" />
+                                            <asp:AsyncPostBackTrigger ControlID="txtTelefone" EventName="TextChanged" />
                                         </Triggers>
                                     </asp:UpdatePanel>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="aba3" style="padding-left: 20px; padding-top: 20px; padding-right: 20px; font-size: small;">
                                     <div class="row" >
-                                        <div class="col-md-8">
-                                            <div id="chartContainer" style="height: 50px;"></div>
+                                        <div class="col-md-8 col-xs-12">
+                                            <div id="chartContainer" style="height: 100%;"></div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-xs-12">
                                             <div class="panel panel-primary" >
                                                 <div class="panel-heading" style="text-align:center;">
                                                     Valores
@@ -457,29 +462,31 @@
                                                                  <div class="input-group" style="height:80%">
                                                                     <span class="input-group-addon"><b>Crédito:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></span>
                                                                     <span class="input-group-addon" style="border-right:0;padding-right:0;color:black;font-weight:bold;font-size:20px" >R$</span>
-                                                                    <asp:TextBox ID="txtCredito" name="txtCredito" AutoPostBack="False" Height="100%" Enabled="false" CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px"/>
+                                                                    <asp:TextBox ID="txtCredito" name="txtCredito" AutoPostBack="False" Height="50" Enabled="false" CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px"/>
                                                                 </div>                                                
                                                             </div> 
+                                                            <br />
                                                             <div class="col-md-12" style="height:10%">
                                                                 <div class="input-group" style="height:80%">
                                                                     <span class="input-group-addon"><b>Utilizado:&nbsp;&nbsp;&nbsp;</b></span>
                                                                     <span class="input-group-addon" style="border-right:0;padding-right:0;color:black;font-weight:bold;font-size:20px" >R$</span>
-                                                                    <asp:TextBox ID="txtVlrUsado" AutoPostBack="False" Enabled="false" Height="100%"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
+                                                                    <asp:TextBox ID="txtVlrUsado" AutoPostBack="False" Enabled="false" Height="50"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
                                                                 </div>                                                  
                                                             </div>
-                                                            <br /><br />
+                                                            <br />
                                                             <div class="col-md-12" style="height:10%">
                                                                 <div class="input-group" style="height:80%">
                                                                     <span class="input-group-addon" ><b>Pedidos: &nbsp;&nbsp;&nbsp;&nbsp;</b></span>
                                                                     <span class="input-group-addon" style="border-right:0;padding-right:0;color:black;font-weight:bold;font-size:20px" >R$</span>
-                                                                    <asp:TextBox ID="txtPedidos"  Enabled="false" AutoPostBack="False" Height="100%"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
+                                                                    <asp:TextBox ID="txtPedidos"  Enabled="false" AutoPostBack="False" Height="50"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
                                                                 </div>                                                 
                                                             </div>
+                                                            <br />
                                                             <div class="col-md-12" style="height:10%">
                                                                 <div class="input-group" style="height:80%">
                                                                     <span class="input-group-addon" ><b>Disponível:</b></span>
                                                                     <span class="input-group-addon" style="border-right:0;padding-right:0;color:black;font-weight:bold;font-size:20px" >R$</span>
-                                                                    <asp:TextBox ID="txtVlrDisponivel"  Enabled="false" AutoPostBack="False" Height="100%"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
+                                                                    <asp:TextBox ID="txtVlrDisponivel"  Enabled="false" AutoPostBack="False" Height="50"  CssClass="form-control" TabIndex="8" runat="server" style="border-left:0;color:black;font-weight:bold;padding-left:5px;font-size:20px" />
                                                                 </div>                                                 
                                                             </div>
                                                         </ContentTemplate> 

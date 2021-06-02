@@ -870,13 +870,27 @@ namespace SoftHabilInformatica.Pages.Financeiros
         }
         protected void btnNovo_Click(object sender, EventArgs e)
         {
+            Session["Ssn_CtaReceber"] = null;
+            Session["ZoomDocCtaReceber"] = null;
+            Session["CadDocCtaReceber"] = null;
+            Session["Ssn_CtaReceber"] = null;
+            Session["CadDocCtaReceber"] = null;
+            Session["Ssn_TipoPessoa"] = null;
+            Session["NovaBaixa"] = null;
+            Session["CadDocCtaPagar"] = null;
             Session["Eventos"] = null;
             Session["Logs"] = null;
             Session["NovoAnexo"] = null;
-            Session["Ssn_CtaReceber"] = null;
+            Session["Ssn_TipoPessoa"] = null;
+            Session["Ssn_ctaReceber"] = null;
+            Session["NotaFiscalServico"] = null;
+            Session["Doc_orcamento"] = null;
+            Session["ListaItemDocumento"] = null;
             Session["NovaBaixa"] = null;
-            Session["ZoomDocCtaReceber"] = null;
-            Session["CadDocCtaReceber"] = null;
+            Session["IndicadorURL"] = null;
+            Session["CadOrcamento"] = null;
+            Session["ListaOutrosOrcamentos"] = null;
+            Session["ListaContaReceber"] = null;
             Response.Redirect("~/Pages/Financeiros/ManCtaReceber.aspx");
         }
         protected void grdGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -919,6 +933,248 @@ namespace SoftHabilInformatica.Pages.Financeiros
         {
             Response.Redirect("~/Pages/Financeiros/RelCtaReceber.aspx");
         }
+        protected void grdGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
 
+                List<Permissao> lista1 = new List<Permissao>();
+                PermissaoDAL r1 = new PermissaoDAL();
+                lista1 = r1.ListarPerfilUsuario(Convert.ToInt32(Session["CodModulo"].ToString()),
+                                               Convert.ToInt32(Session["CodPflUsuario"].ToString()),
+                                               "ConCtaReceber.aspx");
+
+                Session["Doc_orcamento"] = null;
+                Session["Doc_Pedido"] = null;
+
+                string x = e.CommandName;
+
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                GridViewRow row = grdGrid.Rows[index];
+                string Codigo = Server.HtmlDecode(row.Cells[0].Text);
+                Session["ZoomDocCtaReceber"] = Codigo + "³";
+
+                if (x == "Editar")
+                {
+                    if (lista1.Count > 0 && !lista1[0].AcessoCompleto)
+                    {
+                        if (!lista1[0].AcessoAlterar)
+                        {
+                            ShowMessage("Sem permissão para editar contas a receber", MessageType.Info);
+                            return;
+                        }
+                    }
+                    Session["Ssn_CtaReceber"] = null;
+                    Session["CadDocCtaReceber"] = null;
+                    Session["Ssn_TipoPessoa"] = null;
+                    Session["NovaBaixa"] = null;
+                    Session["CadDocCtaPagar"] = null;
+                    Session["Eventos"] = null;
+                    Session["Logs"] = null;
+                    Session["NovoAnexo"] = null;
+                    Session["Ssn_TipoPessoa"] = null;
+                    Session["Ssn_ctaReceber"] = null;
+                    Session["NotaFiscalServico"] = null;
+                    Session["Doc_orcamento"] = null;
+                    Session["ListaItemDocumento"] = null;
+                    Session["NovaBaixa"] = null;
+                    Session["IndicadorURL"] = null;
+                    Session["CadOrcamento"] = null;
+                    Session["ListaOutrosOrcamentos"] = null;
+                    Session["ListaContaReceber"] = null;
+                    Response.Redirect("~/Pages/Financeiros/ManCtaReceber.aspx");
+
+                }
+                else if (x == "Duplicar")
+                {
+                    if (lista1.Count > 0 && !lista1[0].AcessoCompleto)
+                    {
+                        if (!lista1[0].AcessoIncluir)
+                        {
+                            ShowMessage("Sem permissão para incluir contas a receber", MessageType.Info);
+                            return;
+                        }
+                    }
+
+                    Doc_CtaPagar p1 = new Doc_CtaPagar();
+
+                    Doc_CtaPagarDAL ctaDAL = new Doc_CtaPagarDAL();
+
+                    p1 = ctaDAL.PesquisarDocumento(Convert.ToDecimal(Codigo.Split('³')[0]));
+
+                    txtPrefixo.Text = p1.CodigoPessoa.ToString();
+
+                    OpDuplicar_CommandRow(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage(ex.Message, MessageType.Info);
+            }
+        }
+
+        protected void OpDuplicar_CommandRow(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Popup", "MostrarModalDuplicar();", true);
+
+        }
+        protected void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (txtQtdDuplicar.Text == "99999")
+                txtQtdDuplicar.Text = "99999";
+            else
+                txtQtdDuplicar.Text = (Convert.ToInt32(txtQtdDuplicar.Text) + 1).ToString();
+        }
+
+        protected void txtQtdDuplicar_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtQtdDuplicar.Text.Equals(""))
+            {
+                txtQtdDuplicar.Text = "1";
+            }
+            else
+            {
+                v.CampoValido("Qtd duplicar", txtQtdDuplicar.Text, true, true, true, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtQtdDuplicar.Focus();
+                }
+                else
+                    txtQtdDuplicar.Text = "1";
+
+            }
+            if (Convert.ToInt32(txtQtdDuplicar.Text) <= 0)
+                txtQtdDuplicar.Text = "1";
+
+            txtQtdDias.Focus();
+        }
+
+        protected void btnConfirmarDuplicar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int QtdDuplicagem = Convert.ToInt32(txtQtdDuplicar.Text);
+
+                PanelSelect = "consulta";
+
+                if (Session["ZoomDocCtaReceber"] != null)
+                {
+                    decimal CodigoDocumento = Convert.ToDecimal(Session["ZoomDocCtaReceber"].ToString().Split('³')[0]);
+
+                    Session["ZoomDocCtaReceber"] = null;
+
+                    Doc_CtaReceber p1 = new Doc_CtaReceber();
+
+                    Doc_CtaReceberDAL ctaDAL = new Doc_CtaReceberDAL();
+
+                    List<BaixaDocumento> ListaBaixa = new List<BaixaDocumento>();
+
+                    List<AnexoDocumento> ListaAnexo = new List<AnexoDocumento>();
+
+                    List<Habil_Log> ListaLog = new List<Habil_Log>();
+                    
+                    List<EventoDocumento> ListaEvento = new List<EventoDocumento>();
+
+                    p1 = ctaDAL.PesquisarDocumento(CodigoDocumento);
+
+                    ctaDAL.AtualizarContaPagarCampo("DG_DOCUMENTO", txtPrefixo.Text + " - 1/" + (QtdDuplicagem + 1), CodigoDocumento);
+
+                    string teste = p1.DataVencimento.AddDays(Convert.ToInt32(txtQtdDuplicar.Text) * Convert.ToInt32(txtQtdDias.Text)).ToString();
+
+                    if (((p1.DataVencimento.AddDays(Convert.ToInt32(txtQtdDuplicar.Text) * Convert.ToInt32(txtQtdDias.Text)) > Convert.ToDateTime("06-06-2079 00:00:00"))))
+                    {
+                        ShowMessage("Data máxima permitida foi ultrapassada, digite menos parcelas ou menos dias entre elas", MessageType.Info);
+                        return;
+                    }
+
+                    DateTime DataParcelaAnterior = p1.DataVencimento;
+
+                    Habil_Estacao he = new Habil_Estacao();
+                    Habil_EstacaoDAL hedal = new Habil_EstacaoDAL();
+                    he = hedal.PesquisarNomeHabil_Estacao(Session["Estacao_Logada"].ToString());
+                    p1.Cpl_Maquina = Convert.ToInt32(he.CodigoEstacao);
+                    p1.Cpl_Usuario = Convert.ToInt32(Session["CodPflUsuario"]);
+                    p1.DGSRDocumento = "";
+                    p1.CodigoTipoDocumento = 3;
+                    p1.CodigoSituacao = 31;
+
+                    AnexoDocumentoDAL anexo = new AnexoDocumentoDAL();
+                    ListaAnexo = anexo.ObterAnexos(CodigoDocumento);
+
+                    for (int i = 0; i < QtdDuplicagem; i++)
+                    {                      
+                        p1.DataVencimento = DataParcelaAnterior.AddDays(Convert.ToInt32(txtQtdDias.Text));
+                        DataParcelaAnterior = p1.DataVencimento;
+
+                        p1.DGDocumento = txtPrefixo.Text + " - " + (i + 2) + "/" + (QtdDuplicagem + 1);
+                        EventoDocumento evento = new EventoDocumento(1,31,
+                                                                DateTime.Today,
+                                                                he.CodigoEstacao,
+                                                                Convert.ToInt32(Session["CodUsuario"]));
+
+                        ctaDAL.Inserir(p1, ListaBaixa, evento, ListaAnexo);
+                    }
+
+                    btnConsultar_Click(sender, e);
+
+                    ShowMessage("Documento duplicado com sucesso", MessageType.Info);
+                }
+            }           
+            catch(Exception ex)
+            {
+                ShowMessage(ex.Message, MessageType.Info);
+            }
+        }
+
+        protected void btnRemover_Click(object sender, EventArgs e)
+        {
+            if ((Convert.ToInt32(txtQtdDuplicar.Text) - 1) <= 0)
+                txtQtdDuplicar.Text = "1";
+            else
+                txtQtdDuplicar.Text = (Convert.ToInt32(txtQtdDuplicar.Text) - 1).ToString();
+        }
+
+        protected void btnRemoverDia_Click(object sender, EventArgs e)
+        {
+            if ((Convert.ToInt32(txtQtdDias.Text) - 1) <= 0)
+                txtQtdDias.Text = "1";
+            else
+                txtQtdDias.Text = (Convert.ToInt32(txtQtdDias.Text) - 1).ToString();
+        }
+
+        protected void btnAddDia_Click(object sender, EventArgs e)
+        {
+            if (txtQtdDias.Text == "99999")
+                txtQtdDias.Text = "99999";
+            else
+                txtQtdDias.Text = (Convert.ToInt32(txtQtdDias.Text) + 1).ToString();
+            
+        }
+
+        protected void txtQtdDias_TextChanged(object sender, EventArgs e)
+        {
+            Boolean blnCampo = false;
+
+            if (txtQtdDias.Text.Equals(""))
+            {
+                txtQtdDias.Text = "1";
+            }
+            else
+            {
+                v.CampoValido("Qtd dias", txtQtdDias.Text, true, true, true, false, "", ref blnCampo, ref strMensagemR);
+                if (blnCampo)
+                {
+                    txtQtdDias.Focus();
+                }
+                else
+                    txtQtdDias.Text = "1";
+
+            }
+            if (Convert.ToInt32(txtQtdDias.Text) <= 0)
+                txtQtdDias.Text = "1";
+        }
     }
 }

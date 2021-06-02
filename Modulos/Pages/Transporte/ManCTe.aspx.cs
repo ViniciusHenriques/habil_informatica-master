@@ -589,29 +589,6 @@ namespace SoftHabilInformatica.Pages.Transporte
                     return;
                 }
 
-                EventoEletronicoDocumentoDAL eveDAL = new EventoEletronicoDocumentoDAL();
-                List<EventoEletronicoDocumento> ListaEventos = new List<EventoEletronicoDocumento>();
-                ListaEventos = eveDAL.ObterEventosEletronicos(Convert.ToDecimal(txtCodigo.Text));
-                int i = 0;
-                foreach (var item in ListaEventos)
-                {
-                    if (i == 0)
-                        if (item.CodigoSituacao != 121 && item.CodigoTipoEvento != 119)
-                        {
-                            EventoEletronicoDocumento eve = new EventoEletronicoDocumento();
-                            eve = item;
-                            eve.CodigoSituacao = 119;
-                            eve.Retorno = "";
-                            eveDAL.AtualizarEventoEletronico(eve);
-                            btnRefresh_Click(sender, e);
-                            i++;
-                        }
-                }
-                if (i == 0 && ListaEventos.Count > 0)
-                {
-                    ShowMessage("Evento sendo enviado", MessageType.Info);
-                    return;
-                }
             }
             if (ValidaCampos() == false)
                 return;
@@ -1090,6 +1067,8 @@ namespace SoftHabilInformatica.Pages.Transporte
 
         protected void btnSimSalvar_Click(object sender, EventArgs e)
         {
+            PanelSelect = "consulta";
+            SalvarDocumento(sender, e, true);
             IEnumerable<EventoEletronicoDocumento> EventosNaoInviados = ListaEventoDocEletronico.Where((EventoEletronicoDocumento c) => { return c.CodigoSituacao != 121 && c.CodigoSituacao != 119; });
             if (EventosNaoInviados.Count() == 0)
             {
@@ -1154,7 +1133,7 @@ namespace SoftHabilInformatica.Pages.Transporte
             }
 
 
-            SalvarDocumento(sender, e, true);
+            
             ShowMessage("Documento salvo e desacordo enviado com sucesso! Aguarde o retorno...", MessageType.Info);
             PanelSelect = "home";
 

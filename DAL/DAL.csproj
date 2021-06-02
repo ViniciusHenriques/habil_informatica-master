@@ -342,6 +342,7 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TecnoSpeed\Model\TECNO_ANEXO.cs" />
     <Compile Include="TecnoSpeed\Model\TECNO_EVENTO_ERP.cs" />
+    <Compile Include="TecnoSpeed\Model\TECNO_INUTILIZACAO_ERP.cs" />
     <Compile Include="TecnoSpeed\Model\TECNO_NF.cs" />
     <Compile Include="TecnoSpeed\Model\TECNO_NF_DUPLICATA.cs" />
     <Compile Include="TecnoSpeed\Model\TECNO_NF_FORMA_PGTO.cs" />
@@ -363,6 +364,7 @@
     <Compile Include="TecnoSpeed\Model\TECNO_NF_TRANSP_VOLUMES.cs" />
     <Compile Include="TecnoSpeed\Persistence\TECNO_ANEXO_DAL.cs" />
     <Compile Include="TecnoSpeed\Persistence\TECNO_EVENTO_ERP_DAL.cs" />
+    <Compile Include="TecnoSpeed\Persistence\TECNO_INUTILIZACAO_ERP_DAL.cs" />
     <Compile Include="TecnoSpeed\Persistence\TECNO_NF_DAL.cs" />
     <Compile Include="TecnoSpeed\Persistence\TECNO_NF_DUPLICATA_DAL.cs" />
     <Compile Include="TecnoSpeed\Persistence\TECNO_NF_FORMA_PGTO_CARTAO.cs" />

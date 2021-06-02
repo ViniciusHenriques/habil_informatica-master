@@ -70,20 +70,13 @@ namespace SoftHabilInformatica.Pages.Financeiros
                 CRViewer.ReportSource = (ReportDocument)Session["RptDoc"];
                 CRViewer.DataBind();
             }
-
         }
         private void MontaCrystal()
         {
             RptDoc = new ReportDocument();
 
-            //if (ddlTipoRelatorio.SelectedValue == "1")
-            //{
-            //    RptDoc.Load(Server.MapPath("~/Pages/Impostos/RPT/RelRegFisIcms.rpt"));
-            //}
-            //else
-            //{
-                RptDoc.Load(Server.MapPath("~/Pages/Financeiros/RPT/RelCtaPagar.rpt"));
-            //}
+            RptDoc.Load(Server.MapPath("~/Pages/Financeiros/RPT/RelCtaPagar.rpt"));
+       
 
             Doc_CtaPagarDAL r = new Doc_CtaPagarDAL();
             List<DBTabelaCampos> lista = new List<DBTabelaCampos>();

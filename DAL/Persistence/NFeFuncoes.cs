@@ -200,7 +200,7 @@ namespace DAL.Persistence
                     {
                         GerandoArquivoLog("Solicitação de inutilização de NF-e, chave: " + TCN_EVENTO.CHNFE, 1);
 
-                        //InutilizarNFe(Convert.ToDecimal(TCN_EVENTO.CHAVE_BUSCA), TCN_EVENTO);
+                        InutilizarNFe(Convert.ToDecimal(TCN_EVENTO.CHAVE_BUSCA), TCN_EVENTO);
                     }
                     else if (TCN_EVENTO.TP_ACAO == 4)
                     {
@@ -508,20 +508,43 @@ namespace DAL.Persistence
         {
             TECNO_EVENTO_ERP_DAL TCN_EVENTO_DAL = new TECNO_EVENTO_ERP_DAL();
 
+            TECNO_INUTILIZACAO_ERP TCN_INUT = new TECNO_INUTILIZACAO_ERP();
+
+            TECNO_INUTILIZACAO_ERP_DAL TCN_INUT_DAL = new TECNO_INUTILIZACAO_ERP_DAL();
+
             try
             {
-                string strXMLRetornoEnvio = "", strStatusRetorno = "";
 
-                //strXMLRetornoEnvio = spdNFe.InutilizarNF(TCN_EVENTO.CHNFE, TCN_EVENTO., TCN_EVENTO.CNPJ_EVENTO, TCN_EVENTO.IDE_MOD, TCN_EVENTO., "", "", "");
+                string strXMLRetornoEnvio = "", strStatusRetorno = "", strMensagemRetorno = "", strProtocolo = "";
+
+                TCN_INUT = TCN_INUT_DAL.PesquisarTECNO_INUTILIZACAO_ERP(TCN_EVENTO.CHAVE_BUSCA);
+                
+                strXMLRetornoEnvio = spdNFe.InutilizarNF("",TCN_INUT.ANO.ToString(), TCN_INUT.CNPJ, TCN_INUT.MOD.ToString(), TCN_INUT.SERIE.ToString(), TCN_INUT.NNFINI.ToString(), TCN_INUT.NNFFIM.ToString(), TCN_INUT.XJUST);
 
                 strStatusRetorno = LerTagXML(strXMLRetornoEnvio, "cStat", "retEnviNFe");
 
-                if (strStatusRetorno == "")// SE TIVER INUTILIZADA 3, SENAO 4
-                {
+                strProtocolo = LerTagXML(strXMLRetornoEnvio, "nProt", "retEnviNFe");
 
+                strMensagemRetorno = LerTagXML(strXMLRetornoEnvio, "xMotivo", "retEnviNFe");
+
+                if (strStatusRetorno == "102")
+                {
+                    TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("TP_RETORNO", "3", TCN_EVENTO.ID_EVENTO_ERP);
+                }
+                else
+                {
+                    TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("TP_RETORNO", "4", TCN_EVENTO.ID_EVENTO_ERP);
                 }
 
-                //SalvarXML(strXMLRetornoEnvio, spdNFe.DiretorioLog + TCN_EVENTO.+ "-inutilizacao.xml","INUTILIZAÇÃO DE NUMERAÇÃO NF", TCN_EVENTO);
+                TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("TP_STATUS", "S", TCN_EVENTO.ID_EVENTO_ERP);
+
+                TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("NPROT", strProtocolo, TCN_EVENTO.ID_EVENTO_ERP);
+
+                TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("DESC_RETORNO", strMensagemRetorno, TCN_EVENTO.ID_EVENTO_ERP);
+
+                TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("TP_STATUS", "R", TCN_EVENTO.ID_EVENTO_ERP);
+
+                SalvarXML(strXMLRetornoEnvio, spdNFe.DiretorioLog + TCN_INUT.NNFINI + "" + TCN_INUT.NNFFIM + "-inutilizacao.xml","INUTILIZAÇÃO DE NUMERAÇÃO NF", TCN_EVENTO);
 
                 TCN_EVENTO_DAL.AtualizarTECNO_EVENTO_ERP("TP_STATUS", "R", TCN_EVENTO.ID_EVENTO_ERP);
             }

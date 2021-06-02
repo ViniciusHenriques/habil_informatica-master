@@ -371,7 +371,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
                                     <br/>
                                     <div class="container-fluid">
                                         <div class="row" style="background-color:white;border:none;">
@@ -385,7 +384,6 @@
                                                     <asp:ListItem Value="32600" Text="Máx 32600"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
-                                            
                                             <div class="col-md-3" >
                                                 <asp:DropDownList ID="ddlTipoPessoa" CssClass="form-control" runat="server" Font-Size="Medium">
                                                     <asp:ListItem Value="0" Text="Todas Pessoas" Selected="True"></asp:ListItem>
@@ -397,7 +395,6 @@
                                                     <asp:ListItem Value="5" Text="Vendedores"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
-
                                             <div class="col-md-1" >
                                                 <asp:LinkButton ID="btnConsultar" runat="server" CssClass="btn btn-default" OnClick="btnConsultar_Click"> 
                                                     <span aria-hidden="true" title="Consultar" class="glyphicon glyphicon-search"></span>Consultar
@@ -405,13 +402,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </ContentTemplate>
-
                                 <Triggers>
                                     <asp:PostBackTrigger ControlID="btnConsultar" />
                                 </Triggers>
-
                             </asp:UpdatePanel>
                         </div>
 
@@ -443,7 +437,7 @@
                                 
                                 <Columns>
                                     <asp:BoundField DataField="CodigoPessoa" HeaderText="Cód." SortExpression="CodigoPessoa"    />
-                                    <asp:BoundField DataField="Cpl_Inscricao" HeaderText="Inscrição" SortExpression="Cpl_Inscricao"   />
+                                    <asp:BoundField DataField="Cpl_Inscricao" HeaderText="CPF/CNPJ" SortExpression="Cpl_Inscricao"   />
                                     <asp:BoundField DataField="NomePessoa" HeaderText="Razão Social / Nome" SortExpression="NomePessoa"  />
                                     <asp:BoundField DataField="NomeFantasia" HeaderText="Fantasia / Apelido" SortExpression="NomeFantasia"  HeaderStyle-CssClass=" noprint" ItemStyle-CssClass=" noprint"/>
                                     <asp:BoundField DataField="Cpl_Endereco" HeaderText="Endereço" SortExpression="Cpl_Endereco"  />

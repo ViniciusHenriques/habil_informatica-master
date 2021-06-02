@@ -340,7 +340,7 @@
                                                                 </asp:TextBox>
                                                             </div>
                                                             <div class="col-md-10" style="font-size:x-small;">
-                                                                <label for="usr" style ="margin-top:1px;">Contato  <span style="color: red;" title="Campo Obrigátorio">*</span></label>
+                                                                <label for="usr" style ="margin-top:1px;">Contato </label>
                                                                 <asp:TextBox ID="txtContato" CssClass="form-control" runat="server"  MaxLength="100"  onFocus="this.select()" />        
                                                             </div>
                                                              <div class="col-md-2" style="font-size:x-small;text-align:center">

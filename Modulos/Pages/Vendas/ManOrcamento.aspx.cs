@@ -225,7 +225,10 @@ namespace SoftHabilInformatica.Pages.Vendas
                 Session["TabFocada"] = "aba1";
             }
 
-            MontaTela(sender, e);    
+            MontaTela(sender, e);
+
+            if (ddlVendedor.SelectedValue == ".....SELECIONE UM VENDEDOR.....")
+                ddlVendedor.Enabled = true;
         }
 
         protected void MontaTela(object sender, EventArgs e)
@@ -250,7 +253,7 @@ namespace SoftHabilInformatica.Pages.Vendas
                         btnExcluir.Visible = false;
                 }
             });
-
+            
             if (Session["Pagina"].ToString() != Request.CurrentExecutionFilePath)
             {
                 if (Session["ZoomOrcamento2"] == null)
@@ -667,7 +670,8 @@ namespace SoftHabilInformatica.Pages.Vendas
                     p.NumeroWeb = 0;
                 
                 p.CodigoAplicacaoUso = Convert.ToInt32(ddlAplicacaoUso.SelectedValue);
-                p.Cpl_CodigoTransportador = Convert.ToInt64(txtCodTransportador.Text);
+                if(txtCodTransportador.Text != "")
+                    p.Cpl_CodigoTransportador = Convert.ToInt64(txtCodTransportador.Text);
                 p.Cpl_CodigoPessoa = Convert.ToInt64(txtCodPessoa.Text);
 
                 if (txtDescontoMedio.Text.Length >= 2)
@@ -867,6 +871,7 @@ namespace SoftHabilInformatica.Pages.Vendas
                     txtEstado.Text = "";
                     txtCEP.Text = "";
                     txtEmail.Text = "";
+                    txtTelefone.Text = "";
                     txtCodPessoa.Focus();
                     PanelInfoCliente = "display:none";
                     return;
@@ -901,6 +906,7 @@ namespace SoftHabilInformatica.Pages.Vendas
                 PessoaContatoDAL cttDAL = new PessoaContatoDAL();
                 ctt = cttDAL.PesquisarPessoaContato(Convert.ToInt64(txtCodPessoa.Text), 1);
                 txtEmail.Text = ctt._Mail1;
+                txtTelefone.Text = ctt._Fone1;
 
                 PessoaEnderecoDAL end = new PessoaEnderecoDAL();
                 List<Pessoa_Endereco> end2 = new List<Pessoa_Endereco>();

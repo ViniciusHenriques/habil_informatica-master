@@ -100,7 +100,8 @@ namespace DAL.Persistence
             finally
             {
                 FecharConexao();
-                InserirPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoTransportador, 13);//Pessoa do Documento Transportador
+                if (p.Cpl_CodigoTransportador != 0)
+                    InserirPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoTransportador, 13);//Pessoa do Documento Transportador
                 InserirPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoPessoa, 6);//Pessoa do Documento Transportador
 
                 if (eventoDocumento != null)
@@ -188,7 +189,9 @@ namespace DAL.Persistence
             {
                 FecharConexao();
                 AtualizarPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoPessoa, 6);
-                AtualizarPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoTransportador, 13);
+
+                if (p.Cpl_CodigoTransportador != 0)
+                    AtualizarPessoaDocumento(p.CodigoDocumento, p.Cpl_CodigoTransportador, 13);
 
                 if (eventoDocumento != null)
                 {

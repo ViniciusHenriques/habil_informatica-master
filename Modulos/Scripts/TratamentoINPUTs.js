@@ -38,7 +38,6 @@ jQuery('body').on('keyup', 'input', function (e) {
         else {
             var conteudo = document.getElementById(e.target.id).value;
             document.getElementById(e.target.id).value = conteudo.replaceAll("<", "[").replaceAll(">", "]").replaceAll("\t", "").replaceAll("–", "-").replaceAll("—", "-").toLowerCase();
-
         }
     }
 });
@@ -64,6 +63,11 @@ jQuery('body').bind('paste', function (e) {
             e.preventDefault();
     }
 });
+
+jQuery('body').bind('click', function (e) {
+    document.getElementById(e.target.id).select();
+});
+
 function ProximoCampo(e) {
     
     if (e.target.form) {

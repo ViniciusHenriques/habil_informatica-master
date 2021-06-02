@@ -13,11 +13,33 @@ namespace DAL.Persistence
             try
             {
                 AbrirConexao();
-                Cmd = new SqlCommand("insert into Empresa (CD_PESSOA, CD_REG_TRIBUTARIO, CD_SITUACAO) values (@v2, @v3, @v4) SELECT SCOPE_IDENTITY()", Con);
+                Cmd = new SqlCommand("insert into Empresa (CD_PESSOA, CD_REG_TRIBUTARIO, CD_SITUACAO) values (@v2, @v3, @v4) SELECT SCOPE_IDENTITY();", Con);
                 Cmd.Parameters.AddWithValue("@v2", p.CodigoPessoa);
                 Cmd.Parameters.AddWithValue("@v3", p.CodHabil_RegTributario);
                 Cmd.Parameters.AddWithValue("@v4", p.CodigoSituacao);
                 p.CodigoEmpresa = Convert.ToInt32(Cmd.ExecuteScalar());
+
+                ParSistema par = new ParSistema();
+                ParSistemaDAL parDAL = new ParSistemaDAL();
+                par.CaracteristaCategoria = "999-999-999-999-999";
+                par.CaracteristaLocalizacao = "999-999-999-999-999";
+                par.LocalizacaoEspelhada = false;
+                par.CodigoTipoOperacao = 1;
+                par.CorPadrao = "#7c7979";
+                par.CorFundo = "#ffffff";
+                par.TipoMenu = 1;
+                par.TipoAjusteInventario = 0;
+                par.DiasValidadeOrc = 0;
+                par.ValorPedidoParaFreteMinimo = 0;
+                par.ValorFreteMinimo = 0;
+                par.CodigoSequenciaGeracaoNFe = 209;
+                par.TipoListagemPedido = 153;
+                par.CriticaRegras = false;
+                par.ConferePedidos = false;
+                par.NumeroHorasEnvioAlerta = 1;
+                par.CodigoEmpresa = p.CodigoEmpresa;
+                parDAL.Inserir(par);
+
             }
             catch (SqlException ex)
             {

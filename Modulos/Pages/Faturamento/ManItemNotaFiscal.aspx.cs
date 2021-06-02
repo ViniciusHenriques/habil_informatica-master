@@ -245,33 +245,34 @@ namespace SoftHabilInformatica.Pages.Faturamento
 
             decimal decValorFreteRatiado = 0;
             decimal decDiferencaValorFreteRatiado = 0;
-
-            if (decValorFrete > 0)
-                decValorFreteRatiado = decValorFrete / ListaItens.Where(x => x.CodigoSituacao != 134).Count();
-            
-            if((decValorFreteRatiado * ListaItens.Where(x => x.CodigoSituacao != 134).Count()) != decValorFrete)
+            if (ListaItens.Where(x => x.CodigoSituacao != 134).Count() > 0)
             {
-                decDiferencaValorFreteRatiado = decValorFrete - (decValorFreteRatiado * ListaItens.Where(x => x.CodigoSituacao != 134).Count());
-            }
-            
+                if (decValorFrete > 0)
+                    decValorFreteRatiado = decValorFrete / ListaItens.Where(x => x.CodigoSituacao != 134).Count();
 
-            foreach (ProdutoDocumento itens in ListaItens)
-            {              
-                if (itens.CodigoSituacao != 134)
+                if ((decValorFreteRatiado * ListaItens.Where(x => x.CodigoSituacao != 134).Count()) != decValorFrete)
                 {
-                    if (decDiferencaValorFreteRatiado != 0)
-                    {
-                        itens.Impostos = ImpostoProdutoDocumentoDAL.PreencherImpostosProdutoDocumento(itens,CodigoEmpresa, CodigoPessoa, CodigoTipoOperacao,CodigoAplicacaoUso, decValorFreteRatiado - (decDiferencaValorFreteRatiado), false);
-                        decDiferencaValorFreteRatiado = 0;
-                    }
-                    else
-                        itens.Impostos = ImpostoProdutoDocumentoDAL.PreencherImpostosProdutoDocumento(itens, CodigoEmpresa, CodigoPessoa, CodigoTipoOperacao, CodigoAplicacaoUso, decValorFreteRatiado, false);
-
-                    ValorTotal += itens.ValorTotalItem;
+                    decDiferencaValorFreteRatiado = decValorFrete - (decValorFreteRatiado * ListaItens.Where(x => x.CodigoSituacao != 134).Count());
                 }
-                NovaListaItens.Add(itens);
-            }
 
+
+                foreach (ProdutoDocumento itens in ListaItens)
+                {
+                    if (itens.CodigoSituacao != 134)
+                    {
+                        if (decDiferencaValorFreteRatiado != 0)
+                        {
+                            itens.Impostos = ImpostoProdutoDocumentoDAL.PreencherImpostosProdutoDocumento(itens, CodigoEmpresa, CodigoPessoa, CodigoTipoOperacao, CodigoAplicacaoUso, decValorFreteRatiado - (decDiferencaValorFreteRatiado), false);
+                            decDiferencaValorFreteRatiado = 0;
+                        }
+                        else
+                            itens.Impostos = ImpostoProdutoDocumentoDAL.PreencherImpostosProdutoDocumento(itens, CodigoEmpresa, CodigoPessoa, CodigoTipoOperacao, CodigoAplicacaoUso, decValorFreteRatiado, false);
+
+                        ValorTotal += itens.ValorTotalItem;
+                    }
+                    NovaListaItens.Add(itens);
+                }
+            }
             txtVlrTotal.Text = Convert.ToString(ValorTotal + decValorFrete);
             txtVlrTotal.Text = Convert.ToDouble(txtVlrTotal.Text).ToString("F");
         }

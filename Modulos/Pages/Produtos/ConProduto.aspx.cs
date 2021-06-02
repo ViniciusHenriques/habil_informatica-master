@@ -82,6 +82,13 @@ namespace SoftHabilInformatica.Pages.Produtos
                     btnVoltar.Visible = true;
                 }
                 else
+                if (Session["Doc_Pedido"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 1)
+                {
+                    btnNovo.Visible = false;
+                    btnSair.Visible = false;
+                    btnVoltar.Visible = true;
+                }
+                else
                 if (Session["EstoqueProduto"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 2)
                 {
                     btnNovo.Visible = false;
@@ -123,6 +130,7 @@ namespace SoftHabilInformatica.Pages.Produtos
                     btnSair.Visible = false;
                     btnVoltar.Visible = true;
                 }
+                else
                 if (Session["ComposicaoProduto"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 8)
                 {
                     btnNovo.Visible = false;
@@ -177,7 +185,10 @@ namespace SoftHabilInformatica.Pages.Produtos
             Session["CaminhoProdutoFoto5"] = null;
 
             if (Session["Doc_orcamento"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 1)
-                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx");
+                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx?cad=1");
+            else
+            if (Session["Doc_Pedido"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 1)
+                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx?cad=2");
             else
             if (Session["EstoqueProduto"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 2)
                 Response.Redirect("~/Pages/Estoque/CadEstoque.aspx");
@@ -239,9 +250,12 @@ namespace SoftHabilInformatica.Pages.Produtos
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             if (Session["Doc_orcamento"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 1)
-                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx");
+                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx?cad=1");
             else
-                if (Session["EstoqueProduto"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 2)
+            if (Session["Doc_Pedido"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 1)
+                Response.Redirect("~/Pages/Vendas/ManItemOrcamento.aspx?cad=2");
+            else
+            if (Session["EstoqueProduto"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 2)
                 Response.Redirect("~/Pages/Estoque/CadEstoque.aspx");
             else
             if (Session["Lote"] != null && Convert.ToInt32(Request.QueryString["cad"]) == 3)

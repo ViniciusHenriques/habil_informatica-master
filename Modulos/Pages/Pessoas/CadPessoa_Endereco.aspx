@@ -92,33 +92,33 @@
 
                                         <div class="col-md-8" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Estado (<asp:Label ID="lblCodEstado" runat="server"/>)</label>
-                                            <asp:TextBox ID="txtEstado" runat="server" CssClass="form-control" TabIndex="1"/>
+                                            <asp:TextBox ID="txtEstado" runat="server" CssClass="form-control" TabIndex="1" MaxLength="100"/>
                                         </div>
                                     </div>
                                     <div class="row" style="background-color:white;border:none;">
 
                                         <div class="col-md-6" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Município (<asp:Label ID="lblCodMunicipio" runat="server"/>)</label>
-                                            <asp:TextBox ID="txtMunicipio" runat="server" CssClass="form-control" TabIndex="3"/>
+                                            <asp:TextBox ID="txtMunicipio" runat="server" CssClass="form-control" TabIndex="3" MaxLength="100"/>
                                         </div>
 
                                         <div class="col-md-6" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Bairro (<asp:Label ID="lblCodBairro" runat="server"/>)</label>
-                                            <asp:TextBox ID="txtBairro" runat="server" CssClass="form-control" TabIndex="4"/>
+                                            <asp:TextBox ID="txtBairro" runat="server" CssClass="form-control" TabIndex="4" MaxLength="100"/>
                                         </div>
                                     </div>
                                     <div class="row" style="background-color:white;border:none;">
                                         <div class="col-md-7" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Logradouro</label>
-                                            <asp:TextBox ID="txtLogradouro" runat="server" CssClass="form-control" TabIndex="5"></asp:TextBox>
+                                            <asp:TextBox ID="txtLogradouro" runat="server" CssClass="form-control" TabIndex="5" MaxLength="50"></asp:TextBox>
                                         </div>
                                         <div class="col-md-1" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Nro</label>
-                                            <asp:TextBox ID="txtNroEndereco" runat="server" CssClass="form-control" TabIndex="6"></asp:TextBox>
+                                            <asp:TextBox ID="txtNroEndereco" runat="server" CssClass="form-control" TabIndex="6" MaxLength="10"></asp:TextBox>
                                         </div>
                                         <div class="col-md-4" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                             <label for="usr" style ="margin-top:1px;">Complemento</label>
-                                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" TabIndex="7"></asp:TextBox>
+                                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" TabIndex="7" MaxLength="50"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>

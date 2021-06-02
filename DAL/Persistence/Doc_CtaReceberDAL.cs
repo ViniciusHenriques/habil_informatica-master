@@ -404,6 +404,11 @@ namespace DAL.Persistence
                     p.Cpl_vlPago = Convert.ToDecimal(Dr["VL_PAGO"]);
                     p.Cpl_vlPagar = p.ValorGeral - p.Cpl_vlPago;
 
+                    if (p.CodigoSituacao > 31 || p.Cpl_vlPago > 0)
+                        p.Cpl_PodeReplicar = false;
+                    else
+                        p.Cpl_PodeReplicar = true;
+
                     GeraAlteracao:
 
                     lista.Add(p);
@@ -1297,6 +1302,32 @@ namespace DAL.Persistence
             {
                 FecharConexao();
             }
-        }        
+        }
+        public void AtualizarContaPagarCampo(string strNOME_CAMPO, string strVALOR_CAMPO, decimal decREFERENCIA)
+        {
+            try
+            {
+                if (strNOME_CAMPO != "" && strVALOR_CAMPO != "")
+                {
+
+                    AbrirConexao();
+                    Cmd = new SqlCommand("UPDATE DOCUMENTO SET " +
+                                            strNOME_CAMPO + "= @v2" +
+                                        " WHERE CD_DOCUMENTO = @v3", Con);
+
+                    Cmd.Parameters.AddWithValue("@v2", strVALOR_CAMPO);
+                    Cmd.Parameters.AddWithValue("@v3", decREFERENCIA);
+                    Cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar CONTA A RECEBER: " + ex.Message.ToString());
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
     }
 }

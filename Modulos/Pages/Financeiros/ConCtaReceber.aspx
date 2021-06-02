@@ -26,13 +26,36 @@
             });
 
         }
+
+        function MostrarModalDuplicar() {
+            $("#modalDuplicar").modal("show");
+        }
     </script>
-    <style type="text/css">
+      <style type="text/css">
 
         @media screen and (max-width: 600px) {
-            .noprint{display:none;}          
+            .noprint{display:none;}       
+            .modalDuplicar{
+                width:100%!important;
+            }
         }
-
+        .buttonGrid{
+            padding:0!important;            
+        }
+        .GridPager{
+            text-align:center!important;
+            glyph-orientation-horizontal:inherit;
+        }
+        .listButton{
+            background-color:transparent;
+            border:0!important;
+            padding:1px!important;
+            padding-left:20px!important;
+            padding-right:20px!important;
+        }
+        .dropdown-menu{
+            padding-top:1px!important;
+        }
     </style>
     <link type="text/css" href="../../Content/Style.css" rel="stylesheet" />
         
@@ -88,8 +111,6 @@
                         <div role="tabpanel" class="tab-pane" id="home" style="padding-left: 20px; padding-top: 20px; padding-right: 20px; font-size: small;">
                             <asp:UpdatePanel ID="InsertEmployeeUpdatePanel" runat="server" UpdateMode="Always">
                                 <ContentTemplate>
-
-
                                     <div class="row" style="background-color:white;border:none;">
                                         <asp:Panel ID="pnlFiltroData1" runat="server" Visible="false">
                                             <div class="col-md-2" style="background-color:white;border:none;text-align:left;">
@@ -326,30 +347,28 @@
                                                 </div>
                                             </div>                                                    
                                         </asp:Panel>
-                                         <div class="col-md-6" >
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">Tipo Cobrança : &nbsp;&nbsp;</span>
-                                                    <asp:DropDownList ID="ddlTipoCobranca" CssClass="form-control js-example-basic-single" runat="server" Font-Size="Small" Width="100%" >
-                                                         
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
                                         <div class="col-md-6" >
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">Plano de Conta : &nbsp;&nbsp;</span>
-                                                    <asp:DropDownList ID="ddlPlanoConta" CssClass="form-control js-example-basic-single" runat="server" Font-Size="Small" Width="100%" >
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Tipo Cobrança : &nbsp;&nbsp;</span>
+                                                <asp:DropDownList ID="ddlTipoCobranca" CssClass="form-control js-example-basic-single" runat="server" Font-Size="Small" Width="100%" >
                                                          
-                                                    </asp:DropDownList>
-                                                </div>
+                                                </asp:DropDownList>
                                             </div>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Plano de Conta : &nbsp;&nbsp;</span>
+                                                <asp:DropDownList ID="ddlPlanoConta" CssClass="form-control js-example-basic-single" runat="server" Font-Size="Small" Width="100%" >
+                                                         
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
                                     </div>
                                     
-
                                     <br/>
                                     <div class="container-fluid">
                                         <div class="row" style="background-color:white;border:none;">
                                             <div class="col-md-2" ><label for="usr" style ="margin-top:10px;">Quantidade de Registros</label></div>
-                                            
                                             <div class="col-md-1" >
                                                 <asp:DropDownList ID="ddlRegistros" CssClass="form-control" runat="server" Font-Size="Medium"   OnSelectedIndexChanged="ddlRegistros_SelectedIndexChanged">
                                                     <asp:ListItem Value="50" Text="50" Selected="True"></asp:ListItem>
@@ -362,7 +381,6 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">Situação : &nbsp;&nbsp;</span>
                                                     <asp:DropDownList ID="ddlTipoBaixa" CssClass="form-control" runat="server" Font-Size="Medium" >
-                                                         
                                                         <asp:ListItem Value="0" Text="Todos" ></asp:ListItem>
                                                         <asp:ListItem Value="1" Text="Aberto" Selected="True"></asp:ListItem>
                                                         <asp:ListItem Value="2" Text="Baixado"></asp:ListItem>
@@ -378,15 +396,10 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </ContentTemplate>
-
                                 <Triggers>
                                     <asp:PostBackTrigger ControlID="btnConsultar" />
                                 </Triggers>
-
                             </asp:UpdatePanel>
                         </div>
 
@@ -403,7 +416,7 @@
                             <asp:GridView ID="grdGrid" runat="server" CssClass="table table-bordered table-striped" Width="100%" 
                                 GridLines="None" AutoGenerateColumns="False"
                                 Font-Size="8pt"  
-                                OnSelectedIndexChanged="grdGrid_SelectedIndexChanged"
+                                OnRowCommand="grdGrid_RowCommand"
                                 PageSize="50" AllowPaging="true"
                                 OnPageIndexChanging="grdGrid_PageIndexChanging"
                                 PagerSettings-Mode ="NumericFirstLast"  >
@@ -413,8 +426,7 @@
                                     <asp:BoundField DataField="DGDocumento" HeaderText="Documento" />
                                     <asp:BoundField DataField="DataEmissao" HeaderText="Dt. Emissão" DataFormatString="{0:dd/MM/yyyy}" />
                                     <asp:BoundField DataField="DataVencimento" HeaderText="Dt. Vencimento" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-CssClass="noprint" HeaderStyle-CssClass="noprint"/>
-                                    <asp:BoundField DataField="Cpl_NomeFornecedor" HeaderText="Devedor" />
-                                    
+                                    <asp:BoundField DataField="Cpl_NomeFornecedor" HeaderText="Devedor" />                                    
                                     <asp:BoundField DataField="ValorDocumento" HeaderText="Vl. Titulo"  ItemStyle-CssClass="noprint" HeaderStyle-CssClass="noprint"/>
                                     <asp:BoundField DataField="ValorDesconto" HeaderText="Vl. Desc." ItemStyle-CssClass="noprint" HeaderStyle-CssClass="noprint"/>
                                     <asp:BoundField DataField="ValorAcrescimo" HeaderText="Vl. Acrésc." ItemStyle-CssClass="noprint" HeaderStyle-CssClass="noprint"/>
@@ -426,10 +438,26 @@
                                             <label class="badge <%# Eval("Cpl_DsSituacao").ToString().Replace(' ','-').Split('(')[0] %>" id="situacaoSpan"><%# Eval("Cpl_DsSituacao").ToString() %></label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:CommandField HeaderText="Ação" ShowSelectButton="True" 
-                                        ItemStyle-Height ="15px" ItemStyle-Width ="50px" 
-                                        ButtonType="Image"  SelectImageUrl ="~/Images/Acessar.svg" 
-                                        ControlStyle-Width ="25px" ControlStyle-Height ="25px" />
+                                    <asp:TemplateField HeaderText="Acesso" ItemStyle-HorizontalAlign="Center" HeaderStyle-CssClass="centerHeaderText col-md-1" ItemStyle-CssClass="padding-top-10" >
+                                        <ItemTemplate>
+                                            <div class="dropdown">  
+                                                <asp:LinkButton runat="server" type="button" class="btn btn-link dropdown-toggle buttonGrid" data-toggle="dropdown" >
+                                                    <img runat="server" src="../../Images/configuracao.png" width="20" height="20"/><span class="caret" style="color:black;margin-left:5px"></span>
+                                                </asp:LinkButton>
+                                                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a><asp:linkButton runat="server" ID="opEditar" CssClass="listButton"
+                                                        Text="Editar"
+                                                        CommandName="Editar"
+                                                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><span class="glyphicon glyphicon-edit" style="margin-right:10px!important"></span>Editar</asp:linkButton></a></li>
+                                                        <li><a><asp:linkButton runat="server" ID="opDuplicar" CssClass="listButton" 
+                                                        Text="Duplicar"
+                                                        CommandName="Duplicar" AutoPostBack="true" visible='<%# Eval("Cpl_PodeReplicar") %>'
+                                                        CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ><span class="glyphicon glyphicon-duplicate" style="margin-right:10px!important;"></span>Duplicar</asp:linkButton></a></li>
+                                                </ul>
+                                            </div>                                          
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                                 <RowStyle CssClass="cursor-pointer" />
                             </asp:GridView>
@@ -439,6 +467,73 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modalDuplicar" role="dialog" aria-labelledby="myLargeModal">
+        <div class="modal-dialog modalDuplicar" role="document" style="width:50%;margin-top:5%;text-align:center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="H2">Atenção</h4>
+                </div>
+                <div class="modal-body" style="width:100%;height:250px!important" > 
+                    <asp:UpdatePanel ID="UpdatePanel9" runat="server" UpdateMode="Always">
+                        <ContentTemplate>
+                            <div class="col-md-12 col-xs-12" style="text-align:center">
+                                <div class="col-md-12 col-xs-12" style="margin-bottom:10px!important;margin-top:10px!important">
+                                   <label for="usr" style ="margin-top:1px;"> Número de parcelas a serem geradas somadas à esta?</label>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div style="float:left;width:20%;">
+                                         <asp:LinkButton ID="BtnAdd" title="Somar 1" runat="server" CssClass="btn btn-success" OnClick="BtnAdd_Click" Style="width:100%;height: 35px!important; padding-top: 7px;color:white;border-bottom-right-radius:0; border-top-right-radius:0"> 
+                                            <span aria-hidden="true"  class="glyphicon glyphicon-plus"></span>
+                                        </asp:LinkButton>
+                                    </div>
+                                    <div  style="float:left;width:60%;">
+                                        <asp:TextBox ID="txtQtdDuplicar" Text="1" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtQtdDuplicar_TextChanged" MaxLength="5" style="width:100%;border-bottom-right-radius:0; border-top-right-radius:0;border-bottom-left-radius:0; border-top-left-radius:0;font-size:20px;font-weight:bold;text-align:center"  TabIndex="0"/>
+                                    </div>
+                                    <div style="float:left;width:20%;">
+                                        <asp:LinkButton ID="btnRemover" title="Subtrair 1" runat="server" CssClass="btn btn-danger" OnClick="btnRemover_Click" Style=" width:100%;height: 35px!important; padding-top: 7px;color:white; border-bottom-left-radius:0; border-top-left-radius:0"> 
+                                            <span aria-hidden="true"  class="glyphicon glyphicon-minus"></span>
+                                        </asp:LinkButton>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12" style="margin-bottom:10px!important;margin-top:10px!important">
+                                    <label for="usr" style ="margin-top:1px;">Quantidade de dias entre cada parcela?</label>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div style="float:left;width:20%;">
+                                         <asp:LinkButton ID="btnAddDia" title="Somar 1" runat="server" CssClass="btn btn-success" OnClick="btnAddDia_Click" Style="width:100%;height: 35px!important; padding-top: 7px;color:white;border-bottom-right-radius:0; border-top-right-radius:0"> 
+                                            <span aria-hidden="true"  class="glyphicon glyphicon-plus"></span>
+                                        </asp:LinkButton>
+                                    </div>
+                                    <div  style="float:left;width:60%;">
+                                        <asp:TextBox ID="txtQtdDias" Text="30" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="txtQtdDias_TextChanged" MaxLength="5" style="width:100%;border-bottom-right-radius:0; border-top-right-radius:0;border-bottom-left-radius:0; border-top-left-radius:0;font-size:20px;font-weight:bold;text-align:center" TabIndex="1"/>
+                                    </div>
+                                    <div style="float:left;width:20%;">
+                                        <asp:LinkButton ID="btnRemoverDia" title="Subtrair 1" runat="server" CssClass="btn btn-danger" OnClick="btnRemoverDia_Click" Style=" width:100%;height: 35px!important; padding-top: 7px;color:white; border-bottom-left-radius:0; border-top-left-radius:0"> 
+                                            <span aria-hidden="true"  class="glyphicon glyphicon-minus"></span>
+                                        </asp:LinkButton>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" >
+                                    <label for="usr" style="margin-bottom:10px!important;margin-top:10px!important">Prefixo do Numero documento (Padrão código cliente)</label>
+                                    <asp:TextBox ID="txtPrefixo" CssClass="form-control" runat="server"  Text ="" Font-Size="Small" TabIndex="1" MaxLength="10" Style="font-size:20px;font-weight:bold;text-align:center"/>
+                                </div>
+                            </div>
+                        </ContentTemplate> 
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="BtnAdd" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="txtQtdDuplicar" EventName="TextChanged" />
+                            <asp:AsyncPostBackTrigger ControlID="btnRemover" EventName="Click" />
 
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer" style="text-align:center">
+                    <asp:Button runat="server" ID="btnConfirmarDuplicar" OnClientClick="this.disabled = true; this.value = 'Duplicando...';" UseSubmitBehavior="false" OnClick="btnConfirmarDuplicar_Click" CssClass="btn btn-success" style="color:white" Text="Duplicar" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <%--  --%>

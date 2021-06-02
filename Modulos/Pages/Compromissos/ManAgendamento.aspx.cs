@@ -1149,7 +1149,7 @@ namespace SoftHabilInformatica.Pages.Compromissos
 
         protected void BtnConcluir_Click(object sender, EventArgs e)
         {
-            ddlSituacao.SelectedValue = "206";
+            ddlSituacao.SelectedValue = "210";
             BtnReativar.Visible = false;
             btnSalvar.Visible = true;
             btnSalvar_Click(sender, e);

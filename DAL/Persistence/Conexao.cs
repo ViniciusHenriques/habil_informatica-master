@@ -16,6 +16,7 @@ namespace DAL.Persistence
 
         protected SqlDataReader Dr, DrMaster;
         protected string SQLLEGAL = "";
+
         protected void AbrirConexao()
         {
             try

@@ -231,6 +231,9 @@ namespace SoftHabilInformatica.Pages.Vendas
                 Session["IndicadorURL"] = Request.QueryString["Cad"];
 
             MontaTela(sender, e);
+
+            if (ddlVendedor.SelectedValue == ".....SELECIONE UM VENDEDOR.....")
+                ddlVendedor.Enabled = true;
         }
         
         protected void MontaTela(object sender, EventArgs e)
@@ -664,7 +667,8 @@ namespace SoftHabilInformatica.Pages.Vendas
                     p.CodigoDocumentoOriginal = Convert.ToDecimal(lblCodOrcamento.Text);
 
                 //COMPLEMENTARES
-                p.Cpl_CodigoTransportador = Convert.ToInt64(txtCodTransportador.Text);
+                if (txtCodTransportador.Text != "")
+                    p.Cpl_CodigoTransportador = Convert.ToInt64(txtCodTransportador.Text);
                 p.Cpl_CodigoPessoa = Convert.ToInt64(txtCodPessoa.Text);
 
                 Habil_Estacao he = new Habil_Estacao();
@@ -878,6 +882,7 @@ namespace SoftHabilInformatica.Pages.Vendas
                 txtEstado.Text = "";
                 txtCEP.Text = "";
                 txtEmail.Text = "";
+                txtTelefone.Text = "";
                 txtCodPessoa.Focus();
                 PanelInfoCliente = "display:none";
                 return;
@@ -900,6 +905,7 @@ namespace SoftHabilInformatica.Pages.Vendas
             PessoaContatoDAL cttDAL = new PessoaContatoDAL();
             ctt = cttDAL.PesquisarPessoaContato(Convert.ToInt64(txtCodPessoa.Text), 1);
             txtEmail.Text = ctt._Mail1;
+            txtTelefone.Text = ctt._Fone1;
 
             PessoaEnderecoDAL end = new PessoaEnderecoDAL();
             List<Pessoa_Endereco> end2 = new List<Pessoa_Endereco>();

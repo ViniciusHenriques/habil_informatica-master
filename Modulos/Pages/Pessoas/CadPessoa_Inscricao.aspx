@@ -122,12 +122,12 @@
 
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Inscrição Estadual  / RG</label>
-                                    <asp:TextBox ID="txtIERG" runat="server" CssClass="form-control" TabIndex="2"></asp:TextBox>
+                                    <asp:TextBox ID="txtIERG" runat="server" CssClass="form-control" TabIndex="2" MaxLength="15"></asp:TextBox>
                                 </div>
 
                                 <div class="col-md-2" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">Inscrição Municipal</label>
-                                    <asp:TextBox ID="txtIM" runat="server" CssClass="form-control" TabIndex="3"></asp:TextBox>
+                                    <asp:TextBox ID="txtIM" runat="server" CssClass="form-control" TabIndex="3" MaxLength="20"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="row" style="background-color:white;border:none;">
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="col-md-8" style="background-color:white;border:none;text-align:left;font-size:x-small;">
                                     <label for="usr" style ="margin-top:1px;">OBS</label>
-                                    <asp:TextBox ID="txtOBSInscr" runat="server" CssClass="form-control" TabIndex="6"></asp:TextBox>
+                                    <asp:TextBox ID="txtOBSInscr" runat="server" CssClass="form-control" TabIndex="6" MaxLength="100"></asp:TextBox>
                                 </div>
                             </div>
                         </div>

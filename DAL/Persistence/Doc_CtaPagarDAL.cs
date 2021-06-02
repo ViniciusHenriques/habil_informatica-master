@@ -135,7 +135,7 @@ namespace DAL.Persistence
                         case 2627: // Primary key violation
                             throw new DuplicateNameException("Inclusão não Permitida!!! Chave já consta no Banco de Dados. Mensagem :" + ex.Message.ToString(), ex);
                         default:
-                            throw new Exception("Erro ao Incluir Regra Fiscal Icms: " + ex.Message.ToString());
+                            throw new Exception("Erro ao Incluir pessoa do documento: " + ex.Message.ToString());
                     }
                 }
 
@@ -143,7 +143,7 @@ namespace DAL.Persistence
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao gravar Fiscal Icms Regra Fiscal Icms: " + ex.Message.ToString());
+                throw new Exception("Erro ao gravar  pessoa do documento: " + ex.Message.ToString());
 
             }
             finally
@@ -328,7 +328,7 @@ namespace DAL.Persistence
                     }
 
                     p.CodigoDocumento = Convert.ToDecimal(Dr["CD_DOCUMENTO"]);
-                    p.DGDocumento = Convert.ToString( Dr["DG_DOCUMENTO"]);
+                    p.DGDocumento = Convert.ToString(Dr["DG_DOCUMENTO"]);
                     p.DataEmissao = Convert.ToDateTime(Dr["DT_HR_EMISSAO"]);
                     p.DataEntrada = Convert.ToDateTime(Dr["DT_HR_ENTRADA"]);
                     p.DataVencimento = Convert.ToDateTime(Dr["DT_VENCIMENTO"]);
@@ -341,9 +341,15 @@ namespace DAL.Persistence
                     p.ValorDesconto = Convert.ToDecimal(Dr["VL_TOTAL_DESCONTO"]);
                     p.ValorAcrescimo = Convert.ToDecimal(Dr["VL_TOTAL_ACRESCIMO"]);
                     p.ValorGeral = Convert.ToDecimal(Dr["VL_TOTAL_GERAL"]);
-                    
+
                     p.Cpl_vlPago = Convert.ToDecimal(Dr["VL_PAGO"]);
                     p.Cpl_vlPagar = p.ValorGeral - p.Cpl_vlPago;
+
+                    if (p.CodigoSituacao > 31 || p.Cpl_vlPago > 0)
+                        p.Cpl_PodeReplicar = false;
+                    else
+                        p.Cpl_PodeReplicar = true;
+
                     GeraAlteracao:
 
                     lista.Add(p);
@@ -900,6 +906,7 @@ namespace DAL.Persistence
             }
         }
         public bool InserirPessoaDocumento(int p, decimal doc)
+
         {
             try
             {
@@ -1149,6 +1156,31 @@ namespace DAL.Persistence
                 FecharConexao();
             }
         }
-       
+        public void AtualizarContaPagarCampo(string strNOME_CAMPO, string strVALOR_CAMPO, decimal decREFERENCIA)
+        {
+            try
+            {
+                if (strNOME_CAMPO != "" && strVALOR_CAMPO != "")
+                {
+
+                    AbrirConexao();
+                    Cmd = new SqlCommand("UPDATE DOCUMENTO SET " +
+                                            strNOME_CAMPO + "= @v2" +
+                                        " WHERE CD_DOCUMENTO = @v3", Con);
+
+                    Cmd.Parameters.AddWithValue("@v2", strVALOR_CAMPO);
+                    Cmd.Parameters.AddWithValue("@v3", decREFERENCIA);
+                    Cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao atualizar CONTA A PAGAR: " + ex.Message.ToString());
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
     }
 }
